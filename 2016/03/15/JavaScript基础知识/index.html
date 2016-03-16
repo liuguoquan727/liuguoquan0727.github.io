@@ -1,0 +1,899 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。
+JavaScript能做什么一旦有一个包含&amp;lt; script &amp;gt;元素的页面（或者包含引用，指向一个单独的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript基础知识">
+<meta property="og:url" content="http://yoursite.com/2016/03/15/JavaScript基础知识/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。
+JavaScript能做什么一旦有一个包含&amp;lt; script &amp;gt;元素的页面（或者包含引用，指向一个单独的">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1014339-c9a14b3c3b49c3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-03-15T14:36:38.668Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript基础知识">
+<meta name="twitter:description" content="JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。
+JavaScript能做什么一旦有一个包含&amp;lt; script &amp;gt;元素的页面（或者包含引用，指向一个单独的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1014339-c9a14b3c3b49c3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript基础知识 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript基础知识
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-15T21:58:09+08:00" content="2016-03-15">
+              2016-03-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/15/JavaScript基础知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/JavaScript基础知识/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。</p>
+<h2 id="JavaScript能做什么"><a href="#JavaScript能做什么" class="headerlink" title="JavaScript能做什么"></a><strong>JavaScript能做什么</strong></h2><p>一旦有一个包含&lt; script &gt;元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。</p>
+<p>你可以要求JavaScript：</p>
+<h3 id="1-建立一个语句"><a href="#1-建立一个语句" class="headerlink" title="1.建立一个语句"></a><strong>1.建立一个语句</strong></h3><p>创建一个变量并赋值、让变量相加、完成计算，还可以使用一个JavaScript库的内置功能。</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> temp</span>  = <span class="number">98.6</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> beanCounter</span> = <span class="number">4</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> reallyCool</span> = <span class="literal">true</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> motto</span> = <span class="string">"I rule"</span>;</span><br><span class="line"></span><br><span class="line">temp = (temp - <span class="number">32</span>) * <span class="number">5</span> / <span class="number">9</span>;</span><br><span class="line">motto = motto + <span class="string">" and so do you!"</span>;</span><br><span class="line"><span class="variable"><span class="keyword">var</span> pos</span> = Math.random();</span><br></pre></td></tr></table></figure>
+<h3 id="2-重复做事情"><a href="#2-重复做事情" class="headerlink" title="2.重复做事情"></a><strong>2.重复做事情</strong></h3><p>循环完成语句，次数可以根据你的需要来定</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while (<span class="keyword">beanCounter </span>&gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">    processBeans()<span class="comment">;</span></span><br><span class="line">    <span class="keyword">beanCounter </span>= <span class="keyword">beanCounter </span>- <span class="number">1</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="3-做出判断"><a href="#3-做出判断" class="headerlink" title="3.做出判断"></a><strong>3.做出判断</strong></h3><p>编写根据应用的状态并按条件执行的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isReallyCool) &#123;</span><br><span class="line"></span><br><span class="line">    invite = <span class="string">"You are invited!"</span></span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"></span><br><span class="line">    invite = <span class="string">"Sorry, we are at capacity."</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript变量"><a href="#JavaScript变量" class="headerlink" title="JavaScript变量"></a>JavaScript变量</h2><p>利用JavaScript，变量可以用来保存各种不同的东西。下面来声明一些变量:</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable"><span class="keyword">var</span> winners</span> = <span class="number">2</span>; <span class="comment">//整数值</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> money</span> = <span class="number">212.2</span>; <span class="comment">//浮点数</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> name</span> = <span class="string">"liuguoquan"</span>; <span class="comment">//字符串</span></span><br><span class="line"><span class="variable"><span class="keyword">var</span> isExist</span> = <span class="literal">false</span>;  <span class="comment">//布尔值</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+</blockquote>
+<ul>
+<li>JavaScript不需要为变量指定一个类型，它只是创建一个通用容器，其中可以存放多种东西，所有任何变量都可以存放数字、字符串或者布尔值。因为JavaScript采用的动态类型，也就是说，JavaScript解析器会在代码运行时确定要使用说明类型。</li>
+<li><code>var scoops = null</code>；表示“没有值”；</li>
+<li>var winner；如果不赋值给变量，那么执行这个语句之后，变量winner会赋值为undefined。</li>
+</ul>
+<h2 id="JavaScript变量命名"><a href="#JavaScript变量命名" class="headerlink" title="JavaScript变量命名"></a><strong>JavaScript变量命名</strong></h2><ul>
+<li>规则1：变量要以一个字母、下划线或者美元符开头。</li>
+<li>规则2：然后变量后面的可以使用任意多个字母、数字、下划线或者美元符</li>
+<li>规则3：一定要避开JavaScript的所有保留字。</li>
+</ul>
+<p>JavaScript的保留字如下图所示:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1014339-c9a14b3c3b49c3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="JavaScript表达式"><a href="#JavaScript表达式" class="headerlink" title="JavaScript表达式"></a><strong>JavaScript表达式</strong></h2><ul>
+<li>数值表达式：<code>Math.random() * 10 + 32 - 11.0</code></li>
+<li>布尔表达式：<code>level == 4</code></li>
+<li>串表达式：<code>&quot;I&quot; + &quot; am &quot; + &quot; hero!&quot;</code></li>
+<li>其他表达式：<code>function() {...}，document.getElementById(&#39;cows&#39;)，new Array(10)</code></li>
+</ul>
+<h2 id="JavaScript自动类型转换"><a href="#JavaScript自动类型转换" class="headerlink" title="JavaScript自动类型转换"></a><strong>JavaScript自动类型转换</strong></h2><ul>
+<li><code>message = 2 + &quot; if by sea</code>，值为2 if by sea，JavaScript会将2转换为串“2”;</li>
+<li><code>value = 2 * 3.1</code>, 值为6.2，JavaScript会把整数2转换为一个浮点数。</li>
+</ul>
+<p>JavaScript计算下面的语句会得到什么？</p>
+<ul>
+<li><code>numORString1 = &quot;3&quot; + &quot;4&quot;</code>; 值为：”34”</li>
+<li><code>numORString2 = &quot;3&quot; * &quot;4&quot;</code>; 值为：12</li>
+</ul>
+<p>##<strong>JavaScript循环</strong></p>
+<ul>
+<li><strong>while循环</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> scoop = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span>(scoop &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">      alert(<span class="string">"More icecream!"</span>);</span><br><span class="line">      scoop = scoop - <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  alert(<span class="string">"life without ice cream is not the same!"</span>);</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>for循环</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> scoop;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span>(scoop = <span class="number">5</span>; scoop &gt; <span class="number">0</span>; scoop--) &#123;</span><br><span class="line"></span><br><span class="line">      alert(<span class="string">"More icecream!"</span>);</span><br><span class="line">      </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  alert(<span class="string">"life without ice cream is not the same!"</span>);</span><br><span class="line"></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="HTML5页面增加JavaScript"><a href="#HTML5页面增加JavaScript" class="headerlink" title="HTML5页面增加JavaScript"></a><strong>HTML5页面增加JavaScript</strong></h2><p>要使用JavaScript，必须把它增加到一个Web页面中。不过在哪里加呢？下面介绍向页面增加JavaScript代码的三种方式</p>
+<ul>
+<li><strong>联机脚本放在<head>元素中</head></strong></li>
+</ul>
+<p>向页面增加代码时，最常用的方式就是在页面的head部分放置一个script元素。在head元素中增加JavaScript部分就会最先执行这个代码，然后才解析页面的其余部分。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><br><span class="line">        ...语句</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>通过引用一个单独的JavaScript文件夹来增加脚本</strong></li>
+</ul>
+<p>还可以链接一个包含了JavaScript代码的单独的文件。将这个文件的URL放在开始script表计的src属性中，另外一定要用&lt; /script&gt;结束这个脚本元素。如果链接到同一目录的某个文件，可以不提供该文件夹的完整路径。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mycode.js"</span> &gt;</span><span class="undefined"></span><br><span class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将代码增加到文档体中，可以作为内联代码，也可以作为一个单独文件的链接</strong></li>
+</ul>
+<p>也可以把代码直接放在HTML5的body中。同样的，将JavaScript代码包围在script元素中（或者在src属性中引用一个单独的文件）。浏览器解析体时就会执行页面体重的JavaScript（而且通常会从上向下执行）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span><br><span class="line">        ...语句</span><br><span class="line">    <span class="tag">&lt;/<span class="name">sript</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span></span></span><br></pre></td></tr></table></figure>
+<h2 id="JavaScript与HTML5页面交互"><a href="#JavaScript与HTML5页面交互" class="headerlink" title="JavaScript与HTML5页面交互"></a><strong>JavaScript与HTML5页面交互</strong></h2><ul>
+<li>1.在浏览器总加载一个页面时，浏览器会解析HTML，并创建文档的一个内部模型，其中包含HTML标记中的所有元素。</li>
+<li>2.JavaScript可以与DOM交互来访问元素以及元素中的内容。JavaScript还可以使用DOM来创建或删除元素。</li>
+<li>3.JavaScript修改了DOM时，浏览器会动态更新页面，所有你会看到页面上的新内容。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag">#HTML5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/15/HTML5入门/" rel="next" title="HTML5入门">
+                <i class="fa fa-chevron-left"></i> HTML5入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/15/单一职责原则/" rel="prev" title="单一职责原则">
+                单一职责原则 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/15/JavaScript基础知识/"
+           data-title="JavaScript基础知识" data-url="http://yoursite.com/2016/03/15/JavaScript基础知识/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">Stay hungry, Stay foolish.</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript能做什么"><span class="nav-number">1.</span> <span class="nav-text">JavaScript能做什么</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-建立一个语句"><span class="nav-number">1.1.</span> <span class="nav-text">1.建立一个语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-重复做事情"><span class="nav-number">1.2.</span> <span class="nav-text">2.重复做事情</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-做出判断"><span class="nav-number">1.3.</span> <span class="nav-text">3.做出判断</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript变量"><span class="nav-number">2.</span> <span class="nav-text">JavaScript变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript变量命名"><span class="nav-number">3.</span> <span class="nav-text">JavaScript变量命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript表达式"><span class="nav-number">4.</span> <span class="nav-text">JavaScript表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript自动类型转换"><span class="nav-number">5.</span> <span class="nav-text">JavaScript自动类型转换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML5页面增加JavaScript"><span class="nav-number">6.</span> <span class="nav-text">HTML5页面增加JavaScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JavaScript与HTML5页面交互"><span class="nav-number">7.</span> <span class="nav-text">JavaScript与HTML5页面交互</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
