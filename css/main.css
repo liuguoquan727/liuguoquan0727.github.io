@@ -637,7 +637,7 @@ pre .constant {
 }
 pre .ruby .class .title,
 pre .css .rules .attribute {
-  color: #9c9;
+  color: #25e903;
 }
 pre .string,
 pre .value,
@@ -645,7 +645,7 @@ pre .inheritance,
 pre .header,
 pre .ruby .symbol,
 pre .xml .cdata {
-  color: #9c9;
+  color: #25e903;
 }
 pre .title,
 pre .css .hexcolor {
@@ -666,7 +666,7 @@ pre .javascript .function {
   color: #c9c;
 }
 .java .keyword {
-  color: #f00;
+  color: #25e903;
 }
 .full-image.full-image.full-image {
   border: none;
@@ -1552,7 +1552,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff1424;
+  background: #ffff9f;
 }
 .links-of-blogroll {
   font-size: 13px;
