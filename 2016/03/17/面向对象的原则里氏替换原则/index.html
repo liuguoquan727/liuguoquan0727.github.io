@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="记录," />
+  <meta name="keywords" content="设计模式," />
 
 
 
@@ -57,19 +57,24 @@
 
 
 
-<meta name="description" content="折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。
-纵浪大化中，不喜亦不惧。应尽便须尽，无复独多虑。">
+<meta name="description" content="里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。
+LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。
+LSP的第二种定义是：所有引用基类的地方必须能透明地使用其子类的对象。通俗的讲就是：只要父类能出现">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博客开通记">
-<meta property="og:url" content="http://yoursite.com/2016/03/15/博客开通/index.html">
+<meta property="og:title" content="面向对象的原则里氏替换原则">
+<meta property="og:url" content="http://yoursite.com/2016/03/17/面向对象的原则里氏替换原则/index.html">
 <meta property="og:site_name" content="MICHAEL - 应尽便须尽">
-<meta property="og:description" content="折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。
-纵浪大化中，不喜亦不惧。应尽便须尽，无复独多虑。">
-<meta property="og:updated_time" content="2016-03-15T08:49:46.000Z">
+<meta property="og:description" content="里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。
+LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。
+LSP的第二种定义是：所有引用基类的地方必须能透明地使用其子类的对象。通俗的讲就是：只要父类能出现">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1014339-55a69a62200a6871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-03-17T15:46:56.036Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博客开通记">
-<meta name="twitter:description" content="折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。
-纵浪大化中，不喜亦不惧。应尽便须尽，无复独多虑。">
+<meta name="twitter:title" content="面向对象的原则里氏替换原则">
+<meta name="twitter:description" content="里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。
+LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。
+LSP的第二种定义是：所有引用基类的地方必须能透明地使用其子类的对象。通俗的讲就是：只要父类能出现">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1014339-55a69a62200a6871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -87,7 +92,7 @@
   };
 </script>
 
-  <title> 博客开通记 | MICHAEL - 应尽便须尽 </title>
+  <title> 面向对象的原则里氏替换原则 | MICHAEL - 应尽便须尽 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -237,7 +242,7 @@
             
             
               
-                博客开通记
+                面向对象的原则里氏替换原则
               
             
           </h1>
@@ -249,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T14:49:41+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2016-03-17T23:45:48+08:00" content="2016-03-17">
+              2016-03-17
             </time>
           </span>
 
@@ -263,8 +268,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/记录/" itemprop="url" rel="index">
-                    <span itemprop="name">记录</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -279,8 +284,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/15/博客开通/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/博客开通/" itemprop="commentsCount"></span>
+                <a href="/2016/03/17/面向对象的原则里氏替换原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/面向对象的原则里氏替换原则/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -302,8 +307,27 @@
       
 
       
-        <p>折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。</p>
-<p>纵浪大化中，不喜亦不惧。<br>应尽便须尽，无复独多虑。</p>
+        <p>里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。</p>
+<p>LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。</p>
+<p>LSP的第二种定义是：所有引用基类的地方必须能透明地使用其子类的对象。通俗的讲就是：只要父类能出现的地方子类就可以出现，而且替换为子类也不会产生任何错误或者异常，使用者可能根本就不需要知道是父类还是子类，但是，反过来就不行了，有子类出现的地方，父类未必就能适应。因为子类有的东西父类不一定有。</p>
+<p>说了这么多，最终总结就两个字：抽象。为了便于理解这个原则，我们写了一个简单示例来描述，先看UML图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1014339-55a69a62200a6871.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="里氏替换原则UML图"></p>
+<p>再来看看具体的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 窗口类</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Window</span>  </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">show</span><span class="params">(View chile)</span> </span>&#123;</span><br><span class="line">        chile.draw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 建立视图抽象，测量视图的宽高为公用代码，绘制实现交给具体的子类</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">View</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">measure</span><span class="params">(<span class="keyword">int</span> width,<span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * Button的具体实现</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Button</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//绘制Button</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * TextView的具体实现</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TextView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//绘制TextV</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述示例中，Window依赖于View，而View定义了一个视图抽象，measure是各个子类共享的方法，子类通过覆写View的draw方法实现各自的功能。任何继承自View的子类都可以设置给Window的show方法，这就是里氏替换原则。通过里氏替换，就可以自定义各自各样的view，然后传递个Window，Window负责组织view，并且将View显示到屏幕上。</p>
+<p>里氏替换原则的核心是抽象，抽象又依赖于继承这个特性，在OOP当中，继承的优缺点都相当的明显。优点为：</p>
+<ul>
+<li>代码重用，减少创建的成本，每个子类拥有父类的方法和属性</li>
+<li>子类和父类基本相似，但又与父类有所区别</li>
+<li>提高代码的可扩展性</li>
+</ul>
+<p>继承的缺点：</p>
+<ul>
+<li>继承是侵入性的，只要继承就必须拥有父类的所有属性和方法</li>
+<li>可能造成子类代码冗余、灵活性降低，因为子类必须拥有父类的属性和方法</li>
+</ul>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a><strong>结束</strong></h2><p>开闭原则中的示例图片缓存系统也很好地反应了里氏替换原则，即MemoryCache、DiskCache、DoubleCache都可以替换成ImageCache的工作，并保证行为的正确性。实际中，开闭原则和里氏替换原则往往是相互关联的，通过里氏替换来达到扩展开放、修改关闭的效果。然而，这两个原则都强调一个OOP的重要特性–抽象。</p>
+<h2 id="参考书籍"><a href="#参考书籍" class="headerlink" title="参考书籍"></a><strong>参考书籍</strong></h2><p>《Android源码设计模式》 何红辉、关爱民著</p>
 
       
     </div>
@@ -318,7 +342,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/记录/" rel="tag">#记录</a>
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
           
         </div>
       
@@ -327,13 +351,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/17/面向对象编程之开闭原则/" rel="next" title="面向对象编程之开闭原则">
+                <i class="fa fa-chevron-left"></i> 面向对象编程之开闭原则
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/15/搭建和配置Hexo-Github-pages个人博客/" rel="prev" title="搭建和配置Hexo+Github pages个人博客">
-                搭建和配置Hexo+Github pages个人博客 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -382,8 +406,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/15/博客开通/"
-           data-title="博客开通记" data-url="http://yoursite.com/2016/03/15/博客开通/">
+      <div class="ds-thread" data-thread-key="2016/03/17/面向对象的原则里氏替换原则/"
+           data-title="面向对象的原则里氏替换原则" data-url="http://yoursite.com/2016/03/17/面向对象的原则里氏替换原则/">
       </div>
     
   </div>
@@ -513,7 +537,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#结束"><span class="nav-number">1.</span> <span class="nav-text">结束</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考书籍"><span class="nav-number">2.</span> <span class="nav-text">参考书籍</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
