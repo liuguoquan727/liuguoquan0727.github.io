@@ -62,13 +62,13 @@ SRP的定义就是：就一个类而言，应该仅有一个引起它变化的�
 接下来以小明的工作过程为示例描述单一职">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面向对象编程之单一职责原则">
-<meta property="og:url" content="http://yoursite.com/2016/03/15/单一职责原则/index.html">
+<meta property="og:url" content="http://yoursite.com/2016/03/15/面向对象编程之单一职责原则/index.html">
 <meta property="og:site_name" content="MICHAEL - 应尽便须尽">
 <meta property="og:description" content="单一职责的英文名称是Single Responsibility Principle，缩写是SRP。
 SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。
 接下来以小明的工作过程为示例描述单一职">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1014339-cf656887e4f246a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2016-03-16T15:02:15.249Z">
+<meta property="og:updated_time" content="2016-03-19T06:41:15.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面向对象编程之单一职责原则">
 <meta name="twitter:description" content="单一职责的英文名称是Single Responsibility Principle，缩写是SRP。
@@ -284,8 +284,8 @@ SRP的定义就是：就一个类而言，应该仅有一个引起它变化的�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/15/单一职责原则/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/单一职责原则/" itemprop="commentsCount"></span>
+                <a href="/2016/03/15/面向对象编程之单一职责原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/面向对象编程之单一职责原则/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -327,6 +327,12 @@ SRP的定义就是：就一个类而言，应该仅有一个引起它变化的�
 <blockquote>
 <p>从上述例子我们知道，单一职责所表达出来的用意就是“单一”两个字。如何划分一个类、一个函数的职责，每个人都有自己的看法，这需要根据个人经验、具体的业务逻辑而定。但是，它也有一些基本的指导原则，例如，<strong>两个完全不一样的功能就不应该方法一个类中，一个类中应该是一组相关性很高的函数、数据的封装。</strong>工程师可以不断地审视自己的代码，根据具体的业务、功能对类进行相应的拆分，这是程序员优化代码迈出的第一步。</p>
 </blockquote>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a><strong>优点</strong></h2><ul>
+<li>类的复杂度降低，实现什么职责都有清晰的定义。</li>
+<li>复杂性降低，所以可读性提高了。</li>
+<li>可读性提高了，所以可维护性提高了</li>
+<li>变更引起的风险降低，变更是必不可少的，如果接口的单一职责做得好，一个接口修改只对相应的实现类有影响，对其他的接口无影响，这对系统的扩展性、维护性都有很大的帮助。</li>
+</ul>
 <p>##参考资料</p>
 <p>《Android源码设计模式》 何红辉、关爱民 著</p>
 
@@ -411,8 +417,8 @@ SRP的定义就是：就一个类而言，应该仅有一个引起它变化的�
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/15/单一职责原则/"
-           data-title="面向对象编程之单一职责原则" data-url="http://yoursite.com/2016/03/15/单一职责原则/">
+      <div class="ds-thread" data-thread-key="2016/03/15/面向对象编程之单一职责原则/"
+           data-title="面向对象编程之单一职责原则" data-url="http://yoursite.com/2016/03/15/面向对象编程之单一职责原则/">
       </div>
     
   </div>
@@ -542,7 +548,7 @@ SRP的定义就是：就一个类而言，应该仅有一个引起它变化的�
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
