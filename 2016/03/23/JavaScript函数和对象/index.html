@@ -1,0 +1,981 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML5," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="函数定义函数
+创建一个函数需要用到关键字function，后面是一个函数名
+为函数提供0或多个参数，使用参数向函数传值
+可以返回一个值作为调用这个函数的结果，这是可选的
+编写函数体，包含完成函数工作的所有代码
+
+JavaScript有两种方式定义函数，第一种方式如下：
+123function add(x,y) &amp;#123;    return x + y;&amp;#125;
+注意，函数体内部的语句在执行">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript函数和对象">
+<meta property="og:url" content="http://yoursite.com/2016/03/23/JavaScript函数和对象/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="函数定义函数
+创建一个函数需要用到关键字function，后面是一个函数名
+为函数提供0或多个参数，使用参数向函数传值
+可以返回一个值作为调用这个函数的结果，这是可选的
+编写函数体，包含完成函数工作的所有代码
+
+JavaScript有两种方式定义函数，第一种方式如下：
+123function add(x,y) &amp;#123;    return x + y;&amp;#125;
+注意，函数体内部的语句在执行">
+<meta property="og:updated_time" content="2016-03-23T15:27:20.548Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript函数和对象">
+<meta name="twitter:description" content="函数定义函数
+创建一个函数需要用到关键字function，后面是一个函数名
+为函数提供0或多个参数，使用参数向函数传值
+可以返回一个值作为调用这个函数的结果，这是可选的
+编写函数体，包含完成函数工作的所有代码
+
+JavaScript有两种方式定义函数，第一种方式如下：
+123function add(x,y) &amp;#123;    return x + y;&amp;#125;
+注意，函数体内部的语句在执行">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> JavaScript函数和对象 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript函数和对象
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-23T23:26:37+08:00" content="2016-03-23 23:26:37">
+              2016-03-23 23:26:37
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/23/JavaScript函数和对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/23/JavaScript函数和对象/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
+<li>创建一个函数需要用到关键字function，后面是一个函数名</li>
+<li>为函数提供0或多个参数，使用参数向函数传值</li>
+<li>可以返回一个值作为调用这个函数的结果，这是可选的</li>
+<li>编写函数体，包含完成函数工作的所有代码</li>
+</ul>
+<p>JavaScript有两种方式定义函数，第一种方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意，函数体内部的语句在执行时，一旦执行到return时，函数就执行完毕，并将结果返回。因此，函数内部通过运算可以实现非常复杂的逻辑。如果没有return语句，函数执行完毕后也会返回结果，只是结果为undefined。</p>
+<p>由于JavaScript函数也是一个对象，上述定义的add()函数实际上是一个函数对象，而函数名add可以视为指向该函数的变量。<br>因此，第二种定义函数的方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种方式下，<code>function{....}</code>是一个匿名函数，它没有函数名，但是这个匿名函数赋值给了变量add，所有通过变量add就可以调用该函数。</p>
+<p>上述两种定义是等价的，注意第二种方式按照完整语法需要在末尾加一个；号，表示赋值语句结束。</p>
+<blockquote>
+<p>函数声明可以出现在脚本中的任何位置。使用多个外部JavaScript文件时有一点要记住，如果不同文件中有两个同名的函数，将使用浏览器最后看到的那个函数。</p>
+</blockquote>
+<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><p>调用函数时，按顺序传入参数即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = add(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//返回3</span></span><br></pre></td></tr></table></figure>
+<p>由于JavaScript允许任意参数而不影响调用，因此传入的参数比定义的参数多也没有问题，虽然函数内部并不需要这些参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">//返回3</span></span><br></pre></td></tr></table></figure>
+<p>传入的参数比定义的少也没有问题：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum = add(); <span class="comment">//返回NaN</span></span><br></pre></td></tr></table></figure></p>
+<p>此时，add的参数将受到undefined，计算结果为NaN</p>
+<h2 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h2><h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>如果一个变量在函数外声明，这个变量就是全局变量。可以在JavaScript代码中的任何地方访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>; <span class="comment">//全局变量</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> z = <span class="number">4</span>; <span class="comment">//局部变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>如果一个变量在函数内声明，这个变量就是局部变量。只能在函数体内部使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">3</span>; <span class="comment">//全局变量</span></span><br><span class="line"><span class="keyword">var</span> y = <span class="number">4</span>;</span><br><span class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> z = <span class="number">4</span>; <span class="comment">//局部变量</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> x + y + z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>JavaScript函数定义有个特点，它会先扫描整个函数体的语句，把所有声明的变量提升到函数顶部</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="string">"hello,"</span> + y;</span><br><span class="line">    alert(x);</span><br><span class="line">    y = <span class="string">"world"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<p>虽然是strict模式，但语句<code>var x = &quot;hello,&quot; + y</code>并不报错，原因是变量y在稍后说明了。但是alert显示hello，undefined，说明变量y的值为undefined。这正是因为JavaScript引擎自动提升了变量y的声明，但不会提升变量y的赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> y; <span class="comment">// 提升变量y的申明</span></span><br><span class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</span><br><span class="line">    alert(x);</span><br><span class="line">    y = <span class="string">'Bob'</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于JavaScript的这一特性，我们在函数内部定义变量时，请严格遵守“在函数内部首先声明所有变量”这一规则。最常见的做法是用一个var声明函数内部所用到的变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span></span><br><span class="line">        x = <span class="number">1</span>, <span class="comment">// x初始化为1</span></span><br><span class="line">        y = x + <span class="number">1</span>, <span class="comment">// y初始化为2</span></span><br><span class="line">        z, i; <span class="comment">// z和i为undefined</span></span><br><span class="line">    <span class="comment">// 其他语句:</span></span><br><span class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++) &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="普通创建对象"><a href="#普通创建对象" class="headerlink" title="普通创建对象"></a>普通创建对象</h3><h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>已经有了一个包含一些属性的对象。如何使用JavaScript创建这个对象呢？方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fido = &#123;</span><br><span class="line">    name: <span class="string">"Fido"</span>;</span><br><span class="line">    weight: <span class="number">40</span>;</span><br><span class="line">    breed: <span class="string">"Mixed"</span>;</span><br><span class="line">    loves: [<span class="string">"walks"</span>,<span class="string">"fetching balls"</span>]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h4 id="访问和操作对象"><a href="#访问和操作对象" class="headerlink" title="访问和操作对象"></a>访问和操作对象</h4><ul>
+<li>使用“点”记法访问对象属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (fido.weight &gt; <span class="number">25</span>) &#123;</span><br><span class="line">    alert(<span class="string">"Wonderful"</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    alert(<span class="string">"keep moving"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>使用一个串结合[]记法访问属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> breed = fido[<span class="string">"breed"</span>];</span><br><span class="line"><span class="keyword">if</span> (breed == <span class="string">"mixed"</span>) &#123;</span><br><span class="line">    alert(<span class="string">"Best in show"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>改变属性的值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fido.weight = <span class="number">27</span>; <span class="comment">//改变Fido的重量</span></span><br><span class="line">fido.loves.push(<span class="string">"chewing bones"</span>); <span class="comment">//向它的loves数组增加一个新元素</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>枚举对象的所有属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> prop;</span><br><span class="line"><span class="keyword">for</span>(prop <span class="keyword">in</span> fido) &#123;</span><br><span class="line">    alert(<span class="string">"Fido has a"</span> + prop + <span class="string">" property"</span>); <span class="comment">//每次循环迭代时，变量prop会得到下一个属性名的相应串值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>处理对象的数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> likes = fido.loves;</span><br><span class="line"><span class="keyword">var</span> likesStr = <span class="string">"Fido likes"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; likes.length; i++) &#123;</span><br><span class="line">    likesStr += <span class="string">" "</span> + likes[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>向函数传入一个对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bark</span>(<span class="params">dog</span>) </span>&#123;</span><br><span class="line">    dog.weight = <span class="number">28</span>; <span class="comment">//会同时改变fido中的值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bark(fido);</span><br></pre></td></tr></table></figure>
+<p>注意：将一个对象赋值给变量时，这个变量会包含这个对象的一个引用，而不是对象的副本，可以把引用想成是对象的一个指针。所有对该变量中属性的改变都会改变原对象的属性。</p>
+<p>上述代码中，改变dog对象的weight属性时，实际上是修改的原对象fido的属性，而不是副本，所有不仅函数体内的dog对象发生了改变，函数体外的fido对象也发生了改变。</p>
+<h4 id="给对象增加方法"><a href="#给对象增加方法" class="headerlink" title="给对象增加方法"></a>给对象增加方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fido = &#123;</span><br><span class="line">    name: <span class="string">"Fido"</span>;</span><br><span class="line">    weight: <span class="number">40</span>;</span><br><span class="line">    breed: <span class="string">"Mixed"</span>;</span><br><span class="line">    loves: [<span class="string">"walks"</span>,<span class="string">"fetching balls"</span>]</span><br><span class="line"></span><br><span class="line">    bark: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        alert(<span class="string">"Woof Woof"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">fido.bark(); <span class="comment">//调用方法</span></span><br></pre></td></tr></table></figure>
+<h3 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name,breed,weight</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="keyword">this</span>.breed = breed;</span><br><span class="line">    <span class="keyword">this</span>.weight = weight;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.bark = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.weight) &#123;</span><br><span class="line">            alert(<span class="keyword">this</span>.name + <span class="string">" say Woof!"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">注意这个语法和对象的语法有所不同。这些是语句，所有需要一个“;”结束各语句。<span class="keyword">this</span>用于指示对象中的属性，它就代表了新创建的实例对象。</span><br></pre></td></tr></table></figure>
+<h4 id="创建对象-1"><a href="#创建对象-1" class="headerlink" title="创建对象"></a>创建对象</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fido = <span class="keyword">new</span> Dog(<span class="string">"Fido"</span>,<span class="string">"Mixed"</span>,<span class="number">38</span>); <span class="comment">//new关键字创建一个对象</span></span><br><span class="line"><span class="keyword">var</span> tiny = <span class="keyword">new</span> Dog(<span class="string">"Tiny"</span>,<span class="string">"Chawalla"</span>,<span class="number">18</span>);</span><br><span class="line"></span><br><span class="line">fido.bark();</span><br><span class="line">tiny.bark();</span><br></pre></td></tr></table></figure>
+<h3 id="prototype属性创建对象"><a href="#prototype属性创建对象" class="headerlink" title="prototype属性创建对象"></a>prototype属性创建对象</h3><p>prototype属性包含一个对象，所有实例对象需要共享的属性和方法，都放在这个对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法分为两种，一种是本地的，一种是引用的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">DOG</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">　　　　<span class="keyword">this</span>.name = name;</span><br><span class="line">　　&#125;</span><br><span class="line">　　DOG.prototype = &#123; species : <span class="string">'犬科'</span> &#125;;</span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> dogA = <span class="keyword">new</span> DOG(<span class="string">'大毛'</span>);</span><br><span class="line">　　<span class="keyword">var</span> dogB = <span class="keyword">new</span> DOG(<span class="string">'二毛'</span>);</span><br><span class="line"></span><br><span class="line">　　alert(dogA.species); <span class="comment">// 犬科</span></span><br><span class="line">　　alert(dogB.species); <span class="comment">// 犬科</span></span><br></pre></td></tr></table></figure>
+<p>现在，species属性放在prototype对象中，两个实例对象共享的，只要修改了prototype对象，就会同时影响到两个实例对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">　　DOG.prototype.species = <span class="string">'猫科'</span>;</span><br><span class="line"></span><br><span class="line">　　alert(dogA.species); <span class="comment">// 猫科</span></span><br><span class="line">　　alert(dogB.species); <span class="comment">// 猫科</span></span><br></pre></td></tr></table></figure>
+<p>综上所述，由于所有实例对象共享同一个prototype对象，那么凶外界看起来，prototype对象就好像是实例对象的原型，而实例对象则好像继承了prototype对象一样。</p>
+<h2 id="window对象"><a href="#window对象" class="headerlink" title="window对象"></a>window对象</h2><p>window对象表示你的JavaScript程序的全局环境，同时还表示应用的主窗口，因此，包含很多核心的属性和方法，主要有：</p>
+<table>
+<thead>
+<tr>
+<th>windwo</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>location</td>
+<td>属性</td>
+<td>包含页面的URL</td>
+</tr>
+<tr>
+<td>status</td>
+<td>属性</td>
+<td>包含将在浏览器状态区显示一个字符串</td>
+</tr>
+<tr>
+<td>onload</td>
+<td>属性</td>
+<td>页面完全加载后调用的函数</td>
+</tr>
+<tr>
+<td>document</td>
+<td>属性</td>
+<td>包含DOM</td>
+</tr>
+<tr>
+<td>—-</td>
+<td>—-</td>
+</tr>
+<tr>
+<td>alert</td>
+<td>方法</td>
+<td>显示一个提醒</td>
+</tr>
+<tr>
+<td>prompt</td>
+<td>方法</td>
+<td>类似于alert，不过会从用户的到信息</td>
+</tr>
+<tr>
+<td>open</td>
+<td>方法</td>
+<td>打开一个新的浏览器窗口</td>
+</tr>
+<tr>
+<td>close</td>
+<td>方法</td>
+<td>关闭窗口</td>
+</tr>
+<tr>
+<td>setTimeout</td>
+<td>方法</td>
+<td>指定的时间间隔后调用一个处理程序</td>
+</tr>
+<tr>
+<td>setInterval</td>
+<td>方法</td>
+<td>以一个指定间隔反复调用一个处理程序</td>
+</tr>
+</tbody>
+</table>
+<p>window是个全局对象，所有即使没有在前面加上window，window的属性或方法名也能顺利解析。</p>
+<h2 id="document对象"><a href="#document对象" class="headerlink" title="document对象"></a>document对象</h2><p>document实际上是window对象的一个属性，主要用于访问DOM。</p>
+<h2 id="元素对象"><a href="#元素对象" class="headerlink" title="元素对象"></a>元素对象</h2><p>元素对象就是通过getElementById方法返回的对象。</p>
+<h2 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h2><p>window.onload = init();表示希望调用函数init<br>window.onload = init; 表示把init这个函数值赋给onload属性。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag">#HTML5</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/22/JavaScript事件处理/" rel="next" title="JavaScript事件处理">
+                <i class="fa fa-chevron-left"></i> JavaScript事件处理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/23/JavaScript函数和对象/"
+           data-title="JavaScript函数和对象" data-url="http://yoursite.com/2016/03/23/JavaScript函数和对象/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义函数"><span class="nav-number">1.1.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用函数"><span class="nav-number">1.2.</span> <span class="nav-text">调用函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量作用域"><span class="nav-number">2.</span> <span class="nav-text">变量作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#全局变量"><span class="nav-number">2.1.</span> <span class="nav-text">全局变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部变量"><span class="nav-number">2.2.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量提升"><span class="nav-number">2.3.</span> <span class="nav-text">变量提升</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">3.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通创建对象"><span class="nav-number">3.1.</span> <span class="nav-text">普通创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#访问和操作对象"><span class="nav-number">3.1.2.</span> <span class="nav-text">访问和操作对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#给对象增加方法"><span class="nav-number">3.1.3.</span> <span class="nav-text">给对象增加方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数创建对象"><span class="nav-number">3.2.</span> <span class="nav-text">构造函数创建对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#构造函数"><span class="nav-number">3.2.1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建对象-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">创建对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prototype属性创建对象"><span class="nav-number">3.3.</span> <span class="nav-text">prototype属性创建对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window对象"><span class="nav-number">4.</span> <span class="nav-text">window对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#document对象"><span class="nav-number">5.</span> <span class="nav-text">document对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#元素对象"><span class="nav-number">6.</span> <span class="nav-text">元素对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结尾"><span class="nav-number">7.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
