@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="读书札记," />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -57,22 +57,19 @@
 
 
 
-<meta name="description" content="There is always another way.
-You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》
-思考的时候，要像外行一样单纯">
+<meta name="description" content="static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面四种情况：
+静态变量我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.var">
 <meta property="og:type" content="article">
-<meta property="og:title" content="读书札记">
-<meta property="og:url" content="http://yoursite.com/2016/03/18/读书札记/index.html">
+<meta property="og:title" content="Java中static关键字详解">
+<meta property="og:url" content="http://yoursite.com/2016/04/05/Java中static关键字详解/index.html">
 <meta property="og:site_name" content="MICHAEL - 应尽便须尽">
-<meta property="og:description" content="There is always another way.
-You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》
-思考的时候，要像外行一样单纯">
-<meta property="og:updated_time" content="2016-03-17T16:23:48.235Z">
+<meta property="og:description" content="static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面四种情况：
+静态变量我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.var">
+<meta property="og:updated_time" content="2016-04-05T13:21:36.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="读书札记">
-<meta name="twitter:description" content="There is always another way.
-You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》
-思考的时候，要像外行一样单纯">
+<meta name="twitter:title" content="Java中static关键字详解">
+<meta name="twitter:description" content="static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面四种情况：
+静态变量我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.var">
 
 
 
@@ -90,7 +87,7 @@ You know, people get up everyday, do the same thing, they tell themselves they c
   };
 </script>
 
-  <title> 读书札记 | MICHAEL - 应尽便须尽 </title>
+  <title> Java中static关键字详解 | MICHAEL - 应尽便须尽 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -240,7 +237,7 @@ You know, people get up everyday, do the same thing, they tell themselves they c
             
             
               
-                读书札记
+                Java中static关键字详解
               
             
           </h1>
@@ -252,8 +249,8 @@ You know, people get up everyday, do the same thing, they tell themselves they c
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T00:02:15+08:00" content="2016-03-18 00:02:15">
-              2016-03-18 00:02:15
+            <time itemprop="dateCreated" datetime="2016-04-05T21:20:58+08:00" content="2016-04-05 21:20:58">
+              2016-04-05 21:20:58
             </time>
           </span>
 
@@ -266,8 +263,8 @@ You know, people get up everyday, do the same thing, they tell themselves they c
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/读书札记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书札记</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -282,8 +279,8 @@ You know, people get up everyday, do the same thing, they tell themselves they c
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/18/读书札记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/读书札记/" itemprop="commentsCount"></span>
+                <a href="/2016/04/05/Java中static关键字详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/Java中static关键字详解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -305,9 +302,26 @@ You know, people get up everyday, do the same thing, they tell themselves they c
       
 
       
-        <p>There is always another way.</p>
-<p>You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》</p>
-<p>思考的时候，要像外行一样单纯直接，实践的时候则要像专家一样严密细致，并且要以专业知识和方法武装起来的“我做得到”的乐观精神。要记住，独特的、好的创意和好的结果，不管对研究而言，还是对商业运作而言，都不是自己突然冒出来的东西，那一定是刻苦的努力和长期的思考带来的。 —-金出武雄</p>
+        <p>static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面四种情况：</p>
+<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><p>我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.variableName来访问它。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> count;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String name;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DB_NAME = <span class="string">"contacts"</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>静态方法也属于类，不属于实例。静态类只能访问类的静态变量或调用类的静态方法。通常静态方法作为工具方法，被其他类使用，而不需要创建类的实例。<br>静态方法如果没有使用静态变量，则是线程安全的。因为静态方法内部声明的变量，每个线程调用时都会重新创建一份，而不会共用同一个存储单元。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MathUtils</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="静态块"><a href="#静态块" class="headerlink" title="静态块"></a>静态块</h2><p>静态块是类加载器加载对象时要执行的一组语句，它用于初始化静态变量，通常用于类加载的时候创建静态资源。我们在静态块中不能访问非静态变量。我们可以在一个类中有多个静态块，尽管这么做没什么意义，静态块只会在类加载到内存中的时候执行一次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String str;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * <span class="doctag">@param</span> args</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">new</span> FinalDemo();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"静态块3"</span>);</span><br><span class="line">		<span class="comment">//仅能访问静态变量和静态方法</span></span><br><span class="line">		str = <span class="string">"Just"</span>;</span><br><span class="line">		add(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"静态块1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FinalDemo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"构造函数"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">静态块3</span><br><span class="line">静态块1</span><br><span class="line">构造函数</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>由运行结果可知：</p>
+<ul>
+<li>静态块最先加载，其次是构造函数；</li>
+<li>有多个静态块时，按静态块顺序加载；</li>
+<li>静态块内部代码按顺序运行;</li>
+</ul>
+</blockquote>
+<h2 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h2><p>一般我们对嵌套类使用static关键字，static不能用于最外层的类。静态的嵌套类和其他外层的类别无区别，嵌套只是方便打包。</p>
+<p>下面我们来看一个使用static关键字的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 静态变量</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String str;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * <span class="doctag">@param</span> args</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		System.out.println(<span class="string">"str: "</span> + str);</span><br><span class="line">		System.out.println(<span class="string">"add(3,4):"</span>+add(<span class="number">3</span>, <span class="number">4</span>));</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 静态方法</span><br><span class="line">	 * <span class="doctag">@param</span> x</span><br><span class="line">	 * <span class="doctag">@param</span> y</span><br><span class="line">	 * <span class="doctag">@return</span></span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> x + y;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 静态块</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"静态块3"</span>);</span><br><span class="line">		<span class="comment">//仅能访问静态变量和静态方法</span></span><br><span class="line">		str = <span class="string">"Test"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 静态类</span><br><span class="line">	 * TODO</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStaticClass</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getTag</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="comment">//只能访问外部类的静态变量或方法</span></span><br><span class="line">			<span class="keyword">return</span> str;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果是：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">静态块<span class="number">3</span></span><br><span class="line">str: Test</span><br><span class="line"><span class="function"><span class="title">add</span><span class="params">(<span class="number">3</span>,<span class="number">4</span>)</span></span>:<span class="number">7</span></span><br><span class="line">staticclass tag: Test</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -322,7 +336,7 @@ You know, people get up everyday, do the same thing, they tell themselves they c
       
         <div class="post-tags">
           
-            <a href="/tags/读书札记/" rel="tag">#读书札记</a>
+            <a href="/tags/Java/" rel="tag">#Java</a>
           
         </div>
       
@@ -331,16 +345,16 @@ You know, people get up everyday, do the same thing, they tell themselves they c
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/17/面向对象编程之里氏替换原则/" rel="next" title="面向对象编程之里氏替换原则">
-                <i class="fa fa-chevron-left"></i> 面向对象编程之里氏替换原则
+              <a href="/2016/04/05/Java中final关键字详解/" rel="next" title="Java中final关键字详解">
+                <i class="fa fa-chevron-left"></i> Java中final关键字详解
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/18/Android 5.x之Toolbar和Palette/" rel="prev" title="Android 5.x之Toolbar和Palette">
-                Android 5.x之Toolbar和Palette <i class="fa fa-chevron-right"></i>
+              <a href="/2016/04/05/Java中的构造函数调用顺序/" rel="prev" title="Java中的构造函数调用顺序">
+                Java中的构造函数调用顺序 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -390,8 +404,8 @@ You know, people get up everyday, do the same thing, they tell themselves they c
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/18/读书札记/"
-           data-title="读书札记" data-url="http://yoursite.com/2016/03/18/读书札记/">
+      <div class="ds-thread" data-thread-key="2016/04/05/Java中static关键字详解/"
+           data-title="Java中static关键字详解" data-url="http://yoursite.com/2016/04/05/Java中static关键字详解/">
       </div>
     
   </div>
@@ -521,7 +535,7 @@ You know, people get up everyday, do the same thing, they tell themselves they c
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态变量"><span class="nav-number">1.</span> <span class="nav-text">静态变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法"><span class="nav-number">2.</span> <span class="nav-text">静态方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态块"><span class="nav-number">3.</span> <span class="nav-text">静态块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态类"><span class="nav-number">4.</span> <span class="nav-text">静态类</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
