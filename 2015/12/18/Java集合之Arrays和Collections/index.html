@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="网络通信,TCP/IP," />
+  <meta name="keywords" content="Collection," />
 
 
 
@@ -57,29 +57,31 @@
 
 
 
-<meta name="description" content="TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。
-数据包重发数据发送丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。
-根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个">
+<meta name="description" content="Arraysjava.util.Arrays
+Arrays详细介绍
+Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：
+Arrays.asList：可以从 Array 转换成 List。可以作为其他集合类型构造器的参数。
+Arrays.binarySearch：在一个已排序的或者其中一段中快速查找。
+Arr">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TCP/IP（五）TCP协议详解">
-<meta property="og:url" content="http://yoursite.com/2015/12/17/TCP-IP5TCP协议详解/index.html">
+<meta property="og:title" content="Java集合之Arrays和Collections">
+<meta property="og:url" content="http://yoursite.com/2015/12/18/Java集合之Arrays和Collections/index.html">
 <meta property="og:site_name" content="MICHAEL - 应尽便须尽">
-<meta property="og:description" content="TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。
-数据包重发数据发送丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。
-根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_ack%E7%A1%AE%E8%AE%A4.png">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E9%87%8D%E5%8F%91%E6%95%B0%E6%8D%AE.png">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%9F%90%E4%BA%9B%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E6%97%B6%E4%B8%8D%E7%94%A8%E9%87%8D%E5%8F%91.png">
-<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6.png">
-<meta property="og:updated_time" content="2016-04-19T13:21:29.609Z">
+<meta property="og:description" content="Arraysjava.util.Arrays
+Arrays详细介绍
+Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：
+Arrays.asList：可以从 Array 转换成 List。可以作为其他集合类型构造器的参数。
+Arrays.binarySearch：在一个已排序的或者其中一段中快速查找。
+Arr">
+<meta property="og:updated_time" content="2016-04-23T14:53:47.880Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TCP/IP（五）TCP协议详解">
-<meta name="twitter:description" content="TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。
-数据包重发数据发送丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。
-根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个">
-<meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_ack%E7%A1%AE%E8%AE%A4.png">
+<meta name="twitter:title" content="Java集合之Arrays和Collections">
+<meta name="twitter:description" content="Arraysjava.util.Arrays
+Arrays详细介绍
+Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：
+Arrays.asList：可以从 Array 转换成 List。可以作为其他集合类型构造器的参数。
+Arrays.binarySearch：在一个已排序的或者其中一段中快速查找。
+Arr">
 
 
 
@@ -97,7 +99,7 @@
   };
 </script>
 
-  <title> TCP/IP（五）TCP协议详解 | MICHAEL - 应尽便须尽 </title>
+  <title> Java集合之Arrays和Collections | MICHAEL - 应尽便须尽 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -247,7 +249,7 @@
             
             
               
-                TCP/IP（五）TCP协议详解
+                Java集合之Arrays和Collections
               
             
           </h1>
@@ -259,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-12-17T21:08:05+08:00" content="2015-12-17 21:08:05">
-              2015-12-17 21:08:05
+            <time itemprop="dateCreated" datetime="2015-12-18T21:22:21+08:00" content="2015-12-18 21:22:21">
+              2015-12-18 21:22:21
             </time>
           </span>
 
@@ -273,8 +275,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/网络通信/" itemprop="url" rel="index">
-                    <span itemprop="name">网络通信</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -289,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/12/17/TCP-IP5TCP协议详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/17/TCP-IP5TCP协议详解/" itemprop="commentsCount"></span>
+                <a href="/2015/12/18/Java集合之Arrays和Collections/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/18/Java集合之Arrays和Collections/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -312,44 +314,45 @@
       
 
       
-        <p>TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。</p>
-<h1 id="数据包重发"><a href="#数据包重发" class="headerlink" title="数据包重发"></a>数据包重发</h1><h2 id="数据发送"><a href="#数据发送" class="headerlink" title="数据发送"></a>数据发送</h2><p>丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。</p>
-<p>根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个位置开始发送！“。下图表示了数据发送与确认应答的过程：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_ack%E7%A1%AE%E8%AE%A4.png" alt=""></p>
-<p>由于各种原因，数据包和ACK应答包都有可能丢失，在这种情况下，发送方如果在一段时间内没有收到ACK，就会重发数据：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E9%87%8D%E5%8F%91%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>即使网络正常，由于延迟的存在，接收方也有可能收到重复的数据包，因此接收方通过TCP首部中的SYN判断这个数据包是否曾经接收过。如果已经接收，就会丢弃该数据包。</p>
-<h2 id="重传超时时间（RTO）"><a href="#重传超时时间（RTO）" class="headerlink" title="重传超时时间（RTO）"></a>重传超时时间（RTO）</h2><p>如果发送方等待一段时间后，还是没有收到 ACK 确认，就会启动超时重传。这个等待的时间被称为重传超时时间(RTO，Retransmission TimeOut)。RTO 的值具体是多久呢？</p>
-<p>首先，RTO 的值不是固定的，它是一个动态变化的时间。这个时间总是略大于连接往返时间（RTT，Round Trip Time）。这个设定可以这样理解：“数据发送给对方，再返回到我这里，假设需要 10 秒，那我就等待 12秒，如果超过 12 秒，那估计就是回不来了。”</p>
-<p>RTT 是动态变化的，因为谁也不知道网络下一时刻是否拥堵。而当前的 RTO 需要根据未来的 RTT 估算得出。RTO 不能估算太大，否则会多等待太多时间；也不能太小，否则会因为网络突然变慢而将不该重传的数据进行重传。</p>
-<h2 id="TCP窗口"><a href="#TCP窗口" class="headerlink" title="TCP窗口"></a>TCP窗口</h2><p>按照之前的理论，在数据包发出后，直至 ACK 确认返回以前，发送端都无法发送数据，而且包的往返时间越长，网络利用效率和通信性能就越低。前两张图片形象的解释了这一点。</p>
-<p>为了解决这个问题，TCP 使用了“窗口”这个概念。窗口具有大小，它表示无需等待确认应答就可以继续发送数据包的最大数量。比如窗口大小为 4 时，数据发送的示意图如下：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png" alt=""></p>
-<p>不等确认就连续发送若干个数据包会不会有问题呢？我们首先来看数据包丢失问题。</p>
-<p>我们知道 TCP 首部中的 ACK 字段表示接收方已经收到数据的最后位置。因此，接收方成功接收到了 1-1000 字节的数据后，它会发送一个 ACK = 1001 的确认包。假设 1001-2000 字节的数据包丢失了，由于窗口长度比较大，发送方会继续发送 2001-3000 字节的数据包。接收端并不会返回这个数据包的确认，因为它最后收到的数据还是 1-1000 字节的数据包。</p>
-<p>因此，接收端返回的数据包的 ACK 依然是 1001。这表示：“喂，发数据的，别往后发了，你第 1001 字节开始的数据还没来呢”。可以想见，发送端以后每次发送数据包得到的确认中，ACK 的值都是 1001。当连续收到三次确认之后，发送方会意识到：“对方还没有接收到数据，这个包需要重传”。</p>
-<p>因此，引入窗口的概念后，被发送的数据不能立刻丢弃，需要缓存起来以备将来需要重发。</p>
-<p>利用窗口发送数据的过程可以用下图表示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png" alt=""></p>
-<p>果是数据包没有丢失，但是确认包丢失了呢？这就是窗口最擅长处理的问题了。假设发送发收到的确认包中的 ACK 第一次是 1001，第二次是 4001。那么我们完全可以相信中间的两个包是成功被接收的。因为如果有没接收到的包，接收方是不会增加 ACK 的。</p>
-<p>在这种情况下，如果不使用窗口，发送方就需要重传第二、三个数据包，但是有了窗口的概念后，发送方就省略了两次重传。因此使用窗口实际上可以理解为“空间换时间”。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%9F%90%E4%BA%9B%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E6%97%B6%E4%B8%8D%E7%94%A8%E9%87%8D%E5%8F%91.png" alt=""></p>
-<h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><h2 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h2><p>如果窗口过大，会导致接收方的缓存区数据溢出。这时候本该被接收的数据反而丢弃了，就会导致无意义的重传。因此，窗口大小是一个可以改变的值，它由接收端主机控制，附加在 TCP 首部的“窗口大小”字段中。</p>
-<h2 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h2><p>在连接建立的初期，如果窗口比较大，发送方可能会突然发送大量数据，导致网络瘫痪。因此，在通信一开始时，TCP 会通过慢启动算法得出窗口的大小，对发送数据量进行控制。</p>
-<p>流量控制是由发送方和接收方共同控制的。刚刚我们介绍了接收方会把自己能够承受的最大窗口长度写在 TCP 首部中，实际上在发送方这里，也存在流量控制，它叫拥塞窗口。TCP 协议中的窗口是指发送方窗口和接收方窗口的较小值。</p>
-<p>慢启动过程如下：</p>
-<ol>
-<li>通信开始时，发送方的拥塞窗口大小为 1。每收到一个 ACK 确认后，拥塞窗口翻倍。</li>
-<li>由于指数级增长非常快，很快地，就会出现确认包超时。</li>
-<li>此时设置一个“慢启动阈值”，它的值是当前拥塞窗口大小的一半。</li>
-<li>同时将拥塞窗口大小设置为 1，重新进入慢启动过程。</li>
-<li>由于现在“慢启动阈值”已经存在，当拥塞窗口大小达到阈值时，不再翻倍，而是线性增加。</li>
-<li>随着窗口大小不断增加，可能收到三次重复确认应答，进入“快速重发”阶段。</li>
-<li>这时候，TCP 将“慢启动阈值”设置为当前拥塞窗口大小的一半，再将拥塞窗口大小设置成阈值大小（也有说加 3）。</li>
-<li>拥塞窗口又会线性增加，直至下一次出现三次重复确认应答或超时。</li>
-</ol>
-<p>以上过程可以用下图概括：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6.png" alt=""></p>
+        <h1 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h1><p>java.util.Arrays</p>
+<p><a href="http://www.apihome.cn/api/java/Arrays.html" target="_blank" rel="external">Arrays详细介绍</a></p>
+<p>Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：</p>
+<p>Arrays.asList：可以从 Array 转换成 List。可以作为其他集合类型构造器的参数。</p>
+<p>Arrays.binarySearch：在一个已排序的或者其中一段中快速查找。</p>
+<p>Arrays.copyOf：如果你想扩大数组容量又不想改变它的内容的时候可以使用这个方法。</p>
+<p>Arrays.copyOfRange：可以复制整个数组或其中的一部分。</p>
+<p>Arrays.deepEquals、Arrays.deepHashCode：Arrays.equals/hashCode的高级版本，支持子数组的操作。</p>
+<p>Arrays.equals：如果你想要比较两个数组是否相等，应该调用这个方法而不是数组对象中的 equals方法（数组对象中没有重写equals()方法，所以这个方法之比较引用而不比较内容）。这个方法集合了Java 5的自动装箱和无参变量的特性，来实现将一个变量快速地传给 equals() 方法——所以这个方法在比较了对象的类型之后是直接传值进去比较的。</p>
+<p>Arrays.fill：用一个给定的值填充整个数组或其中的一部分。</p>
+<p>Arrays.hashCode：用来根据数组的内容计算其哈希值（数组对象的hashCode()不可用）。这个方法集合了Java 5的自动装箱和无参变量的特性，来实现将一个变量快速地传给 Arrays.hashcode方法——只是传值进去，不是对象。</p>
+<p>Arrays.sort：对整个数组或者数组的一部分进行排序。也可以使用此方法用给定的比较器对对象数组进行排序。</p>
+<p>Arrays.toString：打印数组的内容。</p>
+<p>如果想要复制整个数组或其中一部分到另一个数组，可以调用 System.arraycopy方法。此方法从源数组中指定的位置复制指定个数的元素到目标数组里。这无疑是一个简便的方法。（有时候用 ByteBuffer bulk复制会更快。可以参考这篇文章）.</p>
+<p>最后，所有的集合都可以用T[] Collection.toArray( T[] a ) 这个方法复制到数组中。通常会用这样的方式调用：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> coll.toArray( <span class="keyword">new</span> T[ coll.<span class="keyword">size</span>() ] );</span><br></pre></td></tr></table></figure></p>
+<p>这个方法会分配足够大的数组来储存所有的集合，这样 toArray 在返回值时就不必再分配空间了。</p>
+<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><p>java.util.Collections</p>
+<p><a href="http://www.apihome.cn/api/java/Collections.html" target="_blank" rel="external">Collections详细介绍</a></p>
+<p>就像有专门的java.util.Arrays来处理数组，Java中对集合也有java.util.Collections来处理。</p>
+<p>第一组方法主要返回集合的各种数据：</p>
+<p>Collections.checkedCollection / checkedList / checkedMap / checkedSet / checkedSortedMap / checkedSortedSet：检查要添加的元素的类型并返回结果。任何尝试添加非法类型的变量都会抛出一个ClassCastException异常。这个功能可以防止在运行的时候出错。//fixme</p>
+<p>Collections.emptyList / emptyMap / emptySet ：返回一个固定的空集合，不能添加任何元素。</p>
+<p>Collections.singleton / singletonList / singletonMap：返回一个只有一个入口的 set/list/map 集合。</p>
+<p>Collections.synchronizedCollection / synchronizedList / synchronizedMap / synchronizedSet / synchronizedSortedMap / synchronizedSortedSet：获得集合的线程安全版本（多线程操作时开销低但不高效，而且不支持类似put或update这样的复合操作）</p>
+<p>Collections.unmodifiableCollection / unmodifiableList / unmodifiableMap / unmodifiableSet / unmodifiableSortedMap / unmodifiableSortedSet：返回一个不可变的集合。当一个不可变对象中包含集合的时候，可以使用此方法。</p>
+<p>第二组方法中，其中有一些方法因为某些原因没有加入到集合中：</p>
+<p>Collections.addAll：添加一些元素或者一个数组的内容到集合中。</p>
+<p>Collections.binarySearch：和数组的Arrays.binarySearch功能相同。</p>
+<p>Collections.disjoint：检查两个集合是不是没有相同的元素。</p>
+<p>Collections.fill：用一个指定的值代替集合中的所有元素。</p>
+<p>Collections.frequency：集合中有多少元素是和给定元素相同的。</p>
+<p>Collections.indexOfSubList / lastIndexOfSubList：和String.indexOf(String) / lastIndexOf(String)方法类似——找出给定的List中第一个出现或者最后一个出现的子表。</p>
+<p>Collections.max / min：找出基于自然顺序或者比较器排序的集合中，最大的或者最小的元素。</p>
+<p>Collections.replaceAll：将集合中的某一元素替换成另一个元素。</p>
+<p>Collections.reverse：颠倒排列元素在集合中的顺序。如果你要在排序之后使用这个方法的话，在列表排序时，最好使用Collections.reverseOrder比较器。</p>
+<p>Collections.rotate：根据给定的距离旋转元素。</p>
+<p>Collections.shuffle：随机排放List集合中的节点，可以给定你自己的生成器——例如java.util.Random / java.util.ThreadLocalRandom or java.security.SecureRandom。</p>
+<p>Collections.sort：将集合按照自然顺序或者给定的顺序排序。</p>
+<p>Collections.swap：交换集合中两个元素的位置（多数开发者都是自己实现这个操作的）。</p>
 
       
     </div>
@@ -364,9 +367,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网络通信/" rel="tag">#网络通信</a>
-          
-            <a href="/tags/TCP-IP/" rel="tag">#TCP/IP</a>
+            <a href="/tags/Collection/" rel="tag">#Collection</a>
           
         </div>
       
@@ -375,16 +376,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/12/17/TCP-IP4TCP与UDP协议/" rel="next" title="TCP/IP（四）TCP与UDP协议">
-                <i class="fa fa-chevron-left"></i> TCP/IP（四）TCP与UDP协议
+              <a href="/2015/12/18/Java集合框架简介/" rel="next" title="Java集合框架简介">
+                <i class="fa fa-chevron-left"></i> Java集合框架简介
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/12/18/Java集合框架简介/" rel="prev" title="Java集合框架简介">
-                Java集合框架简介 <i class="fa fa-chevron-right"></i>
+              <a href="/2015/12/18/Java集合之ArrayList和LinkedList/" rel="prev" title="Java集合之ArrayList和LinkedList">
+                Java集合之ArrayList和LinkedList <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -434,8 +435,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/12/17/TCP-IP5TCP协议详解/"
-           data-title="TCP/IP（五）TCP协议详解" data-url="http://yoursite.com/2015/12/17/TCP-IP5TCP协议详解/">
+      <div class="ds-thread" data-thread-key="2015/12/18/Java集合之Arrays和Collections/"
+           data-title="Java集合之Arrays和Collections" data-url="http://yoursite.com/2015/12/18/Java集合之Arrays和Collections/">
       </div>
     
   </div>
@@ -565,7 +566,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据包重发"><span class="nav-number">1.</span> <span class="nav-text">数据包重发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据发送"><span class="nav-number">1.1.</span> <span class="nav-text">数据发送</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重传超时时间（RTO）"><span class="nav-number">1.2.</span> <span class="nav-text">重传超时时间（RTO）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP窗口"><span class="nav-number">1.3.</span> <span class="nav-text">TCP窗口</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流量控制"><span class="nav-number">2.</span> <span class="nav-text">流量控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#窗口大小"><span class="nav-number">2.1.</span> <span class="nav-text">窗口大小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#慢启动"><span class="nav-number">2.2.</span> <span class="nav-text">慢启动</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Arrays"><span class="nav-number">1.</span> <span class="nav-text">Arrays</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collections"><span class="nav-number">2.</span> <span class="nav-text">Collections</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
