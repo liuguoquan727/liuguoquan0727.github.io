@@ -1,0 +1,853 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="设计模式," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="单一职责的英文名称是Single Responsibility Principle，缩写是SRP。
+SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。
+接下来以小明的工作过程为示例描述单一职">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象编程之单一职责原则">
+<meta property="og:url" content="http://yoursite.com/2016/03/15/单一职责原则/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="单一职责的英文名称是Single Responsibility Principle，缩写是SRP。
+SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。
+接下来以小明的工作过程为示例描述单一职">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1014339-cf656887e4f246a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2016-03-16T15:02:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象编程之单一职责原则">
+<meta name="twitter:description" content="单一职责的英文名称是Single Responsibility Principle，缩写是SRP。
+SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。
+接下来以小明的工作过程为示例描述单一职">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1014339-cf656887e4f246a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 面向对象编程之单一职责原则 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                面向对象编程之单一职责原则
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-15T22:02:18+08:00" content="2016-03-15 22:02:18">
+              2016-03-15 22:02:18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/15/单一职责原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/单一职责原则/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>单一职责的英文名称是Single Responsibility Principle，缩写是SRP。</p>
+<p>SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。</p>
+<p>接下来以小明的工作过程为示例描述单一职责原则：</p>
+<p>小明初入职场，在经历过一周的适应期以及熟悉公司的产品、开发规范后，小民的开发工作就正式开始了。小民的主管是个工作经验丰富的技术专家，对于小民的工作并不是很满意，尤其是小民最薄弱的面向对象设计，而Android开发又是使用Java语言，程序中的抽象、接口、六大原则、23种设计模式等名词把小民弄的晕头转向。于是，小民的主管决定先让小民做一个小项目来锻炼这方面的能力。</p>
+<p>在经过一番思考后，主管挑选了使用范围广、难度也适中的图片加载器（ImageLoader）作为小民的训练项目。既然要训练小民的面向对象设计能力，那么久必须考虑到可扩展性、灵活性，而检测这一切是否符合需求的最好途径就是开源。</p>
+<p>小民是不服输的，主管的要求很简单，要小民实现图片加载，并且要将图片缓存起来。在分析了需求之后，小民放下心来，胸有成竹，在经历了10分钟的编码之后，小民写下了如下代码：</p>
+<p>ImageLoader.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deason.library.srp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.util.LruCache;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 图片加载类</span><br><span class="line"> * Created by liuguoquan on 2016/3/13.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 图片缓存</span><br><span class="line">     */</span></span><br><span class="line">    LruCache&lt;String, Bitmap&gt; mImageCache;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 线程池，线程数量未CPU的数量</span><br><span class="line">     */</span></span><br><span class="line">    ExecutorService mExecutorService = Executors.newFixedThreadPool(Runtime.getRuntime()</span><br><span class="line">            .availableProcessors());</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ImageLoader</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        initImageCache();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initImageCache</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//计算可使用的最大内存</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> maxMemory = (<span class="keyword">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);</span><br><span class="line">        <span class="comment">//取内存的四分之一作为缓存</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> cacheSize = maxMemory / <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">        mImageCache = <span class="keyword">new</span> LruCache&lt;String, Bitmap&gt;(cacheSize) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">int</span> <span class="title">sizeOf</span><span class="params">(String key, Bitmap value)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> value.getRowBytes() * value.getHeight() / <span class="number">1024</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 显示图片</span><br><span class="line">     * <span class="doctag">@param</span> url</span><br><span class="line">     * <span class="doctag">@param</span> imageView</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView imageView)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        imageView.setTag(url);</span><br><span class="line">        mExecutorService.submit(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                Bitmap bitmap = downloadImage(url);</span><br><span class="line">                <span class="keyword">if</span> (bitmap == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (imageView.getTag().equals(url)) &#123;</span><br><span class="line">                    imageView.setImageBitmap(bitmap);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 下载图片</span><br><span class="line">     * <span class="doctag">@param</span> url</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">downloadImage</span><span class="params">(String imageUrl)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL url = <span class="keyword">new</span> URL(imageUrl);</span><br><span class="line">            HttpURLConnection mConnection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            <span class="keyword">int</span> code = mConnection.getResponseCode();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">200</span> == code) &#123;</span><br><span class="line">                bitmap = BitmapFactory.decodeStream(mConnection.getInputStream());</span><br><span class="line">            &#125;</span><br><span class="line">            mConnection.disconnect();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bitmap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>随后，小民将代码托管到GitHub上，伴随着git push命令的完成，小民的ImageLoader 0.1版本就发布了。小民开始幻想着待会儿被主管称赞。</p>
+<p>在小民给主管报告了ImageLoader发布消息的几分钟后，主管把小民叫到了会议室，叼了小民一顿：“小民，你的ImageLoader耦合太严重啦！简直就没有设计可言，更不要说是扩展性、灵活性了。所有功能写在一个类里面怎么行呢，这样随着功能的增多，ImageLoader类会越来越大。代码也越来越复杂，图片的加载系统就会越来越弱…”，此时，小民默默吞下了泪水。</p>
+<p>主管最后说：“你还是把ImageLoader拆分一下，把各个功能独立出来，让它们满足单一职责原则。”小民敏锐的捕捉到<strong>单一职责原则</strong>这个关键词，他用百度、Google搜索了资料之后，决定对ImageLoader进行一次重构。这次小民认真地先画了一幅UML类图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1014339-cf656887e4f246a0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UML类图"></p>
+<p>ImageLoader修改后的代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deason.library.srp.refactor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.graphics.BitmapFactory;</span><br><span class="line"><span class="keyword">import</span> android.widget.ImageView;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutorService;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.Executors;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 图片加载类</span><br><span class="line"> * Created by liuguoquan on 2016/3/14.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 图片缓存</span><br><span class="line">     */</span></span><br><span class="line">    ImageCache mImageCache = <span class="keyword">new</span> ImageCache();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 线程池，线程数量未CPU的数量</span><br><span class="line">     */</span></span><br><span class="line">    ExecutorService mExecutorService = Executors.newFixedThreadPool(Runtime.getRuntime()</span><br><span class="line">            .availableProcessors());</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 显示图片</span><br><span class="line">     * <span class="doctag">@param</span> url</span><br><span class="line">     * <span class="doctag">@param</span> imageView</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView imageView)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//首先检查内存是否存在</span></span><br><span class="line">        Bitmap bitmap = mImageCache.get(url);</span><br><span class="line">        <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</span><br><span class="line">            imageView.setImageBitmap(bitmap);</span><br><span class="line">            <span class="keyword">return</span> ;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        imageView.setTag(url);</span><br><span class="line">        mExecutorService.submit(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                Bitmap bitmap = downloadImage(url);</span><br><span class="line">                <span class="keyword">if</span> (bitmap == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="keyword">return</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (imageView.getTag().equals(url)) &#123;</span><br><span class="line">                    imageView.setImageBitmap(bitmap);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//将下载的图片存入内存</span></span><br><span class="line">                mImageCache.put(url,bitmap);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 下载图片</span><br><span class="line">     * <span class="doctag">@param</span> url</span><br><span class="line">     * <span class="doctag">@return</span></span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">downloadImage</span><span class="params">(String imageUrl)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            URL url = <span class="keyword">new</span> URL(imageUrl);</span><br><span class="line">            HttpURLConnection mConnection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            <span class="keyword">int</span> code = mConnection.getResponseCode();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="number">200</span> == code) &#123;</span><br><span class="line">                bitmap = BitmapFactory.decodeStream(mConnection.getInputStream());</span><br><span class="line">            &#125;</span><br><span class="line">            mConnection.disconnect();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> bitmap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>并且添加类一个ImageCache类用于图片缓存，具体代码如下:</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deason.library.srp.refactor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.graphics.Bitmap;</span><br><span class="line"><span class="keyword">import</span> android.util.LruCache;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * 处理图片缓存</span><br><span class="line"> * Created by liuguoquan on 2016/3/14.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> class ImageCache &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 图片缓存</span><br><span class="line">     */</span></span><br><span class="line">    LruCache&lt;<span class="keyword">String</span>, Bitmap&gt; mImageCache;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> ImageCache() &#123;</span><br><span class="line">        </span><br><span class="line">        initImageCache();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> initImageCache() &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//计算可使用的最大内存</span></span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">int</span> maxMemory = (<span class="built_in">int</span>) (Runtime.getRuntime().maxMemory() / <span class="number">1024</span>);</span><br><span class="line">        <span class="comment">//取内存的四分之一作为缓存</span></span><br><span class="line">        <span class="keyword">final</span> <span class="built_in">int</span> cacheSize = maxMemory / <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">        mImageCache = <span class="keyword">new</span> LruCache&lt;<span class="keyword">String</span>, Bitmap&gt;(cacheSize) &#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            <span class="keyword">protected</span> <span class="built_in">int</span> sizeOf(<span class="keyword">String</span> <span class="built_in">key</span>, Bitmap value) &#123;</span><br><span class="line">                <span class="keyword">return</span> value.getRowBytes() * value.getHeight() / <span class="number">1024</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 将图片存入缓存</span><br><span class="line">     * @param key</span><br><span class="line">     * @param bitmap</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> put(<span class="keyword">String</span> <span class="built_in">key</span>,Bitmap bitmap) &#123;</span><br><span class="line">        </span><br><span class="line">        mImageCache.put(<span class="built_in">key</span>,bitmap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 取出缓存图片</span><br><span class="line">     * @param key</span><br><span class="line">     * @return</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">public</span> Bitmap <span class="built_in">get</span>(<span class="keyword">String</span> <span class="built_in">key</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> mImageCache.<span class="built_in">get</span>(<span class="built_in">key</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>综上所述，小民将ImageLoader一拆为二，ImageLoader只负责图片加载的逻辑，而ImageCache只负责处理图片缓存的逻辑，这样ImageLoader的代码量变少了，职责也清晰了；当与缓存相关的逻辑需要改变时，不需要修改ImageLoader类，而图片加载的逻辑需要修改时也不会影响到缓存处理逻辑。</p>
+<blockquote>
+<p>从上述例子我们知道，单一职责所表达出来的用意就是“单一”两个字。如何划分一个类、一个函数的职责，每个人都有自己的看法，这需要根据个人经验、具体的业务逻辑而定。但是，它也有一些基本的指导原则，例如，<strong>两个完全不一样的功能就不应该方法一个类中，一个类中应该是一组相关性很高的函数、数据的封装。</strong>工程师可以不断地审视自己的代码，根据具体的业务、功能对类进行相应的拆分，这是程序员优化代码迈出的第一步。</p>
+</blockquote>
+<p>##参考资料</p>
+<p>《Android源码设计模式》 何红辉、关爱民 著</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/15/JavaScript基础知识/" rel="next" title="JavaScript基础知识">
+                <i class="fa fa-chevron-left"></i> JavaScript基础知识
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/18/读书札记/" rel="prev" title="读书札记">
+                读书札记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/03/15/单一职责原则/"
+           data-title="面向对象编程之单一职责原则" data-url="http://yoursite.com/2016/03/15/单一职责原则/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">97</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
