@@ -1,0 +1,907 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="读文件在某个文件夹下面建立了一个文件，名曰：130.txt，并且在里面输入了如下内容：
+123learn pythonhttp://qiwsir.github.ioqiwsir@gmail.com
+1234567f = open(&quot;123.txt&quot;) #打开已经存在的文件，此文件在当前目录，若在其他目录使用绝对路径for line in f:    print line, #Python 3: p">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础之(六)文件">
+<meta property="og:url" content="http://yoursite.com/2016/08/12/Python基础之(六)文件/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="读文件在某个文件夹下面建立了一个文件，名曰：130.txt，并且在里面输入了如下内容：
+123learn pythonhttp://qiwsir.github.ioqiwsir@gmail.com
+1234567f = open(&quot;123.txt&quot;) #打开已经存在的文件，此文件在当前目录，若在其他目录使用绝对路径for line in f:    print line, #Python 3: p">
+<meta property="og:updated_time" content="2016-08-12T08:45:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础之(六)文件">
+<meta name="twitter:description" content="读文件在某个文件夹下面建立了一个文件，名曰：130.txt，并且在里面输入了如下内容：
+123learn pythonhttp://qiwsir.github.ioqiwsir@gmail.com
+1234567f = open(&quot;123.txt&quot;) #打开已经存在的文件，此文件在当前目录，若在其他目录使用绝对路径for line in f:    print line, #Python 3: p">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Python基础之(六)文件 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python基础之(六)文件
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-12T20:44:04+08:00" content="2016-08-12 20:44:04">
+              2016-08-12 20:44:04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/12/Python基础之(六)文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/12/Python基础之(六)文件/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h1><p>在某个文件夹下面建立了一个文件，名曰：130.txt，并且在里面输入了如下内容：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">learn python</span><br><span class="line"><span class="string">http:</span><span class="comment">//qiwsir.github.io</span></span><br><span class="line">qiwsir<span class="meta">@gmail</span>.com</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">"123.txt"</span>) <span class="comment">#打开已经存在的文件，此文件在当前目录，若在其他目录使用绝对路径</span></span><br><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">    <span class="keyword">print</span> line, <span class="comment">#Python 3: print(line, end='')</span></span><br><span class="line">    </span><br><span class="line">learn python</span><br><span class="line">http://qiwsir.github.io</span><br><span class="line">liuguoquan@gmail.com</span><br></pre></td></tr></table></figure>
+<p>紧接着做下面的操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> line2 <span class="keyword">in</span> f:     <span class="comment">#在前面通过for循环读取了文件内容之后，再次读取，</span></span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> line2         <span class="comment">#然后打印，结果就什么也显示，这是什么问题？</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<p>这不是什么错误，是因为前一次已经读取了文件内容，并且到了文件的末尾了。再重复操作，就是从末尾开始继续读了。当然显示不了什么东西，但是Python并不认为这是错误。</p>
+<blockquote>
+<p>在这里，如果要再次读取，那就从新<code>f = open(&#39;130.txt&#39;)</code>。</p>
+</blockquote>
+<h1 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f = open(<span class="string">"1234.txt"</span>,<span class="string">"w"</span>) <span class="comment">#创建文件</span></span><br><span class="line">f.write(<span class="string">"hello"</span>) <span class="comment">#向文件写入内容</span></span><br><span class="line">f.close() <span class="comment">#关闭文件流</span></span><br></pre></td></tr></table></figure>
+<p>创建文件，我们同样是用<code>open()</code>这个函数，但是多了个<code>&quot;w&quot;</code>，这是在告诉Python用什么样的模式打开文件。也就是说，用<code>open()</code>操作文件，可以有不同的模式。看下表：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r</td>
+<td>以读方式打开文件，可读取文件信息。</td>
+</tr>
+<tr>
+<td>w</td>
+<td>以写方式打开文件，可向文件写入信息。如文件存在，则清空该文件，再写入新内容</td>
+</tr>
+<tr>
+<td>a</td>
+<td>以追加模式打开文件（即一打开文件，文件指针自动移到文件末尾），如果文件不存在则创建</td>
+</tr>
+<tr>
+<td>r+</td>
+<td>以读写方式打开文件，可对文件进行读和写操作。</td>
+</tr>
+<tr>
+<td>w+</td>
+<td>消除文件内容，然后以读写方式打开文件。</td>
+</tr>
+<tr>
+<td>a+</td>
+<td>以读写方式打开文件，并把文件指针移到文件尾。</td>
+</tr>
+<tr>
+<td>b</td>
+<td>以二进制模式打开文件，而不是以文本模式。该模式只对Windows或Dos有效，类Unix的文件是用二进制模式进行操作的。</td>
+</tr>
+</tbody>
+</table>
+<p>从表中不难看出，不同模式下打开文件，可以进行相关的读写。那么，如果什么模式都不写，像前面那样呢？那样就是默认为r模式，只读的方式打开文件。</p>
+<h1 id="使用with"><a href="#使用with" class="headerlink" title="使用with"></a>使用with</h1><p>使用with实现安全的关闭文件，不用close操作了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> open(<span class="string">"130.txt"</span>,<span class="string">"a"</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="meta">... </span>    f.write(<span class="string">"\nThis is about 'with...as...'"</span>)</span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> open(<span class="string">"130.txt"</span>,<span class="string">"r"</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> f.read()</span><br><span class="line"><span class="meta">... </span></span><br><span class="line">learn python</span><br><span class="line">http://qiwsir.github.io</span><br><span class="line">qiwsir@gmail.com</span><br><span class="line">hello</span><br><span class="line"></span><br><span class="line">This <span class="keyword">is</span> about <span class="string">'with...as...'</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="文件状态"><a href="#文件状态" class="headerlink" title="文件状态"></a>文件状态</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">file_stat = os.stat(<span class="string">"123.txt"</span>)</span><br><span class="line"><span class="keyword">print</span> file_stat</span><br><span class="line"></span><br><span class="line">posix.stat_result(st_mode=<span class="number">33188</span>, st_ino=<span class="number">13575445</span>, st_dev=<span class="number">16777220</span>, st_nlink=<span class="number">1</span>, st_uid=<span class="number">501</span>, st_gid=<span class="number">20</span>, st_size=<span class="number">57</span>, </span><br><span class="line">st_atime=<span class="number">1470988267</span>, </span><br><span class="line">st_mtime=<span class="number">1470988267</span>, </span><br><span class="line">st_ctime=<span class="number">1470988267</span>) <span class="comment">#文件创建时间</span></span><br></pre></td></tr></table></figure>
+<h1 id="read-readLine-readLines"><a href="#read-readLine-readLines" class="headerlink" title="read/readLine/readLines"></a>read/readLine/readLines</h1><ul>
+<li>read：如果指定了参数size，就按照该指定长度从文件中读取内容，否则，就读取全文。被读出来的内容，全部塞到一个字符串里面。这样有好处，就是东西都到内存里面了，随时取用，比较快捷；“成也萧何败萧何”，也是因为这点，如果文件内容太多了，内存会吃不消的。文档中已经提醒注意在“non-blocking”模式下的问题，关于这个问题，不是本节的重点，暂时不讨论。</li>
+<li>readline：那个可选参数size的含义同上。它则是以行为单位返回字符串，也就是每次读一行，依次循环，如果不限定size，直到最后一个返回的是空字符串，意味着到文件末尾了(EOF)。</li>
+<li>readlines：size同上。它返回的是以行为单位的列表，即相当于先执行<code>readline()</code>，得到每一行，然后把这一行的字符串作为列表中的元素塞到一个列表中，最后将此列表返回。</li>
+</ul>
+<p>有这样一个文档,you.md，其内容和基本格式如下：</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">You Raise <span class="keyword">Me</span> Up</span><br><span class="line"><span class="keyword">When</span> I am down <span class="keyword">and</span>, oh my soul, so weary;</span><br><span class="line"><span class="keyword">When</span> troubles come <span class="keyword">and</span> my heart burdened be;</span><br><span class="line"><span class="keyword">Then</span>, I am still <span class="keyword">and</span> wait here <span class="keyword">in</span> the silence,</span><br><span class="line"><span class="keyword">Until</span> you come <span class="keyword">and</span> sit awhile <span class="keyword">with</span> <span class="keyword">me</span>.</span><br><span class="line">You raise <span class="keyword">me</span> up, so I can stand <span class="keyword">on</span> mountains;</span><br><span class="line">You raise <span class="keyword">me</span> up, <span class="keyword">to</span> walk <span class="keyword">on</span> stormy seas;</span><br><span class="line">I am strong, <span class="keyword">when</span> I am <span class="keyword">on</span> your shoulders;</span><br><span class="line">You raise <span class="keyword">me</span> up: <span class="keyword">To</span> more than I can be.</span><br></pre></td></tr></table></figure>
+<p>分别用上述三种函数读取这个文件。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"you.md"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>content = f.read()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>content <span class="comment">#结果为字符串</span></span><br><span class="line"><span class="string">'You Raise Me Up\nWhen I am down and, oh my soul, so weary;\nWhen troubles come and my heart burdened be;\nThen, I am still and wait here in the silence,\nUntil you come and sit awhile with me.\nYou raise me up, so I can stand on mountains;\nYou raise me up, to walk on stormy seas;\nI am strong, when I am on your shoulders;\nYou raise me up: To more than I can be.\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> content</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"you.md"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.readline()</span><br><span class="line"><span class="string">'You Raise Me Up\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.readline()</span><br><span class="line"><span class="string">'When I am down and, oh my soul, so weary;\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.readline()</span><br><span class="line"><span class="string">'When troubles come and my heart burdened be;\n'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"you.md"</span>)</span><br><span class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">   line = f.readline()</span><br><span class="line">   <span class="keyword">if</span> <span class="keyword">not</span> line:         <span class="comment">#到EOF，返回空字符串，则终止循环</span></span><br><span class="line">       <span class="keyword">break</span></span><br><span class="line">   <span class="keyword">print</span> line ,         <span class="comment">#Python 3: print(line, end='')</span></span><br><span class="line"></span><br><span class="line">f.close()                <span class="comment">#别忘记关闭文件</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"you.md"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>content = f.readlines()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>content <span class="comment">#结果为列表</span></span><br><span class="line">[<span class="string">'You Raise Me Up\n'</span>, <span class="string">'When I am down and, oh my soul, so weary;\n'</span>, <span class="string">'When troubles come and my heart burdened be;\n'</span>, <span class="string">'Then, I am still and wait here in the silence,\n'</span>, <span class="string">'Until you come and sit awhile with me.\n'</span>, <span class="string">'You raise me up, so I can stand on mountains;\n'</span>, <span class="string">'You raise me up, to walk on stormy seas;\n'</span>, <span class="string">'I am strong, when I am on your shoulders;\n'</span>, <span class="string">'You raise me up: To more than I can be.\n'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> line <span class="keyword">in</span> content:</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> line ,         <span class="comment">#Python 3: print(line, end='')</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close</span><br></pre></td></tr></table></figure>
+<h1 id="读很大的文件fileinput"><a href="#读很大的文件fileinput" class="headerlink" title="读很大的文件fileinput"></a>读很大的文件fileinput</h1><p>如果文件太大，就不能用<code>read()</code>或者<code>readlines()</code>一次性将全部内容读入内存，可以使用while循环和<code>readline()</code>来完成这个任务。</p>
+<p>此外，还有一个方法：<code>fileinput</code>模块</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> fileinput</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> line <span class="keyword">in</span> fileinput.input(<span class="string">"you.md"</span>):</span><br><span class="line"><span class="meta">... </span>    <span class="keyword">print</span> line ,        <span class="comment">#Python 3: print(line, end='')</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line">You Raise Me Up</span><br><span class="line">When I am down <span class="keyword">and</span>, oh my soul, so weary;</span><br><span class="line">When troubles come <span class="keyword">and</span> my heart burdened be;</span><br><span class="line">Then, I am still <span class="keyword">and</span> wait here <span class="keyword">in</span> the silence,</span><br><span class="line">Until you come <span class="keyword">and</span> sit awhile <span class="keyword">with</span> me.</span><br><span class="line">You <span class="keyword">raise</span> me up, so I can stand on mountains;</span><br><span class="line">You <span class="keyword">raise</span> me up, to walk on stormy seas;</span><br><span class="line">I am strong, when I am on your shoulders;</span><br><span class="line">You <span class="keyword">raise</span> me up: To more than I can be.</span><br></pre></td></tr></table></figure>
+<p>还有一种方法，更为常用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> line <span class="keyword">in</span> f:</span><br><span class="line">  ...     <span class="keyword">print</span> line ,      <span class="comment">#Python 3:  print(line, end='')</span></span><br><span class="line">  ... </span><br><span class="line">  You Raise Me Up</span><br><span class="line">  When I am down <span class="keyword">and</span>, oh my soul, so weary;</span><br><span class="line">  When troubles come <span class="keyword">and</span> my heart burdened be;</span><br><span class="line">  Then, I am still <span class="keyword">and</span> wait here <span class="keyword">in</span> the silence,</span><br><span class="line">  Until you come <span class="keyword">and</span> sit awhile <span class="keyword">with</span> me.</span><br><span class="line">  You <span class="keyword">raise</span> me up, so I can stand on mountains;</span><br><span class="line">  You <span class="keyword">raise</span> me up, to walk on stormy seas;</span><br><span class="line">  I am strong, when I am on your shoulders;</span><br><span class="line">  You <span class="keyword">raise</span> me up: To more than I can be.</span><br></pre></td></tr></table></figure>
+<p>之所以能够如此，是因为文件是可迭代的对象，直接用for来迭代即可。</p>
+<h1 id="seek"><a href="#seek" class="headerlink" title="seek"></a>seek</h1><p>这个函数的功能是让指针移动。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"you.md"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.readline()</span><br><span class="line">    <span class="string">'You Raise Me Up\n'</span></span><br><span class="line">    &gt;&gt;&gt; f.readline()</span><br><span class="line">    <span class="string">'When I am down and, oh my soul, so weary;\n'</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.seek(<span class="number">0</span>)  <span class="comment">#回到文件的最开始位置</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.readline()</span><br><span class="line">    <span class="string">'You Raise Me Up\n'</span></span><br><span class="line">    </span><br><span class="line">此时指针所在的位置，还可以用`tell()`来显示，如</span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.tell()</span><br><span class="line">    <span class="number">17L</span></span><br></pre></td></tr></table></figure>
+<p><code>seek()</code>还有别的参数，具体如下：</p>
+<blockquote>
+<p>seek(…)<br>   seek(offset[, whence]) -&gt; None.  Move to new file position.</p>
+</blockquote>
+<p>whence的值：</p>
+<ul>
+<li>默认值是0，表示从文件开头开始计算指针偏移的量（简称偏移量）。这是offset必须是大于等于0的整数。</li>
+<li>是1时，表示从当前位置开始计算偏移量。offset如果是负数，表示从当前位置向前移动，整数表示向后移动。</li>
+<li>是2时，表示相对文件末尾移动。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python基础/" rel="tag">#python基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/11/Python之(五)语句/" rel="next" title="Python之(五)语句">
+                <i class="fa fa-chevron-left"></i> Python之(五)语句
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/12/Python基础之(六)文件/"
+           data-title="Python基础之(六)文件" data-url="http://yoursite.com/2016/08/12/Python基础之(六)文件/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#读文件"><span class="nav-number">1.</span> <span class="nav-text">读文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建文件"><span class="nav-number">2.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用with"><span class="nav-number">3.</span> <span class="nav-text">使用with</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件状态"><span class="nav-number">4.</span> <span class="nav-text">文件状态</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#read-readLine-readLines"><span class="nav-number">5.</span> <span class="nav-text">read/readLine/readLines</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#读很大的文件fileinput"><span class="nav-number">6.</span> <span class="nav-text">读很大的文件fileinput</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#seek"><span class="nav-number">7.</span> <span class="nav-text">seek</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
