@@ -1,0 +1,848 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="集合Set类似字典的特点，可以用{}花括号来定义；其中的元素是没有序列，也就是非序列类型的数据；而且集合中的元素不可重复，这就类似于dict键。
+创建集合1234567&amp;gt;&amp;gt;&amp;gt; s1 = set(&quot;qiswri&quot;) #有两个i&amp;gt;&amp;gt;&amp;gt; s1set([&apos;q&apos;, &apos;i&apos;, &apos;s&apos;, &apos;r&apos;, &apos;w&apos;]) #只有一个i&amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础之(四)集合">
+<meta property="og:url" content="http://yoursite.com/2016/04/23/Python基础之(四)集合/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="集合Set类似字典的特点，可以用{}花括号来定义；其中的元素是没有序列，也就是非序列类型的数据；而且集合中的元素不可重复，这就类似于dict键。
+创建集合1234567&amp;gt;&amp;gt;&amp;gt; s1 = set(&quot;qiswri&quot;) #有两个i&amp;gt;&amp;gt;&amp;gt; s1set([&apos;q&apos;, &apos;i&apos;, &apos;s&apos;, &apos;r&apos;, &apos;w&apos;]) #只有一个i&amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; s">
+<meta property="og:updated_time" content="2016-08-12T08:51:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础之(四)集合">
+<meta name="twitter:description" content="集合Set类似字典的特点，可以用{}花括号来定义；其中的元素是没有序列，也就是非序列类型的数据；而且集合中的元素不可重复，这就类似于dict键。
+创建集合1234567&amp;gt;&amp;gt;&amp;gt; s1 = set(&quot;qiswri&quot;) #有两个i&amp;gt;&amp;gt;&amp;gt; s1set([&apos;q&apos;, &apos;i&apos;, &apos;s&apos;, &apos;r&apos;, &apos;w&apos;]) #只有一个i&amp;gt;&amp;gt;&amp;gt; &amp;gt;&amp;gt;&amp;gt; s">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Python基础之(四)集合 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python基础之(四)集合
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-23T22:49:18+08:00" content="2016-04-23 22:49:18">
+              2016-04-23 22:49:18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/23/Python基础之(四)集合/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Python基础之(四)集合/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>集合Set类似字典的特点，可以用{}花括号来定义；其中的元素是没有序列，也就是非序列类型的数据；而且集合中的元素不可重复，这就类似于dict键。</p>
+<h1 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set(<span class="string">"qiswri"</span>) <span class="comment">#有两个i</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'i'</span>, <span class="string">'s'</span>, <span class="string">'r'</span>, <span class="string">'w'</span>]) <span class="comment">#只有一个i</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">123</span>,<span class="string">"google"</span>,<span class="string">"facebook"</span>,<span class="string">"book"</span>,<span class="string">"facebook"</span>]);</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">set([<span class="string">'facebook'</span>, <span class="number">123</span>, <span class="string">'google'</span>, <span class="string">'book'</span>]) <span class="comment">#只有一个facebook</span></span><br></pre></td></tr></table></figure>
+<p>说明集合中的元素是不能重复的，在创建集合的时候，如果发现了重复的元素，就会自定过滤重复的元素。并且集合中的元素也是随机排序的。</p>
+<p>除了用set()来创建集合，还可以使用{}的方式，但是这种方式不提倡使用，因为在某些情况下，Python搞不清楚是字典还是集合。</p>
+<p>unhashtable（不可哈希的）表示可变数据，如列表和字典都能原地修改，就是unhastable的；<br>hastable（可哈希）表示不可变数据，如字符串不能修改。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'i'</span>, <span class="string">'s'</span>, <span class="string">'r'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1[<span class="number">1</span>] = <span class="string">"w"</span>   <span class="comment">#集合不是序列类型，不能用索引方式对其进行修改</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#9&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s1[<span class="number">1</span>] = <span class="string">"w"</span></span><br><span class="line">TypeError: <span class="string">'set'</span> object does <span class="keyword">not</span> support item assignment</span><br></pre></td></tr></table></figure>
+<p>list()和set()实现集合和列表两种对象之间的转化。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">set([<span class="string">'facebook'</span>, <span class="number">123</span>, <span class="string">'google'</span>, <span class="string">'book'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(s2)</span><br><span class="line">&lt;type <span class="string">'set'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst = list(s2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>lst</span><br><span class="line">[<span class="string">'facebook'</span>, <span class="number">123</span>, <span class="string">'google'</span>, <span class="string">'book'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(lst)</span><br><span class="line">&lt;type <span class="string">'list'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3 = set(lst)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s3</span><br><span class="line">set([<span class="string">'google'</span>, <span class="number">123</span>, <span class="string">'facebook'</span>, <span class="string">'book'</span>])</span><br></pre></td></tr></table></figure>
+<h1 id="集合的函数"><a href="#集合的函数" class="headerlink" title="集合的函数"></a>集合的函数</h1><p>dir(set)：列出集合的函数</p>
+<h2 id="add和update"><a href="#add和update" class="headerlink" title="add和update"></a>add和update</h2><p>help(set.add)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set([<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.add(<span class="string">"abc"</span>) <span class="comment">#向集合中添加元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'abc'</span>])</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.add([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) <span class="comment">#不能添加列表，因为列表的数据是可变的</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#31&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s1.add([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>])</span><br><span class="line">TypeError: unhashable type: <span class="string">'list'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'abc'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="string">"e"</span>,<span class="string">"f"</span>,<span class="string">"g"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.update(s2) <span class="comment">#集合s2添加到s1中</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'abc'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s2</span><br><span class="line">set([<span class="string">'e'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="pop、remove、discard、clear"><a href="#pop、remove、discard、clear" class="headerlink" title="pop、remove、discard、clear"></a>pop、remove、discard、clear</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'abc'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.pop() <span class="comment">#随机删除一个元素，并返回这个元素</span></span><br><span class="line"><span class="string">'a'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.pop()</span><br><span class="line"><span class="string">'c'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.pop(<span class="string">"b"</span>)  <span class="comment">#不能指定参数</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#43&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s1.pop(<span class="string">"b"</span>)</span><br><span class="line">TypeError: pop() takes no arguments (<span class="number">1</span> given)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.remove(<span class="string">"b"</span>) <span class="comment">#删除集合中指定的元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'e'</span>, <span class="string">'abc'</span>, <span class="string">'g'</span>, <span class="string">'f'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.remove()  <span class="comment">#remove必须指定参数</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#47&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    s1.remove()</span><br><span class="line">TypeError: remove() takes exactly one argument (<span class="number">0</span> given)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.discard(<span class="string">"g"</span>) <span class="comment">#存在则删除集合中的元素</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([<span class="string">'e'</span>, <span class="string">'abc'</span>, <span class="string">'f'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.discard(<span class="string">"i"</span>) <span class="comment">#不存在则不做处理，不抛出异常</span></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1.clear()  <span class="comment">#清空集合</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>s1</span><br><span class="line">set([])</span><br></pre></td></tr></table></figure>
+<h1 id="不变的集合"><a href="#不变的集合" class="headerlink" title="不变的集合"></a>不变的集合</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1 = frozenset(<span class="string">"qwert"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1</span><br><span class="line">frozenset([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1.add(<span class="string">"q"</span>) <span class="comment">#不能修改集合</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#62&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    f1.add(<span class="string">"q"</span>)</span><br><span class="line">AttributeError: <span class="string">'frozenset'</span> object has no attribute <span class="string">'add'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1.remove(<span class="string">"r"</span>)</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#63&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    f1.remove(<span class="string">"r"</span>)</span><br><span class="line">AttributeError: <span class="string">'frozenset'</span> object has no attribute <span class="string">'remove'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1.pop()</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#64&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    f1.pop()</span><br><span class="line">AttributeError: <span class="string">'frozenset'</span> object has no attribute <span class="string">'pop'</span></span><br></pre></td></tr></table></figure>
+<h1 id="集合元素"><a href="#集合元素" class="headerlink" title="集合元素"></a>集合元素</h1><h2 id="元素与集合的关系"><a href="#元素与集合的关系" class="headerlink" title="元素与集合的关系"></a>元素与集合的关系</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>aset=set([<span class="string">"q"</span>,<span class="string">"w"</span>,<span class="string">"e"</span>,<span class="string">"r"</span>,<span class="string">"t"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>aset</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"q"</span> <span class="keyword">in</span> aset</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"a"</span> <span class="keyword">in</span> aset</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="集合与集合的关系"><a href="#集合与集合的关系" class="headerlink" title="集合与集合的关系"></a>集合与集合的关系</h2><h3 id="A是否等于B"><a href="#A是否等于B" class="headerlink" title="A是否等于B"></a>A是否等于B</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b = set([<span class="string">"a"</span>,<span class="string">"b"</span>,<span class="string">"c"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a == b</span><br><span class="line"><span class="keyword">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a != b</span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="A是否是B的子集"><a href="#A是否是B的子集" class="headerlink" title="A是否是B的子集"></a>A是否是B的子集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>c = set([<span class="string">"q"</span>,<span class="string">"r"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>c.issubset(a) <span class="comment">#判断c是否是a的子集</span></span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.issuperset(c) <span class="comment">#判断a是否是c的超集</span></span><br><span class="line"><span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h3 id="AB的并集"><a href="#AB的并集" class="headerlink" title="AB的并集"></a>AB的并集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a | b</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>]) <span class="comment">#ab的并集</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.union(b)</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>]) <span class="comment">#ab的并集</span></span><br></pre></td></tr></table></figure>
+<h3 id="AB的交集"><a href="#AB的交集" class="headerlink" title="AB的交集"></a>AB的交集</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'q'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a &amp; b   <span class="comment">#ab的交集</span></span><br><span class="line">set([<span class="string">'q'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.intersection(b)</span><br><span class="line">set([<span class="string">'q'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="A相对B的差集"><a href="#A相对B的差集" class="headerlink" title="A相对B的差集"></a>A相对B的差集</h3><p>A相对B不同的部分元素集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'q'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a - b</span><br><span class="line">set([<span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.difference(b)</span><br><span class="line">set([<span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br></pre></td></tr></table></figure>
+<h3 id="AB的差集"><a href="#AB的差集" class="headerlink" title="AB的差集"></a>AB的差集</h3><p>AB中不同元素的集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>a</span><br><span class="line">set([<span class="string">'q'</span>, <span class="string">'r'</span>, <span class="string">'e'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'q'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>a.symmetric_difference(b)</span><br><span class="line">set([<span class="string">'a'</span>, <span class="string">'c'</span>, <span class="string">'b'</span>, <span class="string">'e'</span>, <span class="string">'r'</span>, <span class="string">'t'</span>, <span class="string">'w'</span>])</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python基础/" rel="tag">#python基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/04/23/Python基础之(三)字典/" rel="next" title="Python基础之(三)字典">
+                <i class="fa fa-chevron-left"></i> Python基础之(三)字典
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/25/Android的线程和线程池/" rel="prev" title="Android的线程和线程池">
+                Android的线程和线程池 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/23/Python基础之(四)集合/"
+           data-title="Python基础之(四)集合" data-url="http://yoursite.com/2016/04/23/Python基础之(四)集合/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">99</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建集合"><span class="nav-number">1.</span> <span class="nav-text">创建集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合的函数"><span class="nav-number">2.</span> <span class="nav-text">集合的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#add和update"><span class="nav-number">2.1.</span> <span class="nav-text">add和update</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pop、remove、discard、clear"><span class="nav-number">2.2.</span> <span class="nav-text">pop、remove、discard、clear</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#不变的集合"><span class="nav-number">3.</span> <span class="nav-text">不变的集合</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#集合元素"><span class="nav-number">4.</span> <span class="nav-text">集合元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#元素与集合的关系"><span class="nav-number">4.1.</span> <span class="nav-text">元素与集合的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#集合与集合的关系"><span class="nav-number">4.2.</span> <span class="nav-text">集合与集合的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A是否等于B"><span class="nav-number">4.2.1.</span> <span class="nav-text">A是否等于B</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A是否是B的子集"><span class="nav-number">4.2.2.</span> <span class="nav-text">A是否是B的子集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AB的并集"><span class="nav-number">4.2.3.</span> <span class="nav-text">AB的并集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AB的交集"><span class="nav-number">4.2.4.</span> <span class="nav-text">AB的交集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#A相对B的差集"><span class="nav-number">4.2.5.</span> <span class="nav-text">A相对B的差集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AB的差集"><span class="nav-number">4.2.6.</span> <span class="nav-text">AB的差集</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
