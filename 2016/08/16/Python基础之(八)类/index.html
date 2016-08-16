@@ -1,0 +1,874 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="python基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="类创建类
+第一形式
+
+1234567891011121314151617181920212223242526272829303132# !/usr/bin/env python# coding=utf-8class Person(object): #object表示继承自object类，Python3中可省略次内容    &quot;&quot;&quot;    This is a sample of Class    &quot;&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python基础之(八)类">
+<meta property="og:url" content="http://yoursite.com/2016/08/16/Python基础之(八)类/index.html">
+<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:description" content="类创建类
+第一形式
+
+1234567891011121314151617181920212223242526272829303132# !/usr/bin/env python# coding=utf-8class Person(object): #object表示继承自object类，Python3中可省略次内容    &quot;&quot;&quot;    This is a sample of Class    &quot;&quot;">
+<meta property="og:updated_time" content="2016-08-16T06:08:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python基础之(八)类">
+<meta name="twitter:description" content="类创建类
+第一形式
+
+1234567891011121314151617181920212223242526272829303132# !/usr/bin/env python# coding=utf-8class Person(object): #object表示继承自object类，Python3中可省略次内容    &quot;&quot;&quot;    This is a sample of Class    &quot;&quot;">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> Python基础之(八)类 | MICHAEL - 应尽便须尽 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">MICHAEL</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">MICHAEL</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Python基础之(八)类
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-16T20:05:52+08:00" content="2016-08-16 20:05:52">
+              2016-08-16 20:05:52
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/python/" itemprop="url" rel="index">
+                    <span itemprop="name">python</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/16/Python基础之(八)类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/16/Python基础之(八)类/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><ul>
+<li>第一形式</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span> <span class="comment">#object表示继承自object类，Python3中可省略次内容</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    This is a sample of Class</span><br><span class="line">    """</span></span><br><span class="line">    breast = <span class="number">90</span>  <span class="comment">#类的属性 是静态变量</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span> <span class="comment">#初始化方法  self为对象实例本身</span></span><br><span class="line">        self.name = name</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span>  <span class="comment">#类的方法</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">color</span><span class="params">(self,color)</span>:</span></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        d[self.name] = color;</span><br><span class="line">        <span class="keyword">return</span> d</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    girl = Person(<span class="string">"songjia"</span>)</span><br><span class="line">    <span class="keyword">print</span> girl.name</span><br><span class="line">    girl.name =<span class="string">"liu"</span></span><br><span class="line">    <span class="keyword">print</span> girl.get_name()</span><br><span class="line">    <span class="keyword">print</span> girl.color(<span class="string">"white"</span>)</span><br><span class="line">    girl.breast = <span class="number">80</span> <span class="comment">#修改实例的属性</span></span><br><span class="line">    <span class="keyword">print</span> girl.breast</span><br><span class="line">    <span class="keyword">print</span> Person.breast <span class="comment">#类属性不会随实例属性的改变而改变</span></span><br><span class="line">    Person.breast = <span class="number">100</span></span><br><span class="line">    <span class="keyword">print</span> Person.breast</span><br><span class="line">    <span class="keyword">print</span> girl.breast</span><br></pre></td></tr></table></figure>
+<ul>
+<li>第二种形式</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; __metaclass__ = type</span><br><span class="line">&gt;&gt;&gt; class CC:</span><br><span class="line">...     pass</span><br><span class="line">... </span><br><span class="line">&gt;&gt;&gt; cc = CC()</span><br><span class="line">&gt;&gt;&gt; cc.__class__</span><br><span class="line">&lt;class '__main__.CC'&gt;</span><br><span class="line">&gt;&gt;&gt; type(cc)</span><br><span class="line">&lt;class '__main__.CC'&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">girl = Person(<span class="string">"songjia"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="类属性"><a href="#类属性" class="headerlink" title="类属性"></a>类属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>    <span class="comment">#Python 3: class A:</span></span><br><span class="line"><span class="meta">... </span>        x = <span class="number">7</span>  <span class="comment">#类的属性</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>下面列出类的几种特殊属性的含义:</p>
+<ul>
+<li><code>C.__name__</code>：以字符串的形式，返回类的名字，注意这时候得到的仅仅是一个字符串，它不是一个类对象</li>
+<li><code>C.__doc__</code>：显示类的文档</li>
+<li><code>C.__base__</code>：类C的所有父类。如果是按照上面方式定义的类，应该显示<code>object</code>，因为以上所有类都继承了它。等到学习了“继承”，再来看这个属性，内容就丰富了</li>
+<li><code>C.__dict__</code>：以字典形式显示类的所有属性</li>
+<li><code>C.__module__</code>：类所在的模块</li>
+</ul>
+<h2 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>    <span class="comment">#Python 3: class A:</span></span><br><span class="line"><span class="meta">... </span>        x = <span class="number">7</span>  <span class="comment">#类的属性</span></span><br><span class="line"><span class="meta">... </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo = A()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>foo.x <span class="comment">#实例属性</span></span><br></pre></td></tr></table></figure>
+<h3 id="类中变量引用可变数据"><a href="#类中变量引用可变数据" class="headerlink" title="类中变量引用可变数据"></a>类中变量引用可变数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="meta">... </span>    y = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line">    </span><br><span class="line">   &gt;&gt;&gt; B.y         <span class="comment">#类属性</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bar = B()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bar.y       <span class="comment">#实例属性</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bar.y.append(<span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bar.y</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>B.y</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>B.y.append(<span class="string">"aa"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>B.y</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="string">'aa'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>bar.y</span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="string">'aa'</span>]</span><br></pre></td></tr></table></figure>
+<p>当类中变量引用的是可变对象是，类属性和实例属性都能直接修改这个对象，从而影响另一方的值。</p>
+<h2 id="访问限制"><a href="#访问限制" class="headerlink" title="访问限制"></a>访问限制</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># !/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span><br><span class="line">    This is a sample of Class</span><br><span class="line">    """</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span> <span class="comment">#初始化方法  self为对象实例本身</span></span><br><span class="line">        self.__name = name <span class="comment">#__xx双下划线表示类的私有变量</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span>  <span class="comment">#类的方法</span></span><br><span class="line">        <span class="keyword">return</span> self.__name <span class="comment">#类的内部可以访问</span></span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    girl = Person(<span class="string">"songjia"</span>)</span><br><span class="line">    <span class="keyword">print</span> girl.get_name()</span><br><span class="line">    <span class="keyword">print</span> girl._name <span class="comment">#无法访问类的私有变量</span></span><br></pre></td></tr></table></figure>
+<h2 id="文档字符串"><a href="#文档字符串" class="headerlink" title="文档字符串"></a>文档字符串</h2><p>在函数、类或者文件开头的部分写文档字符串说明，一般采用三重引号。这样写的最大好处是能够用help()函数看。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""This is python lesson"""</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">start_func</span><span class="params">(arg)</span>:</span></span><br><span class="line">   <span class="string">"""This is a function."""</span></span><br><span class="line">   <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span>:</span></span><br><span class="line">   <span class="string">"""This is my class."""</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">my_method</span><span class="params">(self,arg)</span>:</span></span><br><span class="line">       <span class="string">"""This is my method."""</span></span><br><span class="line">       <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><h2 id="单继承"><a href="#单继承" class="headerlink" title="单继承"></a>单继承</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class Person:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">        self.name = name</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(self, m)</span>:</span></span><br><span class="line">        h = dict(([<span class="string">"height"</span>, m],))</span><br><span class="line">        <span class="keyword">return</span> h</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breast</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        b = dict(([<span class="string">"breast"</span>, n],))</span><br><span class="line">        <span class="keyword">return</span> b</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Girl</span><span class="params">(Person)</span>:</span>  <span class="comment">#继承</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.name</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    cang = Girl(<span class="string">"liuguoquan"</span>)</span><br><span class="line">    <span class="keyword">print</span> cang.get_name()        <span class="comment">#Python 3: print(cang.get_name())，下同，从略</span></span><br><span class="line">    <span class="keyword">print</span> cang.height(<span class="number">160</span>)</span><br><span class="line">    <span class="keyword">print</span> cang.breast(<span class="number">90</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="调用覆盖的方法"><a href="#调用覆盖的方法" class="headerlink" title="调用覆盖的方法"></a>调用覆盖的方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Girl</span><span class="params">(Person)</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name)</span>:</span></span><br><span class="line">       <span class="comment">#Person.__init__(self, name) #调用父类的方法</span></span><br><span class="line">       super(Girl, self).__init__(name) <span class="comment">#调用父类的方法常用写法</span></span><br><span class="line">       self.real_name = <span class="string">"Aoi sola"</span></span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">get_name</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">return</span> self.name</span><br><span class="line">       </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">   cang = Girl(<span class="string">"canglaoshi"</span>)</span><br><span class="line">   <span class="keyword">print</span> cang.real_name</span><br><span class="line">   <span class="keyword">print</span> cang.get_name()</span><br><span class="line">   <span class="keyword">print</span> cang.height(<span class="number">160</span>)</span><br><span class="line">   <span class="keyword">print</span> cang.breast(<span class="number">90</span>)</span><br><span class="line"></span><br><span class="line">执行结果为：</span><br><span class="line"></span><br><span class="line">    Aoi sola</span><br><span class="line">    canglaoshi</span><br><span class="line">    &#123;<span class="string">'height'</span>: <span class="number">160</span>&#125;</span><br><span class="line">    &#123;<span class="string">'breast'</span>: <span class="number">90</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="多继承"><a href="#多继承" class="headerlink" title="多继承"></a>多继承</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class Person:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eye</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"two eyes"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breast</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The breast is: "</span>,n</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Girl</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class Gril:</span></span><br><span class="line">    age = <span class="number">28</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">color</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The girl is white"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HotGirl</span><span class="params">(Person, Girl)</span>:</span> <span class="comment">#多重继承</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    kong = HotGirl()</span><br><span class="line">    kong.eye()</span><br><span class="line">    kong.breast(<span class="number">90</span>)</span><br><span class="line">    kong.color()</span><br><span class="line">    <span class="keyword">print</span> kong.age</span><br><span class="line">    </span><br><span class="line">two eyes</span><br><span class="line">The breast <span class="keyword">is</span>:  <span class="number">90</span></span><br><span class="line">The girl <span class="keyword">is</span> white</span><br><span class="line"><span class="number">28</span></span><br></pre></td></tr></table></figure>
+<h2 id="多重继承的顺序-广度优先"><a href="#多重继承的顺序-广度优先" class="headerlink" title="多重继承的顺序-广度优先"></a>多重继承的顺序-广度优先</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">K1</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class K1:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"K1-foo"</span>    <span class="comment">#Python 3: print("K1-foo")，下同，从略</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">K2</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class K2:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"K2-foo"</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"K2-bar"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">J1</span><span class="params">(K1, K2)</span>:</span></span><br><span class="line">   <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">J2</span><span class="params">(K1, K2)</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">bar</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"J2-bar"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span><span class="params">(J1, J2)</span>:</span></span><br><span class="line"><span class="keyword">pass</span></span><br><span class="line">   </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line"><span class="keyword">print</span> C.__mro__</span><br><span class="line">m = C()</span><br><span class="line">m.foo()</span><br><span class="line">m.bar()</span><br><span class="line">   </span><br><span class="line">K1-foo</span><br><span class="line">J2-bar</span><br></pre></td></tr></table></figure>
+<p>代码中的<code>print C.__mro__</code>是要打印出类的继承顺序。从上面清晰看出来了。如果要执行<code>foo()</code>方法，首先看<code>J1</code>，没有，看<code>J2</code>，还没有，看<code>J1</code>里面的<code>K1</code>，有了，即C==&gt;J1==&gt;J2==&gt;K1；<code>bar()</code>也是按照这个顺序，在<code>J2</code>中就找到了一个。</p>
+<p>这种对继承属性和方法搜索的顺序称之为“广度优先”。<br>Python 2的新式类，以及Python 3中都是按照此顺序原则搜寻属性和方法的。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="绑定方法"><a href="#绑定方法" class="headerlink" title="绑定方法"></a>绑定方法</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class Person:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eye</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"two eyes"</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">breast</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The breast is: "</span>,n</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Girl</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class Gril:</span></span><br><span class="line">    age = <span class="number">28</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">color</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"The girl is white"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HotGirl</span><span class="params">(Person, Girl)</span>:</span> <span class="comment">#多重继承</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    kong = HotGirl() <span class="comment">#实例化实现了方法和实例的绑</span></span><br><span class="line">    kong.eye() <span class="comment">#调用绑定方法</span></span><br></pre></td></tr></table></figure>
+<h2 id="非绑定方法"><a href="#非绑定方法" class="headerlink" title="非绑定方法"></a>非绑定方法</h2><p>在子类中，父类的方法就是<strong>非绑定方法</strong>，因为在子类中，没有建立父类的实例，却要是用父类的方法。</p>
+<h2 id="静态方法和类方法"><a href="#静态方法和类方法" class="headerlink" title="静态方法和类方法"></a>静态方法和类方法</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># coding=utf-8</span><br><span class="line"></span><br><span class="line">__metaclass__ = type</span><br><span class="line"></span><br><span class="line">class StaticMethod: #静态方法</span><br><span class="line">    @staticmethod</span><br><span class="line">    def foo():</span><br><span class="line">        print "This is static method foo()."</span><br><span class="line"></span><br><span class="line">class ClassMethod: #类方法</span><br><span class="line">    @classmethod</span><br><span class="line">    def bar(cls): #类方法必须有cls参数</span><br><span class="line">        print "This is class method bar()."</span><br><span class="line">        print "bar() is part of class:", cls.__name__</span><br><span class="line"></span><br><span class="line">if __name__ == "__main__":</span><br><span class="line">    static_foo = StaticMethod()    #实例化</span><br><span class="line">    static_foo.foo()               #实例调用静态方法</span><br><span class="line">    StaticMethod.foo()             #通过类来调用静态方法</span><br><span class="line">    print "********"</span><br><span class="line">    class_bar = ClassMethod()</span><br><span class="line">    class_bar.bar()</span><br><span class="line">    ClassMethod.bar()</span><br><span class="line">    </span><br><span class="line">This is static method foo().</span><br><span class="line">This is static method foo().</span><br><span class="line">********</span><br><span class="line">This is class method bar().</span><br><span class="line">bar() is part of class: ClassMethod</span><br><span class="line">This is class method bar().</span><br><span class="line">bar() is part of class: ClassMethod</span><br></pre></td></tr></table></figure>
+<p>在python中：</p>
+<ul>
+<li><code>@staticmethod</code>表示下面的方法是静态方法</li>
+<li><code>@classmethod</code>表示下面的方法是类方法</li>
+</ul>
+<h1 id="多态和封装"><a href="#多态和封装" class="headerlink" title="多态和封装"></a>多态和封装</h1><h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"meow!"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"woof!"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bob</span>:</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">bow</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"thank you, thank you!"</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">speak</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"hello, welcome to the neighborhood!"</span></span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">drive</span><span class="params">(self)</span>:</span></span><br><span class="line">       <span class="keyword">print</span> <span class="string">"beep, beep!"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">command</span><span class="params">(pet)</span>:</span></span><br><span class="line">   pet.speak()</span><br><span class="line"></span><br><span class="line">pets = [ Cat(), Dog(), Bob() ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> pet <span class="keyword">in</span> pets:</span><br><span class="line">   command(pet)</span><br></pre></td></tr></table></figure>
+<p>Python中的多态特点,Python不检查传入对象的类型，这种方式被称之为“隐式类型”（laten typing）或者“结构式类型”（structural typing），也被通俗的称为“鸭子类型”(duck typeing)，Python是弱类型语言。</p>
+<p>Java会检查传入对象的类型，所以是强类型语言。</p>
+<h2 id="封装和私有化"><a href="#封装和私有化" class="headerlink" title="封装和私有化"></a>封装和私有化</h2><p>要了解封装，离不开“私有化”，就是将类或者函数中的某些属性限制在某个区域之内，外部无法调用。</p>
+<p>Python中私有化的方法也比较简单，就是在准备私有化的属性（包括方法、数据）名字前面加双下划线。例如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProtectMe</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class ProtectMe:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.me = <span class="string">"qiwsir"</span></span><br><span class="line">        self.__name = <span class="string">"kivi"</span> <span class="comment">#私有变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__python</span><span class="params">(self)</span>:</span> <span class="comment">#私有方法</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"I love Python."</span>        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">code</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Which language do you like?"</span></span><br><span class="line">        self.__python()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    p = ProtectMe()</span><br><span class="line">    <span class="keyword">print</span> p.me</span><br><span class="line">    <span class="keyword">print</span> p.code()</span><br></pre></td></tr></table></figure>
+<h3 id="如何将一个方法变成属性调用？"><a href="#如何将一个方法变成属性调用？" class="headerlink" title="如何将一个方法变成属性调用？"></a>如何将一个方法变成属性调用？</h3><p>可以使用<code>property</code>函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProtectMe</span><span class="params">(object)</span>:</span>        <span class="comment">#Python 3: class ProtectMe:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.me = <span class="string">"qiwsir"</span></span><br><span class="line">        self.__name = <span class="string">"kivi"</span> <span class="comment">#私有变量</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__python</span><span class="params">(self)</span>:</span> <span class="comment">#私有方法</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"I love Python."</span>        </span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">code</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">print</span> <span class="string">"Which language do you like?"</span></span><br><span class="line">        self.__python</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    p = ProtectMe()</span><br><span class="line">    <span class="keyword">print</span> p.me</span><br><span class="line">    <span class="keyword">print</span> p.code <span class="comment">#调用方法名即可</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python基础/" rel="tag">#python基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/16/Python基础之(九)错误和异常/" rel="next" title="Python基础之(九)错误和异常">
+                <i class="fa fa-chevron-left"></i> Python基础之(九)错误和异常
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/16/Python基础之(八)类/"
+           data-title="Python基础之(八)类" data-url="http://yoursite.com/2016/08/16/Python基础之(八)类/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="涤生" />
+          <p class="site-author-name" itemprop="name">涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">102</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> Github
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                  
+                    <i class="fa fa-weibo"></i> Weibo
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> jianshu
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> csdn
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类"><span class="nav-number">1.</span> <span class="nav-text">类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#创建类"><span class="nav-number">1.1.</span> <span class="nav-text">创建类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">1.2.</span> <span class="nav-text">实例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#类属性"><span class="nav-number">1.3.</span> <span class="nav-text">类属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例属性"><span class="nav-number">1.4.</span> <span class="nav-text">实例属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类中变量引用可变数据"><span class="nav-number">1.4.1.</span> <span class="nav-text">类中变量引用可变数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问限制"><span class="nav-number">1.5.</span> <span class="nav-text">访问限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文档字符串"><span class="nav-number">1.6.</span> <span class="nav-text">文档字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#继承"><span class="nav-number">2.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单继承"><span class="nav-number">2.1.</span> <span class="nav-text">单继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用覆盖的方法"><span class="nav-number">2.2.</span> <span class="nav-text">调用覆盖的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多继承"><span class="nav-number">2.3.</span> <span class="nav-text">多继承</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重继承的顺序-广度优先"><span class="nav-number">2.4.</span> <span class="nav-text">多重继承的顺序-广度优先</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法"><span class="nav-number">3.</span> <span class="nav-text">方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定方法"><span class="nav-number">3.1.</span> <span class="nav-text">绑定方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非绑定方法"><span class="nav-number">3.2.</span> <span class="nav-text">非绑定方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法和类方法"><span class="nav-number">3.3.</span> <span class="nav-text">静态方法和类方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态和封装"><span class="nav-number">4.</span> <span class="nav-text">多态和封装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多态"><span class="nav-number">4.1.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#封装和私有化"><span class="nav-number">4.2.</span> <span class="nav-text">封装和私有化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何将一个方法变成属性调用？"><span class="nav-number">4.2.1.</span> <span class="nav-text">如何将一个方法变成属性调用？</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">涤生</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+<span id="busuanzi_container_site_pv">
+    总访问量 <span id="busuanzi_value_site_pv"></span>次 
+</span>
+
+<span id="busuanzi_container_site_uv">
+  访客数 <span id="busuanzi_value_site_uv"></span>人次
+</span>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
