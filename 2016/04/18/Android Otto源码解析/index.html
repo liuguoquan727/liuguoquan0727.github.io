@@ -1,69 +1,24 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="源码分析," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Otto源码解析 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="源码分析">
+  <meta name="description" content="前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
 首先来看看构造函数：
 构造函数123456789101112131415161718192021222324private final String identifier;private final ThreadEnforcer enforcer;private final HandlerFinder handlerFinder;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Otto源码解析">
 <meta property="og:url" content="http://yoursite.com/2016/04/18/Android Otto源码解析/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
 首先来看看构造函数：
 构造函数123456789101112131415161718192021222324private final String identifier;private final ThreadEnforcer enforcer;private final HandlerFinder handlerFinder;">
@@ -73,815 +28,459 @@
 <meta name="twitter:description" content="前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
 首先来看看构造函数：
 构造函数123456789101112131415161718192021222324private final String identifier;private final ThreadEnforcer enforcer;private final HandlerFinder handlerFinder;">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Otto源码解析 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Otto源码解析</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Otto源码解析</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-18T15:04:06.000Z" itemprop="datePublished" class="page-time">
+  2016-04-18 23:04:06
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#构造函数"><span class="post-toc-number">1.</span> <span class="post-toc-text">构造函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ThreadEnforce"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">ThreadEnforce</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#identifier"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">identifier</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HandlerFinder"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">HandlerFinder</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#其他"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">其他</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#注册-反注册事件"><span class="post-toc-number">2.</span> <span class="post-toc-text">注册/反注册事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Subsrible"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">@Subsrible</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#register"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">register()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HandlerFinder-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">HandlerFinder</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EventProducer"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">EventProducer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EventHandler"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">EventHandler</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#dispatchProducerResultToHandler"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">dispatchProducerResultToHandler()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#unregister"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">unregister()</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#投递事件"><span class="post-toc-number">3.</span> <span class="post-toc-text">投递事件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#post"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">post()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#flattenHierarchy"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">flattenHierarchy()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Dispatch-Queue"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Dispatch Queue</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结构图"><span class="post-toc-number">4.</span> <span class="post-toc-text">结构图</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android Otto源码解析"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Otto源码解析
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Otto源码解析</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T23:04:06+08:00" content="2016-04-18 23:04:06">
-              2016-04-18 23:04:06
-            </time>
-          </span>
+            <time datetime="2016-04-18T15:04:06.000Z" itemprop="datePublished" class="post-time">
+  2016-04-18 23:04:06
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/18/Android Otto源码解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/Android Otto源码解析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
 <p>首先来看看构造函数：</p>
-<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> String identifier;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadEnforcer enforcer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> HandlerFinder handlerFinder;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(DEFAULT_IDENTIFIER);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(String identifier)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(ThreadEnforcer.MAIN, identifier);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(ThreadEnforcer enforcer, String identifier)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>(enforcer, identifier, HandlerFinder.ANNOTATED);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Bus(ThreadEnforcer enforcer, String identifier, HandlerFinder handlerFinder) &#123;</span><br><span class="line">    <span class="keyword">this</span>.enforcer =  enforcer;</span><br><span class="line">    <span class="keyword">this</span>.identifier = identifier;</span><br><span class="line">    <span class="keyword">this</span>.handlerFinder = handlerFinder;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> String identifier;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadEnforcer enforcer;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> HandlerFinder handlerFinder;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(DEFAULT_IDENTIFIER);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(ThreadEnforcer.MAIN, identifier);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(ThreadEnforcer enforcer, String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(enforcer, identifier, HandlerFinder.ANNOTATED);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Bus(ThreadEnforcer enforcer, String identifier, HandlerFinder handlerFinder) &#123;</div><div class="line">    <span class="keyword">this</span>.enforcer =  enforcer;</div><div class="line">    <span class="keyword">this</span>.identifier = identifier;</div><div class="line">    <span class="keyword">this</span>.handlerFinder = handlerFinder;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>默认参数enforcer=ThreadEnforcer.MAIN，identifier=DEFAULT_IDENTIFIER，handlerFinder=HandlerFinder.ANNOTATED。下面来看看这些参数是什么意思：</p>
 <h2 id="ThreadEnforce"><a href="#ThreadEnforce" class="headerlink" title="ThreadEnforce"></a>ThreadEnforce</h2><p>ThreadEnforce是一个接口，enforce()方法用于检查当前的线程是否为指定的线程类型</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ThreadEnforcer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    ThreadEnforcer ANY = <span class="keyword">new</span> ThreadEnforcer() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span> </span>&#123;</span><br><span class="line">                <span class="comment">// Allow any thread.</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    ThreadEnforcer MAIN = <span class="keyword">new</span> ThreadEnforcer() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (Looper.myLooper() != Looper.getMainLooper()) &#123;</span><br><span class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Event bus "</span> + bus +</span><br><span class="line">                        <span class="string">" accessed from non-main thread "</span> + Looper.myLooper());</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ThreadEnforcer</span> </span>&#123;</div><div class="line"></div><div class="line">    ThreadEnforcer ANY = <span class="keyword">new</span> ThreadEnforcer() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span> </span>&#123;</div><div class="line">                <span class="comment">// Allow any thread.</span></div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    ThreadEnforcer MAIN = <span class="keyword">new</span> ThreadEnforcer() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span> </span>&#123;</div><div class="line">                <span class="keyword">if</span> (Looper.myLooper() != Looper.getMainLooper()) &#123;</div><div class="line">                    <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(<span class="string">"Event bus "</span> + bus +</div><div class="line">                        <span class="string">" accessed from non-main thread "</span> + Looper.myLooper());</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">enforce</span><span class="params">(Bus bus)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>不带参数的构造函数默认使用ThreadEnforcer.MAIN，表示enforce()方法必须在主线程上执行。</p>
 <h2 id="identifier"><a href="#identifier" class="headerlink" title="identifier"></a>identifier</h2><p>identifier为Bus对象的名字，debug用</p>
 <h2 id="HandlerFinder"><a href="#HandlerFinder" class="headerlink" title="HandlerFinder"></a>HandlerFinder</h2><p>HandlerFinder用于在注册/反注册的时候查找Subscriber和Produce，后文会对其展开源码级别的解析。默认使用HandlerANNOTATED，表示使用注解来进行查找。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>除上述以外，Bus类还有两个成员变量handlersByType和producersByType:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">** 通过event的类型（class类型）来查找event handle。</span><br><span class="line">*	键为 event类型  值为 事件订阅者集合</span><br><span class="line">*	一个事件类型可以有多个事件订阅者</span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ConcurrentMap&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; handlersByType =</span><br><span class="line">	  <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">** 通过event的类型（class类型）来查找event producer。</span><br><span class="line">*	键为 event类型  值为 事件生产者</span><br><span class="line">*	一个事件类型，只能有一个事件生产者</span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ConcurrentMap&lt;Class&lt;?&gt;, EventProducer&gt; producersByType =</span><br><span class="line">	  <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, EventProducer&gt;();</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">** 通过event的类型（class类型）来查找event handle。</div><div class="line">*	键为 event类型  值为 事件订阅者集合</div><div class="line">*	一个事件类型可以有多个事件订阅者</div><div class="line">*/</div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ConcurrentMap&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; handlersByType =</div><div class="line">	  <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt;();</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">** 通过event的类型（class类型）来查找event producer。</div><div class="line">*	键为 event类型  值为 事件生产者</div><div class="line">*	一个事件类型，只能有一个事件生产者</div><div class="line">*/</div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ConcurrentMap&lt;Class&lt;?&gt;, EventProducer&gt; producersByType =</div><div class="line">	  <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;?&gt;, EventProducer&gt;();</div></pre></td></tr></table></figure>
 <h1 id="注册-反注册事件"><a href="#注册-反注册事件" class="headerlink" title="注册/反注册事件"></a>注册/反注册事件</h1><p>如下所示要成为订阅者HandlerEvent，只需将其注册到bus，然后使用@Subscribe注解标记回调处理方法即可。回调方法要求可见性为public，有且仅有一个参数，类型为订阅的event。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        bus.register(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Subscribe</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">answerAvailable</span><span class="params">(HandlerEvent event)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// process event</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</div><div class="line">        bus.register(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Subscribe</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">answerAvailable</span><span class="params">(HandlerEvent event)</span> </span>&#123;</div><div class="line">        <span class="comment">// process event</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="Subsrible"><a href="#Subsrible" class="headerlink" title="@Subsrible"></a>@Subsrible</h2><p>首先看一下@Subscribe注解:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Target</span>(ElementType.METHOD)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Subscribe &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="meta">@Target</span>(ElementType.METHOD)</div><div class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Subscribe &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>RetentionPolicy.RUNTIME表示它是运行时的注解，ElementType.METHOD表示用于注解方法。</p>
 <h2 id="register"><a href="#register" class="headerlink" title="register()"></a>register()</h2><p>register流程：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//1.检查当前线程是否符合ThreadEnforcer的设置</span></span><br><span class="line">	<span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">	  <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Object to register must not be null."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	enforcer.enforce(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">//2.默认情况下，通过@Producer注解找到所有的事件生产者Producers</span></span><br><span class="line">	Map&lt;Class&lt;?&gt;, EventProducer&gt; foundProducers = handlerFinder.findAllProducers(object);</span><br><span class="line">	<span class="keyword">for</span> (Class&lt;?&gt; type : foundProducers.keySet()) &#123;</span><br><span class="line"></span><br><span class="line">	  <span class="comment">//2-1 判断object上的produce注册的event是否已经被别人注册过</span></span><br><span class="line">	  <span class="keyword">final</span> EventProducer producer = foundProducers.get(type);</span><br><span class="line"></span><br><span class="line">	  <span class="comment">//type存在则返回type对应的值 type不存在则将type的键值设为producer</span></span><br><span class="line">	  EventProducer previousProducer = producersByType.putIfAbsent(type, producer);</span><br><span class="line">	  <span class="comment">//checking if the previous producer existed</span></span><br><span class="line">	  <span class="keyword">if</span> (previousProducer != <span class="keyword">null</span>) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Producer method for type "</span> + type</span><br><span class="line">		  + <span class="string">" found on type "</span> + producer.target.getClass()</span><br><span class="line">		  + <span class="string">", but already registered by type "</span> + previousProducer.target.getClass() + <span class="string">"."</span>);</span><br><span class="line">	  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	  <span class="comment">//2-2 如果没有被注册过，那么找出对应event的handler，触发一次回调</span></span><br><span class="line">	  Set&lt;EventHandler&gt; handlers = handlersByType.get(type);</span><br><span class="line">	  <span class="keyword">if</span> (handlers != <span class="keyword">null</span> &amp;&amp; !handlers.isEmpty()) &#123;</span><br><span class="line">		<span class="keyword">for</span> (EventHandler handler : handlers) &#123;</span><br><span class="line">		  dispatchProducerResultToHandler(handler, producer);</span><br><span class="line">		&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//3. 找出object上用@Subscribe注解的方法</span></span><br><span class="line">	Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; foundHandlersMap = handlerFinder.findAllSubscribers(object);</span><br><span class="line">	<span class="keyword">for</span> (Class&lt;?&gt; type : foundHandlersMap.keySet()) &#123;</span><br><span class="line">	  Set&lt;EventHandler&gt; handlers = handlersByType.get(type);</span><br><span class="line">	  </span><br><span class="line">	  </span><br><span class="line">	  <span class="keyword">if</span> (handlers == <span class="keyword">null</span>) &#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//3-1，该event是第一次注册，那么新建一个CopyOnWriteArraySet用来保存handler和event的对应关系</span></span><br><span class="line">		</span><br><span class="line">		Set&lt;EventHandler&gt; handlersCreation = <span class="keyword">new</span> CopyOnWriteArraySet&lt;EventHandler&gt;();</span><br><span class="line">		handlers = handlersByType.putIfAbsent(type, handlersCreation);</span><br><span class="line">		<span class="keyword">if</span> (handlers == <span class="keyword">null</span>) &#123;</span><br><span class="line">			handlers = handlersCreation;</span><br><span class="line">		&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	  </span><br><span class="line">	  <span class="comment">//3-2,保存object中新增的event-handler对应关系</span></span><br><span class="line">	  <span class="keyword">final</span> Set&lt;EventHandler&gt; foundHandlers = foundHandlersMap.get(type);</span><br><span class="line">	  <span class="keyword">if</span> (!handlers.addAll(foundHandlers)) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Object already registered."</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//4.检查object上的event是否存在对应的Producer，有则触发一次调用</span></span><br><span class="line">	<span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; entry : foundHandlersMap.entrySet()) &#123;</span><br><span class="line">	  Class&lt;?&gt; type = entry.getKey();</span><br><span class="line">	  EventProducer producer = producersByType.get(type);</span><br><span class="line">	  <span class="keyword">if</span> (producer != <span class="keyword">null</span> &amp;&amp; producer.isValid()) &#123;</span><br><span class="line">		Set&lt;EventHandler&gt; foundHandlers = entry.getValue();</span><br><span class="line">		<span class="keyword">for</span> (EventHandler foundHandler : foundHandlers) &#123;</span><br><span class="line">		  <span class="keyword">if</span> (!producer.isValid()) &#123;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		  &#125;</span><br><span class="line">		  <span class="keyword">if</span> (foundHandler.isValid()) &#123;</span><br><span class="line">			dispatchProducerResultToHandler(foundHandler, producer);</span><br><span class="line">		  &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">register</span><span class="params">(Object object)</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//1.检查当前线程是否符合ThreadEnforcer的设置</span></div><div class="line">	<span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</div><div class="line">	  <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Object to register must not be null."</span>);</div><div class="line">	&#125;</div><div class="line">	enforcer.enforce(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">	<span class="comment">//2.默认情况下，通过@Producer注解找到所有的事件生产者Producers</span></div><div class="line">	Map&lt;Class&lt;?&gt;, EventProducer&gt; foundProducers = handlerFinder.findAllProducers(object);</div><div class="line">	<span class="keyword">for</span> (Class&lt;?&gt; type : foundProducers.keySet()) &#123;</div><div class="line"></div><div class="line">	  <span class="comment">//2-1 判断object上的produce注册的event是否已经被别人注册过</span></div><div class="line">	  <span class="keyword">final</span> EventProducer producer = foundProducers.get(type);</div><div class="line"></div><div class="line">	  <span class="comment">//type存在则返回type对应的值 type不存在则将type的键值设为producer</span></div><div class="line">	  EventProducer previousProducer = producersByType.putIfAbsent(type, producer);</div><div class="line">	  <span class="comment">//checking if the previous producer existed</span></div><div class="line">	  <span class="keyword">if</span> (previousProducer != <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Producer method for type "</span> + type</div><div class="line">		  + <span class="string">" found on type "</span> + producer.target.getClass()</div><div class="line">		  + <span class="string">", but already registered by type "</span> + previousProducer.target.getClass() + <span class="string">"."</span>);</div><div class="line">	  &#125;</div><div class="line"></div><div class="line"></div><div class="line">	  <span class="comment">//2-2 如果没有被注册过，那么找出对应event的handler，触发一次回调</span></div><div class="line">	  Set&lt;EventHandler&gt; handlers = handlersByType.get(type);</div><div class="line">	  <span class="keyword">if</span> (handlers != <span class="keyword">null</span> &amp;&amp; !handlers.isEmpty()) &#123;</div><div class="line">		<span class="keyword">for</span> (EventHandler handler : handlers) &#123;</div><div class="line">		  dispatchProducerResultToHandler(handler, producer);</div><div class="line">		&#125;</div><div class="line">	  &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//3. 找出object上用@Subscribe注解的方法</span></div><div class="line">	Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; foundHandlersMap = handlerFinder.findAllSubscribers(object);</div><div class="line">	<span class="keyword">for</span> (Class&lt;?&gt; type : foundHandlersMap.keySet()) &#123;</div><div class="line">	  Set&lt;EventHandler&gt; handlers = handlersByType.get(type);</div><div class="line">	  </div><div class="line">	  </div><div class="line">	  <span class="keyword">if</span> (handlers == <span class="keyword">null</span>) &#123;</div><div class="line">		</div><div class="line">		<span class="comment">//3-1，该event是第一次注册，那么新建一个CopyOnWriteArraySet用来保存handler和event的对应关系</span></div><div class="line">		</div><div class="line">		Set&lt;EventHandler&gt; handlersCreation = <span class="keyword">new</span> CopyOnWriteArraySet&lt;EventHandler&gt;();</div><div class="line">		handlers = handlersByType.putIfAbsent(type, handlersCreation);</div><div class="line">		<span class="keyword">if</span> (handlers == <span class="keyword">null</span>) &#123;</div><div class="line">			handlers = handlersCreation;</div><div class="line">		&#125;</div><div class="line">	  &#125;</div><div class="line">	  </div><div class="line">	  <span class="comment">//3-2,保存object中新增的event-handler对应关系</span></div><div class="line">	  <span class="keyword">final</span> Set&lt;EventHandler&gt; foundHandlers = foundHandlersMap.get(type);</div><div class="line">	  <span class="keyword">if</span> (!handlers.addAll(foundHandlers)) &#123;</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Object already registered."</span>);</div><div class="line">	  &#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//4.检查object上的event是否存在对应的Producer，有则触发一次调用</span></div><div class="line">	<span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; entry : foundHandlersMap.entrySet()) &#123;</div><div class="line">	  Class&lt;?&gt; type = entry.getKey();</div><div class="line">	  EventProducer producer = producersByType.get(type);</div><div class="line">	  <span class="keyword">if</span> (producer != <span class="keyword">null</span> &amp;&amp; producer.isValid()) &#123;</div><div class="line">		Set&lt;EventHandler&gt; foundHandlers = entry.getValue();</div><div class="line">		<span class="keyword">for</span> (EventHandler foundHandler : foundHandlers) &#123;</div><div class="line">		  <span class="keyword">if</span> (!producer.isValid()) &#123;</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		  &#125;</div><div class="line">		  <span class="keyword">if</span> (foundHandler.isValid()) &#123;</div><div class="line">			dispatchProducerResultToHandler(foundHandler, producer);</div><div class="line">		  &#125;</div><div class="line">		&#125;</div><div class="line">	  &#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>register方法主要做了三件事情：触发新的Producer；注册新的event-handler关系；触发旧的Producer。另外有两点要注意：</p>
 <ul>
 <li>在保证线程安全的情况下，使用CopyOnWriteArraySet作为保存event和handler的容器，可以大大提高效率。</li>
 <li>由于register方法没有加锁，所有在3-1中，尽管已经检查了handlers是否存在，但仍需使用putIfAbsent来保存handler。</li>
 </ul>
 <h2 id="HandlerFinder-1"><a href="#HandlerFinder-1" class="headerlink" title="HandlerFinder"></a>HandlerFinder</h2><p>注意到Bus通过HandlerFinder来查找object上的producer和subscriber，接下来看一下HanderFinder的实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HandlerFinder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  Map&lt;Class&lt;?&gt;, EventProducer&gt; findAllProducers(Object listener);</span><br><span class="line"></span><br><span class="line">  Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; findAllSubscribers(Object listener);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  HandlerFinder ANNOTATED = <span class="keyword">new</span> HandlerFinder() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;Class&lt;?&gt;, EventProducer&gt; findAllProducers(Object listener) &#123;</span><br><span class="line">      <span class="keyword">return</span> AnnotatedHandlerFinder.findAllProducers(listener);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; findAllSubscribers(Object listener) &#123;</span><br><span class="line">      <span class="keyword">return</span> AnnotatedHandlerFinder.findAllSubscribers(listener);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">HandlerFinder</span> </span>&#123;</div><div class="line"></div><div class="line">  Map&lt;Class&lt;?&gt;, EventProducer&gt; findAllProducers(Object listener);</div><div class="line"></div><div class="line">  Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; findAllSubscribers(Object listener);</div><div class="line"></div><div class="line"></div><div class="line">  HandlerFinder ANNOTATED = <span class="keyword">new</span> HandlerFinder() &#123;</div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> Map&lt;Class&lt;?&gt;, EventProducer&gt; findAllProducers(Object listener) &#123;</div><div class="line">      <span class="keyword">return</span> AnnotatedHandlerFinder.findAllProducers(listener);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="keyword">public</span> Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; findAllSubscribers(Object listener) &#123;</div><div class="line">      <span class="keyword">return</span> AnnotatedHandlerFinder.findAllSubscribers(listener);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中findAllProducers方法返回某event type对应的EventProducers，findAllSubscribers返回某event type对应的EventHandler集合。</p>
 <h2 id="EventProducer"><a href="#EventProducer" class="headerlink" title="EventProducer"></a>EventProducer</h2><p>EventProducer是producer方法的包装类，源码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventProducer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Object target;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Method method;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> hashCode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    EventProducer(Object target, Method method) &#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</span><br><span class="line">                <span class="string">"EventProducer target cannot be null."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</span><br><span class="line">                <span class="string">"EventProducer method cannot be null."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">        <span class="keyword">this</span>.method = method;</span><br><span class="line">        method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 提前计算hashcode，以防每次调用hash()时消耗资源</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> prime = <span class="number">31</span>;</span><br><span class="line">        hashCode = ((prime + method.hashCode()) * prime) + target.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> valid;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 应在object unregister时调用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invalidate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        valid = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">produceEvent</span><span class="params">()</span> <span class="keyword">throws</span> InvocationTargetException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!valid) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(toString() +</span><br><span class="line">                <span class="string">" has been invalidated and can no longer produce events."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> method.invoke(target);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            <span class="keyword">if</span> (e.getCause() <span class="keyword">instanceof</span> Error) &#123;</span><br><span class="line">                <span class="keyword">throw</span> (Error) e.getCause();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">throw</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventProducer</span> </span>&#123;</div><div class="line">    <span class="keyword">final</span> Object target;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Method method;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> hashCode;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    EventProducer(Object target, Method method) &#123;</div><div class="line">        <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</div><div class="line">                <span class="string">"EventProducer target cannot be null."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</div><div class="line">                <span class="string">"EventProducer method cannot be null."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.target = target;</div><div class="line">        <span class="keyword">this</span>.method = method;</div><div class="line">        method.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 提前计算hashcode，以防每次调用hash()时消耗资源</span></div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> prime = <span class="number">31</span>;</div><div class="line">        hashCode = ((prime + method.hashCode()) * prime) + target.hashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> valid;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">// 应在object unregister时调用</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invalidate</span><span class="params">()</span> </span>&#123;</div><div class="line">        valid = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">produceEvent</span><span class="params">()</span> <span class="keyword">throws</span> InvocationTargetException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!valid) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(toString() +</div><div class="line">                <span class="string">" has been invalidated and can no longer produce events."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">return</span> method.invoke(target);</div><div class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(e);</div><div class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</div><div class="line">            <span class="keyword">if</span> (e.getCause() <span class="keyword">instanceof</span> Error) &#123;</div><div class="line">                <span class="keyword">throw</span> (Error) e.getCause();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">throw</span> e;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中 produceEvent方法用于获得event。可以看出Otto要求produce方法不能有参数。</p>
 <h2 id="EventHandler"><a href="#EventHandler" class="headerlink" title="EventHandler"></a>EventHandler</h2><p>EventHandler是一个event handler方法（事件回调）的包装类，源码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object target;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Method method;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> hashCode;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</span><br><span class="line"></span><br><span class="line">    EventHandler(Object target, Method method) &#123;</span><br><span class="line">        <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</span><br><span class="line">                <span class="string">"EventHandler target cannot be null."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</span><br><span class="line">                <span class="string">"EventHandler method cannot be null."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.target = target;</span><br><span class="line">        <span class="keyword">this</span>.method = method;</span><br><span class="line">        method.setAccessible(<span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Compute hash code eagerly since we know it will be used frequently and we cannot estimate the runtime of the</span></span><br><span class="line">        <span class="comment">// target's hashCode call.</span></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> prime = <span class="number">31</span>;</span><br><span class="line">        hashCode = ((prime + method.hashCode()) * prime) + target.hashCode();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> valid;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invalidate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        valid = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleEvent</span><span class="params">(Object event)</span> <span class="keyword">throws</span> InvocationTargetException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!valid) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(toString() +</span><br><span class="line">                <span class="string">" has been invalidated and can no longer handle events."</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            method.invoke(target, event);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(e);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">            <span class="keyword">if</span> (e.getCause() <span class="keyword">instanceof</span> Error) &#123;</span><br><span class="line">                <span class="keyword">throw</span> (Error) e.getCause();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">throw</span> e;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">EventHandler</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object target;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Method method;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> hashCode;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> valid = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    EventHandler(Object target, Method method) &#123;</div><div class="line">        <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</div><div class="line">                <span class="string">"EventHandler target cannot be null."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(</div><div class="line">                <span class="string">"EventHandler method cannot be null."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">this</span>.target = target;</div><div class="line">        <span class="keyword">this</span>.method = method;</div><div class="line">        method.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">        <span class="comment">// Compute hash code eagerly since we know it will be used frequently and we cannot estimate the runtime of the</span></div><div class="line">        <span class="comment">// target's hashCode call.</span></div><div class="line">        <span class="keyword">final</span> <span class="keyword">int</span> prime = <span class="number">31</span>;</div><div class="line">        hashCode = ((prime + method.hashCode()) * prime) + target.hashCode();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValid</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> valid;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">invalidate</span><span class="params">()</span> </span>&#123;</div><div class="line">        valid = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleEvent</span><span class="params">(Object event)</span> <span class="keyword">throws</span> InvocationTargetException </span>&#123;</div><div class="line">        <span class="keyword">if</span> (!valid) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException(toString() +</div><div class="line">                <span class="string">" has been invalidated and can no longer handle events."</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            method.invoke(target, event);</div><div class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException e) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> AssertionError(e);</div><div class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</div><div class="line">            <span class="keyword">if</span> (e.getCause() <span class="keyword">instanceof</span> Error) &#123;</div><div class="line">                <span class="keyword">throw</span> (Error) e.getCause();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">throw</span> e;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>其中handlEvent方法用于在object上调用handle方法（事件回调），传入event对象。Otto要求event handler方法只能有一个参数就是event handler类。</p>
 <h2 id="dispatchProducerResultToHandler"><a href="#dispatchProducerResultToHandler" class="headerlink" title="dispatchProducerResultToHandler()"></a>dispatchProducerResultToHandler()</h2><p>dispatchProducerResultToHandler方法用于将Producer产生的event分发给对应的handler，源码如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dispatchProducerResultToHandler</span><span class="params">(EventHandler handler, EventProducer producer)</span> </span>&#123;</span><br><span class="line">    Object event = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        event = producer.produceEvent();</span><br><span class="line">    &#125; <span class="keyword">catch</span>(InvocationTargetException e) &#123;</span><br><span class="line">        throwRuntimeException(<span class="string">"Producer "</span> + producer + <span class="string">" threw an exception."</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (event == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    dispatch(event, handler);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatch</span><span class="params">(Object event, EventHandler wrapper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        wrapper.handleEvent(event);</span><br><span class="line">    &#125; <span class="keyword">catch</span>(InvocationTargetException e) &#123;</span><br><span class="line">        throwRuntimeException(<span class="string">"Could not dispatch event: "</span> + event.getClass() + <span class="string">" to handler "</span> + wrapper, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">dispatchProducerResultToHandler</span><span class="params">(EventHandler handler, EventProducer producer)</span> </span>&#123;</div><div class="line">    Object event = <span class="keyword">null</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        event = producer.produceEvent();</div><div class="line">    &#125; <span class="keyword">catch</span>(InvocationTargetException e) &#123;</div><div class="line">        throwRuntimeException(<span class="string">"Producer "</span> + producer + <span class="string">" threw an exception."</span>, e);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (event == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    dispatch(event, handler);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatch</span><span class="params">(Object event, EventHandler wrapper)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        wrapper.handleEvent(event);</div><div class="line">    &#125; <span class="keyword">catch</span>(InvocationTargetException e) &#123;</div><div class="line">        throwRuntimeException(<span class="string">"Could not dispatch event: "</span> + event.getClass() + <span class="string">" to handler "</span> + wrapper, e);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>主要使用了Producer的produceEvent()获取event对象后，调用EventHandler的handleEvent（）方法处理事件。</p>
 <h2 id="unregister"><a href="#unregister" class="headerlink" title="unregister()"></a>unregister()</h2><p>Bus类的unregister()方法用于解除目标对象和Bus之间的关联关系，包括对象上的producer方法，subscriber方法，源码如下所示：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregister</span><span class="params">(Object object)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Object to unregister must not be null."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1. 检查当前线程是否符合ThreadEnforcer的设置</span></span><br><span class="line">    enforcer.enforce(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 默认情况下，通过注解在object上找出所有Producer，将其从producersByType中删除并标记为invalidate</span></span><br><span class="line">    Map&lt;Class&lt;?&gt;, EventProducer&gt; producersInListener = handlerFinder.findAllProducers(object);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, EventProducer&gt; entry : producersInListener.entrySet()) &#123;</span><br><span class="line">        <span class="keyword">final</span> Class&lt;?&gt; key = entry.getKey();</span><br><span class="line">        EventProducer producer = getProducerForEventType(key);</span><br><span class="line">        EventProducer value = entry.getValue();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (value == <span class="keyword">null</span> || !value.equals(producer)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">            <span class="string">"Missing event producer for an annotated method. Is "</span> + object.getClass() + <span class="string">" registered?"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        producersByType.remove(key).invalidate();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//3. 默认情况下，找出object上用@Subscribe注解了的handler，将其从event集合中删除并标记为invalidate</span></span><br><span class="line">    Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; handlersInListener = handlerFinder.findAllSubscribers(object);</span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; entry : handlersInListener.entrySet()) &#123;</span><br><span class="line">        Set&lt;EventHandler&gt; currentHandlers = getHandlersForEventType(entry.getKey());</span><br><span class="line">        Collection&lt;EventHandler&gt; eventMethodsInListener = entry.getValue();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (currentHandlers == <span class="keyword">null</span> || !currentHandlers.containsAll(eventMethodsInListener)) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">            <span class="string">"Missing event handler for an annotated method. Is "</span> + object.getClass() + <span class="string">" registered?"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (EventHandler handler : currentHandlers) &#123;</span><br><span class="line">            <span class="keyword">if</span> (eventMethodsInListener.contains(handler)) &#123;</span><br><span class="line">                handler.invalidate();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        currentHandlers.removeAll(eventMethodsInListener);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">unregister</span><span class="params">(Object object)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (object == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Object to unregister must not be null."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//1. 检查当前线程是否符合ThreadEnforcer的设置</span></div><div class="line">    enforcer.enforce(<span class="keyword">this</span>);</div><div class="line"></div><div class="line">    <span class="comment">//2. 默认情况下，通过注解在object上找出所有Producer，将其从producersByType中删除并标记为invalidate</span></div><div class="line">    Map&lt;Class&lt;?&gt;, EventProducer&gt; producersInListener = handlerFinder.findAllProducers(object);</div><div class="line">    <span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, EventProducer&gt; entry : producersInListener.entrySet()) &#123;</div><div class="line">        <span class="keyword">final</span> Class&lt;?&gt; key = entry.getKey();</div><div class="line">        EventProducer producer = getProducerForEventType(key);</div><div class="line">        EventProducer value = entry.getValue();</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (value == <span class="keyword">null</span> || !value.equals(producer)) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</div><div class="line">            <span class="string">"Missing event producer for an annotated method. Is "</span> + object.getClass() + <span class="string">" registered?"</span>);</div><div class="line">        &#125;</div><div class="line">        producersByType.remove(key).invalidate();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//3. 默认情况下，找出object上用@Subscribe注解了的handler，将其从event集合中删除并标记为invalidate</span></div><div class="line">    Map&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; handlersInListener = handlerFinder.findAllSubscribers(object);</div><div class="line">    <span class="keyword">for</span> (Map.Entry&lt;Class&lt;?&gt;, Set&lt;EventHandler&gt;&gt; entry : handlersInListener.entrySet()) &#123;</div><div class="line">        Set&lt;EventHandler&gt; currentHandlers = getHandlersForEventType(entry.getKey());</div><div class="line">        Collection&lt;EventHandler&gt; eventMethodsInListener = entry.getValue();</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> (currentHandlers == <span class="keyword">null</span> || !currentHandlers.containsAll(eventMethodsInListener)) &#123;</div><div class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</div><div class="line">            <span class="string">"Missing event handler for an annotated method. Is "</span> + object.getClass() + <span class="string">" registered?"</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">for</span> (EventHandler handler : currentHandlers) &#123;</div><div class="line">            <span class="keyword">if</span> (eventMethodsInListener.contains(handler)) &#123;</div><div class="line">                handler.invalidate();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        currentHandlers.removeAll(eventMethodsInListener);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h1 id="投递事件"><a href="#投递事件" class="headerlink" title="投递事件"></a>投递事件</h1><h2 id="post"><a href="#post" class="headerlink" title="post()"></a>post()</h2><p>简单的事件投递过程如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bus.post(<span class="keyword">new</span> HandlerEvent(<span class="number">42</span>));</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">bus.post(getEvent);</span><br><span class="line"></span><br><span class="line"><span class="meta">@Producer</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> HandlerEvent <span class="title">getEvent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> HandlerEvent(<span class="number">42</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">bus.post(<span class="keyword">new</span> HandlerEvent(<span class="number">42</span>));</div><div class="line"></div><div class="line">或者</div><div class="line"></div><div class="line">bus.post(getEvent);</div><div class="line"></div><div class="line"><span class="meta">@Producer</span></div><div class="line"><span class="function"><span class="keyword">public</span> HandlerEvent <span class="title">getEvent</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> HandlerEvent(<span class="number">42</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>下面来看下post方法实现的源码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ublic <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object event)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (event == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Event to post must not be null."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//1. 检查当前线程是否符合ThreadEnforcer的设置</span></span><br><span class="line">    enforcer.enforce(<span class="keyword">this</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//2. 向上追溯event的所有父类</span></span><br><span class="line">    Set&lt;Class&lt;?&gt;&gt;dispatchTypes = flattenHierarchy(event.getClass());</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//3. 当前event没有注册handler，则发送一个DeadEvent事件</span></span><br><span class="line">    <span class="keyword">boolean</span> dispatched = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (Class&lt;?&gt;eventType: dispatchTypes) &#123;</span><br><span class="line">        Set&lt;EventHandler&gt; wrappers = getHandlersForEventType(eventType);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (wrappers != <span class="keyword">null</span> &amp;&amp; !wrappers.isEmpty()) &#123;</span><br><span class="line">            dispatched = <span class="keyword">true</span>;</span><br><span class="line">            <span class="keyword">for</span> (EventHandler wrapper: wrappers) &#123;</span><br><span class="line">                <span class="comment">//3-1 将事件和handler放到分发队列里</span></span><br><span class="line">                enqueueEvent(event, wrapper);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//4. 当前event没有注册handler，则发送一个DeadEvent事件</span></span><br><span class="line">    <span class="keyword">if</span> (!dispatched &amp;&amp; !(event <span class="keyword">instanceof</span> DeadEvent)) &#123;</span><br><span class="line">        post(<span class="keyword">new</span> DeadEvent(<span class="keyword">this</span>, event));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//5. 通知队列进行分发操作</span></span><br><span class="line">    dispatchQueuedEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="function">ublic <span class="keyword">void</span> <span class="title">post</span><span class="params">(Object event)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (event == <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">"Event to post must not be null."</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//1. 检查当前线程是否符合ThreadEnforcer的设置</span></div><div class="line">    enforcer.enforce(<span class="keyword">this</span>);</div><div class="line">    </div><div class="line">    <span class="comment">//2. 向上追溯event的所有父类</span></div><div class="line">    Set&lt;Class&lt;?&gt;&gt;dispatchTypes = flattenHierarchy(event.getClass());</div><div class="line">    </div><div class="line">    <span class="comment">//3. 当前event没有注册handler，则发送一个DeadEvent事件</span></div><div class="line">    <span class="keyword">boolean</span> dispatched = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">for</span> (Class&lt;?&gt;eventType: dispatchTypes) &#123;</div><div class="line">        Set&lt;EventHandler&gt; wrappers = getHandlersForEventType(eventType);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (wrappers != <span class="keyword">null</span> &amp;&amp; !wrappers.isEmpty()) &#123;</div><div class="line">            dispatched = <span class="keyword">true</span>;</div><div class="line">            <span class="keyword">for</span> (EventHandler wrapper: wrappers) &#123;</div><div class="line">                <span class="comment">//3-1 将事件和handler放到分发队列里</span></div><div class="line">                enqueueEvent(event, wrapper);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//4. 当前event没有注册handler，则发送一个DeadEvent事件</span></div><div class="line">    <span class="keyword">if</span> (!dispatched &amp;&amp; !(event <span class="keyword">instanceof</span> DeadEvent)) &#123;</div><div class="line">        post(<span class="keyword">new</span> DeadEvent(<span class="keyword">this</span>, event));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//5. 通知队列进行分发操作</span></div><div class="line">    dispatchQueuedEvents();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>注意两点：</p>
 <ul>
 <li>发送一个Event时，订阅了Event父类的Subscriber方法也会被调用</li>
 <li>事件被放到调用者所在线程的队列里依次分发</li>
 </ul>
 <h2 id="flattenHierarchy"><a href="#flattenHierarchy" class="headerlink" title="flattenHierarchy()"></a>flattenHierarchy()</h2><p>进行post操作时，首先会通过flattenHierarchy方法获得event的所有父类或接口的集合：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"> Set&lt;Class&lt;?&gt;&gt; flattenHierarchy(Class&lt;?&gt; concreteClass) &#123;</span><br><span class="line">   Set&lt;Class&lt;?&gt;&gt; classes = flattenHierarchyCache.get(concreteClass);</span><br><span class="line">   <span class="keyword">if</span> (classes == <span class="keyword">null</span>) &#123;</span><br><span class="line">     Set&lt;Class&lt;?&gt;&gt; classesCreation = getClassesFor(concreteClass);</span><br><span class="line">     classes = flattenHierarchyCache.putIfAbsent(concreteClass, classesCreation);</span><br><span class="line">     <span class="keyword">if</span> (classes == <span class="keyword">null</span>) &#123;</span><br><span class="line">       classes = classesCreation;</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">return</span> classes;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//利用深度优先遍历导出了concreteClass的所有父类</span></span><br><span class="line"> <span class="keyword">private</span> Set&lt;Class&lt;?&gt;&gt; getClassesFor(Class&lt;?&gt; concreteClass) &#123;</span><br><span class="line">   List&lt;Class&lt;?&gt;&gt; parents = <span class="keyword">new</span> LinkedList&lt;Class&lt;?&gt;&gt;();</span><br><span class="line">   Set&lt;Class&lt;?&gt;&gt; classes = <span class="keyword">new</span> HashSet&lt;Class&lt;?&gt;&gt;();</span><br><span class="line"></span><br><span class="line">   parents.add(concreteClass);</span><br><span class="line"></span><br><span class="line"><span class="comment">//深度优先遍历</span></span><br><span class="line">   <span class="keyword">while</span> (!parents.isEmpty()) &#123;</span><br><span class="line">     Class&lt;?&gt; clazz = parents.remove(<span class="number">0</span>);</span><br><span class="line">     classes.add(clazz);</span><br><span class="line"></span><br><span class="line">     Class&lt;?&gt; parent = clazz.getSuperclass();</span><br><span class="line">     <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</span><br><span class="line">       parents.add(parent);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> classes;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> Set&lt;Class&lt;?&gt;&gt; flattenHierarchy(Class&lt;?&gt; concreteClass) &#123;</div><div class="line">   Set&lt;Class&lt;?&gt;&gt; classes = flattenHierarchyCache.get(concreteClass);</div><div class="line">   <span class="keyword">if</span> (classes == <span class="keyword">null</span>) &#123;</div><div class="line">     Set&lt;Class&lt;?&gt;&gt; classesCreation = getClassesFor(concreteClass);</div><div class="line">     classes = flattenHierarchyCache.putIfAbsent(concreteClass, classesCreation);</div><div class="line">     <span class="keyword">if</span> (classes == <span class="keyword">null</span>) &#123;</div><div class="line">       classes = classesCreation;</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">return</span> classes;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="comment">//利用深度优先遍历导出了concreteClass的所有父类</span></div><div class="line"> <span class="keyword">private</span> Set&lt;Class&lt;?&gt;&gt; getClassesFor(Class&lt;?&gt; concreteClass) &#123;</div><div class="line">   List&lt;Class&lt;?&gt;&gt; parents = <span class="keyword">new</span> LinkedList&lt;Class&lt;?&gt;&gt;();</div><div class="line">   Set&lt;Class&lt;?&gt;&gt; classes = <span class="keyword">new</span> HashSet&lt;Class&lt;?&gt;&gt;();</div><div class="line"></div><div class="line">   parents.add(concreteClass);</div><div class="line"></div><div class="line"><span class="comment">//深度优先遍历</span></div><div class="line">   <span class="keyword">while</span> (!parents.isEmpty()) &#123;</div><div class="line">     Class&lt;?&gt; clazz = parents.remove(<span class="number">0</span>);</div><div class="line">     classes.add(clazz);</div><div class="line"></div><div class="line">     Class&lt;?&gt; parent = clazz.getSuperclass();</div><div class="line">     <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</div><div class="line">       parents.add(parent);</div><div class="line">     &#125;</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> classes;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
 <h2 id="Dispatch-Queue"><a href="#Dispatch-Queue" class="headerlink" title="Dispatch Queue"></a>Dispatch Queue</h2><p>通过post方法投递的event首先会放到当前线程所在的Dispatch Queue中，然后依次分发。Bus类有如下成员属性：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadLocal&lt;ConcurrentLinkedQueue&lt;EventWithHandler&gt;&gt; eventsToDispatch =</span><br><span class="line">    <span class="keyword">new</span> ThreadLocal&lt;ConcurrentLinkedQueue&lt;EventWithHandler&gt;&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> ConcurrentLinkedQueue&lt;EventWithHandler&gt; <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentLinkedQueue&lt;EventWithHandler&gt;();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadLocal&lt;ConcurrentLinkedQueue&lt;EventWithHandler&gt;&gt; eventsToDispatch =</div><div class="line">    <span class="keyword">new</span> ThreadLocal&lt;ConcurrentLinkedQueue&lt;EventWithHandler&gt;&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> ConcurrentLinkedQueue&lt;EventWithHandler&gt; <span class="title">initialValue</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">return</span> <span class="keyword">new</span> ConcurrentLinkedQueue&lt;EventWithHandler&gt;();</div><div class="line">        &#125;</div><div class="line">    &#125;;</div></pre></td></tr></table></figure>
 <p>eventsToDispatch是一个ThreadLocal对象，通过initialValue()方法，eventsToDispatch每次在新的线程上调用的时候都会生成新的ConcurrentLinkedQueue实例。event是通过enqueueEvent方法放到queue中的，下面看看equeueEvent()的实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">enqueueEvent</span><span class="params">(Object event, EventHandler handler)</span> </span>&#123;</span><br><span class="line">	eventsToDispatch.get().offer(<span class="keyword">new</span> EventWithHandler(event, handler));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">enqueueEvent</span><span class="params">(Object event, EventHandler handler)</span> </span>&#123;</div><div class="line">	eventsToDispatch.get().offer(<span class="keyword">new</span> EventWithHandler(event, handler));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>offer()方法会将EventWithHandler对象放到当前线程的queue的尾部。offer方法和add方法的区别在于，当无法插入（例如空间不够）情况下会返回false，而不是抛出异常。EventWithHandler类对event和handler的关系进行了简单的包装，实现如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">EventWithHandler</span> </span>&#123;</span><br><span class="line">	<span class="keyword">final</span> Object event;</span><br><span class="line">	<span class="keyword">final</span> EventHandler handler;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">EventWithHandler</span><span class="params">(Object event, EventHandler handler)</span> </span>&#123;</span><br><span class="line">	  <span class="keyword">this</span>.event = event;</span><br><span class="line">	  <span class="keyword">this</span>.handler = handler;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">EventWithHandler</span> </span>&#123;</div><div class="line">	<span class="keyword">final</span> Object event;</div><div class="line">	<span class="keyword">final</span> EventHandler handler;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">EventWithHandler</span><span class="params">(Object event, EventHandler handler)</span> </span>&#123;</div><div class="line">	  <span class="keyword">this</span>.event = event;</div><div class="line">	  <span class="keyword">this</span>.handler = handler;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接下来看看dispatchQueuedEvents方法的实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchQueuedEvents</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// don't dispatch if we're already dispatching, that would allow reentrancy and out-of-order events. Instead, leave</span></span><br><span class="line">    <span class="comment">// the events to be dispatched after the in-progress dispatch is complete.</span></span><br><span class="line">    <span class="comment">//1. 不能重复分发，否则会导致event的分发次序混乱</span></span><br><span class="line">    <span class="keyword">if</span> (isDispatching.get()) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    isDispatching.set(<span class="keyword">true</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">//2. 依次取出EventWithHandler，并通过dispatch方法进行分发。</span></span><br><span class="line">            EventWithHandler eventWithHandler = eventsToDispatch.get().poll();</span><br><span class="line">            <span class="keyword">if</span> (eventWithHandler == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (eventWithHandler.handler.isValid()) &#123;</span><br><span class="line">                dispatch(eventWithHandler.event, eventWithHandler.handler);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        isDispatching.set(<span class="keyword">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatch</span><span class="params">(Object event, EventHandler wrapper)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      wrapper.handleEvent(event);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</span><br><span class="line">      throwRuntimeException(</span><br><span class="line">          <span class="string">"Could not dispatch event: "</span> + event.getClass() + <span class="string">" to handler "</span> + wrapper, e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatchQueuedEvents</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// don't dispatch if we're already dispatching, that would allow reentrancy and out-of-order events. Instead, leave</span></div><div class="line">    <span class="comment">// the events to be dispatched after the in-progress dispatch is complete.</span></div><div class="line">    <span class="comment">//1. 不能重复分发，否则会导致event的分发次序混乱</span></div><div class="line">    <span class="keyword">if</span> (isDispatching.get()) &#123;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    isDispatching.set(<span class="keyword">true</span>);</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">            <span class="comment">//2. 依次取出EventWithHandler，并通过dispatch方法进行分发。</span></div><div class="line">            EventWithHandler eventWithHandler = eventsToDispatch.get().poll();</div><div class="line">            <span class="keyword">if</span> (eventWithHandler == <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            <span class="keyword">if</span> (eventWithHandler.handler.isValid()) &#123;</div><div class="line">                dispatch(eventWithHandler.event, eventWithHandler.handler);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        isDispatching.set(<span class="keyword">false</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">dispatch</span><span class="params">(Object event, EventHandler wrapper)</span> </span>&#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      wrapper.handleEvent(event);</div><div class="line">    &#125; <span class="keyword">catch</span> (InvocationTargetException e) &#123;</div><div class="line">      throwRuntimeException(</div><div class="line">          <span class="string">"Could not dispatch event: "</span> + event.getClass() + <span class="string">" to handler "</span> + wrapper, e);</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p>值得注意的是，所有subscrible方法抛出的异常都会在这里捕获，捕获到异常以后event分发过程即停止，直到下一次在该线程上调用post为止。</p>
 <h1 id="结构图"><a href="#结构图" class="headerlink" title="结构图"></a>结构图</h1><p>Otto的总体结构如下表示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">            +-------------------------+</span><br><span class="line">            |Bus(ThreadLocal)         |</span><br><span class="line">            |     +--------------+    |</span><br><span class="line">            |     |EventProducers|    |</span><br><span class="line">            |     |  +-------+   |  register  +-------+</span><br><span class="line">            |     |  |Produce|   &lt;----+-------+Produce|</span><br><span class="line">            |     |  +-------+   |    |       +-------+</span><br><span class="line">            |     |  +-------+   |    |</span><br><span class="line">            |     |  |Produce|   |    |</span><br><span class="line">            |     |  +-------+   |    |</span><br><span class="line">            |     +--------------+    |</span><br><span class="line">            |            |            |</span><br><span class="line">            |          event          |</span><br><span class="line">            |            |            |</span><br><span class="line"> post(event)|    +-------v--------+   |</span><br><span class="line">+----------------&gt; Dispatch Queue |   |</span><br><span class="line">            |    +-------+--------+   |</span><br><span class="line">            |            |            |</span><br><span class="line">            |          event          |</span><br><span class="line">            |            |            |</span><br><span class="line">            |     +------v------+     |</span><br><span class="line">            |     |EventHandlers|     |</span><br><span class="line">            |     | +---------+ |     |</span><br><span class="line">            |     | |Subscribe| |   register  +---------+</span><br><span class="line">            |     | +---------+ &lt;-----+-------+Subscribe|</span><br><span class="line">            |     | +---------+ |     |       +---------+</span><br><span class="line">            |     | |Subscribe| |     |</span><br><span class="line">            |     | +---------+ |     |</span><br><span class="line">            |     +-------------+     |</span><br><span class="line">            |                         |</span><br><span class="line">            +-------------------------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">            +-------------------------+</div><div class="line">            |Bus(ThreadLocal)         |</div><div class="line">            |     +--------------+    |</div><div class="line">            |     |EventProducers|    |</div><div class="line">            |     |  +-------+   |  register  +-------+</div><div class="line">            |     |  |Produce|   &lt;----+-------+Produce|</div><div class="line">            |     |  +-------+   |    |       +-------+</div><div class="line">            |     |  +-------+   |    |</div><div class="line">            |     |  |Produce|   |    |</div><div class="line">            |     |  +-------+   |    |</div><div class="line">            |     +--------------+    |</div><div class="line">            |            |            |</div><div class="line">            |          event          |</div><div class="line">            |            |            |</div><div class="line"> post(event)|    +-------v--------+   |</div><div class="line">+----------------&gt; Dispatch Queue |   |</div><div class="line">            |    +-------+--------+   |</div><div class="line">            |            |            |</div><div class="line">            |          event          |</div><div class="line">            |            |            |</div><div class="line">            |     +------v------+     |</div><div class="line">            |     |EventHandlers|     |</div><div class="line">            |     | +---------+ |     |</div><div class="line">            |     | |Subscribe| |   register  +---------+</div><div class="line">            |     | +---------+ &lt;-----+-------+Subscribe|</div><div class="line">            |     | +---------+ |     |       +---------+</div><div class="line">            |     | |Subscribe| |     |</div><div class="line">            |     | +---------+ |     |</div><div class="line">            |     +-------------+     |</div><div class="line">            |                         |</div><div class="line">            +-------------------------+</div></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/源码分析/" rel="tag">#源码分析</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/17/Android Okhttp使用详解/" rel="next" title="Okhttp使用详解">
-                <i class="fa fa-chevron-left"></i> Okhttp使用详解
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/18/Android EventBus3.0源码解析/" rel="prev" title="Android EventBus3.0源码解析">
-                Android EventBus3.0源码解析 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/18/Android Otto源码解析/" target="_blank" rel="external">http://yoursite.com/2016/04/18/Android Otto源码解析/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/18/Android Otto源码解析/"
-           data-title="Otto源码解析" data-url="http://yoursite.com/2016/04/18/Android Otto源码解析/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/18/Android Otto源码解析/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/18/Android EventBus3.0源码解析/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android EventBus3.0源码解析</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/17/Android Okhttp使用详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Okhttp使用详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Android Otto源码解析" data-title="Otto源码解析" data-url="http://yoursite.com/2016/04/18/Android Otto源码解析/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/18/Android Otto源码解析/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aS27DMAwFwNz/0inQVYHUziPpFLU0Whlo0mi8IPh7POLz/D6vz6+f+XmO/nr0+aPvXnYwMDBuy0j+3fm1kqvk+CYVAwNjA0YeZKuAJCgnz2/ujIGBgREkfNXAnaePGBgYGL2AOyl9zxNHDAwMjEkR20sW52nixbU4BgbGDRlXhc5PPP/RfAMDA+MfM56D0xtnJkG8fBMMDIylGeettF5Kl4fO3nJGdC0MDIyFGPNWfv4ikvWL3ivAwMDYjVFtriWM6msqF7QYGBgbMKot+JyRJ53V1/RL+YqBgbEBo1d2FpYhiqtmhSoVAwNjaUYySpykgPP2XCGUY2BgLMqojifzdlvesKu22DAwMHZj5EGtWrhOQnB1TQ0DA2NtRtJuqy5J9NbC8iHom1ocAwNjOUZemlavOGn991JMDAyMVRm9Ijb5+d6SRx6IMTAwdmNUk7ZJOlgdlDaLWAwMjIUYk6/l4XhS3DYTRAwMjOUYk8A3H0zm38rXPjAwMNZjNFOxImmSIEYvBQMDYwNGr9V1VaHbSyVHKxcYGBi3YkwWKXqjynKWWk06MTAwFmI8i2c+QsgDejO3xcDAWI5xbbT+RBl8bbDGwMC4L2MSZJPEsbfqWl7awMDA2IBRDXx5s6w6SMhHqhgYGBi9wrXatquWu9EIEwMDY2PGedpXZfcCOgYGxs6M5GeqqxK9VLI5DMDAwFiaMR8MJCF4njgW0kQMDIx1GF81bdE/FF954wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#构造函数"><span class="nav-number">1.</span> <span class="nav-text">构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadEnforce"><span class="nav-number">1.1.</span> <span class="nav-text">ThreadEnforce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#identifier"><span class="nav-number">1.2.</span> <span class="nav-text">identifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HandlerFinder"><span class="nav-number">1.3.</span> <span class="nav-text">HandlerFinder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">1.4.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注册-反注册事件"><span class="nav-number">2.</span> <span class="nav-text">注册/反注册事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Subsrible"><span class="nav-number">2.1.</span> <span class="nav-text">@Subsrible</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#register"><span class="nav-number">2.2.</span> <span class="nav-text">register()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HandlerFinder-1"><span class="nav-number">2.3.</span> <span class="nav-text">HandlerFinder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventProducer"><span class="nav-number">2.4.</span> <span class="nav-text">EventProducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EventHandler"><span class="nav-number">2.5.</span> <span class="nav-text">EventHandler</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dispatchProducerResultToHandler"><span class="nav-number">2.6.</span> <span class="nav-text">dispatchProducerResultToHandler()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#unregister"><span class="nav-number">2.7.</span> <span class="nav-text">unregister()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#投递事件"><span class="nav-number">3.</span> <span class="nav-text">投递事件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#post"><span class="nav-number">3.1.</span> <span class="nav-text">post()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flattenHierarchy"><span class="nav-number">3.2.</span> <span class="nav-text">flattenHierarchy()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dispatch-Queue"><span class="nav-number">3.3.</span> <span class="nav-text">Dispatch Queue</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结构图"><span class="nav-number">4.</span> <span class="nav-text">结构图</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

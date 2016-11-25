@@ -1,63 +1,18 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="python基础," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="数字
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Python基础之(一)基本数据类型 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="python基础">
+  <meta name="description" content="数字
 基本类型
 
 首先，进入Python交互模式中：
@@ -65,7 +20,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python基础之(一)基本数据类型">
 <meta property="og:url" content="http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="数字
 基本类型
 
@@ -79,243 +34,176 @@
 
 首先，进入Python交互模式中：
 123456789101112131415161718192021222324//整数&amp;gt;&amp;gt;&amp;gt; 33//长整数&amp;gt;&amp;gt;&amp;gt; 3333333333333333333333333333333333333333333333333333L//浮点数&amp;gt;&amp;gt;&amp;gt; 3.222222222223.22222222222">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Python基础之(一)基本数据类型 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python基础之(一)基本数据类型</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Python基础之(一)基本数据类型</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-12T15:02:50.000Z" itemprop="datePublished" class="page-time">
+  2016-04-12 23:02:50
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数字"><span class="post-toc-number">1.</span> <span class="post-toc-text">数字</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#变量"><span class="post-toc-number">2.</span> <span class="post-toc-text">变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单的四则运算"><span class="post-toc-number">3.</span> <span class="post-toc-text">简单的四则运算</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#整数溢出问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">整数溢出问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#除法"><span class="post-toc-number">5.</span> <span class="post-toc-text">除法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整数与整数相除"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">整数与整数相除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#整数与浮点数相除"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">整数与浮点数相除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引用模块解决除法问题"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">引用模块解决除法问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#余数"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">余数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#四舍五入"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">四舍五入</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用数学函数和运算优先级"><span class="post-toc-number">6.</span> <span class="post-toc-text">常用数学函数和运算优先级</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#math模块"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">math模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#两个函数"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">两个函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运算优先级"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">运算优先级</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python基础之(一)基本数据类型"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Python基础之(一)基本数据类型
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Python基础之(一)基本数据类型</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-12T23:02:50+08:00" content="2016-04-12 23:02:50">
-              2016-04-12 23:02:50
-            </time>
-          </span>
+            <time datetime="2016-04-12T15:02:50.000Z" itemprop="datePublished" class="post-time">
+  2016-04-12 23:02:50
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/12/Python基础之(一)基本数据类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/12/Python基础之(一)基本数据类型/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
 <li><strong>基本类型</strong></li>
 </ul>
 <p>首先，进入Python交互模式中：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//整数</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"></span><br><span class="line">//长整数</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">33333333333333333333333333</span></span><br><span class="line"><span class="number">33333333333333333333333333L</span></span><br><span class="line"></span><br><span class="line">//浮点数</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3.22222222222</span></span><br><span class="line"><span class="number">3.22222222222</span></span><br><span class="line"></span><br><span class="line">//负数</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">-234</span></span><br><span class="line"><span class="number">-234</span></span><br><span class="line"></span><br><span class="line">//十六进制数</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0xff</span></span><br><span class="line"><span class="number">255</span></span><br><span class="line"></span><br><span class="line">//八进制</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">010</span></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//整数</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span></div><div class="line"><span class="number">3</span></div><div class="line"></div><div class="line">//长整数</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">33333333333333333333333333</span></div><div class="line"><span class="number">33333333333333333333333333L</span></div><div class="line"></div><div class="line">//浮点数</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3.22222222222</span></div><div class="line"><span class="number">3.22222222222</span></div><div class="line"></div><div class="line">//负数</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">-234</span></div><div class="line"><span class="number">-234</span></div><div class="line"></div><div class="line">//十六进制数</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0xff</span></div><div class="line"><span class="number">255</span></div><div class="line"></div><div class="line">//八进制</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">010</span></div><div class="line"><span class="number">8</span></div></pre></td></tr></table></figure>
 <p>在交互模式下：</p>
 <p>如果输入3，就显示3，称为整数</p>
 <p>当输入一个比较大的整数时，Python会自动会将这个大整数进行转换，转换的结果是一个“长整数”类型，为了表示它，会在其末尾显示一个L。由于这个操作是Python自动完成的，所有在Python中没有单独将“长整数”作为一个类型。</p>
@@ -325,37 +213,37 @@
 <li><strong>对象身份</strong></li>
 </ul>
 <p>每个数字在Python都是一个对象，每个对象，在内存中都有自己的一个地址，这就是它的身份，用内建函数id()可以查看每个对象的内存地址即身份。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">3</span>)</span><br><span class="line"><span class="number">39679608</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">-3</span>)</span><br><span class="line"><span class="number">39679680</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">2.33</span>)</span><br><span class="line"><span class="number">39712264</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">3.0</span>)</span><br><span class="line"><span class="number">48962672</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">3</span>)</div><div class="line"><span class="number">39679608</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">-3</span>)</div><div class="line"><span class="number">39679680</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">2.33</span>)</div><div class="line"><span class="number">39712264</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(<span class="number">3.0</span>)</div><div class="line"><span class="number">48962672</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>以上四个不同的数字是四个不同的对象，具有四个不同的内存地址。特别要注意，在数学上，3和3.0是相等的，但在这里，它们是不同的对象。</p>
 <ul>
 <li><strong>对象类型</strong></li>
 </ul>
 <p>如果要查找一个对象的类型，则使用type()这个内建函数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">3</span>)</span><br><span class="line">&lt;type <span class="string">'int'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">-3</span>)</span><br><span class="line">&lt;type <span class="string">'int'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">0.3</span>)</span><br><span class="line">&lt;type <span class="string">'float'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">222222222222222222222222222</span>)</span><br><span class="line">&lt;type <span class="string">'long'</span>&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">6</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line"><span class="number">6</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">3</span>)</div><div class="line">&lt;type <span class="string">'int'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">-3</span>)</div><div class="line">&lt;type <span class="string">'int'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">0.3</span>)</div><div class="line">&lt;type <span class="string">'float'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="number">222222222222222222222222222</span>)</div><div class="line">&lt;type <span class="string">'long'</span>&gt;</div></pre></td></tr></table></figure>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x = <span class="number">6</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line"><span class="number">6</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>在Python中，对象有类型，变量无类型</li>
 <li>当Python中写入5、6时，计算机就自动在其内存中某个地方建立了这两个对象，这两个对象的类型就是Int</li>
 <li>上述代码中的x就好比是个标签，当x=5时，就是将x这个标签拴在了5上，通过这个x，就找到了5，于是“&gt;&gt;&gt;x”输出的结果就是5。所以这个标签x没有类型之说，它不仅可以贴在整数类型的对象上，还可以贴在其他类型的对象上。</li>
 </ul>
-<h2 id="简单的四则运算"><a href="#简单的四则运算" class="headerlink" title="简单的四则运算"></a>简单的四则运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">//加</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> + <span class="number">5</span></span><br><span class="line"><span class="number">8</span></span><br><span class="line"></span><br><span class="line">//减</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> - <span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line">//乘</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> * <span class="number">3</span></span><br><span class="line"><span class="number">15</span></span><br><span class="line"></span><br><span class="line">//整除</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> / <span class="number">4</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line">//模除</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> % <span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"></span><br><span class="line">//混合运算</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> * <span class="number">3</span> <span class="number">-4</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h2 id="简单的四则运算"><a href="#简单的四则运算" class="headerlink" title="简单的四则运算"></a>简单的四则运算</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">//加</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">3</span> + <span class="number">5</span></div><div class="line"><span class="number">8</span></div><div class="line"></div><div class="line">//减</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> - <span class="number">3</span></div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line">//乘</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> * <span class="number">3</span></div><div class="line"><span class="number">15</span></div><div class="line"></div><div class="line">//整除</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> / <span class="number">4</span></div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line">//模除</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">8</span> % <span class="number">3</span></div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line">//混合运算</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> * <span class="number">3</span> <span class="number">-4</span></div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
 <h2 id="整数溢出问题"><a href="#整数溢出问题" class="headerlink" title="整数溢出问题"></a>整数溢出问题</h2><p>在一些高级编程语言中，整数溢出是必须正视的，但是，在Python里就无需担心了，原因就是Python为我们解决了这个问题，它支持“无限精度”的整数，所以，不用考虑整数溢出的问题，Int类型与任意精度的Long整数类型可以无缝转换，超过Int范围情况都将自动转换成Long类型。</p>
 <p>如下计算：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1234456678888914781548154815481</span> * <span class="number">618468146815418458154815481548</span></span><br><span class="line"><span class="number">763472134516343226654595368107241568115304361007546100244588L</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">1234456678888914781548154815481</span> * <span class="number">618468146815418458154815481548</span></div><div class="line"><span class="number">763472134516343226654595368107241568115304361007546100244588L</span></div></pre></td></tr></table></figure>
 <p>你还可以在交互模式下计算2的1000次幂，计算方法是：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">1000</span></span><br><span class="line"><span class="number">10715086071862673209484250490600018105614048117055336074437503883703510511249361224931983788156958581275946729175531468251871452856923140435984577574698574803934567774824230985421074605062371141877954182153046474983581941267398767559165543946077062914571196477686542167660429831652624386837205668069376L</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h2><h3 id="整数与整数相除"><a href="#整数与整数相除" class="headerlink" title="整数与整数相除"></a>整数与整数相除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> / <span class="number">5</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.0</span> / <span class="number">5</span></span><br><span class="line"><span class="number">0.4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> / <span class="number">5.0</span></span><br><span class="line"><span class="number">0.4</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.0</span> / <span class="number">5.0</span></span><br><span class="line"><span class="number">0.4</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> ** <span class="number">1000</span></div><div class="line"><span class="number">10715086071862673209484250490600018105614048117055336074437503883703510511249361224931983788156958581275946729175531468251871452856923140435984577574698574803934567774824230985421074605062371141877954182153046474983581941267398767559165543946077062914571196477686542167660429831652624386837205668069376L</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<h2 id="除法"><a href="#除法" class="headerlink" title="除法"></a>除法</h2><h3 id="整数与整数相除"><a href="#整数与整数相除" class="headerlink" title="整数与整数相除"></a>整数与整数相除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> / <span class="number">5</span></div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.0</span> / <span class="number">5</span></div><div class="line"><span class="number">0.4</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2</span> / <span class="number">5.0</span></div><div class="line"><span class="number">0.4</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">2.0</span> / <span class="number">5.0</span></div><div class="line"><span class="number">0.4</span></div></pre></td></tr></table></figure>
 <p>Python2.x中</p>
 <ul>
 <li>整数除整数，商是整数</li>
 <li>整数除浮点数或浮点数除整数，商是浮点数</li>
 </ul>
-<h3 id="整数与浮点数相除"><a href="#整数与浮点数相除" class="headerlink" title="整数与浮点数相除"></a>整数与浮点数相除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2</span></span><br><span class="line"><span class="number">4.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">2.0</span></span><br><span class="line"><span class="number">4.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2.0</span></span><br><span class="line"><span class="number">4.5</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="整数与浮点数相除"><a href="#整数与浮点数相除" class="headerlink" title="整数与浮点数相除"></a>整数与浮点数相除</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2</span></div><div class="line"><span class="number">4.5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">2.0</span></div><div class="line"><span class="number">4.5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2.0</span></div><div class="line"><span class="number">4.5</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>不管是除数或者被除数，只要有一个数是浮点数，结果就是浮点数。</li>
 </ul>
 <p>然而，下面的计算可能会有点不好理解：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10.0</span> / <span class="number">3</span></span><br><span class="line"><span class="number">3.3333333333333335</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.2</span></span><br><span class="line"><span class="number">0.30000000000000004</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.2</span></span><br><span class="line"><span class="number">0.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.3</span></span><br><span class="line"><span class="number">5.551115123125783e-17</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.2</span></span><br><span class="line"><span class="number">0.10000000000000003</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">10.0</span> / <span class="number">3</span></div><div class="line"><span class="number">3.3333333333333335</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.2</span></div><div class="line"><span class="number">0.30000000000000004</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.2</span></div><div class="line"><span class="number">0.0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.3</span></div><div class="line"><span class="number">5.551115123125783e-17</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">0.1</span> + <span class="number">0.1</span> + <span class="number">0.1</span> - <span class="number">0.2</span></div><div class="line"><span class="number">0.10000000000000003</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>原因在于十进制和二进制的转换上，计算机使用的是二进制进行计算，在上面的例子中，我们输入的是十进制，就要把十进制转换成二进制，然后在计算。但是在转化中，浮点数转化为二进制后，不会精确等于十进制的0.1。因为计算机存储的位数是有限制的，所有就出现了上述现象。</p>
 <p>一般情况下，只要简单地将最终显示的结果用“四舍五入”到所期望的十进制位数，就会得到期望的最终结果。</p>
 <p>对于需要非常精确的情况，可以使用decimal模块，它实现的十进制运算适合高精度要求的应用。另外fractions模块支持另外一种形式的运算，它实现的运算基于有理数。最高要求则是使用有SciPy提供的Numerical Python包和其他用于数学和统计学的包。</p>
@@ -365,41 +253,41 @@
 <li>形式2：from module1 import module11。module1是一个大模块，里面还有子模块module11，只想用module11，就这么写。</li>
 </ul>
 <p>如下是解决除法问题的模块：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> /<span class="number">2</span></span><br><span class="line"><span class="number">2.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">2</span></span><br><span class="line"><span class="number">4.5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2</span></span><br><span class="line"><span class="number">4.5</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> __future__ <span class="keyword">import</span> division</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> /<span class="number">2</span></div><div class="line"><span class="number">2.5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> / <span class="number">2</span></div><div class="line"><span class="number">4.5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9.0</span> / <span class="number">2</span></div><div class="line"><span class="number">4.5</span></div></pre></td></tr></table></figure>
 <p>引用了此模块后，不管什么情况，都能够得到浮点数的结果了。</p>
 <h3 id="余数"><a href="#余数" class="headerlink" title="余数"></a>余数</h3><ul>
 <li>模除，用%符号来取得两个数相除的余数</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> % <span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> % <span class="number">4</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">5</span> % <span class="number">2</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="number">9</span> % <span class="number">4</span></div><div class="line"><span class="number">1</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>内建函数divmod()</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>divmod(<span class="number">5</span>,<span class="number">2</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>divmod(<span class="number">9</span>,<span class="number">4</span>)</span><br><span class="line">(<span class="number">2</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>divmod(<span class="number">5</span>,<span class="number">2</span>)</div><div class="line">(<span class="number">2</span>, <span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>divmod(<span class="number">9</span>,<span class="number">4</span>)</div><div class="line">(<span class="number">2</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure>
 <p>内建函数divmod()返回的是两个值，这两个值在一个圆括号内，圆括号内的数字第一个表示商，第二个表示余数。</p>
 <h3 id="四舍五入"><a href="#四舍五入" class="headerlink" title="四舍五入"></a>四舍五入</h3><p>内建函数round（）。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234567</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">1.23</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234567</span>,<span class="number">3</span>)</span><br><span class="line"><span class="number">1.235</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">10.0</span> /<span class="number">3</span> ,<span class="number">4</span>)</span><br><span class="line"><span class="number">3.3333</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234567</span>,<span class="number">2</span>)</div><div class="line"><span class="number">1.23</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234567</span>,<span class="number">3</span>)</div><div class="line"><span class="number">1.235</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">10.0</span> /<span class="number">3</span> ,<span class="number">4</span>)</div><div class="line"><span class="number">3.3333</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>在round()中的第二个数，表示要保留的小数位数，返回值是一个四舍五入之后的数值。</p>
 <p>接下里看下面的特殊情况：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">0.12345</span>,<span class="number">3</span>)</span><br><span class="line"><span class="number">0.123</span>  <span class="comment">#应该是1.235</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">2.235</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">2.23</span>   <span class="comment">#应该是2.24</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">0.12345</span>,<span class="number">3</span>)</div><div class="line"><span class="number">0.123</span>  <span class="comment">#应该是1.235</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">2.235</span>,<span class="number">2</span>)</div><div class="line"><span class="number">2.23</span>   <span class="comment">#应该是2.24</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>这不是Python地Bug，归根到底是浮点数中的十进制转化为二进制引起的问题</p>
 <h2 id="常用数学函数和运算优先级"><a href="#常用数学函数和运算优先级" class="headerlink" title="常用数学函数和运算优先级"></a>常用数学函数和运算优先级</h2><h3 id="math模块"><a href="#math模块" class="headerlink" title="math模块"></a>math模块</h3><p>math模块是Python标准库中的，所以不用安装就可以直接安装。使用方法是：</p>
 <p><code>&gt;&gt;&gt; import math</code></p>
 <p>这样就将math模块引用进来了，下面就可以使用这个模块提供的工具了，比如要得到圆周率：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>math.pi</span><br><span class="line"><span class="number">3.141592653589793</span></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> math</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>math.pi</div><div class="line"><span class="number">3.141592653589793</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>这个模块都能做些什么事情呢？可以用下面的方法看到：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dir(math)</span><br><span class="line">[<span class="string">'__doc__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atan2'</span>, <span class="string">'atanh'</span>, <span class="string">'ceil'</span>, <span class="string">'copysign'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'degrees'</span>, <span class="string">'e'</span>, <span class="string">'erf'</span>, <span class="string">'erfc'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'fabs'</span>, <span class="string">'factorial'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'frexp'</span>, <span class="string">'fsum'</span>, <span class="string">'gamma'</span>, <span class="string">'hypot'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'ldexp'</span>, <span class="string">'lgamma'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'modf'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'radians'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>, <span class="string">'trunc'</span>]</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dir(math)</div><div class="line">[<span class="string">'__doc__'</span>, <span class="string">'__name__'</span>, <span class="string">'__package__'</span>, <span class="string">'acos'</span>, <span class="string">'acosh'</span>, <span class="string">'asin'</span>, <span class="string">'asinh'</span>, <span class="string">'atan'</span>, <span class="string">'atan2'</span>, <span class="string">'atanh'</span>, <span class="string">'ceil'</span>, <span class="string">'copysign'</span>, <span class="string">'cos'</span>, <span class="string">'cosh'</span>, <span class="string">'degrees'</span>, <span class="string">'e'</span>, <span class="string">'erf'</span>, <span class="string">'erfc'</span>, <span class="string">'exp'</span>, <span class="string">'expm1'</span>, <span class="string">'fabs'</span>, <span class="string">'factorial'</span>, <span class="string">'floor'</span>, <span class="string">'fmod'</span>, <span class="string">'frexp'</span>, <span class="string">'fsum'</span>, <span class="string">'gamma'</span>, <span class="string">'hypot'</span>, <span class="string">'isinf'</span>, <span class="string">'isnan'</span>, <span class="string">'ldexp'</span>, <span class="string">'lgamma'</span>, <span class="string">'log'</span>, <span class="string">'log10'</span>, <span class="string">'log1p'</span>, <span class="string">'modf'</span>, <span class="string">'pi'</span>, <span class="string">'pow'</span>, <span class="string">'radians'</span>, <span class="string">'sin'</span>, <span class="string">'sinh'</span>, <span class="string">'sqrt'</span>, <span class="string">'tan'</span>, <span class="string">'tanh'</span>, <span class="string">'trunc'</span>]</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>dir(module)可以查看任何模块所包含的工具。<br>help(function)可以用来查看每个函数的使用情况。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>help(math.pow)</span><br><span class="line">Help on built-<span class="keyword">in</span> function pow <span class="keyword">in</span> module math:</span><br><span class="line"></span><br><span class="line">pow(...)</span><br><span class="line">    pow(x, y)</span><br><span class="line">    </span><br><span class="line">    Return x**y (x to the power of y).</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>help(math.pow)</div><div class="line">Help on built-<span class="keyword">in</span> function pow <span class="keyword">in</span> module math:</div><div class="line"></div><div class="line">pow(...)</div><div class="line">    pow(x, y)</div><div class="line">    </div><div class="line">    Return x**y (x to the power of y).</div><div class="line"></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>下面来看看一些基本函数的使用：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#开平方</span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; math.sqrt(<span class="number">9</span>)</span><br><span class="line"><span class="number">3.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#绝对值</span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; math.fabs(-<span class="number">2</span>)</span><br><span class="line"><span class="number">2.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#模除</span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; math.fmod(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line"><span class="number">2.0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#开平方</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; math.sqrt(<span class="number">9</span>)</div><div class="line"><span class="number">3.0</span></div><div class="line"></div><div class="line"><span class="comment">#绝对值</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; math.fabs(-<span class="number">2</span>)</div><div class="line"><span class="number">2.0</span></div><div class="line"></div><div class="line"><span class="comment">#模除</span></div><div class="line"><span class="meta">&gt;&gt;</span>&gt; math.fmod(<span class="number">5</span>,<span class="number">3</span>)</div><div class="line"><span class="number">2.0</span></div></pre></td></tr></table></figure>
 <h3 id="两个函数"><a href="#两个函数" class="headerlink" title="两个函数"></a>两个函数</h3><ul>
 <li>1.求绝对值</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">10</span>)</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-10</span>)</span><br><span class="line"><span class="number">10</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-1.2</span>)</span><br><span class="line"><span class="number">1.2</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">10</span>)</div><div class="line"><span class="number">10</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-10</span>)</div><div class="line"><span class="number">10</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>abs(<span class="number">-1.2</span>)</div><div class="line"><span class="number">1.2</span></div></pre></td></tr></table></figure>
 <ul>
 <li>2.四舍五入</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234</span>)</span><br><span class="line"><span class="number">1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234</span>,<span class="number">2</span>)</span><br><span class="line"><span class="number">1.23</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234</span>)</div><div class="line"><span class="number">1.0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>round(<span class="number">1.234</span>,<span class="number">2</span>)</div><div class="line"><span class="number">1.23</span></div></pre></td></tr></table></figure>
 <h3 id="运算优先级"><a href="#运算优先级" class="headerlink" title="运算优先级"></a>运算优先级</h3><p>运算规则表：</p>
 <table>
 <thead>
@@ -476,523 +364,234 @@
 </tbody>
 </table>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python基础/" rel="tag">#python基础</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/05/Java中的构造函数调用顺序/" rel="next" title="Java中的构造函数调用顺序">
-                <i class="fa fa-chevron-left"></i> Java中的构造函数调用顺序
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/12/Python基础之(二)字符串列表和元组/" rel="prev" title="Python基础之(二)字符串、列表和元组">
-                Python基础之(二)字符串、列表和元组 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/12/Python基础之(一)基本数据类型/" target="_blank" rel="external">http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/12/Python基础之(一)基本数据类型/"
-           data-title="Python基础之(一)基本数据类型" data-url="http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python基础/">python基础</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&title=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&title=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/12/Python基础之(二)字符串列表和元组/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python基础之(二)字符串、列表和元组</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/05/Java中的构造函数调用顺序/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java中的构造函数调用顺序</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Python基础之(一)基本数据类型" data-title="Python基础之(一)基本数据类型" data-url="http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&title=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&title=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(一)基本数据类型》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/12/Python基础之(一)基本数据类型/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQY7jMAwEwPz/09kHLJJ0k1I2C5RPg4HHVulgcZp8POLr+eJ6f//7v/37nuTtjxsXHh4e3qGlv1ri5mnvSa9+8349HzYdDw8P7xov+bgnh8T7TXm1iHY7kjXj4eHh/Q4vAbfUtqTGw8PD+794OTUpvjfpAR4eHt6/5W1i1rYQb7dvFg3j4eHh3ePtF/39n6/09/Dw8PDWXfW8GZZ/pk8NEESrxcPDw7vAyz+4bVDbFtNnAw48PDy8b/JmY0/tEFXOOBAQ4+Hh4R3lzdr5+RbkpP04wod8Gg8PD+8oL1n0ZqQgiRiSkYLkmcMTDw8PD6/7qg8/x7NhrORYarf4w6bg4eHhHeW1L8hL21lp3hboH9aGh4eHd4GXF7JtibzZiHykYBhM4OHh4R3ltaMA7ZDWgf8AWhgeHh7eUd6sxfWIr9khkRTZybGBh4eHd4OXRKWbsHX2tDySKLp8eHh4eEd5efuq/XDnT5g1wIrjCg8PD++LvPzTPCud6xI5iE7w8PDwbvPy9lIe+OaMNt6tW3R4eHh4F3in4oM2JpiVy/nxg4eHh3eDlxTEs7Z9WzrnB0BxjOHh4eFd482aW21JvQ+R84ZZlJfg4eHhXePlRfYsqH0GVxt54OHh4d3j7V9wexxhM8SAh4eH9x1e8oI8FNgEuLOwo8iV8fDw8Na8toxuA99Z4z+n1pMReHh4eId4CWY2GnUgVphdeHh4eEd5z/JqC+52m5IgI48w8PDw8G7w9sXupuRNhgMODBDg4eHhXeC1BW5SUs82Yl/u14U1Hh4e3oKXN+/bwnfznE2wgoeHh/c7vDywaMGbkayX9+Ph4eH9DK9l32ueHS6p8fDw8Mpx1Xw8tC1t2yNklkC/PBjw8PDwjvLa5baLyIvmPPw9QMLDw8Ob8P4ACfPkKVypn4UAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">2.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的四则运算"><span class="nav-number">3.</span> <span class="nav-text">简单的四则运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#整数溢出问题"><span class="nav-number">4.</span> <span class="nav-text">整数溢出问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#除法"><span class="nav-number">5.</span> <span class="nav-text">除法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整数与整数相除"><span class="nav-number">5.1.</span> <span class="nav-text">整数与整数相除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整数与浮点数相除"><span class="nav-number">5.2.</span> <span class="nav-text">整数与浮点数相除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用模块解决除法问题"><span class="nav-number">5.3.</span> <span class="nav-text">引用模块解决除法问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#余数"><span class="nav-number">5.4.</span> <span class="nav-text">余数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四舍五入"><span class="nav-number">5.5.</span> <span class="nav-text">四舍五入</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用数学函数和运算优先级"><span class="nav-number">6.</span> <span class="nav-text">常用数学函数和运算优先级</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#math模块"><span class="nav-number">6.1.</span> <span class="nav-text">math模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两个函数"><span class="nav-number">6.2.</span> <span class="nav-text">两个函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算优先级"><span class="nav-number">6.3.</span> <span class="nav-text">运算优先级</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

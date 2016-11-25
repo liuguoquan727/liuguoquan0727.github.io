@@ -1,68 +1,23 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="架构," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="背景在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Android开发模式之MVP | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="架构">
+  <meta name="description" content="背景在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。
 MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，它们的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android开发模式之MVP">
 <meta property="og:url" content="http://yoursite.com/2016/04/17/Android开发模式之MVP/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="背景在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。
 MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，它们的">
 <meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/mvp-mvp%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
@@ -75,251 +30,172 @@ MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而
 <meta name="twitter:description" content="背景在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。
 MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，它们的">
 <meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/mvp-mvp%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Android开发模式之MVP | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android开发模式之MVP</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Android开发模式之MVP</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-17T07:28:06.000Z" itemprop="datePublished" class="page-time">
+  2016-04-17 15:28:06
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/架构/">架构</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#背景"><span class="post-toc-number">1.</span> <span class="post-toc-text">背景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MVP架构是什么"><span class="post-toc-number">2.</span> <span class="post-toc-text">MVP架构是什么</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MVC与MVP的区别"><span class="post-toc-number">3.</span> <span class="post-toc-text">MVC与MVP的区别</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVP架构"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">MVP架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVC架构"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">MVC架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MVP的优点"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">MVP的优点</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#MVP架构模式示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">MVP架构模式示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Model层"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.Model层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-View层"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.View层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Presenter层"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">3.Presenter层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Activity中调用"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">4.Activity中调用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android开发模式之MVP"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Android开发模式之MVP
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Android开发模式之MVP</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T15:28:06+08:00" content="2016-04-17 15:28:06">
-              2016-04-17 15:28:06
-            </time>
-          </span>
+            <time datetime="2016-04-17T07:28:06.000Z" itemprop="datePublished" class="post-time">
+  2016-04-17 15:28:06
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/架构/" itemprop="url" rel="index">
-                    <span itemprop="name">架构</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/17/Android开发模式之MVP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Android开发模式之MVP/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/架构/">架构</a></li></ul></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。</p>
 <h2 id="MVP架构是什么"><a href="#MVP架构是什么" class="headerlink" title="MVP架构是什么"></a>MVP架构是什么</h2><p>MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，它们的基本思想有相通的地方：Controller/Presenter负责逻辑的处理，Model提供数据，View负责显示。作为一种新的模式，MVP与MVC有着一个重大的区别：在MVP中View并不会直接使用Model，它们之间的通信是通过Presenter（MVC中是Controller）来进行的，所有的交互都发生在Presenter内部，而在MVC中View会直接从Model中读取数据而不是通过Controller。</p>
 <p>在MVC里，View是可以直接访问Model的，从而View里会包含Model信息，不可避免的还要包括一些业务逻辑。在MVC模型里，更关注的是Model的不变，而同时有多个对Model的不同显示的View。所有在MVC模型里，Model不依赖于View，但是View依赖于Model的。不仅如此，因为有一些业务逻辑在View里实现了，导致要更改View也是比较困难的，至少那些业务逻辑是无法重用的。</p>
 <p>用流程图的方式解释就更清楚了：</p>
@@ -355,538 +231,249 @@ MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而
 <p>先看一下MVP包结构图：</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/mvp-mvp%E5%8C%85%E7%BB%93%E6%9E%84.png" alt=""></p>
 <h3 id="1-Model层"><a href="#1-Model层" class="headerlink" title="1.Model层"></a>1.Model层</h3><p>首先是建一个JavaBean User实体类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.deason.mvpdemo.bean;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	<span class="keyword">private</span> String id;</span><br><span class="line">	<span class="keyword">private</span> String sex;</span><br><span class="line">	<span class="keyword">private</span> String age;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.name = name;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.id = id;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> age;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(String age)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.age = age;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.deason.mvpdemo.bean;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="keyword">private</span> String id;</div><div class="line">	<span class="keyword">private</span> String sex;</div><div class="line">	<span class="keyword">private</span> String age;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(String id)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> sex;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.sex = sex;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getAge</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> age;</div><div class="line">	&#125;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(String age)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.age = age;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>新建Model层抽象接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IGetUser</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfo</span><span class="params">(<span class="keyword">int</span> id,OnUserInfoListener listener)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnUserInfoListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoSuccess</span><span class="params">(User user)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoFailed</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IGetUser</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfo</span><span class="params">(<span class="keyword">int</span> id,OnUserInfoListener listener)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnUserInfoListener</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoSuccess</span><span class="params">(User user)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoFailed</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>Model层抽象接口实现：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetUserInfo</span> <span class="keyword">implements</span> <span class="title">IGetUser</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfo</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id, <span class="keyword">final</span> OnUserInfoListener listener)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"></span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				SystemClock.sleep(<span class="number">5000</span>); <span class="comment">//模拟子线程耗时操作</span></span><br><span class="line"></span><br><span class="line">				<span class="keyword">if</span> (id == <span class="number">1</span>) &#123;</span><br><span class="line">					User user = <span class="keyword">new</span> User();</span><br><span class="line">					user.setName(<span class="string">"liu"</span>);</span><br><span class="line">					user.setAge(<span class="string">"27"</span>);</span><br><span class="line">					user.setSex(<span class="string">"男"</span>);</span><br><span class="line">					user.setId(<span class="string">"1"</span>);</span><br><span class="line">					listener.getUserInfoSuccess(user);</span><br><span class="line">				&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">					listener.getUserInfoFailed();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;).start();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GetUserInfo</span> <span class="keyword">implements</span> <span class="title">IGetUser</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfo</span><span class="params">(<span class="keyword">final</span> <span class="keyword">int</span> id, <span class="keyword">final</span> OnUserInfoListener listener)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line"></div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">				<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">				SystemClock.sleep(<span class="number">5000</span>); <span class="comment">//模拟子线程耗时操作</span></div><div class="line"></div><div class="line">				<span class="keyword">if</span> (id == <span class="number">1</span>) &#123;</div><div class="line">					User user = <span class="keyword">new</span> User();</div><div class="line">					user.setName(<span class="string">"liu"</span>);</div><div class="line">					user.setAge(<span class="string">"27"</span>);</div><div class="line">					user.setSex(<span class="string">"男"</span>);</div><div class="line">					user.setId(<span class="string">"1"</span>);</div><div class="line">					listener.getUserInfoSuccess(user);</div><div class="line">				&#125; <span class="keyword">else</span> &#123;</div><div class="line">					listener.getUserInfoFailed();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;).start();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="2-View层"><a href="#2-View层" class="headerlink" title="2.View层"></a>2.View层</h3><p>Presenter和View交互是通过接口，所有我们需要定义一个IShowUserView的接口，这个接口封装的方法基本都跟视图展示有关。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShowUserView</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toMainActivity</span><span class="params">(User user)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showFailedError</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IShowUserView</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toMainActivity</span><span class="params">(User user)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showFailedError</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="3-Presenter层"><a href="#3-Presenter层" class="headerlink" title="3.Presenter层"></a>3.Presenter层</h3><p>Presenter是Model和View之间交互的桥梁，里面有一些业务逻辑的操作</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfoPresenter</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> IGetUser iGetUser;</span><br><span class="line">	<span class="keyword">private</span> IShowUserView iShowUserView;</span><br><span class="line">	<span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UserInfoPresenter</span><span class="params">(IShowUserView iShowUserView)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.iShowUserView = iShowUserView;</span><br><span class="line">		<span class="keyword">this</span>.iGetUser = <span class="keyword">new</span> GetUserInfo();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoToShow</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">		iShowUserView.showLoading();</span><br><span class="line">		iGetUser.getUserInfo(id, <span class="keyword">new</span> OnUserInfoListener() &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoSuccess</span><span class="params">(<span class="keyword">final</span> User user)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// UI线程执行</span></span><br><span class="line">				mHandler.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">					</span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">						<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">						iShowUserView.toMainActivity(user);</span><br><span class="line">						iShowUserView.hideLoading();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoFailed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				mHandler.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">					</span><br><span class="line">					<span class="meta">@Override</span></span><br><span class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">						<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">						iShowUserView.showFailedError();</span><br><span class="line">						iShowUserView.hideLoading();</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="4-Activity中调用"><a href="#4-Activity中调用" class="headerlink" title="4.Activity中调用"></a>4.Activity中调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IShowUserView</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> TextView mNameTxt;</span><br><span class="line">	<span class="keyword">private</span> TextView mAgeTxt;</span><br><span class="line">	<span class="keyword">private</span> TextView mSexTxt;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> Button mLoadBtn;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> ProgressDialog mDialog;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> UserInfoPresenter mPresenter;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</span><br><span class="line">		setContentView(R.layout.activity_main);</span><br><span class="line">		</span><br><span class="line">		mPresenter = <span class="keyword">new</span> UserInfoPresenter(<span class="keyword">this</span>);</span><br><span class="line">		</span><br><span class="line">		mDialog = <span class="keyword">new</span> ProgressDialog(<span class="keyword">this</span>);</span><br><span class="line">		</span><br><span class="line">		mNameTxt = (TextView) findViewById(R.id.tv_name);</span><br><span class="line">		mAgeTxt = (TextView) findViewById(R.id.tv_age);</span><br><span class="line">		mSexTxt = (TextView) findViewById(R.id.tv_sex);</span><br><span class="line">		mLoadBtn = (Button) findViewById(R.id.btn_load);</span><br><span class="line">		mLoadBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</span><br><span class="line">			<span class="meta">@Override</span></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</span><br><span class="line">				<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">				mPresenter.getUserInfoToShow(<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		mDialog.show();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		mDialog.dismiss();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toMainActivity</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		mNameTxt.setText(user.getName());</span><br><span class="line">		mAgeTxt.setText(user.getAge());</span><br><span class="line">		mSexTxt.setText(user.getSex());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showFailedError</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		Toast.makeText(<span class="keyword">this</span>, <span class="string">"Load failed"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserInfoPresenter</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> IGetUser iGetUser;</div><div class="line">	<span class="keyword">private</span> IShowUserView iShowUserView;</div><div class="line">	<span class="keyword">private</span> Handler mHandler = <span class="keyword">new</span> Handler();</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UserInfoPresenter</span><span class="params">(IShowUserView iShowUserView)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.iShowUserView = iShowUserView;</div><div class="line">		<span class="keyword">this</span>.iGetUser = <span class="keyword">new</span> GetUserInfo();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoToShow</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">		iShowUserView.showLoading();</div><div class="line">		iGetUser.getUserInfo(id, <span class="keyword">new</span> OnUserInfoListener() &#123;</div><div class="line">			</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoSuccess</span><span class="params">(<span class="keyword">final</span> User user)</span> </span>&#123;</div><div class="line">				<span class="comment">// UI线程执行</span></div><div class="line">				mHandler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">					</div><div class="line">					<span class="meta">@Override</span></div><div class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">						<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">						iShowUserView.toMainActivity(user);</div><div class="line">						iShowUserView.hideLoading();</div><div class="line">					&#125;</div><div class="line">				&#125;);</div><div class="line">			&#125;</div><div class="line">			</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getUserInfoFailed</span><span class="params">()</span> </span>&#123;</div><div class="line">				<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">				mHandler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">					</div><div class="line">					<span class="meta">@Override</span></div><div class="line">					<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">						<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">						iShowUserView.showFailedError();</div><div class="line">						iShowUserView.hideLoading();</div><div class="line">					&#125;</div><div class="line">				&#125;);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="4-Activity中调用"><a href="#4-Activity中调用" class="headerlink" title="4.Activity中调用"></a>4.Activity中调用</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">IShowUserView</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> TextView mNameTxt;</div><div class="line">	<span class="keyword">private</span> TextView mAgeTxt;</div><div class="line">	<span class="keyword">private</span> TextView mSexTxt;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Button mLoadBtn;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> ProgressDialog mDialog;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> UserInfoPresenter mPresenter;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">		setContentView(R.layout.activity_main);</div><div class="line">		</div><div class="line">		mPresenter = <span class="keyword">new</span> UserInfoPresenter(<span class="keyword">this</span>);</div><div class="line">		</div><div class="line">		mDialog = <span class="keyword">new</span> ProgressDialog(<span class="keyword">this</span>);</div><div class="line">		</div><div class="line">		mNameTxt = (TextView) findViewById(R.id.tv_name);</div><div class="line">		mAgeTxt = (TextView) findViewById(R.id.tv_age);</div><div class="line">		mSexTxt = (TextView) findViewById(R.id.tv_sex);</div><div class="line">		mLoadBtn = (Button) findViewById(R.id.btn_load);</div><div class="line">		mLoadBtn.setOnClickListener(<span class="keyword">new</span> OnClickListener() &#123;</div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">				<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">				mPresenter.getUserInfoToShow(<span class="number">1</span>);</div><div class="line">			&#125;</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showLoading</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mDialog.show();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hideLoading</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mDialog.dismiss();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">toMainActivity</span><span class="params">(User user)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mNameTxt.setText(user.getName());</div><div class="line">		mAgeTxt.setText(user.getAge());</div><div class="line">		mSexTxt.setText(user.getSex());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showFailedError</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		Toast.makeText(<span class="keyword">this</span>, <span class="string">"Load failed"</span>, Toast.LENGTH_SHORT).show();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>可以看出，虽说是代码量增加了，但是Activity中的代码变得简洁起来，程序也清晰明了，好处还是很多的。好记性不如烂笔头，勤加练习和实践。</p>
 </blockquote>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/架构/" rel="tag">#架构</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/17/Android-Universal-Image-Loader源码分析/" rel="next" title="Android-Universal-Image-Loader源码分析">
-                <i class="fa fa-chevron-left"></i> Android-Universal-Image-Loader源码分析
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/17/Android_EventBus使用详解/" rel="prev" title="EventBus使用详解">
-                EventBus使用详解 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/17/Android开发模式之MVP/" target="_blank" rel="external">http://yoursite.com/2016/04/17/Android开发模式之MVP/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/17/Android开发模式之MVP/"
-           data-title="Android开发模式之MVP" data-url="http://yoursite.com/2016/04/17/Android开发模式之MVP/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&title=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&title=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Android开发模式之MVP/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/17/Android_EventBus使用详解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">EventBus使用详解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/17/Android-Universal-Image-Loader源码分析/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android-Universal-Image-Loader源码分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Android开发模式之MVP" data-title="Android开发模式之MVP" data-url="http://yoursite.com/2016/04/17/Android开发模式之MVP/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&title=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&title=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Android开发模式之MVP/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android开发模式之MVP》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Android开发模式之MVP/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Android开发模式之MVP/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3aQXLDIAwF0Nz/0ukBWjv/iyYzgcfK47jYj4WKkB6PeDwvxu9f7+/8vr56y+MdAwMD42sZz9tx9cz9DPm72vuXb8HAwDiAcfXKPETmvGTJ8m/DwMDAuLpeD5f3eAwMDIzPBNx8CZJfMTAwMNrt2n+ltffHbW/JxTEwML6Qkb/g89dvqW9gYGB8FeNZjiQ4riTAw6/CwMDYmpEHuPaALJ9zFnAxMDDOYeQflB/fz9LgK0DydgwMjL0Z0YF72R7xjoaMZNExMDB2Zay3c83S1GQTmZdFMTAw9mbMtoM5pl2sJAGO/ldgYGBsxEjC2XpS2gboIlnFwMA4htFO0QbEPIduN5EvklgMDIztGLPD+ra0kC9B0eqBgYFxAKM9iG/LmetpcNEtgoGBsTWjzRA/fzBX9IxgYGBsx8jbJtog+1+FzLrZAgMDYzvGrD0rX4KVzV+U9GJgYBzGaBPalRJmy7ucEwMDY2vGSvmwLWrmafCsXIGBgbE3IwmI+VavLYUmd6I5MTAwjmEkAfejW734yA8DA+NkRh6CZ58+K6a+2BpiYGBsxHiWYxaC2wQ4b9H4oxKLgYGxHaPdhN3zZgWGlZInBgbGOYz2IH72ZF5OqGsaGBgYxzDywNdu4PKFq4/YMDAwMGLGLEGdfS4GBgbGrKmiDZTtDNHfYmBgHMDIiwGzZou8CJqHcgwMjHMYs3A5e+b+I2YNahgYGFszfgDIRhkGWN8LeAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP架构是什么"><span class="nav-number">2.</span> <span class="nav-text">MVP架构是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVC与MVP的区别"><span class="nav-number">3.</span> <span class="nav-text">MVC与MVP的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP架构"><span class="nav-number">3.1.</span> <span class="nav-text">MVP架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC架构"><span class="nav-number">3.2.</span> <span class="nav-text">MVC架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVP的优点"><span class="nav-number">3.3.</span> <span class="nav-text">MVP的优点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MVP架构模式示例"><span class="nav-number">4.</span> <span class="nav-text">MVP架构模式示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Model层"><span class="nav-number">4.1.</span> <span class="nav-text">1.Model层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-View层"><span class="nav-number">4.2.</span> <span class="nav-text">2.View层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Presenter层"><span class="nav-number">4.3.</span> <span class="nav-text">3.Presenter层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Activity中调用"><span class="nav-number">4.4.</span> <span class="nav-text">4.Activity中调用</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

@@ -1,69 +1,24 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="源码分析," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="功能介绍Android-Universal-Image-LoaderAndroid-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Android-Universal-Image-Loader源码分析 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="源码分析">
+  <meta name="description" content="功能介绍Android-Universal-Image-LoaderAndroid-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。
 基本使用初始化添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：
 1234">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-Universal-Image-Loader源码分析">
 <meta property="og:url" content="http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="功能介绍Android-Universal-Image-LoaderAndroid-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。
 基本使用初始化添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：
 1234">
@@ -79,246 +34,179 @@
 基本使用初始化添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：
 1234">
 <meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/uil-overall-design.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Android-Universal-Image-Loader源码分析 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android-Universal-Image-Loader源码分析</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Android-Universal-Image-Loader源码分析</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-17T07:25:31.000Z" itemprop="datePublished" class="page-time">
+  2016-04-17 15:25:31
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#功能介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">功能介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android-Universal-Image-Loader"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Android-Universal-Image-Loader</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本使用"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">初始化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Manifest配置"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">Manifest配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#下载显示图片"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">下载显示图片</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#特点"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">特点</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总体设计"><span class="post-toc-number">2.</span> <span class="post-toc-text">总体设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总体设计框图"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">总体设计框图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UIL中的概念"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">UIL中的概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#流程图"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">流程图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#详细设计"><span class="post-toc-number">3.</span> <span class="post-toc-text">详细设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#类关系图"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">类关系图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#核心类介绍"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">核心类介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoader-java"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">ImageLoader.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoaderConfiguration-java"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">ImageLoaderConfiguration.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoaderConfiguration-Builder-java-静态内部类"><span class="post-toc-number">3.2.3.</span> <span class="post-toc-text">ImageLoaderConfiguration.Builder.java 静态内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoaderConfiguration-NetworkDeniedDownloader-java-静态内部类"><span class="post-toc-number">3.2.4.</span> <span class="post-toc-text">ImageLoaderConfiguration.NetworkDeniedDownloader.java 静态内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoaderConfiguration-SlowNetworkingImageDownloader-java-静态内部类"><span class="post-toc-number">3.2.5.</span> <span class="post-toc-text">ImageLoaderConfiguration.SlowNetworkingImageDownloader.java 静态内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoaderEngine-java"><span class="post-toc-number">3.2.6.</span> <span class="post-toc-text">ImageLoaderEngine.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DefaultConfigurationFactory-java"><span class="post-toc-number">3.2.7.</span> <span class="post-toc-text">DefaultConfigurationFactory.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DefaultConfigurationFactory-DefaultThreadFactory"><span class="post-toc-number">3.2.8.</span> <span class="post-toc-text">DefaultConfigurationFactory.DefaultThreadFactory</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageAware"><span class="post-toc-number">3.2.9.</span> <span class="post-toc-text">ImageAware</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ViewAware-java"><span class="post-toc-number">3.2.10.</span> <span class="post-toc-text">ViewAware.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageViewAware-java"><span class="post-toc-number">3.2.11.</span> <span class="post-toc-text">ImageViewAware.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#NonViewAware"><span class="post-toc-number">3.2.12.</span> <span class="post-toc-text">NonViewAware</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DisplayImagesOptions-java"><span class="post-toc-number">3.2.13.</span> <span class="post-toc-text">DisplayImagesOptions.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DisplayImageOptions-Builder-java-静态内部类"><span class="post-toc-number">3.2.14.</span> <span class="post-toc-text">DisplayImageOptions.Builder.java 静态内部类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoadingListener"><span class="post-toc-number">3.2.15.</span> <span class="post-toc-text">ImageLoadingListener</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SimpleImageLoadingListener"><span class="post-toc-number">3.2.16.</span> <span class="post-toc-text">SimpleImageLoadingListener</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoadingProgressListener-java"><span class="post-toc-number">3.2.17.</span> <span class="post-toc-text">ImageLoadingProgressListener.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DisplayBitmapTask-java"><span class="post-toc-number">3.2.18.</span> <span class="post-toc-text">DisplayBitmapTask.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ProcessAndDisplayImageTask-java"><span class="post-toc-number">3.2.19.</span> <span class="post-toc-text">ProcessAndDisplayImageTask.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LoadAndDisplayImageTask-java"><span class="post-toc-number">3.2.20.</span> <span class="post-toc-text">LoadAndDisplayImageTask.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#tryCacheImageOnDisk"><span class="post-toc-number">3.2.21.</span> <span class="post-toc-text">tryCacheImageOnDisk()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#downloadImage"><span class="post-toc-number">3.2.22.</span> <span class="post-toc-text">downloadImage()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#resizeAndSaveImage-int-maxWidth-int-maxHeight"><span class="post-toc-number">3.2.23.</span> <span class="post-toc-text">resizeAndSaveImage(int maxWidth,int maxHeight)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#geDownloader"><span class="post-toc-number">3.2.24.</span> <span class="post-toc-text">geDownloader()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageLoadingInfo-java"><span class="post-toc-number">3.2.25.</span> <span class="post-toc-text">ImageLoadingInfo.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageDownloader-java"><span class="post-toc-number">3.2.26.</span> <span class="post-toc-text">ImageDownloader.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BaseImageDownloader-java"><span class="post-toc-number">3.2.27.</span> <span class="post-toc-text">BaseImageDownloader.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MemoryCache-java"><span class="post-toc-number">3.2.28.</span> <span class="post-toc-text">MemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BaseMemoryCache-java"><span class="post-toc-number">3.2.29.</span> <span class="post-toc-text">BaseMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#WeakMemoryCache-java"><span class="post-toc-number">3.2.30.</span> <span class="post-toc-text">WeakMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LimitedMemoryCache-java"><span class="post-toc-number">3.2.31.</span> <span class="post-toc-text">LimitedMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LargestLimitedMemoryCache-java"><span class="post-toc-number">3.2.32.</span> <span class="post-toc-text">LargestLimitedMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UsingFreqLimitedMemoryCache-java"><span class="post-toc-number">3.2.33.</span> <span class="post-toc-text">UsingFreqLimitedMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LRULimitedMemoryCache-java"><span class="post-toc-number">3.2.34.</span> <span class="post-toc-text">LRULimitedMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FIFOLimitedMemoryCache-java"><span class="post-toc-number">3.2.35.</span> <span class="post-toc-text">FIFOLimitedMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LruMemoryCache-java"><span class="post-toc-number">3.2.36.</span> <span class="post-toc-text">LruMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LimitedAgeMemoryCache-java"><span class="post-toc-number">3.2.37.</span> <span class="post-toc-text">LimitedAgeMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FuzzyKeyMemoryCache-java"><span class="post-toc-number">3.2.38.</span> <span class="post-toc-text">FuzzyKeyMemoryCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FileNameGenerator-java"><span class="post-toc-number">3.2.39.</span> <span class="post-toc-text">FileNameGenerator.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#HashCodeFileNameGenerator-java"><span class="post-toc-number">3.2.40.</span> <span class="post-toc-text">HashCodeFileNameGenerator.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Md5FileNameGenerator-java"><span class="post-toc-number">3.2.41.</span> <span class="post-toc-text">Md5FileNameGenerator.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DiskCache-java"><span class="post-toc-number">3.2.42.</span> <span class="post-toc-text">DiskCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BaseDiskCache-java"><span class="post-toc-number">3.2.43.</span> <span class="post-toc-text">BaseDiskCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LimitedAgeDiskCache-java"><span class="post-toc-number">3.2.44.</span> <span class="post-toc-text">LimitedAgeDiskCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#UnLimitedDiskCache-java"><span class="post-toc-number">3.2.45.</span> <span class="post-toc-text">UnLimitedDiskCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DiskLruCache-java"><span class="post-toc-number">3.2.46.</span> <span class="post-toc-text">DiskLruCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LruDiskCache-java"><span class="post-toc-number">3.2.47.</span> <span class="post-toc-text">LruDiskCache.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#StrictLineReader-java"><span class="post-toc-number">3.2.48.</span> <span class="post-toc-text">StrictLineReader.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Util-java"><span class="post-toc-number">3.2.49.</span> <span class="post-toc-text">Util.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ContentLengthInputStream-java"><span class="post-toc-number">3.2.50.</span> <span class="post-toc-text">ContentLengthInputStream.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FailReason-java"><span class="post-toc-number">3.2.51.</span> <span class="post-toc-text">FailReason.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FlushedInputStream-java"><span class="post-toc-number">3.2.52.</span> <span class="post-toc-text">FlushedInputStream.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageScaleType-java"><span class="post-toc-number">3.2.53.</span> <span class="post-toc-text">ImageScaleType.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ViewScaleType-java"><span class="post-toc-number">3.2.54.</span> <span class="post-toc-text">ViewScaleType.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageSize-java"><span class="post-toc-number">3.2.55.</span> <span class="post-toc-text">ImageSize.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LoadedFrom-java"><span class="post-toc-number">3.2.56.</span> <span class="post-toc-text">LoadedFrom.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageDecoder-java"><span class="post-toc-number">3.2.57.</span> <span class="post-toc-text">ImageDecoder.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BaseImageDecoder-java"><span class="post-toc-number">3.2.58.</span> <span class="post-toc-text">BaseImageDecoder.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageDownloadingInfo-java"><span class="post-toc-number">3.2.59.</span> <span class="post-toc-text">ImageDownloadingInfo.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BitmapDisplayer-java"><span class="post-toc-number">3.2.60.</span> <span class="post-toc-text">BitmapDisplayer.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FadeInBitmapDisplayer-java"><span class="post-toc-number">3.2.61.</span> <span class="post-toc-text">FadeInBitmapDisplayer.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RoundedBitmapDisplayer-java"><span class="post-toc-number">3.2.62.</span> <span class="post-toc-text">RoundedBitmapDisplayer.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#RoundedVignetteBitmapDisplayer-java"><span class="post-toc-number">3.2.63.</span> <span class="post-toc-text">RoundedVignetteBitmapDisplayer.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SimpleBitmapDisplayer-java"><span class="post-toc-number">3.2.64.</span> <span class="post-toc-text">SimpleBitmapDisplayer.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BitmapProcessor-java"><span class="post-toc-number">3.2.65.</span> <span class="post-toc-text">BitmapProcessor.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#PauseOnScrollListener-java"><span class="post-toc-number">3.2.66.</span> <span class="post-toc-text">PauseOnScrollListener.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#QueueProcessingType-java"><span class="post-toc-number">3.2.67.</span> <span class="post-toc-text">QueueProcessingType.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#LIFOLinkedBlockingDeque-java"><span class="post-toc-number">3.2.68.</span> <span class="post-toc-text">LIFOLinkedBlockingDeque.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#DiskCacheUtils-java"><span class="post-toc-number">3.2.69.</span> <span class="post-toc-text">DiskCacheUtils.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#MemoryCacheUtils-java"><span class="post-toc-number">3.2.70.</span> <span class="post-toc-text">MemoryCacheUtils.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#StorageUtils-java"><span class="post-toc-number">3.2.71.</span> <span class="post-toc-text">StorageUtils.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ImageSizeUtils-java"><span class="post-toc-number">3.2.72.</span> <span class="post-toc-text">ImageSizeUtils.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#IoUtils-java"><span class="post-toc-number">3.2.73.</span> <span class="post-toc-text">IoUtils.java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#L-java"><span class="post-toc-number">3.2.74.</span> <span class="post-toc-text">L.java</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#后记"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">后记</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android-Universal-Image-Loader源码分析"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Android-Universal-Image-Loader源码分析
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Android-Universal-Image-Loader源码分析</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T15:25:31+08:00" content="2016-04-17 15:25:31">
-              2016-04-17 15:25:31
-            </time>
-          </span>
+            <time datetime="2016-04-17T07:25:31.000Z" itemprop="datePublished" class="post-time">
+  2016-04-17 15:25:31
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/17/Android-Universal-Image-Loader源码分析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Android-Universal-Image-Loader源码分析/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><h2 id="Android-Universal-Image-Loader"><a href="#Android-Universal-Image-Loader" class="headerlink" title="Android-Universal-Image-Loader"></a>Android-Universal-Image-Loader</h2><p>Android-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><h2 id="Android-Universal-Image-Loader"><a href="#Android-Universal-Image-Loader" class="headerlink" title="Android-Universal-Image-Loader"></a>Android-Universal-Image-Loader</h2><p>Android-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。</p>
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UILApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="keyword">super</span>.onCreate();</span><br><span class="line"></span><br><span class="line">		initImageLoader(getApplicationContext());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initImageLoader</span><span class="params">(Context context)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="comment">//缓存目录</span></span><br><span class="line">		File cacheDir = StorageUtils.getCacheDirectory(context);</span><br><span class="line">		<span class="comment">//添加配置需求</span></span><br><span class="line">		ImageLoaderConfiguration config = <span class="keyword">new</span> ImageLoaderConfiguration.Builder(context)</span><br><span class="line">		  .memoryCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>) <span class="comment">// default = device screen dimensions</span></span><br><span class="line">		  .diskCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>, CompressFormat.JPEG, <span class="number">75</span>, <span class="keyword">null</span>)</span><br><span class="line">		  .taskExecutor(...)</span><br><span class="line">		  .taskExecutorForCachedImages(...)</span><br><span class="line">		  .threadPoolSize(<span class="number">3</span>) <span class="comment">// default 线程池大小</span></span><br><span class="line">		  .threadPriority(Thread.NORM_PRIORITY - <span class="number">1</span>) <span class="comment">// default 线程优先级</span></span><br><span class="line">		  .tasksProcessingOrder(QueueProcessingType.FIFO) <span class="comment">// default 任务队列模式</span></span><br><span class="line">		  .denyCacheImageMultipleSizesInMemory()</span><br><span class="line">		  .memoryCache(<span class="keyword">new</span> LruMemoryCache(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)) <span class="comment">//</span></span><br><span class="line">		  .memoryCacheSize(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)</span><br><span class="line">		  .memoryCacheSizePercentage(<span class="number">13</span>) <span class="comment">// default</span></span><br><span class="line">		  .diskCache(<span class="keyword">new</span> UnlimitedDiscCache(cacheDir)) <span class="comment">// default</span></span><br><span class="line">		  .diskCacheSize(<span class="number">50</span> * <span class="number">1024</span> * <span class="number">1024</span>)</span><br><span class="line">		  .diskCacheFileCount(<span class="number">100</span>)</span><br><span class="line">		  .diskCacheFileNameGenerator(<span class="keyword">new</span> HashCodeFileNameGenerator()) <span class="comment">// default</span></span><br><span class="line">		  .imageDownloader(<span class="keyword">new</span> BaseImageDownloader(context)) <span class="comment">// default</span></span><br><span class="line">		  .imageDecoder(<span class="keyword">new</span> BaseImageDecoder()) <span class="comment">// default</span></span><br><span class="line">		  .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) <span class="comment">// default</span></span><br><span class="line">		  .writeDebugLogs()</span><br><span class="line">		  .build();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// 初始化ImageLoader配置</span></span><br><span class="line">		ImageLoader.getInstance().init(config);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UILApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">		<span class="keyword">super</span>.onCreate();</div><div class="line"></div><div class="line">		initImageLoader(getApplicationContext());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initImageLoader</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">//缓存目录</span></div><div class="line">		File cacheDir = StorageUtils.getCacheDirectory(context);</div><div class="line">		<span class="comment">//添加配置需求</span></div><div class="line">		ImageLoaderConfiguration config = <span class="keyword">new</span> ImageLoaderConfiguration.Builder(context)</div><div class="line">		  .memoryCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>) <span class="comment">// default = device screen dimensions</span></div><div class="line">		  .diskCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>, CompressFormat.JPEG, <span class="number">75</span>, <span class="keyword">null</span>)</div><div class="line">		  .taskExecutor(...)</div><div class="line">		  .taskExecutorForCachedImages(...)</div><div class="line">		  .threadPoolSize(<span class="number">3</span>) <span class="comment">// default 线程池大小</span></div><div class="line">		  .threadPriority(Thread.NORM_PRIORITY - <span class="number">1</span>) <span class="comment">// default 线程优先级</span></div><div class="line">		  .tasksProcessingOrder(QueueProcessingType.FIFO) <span class="comment">// default 任务队列模式</span></div><div class="line">		  .denyCacheImageMultipleSizesInMemory()</div><div class="line">		  .memoryCache(<span class="keyword">new</span> LruMemoryCache(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)) <span class="comment">//</span></div><div class="line">		  .memoryCacheSize(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">		  .memoryCacheSizePercentage(<span class="number">13</span>) <span class="comment">// default</span></div><div class="line">		  .diskCache(<span class="keyword">new</span> UnlimitedDiscCache(cacheDir)) <span class="comment">// default</span></div><div class="line">		  .diskCacheSize(<span class="number">50</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">		  .diskCacheFileCount(<span class="number">100</span>)</div><div class="line">		  .diskCacheFileNameGenerator(<span class="keyword">new</span> HashCodeFileNameGenerator()) <span class="comment">// default</span></div><div class="line">		  .imageDownloader(<span class="keyword">new</span> BaseImageDownloader(context)) <span class="comment">// default</span></div><div class="line">		  .imageDecoder(<span class="keyword">new</span> BaseImageDecoder()) <span class="comment">// default</span></div><div class="line">		  .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) <span class="comment">// default</span></div><div class="line">		  .writeDebugLogs()</div><div class="line">		  .build();</div><div class="line"></div><div class="line">		<span class="comment">// 初始化ImageLoader配置</span></div><div class="line">		ImageLoader.getInstance().init(config);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>ImageLoaderConfiguration表示ImageLoader的配置信息，可包括图片最大尺寸、线程池、下载器、缓存等参数的配置。</p>
-<h3 id="Manifest配置"><a href="#Manifest配置" class="headerlink" title="Manifest配置"></a>Manifest配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</span><br><span class="line">&lt;uses-permission android:name=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</span><br><span class="line"></span><br><span class="line">&lt;application</span><br><span class="line">	android:name=<span class="string">".UILApplication"</span></span><br><span class="line">	``</span><br><span class="line">	``</span><br><span class="line">	``</span><br><span class="line">/application&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Manifest配置"><a href="#Manifest配置" class="headerlink" title="Manifest配置"></a>Manifest配置</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.INTERNET"</span> /&gt;</div><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.WRITE_EXTERNAL_STORAGE"</span> /&gt;</div><div class="line">&lt;uses-permission android:name=<span class="string">"android.permission.READ_EXTERNAL_STORAGE"</span> /&gt;</div><div class="line"></div><div class="line">&lt;application</div><div class="line">	android:name=<span class="string">".UILApplication"</span></div><div class="line">	``</div><div class="line">	``</div><div class="line">	``</div><div class="line">/application&gt;</div></pre></td></tr></table></figure>
 <p>添加网络权限和添加读写外部存储权限</p>
 <h3 id="下载显示图片"><a href="#下载显示图片" class="headerlink" title="下载显示图片"></a>下载显示图片</h3><p>下载图片，解析为Bitmap并在ImageView中显示。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> ImageLoadingListener animateFirstListener = <span class="keyword">new</span> AnimateFirstDisplayListener();</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> DisplayImageOptions options;</span><br><span class="line"></span><br><span class="line">ImageAdapter(Context context) &#123;</span><br><span class="line">		inflater = LayoutInflater.from(context);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//下载图片选项</span></span><br><span class="line">options = <span class="keyword">new</span> DisplayImageOptions.Builder()</span><br><span class="line">		.showImageOnLoading(R.drawable.ic_stub) <span class="comment">//下载中</span></span><br><span class="line">		.showImageForEmptyUri(R.drawable.ic_empty) <span class="comment">//空URL</span></span><br><span class="line">		.showImageOnFail(R.drawable.ic_error) <span class="comment">//失败</span></span><br><span class="line">		.cacheInMemory(<span class="keyword">true</span>)</span><br><span class="line">		.cacheOnDisk(<span class="keyword">true</span>)</span><br><span class="line">		.considerExifParams(<span class="keyword">true</span>)</span><br><span class="line">		.displayer(<span class="keyword">new</span> CircleBitmapDisplayer(Color.WHITE, <span class="number">5</span>))</span><br><span class="line">		.build();</span><br><span class="line"><span class="comment">//显示图片</span></span><br><span class="line">ImageLoader.getInstance().displayImage(imageUrl, holder.image, options, animateFirstListener);	</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line">*监听下载图片，传递Bitmap给回调接口</span><br><span class="line">*/</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AnimateFirstDisplayListener</span> <span class="keyword">extends</span> <span class="title">SimpleImageLoadingListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> List&lt;String&gt; displayedImages = Collections.synchronizedList(<span class="keyword">new</span> LinkedList&lt;String&gt;());</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadingComplete</span><span class="params">(String imageUri, View view, Bitmap loadedImage)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (loadedImage != <span class="keyword">null</span>) &#123;</span><br><span class="line">			ImageView imageView = (ImageView) view;</span><br><span class="line">			<span class="keyword">boolean</span> firstDisplay = !displayedImages.contains(imageUri);</span><br><span class="line">			<span class="keyword">if</span> (firstDisplay) &#123;</span><br><span class="line">				FadeInBitmapDisplayer.animate(imageView, <span class="number">500</span>);</span><br><span class="line">				displayedImages.add(imageUri);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> ImageLoadingListener animateFirstListener = <span class="keyword">new</span> AnimateFirstDisplayListener();</div><div class="line"></div><div class="line"><span class="keyword">private</span> DisplayImageOptions options;</div><div class="line"></div><div class="line">ImageAdapter(Context context) &#123;</div><div class="line">		inflater = LayoutInflater.from(context);</div><div class="line">		</div><div class="line">		<span class="comment">//下载图片选项</span></div><div class="line">options = <span class="keyword">new</span> DisplayImageOptions.Builder()</div><div class="line">		.showImageOnLoading(R.drawable.ic_stub) <span class="comment">//下载中</span></div><div class="line">		.showImageForEmptyUri(R.drawable.ic_empty) <span class="comment">//空URL</span></div><div class="line">		.showImageOnFail(R.drawable.ic_error) <span class="comment">//失败</span></div><div class="line">		.cacheInMemory(<span class="keyword">true</span>)</div><div class="line">		.cacheOnDisk(<span class="keyword">true</span>)</div><div class="line">		.considerExifParams(<span class="keyword">true</span>)</div><div class="line">		.displayer(<span class="keyword">new</span> CircleBitmapDisplayer(Color.WHITE, <span class="number">5</span>))</div><div class="line">		.build();</div><div class="line"><span class="comment">//显示图片</span></div><div class="line">ImageLoader.getInstance().displayImage(imageUrl, holder.image, options, animateFirstListener);	</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">*监听下载图片，传递Bitmap给回调接口</div><div class="line">*/</div><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AnimateFirstDisplayListener</span> <span class="keyword">extends</span> <span class="title">SimpleImageLoadingListener</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">static</span> <span class="keyword">final</span> List&lt;String&gt; displayedImages = Collections.synchronizedList(<span class="keyword">new</span> LinkedList&lt;String&gt;());</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadingComplete</span><span class="params">(String imageUri, View view, Bitmap loadedImage)</span> </span>&#123;</div><div class="line">		<span class="keyword">if</span> (loadedImage != <span class="keyword">null</span>) &#123;</div><div class="line">			ImageView imageView = (ImageView) view;</div><div class="line">			<span class="keyword">boolean</span> firstDisplay = !displayedImages.contains(imageUri);</div><div class="line">			<span class="keyword">if</span> (firstDisplay) &#123;</div><div class="line">				FadeInBitmapDisplayer.animate(imageView, <span class="number">500</span>);</div><div class="line">				displayedImages.add(imageUri);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
 <li>可配置度高。支持任务线程池、下载器、解码器、内存及磁盘缓存、显示选项等的配置。</li>
 <li>包含内存缓存和磁盘缓存两级缓存。</li>
@@ -460,7 +348,7 @@
 <li>builder()</li>
 </ul>
 <p>按照配置，生成ImageLoaderConfiguration。代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ImageLoaderConfiguration <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	initEmptyFieldsWithDefaultValues();</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> ImageLoaderConfiguration(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> ImageLoaderConfiguration <span class="title">build</span><span class="params">()</span> </span>&#123;</div><div class="line">	initEmptyFieldsWithDefaultValues();</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> ImageLoaderConfiguration(<span class="keyword">this</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>initEmptyFieldsWithDefaultValues()</li>
 </ul>
@@ -526,9 +414,9 @@
 </ul>
 <p>设置磁盘缓存的最大文件数，如果大于0或者上面的maxCacheSize大于0，默认的DiskCache会用LruDiskCache，否则使用无大小限制的UnlimitedDiskCache。</p>
 <h3 id="ImageLoaderConfiguration-NetworkDeniedDownloader-java-静态内部类"><a href="#ImageLoaderConfiguration-NetworkDeniedDownloader-java-静态内部类" class="headerlink" title="ImageLoaderConfiguration.NetworkDeniedDownloader.java 静态内部类"></a>ImageLoaderConfiguration.NetworkDeniedDownloader.java 静态内部类</h3><p>不允许访问网络的图片下载器，实现了ImageDownloader接口。实现也比较简单，包装了一个ImageDownloader对象，通过getStream()函数中禁止Http和Https Scheme禁止网络访问，如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NetworkDeniedImageDownloader</span> <span class="keyword">implements</span> <span class="title">ImageDownloader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ImageDownloader wrappedDownloader;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NetworkDeniedImageDownloader</span><span class="params">(ImageDownloader wrappedDownloader)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.wrappedDownloader = wrappedDownloader;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</span><br><span class="line">			<span class="keyword">case</span> HTTP:</span><br><span class="line">			<span class="keyword">case</span> HTTPS:</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">return</span> wrappedDownloader.getStream(imageUri, extra);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">NetworkDeniedImageDownloader</span> <span class="keyword">implements</span> <span class="title">ImageDownloader</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ImageDownloader wrappedDownloader;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">NetworkDeniedImageDownloader</span><span class="params">(ImageDownloader wrappedDownloader)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.wrappedDownloader = wrappedDownloader;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</div><div class="line">			<span class="keyword">case</span> HTTP:</div><div class="line">			<span class="keyword">case</span> HTTPS:</div><div class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> IllegalStateException();</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="keyword">return</span> wrappedDownloader.getStream(imageUri, extra);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="ImageLoaderConfiguration-SlowNetworkingImageDownloader-java-静态内部类"><a href="#ImageLoaderConfiguration-SlowNetworkingImageDownloader-java-静态内部类" class="headerlink" title="ImageLoaderConfiguration.SlowNetworkingImageDownloader.java 静态内部类"></a>ImageLoaderConfiguration.SlowNetworkingImageDownloader.java 静态内部类</h3><p>慢网络情况下的图片下载器，实现了ImageDownloader接口。<br>通过包装一个ImageDownloader对象实现，在getStream()函数中当Scheme为Http和Https时，用FlushedInputStream代替InputStream处理慢网络情况。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SlowNetworkImageDownloader</span> <span class="keyword">implements</span> <span class="title">ImageDownloader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ImageDownloader wrappedDownloader;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SlowNetworkImageDownloader</span><span class="params">(ImageDownloader wrappedDownloader)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.wrappedDownloader = wrappedDownloader;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		InputStream imageStream = wrappedDownloader.getStream(imageUri, extra);</span><br><span class="line">		<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</span><br><span class="line">			<span class="keyword">case</span> HTTP:</span><br><span class="line">			<span class="keyword">case</span> HTTPS:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> FlushedInputStream(imageStream);</span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">return</span> imageStream;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SlowNetworkImageDownloader</span> <span class="keyword">implements</span> <span class="title">ImageDownloader</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">final</span> ImageDownloader wrappedDownloader;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">SlowNetworkImageDownloader</span><span class="params">(ImageDownloader wrappedDownloader)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.wrappedDownloader = wrappedDownloader;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">		InputStream imageStream = wrappedDownloader.getStream(imageUri, extra);</div><div class="line">		<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</div><div class="line">			<span class="keyword">case</span> HTTP:</div><div class="line">			<span class="keyword">case</span> HTTPS:</div><div class="line">				<span class="keyword">return</span> <span class="keyword">new</span> FlushedInputStream(imageStream);</div><div class="line">			<span class="keyword">default</span>:</div><div class="line">				<span class="keyword">return</span> imageStream;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="ImageLoaderEngine-java"><a href="#ImageLoaderEngine-java" class="headerlink" title="ImageLoaderEngine.java"></a>ImageLoaderEngine.java</h3><p>LoadAndDisplayImageTask和ProcessAndDisplayImageTask任务分发器，负责分发任务给具体的线程池。</p>
 <p>主要属性：</p>
 <ul>
@@ -771,7 +659,7 @@
 <h3 id="ImageLoadingListener"><a href="#ImageLoadingListener" class="headerlink" title="ImageLoadingListener"></a>ImageLoadingListener</h3><p>图片加载各种时刻的回调接口，可在图片加载的某些点做监听。<br>包括开始加载（onLoadingStarted）、加载失败（onLoadingFailed）、加载成功（onLoadingComplete）、取消加载（onLoadingCancelled）四个回调函数。</p>
 <h3 id="SimpleImageLoadingListener"><a href="#SimpleImageLoadingListener" class="headerlink" title="SimpleImageLoadingListener"></a>SimpleImageLoadingListener</h3><p>实现ImageLoadingListener接口，不过各个函数都是空实现，表示不在Image加载过程中做任何回调监听实现。ImageLoader.displayImage()函数中当listener传入值为null时的默认值。</p>
 <h3 id="ImageLoadingProgressListener-java"><a href="#ImageLoadingProgressListener-java" class="headerlink" title="ImageLoadingProgressListener.java"></a>ImageLoadingProgressListener.java</h3><p>Image加载进度的回调接口</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ImageLoadingProgressListener</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Is called when image loading progress changed.</span><br><span class="line">	 *</span><br><span class="line">	 * <span class="doctag">@param</span> imageUri Image URI</span><br><span class="line">	 * <span class="doctag">@param</span> view     View for image. Can be &lt;b&gt;null&lt;/b&gt;.</span><br><span class="line">	 * <span class="doctag">@param</span> current  Downloaded size in bytes</span><br><span class="line">	 * <span class="doctag">@param</span> total    Total size in bytes</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(String imageUri, View view, <span class="keyword">int</span> current, <span class="keyword">int</span> total)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ImageLoadingProgressListener</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * Is called when image loading progress changed.</div><div class="line">	 *</div><div class="line">	 * <span class="doctag">@param</span> imageUri Image URI</div><div class="line">	 * <span class="doctag">@param</span> view     View for image. Can be &lt;b&gt;null&lt;/b&gt;.</div><div class="line">	 * <span class="doctag">@param</span> current  Downloaded size in bytes</div><div class="line">	 * <span class="doctag">@param</span> total    Total size in bytes</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">onProgressUpdate</span><span class="params">(String imageUri, View view, <span class="keyword">int</span> current, <span class="keyword">int</span> total)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>会在获取图片存储到文件系统时被调用，其中total表示图片总大小，为网络请求结果Response Header中content-length字段，如果不存在则为-1。</p>
 <h3 id="DisplayBitmapTask-java"><a href="#DisplayBitmapTask-java" class="headerlink" title="DisplayBitmapTask.java"></a>DisplayBitmapTask.java</h3><p>显示图片的Task，实现类Runnable接口，必须在主线程调用。</p>
 <p>主要函数：</p>
@@ -792,7 +680,7 @@
 <li>run()</li>
 </ul>
 <p>获取图片并显示，核心代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">bmp = configuration.memoryCache.get(memoryCacheKey);</span><br><span class="line"><span class="keyword">if</span> (bmp == <span class="keyword">null</span> || bmp.isRecycled()) &#123;</span><br><span class="line">	bmp = tryLoadBitmap();</span><br><span class="line">	<span class="keyword">if</span> (bmp == <span class="keyword">null</span>) <span class="keyword">return</span>; <span class="comment">// listener callback already was fired</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (bmp != <span class="keyword">null</span> &amp;&amp; options.isCacheInMemory()) &#123;</span><br><span class="line">		L.d(LOG_CACHE_IMAGE_IN_MEMORY, memoryCacheKey);</span><br><span class="line">		configuration.memoryCache.put(memoryCacheKey, bmp);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> (bmp != <span class="keyword">null</span> &amp;&amp; options.shouldPostProcess()) &#123;</span><br><span class="line">		L.d(LOG_POSTPROCESS_IMAGE, memoryCacheKey);</span><br><span class="line">		bmp = options.getPostProcessor().process(bmp);</span><br><span class="line">		<span class="keyword">if</span> (bmp == <span class="keyword">null</span>) &#123;</span><br><span class="line">			L.e(ERROR_POST_PROCESSOR_NULL, memoryCacheKey);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">DisplayBitmapTask displayBitmapTask = <span class="keyword">new</span> DisplayBitmapTask(bmp, imageLoadingInfo, engine, loadedFrom);</span><br><span class="line">runTask(displayBitmapTask, syncLoading, handler, engine);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">bmp = configuration.memoryCache.get(memoryCacheKey);</div><div class="line"><span class="keyword">if</span> (bmp == <span class="keyword">null</span> || bmp.isRecycled()) &#123;</div><div class="line">	bmp = tryLoadBitmap();</div><div class="line">	<span class="keyword">if</span> (bmp == <span class="keyword">null</span>) <span class="keyword">return</span>; <span class="comment">// listener callback already was fired</span></div><div class="line"></div><div class="line"></div><div class="line">	<span class="keyword">if</span> (bmp != <span class="keyword">null</span> &amp;&amp; options.isCacheInMemory()) &#123;</div><div class="line">		L.d(LOG_CACHE_IMAGE_IN_MEMORY, memoryCacheKey);</div><div class="line">		configuration.memoryCache.put(memoryCacheKey, bmp);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">if</span> (bmp != <span class="keyword">null</span> &amp;&amp; options.shouldPostProcess()) &#123;</div><div class="line">		L.d(LOG_POSTPROCESS_IMAGE, memoryCacheKey);</div><div class="line">		bmp = options.getPostProcessor().process(bmp);</div><div class="line">		<span class="keyword">if</span> (bmp == <span class="keyword">null</span>) &#123;</div><div class="line">			L.e(ERROR_POST_PROCESSOR_NULL, memoryCacheKey);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">DisplayBitmapTask displayBitmapTask = <span class="keyword">new</span> DisplayBitmapTask(bmp, imageLoadingInfo, engine, loadedFrom);</div><div class="line">runTask(displayBitmapTask, syncLoading, handler, engine);</div></pre></td></tr></table></figure>
 <p>从上面代码可以看到显示从内存缓存中去读bitmap对象，若bitmap对象不存在，则调用tryLoadBitma()函数获取bitmap对象，获取成功后若在DisplayImageOptions.Builder中设置类cacheInMemory(true),同时将Bitmap对象缓存到内存中。最后新建DisplayBitmapTask对象显示图片。</p>
 <p>函数流程图如下：</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uil-load-display-flow-chart.png" alt=""></p>
@@ -811,10 +699,10 @@
 <li>tryLoadBitmap()</li>
 </ul>
 <p>从磁盘缓存或网络获取图片，核心代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">tryLoadBitmap</span><span class="params">()</span> <span class="keyword">throws</span> TaskCancelledException </span>&#123;</span><br><span class="line">	Bitmap bitmap = <span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		File imageFile = configuration.diskCache.get(uri);</span><br><span class="line">		<span class="keyword">if</span> (imageFile != <span class="keyword">null</span> &amp;&amp; imageFile.exists() &amp;&amp; imageFile.length() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">			</span><br><span class="line">			...</span><br><span class="line">			</span><br><span class="line">			bitmap = decodeImage(Scheme.FILE.wrap(imageFile.getAbsolutePath()));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (bitmap == <span class="keyword">null</span> || bitmap.getWidth() &lt;= <span class="number">0</span> || bitmap.getHeight() &lt;= <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">			...</span><br><span class="line"></span><br><span class="line">			String imageUriForDecoding = uri;</span><br><span class="line">			<span class="keyword">if</span> (options.isCacheOnDisk() &amp;&amp; tryCacheImageOnDisk()) &#123;</span><br><span class="line">				imageFile = configuration.diskCache.get(uri);</span><br><span class="line">				<span class="keyword">if</span> (imageFile != <span class="keyword">null</span>) &#123;</span><br><span class="line">					imageUriForDecoding = Scheme.FILE.wrap(imageFile.getAbsolutePath());</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			checkTaskNotActual();</span><br><span class="line">			bitmap = decodeImage(imageUriForDecoding);</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> bitmap;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> Bitmap <span class="title">tryLoadBitmap</span><span class="params">()</span> <span class="keyword">throws</span> TaskCancelledException </span>&#123;</div><div class="line">	Bitmap bitmap = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		File imageFile = configuration.diskCache.get(uri);</div><div class="line">		<span class="keyword">if</span> (imageFile != <span class="keyword">null</span> &amp;&amp; imageFile.exists() &amp;&amp; imageFile.length() &gt; <span class="number">0</span>) &#123;</div><div class="line">			</div><div class="line">			...</div><div class="line">			</div><div class="line">			bitmap = decodeImage(Scheme.FILE.wrap(imageFile.getAbsolutePath()));</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">if</span> (bitmap == <span class="keyword">null</span> || bitmap.getWidth() &lt;= <span class="number">0</span> || bitmap.getHeight() &lt;= <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">			...</div><div class="line"></div><div class="line">			String imageUriForDecoding = uri;</div><div class="line">			<span class="keyword">if</span> (options.isCacheOnDisk() &amp;&amp; tryCacheImageOnDisk()) &#123;</div><div class="line">				imageFile = configuration.diskCache.get(uri);</div><div class="line">				<span class="keyword">if</span> (imageFile != <span class="keyword">null</span>) &#123;</div><div class="line">					imageUriForDecoding = Scheme.FILE.wrap(imageFile.getAbsolutePath());</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line"></div><div class="line">			checkTaskNotActual();</div><div class="line">			bitmap = decodeImage(imageUriForDecoding);</div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> bitmap;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>首先根据uri看磁盘中是不是已经缓存了这个文件，如果已经缓存，调用decodeImage函数，将图片文件decode成Bitmap对象；如果Bitmap对象不合法或缓存文件不存在，判断是否需要缓存在磁盘，需要则调用tryCacheImageOnDisk()函数去下载并缓存图片到本地磁盘，再通过decodeImage(imageUri)函数将图片文件decode成bitmap对象，否则直接通过decodeImage(imageUriForDecoding)下载图片并解析。</p>
 <h3 id="tryCacheImageOnDisk"><a href="#tryCacheImageOnDisk" class="headerlink" title="tryCacheImageOnDisk()"></a>tryCacheImageOnDisk()</h3><p>下载图片并存储在磁盘内，根据磁盘缓存图片最长宽高的配置处理图片</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">tryCacheImageOnDisk</span><span class="params">()</span> <span class="keyword">throws</span> TaskCancelledException </span>&#123;</span><br><span class="line">	L.d(LOG_CACHE_IMAGE_ON_DISK, memoryCacheKey);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">boolean</span> loaded;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		loaded = downloadImage(); <span class="comment">//调用下载器并保存图片</span></span><br><span class="line">		<span class="keyword">if</span> (loaded) &#123;</span><br><span class="line">			<span class="keyword">int</span> width = configuration.maxImageWidthForDiskCache;</span><br><span class="line">			<span class="keyword">int</span> height = configuration.maxImageHeightForDiskCache;</span><br><span class="line">			<span class="keyword">if</span> (width &gt; <span class="number">0</span> || height &gt; <span class="number">0</span>) &#123;</span><br><span class="line">				L.d(LOG_RESIZE_CACHED_IMAGE_FILE, memoryCacheKey);</span><br><span class="line">				resizeAndSaveImage(width, height); <span class="comment">// TODO : process boolean result</span></span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">		L.e(e);</span><br><span class="line">		loaded = <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> loaded;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">tryCacheImageOnDisk</span><span class="params">()</span> <span class="keyword">throws</span> TaskCancelledException </span>&#123;</div><div class="line">	L.d(LOG_CACHE_IMAGE_ON_DISK, memoryCacheKey);</div><div class="line"></div><div class="line">	<span class="keyword">boolean</span> loaded;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		loaded = downloadImage(); <span class="comment">//调用下载器并保存图片</span></div><div class="line">		<span class="keyword">if</span> (loaded) &#123;</div><div class="line">			<span class="keyword">int</span> width = configuration.maxImageWidthForDiskCache;</div><div class="line">			<span class="keyword">int</span> height = configuration.maxImageHeightForDiskCache;</div><div class="line">			<span class="keyword">if</span> (width &gt; <span class="number">0</span> || height &gt; <span class="number">0</span>) &#123;</div><div class="line">				L.d(LOG_RESIZE_CACHED_IMAGE_FILE, memoryCacheKey);</div><div class="line">				resizeAndSaveImage(width, height); <span class="comment">// TODO : process boolean result</span></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">		L.e(e);</div><div class="line">		loaded = <span class="keyword">false</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> loaded;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>如果你在ImageLoaderConfiguration中配置了maxImageWidthForDiskCache或者maxImageHeightForDiskCache，还会调用resizeAndSaveImage()函数，调整图片尺寸，并保存新的图片文件。</p>
 <h3 id="downloadImage"><a href="#downloadImage" class="headerlink" title="downloadImage()"></a>downloadImage()</h3><p>下载图片并存储在磁盘内。调用getDownloader()得到ImageDownloader其下载图片。</p>
 <h3 id="resizeAndSaveImage-int-maxWidth-int-maxHeight"><a href="#resizeAndSaveImage-int-maxWidth-int-maxHeight" class="headerlink" title="resizeAndSaveImage(int maxWidth,int maxHeight)"></a>resizeAndSaveImage(int maxWidth,int maxHeight)</h3><p>从磁盘缓存中得到图片，重新设置大小及进行一些处理后保存。</p>
@@ -822,27 +710,27 @@
 <h3 id="ImageLoadingInfo-java"><a href="#ImageLoadingInfo-java" class="headerlink" title="ImageLoadingInfo.java"></a>ImageLoadingInfo.java</h3><p>加载和显示图片任务需要的信息。成员变量如下：</p>
 <p>String uri  图片url<br>String memoryCacheKey  图片缓存key<br>ImageAware imageAware  需要加载图片的对象<br>ImageSize targetSize  图片的显示尺寸<br>DisplayImageOptions options; 图片显示的配置项<br>ImageLoadingListener listener; 图片加载时状态的回调接口<br>ImageLoadingProgressListener progressListener; 图片加载进度的回调接口<br>ReentrantLock loadFromUriLock; 图片加载中的重入锁</p>
 <h3 id="ImageDownloader-java"><a href="#ImageDownloader-java" class="headerlink" title="ImageDownloader.java"></a>ImageDownloader.java</h3><p>图片下载接口，待实现函数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getString(String imageUri, Object extra)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">getString(String imageUri, Object extra)</div></pre></td></tr></table></figure>
 <p>表示通过uri得到InputStream<br>通过内部定义的枚举Scheme，可以看出UIL支持哪些图片来源。</p>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HTTP(<span class="string">"http"</span>), HTTPS(<span class="string">"https"</span>), <span class="keyword">FILE</span>(<span class="string">"file"</span>), CONTENT(<span class="string">"content"</span>), ASSETS(<span class="string">"assets"</span>), DRAWABLE(<span class="string">"drawable"</span>), UNKNOWN(<span class="string">""</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">HTTP</span>(<span class="string">"http"</span>), <span class="selector-tag">HTTPS</span>(<span class="string">"https"</span>), <span class="selector-tag">FILE</span>(<span class="string">"file"</span>), <span class="selector-tag">CONTENT</span>(<span class="string">"content"</span>), <span class="selector-tag">ASSETS</span>(<span class="string">"assets"</span>), <span class="selector-tag">DRAWABLE</span>(<span class="string">"drawable"</span>), <span class="selector-tag">UNKNOWN</span>(<span class="string">""</span>);</div></pre></td></tr></table></figure>
 <h3 id="BaseImageDownloader-java"><a href="#BaseImageDownloader-java" class="headerlink" title="BaseImageDownloader.java"></a>BaseImageDownloader.java</h3><p>ImageDownloader的具体实现类。得到上面各种Scheme对应的图片InputStream。</p>
 <p>主要函数：</p>
 <ul>
 <li>InputStream getStream(String imageUri, Object extra)</li>
 </ul>
 <p>函数内根据不同Scheme类型获取图片输入流</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</span><br><span class="line">		<span class="keyword">case</span> HTTP:</span><br><span class="line">		<span class="keyword">case</span> HTTPS:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromNetwork(imageUri, extra);</span><br><span class="line">		<span class="keyword">case</span> FILE:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromFile(imageUri, extra);</span><br><span class="line">		<span class="keyword">case</span> CONTENT:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromContent(imageUri, extra);</span><br><span class="line">		<span class="keyword">case</span> ASSETS:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromAssets(imageUri, extra);</span><br><span class="line">		<span class="keyword">case</span> DRAWABLE:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromDrawable(imageUri, extra);</span><br><span class="line">		<span class="keyword">case</span> UNKNOWN:</span><br><span class="line">		<span class="keyword">default</span>:</span><br><span class="line">			<span class="keyword">return</span> getStreamFromOtherSource(imageUri, extra);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> InputStream <span class="title">getStream</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">	<span class="keyword">switch</span> (Scheme.ofUri(imageUri)) &#123;</div><div class="line">		<span class="keyword">case</span> HTTP:</div><div class="line">		<span class="keyword">case</span> HTTPS:</div><div class="line">			<span class="keyword">return</span> getStreamFromNetwork(imageUri, extra);</div><div class="line">		<span class="keyword">case</span> FILE:</div><div class="line">			<span class="keyword">return</span> getStreamFromFile(imageUri, extra);</div><div class="line">		<span class="keyword">case</span> CONTENT:</div><div class="line">			<span class="keyword">return</span> getStreamFromContent(imageUri, extra);</div><div class="line">		<span class="keyword">case</span> ASSETS:</div><div class="line">			<span class="keyword">return</span> getStreamFromAssets(imageUri, extra);</div><div class="line">		<span class="keyword">case</span> DRAWABLE:</div><div class="line">			<span class="keyword">return</span> getStreamFromDrawable(imageUri, extra);</div><div class="line">		<span class="keyword">case</span> UNKNOWN:</div><div class="line">		<span class="keyword">default</span>:</div><div class="line">			<span class="keyword">return</span> getStreamFromOtherSource(imageUri, extra);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>InputStream getStreamFromNetwork(String imageUri, Object extra)</li>
 </ul>
 <p>通过HttpURLConnection从网络获取图片的InputStream，支持response code为3xx的重定向。这里有个小细节代码如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">InputStream imageStream;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	imageStream = conn.getInputStream();</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">	<span class="comment">// Read all data to allow reuse connection (http://bit.ly/1ad35PY)</span></span><br><span class="line">	IoUtils.readAndCloseStream(conn.getErrorStream());</span><br><span class="line">	<span class="keyword">throw</span> e;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!shouldBeProcessed(conn)) &#123;</span><br><span class="line">	IoUtils.closeSilently(imageStream);</span><br><span class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Image request failed with response code "</span> + conn.getResponseCode());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">InputStream imageStream;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	imageStream = conn.getInputStream();</div><div class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">	<span class="comment">// Read all data to allow reuse connection (http://bit.ly/1ad35PY)</span></div><div class="line">	IoUtils.readAndCloseStream(conn.getErrorStream());</div><div class="line">	<span class="keyword">throw</span> e;</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (!shouldBeProcessed(conn)) &#123;</div><div class="line">	IoUtils.closeSilently(imageStream);</div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"Image request failed with response code "</span> + conn.getResponseCode());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在发生异常时会调用<code>conn.getErrorStream()</code>继续读取Error Stream，这是为了利用网络连接回收及复用，但有意思的是在2.2之前，HttpURLConnection有个重大Bug，调用close()函数会影响连接池，导致连接复用失效，不过2.3以后已经解决了此went。</p>
 <ul>
 <li>InputStream getStreamFromFile(String imageUri, Object extra)</li>
 </ul>
 <p>从文件系统获取图片的InputStream。如果uri的类型是Video，则得到video的缩略图返回，否则按照一般文件操作返回。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> InputStream <span class="title">getStreamFromFile</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	String filePath = Scheme.FILE.crop(imageUri);</span><br><span class="line">	<span class="keyword">if</span> (isVideoFileUri(imageUri)) &#123;</span><br><span class="line">		<span class="keyword">return</span> getVideoThumbnailStream(filePath); <span class="comment">//缩略图</span></span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		BufferedInputStream imageStream = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(filePath), BUFFER_SIZE);</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ContentLengthInputStream(imageStream, (<span class="keyword">int</span>) <span class="keyword">new</span> File(filePath).length());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> InputStream <span class="title">getStreamFromFile</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">	String filePath = Scheme.FILE.crop(imageUri);</div><div class="line">	<span class="keyword">if</span> (isVideoFileUri(imageUri)) &#123;</div><div class="line">		<span class="keyword">return</span> getVideoThumbnailStream(filePath); <span class="comment">//缩略图</span></div><div class="line">	&#125; <span class="keyword">else</span> &#123;</div><div class="line">		BufferedInputStream imageStream = <span class="keyword">new</span> BufferedInputStream(<span class="keyword">new</span> FileInputStream(filePath), BUFFER_SIZE);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ContentLengthInputStream(imageStream, (<span class="keyword">int</span>) <span class="keyword">new</span> File(filePath).length());</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>InputStream getStreamFromContent(String imageUri, Object extra)</li>
 </ul>
@@ -851,7 +739,7 @@
 <li>InputStream getStreamFromAssets(String imageUri, Object extra)</li>
 </ul>
 <p>从Assets文件夹中获取图片的InputStream</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> InputStream <span class="title">getStreamFromAssets</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">	String filePath = Scheme.ASSETS.crop(imageUri);</span><br><span class="line">	<span class="keyword">return</span> context.getAssets().open(filePath);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> InputStream <span class="title">getStreamFromAssets</span><span class="params">(String imageUri, Object extra)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">	String filePath = Scheme.ASSETS.crop(imageUri);</div><div class="line">	<span class="keyword">return</span> context.getAssets().open(filePath);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>InputStream getStreamFromDrawable(String imageUri, Object extra)</li>
 </ul>
@@ -861,9 +749,9 @@
 </ul>
 <p>UNKNOWN类型的处理，目前直接抛出不支持的异常</p>
 <h3 id="MemoryCache-java"><a href="#MemoryCache-java" class="headerlink" title="MemoryCache.java"></a>MemoryCache.java</h3><p>Bitmap内存缓存接口，需要实现的接口包括get()、put()、remove()、clear()、keys()</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemoryCache</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * Puts value into cache by key</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">put</span><span class="params">(String key, Bitmap value)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Returns value by key. If there is no value for key then null will be returned. */</span></span><br><span class="line">	<span class="function">Bitmap <span class="title">get</span><span class="params">(String key)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Removes item by key */</span></span><br><span class="line">	<span class="function">Bitmap <span class="title">remove</span><span class="params">(String key)</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Returns all keys of cache */</span></span><br><span class="line">	<span class="function">Collection&lt;String&gt; <span class="title">keys</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/** Remove all items from cache */</span></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">MemoryCache</span> </span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * Puts value into cache by key</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">put</span><span class="params">(String key, Bitmap value)</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/** Returns value by key. If there is no value for key then null will be returned. */</span></div><div class="line">	<span class="function">Bitmap <span class="title">get</span><span class="params">(String key)</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/** Removes item by key */</span></div><div class="line">	<span class="function">Bitmap <span class="title">remove</span><span class="params">(String key)</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/** Returns all keys of cache */</span></div><div class="line">	<span class="function">Collection&lt;String&gt; <span class="title">keys</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/** Remove all items from cache */</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="BaseMemoryCache-java"><a href="#BaseMemoryCache-java" class="headerlink" title="BaseMemoryCache.java"></a>BaseMemoryCache.java</h3><p>实现了MemoryCache主要函数的抽象类，以<code>Map&lt;String, Reference&lt;Bitmap&gt;&gt; softMap</code>作为缓存池，利于虚拟机在内存不足是回收缓存对象。提供抽象函数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Reference&lt;Bitmap&gt; <span class="title">createReference</span><span class="params">(Bitmap value)</span></span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">abstract</span> Reference&lt;Bitmap&gt; <span class="title">createReference</span><span class="params">(Bitmap value)</span></span>;</div></pre></td></tr></table></figure>
 <p>表示根据Bitmap创建一个Reference作为缓存对象。Reference可以是WeakReference、SoftReference等。</p>
 <h3 id="WeakMemoryCache-java"><a href="#WeakMemoryCache-java" class="headerlink" title="WeakMemoryCache.java"></a>WeakMemoryCache.java</h3><p>以<code>WeakReference&lt;Bitmap&gt;</code>作为缓存value的内存缓存，实现了BaseMemoryCache的<code>createReference(Bitmap value)</code>函数，直接返回一个<code>new WeakReference&lt;Bitmap&gt;(value)</code>作为缓存value。</p>
 <h3 id="LimitedMemoryCache-java"><a href="#LimitedMemoryCache-java" class="headerlink" title="LimitedMemoryCache.java"></a>LimitedMemoryCache.java</h3><p>限制总字节大小的内存缓存，继承自BaseMemoryCache抽象类。<br>会在put(…)函数中判断总体大小是否超出上限，超出则循环删除缓存对象直到小于上限。删除顺序由抽象函数<code>protected abstract Bitmap removeNext()</code>决定。抽象函数<code>protected abstract int getSize(Bitmap value)</code>表示每个元素大小。</p>
@@ -883,7 +771,7 @@
 <h3 id="FileNameGenerator-java"><a href="#FileNameGenerator-java" class="headerlink" title="FileNameGenerator.java"></a>FileNameGenerator.java</h3><p>根据uri得到文件名的接口</p>
 <h3 id="HashCodeFileNameGenerator-java"><a href="#HashCodeFileNameGenerator-java" class="headerlink" title="HashCodeFileNameGenerator.java"></a>HashCodeFileNameGenerator.java</h3><p>以uri的hashCode值作为文件名</p>
 <h3 id="Md5FileNameGenerator-java"><a href="#Md5FileNameGenerator-java" class="headerlink" title="Md5FileNameGenerator.java"></a>Md5FileNameGenerator.java</h3><p>以uri的MD5值作为文件名</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Md5FileNameGenerator</span> <span class="keyword">implements</span> <span class="title">FileNameGenerator</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String HASH_ALGORITHM = <span class="string">"MD5"</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RADIX = <span class="number">10</span> + <span class="number">26</span>; <span class="comment">// 10 digits + 26 letters</span></span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">generate</span><span class="params">(String imageUri)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">byte</span>[] md5 = getMD5(imageUri.getBytes());</span><br><span class="line">		BigInteger bi = <span class="keyword">new</span> BigInteger(md5).abs();</span><br><span class="line">		<span class="keyword">return</span> bi.toString(RADIX);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">byte</span>[] getMD5(<span class="keyword">byte</span>[] data) &#123;</span><br><span class="line">		<span class="keyword">byte</span>[] hash = <span class="keyword">null</span>;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);</span><br><span class="line">			digest.update(data);</span><br><span class="line">			hash = digest.digest();</span><br><span class="line">		&#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</span><br><span class="line">			L.e(e);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> hash;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Md5FileNameGenerator</span> <span class="keyword">implements</span> <span class="title">FileNameGenerator</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String HASH_ALGORITHM = <span class="string">"MD5"</span>;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> RADIX = <span class="number">10</span> + <span class="number">26</span>; <span class="comment">// 10 digits + 26 letters</span></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">generate</span><span class="params">(String imageUri)</span> </span>&#123;</div><div class="line">		<span class="keyword">byte</span>[] md5 = getMD5(imageUri.getBytes());</div><div class="line">		BigInteger bi = <span class="keyword">new</span> BigInteger(md5).abs();</div><div class="line">		<span class="keyword">return</span> bi.toString(RADIX);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">byte</span>[] getMD5(<span class="keyword">byte</span>[] data) &#123;</div><div class="line">		<span class="keyword">byte</span>[] hash = <span class="keyword">null</span>;</div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			MessageDigest digest = MessageDigest.getInstance(HASH_ALGORITHM);</div><div class="line">			digest.update(data);</div><div class="line">			hash = digest.digest();</div><div class="line">		&#125; <span class="keyword">catch</span> (NoSuchAlgorithmException e) &#123;</div><div class="line">			L.e(e);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> hash;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="DiskCache-java"><a href="#DiskCache-java" class="headerlink" title="DiskCache.java"></a>DiskCache.java</h3><p>图片的磁盘缓存接口。</p>
 <p>主要函数：</p>
 <ul>
@@ -988,10 +876,10 @@
 <h3 id="RoundedVignetteBitmapDisplayer-java"><a href="#RoundedVignetteBitmapDisplayer-java" class="headerlink" title="RoundedVignetteBitmapDisplayer.java"></a>RoundedVignetteBitmapDisplayer.java</h3><p>为图片添加渐变效果的圆角显示在ImageAware中，实现了BitmapDisplayer接口。主要通过RadialGradient实现。</p>
 <h3 id="SimpleBitmapDisplayer-java"><a href="#SimpleBitmapDisplayer-java" class="headerlink" title="SimpleBitmapDisplayer.java"></a>SimpleBitmapDisplayer.java</h3><p>直接将图片显示在ImageAware中，实现了BitmapDisplayer接口。</p>
 <h3 id="BitmapProcessor-java"><a href="#BitmapProcessor-java" class="headerlink" title="BitmapProcessor.java"></a>BitmapProcessor.java</h3><p>图片处理接口。可用于对图片预处理(Pre-process Bitmap）和后处理(Post-process Bitmap)。抽象函数：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BitmapProcessor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function">Bitmap <span class="title">process</span><span class="params">(Bitmap bitmap)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BitmapProcessor</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function">Bitmap <span class="title">process</span><span class="params">(Bitmap bitmap)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>用户可以根据自己的需要去实现它。比如你想要为你的图片添加一个水印，那么可以自己去实现BitmapProcessor接口。在DisplayImageOptions中配置Pre-process阶段预处理图片，这样设置后存储在文件系统以及内存缓存中的图片都是加了水印的。如果只希望在显示时改变不动原图片，可以在BitmapDisplayer中处理。</p>
 <h3 id="PauseOnScrollListener-java"><a href="#PauseOnScrollListener-java" class="headerlink" title="PauseOnScrollListener.java"></a>PauseOnScrollListener.java</h3><p>可以在View滚动过程中暂停图片加载的Listener，实现了OnScrollListener接口。<br>它的好处是防止滚动中不必要的图片加载，在ListView或GridView中item加载图片最好使用它，简单的一行代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gridView.setOnScrollListener(<span class="keyword">new</span> PauseOnScrollListener(ImageLoader.getInstance(), <span class="keyword">false</span>, <span class="keyword">true</span>));</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">gridView.setOnScrollListener(<span class="keyword">new</span> PauseOnScrollListener(ImageLoader.getInstance(), <span class="keyword">false</span>, <span class="keyword">true</span>));</div></pre></td></tr></table></figure>
 <p>主要成员变量：</p>
 <p>pauseOnScroll; 触摸(手指依然在屏幕上)滑动过程中是否暂停图片加载<br>pauseOnFling;  甩指(手指已离开屏幕)过程中是否暂停图片加载<br>externalListener; 自定义的OnScrollListener接口，适用于View原来就有自定义OnScrollListener情况设置</p>
 <p>实现原理：重写onScrollStateChanged(…)函数判断不同的状态下暂停或继续图片加载。</p>
@@ -1000,7 +888,7 @@
 <p>OnScrollListener.SCROLL_STATE_FLING表示 View 处于甩指滚动状态，手指已离开屏幕，通过pauseOnFling变量确定是否需要暂停图片加载。这种时候大都属于快速滚动状态，所以建议暂停图片加载以节省资源。</p>
 <h3 id="QueueProcessingType-java"><a href="#QueueProcessingType-java" class="headerlink" title="QueueProcessingType.java"></a>QueueProcessingType.java</h3><p>任务队列的处理类型，包括FIFO先进先出、LIFO后进先出。</p>
 <h3 id="LIFOLinkedBlockingDeque-java"><a href="#LIFOLinkedBlockingDeque-java" class="headerlink" title="LIFOLinkedBlockingDeque.java"></a>LIFOLinkedBlockingDeque.java</h3><p>后进先出阻塞队列。重写LinkedBlockingDeque的offer()函数如下：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(T e)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">super</span>.offerFirst(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(T e)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">super</span>.offerFirst(e);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>让LinkedBlockingDeque插入总在最前，而remove()本身始终删除第一个元素，所以就变为了后进先出阻塞队列。实际一般情况只重写offer(…)函数是不够的，但因为ThreadPoolExecutor默认只用到了BlockingQueue的offer(…)函数，所以这种简单重写后做为ThreadPoolExecutor的任务队列没问题。</p>
 <p>LIFOLinkedBlockingDeque.java包下的LinkedBlockingDeque.java、BlockingDeque.java、Deque.java都是 Java 1.6 源码中的，这里不做分析。</p>
 <h3 id="DiskCacheUtils-java"><a href="#DiskCacheUtils-java" class="headerlink" title="DiskCacheUtils.java"></a>DiskCacheUtils.java</h3><p>磁盘缓存工具类，可用于查找或删除某个 uri 对应的磁盘缓存。</p>
@@ -1020,523 +908,234 @@
 </ol>
 <p>UIL的磁盘缓存默认使用了UnlimitedDiskCache</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/源码分析/" rel="tag">#源码分析</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/17/Android_DataBinding使用详解/" rel="next" title="Android官方数据绑定框架DataBinding">
-                <i class="fa fa-chevron-left"></i> Android官方数据绑定框架DataBinding
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/17/Android开发模式之MVP/" rel="prev" title="Android开发模式之MVP">
-                Android开发模式之MVP <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/17/Android-Universal-Image-Loader源码分析/" target="_blank" rel="external">http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/17/Android-Universal-Image-Loader源码分析/"
-           data-title="Android-Universal-Image-Loader源码分析" data-url="http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&title=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&title=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/17/Android开发模式之MVP/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android开发模式之MVP</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/17/Android_DataBinding使用详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android官方数据绑定框架DataBinding</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Android-Universal-Image-Loader源码分析" data-title="Android-Universal-Image-Loader源码分析" data-url="http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&title=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&title=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android-Universal-Image-Loader源码分析》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Android-Universal-Image-Loader源码分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3aQW7cMBAEQP//0wmQk4FASk+Tk/WhdFoYK2mKBsjZJr++4uvXn+v75+/X03eenjB95t9/v3zh4eHhVaU/XV0p+UAklSQ1PA4BHh4e3hovWQzeC8rvfR+U/K73mvHw8PB+Au/pldOpPClr2rLj4eHh/UzeNDjIW+ruXXh4eHif5SUFvQep5+xbQ4mHh4e3zes2wD77eX1/Dw8PD6/aVc8n8Xwh6SKJrlo8PDy8DV7eLicB60njmy8AeTCBh4eHt82bbn3l35/Gsvnyk9SPh4eHd5eXTOL5b/x8Zu6WpfG78PDw8NZ400m5iy1y9nRhGPf+eHh4eAe8PA6YDkQe9eZLzvT7eHh4eHu86VGq6db+NNroGuvHSvDw8PCu8k62vqYh7N2gIaocDw8Pb4GXxw1dnz79Zn4XHh4e3md5XRaatNHjUwzD4wjjA1h4eHh4V3ndApAfTp1GtEmO8s7Gw8PD2+B1zfH5iOaDMkU+HrrCw8PDu8TrCo0eWoUd06B2vOLh4eHhHfNODkh1zff78/NfAFHleHh4eAu8fON/OqGPi4ij3jwQwcPDw9vjdbedHyCY7sWVMDw8PLw13sky0LHzo2C3jiPg4eHh3eV1YcGtg1MngUg0lHh4eHgLvO7gVBI6nDfuedRb/g/x8PDwjrvcLszNA4Jpwz1dqMpUAw8PD295ntyY0E8OaR0dvcLDw8O7xIty3ziqSMKI6XujtQAPDw/vKu88euia3S4yHocReHh4eAu8biVJSj/ZssqHNQmO8fDw8DZ43c/+aSnTQGH6rnJPDw8PD++A103x+YGAfIurW8Ee78XDw8P7AbyTjas8tpg20P9oqfHw8PA+xLu7uZU8OV828PDw8P4/L5/Eb238d0FGnjbg4eHh7fG6DbAujOja6+mRBTw8PLw13m+oX1/082UPcgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#功能介绍"><span class="nav-number">1.</span> <span class="nav-text">功能介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-Universal-Image-Loader"><span class="nav-number">1.1.</span> <span class="nav-text">Android-Universal-Image-Loader</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本使用"><span class="nav-number">1.2.</span> <span class="nav-text">基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.2.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manifest配置"><span class="nav-number">1.2.2.</span> <span class="nav-text">Manifest配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载显示图片"><span class="nav-number">1.2.3.</span> <span class="nav-text">下载显示图片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">1.3.</span> <span class="nav-text">特点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总体设计"><span class="nav-number">2.</span> <span class="nav-text">总体设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#总体设计框图"><span class="nav-number">2.1.</span> <span class="nav-text">总体设计框图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIL中的概念"><span class="nav-number">2.2.</span> <span class="nav-text">UIL中的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">2.3.</span> <span class="nav-text">流程图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#详细设计"><span class="nav-number">3.</span> <span class="nav-text">详细设计</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#类关系图"><span class="nav-number">3.1.</span> <span class="nav-text">类关系图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#核心类介绍"><span class="nav-number">3.2.</span> <span class="nav-text">核心类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoader-java"><span class="nav-number">3.2.1.</span> <span class="nav-text">ImageLoader.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoaderConfiguration-java"><span class="nav-number">3.2.2.</span> <span class="nav-text">ImageLoaderConfiguration.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoaderConfiguration-Builder-java-静态内部类"><span class="nav-number">3.2.3.</span> <span class="nav-text">ImageLoaderConfiguration.Builder.java 静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoaderConfiguration-NetworkDeniedDownloader-java-静态内部类"><span class="nav-number">3.2.4.</span> <span class="nav-text">ImageLoaderConfiguration.NetworkDeniedDownloader.java 静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoaderConfiguration-SlowNetworkingImageDownloader-java-静态内部类"><span class="nav-number">3.2.5.</span> <span class="nav-text">ImageLoaderConfiguration.SlowNetworkingImageDownloader.java 静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoaderEngine-java"><span class="nav-number">3.2.6.</span> <span class="nav-text">ImageLoaderEngine.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DefaultConfigurationFactory-java"><span class="nav-number">3.2.7.</span> <span class="nav-text">DefaultConfigurationFactory.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DefaultConfigurationFactory-DefaultThreadFactory"><span class="nav-number">3.2.8.</span> <span class="nav-text">DefaultConfigurationFactory.DefaultThreadFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageAware"><span class="nav-number">3.2.9.</span> <span class="nav-text">ImageAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewAware-java"><span class="nav-number">3.2.10.</span> <span class="nav-text">ViewAware.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageViewAware-java"><span class="nav-number">3.2.11.</span> <span class="nav-text">ImageViewAware.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#NonViewAware"><span class="nav-number">3.2.12.</span> <span class="nav-text">NonViewAware</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DisplayImagesOptions-java"><span class="nav-number">3.2.13.</span> <span class="nav-text">DisplayImagesOptions.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DisplayImageOptions-Builder-java-静态内部类"><span class="nav-number">3.2.14.</span> <span class="nav-text">DisplayImageOptions.Builder.java 静态内部类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoadingListener"><span class="nav-number">3.2.15.</span> <span class="nav-text">ImageLoadingListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleImageLoadingListener"><span class="nav-number">3.2.16.</span> <span class="nav-text">SimpleImageLoadingListener</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoadingProgressListener-java"><span class="nav-number">3.2.17.</span> <span class="nav-text">ImageLoadingProgressListener.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DisplayBitmapTask-java"><span class="nav-number">3.2.18.</span> <span class="nav-text">DisplayBitmapTask.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ProcessAndDisplayImageTask-java"><span class="nav-number">3.2.19.</span> <span class="nav-text">ProcessAndDisplayImageTask.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LoadAndDisplayImageTask-java"><span class="nav-number">3.2.20.</span> <span class="nav-text">LoadAndDisplayImageTask.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tryCacheImageOnDisk"><span class="nav-number">3.2.21.</span> <span class="nav-text">tryCacheImageOnDisk()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#downloadImage"><span class="nav-number">3.2.22.</span> <span class="nav-text">downloadImage()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resizeAndSaveImage-int-maxWidth-int-maxHeight"><span class="nav-number">3.2.23.</span> <span class="nav-text">resizeAndSaveImage(int maxWidth,int maxHeight)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#geDownloader"><span class="nav-number">3.2.24.</span> <span class="nav-text">geDownloader()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageLoadingInfo-java"><span class="nav-number">3.2.25.</span> <span class="nav-text">ImageLoadingInfo.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageDownloader-java"><span class="nav-number">3.2.26.</span> <span class="nav-text">ImageDownloader.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseImageDownloader-java"><span class="nav-number">3.2.27.</span> <span class="nav-text">BaseImageDownloader.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MemoryCache-java"><span class="nav-number">3.2.28.</span> <span class="nav-text">MemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseMemoryCache-java"><span class="nav-number">3.2.29.</span> <span class="nav-text">BaseMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakMemoryCache-java"><span class="nav-number">3.2.30.</span> <span class="nav-text">WeakMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LimitedMemoryCache-java"><span class="nav-number">3.2.31.</span> <span class="nav-text">LimitedMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LargestLimitedMemoryCache-java"><span class="nav-number">3.2.32.</span> <span class="nav-text">LargestLimitedMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UsingFreqLimitedMemoryCache-java"><span class="nav-number">3.2.33.</span> <span class="nav-text">UsingFreqLimitedMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRULimitedMemoryCache-java"><span class="nav-number">3.2.34.</span> <span class="nav-text">LRULimitedMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FIFOLimitedMemoryCache-java"><span class="nav-number">3.2.35.</span> <span class="nav-text">FIFOLimitedMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LruMemoryCache-java"><span class="nav-number">3.2.36.</span> <span class="nav-text">LruMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LimitedAgeMemoryCache-java"><span class="nav-number">3.2.37.</span> <span class="nav-text">LimitedAgeMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FuzzyKeyMemoryCache-java"><span class="nav-number">3.2.38.</span> <span class="nav-text">FuzzyKeyMemoryCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FileNameGenerator-java"><span class="nav-number">3.2.39.</span> <span class="nav-text">FileNameGenerator.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HashCodeFileNameGenerator-java"><span class="nav-number">3.2.40.</span> <span class="nav-text">HashCodeFileNameGenerator.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Md5FileNameGenerator-java"><span class="nav-number">3.2.41.</span> <span class="nav-text">Md5FileNameGenerator.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DiskCache-java"><span class="nav-number">3.2.42.</span> <span class="nav-text">DiskCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseDiskCache-java"><span class="nav-number">3.2.43.</span> <span class="nav-text">BaseDiskCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LimitedAgeDiskCache-java"><span class="nav-number">3.2.44.</span> <span class="nav-text">LimitedAgeDiskCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UnLimitedDiskCache-java"><span class="nav-number">3.2.45.</span> <span class="nav-text">UnLimitedDiskCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DiskLruCache-java"><span class="nav-number">3.2.46.</span> <span class="nav-text">DiskLruCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LruDiskCache-java"><span class="nav-number">3.2.47.</span> <span class="nav-text">LruDiskCache.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StrictLineReader-java"><span class="nav-number">3.2.48.</span> <span class="nav-text">StrictLineReader.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Util-java"><span class="nav-number">3.2.49.</span> <span class="nav-text">Util.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ContentLengthInputStream-java"><span class="nav-number">3.2.50.</span> <span class="nav-text">ContentLengthInputStream.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FailReason-java"><span class="nav-number">3.2.51.</span> <span class="nav-text">FailReason.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FlushedInputStream-java"><span class="nav-number">3.2.52.</span> <span class="nav-text">FlushedInputStream.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageScaleType-java"><span class="nav-number">3.2.53.</span> <span class="nav-text">ImageScaleType.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ViewScaleType-java"><span class="nav-number">3.2.54.</span> <span class="nav-text">ViewScaleType.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageSize-java"><span class="nav-number">3.2.55.</span> <span class="nav-text">ImageSize.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LoadedFrom-java"><span class="nav-number">3.2.56.</span> <span class="nav-text">LoadedFrom.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageDecoder-java"><span class="nav-number">3.2.57.</span> <span class="nav-text">ImageDecoder.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BaseImageDecoder-java"><span class="nav-number">3.2.58.</span> <span class="nav-text">BaseImageDecoder.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageDownloadingInfo-java"><span class="nav-number">3.2.59.</span> <span class="nav-text">ImageDownloadingInfo.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BitmapDisplayer-java"><span class="nav-number">3.2.60.</span> <span class="nav-text">BitmapDisplayer.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#FadeInBitmapDisplayer-java"><span class="nav-number">3.2.61.</span> <span class="nav-text">FadeInBitmapDisplayer.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RoundedBitmapDisplayer-java"><span class="nav-number">3.2.62.</span> <span class="nav-text">RoundedBitmapDisplayer.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RoundedVignetteBitmapDisplayer-java"><span class="nav-number">3.2.63.</span> <span class="nav-text">RoundedVignetteBitmapDisplayer.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SimpleBitmapDisplayer-java"><span class="nav-number">3.2.64.</span> <span class="nav-text">SimpleBitmapDisplayer.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BitmapProcessor-java"><span class="nav-number">3.2.65.</span> <span class="nav-text">BitmapProcessor.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PauseOnScrollListener-java"><span class="nav-number">3.2.66.</span> <span class="nav-text">PauseOnScrollListener.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QueueProcessingType-java"><span class="nav-number">3.2.67.</span> <span class="nav-text">QueueProcessingType.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LIFOLinkedBlockingDeque-java"><span class="nav-number">3.2.68.</span> <span class="nav-text">LIFOLinkedBlockingDeque.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DiskCacheUtils-java"><span class="nav-number">3.2.69.</span> <span class="nav-text">DiskCacheUtils.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MemoryCacheUtils-java"><span class="nav-number">3.2.70.</span> <span class="nav-text">MemoryCacheUtils.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#StorageUtils-java"><span class="nav-number">3.2.71.</span> <span class="nav-text">StorageUtils.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ImageSizeUtils-java"><span class="nav-number">3.2.72.</span> <span class="nav-text">ImageSizeUtils.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IoUtils-java"><span class="nav-number">3.2.73.</span> <span class="nav-text">IoUtils.java</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#L-java"><span class="nav-number">3.2.74.</span> <span class="nav-text">L.java</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">3.3.</span> <span class="nav-text">后记</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

@@ -1,68 +1,23 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="python基础," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="定义Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Python基础之(三)字典 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="python基础">
+  <meta name="description" content="定义Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。
 创建字典创建空的字典12345678&amp;gt;&amp;gt;&amp;gt; mydict = &amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; mydict&amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; type(mydict)&amp;lt;type &apos;dict&apos;&amp;gt;&amp;gt;&amp;gt;&amp;gt; person=&amp;#1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python基础之(三)字典">
 <meta property="og:url" content="http://yoursite.com/2016/04/23/Python基础之(三)字典/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="定义Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。
 创建字典创建空的字典12345678&amp;gt;&amp;gt;&amp;gt; mydict = &amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; mydict&amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; type(mydict)&amp;lt;type &apos;dict&apos;&amp;gt;&amp;gt;&amp;gt;&amp;gt; person=&amp;#1">
 <meta property="og:updated_time" content="2016-08-12T08:51:15.000Z">
@@ -70,262 +25,195 @@
 <meta name="twitter:title" content="Python基础之(三)字典">
 <meta name="twitter:description" content="定义Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。
 创建字典创建空的字典12345678&amp;gt;&amp;gt;&amp;gt; mydict = &amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; mydict&amp;#123;&amp;#125;&amp;gt;&amp;gt;&amp;gt; type(mydict)&amp;lt;type &apos;dict&apos;&amp;gt;&amp;gt;&amp;gt;&amp;gt; person=&amp;#1">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Python基础之(三)字典 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python基础之(三)字典</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Python基础之(三)字典</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-23T14:48:11.000Z" itemprop="datePublished" class="page-time">
+  2016-04-23 22:48:11
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建字典"><span class="post-toc-number">2.</span> <span class="post-toc-text">创建字典</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建空的字典"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建空的字典</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加字典"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">添加字典</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#修改字典"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">修改字典</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#利用元组创建字典"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">利用元组创建字典</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用fromkeys创建字典"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">使用fromkeys创建字典</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#访问字典的值"><span class="post-toc-number">3.</span> <span class="post-toc-text">访问字典的值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本操作"><span class="post-toc-number">4.</span> <span class="post-toc-text">基本操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#len-d"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">len(d)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#d-key"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">d[key]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#d-key-value"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">d[key] = value</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#del-d-key"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">del d[key]</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#key-in-d"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">key in d</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字符串格式化输出"><span class="post-toc-number">5.</span> <span class="post-toc-text">字符串格式化输出</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关概念"><span class="post-toc-number">6.</span> <span class="post-toc-text">相关概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联数组"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">关联数组</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#散列表"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">散列表</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字典的函数"><span class="post-toc-number">7.</span> <span class="post-toc-text">字典的函数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拷贝"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">拷贝</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#copy"><span class="post-toc-number">7.1.1.</span> <span class="post-toc-text">copy()</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#deepcopy"><span class="post-toc-number">7.1.2.</span> <span class="post-toc-text">deepcopy()</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#clear"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">clear</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#get和setdefault"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">get和setdefault</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#get"><span class="post-toc-number">7.3.1.</span> <span class="post-toc-text">get</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#setdefault"><span class="post-toc-number">7.3.2.</span> <span class="post-toc-text">setdefault</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#items-iteritems-keys-iterkeys-values-itervalues"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">items/iteritems,keys/iterkeys,values/itervalues</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#pop和popitem"><span class="post-toc-number">7.5.</span> <span class="post-toc-text">pop和popitem</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#update"><span class="post-toc-number">7.6.</span> <span class="post-toc-text">update</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#has-key"><span class="post-toc-number">7.7.</span> <span class="post-toc-text">has_key</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python基础之(三)字典"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Python基础之(三)字典
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Python基础之(三)字典</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-23T22:48:11+08:00" content="2016-04-23 22:48:11">
-              2016-04-23 22:48:11
-            </time>
-          </span>
+            <time datetime="2016-04-23T14:48:11.000Z" itemprop="datePublished" class="post-time">
+  2016-04-23 22:48:11
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/23/Python基础之(三)字典/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/Python基础之(三)字典/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。</p>
-<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><h3 id="创建空的字典"><a href="#创建空的字典" class="headerlink" title="创建空的字典"></a>创建空的字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>mydict = &#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>mydict</span><br><span class="line">&#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(mydict)</span><br><span class="line">&lt;type <span class="string">'dict'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"sex"</span>:<span class="string">"male"</span>,<span class="string">"age"</span>:<span class="number">10</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br></pre></td></tr></table></figure>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。</p>
+<h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><h3 id="创建空的字典"><a href="#创建空的字典" class="headerlink" title="创建空的字典"></a>创建空的字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>mydict = &#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>mydict</div><div class="line">&#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(mydict)</div><div class="line">&lt;type <span class="string">'dict'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"sex"</span>:<span class="string">"male"</span>,<span class="string">"age"</span>:<span class="number">10</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div></pre></td></tr></table></figure>
 <p>字典dict是以键值对的形式存储数据。比如<code>&quot;name&quot;:&quot;liu&quot;</code>前面的name叫作键（key），后面的liu是前面的键所对应的值（value）。在一个字典中，键是唯一的，不能重复。值则对应于键，值可以重复。</p>
 <p>键值之间用冒号隔开，每一对键值之间用逗号隔开。</p>
-<h3 id="添加字典"><a href="#添加字典" class="headerlink" title="添加字典"></a>添加字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"hobby"</span>]=<span class="string">"reading"</span> <span class="comment">#增加键值对的方法</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]=<span class="number">20</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(person)</span><br><span class="line"><span class="number">49368784</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]=<span class="number">30</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(person)</span><br><span class="line"><span class="number">49368784</span></span><br></pre></td></tr></table></figure>
+<h3 id="添加字典"><a href="#添加字典" class="headerlink" title="添加字典"></a>添加字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"hobby"</span>]=<span class="string">"reading"</span> <span class="comment">#增加键值对的方法</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="修改字典"><a href="#修改字典" class="headerlink" title="修改字典"></a>修改字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]=<span class="number">20</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(person)</div><div class="line"><span class="number">49368784</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]=<span class="number">30</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(person)</div><div class="line"><span class="number">49368784</span></div></pre></td></tr></table></figure>
 <p>结果可以看出，字典可以原地地修改，即它是可变的，并且不会创建新的对象。</p>
-<h3 id="利用元组创建字典"><a href="#利用元组创建字典" class="headerlink" title="利用元组创建字典"></a>利用元组创建字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>name = ([<span class="string">"first"</span>,<span class="string">"Google"</span>],[<span class="string">"second"</span>,<span class="string">"Yahoo"</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>website=dict(name)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>website</span><br><span class="line">&#123;<span class="string">'second'</span>: <span class="string">'Yahoo'</span>, <span class="string">'first'</span>: <span class="string">'Google'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(website)</span><br><span class="line">&lt;type <span class="string">'dict'</span>&gt;</span><br><span class="line"></span><br><span class="line">或者这样：</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ad = dict(name=<span class="string">"liu"</span>,age= <span class="number">26</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ad</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">26</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(ad)</span><br><span class="line">&lt;type <span class="string">'dict'</span>&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="使用fromkeys创建字典"><a href="#使用fromkeys创建字典" class="headerlink" title="使用fromkeys创建字典"></a>使用fromkeys创建字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>website=&#123;&#125;.fromkeys((<span class="string">"third"</span>,<span class="string">"forth"</span>),(<span class="string">"facebook"</span>,<span class="string">"amazon"</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>website</span><br><span class="line">&#123;<span class="string">'forth'</span>: (<span class="string">'facebook'</span>, <span class="string">'amazon'</span>), <span class="string">'third'</span>: (<span class="string">'facebook'</span>, <span class="string">'amazon'</span>)&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>website=&#123;&#125;.fromkeys((<span class="string">"third"</span>,<span class="string">"forth"</span>),<span class="string">"facebook"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>website</span><br><span class="line">&#123;<span class="string">'forth'</span>: <span class="string">'facebook'</span>, <span class="string">'third'</span>: <span class="string">'facebook'</span>&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="利用元组创建字典"><a href="#利用元组创建字典" class="headerlink" title="利用元组创建字典"></a>利用元组创建字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>name = ([<span class="string">"first"</span>,<span class="string">"Google"</span>],[<span class="string">"second"</span>,<span class="string">"Yahoo"</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>website=dict(name)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>website</div><div class="line">&#123;<span class="string">'second'</span>: <span class="string">'Yahoo'</span>, <span class="string">'first'</span>: <span class="string">'Google'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(website)</div><div class="line">&lt;type <span class="string">'dict'</span>&gt;</div><div class="line"></div><div class="line">或者这样：</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>ad = dict(name=<span class="string">"liu"</span>,age= <span class="number">26</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>ad</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">26</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(ad)</div><div class="line">&lt;type <span class="string">'dict'</span>&gt;</div></pre></td></tr></table></figure>
+<h3 id="使用fromkeys创建字典"><a href="#使用fromkeys创建字典" class="headerlink" title="使用fromkeys创建字典"></a>使用fromkeys创建字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>website=&#123;&#125;.fromkeys((<span class="string">"third"</span>,<span class="string">"forth"</span>),(<span class="string">"facebook"</span>,<span class="string">"amazon"</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>website</div><div class="line">&#123;<span class="string">'forth'</span>: (<span class="string">'facebook'</span>, <span class="string">'amazon'</span>), <span class="string">'third'</span>: (<span class="string">'facebook'</span>, <span class="string">'amazon'</span>)&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>website=&#123;&#125;.fromkeys((<span class="string">"third"</span>,<span class="string">"forth"</span>),<span class="string">"facebook"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>website</div><div class="line">&#123;<span class="string">'forth'</span>: <span class="string">'facebook'</span>, <span class="string">'third'</span>: <span class="string">'facebook'</span>&#125;</div></pre></td></tr></table></figure>
 <p>特别注意的是，字典中的键必须是不可变对象，值可以是任意类的对象。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd = &#123;(<span class="number">1</span>,<span class="number">2</span>):<span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;(<span class="number">1</span>, <span class="number">2</span>): <span class="number">1</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd)</span><br><span class="line">&lt;type <span class="string">'dict'</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd=&#123;[<span class="number">1</span>,<span class="number">2</span>]:<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#52&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    dd=&#123;[<span class="number">1</span>,<span class="number">2</span>]:<span class="number">1</span>&#125;</span><br><span class="line">TypeError: unhashable type: <span class="string">'list'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd = &#123;(<span class="number">1</span>,<span class="number">2</span>):<span class="number">1</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;(<span class="number">1</span>, <span class="number">2</span>): <span class="number">1</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd)</div><div class="line">&lt;type <span class="string">'dict'</span>&gt;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd=&#123;[<span class="number">1</span>,<span class="number">2</span>]:<span class="number">1</span>&#125;</div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#52&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    dd=&#123;[<span class="number">1</span>,<span class="number">2</span>]:<span class="number">1</span>&#125;</div><div class="line">TypeError: unhashable type: <span class="string">'list'</span></div></pre></td></tr></table></figure>
 <h2 id="访问字典的值"><a href="#访问字典的值" class="headerlink" title="访问字典的值"></a>访问字典的值</h2><p>字典类型的对象是以键值对的形式存储数据的，所以只要知道键就能得到值，这在本质上就是一种映射关系。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>person</span><br><span class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]</span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"hobby"</span>]</span><br><span class="line"><span class="string">'reading'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'hobby'</span>: <span class="string">'reading'</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"age"</span>]</div><div class="line"><span class="number">30</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person[<span class="string">"hobby"</span>]</div><div class="line"><span class="string">'reading'</span></div></pre></td></tr></table></figure>
 <h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="len-d"><a href="#len-d" class="headerlink" title="len(d)"></a>len(d)</h3><p>返回字典d中键值对的数量</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code = &#123;<span class="string">"beijing"</span>:<span class="string">"010"</span>,<span class="string">"shanghai"</span>:<span class="string">"021"</span>,<span class="string">"guangzhou"</span>:<span class="string">"020"</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(city_code)</span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code = &#123;<span class="string">"beijing"</span>:<span class="string">"010"</span>,<span class="string">"shanghai"</span>:<span class="string">"021"</span>,<span class="string">"guangzhou"</span>:<span class="string">"020"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(city_code)</div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
 <h3 id="d-key"><a href="#d-key" class="headerlink" title="d[key]"></a>d[key]</h3><p>返回字典d中的键key的值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'010'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code[<span class="string">"beijing"</span>]</span><br><span class="line"><span class="string">'010'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'010'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code[<span class="string">"beijing"</span>]</div><div class="line"><span class="string">'010'</span></div></pre></td></tr></table></figure>
 <h3 id="d-key-value"><a href="#d-key-value" class="headerlink" title="d[key] = value"></a>d[key] = value</h3><p>将值赋给字典d中的键key</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'010'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code[<span class="string">"beijing"</span>]=<span class="string">"01110"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'01110'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'010'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code[<span class="string">"beijing"</span>]=<span class="string">"01110"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'01110'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div></pre></td></tr></table></figure>
 <h3 id="del-d-key"><a href="#del-d-key" class="headerlink" title="del d[key]"></a>del d[key]</h3><p>删除字典d中的键key值对</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'01110'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> city_code[<span class="string">"beijing"</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'beijing'</span>: <span class="string">'01110'</span>, <span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> city_code[<span class="string">"beijing"</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div></pre></td></tr></table></figure>
 <h3 id="key-in-d"><a href="#key-in-d" class="headerlink" title="key in d"></a>key in d</h3><p>检查字典d中是否含有键为key的项</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"shanghai"</span> <span class="keyword">in</span> city_code</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"beijing"</span> <span class="keyword">in</span> city_code</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h2 id="字符串格式化输出"><a href="#字符串格式化输出" class="headerlink" title="字符串格式化输出"></a>字符串格式化输出</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</span><br><span class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"Shanghai is a wonderful city,its area code is %(shanghai)s"</span> % city_code</span><br><span class="line"><span class="string">'Shanghai is a wonderful city,its area code is 021'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"shanghai"</span> <span class="keyword">in</span> city_code</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"beijing"</span> <span class="keyword">in</span> city_code</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
+<h2 id="字符串格式化输出"><a href="#字符串格式化输出" class="headerlink" title="字符串格式化输出"></a>字符串格式化输出</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>city_code</div><div class="line">&#123;<span class="string">'shanghai'</span>: <span class="string">'021'</span>, <span class="string">'guangzhou'</span>: <span class="string">'020'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"Shanghai is a wonderful city,its area code is %(shanghai)s"</span> % city_code</div><div class="line"><span class="string">'Shanghai is a wonderful city,its area code is 021'</span></div></pre></td></tr></table></figure>
 <h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="关联数组"><a href="#关联数组" class="headerlink" title="关联数组"></a>关联数组</h3><p>在计算机科学中，关联数组又称为映射（Map）、字典（Dictionary），是一个抽象的数据结构，它包含着类似于键值的有序对。这种数据结构包含以下几种常见的操作：</p>
 <ul>
 <li>向关联数组添加键值对</li>
@@ -337,540 +225,251 @@
 <h3 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h3><p>散列表（hash table，也叫哈希表），是根据关键字而直接访问在内存存储位置的数据结构。即把键值通过一个函数的计算，映射到表中的一个位置来访问记录，加快了查找速度。这个映射函数称为散列函数，存放记录的数组称为散列表。</p>
 <h2 id="字典的函数"><a href="#字典的函数" class="headerlink" title="字典的函数"></a>字典的函数</h2><h3 id="拷贝"><a href="#拷贝" class="headerlink" title="拷贝"></a>拷贝</h3><p>浅拷贝：Python在所执行的复制动作中，如果是基本类型的数据，就在内存中新建一个地址存储，如果不是基本类型，就不会新建一个地址，而是用标签引用原来的对象。copy()实现的是浅拷贝</p>
 <p>深拷贝：无论是基本数据类型还是其他类型都会新建一个地址来存储。deepcopy()实现的是深拷贝</p>
-<h4 id="copy"><a href="#copy" class="headerlink" title="copy()"></a>copy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>ad=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"age"</span>:<span class="number">20</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(ad)</span><br><span class="line"><span class="number">49368640</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cd= ad.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cd</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(cd)  <span class="comment">#与ad是不同的对象</span></span><br><span class="line"><span class="number">49225776</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cd[<span class="string">"age"</span>]=<span class="number">40</span>  <span class="comment">#修改cd没有对ad造成影响</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cd</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ad</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"lang"</span>:[<span class="string">"python"</span>,<span class="string">"java"</span>,<span class="string">"c"</span>]&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y = x.copy()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>, <span class="string">'c'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(x)</span><br><span class="line"><span class="number">49226496</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(y)</span><br><span class="line"><span class="number">49228800</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##y是从x拷贝过来的，两个在内存中是不同的对象</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y[<span class="string">"lang"</span>].remove(<span class="string">"c"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(x)</span><br><span class="line"><span class="number">49226496</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(y)</span><br><span class="line"><span class="number">49228800</span></span><br><span class="line"></span><br><span class="line">y中删除元素“c“后，x的键lang的值也发生了变化</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(x[<span class="string">"lang"</span>])</span><br><span class="line"><span class="number">49607424</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(y[<span class="string">"lang"</span>])</span><br><span class="line"><span class="number">49607424</span></span><br><span class="line"></span><br><span class="line">x与y中的列表是同一个对象，但是作为字符串的那个键值对属于不同的对象。</span><br></pre></td></tr></table></figure>
-<h4 id="deepcopy"><a href="#deepcopy" class="headerlink" title="deepcopy()"></a>deepcopy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy <span class="comment">#导入一个模块</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z = copy.deepcopy(x) <span class="comment">#深拷贝</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(x[<span class="string">"lang"</span>])</span><br><span class="line"><span class="number">49607424</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>id(z[<span class="string">"lang"</span>])</span><br><span class="line"><span class="number">49607184</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#此时x和z中的列表不属于同个对象</span></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x[<span class="string">"lang"</span>].remove(<span class="string">"java"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时，修改一个列表的值，就不会影响另外一个列表的值了。</span></span><br></pre></td></tr></table></figure>
+<h4 id="copy"><a href="#copy" class="headerlink" title="copy()"></a>copy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>ad=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"age"</span>:<span class="number">20</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(ad)</div><div class="line"><span class="number">49368640</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cd= ad.copy()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cd</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(cd)  <span class="comment">#与ad是不同的对象</span></div><div class="line"><span class="number">49225776</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cd[<span class="string">"age"</span>]=<span class="number">40</span>  <span class="comment">#修改cd没有对ad造成影响</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>cd</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>ad</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"lang"</span>:[<span class="string">"python"</span>,<span class="string">"java"</span>,<span class="string">"c"</span>]&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y = x.copy()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>, <span class="string">'c'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(x)</div><div class="line"><span class="number">49226496</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(y)</div><div class="line"><span class="number">49228800</span></div><div class="line"></div><div class="line"><span class="comment">##y是从x拷贝过来的，两个在内存中是不同的对象</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y[<span class="string">"lang"</span>].remove(<span class="string">"c"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>y</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(x)</div><div class="line"><span class="number">49226496</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(y)</div><div class="line"><span class="number">49228800</span></div><div class="line"></div><div class="line">y中删除元素“c“后，x的键lang的值也发生了变化</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(x[<span class="string">"lang"</span>])</div><div class="line"><span class="number">49607424</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(y[<span class="string">"lang"</span>])</div><div class="line"><span class="number">49607424</span></div><div class="line"></div><div class="line">x与y中的列表是同一个对象，但是作为字符串的那个键值对属于不同的对象。</div></pre></td></tr></table></figure>
+<h4 id="deepcopy"><a href="#deepcopy" class="headerlink" title="deepcopy()"></a>deepcopy()</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> copy <span class="comment">#导入一个模块</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z = copy.deepcopy(x) <span class="comment">#深拷贝</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(x[<span class="string">"lang"</span>])</div><div class="line"><span class="number">49607424</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>id(z[<span class="string">"lang"</span>])</div><div class="line"><span class="number">49607184</span></div><div class="line"></div><div class="line"><span class="comment">#此时x和z中的列表不属于同个对象</span></div><div class="line"></div><div class="line">&gt;&gt;&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x[<span class="string">"lang"</span>].remove(<span class="string">"java"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"></div><div class="line"><span class="comment">#此时，修改一个列表的值，就不会影响另外一个列表的值了。</span></div></pre></td></tr></table></figure>
 <h3 id="clear"><a href="#clear" class="headerlink" title="clear"></a>clear</h3><p>clear的作用是将字典清空，得到的是空字典。del是将字典删除，内存中就没有它了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.clear()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x</span><br><span class="line">&#123;&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> x</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x  <span class="comment">#x已删除</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#147&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    x</span><br><span class="line">NameError: name <span class="string">'x'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x.clear()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x</div><div class="line">&#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> a</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> x</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>x  <span class="comment">#x已删除</span></div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#147&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    x</div><div class="line">NameError: name <span class="string">'x'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <p>如果要清空一个字典，还能够使用x = {}这种方法，但这种方法的本质是将变量a的引用转向了{}这个对象，那么原来的对象呢？原来的对象称为了断了线的风筝，这样的东西称为在Python中称为垃圾，而且Python能够自动将这样的垃圾回收。</p>
 <h3 id="get和setdefault"><a href="#get和setdefault" class="headerlink" title="get和setdefault"></a>get和setdefault</h3><p>得到字典中的某个值</p>
-<h4 id="get"><a href="#get" class="headerlink" title="get"></a>get</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z[<span class="string">"lang"</span>].remove(<span class="string">"java"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z.get(<span class="string">"name"</span>)</span><br><span class="line"><span class="string">'liu'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> z.get(<span class="string">"age"</span>) <span class="comment">#返回None</span></span><br><span class="line"><span class="keyword">None</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">"age"</span>]  <span class="comment">#抛出异常</span></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#160&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    d[<span class="string">"age"</span>]</span><br><span class="line">NameError: name <span class="string">'d'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z.get(<span class="string">"age"</span>,<span class="number">30</span>) <span class="comment">#如果age不存在，则返回默认值30</span></span><br><span class="line"><span class="number">30</span></span><br></pre></td></tr></table></figure>
+<h4 id="get"><a href="#get" class="headerlink" title="get"></a>get</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>, <span class="string">'java'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z[<span class="string">"lang"</span>].remove(<span class="string">"java"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.get(<span class="string">"name"</span>)</div><div class="line"><span class="string">'liu'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> z.get(<span class="string">"age"</span>) <span class="comment">#返回None</span></div><div class="line"><span class="keyword">None</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d[<span class="string">"age"</span>]  <span class="comment">#抛出异常</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#160&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    d[<span class="string">"age"</span>]</div><div class="line">NameError: name <span class="string">'d'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.get(<span class="string">"age"</span>,<span class="number">30</span>) <span class="comment">#如果age不存在，则返回默认值30</span></div><div class="line"><span class="number">30</span></div></pre></td></tr></table></figure>
 <p>dict.get()和dict[key]的区别在于：如果键不在字典中，前者返回None，后者抛出异常</p>
-<h4 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault"></a>setdefault</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z.setdefault(<span class="string">"age"</span>,<span class="number">30</span>)  <span class="comment">#如果age不存在，则返回默认值30，同时将这对键值对添加到字典中</span></span><br><span class="line"><span class="number">30</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z.setdefault(<span class="string">"web"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>z</span><br><span class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'web'</span>: <span class="keyword">None</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="items-iteritems-keys-iterkeys-values-itervalues"><a href="#items-iteritems-keys-iterkeys-values-itervalues" class="headerlink" title="items/iteritems,keys/iterkeys,values/itervalues"></a>items/iteritems,keys/iterkeys,values/itervalues</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd = &#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"age"</span>:<span class="number">40</span>,<span class="string">"websit"</span>:<span class="string">"www.liuguoquan.com"</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd_kv = dd.items()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd_kv</span><br><span class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd_kv)</span><br><span class="line">&lt;type <span class="string">'list'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dd_kv)</span><br><span class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd_iter=dd.iteritems()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd_iter)</span><br><span class="line">&lt;type <span class="string">'dictionary-itemiterator'</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd_iter</span><br><span class="line">&lt;dictionary-itemiterator object at <span class="number">0x02F5F420</span>&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>list(dd_iter)  <span class="comment">#必须用list()迭代遍历</span></span><br><span class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.keys() <span class="comment">#列出键的列表</span></span><br><span class="line">[<span class="string">'websit'</span>, <span class="string">'age'</span>, <span class="string">'name'</span>]</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.values() <span class="comment">#列出值的列表</span></span><br><span class="line">[<span class="string">'www.liuguoquan.com'</span>, <span class="number">40</span>, <span class="string">'liu'</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="setdefault"><a href="#setdefault" class="headerlink" title="setdefault"></a>setdefault</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.setdefault(<span class="string">"age"</span>,<span class="number">30</span>)  <span class="comment">#如果age不存在，则返回默认值30，同时将这对键值对添加到字典中</span></div><div class="line"><span class="number">30</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z.setdefault(<span class="string">"web"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>z</div><div class="line">&#123;<span class="string">'lang'</span>: [<span class="string">'python'</span>], <span class="string">'web'</span>: <span class="keyword">None</span>, <span class="string">'age'</span>: <span class="number">30</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div></pre></td></tr></table></figure>
+<h3 id="items-iteritems-keys-iterkeys-values-itervalues"><a href="#items-iteritems-keys-iterkeys-values-itervalues" class="headerlink" title="items/iteritems,keys/iterkeys,values/itervalues"></a>items/iteritems,keys/iterkeys,values/itervalues</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd = &#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"age"</span>:<span class="number">40</span>,<span class="string">"websit"</span>:<span class="string">"www.liuguoquan.com"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd_kv = dd.items()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd_kv</div><div class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd_kv)</div><div class="line">&lt;type <span class="string">'list'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(dd_kv)</div><div class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd_iter=dd.iteritems()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(dd_iter)</div><div class="line">&lt;type <span class="string">'dictionary-itemiterator'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd_iter</div><div class="line">&lt;dictionary-itemiterator object at <span class="number">0x02F5F420</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>list(dd_iter)  <span class="comment">#必须用list()迭代遍历</span></div><div class="line">[(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>), (<span class="string">'age'</span>, <span class="number">40</span>), (<span class="string">'name'</span>, <span class="string">'liu'</span>)]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.keys() <span class="comment">#列出键的列表</span></div><div class="line">[<span class="string">'websit'</span>, <span class="string">'age'</span>, <span class="string">'name'</span>]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.values() <span class="comment">#列出值的列表</span></div><div class="line">[<span class="string">'www.liuguoquan.com'</span>, <span class="number">40</span>, <span class="string">'liu'</span>]</div></pre></td></tr></table></figure>
 <h3 id="pop和popitem"><a href="#pop和popitem" class="headerlink" title="pop和popitem"></a>pop和popitem</h3><p>删除字典键值对</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.pop(<span class="string">"name"</span>) <span class="comment">#删除指定键</span></span><br><span class="line"><span class="string">'liu'</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.pop() <span class="comment">#参数不能省略</span></span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;pyshell#198&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    dd.pop()</span><br><span class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.popitem() <span class="comment">#随机删除一个键值对</span></span><br><span class="line">(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">40</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd.popitem()</span><br><span class="line">(<span class="string">'age'</span>, <span class="number">40</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>dd</span><br><span class="line">&#123;&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.pop(<span class="string">"name"</span>) <span class="comment">#删除指定键</span></div><div class="line"><span class="string">'liu'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.pop() <span class="comment">#参数不能省略</span></div><div class="line"></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;pyshell#198&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">    dd.pop()</div><div class="line">TypeError: pop expected at least <span class="number">1</span> arguments, got <span class="number">0</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;<span class="string">'websit'</span>: <span class="string">'www.liuguoquan.com'</span>, <span class="string">'age'</span>: <span class="number">40</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.popitem() <span class="comment">#随机删除一个键值对</span></div><div class="line">(<span class="string">'websit'</span>, <span class="string">'www.liuguoquan.com'</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">40</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd.popitem()</div><div class="line">(<span class="string">'age'</span>, <span class="number">40</span>)</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dd</div><div class="line">&#123;&#125;</div></pre></td></tr></table></figure>
 <h3 id="update"><a href="#update" class="headerlink" title="update"></a>update</h3><p>更新字典</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2=&#123;<span class="string">"age"</span>:<span class="number">20</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1.update(d2) <span class="comment">#将字典到d2添加到d1中，更新字典</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2</span><br><span class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2.update([(<span class="string">"name"</span>,<span class="string">"lee"</span>),(<span class="string">"lang"</span>,<span class="string">"python"</span>)]) <span class="comment">#更新字典</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2</span><br><span class="line">&#123;<span class="string">'lang'</span>: <span class="string">'python'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'lee'</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d1=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2=&#123;<span class="string">"age"</span>:<span class="number">20</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d1.update(d2) <span class="comment">#将字典到d2添加到d1中，更新字典</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d1</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">20</span>&#125;</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2.update([(<span class="string">"name"</span>,<span class="string">"lee"</span>),(<span class="string">"lang"</span>,<span class="string">"python"</span>)]) <span class="comment">#更新字典</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2</div><div class="line">&#123;<span class="string">'lang'</span>: <span class="string">'python'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'lee'</span>&#125;</div></pre></td></tr></table></figure>
 <h3 id="has-key"><a href="#has-key" class="headerlink" title="has_key"></a>has_key</h3><p>判断字典中是否存在某个键</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2</span><br><span class="line">&#123;<span class="string">'lang'</span>: <span class="string">'python'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'lee'</span>&#125;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2.has_key(<span class="string">"name"</span>)</span><br><span class="line"><span class="keyword">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2.has_key(<span class="string">"web"</span>)</span><br><span class="line"><span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2</div><div class="line">&#123;<span class="string">'lang'</span>: <span class="string">'python'</span>, <span class="string">'age'</span>: <span class="number">20</span>, <span class="string">'name'</span>: <span class="string">'lee'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2.has_key(<span class="string">"name"</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2.has_key(<span class="string">"web"</span>)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python基础/" rel="tag">#python基础</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/19/Android的IPC方式/" rel="next" title="Android的IPC方式">
-                <i class="fa fa-chevron-left"></i> Android的IPC方式
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/23/Python基础之(四)集合/" rel="prev" title="Python基础之(四)集合">
-                Python基础之(四)集合 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/23/Python基础之(三)字典/" target="_blank" rel="external">http://yoursite.com/2016/04/23/Python基础之(三)字典/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/23/Python基础之(三)字典/"
-           data-title="Python基础之(三)字典" data-url="http://yoursite.com/2016/04/23/Python基础之(三)字典/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python基础/">python基础</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&title=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&title=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/23/Python基础之(三)字典/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/23/Python基础之(四)集合/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python基础之(四)集合</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/19/Android的IPC方式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android的IPC方式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Python基础之(三)字典" data-title="Python基础之(三)字典" data-url="http://yoursite.com/2016/04/23/Python基础之(三)字典/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&title=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&title=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/23/Python基础之(三)字典/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(三)字典》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/23/Python基础之(三)字典/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/23/Python基础之(三)字典/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aSXKFMAxFUfa/aTLNBHOfFFJl+XqU4tMdBooaXxde969Fzqwd508pLhkyZGzLuJeLvMTT4/mrE9j6WTJkyDiBwUNhLSCSD0GQj8dlyJAhYwlIU8b1nWXIkCGjw1iTOufzxFGGDBknM0gRuw6sJCinxfAntbgMGTI2ZKQl6H/+/cl8Q4YMGVsx7tLi5WstyYvfR4YMGaMZaRDkmPWZpN3Gz5QhQ8Y5DBL4eGDl9ySDgbgWlyFDxiBG2roiD0jDKB9kPr6nDBkyjmHUNoHVxpnpm7x8OBkyZIxmoJ9xssjTx/4WNBkyZJzJSBO+l+ZXGJo7QVmGDBmzGbXQ+cWQMk03r9YFMmTI2JXBy9FO0ExDKgrxMmTIGM2oRa2gBYZXbeQpQ4aMExh/UAGXWnIpHo0EZMiQMZTBx41pOCbX8q0V6CPKkCFjKCMF8DSxU7LyEvolNZQhQ8Y4Bm+fpUlkf7T58rFkyJBxACMtIHlx20kQg2GqDBkyRjP6Wys6pWy/bJYhQ8YJjLTRzzeE8fNRmbr+9yBDhozRjE7ATV+xk57G81gZMmQMYtzhSkNwf8CAUk8ZMmSMZvCVJoi80Va7Z3HJkCFjW0Y/yPKreAOOB2gZMmScw+Cl6fpILWnrDCdkyJAhI92WwYNm0BEkaaIMGTJkhNsgWhu8wvacDBkyzmHUytE0fSSkdIQgQ4aMExit0hGPDXg/n3/c4nxDhgwZOzF+ACBWRrz9HxWsAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建字典"><span class="nav-number">2.</span> <span class="nav-text">创建字典</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建空的字典"><span class="nav-number">2.1.</span> <span class="nav-text">创建空的字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加字典"><span class="nav-number">2.2.</span> <span class="nav-text">添加字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改字典"><span class="nav-number">2.3.</span> <span class="nav-text">修改字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#利用元组创建字典"><span class="nav-number">2.4.</span> <span class="nav-text">利用元组创建字典</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用fromkeys创建字典"><span class="nav-number">2.5.</span> <span class="nav-text">使用fromkeys创建字典</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#访问字典的值"><span class="nav-number">3.</span> <span class="nav-text">访问字典的值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">4.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#len-d"><span class="nav-number">4.1.</span> <span class="nav-text">len(d)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-key"><span class="nav-number">4.2.</span> <span class="nav-text">d[key]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-key-value"><span class="nav-number">4.3.</span> <span class="nav-text">d[key] = value</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#del-d-key"><span class="nav-number">4.4.</span> <span class="nav-text">del d[key]</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#key-in-d"><span class="nav-number">4.5.</span> <span class="nav-text">key in d</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串格式化输出"><span class="nav-number">5.</span> <span class="nav-text">字符串格式化输出</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关概念"><span class="nav-number">6.</span> <span class="nav-text">相关概念</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关联数组"><span class="nav-number">6.1.</span> <span class="nav-text">关联数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#散列表"><span class="nav-number">6.2.</span> <span class="nav-text">散列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典的函数"><span class="nav-number">7.</span> <span class="nav-text">字典的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拷贝"><span class="nav-number">7.1.</span> <span class="nav-text">拷贝</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#copy"><span class="nav-number">7.1.1.</span> <span class="nav-text">copy()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deepcopy"><span class="nav-number">7.1.2.</span> <span class="nav-text">deepcopy()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#clear"><span class="nav-number">7.2.</span> <span class="nav-text">clear</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get和setdefault"><span class="nav-number">7.3.</span> <span class="nav-text">get和setdefault</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get"><span class="nav-number">7.3.1.</span> <span class="nav-text">get</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#setdefault"><span class="nav-number">7.3.2.</span> <span class="nav-text">setdefault</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#items-iteritems-keys-iterkeys-values-itervalues"><span class="nav-number">7.4.</span> <span class="nav-text">items/iteritems,keys/iterkeys,values/itervalues</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pop和popitem"><span class="nav-number">7.5.</span> <span class="nav-text">pop和popitem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#update"><span class="nav-number">7.6.</span> <span class="nav-text">update</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#has-key"><span class="nav-number">7.7.</span> <span class="nav-text">has_key</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

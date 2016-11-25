@@ -1,69 +1,24 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="HTML5," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="CanvasCanvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>HTML5之Canvas | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="HTML5">
+  <meta name="description" content="CanvasCanvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。
 Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在HTML5页面中添加&amp;lt;canvas&amp;gt;标签，如
 1234567891011&amp;lt;!DOCTYPE HTML&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTML5之Canvas">
 <meta property="og:url" content="http://yoursite.com/2016/03/28/HTML5之Canvas/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="CanvasCanvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。
 Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在HTML5页面中添加&amp;lt;canvas&amp;gt;标签，如
 1234567891011&amp;lt;!DOCTYPE HTML&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;">
@@ -81,245 +36,178 @@ Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在
 Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在HTML5页面中添加&amp;lt;canvas&amp;gt;标签，如
 1234567891011&amp;lt;!DOCTYPE HTML&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;    &amp;lt;title&amp;gt;">
 <meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-canvas%E5%8A%A0%E6%A0%B7%E5%BC%8F.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> HTML5之Canvas | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">HTML5之Canvas</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">HTML5之Canvas</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-03-28T14:34:25.000Z" itemprop="datePublished" class="page-time">
+  2016-03-28 22:34:25
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Canvas"><span class="post-toc-number">1.</span> <span class="post-toc-text">Canvas</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Web页面增加画布"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Web页面增加画布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#显示画布"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">显示画布</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#在画布上绘图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">在画布上绘图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#失败处理"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">失败处理</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实例演示"><span class="post-toc-number">2.</span> <span class="post-toc-text">实例演示</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#建立HTML，并增加form表单"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">建立HTML，并增加form表单</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JavaScript处理表单控件"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">JavaScript处理表单控件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制矩形"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">绘制矩形</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制线"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">绘制线</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制圆形"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">绘制圆形</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制文本"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">绘制文本</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#绘制图片"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">绘制图片</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-HTML5之Canvas"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                HTML5之Canvas
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">HTML5之Canvas</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-28T22:34:25+08:00" content="2016-03-28 22:34:25">
-              2016-03-28 22:34:25
-            </time>
-          </span>
+            <time datetime="2016-03-28T14:34:25.000Z" itemprop="datePublished" class="post-time">
+  2016-03-28 22:34:25
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/28/HTML5之Canvas/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/28/HTML5之Canvas/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>Canvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>Canvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。</p>
 <h3 id="Web页面增加画布"><a href="#Web页面增加画布" class="headerlink" title="Web页面增加画布"></a>Web页面增加画布</h3><p>Canvas元素是一个标准的HTML5元素，可以直接在HTML5页面中添加<code>&lt;canvas&gt;</code>标签，如</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>width属性定义它在web页面中水平方向所占的像素，height定义了它在web页面中垂直方向所占的像素。</p>
 <p>注意：上面的web页面无法显示画布的，除非你在画布上绘制了内容。</p>
 <h3 id="显示画布"><a href="#显示画布" class="headerlink" title="显示画布"></a>显示画布</h3><p>现在找到一个证据，证明画布在我们的页面中确实存在。我们可以通过位canvas指定CSS样式，下面来增加一个简单的样式，为画布增加一个1像素宽的黑色边框。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">	<span class="comment">&lt;!--指定样式--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="selector-tag">canvas</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">	<span class="comment">&lt;!--指定样式--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">canvas</span>&#123;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>效果:</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-canvas%E5%8A%A0%E6%A0%B7%E5%BC%8F.png" alt=""></p>
 <ul>
@@ -332,26 +220,26 @@ Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在
 <li>2.获取画布的一个“2d”上下文</li>
 <li>3.使用这个上下文莱绘制图像</li>
 </ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="selector-tag">canvas</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span><br><span class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="comment">//在画布上画个矩形</span></span><br><span class="line">            <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'draw'</span>);</span><br><span class="line">            <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">            context.fillRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">        &#125;;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">canvas</span>&#123;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">        <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            <span class="comment">//在画布上画个矩形</span></div><div class="line">            <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'draw'</span>);</div><div class="line">            <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">            context.fillRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">        &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="失败处理"><a href="#失败处理" class="headerlink" title="失败处理"></a>失败处理</h3><p>因为Canvas是HTML5中新增的特性，所以会遇到有些浏览器不支持的情况，这是我们就需要查看canvas对象中是否存在getContext方法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="comment">//在画布上画个矩形</span></span><br><span class="line">		<span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'draw'</span>);</span><br><span class="line">		<span class="comment">//判断浏览器是否支持Canvas</span></span><br><span class="line">		<span class="keyword">if</span> (canvas.getContext) &#123;</span><br><span class="line">			<span class="built_in">console</span>.info(<span class="string">"you hava canvas"</span>);</span><br><span class="line">			<span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">			context.fillRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">console</span>.info(<span class="string">"soory, no canvas support ApI"</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	&#125;;</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	<span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		<span class="comment">//在画布上画个矩形</span></div><div class="line">		<span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">'draw'</span>);</div><div class="line">		<span class="comment">//判断浏览器是否支持Canvas</span></div><div class="line">		<span class="keyword">if</span> (canvas.getContext) &#123;</div><div class="line">			<span class="built_in">console</span>.info(<span class="string">"you hava canvas"</span>);</div><div class="line">			<span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line">			context.fillRect(<span class="number">10</span>,<span class="number">10</span>,<span class="number">100</span>,<span class="number">100</span>);</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="built_in">console</span>.info(<span class="string">"soory, no canvas support ApI"</span>);</div><div class="line">		&#125;</div><div class="line"></div><div class="line"></div><div class="line">	&#125;;</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%94%BB%E5%B8%83%E4%B8%8A%E7%94%BB%E7%9F%A9%E5%BD%A2.png" alt=""></p>
 <p>此外我们还可以这样做：</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">canvas</span> id=<span class="string">"draw"</span> <span class="attribute">width</span>=<span class="string">"600"</span> height=<span class="string">"200"</span>&gt;Please upgrade your browser!&lt;/canvas&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="selector-tag">canvas</span> id=<span class="string">"draw"</span> <span class="attribute">width</span>=<span class="string">"600"</span> height=<span class="string">"200"</span>&gt;Please upgrade your browser!&lt;/canvas&gt;</div></pre></td></tr></table></figure>
 <p>只要浏览器看到不认识的元素，默认行为就显示其中包含的文本。所以，不支持Canvas的浏览器看到<code>&lt;canvas&gt;</code>元素时，它们就会显示Please upgrade your browser!。另一方面，支持画布的浏览器会直接忽略画布标记之间的所有文本，所以不会显示这个文本。</p>
 <h2 id="实例演示"><a href="#实例演示" class="headerlink" title="实例演示"></a>实例演示</h2><p>现在，我们开始通过一个实例来学习使用Canvas绘制矩形、圆、文本、图片等功能。先看看效果：</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%A4%BA%E4%BE%8B%E6%95%88%E6%9E%9C.png" alt=""></p>
 <h3 id="建立HTML，并增加form表单"><a href="#建立HTML，并增加form表单" class="headerlink" title="建立HTML，并增加form表单"></a>建立HTML，并增加form表单</h3><p>先新建一个HTML的页面，并增加form表单控件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>TweetShirt<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span><br><span class="line">        <span class="selector-tag">canvas</span>&#123;</span><br><span class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">        &#125;</span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = "<span class="attr">tweetshirt.js</span>"&gt;</span><span class="undefined"></span><br><span class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>TweetShirt<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"tshirtCanvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span>Please upgrade your browser to use TweetShirt!<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"backgroudColor"</span>&gt;</span>选择背景颜色: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = "<span class="attr">backgroundColor</span>"&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"white"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>白色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"black"</span>&gt;</span>黑色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"shape"</span>&gt;</span>选择图形: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = "<span class="attr">shape</span>"&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"none"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>无<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"circles"</span>&gt;</span>圆形<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"squares"</span>&gt;</span>正方形<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"foregroundColor"</span>&gt;</span>选择前景颜色: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = "<span class="attr">foregroundColor</span>"&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"black"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>黑色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"white"</span>&gt;</span>白色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"previewButton"</span> <span class="attr">value</span>=<span class="string">"预览"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>TweetShirt<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></span></div><div class="line">        <span class="selector-tag">canvas</span>&#123;</div><div class="line">            <span class="attribute">border</span>: <span class="number">1px</span> solid black;</div><div class="line">        &#125;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span> = <span class="string">"tweetshirt.js"</span>&gt;</span><span class="undefined"></span></div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>TweetShirt<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"tshirtCanvas"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span>Please upgrade your browser to use TweetShirt!<span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">form</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"backgroudColor"</span>&gt;</span>选择背景颜色: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = <span class="string">"backgroundColor"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"white"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>白色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"black"</span>&gt;</span>黑色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"shape"</span>&gt;</span>选择图形: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = <span class="string">"shape"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"none"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>无<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"circles"</span>&gt;</span>圆形<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"squares"</span>&gt;</span>正方形<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"foregroundColor"</span>&gt;</span>选择前景颜色: <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span> = <span class="string">"foregroundColor"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"black"</span> <span class="attr">selected</span>=<span class="string">"selected"</span>&gt;</span>黑色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">option</span> <span class="attr">value</span>=<span class="string">"white"</span>&gt;</span>白色<span class="tag">&lt;/<span class="name">option</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">select</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"previewButton"</span> <span class="attr">value</span>=<span class="string">"预览"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
 <h3 id="JavaScript处理表单控件"><a href="#JavaScript处理表单控件" class="headerlink" title="JavaScript处理表单控件"></a>JavaScript处理表单控件</h3><p>新建一个JavaScript文件tweetshirt.js，首先启动预览按钮，这样点击这个按钮时它就会调用一个JavaScript函数来处理Canvas绘制。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"previewButton"</span>);</span><br><span class="line">    button.onclick = previewHandler;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&lt;!--预览点击事件--&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">previewHandler</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"tshirtCanvas"</span>);</span><br><span class="line">    <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//绘制图像之前，重置之前绘制的内容</span></span><br><span class="line">    fillBackgroudColor(canvas,context);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查看界面选择了哪种颜色</span></span><br><span class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"shape"</span>);</span><br><span class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex; <span class="comment">//得到表单控件选项的编号的数组</span></span><br><span class="line">    <span class="keyword">var</span> shape = selectObj[index].value; <span class="comment">//得到选项的值</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (shape == <span class="string">"squares"</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> squares = <span class="number">0</span> ; squares &lt; <span class="number">20</span>; squares++) &#123;</span><br><span class="line">			<span class="comment">//绘制正方形</span></span><br><span class="line">            drawSquare(canvas,context);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (shape == <span class="string">"circles"</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> circles = <span class="number">0</span> ; circles &lt; <span class="number">20</span>; circles++) &#123;</span><br><span class="line">			<span class="comment">//绘制圆</span></span><br><span class="line">            drawCircle(canvas,context);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">//绘制文本</span></span><br><span class="line">    drawText(canvas,context);</span><br><span class="line">	<span class="comment">//绘制图片</span></span><br><span class="line">    drawImage(canvas,context);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fillBackgroudColor</span>(<span class="params">canvas,context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"backgroundColor"</span>);</span><br><span class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex;</span><br><span class="line">    <span class="keyword">var</span> bgColor = selectObj[index].value;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//fillStyle保存画布上完成绘制时所用的颜色,它是一个属性而不是方法，所以需要设置而不是调用</span></span><br><span class="line">    context.fillStyle = bgColor;</span><br><span class="line">    context.fillRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">600</span>,<span class="number">200</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> button = <span class="built_in">document</span>.getElementById(<span class="string">"previewButton"</span>);</div><div class="line">    button.onclick = previewHandler;</div><div class="line">&#125;</div><div class="line"></div><div class="line">&lt;!--预览点击事件--&gt;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">previewHandler</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"tshirtCanvas"</span>);</div><div class="line">    <span class="keyword">var</span> context = canvas.getContext(<span class="string">"2d"</span>);</div><div class="line"></div><div class="line">    <span class="comment">//绘制图像之前，重置之前绘制的内容</span></div><div class="line">    fillBackgroudColor(canvas,context);</div><div class="line"></div><div class="line">    <span class="comment">//查看界面选择了哪种颜色</span></div><div class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"shape"</span>);</div><div class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex; <span class="comment">//得到表单控件选项的编号的数组</span></div><div class="line">    <span class="keyword">var</span> shape = selectObj[index].value; <span class="comment">//得到选项的值</span></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (shape == <span class="string">"squares"</span>) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> squares = <span class="number">0</span> ; squares &lt; <span class="number">20</span>; squares++) &#123;</div><div class="line">			<span class="comment">//绘制正方形</span></div><div class="line">            drawSquare(canvas,context);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (shape == <span class="string">"circles"</span>) &#123;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> circles = <span class="number">0</span> ; circles &lt; <span class="number">20</span>; circles++) &#123;</div><div class="line">			<span class="comment">//绘制圆</span></div><div class="line">            drawCircle(canvas,context);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	<span class="comment">//绘制文本</span></div><div class="line">    drawText(canvas,context);</div><div class="line">	<span class="comment">//绘制图片</span></div><div class="line">    drawImage(canvas,context);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fillBackgroudColor</span>(<span class="params">canvas,context</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"backgroundColor"</span>);</div><div class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex;</div><div class="line">    <span class="keyword">var</span> bgColor = selectObj[index].value;</div><div class="line"></div><div class="line">    <span class="comment">//fillStyle保存画布上完成绘制时所用的颜色,它是一个属性而不是方法，所以需要设置而不是调用</span></div><div class="line">    context.fillStyle = bgColor;</div><div class="line">    context.fillRect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">600</span>,<span class="number">200</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="绘制矩形"><a href="#绘制矩形" class="headerlink" title="绘制矩形"></a>绘制矩形</h3><ul>
 <li>指定正方形的边长</li>
 <li>指定正方形的位置x和y</li>
 <li>设置正方形的属性</li>
 <li>绘制正方形</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//画正方形</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawSquare</span>(<span class="params">canvas,context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> w = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.width);</span><br><span class="line">    <span class="keyword">var</span> y = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.height);</span><br><span class="line"></span><br><span class="line">    context.fillStyle = <span class="string">"lightblue"</span>;</span><br><span class="line">    context.fillRect(x,y,w,w);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//画正方形</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawSquare</span>(<span class="params">canvas,context</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> w = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">40</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.width);</div><div class="line">    <span class="keyword">var</span> y = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.height);</div><div class="line"></div><div class="line">    context.fillStyle = <span class="string">"lightblue"</span>;</div><div class="line">    context.fillRect(x,y,w,w);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%94%BB%E5%B8%83%E4%B8%8A%E7%94%BB%E7%9F%A9%E5%BD%A2.png" alt=""></p>
 <h3 id="绘制线"><a href="#绘制线" class="headerlink" title="绘制线"></a>绘制线</h3><ul>
 <li>beginPath方法告诉画布开始一个新路径</li>
@@ -359,7 +247,7 @@ Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在
 <li>lineTo方法描绘路径，从画笔的当前位置描绘到画布上的另一个点</li>
 <li>closePath方法将路径的起始点连接到当前路径的最后一个点</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//绘制线</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawLine</span>(<span class="params">canvas, context</span>) </span>&#123;</span><br><span class="line">	context.beginPath();</span><br><span class="line">	context.moveTo(<span class="number">100</span>, <span class="number">150</span>);</span><br><span class="line">	context.lineTo(<span class="number">250</span>, <span class="number">75</span>);</span><br><span class="line">	context.lineTo(<span class="number">125</span>, <span class="number">30</span>);</span><br><span class="line">	context.closePath();</span><br><span class="line">	context.lineWidth = <span class="number">5</span>;</span><br><span class="line">	context.stroke();</span><br><span class="line">	context.fillStyle = <span class="string">"red"</span>;</span><br><span class="line">	context.fill();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//绘制线</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawLine</span>(<span class="params">canvas, context</span>) </span>&#123;</div><div class="line">	context.beginPath();</div><div class="line">	context.moveTo(<span class="number">100</span>, <span class="number">150</span>);</div><div class="line">	context.lineTo(<span class="number">250</span>, <span class="number">75</span>);</div><div class="line">	context.lineTo(<span class="number">125</span>, <span class="number">30</span>);</div><div class="line">	context.closePath();</div><div class="line">	context.lineWidth = <span class="number">5</span>;</div><div class="line">	context.stroke();</div><div class="line">	context.fillStyle = <span class="string">"red"</span>;</div><div class="line">	context.fill();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="绘制圆形"><a href="#绘制圆形" class="headerlink" title="绘制圆形"></a>绘制圆形</h3><ul>
 <li>创建一个路径</li>
 <li>填充arc方法参数</li>
@@ -367,7 +255,7 @@ Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在
 <li>填充圆</li>
 </ul>
 <p>先来分析arc方法</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">context</span><span class="selector-class">.arc</span>(<span class="selector-tag">x</span>,<span class="selector-tag">y</span>,<span class="selector-tag">radius</span>,<span class="selector-tag">startAngle</span>,<span class="selector-tag">endAngle</span><span class="selector-class">.direction</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">context</span><span class="selector-class">.arc</span>(<span class="selector-tag">x</span>,<span class="selector-tag">y</span>,<span class="selector-tag">radius</span>,<span class="selector-tag">startAngle</span>,<span class="selector-tag">endAngle</span><span class="selector-class">.direction</span>);</div></pre></td></tr></table></figure>
 <ul>
 <li>x和y：确定圆心在画布上的位置</li>
 <li>radius：圆的半径</li>
@@ -375,540 +263,251 @@ Web页面增加画布Canvas元素是一个标准的HTML5元素，可以直接在
 <li>endAngle：圆弧的终止角，确定路径的终点，可以为负值（表示按负方向度量），单位为弧度</li>
 <li>direction： true表示逆时针画弧，false表示顺时针画弧</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//画圆形</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCircle</span>(<span class="params">canvas,context</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> radius = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">40</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.width);</span><br><span class="line">    <span class="keyword">var</span> y = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.height);</span><br><span class="line"></span><br><span class="line">    context.beginPath();</span><br><span class="line">    context.arc(x,y,radius,<span class="number">0</span>,degreeToRadians(<span class="number">360</span>),<span class="literal">true</span>);</span><br><span class="line">    context.fillStyle = <span class="string">"red"</span>;</span><br><span class="line">    context.fill();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//度数转弧度</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">degreeToRadians</span>(<span class="params">degree</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (degree * <span class="built_in">Math</span>.PI) / <span class="number">180</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//画圆形</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawCircle</span>(<span class="params">canvas,context</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> radius = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">40</span>);</div><div class="line"></div><div class="line">    <span class="keyword">var</span> x = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.width);</div><div class="line">    <span class="keyword">var</span> y = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * canvas.height);</div><div class="line"></div><div class="line">    context.beginPath();</div><div class="line">    context.arc(x,y,radius,<span class="number">0</span>,degreeToRadians(<span class="number">360</span>),<span class="literal">true</span>);</div><div class="line">    context.fillStyle = <span class="string">"red"</span>;</div><div class="line">    context.fill();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//度数转弧度</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">degreeToRadians</span>(<span class="params">degree</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> (degree * <span class="built_in">Math</span>.PI) / <span class="number">180</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%BB%98%E5%88%B6%E5%9C%86%E5%BD%A2.png" alt=""></p>
 <h3 id="绘制文本"><a href="#绘制文本" class="headerlink" title="绘制文本"></a>绘制文本</h3><ul>
 <li>设置文本的属性</li>
 <li>填充文本</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//画文本</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawText</span>(<span class="params">canvas,context</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"foregroundColor"</span>);</span><br><span class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex;</span><br><span class="line">    <span class="keyword">var</span> fgColor = selectObj[index].value;</span><br><span class="line"></span><br><span class="line">    context.fillStyle = fgColor; <span class="comment">//设置字体颜色</span></span><br><span class="line">    context.font = <span class="string">"bold 1em sans-serif"</span>; <span class="comment">//设置字体</span></span><br><span class="line">    context.textAlign = <span class="string">"left"</span>; <span class="comment">//设置对齐方式</span></span><br><span class="line">    context.fillText(<span class="string">"I saw this tweet"</span>,<span class="number">20</span>,<span class="number">40</span>); <span class="comment">//填充文本</span></span><br><span class="line"></span><br><span class="line">    context.font = <span class="string">"bold 1em sans-serif"</span>;</span><br><span class="line">    context.textAlign = <span class="string">"right"</span>;</span><br><span class="line">    context.fillText(<span class="string">"and I got was this lousy t-shirt!"</span>,canvas.width<span class="number">-20</span>,canvas.height<span class="number">-40</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//画文本</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawText</span>(<span class="params">canvas,context</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> selectObj = <span class="built_in">document</span>.getElementById(<span class="string">"foregroundColor"</span>);</div><div class="line">    <span class="keyword">var</span> index = selectObj.selectedIndex;</div><div class="line">    <span class="keyword">var</span> fgColor = selectObj[index].value;</div><div class="line"></div><div class="line">    context.fillStyle = fgColor; <span class="comment">//设置字体颜色</span></div><div class="line">    context.font = <span class="string">"bold 1em sans-serif"</span>; <span class="comment">//设置字体</span></div><div class="line">    context.textAlign = <span class="string">"left"</span>; <span class="comment">//设置对齐方式</span></div><div class="line">    context.fillText(<span class="string">"I saw this tweet"</span>,<span class="number">20</span>,<span class="number">40</span>); <span class="comment">//填充文本</span></div><div class="line"></div><div class="line">    context.font = <span class="string">"bold 1em sans-serif"</span>;</div><div class="line">    context.textAlign = <span class="string">"right"</span>;</div><div class="line">    context.fillText(<span class="string">"and I got was this lousy t-shirt!"</span>,canvas.width<span class="number">-20</span>,canvas.height<span class="number">-40</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%BB%98%E5%88%B6%E6%96%87%E6%9C%AC.png" alt=""></p>
 <h3 id="绘制图片"><a href="#绘制图片" class="headerlink" title="绘制图片"></a>绘制图片</h3><ul>
 <li>首先，创建一个JavaScript Image对象</li>
 <li>设置这个Image对象的图片来源地址</li>
 <li>调用drawImage方法绘制图片</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawImage</span>(<span class="params">canvas,context</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> image = <span class="keyword">new</span> Image();</span><br><span class="line">    image.src = <span class="string">"twitterBird.png"</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//表示图片加载完成，就执行这个函数</span></span><br><span class="line">    image.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        context.drawImage(image,<span class="number">20</span>,<span class="number">120</span>,<span class="number">70</span>,<span class="number">70</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawImage</span>(<span class="params">canvas,context</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> image = <span class="keyword">new</span> Image();</div><div class="line">    image.src = <span class="string">"twitterBird.png"</span>;</div><div class="line"></div><div class="line">	<span class="comment">//表示图片加载完成，就执行这个函数</span></div><div class="line">    image.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        context.drawImage(image,<span class="number">20</span>,<span class="number">120</span>,<span class="number">70</span>,<span class="number">70</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>效果:</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Canvas-%E7%BB%98%E5%88%B6%E5%9B%BE%E7%89%87.png" alt=""></p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/HTML5/" rel="tag">#HTML5</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/03/23/JavaScript函数和对象/" rel="next" title="JavaScript函数和对象">
-                <i class="fa fa-chevron-left"></i> JavaScript函数和对象
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/31/Android动画之Interpolator/" rel="prev" title="Android动画之Interpolator">
-                Android动画之Interpolator <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/03/28/HTML5之Canvas/" target="_blank" rel="external">http://yoursite.com/2016/03/28/HTML5之Canvas/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/03/28/HTML5之Canvas/"
-           data-title="HTML5之Canvas" data-url="http://yoursite.com/2016/03/28/HTML5之Canvas/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/03/28/HTML5之Canvas/&title=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/03/28/HTML5之Canvas/&title=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/03/28/HTML5之Canvas/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/03/28/HTML5之Canvas/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/03/28/HTML5之Canvas/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/03/31/Android动画之Interpolator/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android动画之Interpolator</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/23/JavaScript函数和对象/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript函数和对象</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="HTML5之Canvas" data-title="HTML5之Canvas" data-url="http://yoursite.com/2016/03/28/HTML5之Canvas/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/03/28/HTML5之Canvas/&title=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/03/28/HTML5之Canvas/&title=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/03/28/HTML5之Canvas/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《HTML5之Canvas》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/03/28/HTML5之Canvas/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/03/28/HTML5之Canvas/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aQXKDMAwF0N7/0um2mRbnS0BnkB+rDCFEzwuNJPvrK75ewXX0/M87vz+vf3XxhYGB8VhGEtz6/vrN+UIk/3tIxcDA2ICRBLF+9Rq8/sdeasbAwMBYv+4o9KRmW5ePGBgYGNcm3N6TvTdjYGBgJAVf3qDmiTtPypf14hgYGA9k5FP3//98y/4GBgbGoxi9YX3ytqvuRFFhYGCMZuQJrtq4XpW483gwMDBmM840tNVEWT26sW6MMTAwdmAUxu7FI1+9JJsv2dsdDAyMDRhXHf/KNyZ7Y74PCRcDA2Moozd7703mq0fKbt9CwMDAeAij2nBWj1D0CsdkyZqdNwYGxgMZ+bZi9VBXHnre3H4gYWBgDGVUDzSUB2HFhrOXxDEwMPZhJAP6amruJehqUsbAwJjNOHUuo9g/nl+UcoWLgYExlJGQkudzau/gBQYGxm6M3kD/2m2AGw9bYGBgDGL0SrQ8lOozzYIVAwNjNCNPedXtgXXZ10vBGBgYuzF6jWV1PfImNg/9j14cAwNjNCMZsVWH9b0NgySG5hYmBgbGOEavfc1TZ7lKXb8fAwNjKONVvPI/yH/bS7Jv32JgYIxmnG9B84OqyfCuN87DwMDYgZEk2erQ/0whWGhc8wIRAwNjBCMp9e4Y6PeQGBgYGNVwk4AuC3c9dMPAwMCIB2T5sKw6yDtcFAwMjA0Y+dHSanDVY6l54sbAwNiHUS3U8oTbKyKrAz4MDIzRjG9WuNsZmx71pAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Canvas"><span class="nav-number">1.</span> <span class="nav-text">Canvas</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web页面增加画布"><span class="nav-number">1.1.</span> <span class="nav-text">Web页面增加画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#显示画布"><span class="nav-number">1.2.</span> <span class="nav-text">显示画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在画布上绘图"><span class="nav-number">1.3.</span> <span class="nav-text">在画布上绘图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#失败处理"><span class="nav-number">1.4.</span> <span class="nav-text">失败处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例演示"><span class="nav-number">2.</span> <span class="nav-text">实例演示</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立HTML，并增加form表单"><span class="nav-number">2.1.</span> <span class="nav-text">建立HTML，并增加form表单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JavaScript处理表单控件"><span class="nav-number">2.2.</span> <span class="nav-text">JavaScript处理表单控件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制矩形"><span class="nav-number">2.3.</span> <span class="nav-text">绘制矩形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制线"><span class="nav-number">2.4.</span> <span class="nav-text">绘制线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制圆形"><span class="nav-number">2.5.</span> <span class="nav-text">绘制圆形</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制文本"><span class="nav-number">2.6.</span> <span class="nav-text">绘制文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#绘制图片"><span class="nav-number">2.7.</span> <span class="nav-text">绘制图片</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

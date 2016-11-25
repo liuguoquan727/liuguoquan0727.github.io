@@ -1,68 +1,23 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Android5.X," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Android 5.x之 Notification | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="Android5.X">
+  <meta name="description" content="Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。
 ##">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android 5.x之 Notification">
 <meta property="og:url" content="http://yoursite.com/2016/02/18/Android 5.x之 Notification/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。
 ##">
 <meta property="og:image" content="http://img.blog.csdn.net/20160312221647150">
@@ -74,258 +29,184 @@
 <meta name="twitter:description" content="Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。
 ##">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20160312221647150">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Android 5.x之 Notification | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Android 5.x之 Notification</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Android 5.x之 Notification</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-02-18T14:46:03.000Z" itemprop="datePublished" class="page-time">
+  2016-02-18 22:46:03
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+<article id="post-Android 5.x之 Notification"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Android 5.x之 Notification
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Android 5.x之 Notification</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-18T22:46:03+08:00" content="2016-02-18 22:46:03">
-              2016-02-18 22:46:03
-            </time>
-          </span>
+            <time datetime="2016-02-18T14:46:03.000Z" itemprop="datePublished" class="post-time">
+  2016-02-18 22:46:03
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/18/Android 5.x之 Notification/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/18/Android 5.x之 Notification/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。</p>
 <p>##1.普通Notification</p>
 <p>首先，创建Builder对象，创建一个PendingIntent来实现消息点击跳转事件。</p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Notification.Builder builder = <span class="keyword">new</span> Notification.Builder(<span class="keyword">this</span>);</span><br><span class="line">Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, <span class="built_in">Uri</span>.parse(<span class="string">"https://www.baidu.com/"</span>));</span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getActivity(<span class="keyword">this</span>,<span class="number">0</span>,intent,<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Notification.Builder builder = <span class="keyword">new</span> <span class="type">Notification</span>.Builder(<span class="built_in">this</span>);</div><div class="line">Intent intent = <span class="keyword">new</span> <span class="type">Intent</span>(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com/"</span>));</div><div class="line">PendingIntent pendingIntent = PendingIntent.getActivity(<span class="built_in">this</span>,<span class="number">0</span>,intent,<span class="number">0</span>);</div></pre></td></tr></table></figure>
 <p>其次，通过builder给Notification添加不同的属性：</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setContentIntent</span>(<span class="selector-tag">pendingIntent</span>);</span><br><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setSmallIcon</span>(<span class="selector-tag">R</span><span class="selector-class">.mipmap</span><span class="selector-class">.ic_launcher</span>);</span><br><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setLargeIcon</span>(<span class="selector-tag">BitmapFactory</span><span class="selector-class">.decodeResource</span>(<span class="selector-tag">getResources</span>(), <span class="selector-tag">R</span><span class="selector-class">.mipmap</span><span class="selector-class">.ic_launcher</span>));</span><br><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setAutoCancel</span>(<span class="selector-tag">true</span>);</span><br><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setContentTitle</span>("普通<span class="selector-tag">Notification</span>");</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setContentIntent</span>(<span class="selector-tag">pendingIntent</span>);</div><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setSmallIcon</span>(<span class="selector-tag">R</span><span class="selector-class">.mipmap</span><span class="selector-class">.ic_launcher</span>);</div><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setLargeIcon</span>(<span class="selector-tag">BitmapFactory</span><span class="selector-class">.decodeResource</span>(<span class="selector-tag">getResources</span>(), <span class="selector-tag">R</span><span class="selector-class">.mipmap</span><span class="selector-class">.ic_launcher</span>));</div><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setAutoCancel</span>(<span class="selector-tag">true</span>);</div><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setContentTitle</span>("普通<span class="selector-tag">Notification</span>");</div></pre></td></tr></table></figure>
 <p>最后，创建NotifcationManager对象，调用notify发送一个通知</p>
-<figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)<span class="comment">;</span></span><br><span class="line">mManager.notify(<span class="number">0</span>, builder.build())<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mManager = (NotificationManager) getSystemService(<span class="built_in">Context</span>.NOTIFICATION_SERVICE)<span class="comment">;</span></div><div class="line">mManager.notify(<span class="number">0</span>, <span class="keyword">builder.build());</span></div></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><img src="http://img.blog.csdn.net/20160312221647150" alt="普通Notification"></p>
 <p>##2.折叠式Notification</p>
 <p>折叠式Notification是一种自定义视图的Notification，用来显示长文本和一些自定义的布局的场景。它有两种状态，一种是普通状态下的视图（如果不是自定义的话和上面普通通知的视图样式一样）；一种是展开状态下的视图，它需要自定义视图，并且这个自定义视图的显示的进程和我们创建视图的进程不是一个进程，需要使用RemoteViews。</p>
 <p>首先，使用RemoteViews创建自定义视图</p>
-<figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用RemoteViews来创建自定义Notification视图</span></span><br><span class="line">RemoteViews remoteViews = <span class="keyword">new</span> RemoteViews(getPackageName(),<span class="keyword">R</span>.layout.fold_notification)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//用RemoteViews来创建自定义Notification视图</span></div><div class="line">RemoteViews remoteViews = <span class="keyword">new</span> <span class="type">RemoteViews</span>(getPackageName(),R.layout.fold_notification);</div></pre></td></tr></table></figure>
 <p>视图的布局：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span><br><span class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></span><br><span class="line">    <span class="attr">android:layout_height</span>=<span class="string">"100dp"</span></span><br><span class="line">    <span class="attr">android:background</span>=<span class="string">"#000000"</span></span><br><span class="line">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffffff"</span></span><br><span class="line">        <span class="attr">android:text</span>=<span class="string">"自定义的视图"</span>/&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="tag">&lt;<span class="name">TextView</span></span><br><span class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></span><br><span class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffffff"</span></span><br><span class="line">        <span class="attr">android:text</span>=<span class="string">"折叠式通知"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">LinearLayout</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span></span></div><div class="line">    <span class="attr">android:layout_width</span>=<span class="string">"match_parent"</span></div><div class="line">    <span class="attr">android:layout_height</span>=<span class="string">"100dp"</span></div><div class="line">    <span class="attr">android:background</span>=<span class="string">"#000000"</span></div><div class="line">    <span class="attr">android:orientation</span>=<span class="string">"horizontal"</span>&gt;</div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffffff"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"自定义的视图"</span>/&gt;</div><div class="line">    </div><div class="line">    <span class="tag">&lt;<span class="name">TextView</span></span></div><div class="line">        <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span></div><div class="line">        <span class="attr">android:textColor</span>=<span class="string">"#ffffffff"</span></div><div class="line">        <span class="attr">android:text</span>=<span class="string">"折叠式通知"</span>/&gt;</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">LinearLayout</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>其次，把自定义视图赋给Notification</p>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//赋值给Notification展开时的视图</span></span><br><span class="line">notification.bigContentView = remoteViews<span class="comment">;</span></span><br><span class="line">或</span><br><span class="line"><span class="comment">//赋值给Notification普通状态时的视图</span></span><br><span class="line">notification.contentView = remoteViews<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//赋值给Notification展开时的视图</span></div><div class="line">notification.bigContentView = remoteViews;</div><div class="line">或</div><div class="line"><span class="comment">//赋值给Notification普通状态时的视图</span></div><div class="line">notification.contentView = remoteViews;</div></pre></td></tr></table></figure>
 <p>折叠式Notification的完整代码为:</p>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Notification.Builder builder = new Notification.Builder(this)<span class="comment">;</span></span><br><span class="line">Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com/"</span>))<span class="comment">;</span></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getActivity(this,<span class="number">0</span>,intent,<span class="number">0</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">builder.setContentIntent(pendingIntent)<span class="comment">;</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher)<span class="comment">;</span></span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))<span class="comment">;</span></span><br><span class="line">builder.setAutoCancel(true)<span class="comment">;</span></span><br><span class="line">builder.setContentTitle(<span class="string">"折叠式Notification"</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//用RemoteViews来创建自定义Notification视图</span></span><br><span class="line">RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.fold_notification)<span class="comment">;</span></span><br><span class="line">Notification notification = builder.build()<span class="comment">;</span></span><br><span class="line"><span class="comment">//指定展开的视图</span></span><br><span class="line">notification.bigContentView = remoteViews<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">mManager.notify(<span class="number">1</span>,notification)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="type">Notification</span>.<span class="type">Builder</span> builder = <span class="function"><span class="keyword">new</span> <span class="title">Notification</span>.<span class="title">Builder</span>(this);</span></div><div class="line"><span class="title">Intent</span> <span class="title">intent</span> = <span class="title">new</span> <span class="title">Intent</span>(<span class="type">Intent</span>.<span class="type">ACTION_VIEW</span>, <span class="type">Uri</span>.parse("https://www.baidu.com/"));</div><div class="line"><span class="title">PendingIntent</span> <span class="title">pendingIntent</span> = <span class="title">PendingIntent</span>.<span class="title">getActivity</span>(this,<span class="number">0</span>,intent,<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="title">builder</span>.<span class="title">setContentIntent</span>(pendingIntent);</div><div class="line"><span class="title">builder</span>.<span class="title">setSmallIcon</span>(<span class="type">R</span>.mipmap.ic_launcher);</div><div class="line"><span class="title">builder</span>.<span class="title">setLargeIcon</span>(<span class="type">BitmapFactory</span>.decodeResource(getResources(), <span class="title">R</span>.<span class="title">mipmap</span>.<span class="title">ic_launcher</span>));</div><div class="line"><span class="title">builder</span>.<span class="title">setAutoCancel</span>(true);</div><div class="line"><span class="title">builder</span>.<span class="title">setContentTitle</span>("折叠式<span class="type">Notification</span>");</div><div class="line"></div><div class="line"><span class="comment">//用RemoteViews来创建自定义Notification视图</span></div><div class="line"><span class="title">RemoteViews</span> <span class="title">remoteViews</span> = <span class="title">new</span> <span class="title">RemoteViews</span>(getPackageName(),<span class="title">R</span>.<span class="title">layout</span>.<span class="title">fold_notification</span>);</div><div class="line"><span class="title">Notification</span> <span class="title">notification</span> = <span class="title">builder</span>.<span class="title">build</span>();</div><div class="line"><span class="comment">//指定展开的视图</span></div><div class="line"><span class="title">notification</span>.<span class="title">bigContentView</span> = <span class="title">remoteViews</span>;</div><div class="line"></div><div class="line"><span class="title">mManager</span>.<span class="title">notify</span>(<span class="number">1</span>,notification);</div></pre></td></tr></table></figure>
 <p>如果不是自定义普通视图的话，折叠式Notification普通状态和普通Notification没有什么区别，效果如下。</p>
 <p><img src="" alt="普通Notification"></p>
 <p>接着把通知栏往下拉，使折叠式Notification完全展开就会出现自定义视图</p>
@@ -334,7 +215,7 @@
 <p>悬挂式Notification是Android 5.0新加的通知方式，与前两种通知不同的是，悬挂式Notification不需要下拉通知栏就直接显示出来悬挂在屏幕上方并且不会占用用户的焦点因此不会打断用户的操作，过几秒就自动消失。</p>
 <p>需要调用setFullScreenIntent来讲Notification变为悬挂式Notification。</p>
 <p>悬挂式Notification的代码如下:</p>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Notification.Builder builder = new Notification.Builder(this)<span class="comment">;</span></span><br><span class="line">Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com/"</span>))<span class="comment">;</span></span><br><span class="line">PendingIntent pendingIntent = PendingIntent.getActivity(this,<span class="number">0</span>,intent,<span class="number">0</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">builder.setContentIntent(pendingIntent)<span class="comment">;</span></span><br><span class="line">builder.setSmallIcon(R.mipmap.ic_launcher)<span class="comment">;</span></span><br><span class="line">builder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))<span class="comment">;</span></span><br><span class="line">builder.setAutoCancel(true)<span class="comment">;</span></span><br><span class="line">builder.setContentTitle(<span class="string">"悬挂式Notification"</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//设置点击跳转</span></span><br><span class="line">Intent hangIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"https://www.baidu.com/"</span>))<span class="comment">;</span></span><br><span class="line">hangIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)<span class="comment">;</span></span><br><span class="line"><span class="comment">//如果描述的PendingIntent已经存在，则在产生新的Intent之前会先取消当前的</span></span><br><span class="line">PendingIntent hangPendingIntent = PendingIntent.getActivity(this,<span class="number">0</span>,hangIntent,PendingIntent.FLAG_CANCEL_CURRENT)<span class="comment">;</span></span><br><span class="line">builder.setFullScreenIntent(hangPendingIntent,true)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">Notification notification = builder.build()<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">mManager.notify(<span class="number">2</span>,notification)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight pony"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="type">Notification</span>.<span class="type">Builder</span> builder = <span class="function"><span class="keyword">new</span> <span class="title">Notification</span>.<span class="title">Builder</span>(this);</span></div><div class="line"><span class="title">Intent</span> <span class="title">intent</span> = <span class="title">new</span> <span class="title">Intent</span>(<span class="type">Intent</span>.<span class="type">ACTION_VIEW</span>, <span class="type">Uri</span>.parse("https://www.baidu.com/"));</div><div class="line"><span class="title">PendingIntent</span> <span class="title">pendingIntent</span> = <span class="title">PendingIntent</span>.<span class="title">getActivity</span>(this,<span class="number">0</span>,intent,<span class="number">0</span>);</div><div class="line"></div><div class="line"><span class="title">builder</span>.<span class="title">setContentIntent</span>(pendingIntent);</div><div class="line"><span class="title">builder</span>.<span class="title">setSmallIcon</span>(<span class="type">R</span>.mipmap.ic_launcher);</div><div class="line"><span class="title">builder</span>.<span class="title">setLargeIcon</span>(<span class="type">BitmapFactory</span>.decodeResource(getResources(), <span class="title">R</span>.<span class="title">mipmap</span>.<span class="title">ic_launcher</span>));</div><div class="line"><span class="title">builder</span>.<span class="title">setAutoCancel</span>(true);</div><div class="line"><span class="title">builder</span>.<span class="title">setContentTitle</span>("悬挂式<span class="type">Notification</span>");</div><div class="line"></div><div class="line"><span class="comment">//设置点击跳转</span></div><div class="line"><span class="title">Intent</span> <span class="title">hangIntent</span> = <span class="title">new</span> <span class="title">Intent</span>(<span class="type">Intent</span>.<span class="type">ACTION_VIEW</span>, <span class="type">Uri</span>.parse("https://www.baidu.com/"));</div><div class="line"><span class="title">hangIntent</span>.<span class="title">setFlags</span>(<span class="type">Intent</span>.<span class="type">FLAG_ACTIVITY_NEW_TASK</span>);</div><div class="line"><span class="comment">//如果描述的PendingIntent已经存在，则在产生新的Intent之前会先取消当前的</span></div><div class="line"><span class="title">PendingIntent</span> <span class="title">hangPendingIntent</span> = <span class="title">PendingIntent</span>.<span class="title">getActivity</span>(this,<span class="number">0</span>,hangIntent,<span class="type">PendingIntent</span>.<span class="type">FLAG_CANCEL_CURRENT</span>);</div><div class="line"><span class="title">builder</span>.<span class="title">setFullScreenIntent</span>(hangPendingIntent,true);</div><div class="line"></div><div class="line"><span class="title">Notification</span> <span class="title">notification</span> = <span class="title">builder</span>.<span class="title">build</span>();</div><div class="line"></div><div class="line"><span class="title">mManager</span>.<span class="title">notify</span>(<span class="number">2</span>,notification);</div></pre></td></tr></table></figure>
 <p>效果如下：</p>
 <p><img src="http://img.blog.csdn.net/20160312221613018" alt="折叠式Notification"></p>
 <p>##4.Notification的等级</p>
@@ -345,527 +226,238 @@
 <li>VISIBILITY_SECRET 在安全锁和没有锁屏的情况下显示通知</li>
 </ul>
 <p>只需通过Builder的setVisibility方法就可以了</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">builder</span><span class="selector-class">.setVisibility</span>(<span class="selector-tag">Notification</span><span class="selector-class">.VISIBILITY_PUBLIC</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">builder</span><span class="selector-class">.setVisibility</span>(<span class="selector-tag">Notification</span><span class="selector-class">.VISIBILITY_PUBLIC</span>);</div></pre></td></tr></table></figure>
 <p>##参考文章</p>
 <p><a href="http://blog.csdn.net/itachi85/article/details/50096609" target="_blank" rel="external"> Android5.x Notification应用解析 </a></p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android5-X/" rel="tag">#Android5.X</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/01/17/Android_Jni头文件分析/" rel="next" title="Jni头文件分析">
-                <i class="fa fa-chevron-left"></i> Jni头文件分析
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/19/Android 5.x之CardView/" rel="prev" title="Android 5.x之CardView">
-                Android 5.x之CardView <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/02/18/Android 5.x之 Notification/" target="_blank" rel="external">http://yoursite.com/2016/02/18/Android 5.x之 Notification/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/02/18/Android 5.x之 Notification/"
-           data-title="Android 5.x之 Notification" data-url="http://yoursite.com/2016/02/18/Android 5.x之 Notification/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android5-X/">Android5.X</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&title=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&title=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/18/Android 5.x之 Notification/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/02/19/Android 5.x之CardView/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Android 5.x之CardView</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/01/17/Android_Jni头文件分析/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Jni头文件分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Android 5.x之 Notification" data-title="Android 5.x之 Notification" data-url="http://yoursite.com/2016/02/18/Android 5.x之 Notification/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&title=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&title=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/02/18/Android 5.x之 Notification/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android 5.x之 Notification》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/02/18/Android 5.x之 Notification/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aWW7DMAwFwNz/0u4BWtt8lFLA9OgrSNxKkwKsuHw+5XX8WmfPnD1/9unZLp9vLAwMjMcyjsvVe6a3V29fDAyM9zAqAfQ6+F4H0MqT169vzoyBgYFRuK5dH7ceOjEwMDB2Bdw0u1zBY2BgYNSTyV1JaUranItjYGA8kJEGzf98/ZX+BgYGxqMYR7jS4HidyvaC7B+7YGBgjGb0SmkpL01ue6U9DAyM2YzKodOLYz2VrTdBUyoGBsYMxsp1cAWZZqA3IxoYGBijGfWLWqWgX09Tr/etfE2n58HAwBjH2LVB/Z007MZjFhgYGOMY9UOvB9/14lrca8XAwBjB6A1a1ZuXlYtj7wu9ycUxMDAGMVbCZTpsUTn6yu4YGBhvYOxNO9PWQqUNEPwdMDAwxjHS0nwaQNdDc7N5iYGBMYKxctB6mE6Hwyq/+TQXx8DAeAEjvaL1Qu3mIQ8MDIzRjMpFrb5BpSWQhumgX4mBgTGa0UtEe0W0dJgj/YoxMDCmMtKLYL1Y1rt0Ni+aGBgYr2Sk7cZ6WS0dxQj+P2BgYLyA0Quy9cC9cvSb6yYGBsZQxhGulUGKtGwXBG4MDIzRjF6wq7cH0gGLNIhjYGC8h1EPspURrl7wTQNuUJnDwMAYxKgHvnqDc2+T4OZJDAwMjE1DXXvr/BgYGBi9g/ZGx9Im62l7AAMDYzSjV+5P36m0CnrlPwwMjNmM3kWtnr4Gcx/ln13qb2BgYDyJ8QPIb2qY9b0MSwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

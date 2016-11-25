@@ -1,69 +1,24 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="python基础," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="编写模块模块是程序模块就是一个扩展名为.py的Python程序。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Python基础之(十)模块和标准库 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="python基础">
+  <meta name="description" content="编写模块模块是程序模块就是一个扩展名为.py的Python程序。
 编写模块1234#!/usr/bin/env python# coding=utf-8lang = &quot;python&quot;
 引入模块12345&amp;gt;&amp;gt;&amp;gt; import sys&amp;gt;&amp;gt;&amp;gt; sys.path.append(&quot;~/Documents/VBS/StartLearningPython/2code/pm.p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python基础之(十)模块和标准库">
 <meta property="og:url" content="http://yoursite.com/2016/08/17/Python基础之(十)模块/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="编写模块模块是程序模块就是一个扩展名为.py的Python程序。
 编写模块1234#!/usr/bin/env python# coding=utf-8lang = &quot;python&quot;
 引入模块12345&amp;gt;&amp;gt;&amp;gt; import sys&amp;gt;&amp;gt;&amp;gt; sys.path.append(&quot;~/Documents/VBS/StartLearningPython/2code/pm.p">
@@ -73,286 +28,219 @@
 <meta name="twitter:description" content="编写模块模块是程序模块就是一个扩展名为.py的Python程序。
 编写模块1234#!/usr/bin/env python# coding=utf-8lang = &quot;python&quot;
 引入模块12345&amp;gt;&amp;gt;&amp;gt; import sys&amp;gt;&amp;gt;&amp;gt; sys.path.append(&quot;~/Documents/VBS/StartLearningPython/2code/pm.p">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Python基础之(十)模块和标准库 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Python基础之(十)模块和标准库</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Python基础之(十)模块和标准库</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-08-17T12:25:39.000Z" itemprop="datePublished" class="page-time">
+  2016-08-17 20:25:39
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#编写模块"><span class="post-toc-number">1.</span> <span class="post-toc-text">编写模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块是程序"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">模块是程序</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#编写模块-1"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">编写模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引入模块"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">引入模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#if-name-“main“"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">if name == “main“</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块的位置"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">模块的位置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#all-在模块中的作用"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">__all__在模块中的作用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包或者库"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">包或者库</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#自带电池"><span class="post-toc-number">2.</span> <span class="post-toc-text">自带电池</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#引用的方式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">引用的方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#深入探究"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">深入探究</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#帮助、文档和源码"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">帮助、文档和源码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#标准库"><span class="post-toc-number">3.</span> <span class="post-toc-text">标准库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#sys"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">sys</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sys-argv"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">sys.argv</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sys-exit"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">sys.exit()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#sys-stdout"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">sys.stdout</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#copy"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">copy</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#os"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">os</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作文件"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">操作文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作目录"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">操作目录</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件和目录属性"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">文件和目录属性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#操作命令"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">操作命令</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#heapq-堆"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">heapq:堆</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#headpq模块"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">headpq模块</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#deque-双端队列"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">deque:双端队列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#calendar-日历"><span class="post-toc-number">3.6.</span> <span class="post-toc-text">calendar:日历</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#time"><span class="post-toc-number">3.7.</span> <span class="post-toc-text">time</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用方法"><span class="post-toc-number">3.7.1.</span> <span class="post-toc-text">常用方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#datetime"><span class="post-toc-number">3.8.</span> <span class="post-toc-text">datetime</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#date类"><span class="post-toc-number">3.8.1.</span> <span class="post-toc-text">date类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#time类"><span class="post-toc-number">3.8.2.</span> <span class="post-toc-text">time类</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#timedelta类"><span class="post-toc-number">3.8.3.</span> <span class="post-toc-text">timedelta类</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#urllib"><span class="post-toc-number">3.9.</span> <span class="post-toc-text">urllib</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#urlopen"><span class="post-toc-number">3.9.1.</span> <span class="post-toc-text">urlopen()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#url编码、解码"><span class="post-toc-number">3.9.2.</span> <span class="post-toc-text">url编码、解码</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#urlretrieve"><span class="post-toc-number">3.9.3.</span> <span class="post-toc-text">urlretrieve()</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#urllib2"><span class="post-toc-number">3.10.</span> <span class="post-toc-text">urllib2</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#XML"><span class="post-toc-number">3.11.</span> <span class="post-toc-text">XML</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常用属性和方法总结"><span class="post-toc-number">3.11.1.</span> <span class="post-toc-text">常用属性和方法总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Element对象"><span class="post-toc-number">3.11.1.1.</span> <span class="post-toc-text">Element对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ElementTree对象"><span class="post-toc-number">3.11.1.2.</span> <span class="post-toc-text">ElementTree对象</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例"><span class="post-toc-number">3.11.2.</span> <span class="post-toc-text">实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JSON"><span class="post-toc-number">3.12.</span> <span class="post-toc-text">JSON</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#encoding-dumps"><span class="post-toc-number">3.12.1.</span> <span class="post-toc-text">encoding: dumps()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#decoding-loads"><span class="post-toc-number">3.12.2.</span> <span class="post-toc-text">decoding: loads()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#大json字符串"><span class="post-toc-number">3.12.3.</span> <span class="post-toc-text">大json字符串</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例-1"><span class="post-toc-number">3.12.4.</span> <span class="post-toc-text">实例</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#第三方库"><span class="post-toc-number">4.</span> <span class="post-toc-text">第三方库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装第三方库"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装第三方库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#利用源码安装"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">利用源码安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#pip管理工具"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">pip管理工具</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Python基础之(十)模块"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Python基础之(十)模块和标准库
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Python基础之(十)模块和标准库</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-17T20:25:39+08:00" content="2016-08-17 20:25:39">
-              2016-08-17 20:25:39
-            </time>
-          </span>
+            <time datetime="2016-08-17T12:25:39.000Z" itemprop="datePublished" class="post-time">
+  2016-08-17 20:25:39
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/17/Python基础之(十)模块/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/Python基础之(十)模块/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="编写模块"><a href="#编写模块" class="headerlink" title="编写模块"></a>编写模块</h1><h2 id="模块是程序"><a href="#模块是程序" class="headerlink" title="模块是程序"></a>模块是程序</h2><p>模块就是一个扩展名为<code>.py</code>的Python程序。</p>
-<h3 id="编写模块-1"><a href="#编写模块-1" class="headerlink" title="编写模块"></a>编写模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line">lang = <span class="string">"python"</span></span><br></pre></td></tr></table></figure>
-<h3 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">"~/Documents/VBS/StartLearningPython/2code/pm.py"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pm</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pm.lang</span><br><span class="line"><span class="string">'python'</span></span><br></pre></td></tr></table></figure>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="编写模块"><a href="#编写模块" class="headerlink" title="编写模块"></a>编写模块</h1><h2 id="模块是程序"><a href="#模块是程序" class="headerlink" title="模块是程序"></a>模块是程序</h2><p>模块就是一个扩展名为<code>.py</code>的Python程序。</p>
+<h3 id="编写模块-1"><a href="#编写模块-1" class="headerlink" title="编写模块"></a>编写模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line">lang = <span class="string">"python"</span></div></pre></td></tr></table></figure>
+<h3 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">"~/Documents/VBS/StartLearningPython/2code/pm.py"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pm</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pm.lang</div><div class="line"><span class="string">'python'</span></div></pre></td></tr></table></figure>
 <p>当Python解释器读取了<code>.py</code>文件，先将它变成由字节码组成的<code>.pyc</code>文件，然后这个<code>.pyc</code>文件交给一个叫做Python虚拟机的东西去运行（那些号称编译型的语言也是这个流程，不同的是它们先有一个明显的编译过程，编译好了之后再运行）。如果<code>.py</code>文件修改了，Python解释器会重新编译，只是这个编译过程不是完全显示给你看的。</p>
 <p>我这里说的比较笼统，要深入了解Python程序的执行过程，可以阅读这篇文章：<a href="http://www.cnblogs.com/kym/archive/2012/05/14/2498728.html" target="_blank" rel="external">说说Python程序的执行过程</a></p>
 <p>有了<code>.pyc</code>文件后，每次运行就不需要重新让解释器来编译<code>.py</code>文件了，除非<code>.py</code>文件修改了。这样，Python运行的就是那个编译好了的<code>.pyc</code>文件。</p>
 <h3 id="if-name-“main“"><a href="#if-name-“main“" class="headerlink" title="if name == “main“"></a>if <strong>name</strong> == “<strong>main</strong>“</h3><p>如果要作为程序执行，则<code>__name__ == &quot;__main__&quot;</code>；如果作为模块引入，则<code>pm.__name__ == &quot;pm&quot;</code>，即属性<code>__name__</code>的值是模块名称。</p>
-<h2 id="模块的位置"><a href="#模块的位置" class="headerlink" title="模块的位置"></a>模块的位置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pprint</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>pprint.pprint(sys.path)  <span class="comment">#查看所有模块的位置</span></span><br></pre></td></tr></table></figure>
-<h2 id="all-在模块中的作用"><a href="#all-在模块中的作用" class="headerlink" title="__all__在模块中的作用"></a><code>__all__</code>在模块中的作用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># /usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"></span><br><span class="line">__all__ = [<span class="string">'_private_variable'</span>, <span class="string">'public_teacher'</span>]</span><br><span class="line"></span><br><span class="line">public_variable = <span class="string">"Hello, I am a public variable."</span></span><br><span class="line">_private_variable = <span class="string">"Hi, I am a private variable."</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">public_teacher</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I am a public teacher, I am from JP."</span>    <span class="comment">#Python 3: print("I am a public teacher, I am from JP.")</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_private_teacher</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">print</span> <span class="string">"I am a private teacher, I am from CN."</span>    <span class="comment">#Python 3:  print("I am a private teacher, I am from CN.")</span></span><br></pre></td></tr></table></figure>
+<h2 id="模块的位置"><a href="#模块的位置" class="headerlink" title="模块的位置"></a>模块的位置</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pprint</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pprint.pprint(sys.path)  <span class="comment">#查看所有模块的位置</span></div></pre></td></tr></table></figure>
+<h2 id="all-在模块中的作用"><a href="#all-在模块中的作用" class="headerlink" title="__all__在模块中的作用"></a><code>__all__</code>在模块中的作用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># /usr/bin/env python</span></div><div class="line"><span class="comment"># coding:utf-8</span></div><div class="line"></div><div class="line">__all__ = [<span class="string">'_private_variable'</span>, <span class="string">'public_teacher'</span>]</div><div class="line"></div><div class="line">public_variable = <span class="string">"Hello, I am a public variable."</span></div><div class="line">_private_variable = <span class="string">"Hi, I am a private variable."</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">public_teacher</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"I am a public teacher, I am from JP."</span>    <span class="comment">#Python 3: print("I am a public teacher, I am from JP.")</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">_private_teacher</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">print</span> <span class="string">"I am a private teacher, I am from CN."</span>    <span class="comment">#Python 3:  print("I am a private teacher, I am from CN.")</span></div></pre></td></tr></table></figure>
 <p><code>__all__</code>属性以及相应的值，在<code>__all__</code>属性列表中包含了一个私有变量的名字和一个函数的名字。这是在告诉引用本模块的解释器，这两个东西是有权限被访问的，而且只有这两个东西。</p>
 <h2 id="包或者库"><a href="#包或者库" class="headerlink" title="包或者库"></a>包或者库</h2><p>包或者库，应该是比“模块”大的。也的确如此，一般来讲，一个“包”里面会有多个模块，当然，“库”是一个更大的概念了，比如Python标准库中的每个库都有好多个包，每个包都有若干个模块。</p>
 <p>一个包是由多个模块组成，即多个<code>.py</code>的文件，那么这个所谓“包”也就是我们熟悉的一个目录罢了。现在就需要解决如何引用某个目录中的模块问题了。解决方法就是在该目录中放一个<code>__init__.py</code>文件。<code>__init__.py</code>是一个空文件，将它放在某个目录中，就可以将该目录中的其它<code>.py</code>文件作为模块被引用。</p>
 <h1 id="自带电池"><a href="#自带电池" class="headerlink" title="自带电池"></a>自带电池</h1><p>在Python被安装的时候，就有不少模块也随着安装到本地的计算机上了。这些东西就如同“能源”、“电力”一样，让Python拥有了无限生机，能够非常轻而易举地免费使用很多模块。所以，称之为“自带电池”。</p>
 <p>那些在安装Python时就默认已经安装好的模块被统称为“标准库”。</p>
-<h2 id="引用的方式"><a href="#引用的方式" class="headerlink" title="引用的方式"></a>引用的方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> pprint <span class="comment">#引入模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint <span class="comment">#引入该模块下的方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> * <span class="comment">#引入该模块下的所有方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> pprint <span class="keyword">as</span> pr <span class="comment">#重命名模块</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint <span class="keyword">as</span> pt  <span class="comment">#重命名方法</span></span><br></pre></td></tr></table></figure>
+<h2 id="引用的方式"><a href="#引用的方式" class="headerlink" title="引用的方式"></a>引用的方式</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> pprint <span class="comment">#引入模块</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint <span class="comment">#引入该模块下的方法</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> * <span class="comment">#引入该模块下的所有方法</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> pprint <span class="keyword">as</span> pr <span class="comment">#重命名模块</span></div><div class="line"></div><div class="line"><span class="keyword">from</span> pprint <span class="keyword">import</span> pprint <span class="keyword">as</span> pt  <span class="comment">#重命名方法</span></div></pre></td></tr></table></figure>
 <h2 id="深入探究"><a href="#深入探究" class="headerlink" title="深入探究"></a>深入探究</h2><ul>
 <li><code>dir()</code>,查看对象的属性和方法</li>
 <li><code>help()</code>查看对象的含义</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="帮助、文档和源码"><a href="#帮助、文档和源码" class="headerlink" title="帮助、文档和源码"></a>帮助、文档和源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span> pprint.__doc__  <span class="comment">#查看文档</span></span><br><span class="line"><span class="keyword">print</span> pprint.__file__ <span class="comment">#查看模块的位置，根据这个位置查到源代码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="帮助、文档和源码"><a href="#帮助、文档和源码" class="headerlink" title="帮助、文档和源码"></a>帮助、文档和源码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span> pprint.__doc__  <span class="comment">#查看文档</span></div><div class="line"><span class="keyword">print</span> pprint.__file__ <span class="comment">#查看模块的位置，根据这个位置查到源代码</span></div></pre></td></tr></table></figure>
 <h1 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h1><h2 id="sys"><a href="#sys" class="headerlink" title="sys"></a>sys</h2><h3 id="sys-argv"><a href="#sys-argv" class="headerlink" title="sys.argv"></a>sys.argv</h3><p>sys.argv是专门用来向python解释器传递参数，名曰“命令行参数”。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ python --version <span class="comment"># --veriosn就是命令行参数</span></span><br><span class="line">Python <span class="number">2.7</span><span class="number">.6</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ python --version <span class="comment"># --veriosn就是命令行参数</span></div><div class="line">Python <span class="number">2.7</span><span class="number">.6</span></div></pre></td></tr></table></figure>
 <h3 id="sys-exit"><a href="#sys-exit" class="headerlink" title="sys.exit()"></a>sys.exit()</h3><p>退出当前程序.</p>
 <p>在大多数函数中会用到return，其含义是终止当前的函数，并向调用函数的位置返回相应值（如果没有就是None）。但是<code>sys.exit()</code>的含义是退出当前程序——不仅仅是函数，并发起<code>SystemExit</code>异常。这就是两者的区别了。</p>
 <p>如果使用<code>sys.exit(0)</code>表示正常退出。若需要在退出的时候有一个对人友好的提示，可以用<code>sys.exit(&quot;I wet out at here.&quot;)</code>，那么字符串信息就被打印出来。</p>
 <h3 id="sys-stdout"><a href="#sys-stdout" class="headerlink" title="sys.stdout"></a>sys.stdout</h3><p>与Python中的函数功能对照，<code>sys.stdin</code>获得输入（等价于Python 2中的raw_input()，Python 3中的input()），<code>sys.stdout</code>负责输出。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"stdout.md"</span>, <span class="string">"w"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.stdout = f  <span class="comment">#重定向到文件</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> <span class="string">"Learn Python: From Beginner to Master"</span>        <span class="comment">#Python 3: print("Learn Python: From Beginner to Master")</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</span><br></pre></td></tr></table></figure>
-<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">copy.copy() <span class="comment">#浅拷贝</span></span><br><span class="line">copy.deepcopy() <span class="comment">#深拷贝</span></span><br></pre></td></tr></table></figure>
-<h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><h3 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.rename(<span class="string">"22201.py"</span>, <span class="string">"newtemp.py"</span>) <span class="comment">#重命名文件</span></span><br><span class="line">os.remove(<span class="string">"123.txt"</span>) <span class="comment">#删除一个文件，不能是目录</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = open(<span class="string">"stdout.md"</span>, <span class="string">"w"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.stdout = f  <span class="comment">#重定向到文件</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> <span class="string">"Learn Python: From Beginner to Master"</span>        <span class="comment">#Python 3: print("Learn Python: From Beginner to Master")</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.close()</div></pre></td></tr></table></figure>
+<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">copy.copy() <span class="comment">#浅拷贝</span></div><div class="line">copy.deepcopy() <span class="comment">#深拷贝</span></div></pre></td></tr></table></figure>
+<h2 id="os"><a href="#os" class="headerlink" title="os"></a>os</h2><h3 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> os</div><div class="line">os.rename(<span class="string">"22201.py"</span>, <span class="string">"newtemp.py"</span>) <span class="comment">#重命名文件</span></div><div class="line">os.remove(<span class="string">"123.txt"</span>) <span class="comment">#删除一个文件，不能是目录</span></div></pre></td></tr></table></figure>
 <h3 id="操作目录"><a href="#操作目录" class="headerlink" title="操作目录"></a>操作目录</h3><p><strong>os.listdir</strong>：显示目录中的内容（包括文件和子目录）<br><strong>os.getcwd</strong>：获取当前工作目录；<br><strong>os.pardir</strong>:获得上一级目录<br><strong>os.chdir</strong>：改变当前工作目录<br><strong>os.makedirs, os.removedirs</strong>：创建和删除目录</p>
 <h3 id="文件和目录属性"><a href="#文件和目录属性" class="headerlink" title="文件和目录属性"></a>文件和目录属性</h3><p><code>os.stat(p)</code>显示文件或目录的属性<br><code>os.chmod()</code>改变权限</p>
 <h3 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h3><p><code>os</code>模块中提供了这样的方法，许可程序员在Python程序中使用操作系统的命令。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>p</span><br><span class="line"><span class="string">'/home/qw/Documents/VBS/StarterLearningPython'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>command = <span class="string">"ls "</span> + p <span class="comment">#命令复制给Command变量</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>command</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(command) <span class="comment">#执行命令</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>p</div><div class="line"><span class="string">'/home/qw/Documents/VBS/StarterLearningPython'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>command = <span class="string">"ls "</span> + p <span class="comment">#命令复制给Command变量</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>command</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>os.system(command) <span class="comment">#执行命令</span></div></pre></td></tr></table></figure>
 <p>需要注意的是，<code>os.system()</code>是在当前进程中执行命令，直到它执行结束。如果需要一个新的进程，可以使用<code>os.exec</code>或者<code>os.execvp</code>。对此有兴趣详细了解的读者，可以查看帮助文档了解。另外，<code>os.system()</code>是通过shell执行命令，执行结束后将控制权返回到原来的进程，但是<code>os.exec()</code>及相关的函数，则在执行后不将控制权返回到原继承，从而使Python失去控制。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line">webbrowser.open(<span class="string">"http://www.baidu.com"</span>) <span class="comment">#跨平台打开浏览器</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="heapq-堆"><a href="#heapq-堆" class="headerlink" title="heapq:堆"></a>heapq:堆</h2><h3 id="headpq模块"><a href="#headpq模块" class="headerlink" title="headpq模块"></a>headpq模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> heapq</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.__all__</span><br><span class="line">[<span class="string">'heappush'</span>, <span class="string">'heappop'</span>, <span class="string">'heapify'</span>, <span class="string">'heapreplace'</span>, <span class="string">'merge'</span>, <span class="string">'nlargest'</span>, <span class="string">'nsmallest'</span>, <span class="string">'heappushpop'</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> webbrowser</div><div class="line">webbrowser.open(<span class="string">"http://www.baidu.com"</span>) <span class="comment">#跨平台打开浏览器</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h2 id="heapq-堆"><a href="#heapq-堆" class="headerlink" title="heapq:堆"></a>heapq:堆</h2><h3 id="headpq模块"><a href="#headpq模块" class="headerlink" title="headpq模块"></a>headpq模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> heapq</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.__all__</div><div class="line">[<span class="string">'heappush'</span>, <span class="string">'heappop'</span>, <span class="string">'heapify'</span>, <span class="string">'heapreplace'</span>, <span class="string">'merge'</span>, <span class="string">'nlargest'</span>, <span class="string">'nsmallest'</span>, <span class="string">'heappushpop'</span>]</div></pre></td></tr></table></figure>
 <p><strong>heappush(heap, x)</strong>：将x压入堆heap</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> heapq</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heap = []    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">9</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">4</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">0</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">8</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heap</span><br><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> heapq</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heap = []    </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">9</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">2</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">4</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappush(heap, <span class="number">8</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heap</div><div class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">4</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
 <p><strong>heappop(heap)</strong>：删除最小元素</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappop(heap)</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heap</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heappop(heap)</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heap</div><div class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
 <p><strong>heapify()</strong>：将列表转换为堆</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>hl = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heapify(hl)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hl</span><br><span class="line">[<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>hl = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heapify(hl)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>hl</div><div class="line">[<span class="number">0</span>, <span class="number">3</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">6</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
 <p><strong>heapreplace()</strong>是<code>heappop()</code>和<code>heappush()</code>的联合，也就是删除一个，同时加入一个</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>heap</span><br><span class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">8</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heapreplace(heap, <span class="number">3.14</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>heap</span><br><span class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">3.14</span>, <span class="number">9</span>, <span class="number">8</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="deque-双端队列"><a href="#deque-双端队列" class="headerlink" title="deque:双端队列"></a>deque:双端队列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.append(<span class="number">5</span>)        <span class="comment">#从右边增加</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</span><br><span class="line">deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.appendleft(<span class="number">7</span>)    <span class="comment">#从左边增加</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</span><br><span class="line">deque([<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.pop() <span class="comment">#右边删除一个元素</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</span><br><span class="line">deque([<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.popleft() <span class="comment"># 左边删除一个元素</span></span><br><span class="line"><span class="number">7</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</span><br><span class="line">deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.rotate(<span class="number">3</span>) <span class="comment">#循环移动n个位置</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</span><br><span class="line">deque([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>])</span><br></pre></td></tr></table></figure>
-<h2 id="calendar-日历"><a href="#calendar-日历" class="headerlink" title="calendar:日历"></a>calendar:日历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> calendar</span><br><span class="line">cal = calendar.month(<span class="number">2016</span>,<span class="number">8</span>)</span><br><span class="line"><span class="keyword">print</span> cal</span><br><span class="line"></span><br><span class="line">    August <span class="number">2016</span></span><br><span class="line">Mo Tu We Th Fr Sa Su</span><br><span class="line"> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span></span><br><span class="line"> <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span></span><br><span class="line"><span class="number">15</span> <span class="number">16</span> <span class="number">17</span> <span class="number">18</span> <span class="number">19</span> <span class="number">20</span> <span class="number">21</span></span><br><span class="line"><span class="number">22</span> <span class="number">23</span> <span class="number">24</span> <span class="number">25</span> <span class="number">26</span> <span class="number">27</span> <span class="number">28</span></span><br><span class="line"><span class="number">29</span> <span class="number">30</span> <span class="number">31</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>heap</div><div class="line">[<span class="number">2</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">9</span>, <span class="number">8</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heapq.heapreplace(heap, <span class="number">3.14</span>)</div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>heap</div><div class="line">[<span class="number">3</span>, <span class="number">4</span>, <span class="number">3.14</span>, <span class="number">9</span>, <span class="number">8</span>]</div></pre></td></tr></table></figure>
+<h2 id="deque-双端队列"><a href="#deque-双端队列" class="headerlink" title="deque:双端队列"></a>deque:双端队列</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.append(<span class="number">5</span>)        <span class="comment">#从右边增加</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</div><div class="line">deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.appendleft(<span class="number">7</span>)    <span class="comment">#从左边增加</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</div><div class="line">deque([<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>])</div><div class="line">    </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.pop() <span class="comment">#右边删除一个元素</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</div><div class="line">deque([<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.popleft() <span class="comment"># 左边删除一个元素</span></div><div class="line"><span class="number">7</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</div><div class="line">deque([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])</div><div class="line">    </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst.rotate(<span class="number">3</span>) <span class="comment">#循环移动n个位置</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>qlst</div><div class="line">deque([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">1</span>])</div></pre></td></tr></table></figure>
+<h2 id="calendar-日历"><a href="#calendar-日历" class="headerlink" title="calendar:日历"></a>calendar:日历</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> calendar</div><div class="line">cal = calendar.month(<span class="number">2016</span>,<span class="number">8</span>)</div><div class="line"><span class="keyword">print</span> cal</div><div class="line"></div><div class="line">    August <span class="number">2016</span></div><div class="line">Mo Tu We Th Fr Sa Su</div><div class="line"> <span class="number">1</span>  <span class="number">2</span>  <span class="number">3</span>  <span class="number">4</span>  <span class="number">5</span>  <span class="number">6</span>  <span class="number">7</span></div><div class="line"> <span class="number">8</span>  <span class="number">9</span> <span class="number">10</span> <span class="number">11</span> <span class="number">12</span> <span class="number">13</span> <span class="number">14</span></div><div class="line"><span class="number">15</span> <span class="number">16</span> <span class="number">17</span> <span class="number">18</span> <span class="number">19</span> <span class="number">20</span> <span class="number">21</span></div><div class="line"><span class="number">22</span> <span class="number">23</span> <span class="number">24</span> <span class="number">25</span> <span class="number">26</span> <span class="number">27</span> <span class="number">28</span></div><div class="line"><span class="number">29</span> <span class="number">30</span> <span class="number">31</span></div></pre></td></tr></table></figure>
 <p><strong>calendar(year,w=2,l=1,c=6)</strong><br>返回year年的年历，3个月一行，间隔距离为c。 每日宽度间隔为w字符。每行长度为<code>21* w+18+2* c</code>。l是每星期行数。</p>
 <p><strong>isleap(year)</strong>判断是否为闰年，是则返回true，否则false.</p>
 <p><strong>leapdays(y1, y2)</strong>返回在y1，y2两年之间的闰年总数，包括y1，但不包括y2.</p>
@@ -420,9 +308,9 @@
 </table>
 <p><strong>gmtime()</strong>localtime()得到的是本地时间，如果要国际化，就最好使用格林威治时间。</p>
 <p><strong>asctime()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.asctime()</span><br><span class="line"><span class="string">'Mon May  4 21:46:13 2015'</span></span><br><span class="line"></span><br><span class="line">time.asctime(h) <span class="comment">#参数必须是时间元组，即localtime返回的值</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>time.asctime()</div><div class="line"><span class="string">'Mon May  4 21:46:13 2015'</span></div><div class="line"></div><div class="line">time.asctime(h) <span class="comment">#参数必须是时间元组，即localtime返回的值</span></div></pre></td></tr></table></figure>
 <p><strong>ctime()</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime()</span><br><span class="line"><span class="string">'Mon May  4 21:52:22 2015'</span></span><br><span class="line">    </span><br><span class="line"> &gt;&gt;&gt; time.ctime(<span class="number">1000000</span>)  <span class="comment">#参数是时间戳</span></span><br><span class="line"><span class="string">'Mon Jan 12 21:46:40 1970'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>time.ctime()</div><div class="line"><span class="string">'Mon May  4 21:52:22 2015'</span></div><div class="line">    </div><div class="line"> &gt;&gt;&gt; time.ctime(<span class="number">1000000</span>)  <span class="comment">#参数是时间戳</span></div><div class="line"><span class="string">'Mon Jan 12 21:46:40 1970'</span></div></pre></td></tr></table></figure>
 <p><strong>mktime()</strong>mktime()也是以时间元组为参数，但是它返回的是时间戳</p>
 <p><strong>strftime()</strong>将时间元组按照指定格式要求转化为字符串。如果不指定时间元组，就默认为<code>localtime()</code>值。</p>
 <table>
@@ -537,7 +425,7 @@
 </tbody>
 </table>
 <p><strong>strptime()</strong>作用是将字符串转化为时间元组,其参数要指定两个，一个是时间字符串，另外一个是时间字符串所对应的格式，格式符号用上表中的。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>today = time.strftime(<span class="string">"%y/%m/%d"</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>today</span><br><span class="line"><span class="string">'15/05/05'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>time.strptime(today, <span class="string">"%y/%m/%d"</span>)</span><br><span class="line">time.struct_time(tm_year=<span class="number">2015</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">5</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">0</span>, tm_sec=<span class="number">0</span>, tm_wday=<span class="number">1</span>, tm_yday=<span class="number">125</span>, tm_isdst=<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>today = time.strftime(<span class="string">"%y/%m/%d"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>today</div><div class="line"><span class="string">'15/05/05'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>time.strptime(today, <span class="string">"%y/%m/%d"</span>)</div><div class="line">time.struct_time(tm_year=<span class="number">2015</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">5</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">0</span>, tm_sec=<span class="number">0</span>, tm_wday=<span class="number">1</span>, tm_yday=<span class="number">125</span>, tm_isdst=<span class="number">-1</span>)</div></pre></td></tr></table></figure>
 <h2 id="datetime"><a href="#datetime" class="headerlink" title="datetime"></a>datetime</h2><p><code>datetime</code>模块中有几个类：</p>
 <ul>
 <li>datetime.date：日期类，常用的属性有year/month/day</li>
@@ -546,12 +434,12 @@
 <li>datetime.timedelta：时间间隔，即两个时间点之间的时间长度</li>
 <li>datetime.tzinfo：时区类</li>
 </ul>
-<h3 id="date类"><a href="#date类" class="headerlink" title="date类"></a>date类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 生成日期对象</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> datetime</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>today = datetime.date.today()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>today</span><br><span class="line">datetime.date(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 操作日期对象</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today        <span class="comment">#Python 3: print(today)</span></span><br><span class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.ctime()        <span class="comment">#Python 3: print(today.ctime())</span></span><br><span class="line">Tue May  <span class="number">5</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="number">2015</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.timetuple()        <span class="comment">#Python 3: print(today.timetuple())</span></span><br><span class="line">time.struct_time(tm_year=<span class="number">2015</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">5</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">0</span>, tm_sec=<span class="number">0</span>, tm_wday=<span class="number">1</span>, tm_yday=<span class="number">125</span>, tm_isdst=<span class="number">-1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.toordinal()        <span class="comment">#Python 3: print(today.toordinal())</span></span><br><span class="line"><span class="number">735723</span></span><br><span class="line">    </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.year</span><br><span class="line"><span class="number">2015</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.month</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.day</span><br><span class="line"><span class="number">5</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># 时间戳与格式化时间格式的转换</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>to = today.toordinal()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>to</span><br><span class="line"><span class="number">735723</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> datetime.date.fromordinal(to)</span><br><span class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = time.time()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t</span><br><span class="line"><span class="number">1430787994.80093</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> datetime.date.fromtimestamp(t)</span><br><span class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改日期。</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d1 = datetime.date(<span class="number">2015</span>,<span class="number">5</span>,<span class="number">1</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> d1</span><br><span class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-01</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>d2 = d1.replace(year=<span class="number">2005</span>, day=<span class="number">5</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> d2</span><br><span class="line"><span class="number">2005</span><span class="number">-05</span><span class="number">-05</span></span><br></pre></td></tr></table></figure>
-<h3 id="time类"><a href="#time类" class="headerlink" title="time类"></a>time类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment"># 生成time对象</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t = datetime.time(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t</span><br><span class="line"><span class="number">01</span>:<span class="number">02</span>:<span class="number">03</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 常用属性：</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.hour</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.minute</span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.second</span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>t.microsecond</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.tzinfo</span><br><span class="line"><span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h3 id="date类"><a href="#date类" class="headerlink" title="date类"></a>date类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 生成日期对象</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> datetime</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>today = datetime.date.today()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>today</div><div class="line">datetime.date(<span class="number">2015</span>, <span class="number">5</span>, <span class="number">5</span>)</div><div class="line"></div><div class="line"><span class="comment"># 操作日期对象</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today        <span class="comment">#Python 3: print(today)</span></div><div class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.ctime()        <span class="comment">#Python 3: print(today.ctime())</span></div><div class="line">Tue May  <span class="number">5</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span> <span class="number">2015</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.timetuple()        <span class="comment">#Python 3: print(today.timetuple())</span></div><div class="line">time.struct_time(tm_year=<span class="number">2015</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">5</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">0</span>, tm_sec=<span class="number">0</span>, tm_wday=<span class="number">1</span>, tm_yday=<span class="number">125</span>, tm_isdst=<span class="number">-1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.toordinal()        <span class="comment">#Python 3: print(today.toordinal())</span></div><div class="line"><span class="number">735723</span></div><div class="line">    </div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.year</div><div class="line"><span class="number">2015</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.month</div><div class="line"><span class="number">5</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> today.day</div><div class="line"><span class="number">5</span></div><div class="line">    </div><div class="line"><span class="comment"># 时间戳与格式化时间格式的转换</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>to = today.toordinal()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>to</div><div class="line"><span class="number">735723</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> datetime.date.fromordinal(to)</div><div class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> time</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = time.time()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t</div><div class="line"><span class="number">1430787994.80093</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> datetime.date.fromtimestamp(t)</div><div class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-05</span></div><div class="line"></div><div class="line"><span class="comment"># 修改日期。</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d1 = datetime.date(<span class="number">2015</span>,<span class="number">5</span>,<span class="number">1</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> d1</div><div class="line"><span class="number">2015</span><span class="number">-05</span><span class="number">-01</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>d2 = d1.replace(year=<span class="number">2005</span>, day=<span class="number">5</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> d2</div><div class="line"><span class="number">2005</span><span class="number">-05</span><span class="number">-05</span></div></pre></td></tr></table></figure>
+<h3 id="time类"><a href="#time类" class="headerlink" title="time类"></a>time类</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 生成time对象</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t = datetime.time(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t</div><div class="line"><span class="number">01</span>:<span class="number">02</span>:<span class="number">03</span></div><div class="line"></div><div class="line"><span class="comment"># 常用属性：</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.hour</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.minute</div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.second</div><div class="line"><span class="number">3</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>t.microsecond</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> t.tzinfo</div><div class="line"><span class="keyword">None</span></div></pre></td></tr></table></figure>
 <h3 id="timedelta类"><a href="#timedelta类" class="headerlink" title="timedelta类"></a>timedelta类</h3><p>主要用来做时间的运算。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">    &gt;&gt;&gt; now = datetime.datetime.now()</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">print</span> now        <span class="comment">#Python 3: print(now)</span></span><br><span class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-05</span> <span class="number">09</span>:<span class="number">22</span>:<span class="number">43.142520</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 对`now`增加5个小时；</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; b = now + datetime.timedelta(hours=<span class="number">5</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">print</span> b        <span class="comment">#Python 3: print(b)</span></span><br><span class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-05</span> <span class="number">14</span>:<span class="number">22</span>:<span class="number">43.142520</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 增加两周；</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; c = now + datetime.timedelta(weeks=<span class="number">2</span>)</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">print</span> c        <span class="comment">#Python 3: print(c)</span></span><br><span class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-19</span> <span class="number">09</span>:<span class="number">22</span>:<span class="number">43.142520</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 计算时间差：</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; d = c - b</span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">print</span> d        <span class="comment">#Python 3: print(d)</span></span><br><span class="line">    <span class="number">13</span> days, <span class="number">19</span>:<span class="number">00</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">    &gt;&gt;&gt; now = datetime.datetime.now()</div><div class="line">    &gt;&gt;&gt; <span class="keyword">print</span> now        <span class="comment">#Python 3: print(now)</span></div><div class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-05</span> <span class="number">09</span>:<span class="number">22</span>:<span class="number">43.142520</span></div><div class="line"></div><div class="line"><span class="comment"># 对`now`增加5个小时；</span></div><div class="line"></div><div class="line">    &gt;&gt;&gt; b = now + datetime.timedelta(hours=<span class="number">5</span>)</div><div class="line">    &gt;&gt;&gt; <span class="keyword">print</span> b        <span class="comment">#Python 3: print(b)</span></div><div class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-05</span> <span class="number">14</span>:<span class="number">22</span>:<span class="number">43.142520</span></div><div class="line"></div><div class="line"><span class="comment"># 增加两周；</span></div><div class="line"></div><div class="line">    &gt;&gt;&gt; c = now + datetime.timedelta(weeks=<span class="number">2</span>)</div><div class="line">    &gt;&gt;&gt; <span class="keyword">print</span> c        <span class="comment">#Python 3: print(c)</span></div><div class="line">    <span class="number">2015</span><span class="number">-05</span><span class="number">-19</span> <span class="number">09</span>:<span class="number">22</span>:<span class="number">43.142520</span></div><div class="line"></div><div class="line"><span class="comment"># 计算时间差：</span></div><div class="line"></div><div class="line">    &gt;&gt;&gt; d = c - b</div><div class="line">    &gt;&gt;&gt; <span class="keyword">print</span> d        <span class="comment">#Python 3: print(d)</span></div><div class="line">    <span class="number">13</span> days, <span class="number">19</span>:<span class="number">00</span>:<span class="number">00</span></div></pre></td></tr></table></figure>
 <h2 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h2><p><code>urllib</code>模块用于读取来自网上（服务器上）的数据，比如不少人用Python做爬虫程序，就可以使用这个模块。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在Python 2中，这样操作：</span></span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">import</span> urllib</span><br><span class="line">    &gt;&gt;&gt; itdiffer =  urllib.urlopen(<span class="string">"http://www.itdiffer.com"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 但是如果读者使用的是Python 3，必须换个姿势：</span></span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">import</span> urllib.request</span><br><span class="line">    &gt;&gt;&gt; itdiffer = urllib.request.urlopen(<span class="string">"http://www.itdiffer.com"</span>)</span><br><span class="line">    </span><br><span class="line">    &gt;&gt;&gt; <span class="keyword">print</span> itdiffer.read() <span class="comment">#得到网页的内容</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在Python 2中，这样操作：</span></div><div class="line">    &gt;&gt;&gt; <span class="keyword">import</span> urllib</div><div class="line">    &gt;&gt;&gt; itdiffer =  urllib.urlopen(<span class="string">"http://www.itdiffer.com"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 但是如果读者使用的是Python 3，必须换个姿势：</span></div><div class="line"></div><div class="line">    &gt;&gt;&gt; <span class="keyword">import</span> urllib.request</div><div class="line">    &gt;&gt;&gt; itdiffer = urllib.request.urlopen(<span class="string">"http://www.itdiffer.com"</span>)</div><div class="line">    </div><div class="line">    &gt;&gt;&gt; <span class="keyword">print</span> itdiffer.read() <span class="comment">#得到网页的内容</span></div></pre></td></tr></table></figure>
 <h3 id="urlopen"><a href="#urlopen" class="headerlink" title="urlopen()"></a>urlopen()</h3><p><code>urlopen()</code>主要用于打开url文件，然后就获得指定url的数据，然后就如同在操作文件那样来操作,得到的对象叫做类文件对象。</p>
 <p>参数说明一下：</p>
 <ul>
@@ -580,7 +468,7 @@
 <p>函数执行完毕，返回的结果是一个元组(filename, headers)，filename是保存到本地的文件名，headers是服务器响应头信息。</p>
 <h2 id="urllib2"><a href="#urllib2" class="headerlink" title="urllib2"></a>urllib2</h2><p>仅仅是针对Python 2的，在Python 3中，已经没有<code>urllib2</code>这个模块了，取代它的是<code>urllib.request</code>。</p>
 <p><strong>Request类</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;req = urllib2.Request(<span class="string">"http://www.itdiffer.com"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Python2</span></span><br><span class="line">	&gt;&gt;&gt; response = urllib2.urlopen(req)</span><br><span class="line">	&gt;&gt;&gt; page = response.read()</span><br><span class="line">	&gt;&gt;&gt; <span class="keyword">print</span> page</span><br><span class="line"></span><br><span class="line">Python <span class="number">3</span>:</span><br><span class="line"></span><br><span class="line">    &gt;&gt;&gt; response = urllib.request.urlopen(req)</span><br><span class="line">    &gt;&gt;&gt; page = response.read()</span><br><span class="line">    &gt;&gt;&gt; print(page)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt;&gt;&gt;req = urllib2.Request(<span class="string">"http://www.itdiffer.com"</span>)</div><div class="line"></div><div class="line"><span class="comment"># Python2</span></div><div class="line">	&gt;&gt;&gt; response = urllib2.urlopen(req)</div><div class="line">	&gt;&gt;&gt; page = response.read()</div><div class="line">	&gt;&gt;&gt; <span class="keyword">print</span> page</div><div class="line"></div><div class="line">Python <span class="number">3</span>:</div><div class="line"></div><div class="line">    &gt;&gt;&gt; response = urllib.request.urlopen(req)</div><div class="line">    &gt;&gt;&gt; page = response.read()</div><div class="line">    &gt;&gt;&gt; print(page)</div></pre></td></tr></table></figure>
 <p><code>urllib2</code>或者<code>urllib.request</code>的东西还很多，比如还可以:</p>
 <ul>
 <li>设置HTTP Proxy</li>
@@ -597,7 +485,7 @@
 </ul>
 <p><code>ElementTree</code>在标准库中有两种实现。一种是纯Python实现：<code>xml.etree.ElementTree</code> ，另外一种是速度快一点：<code>xml.etree.cElementTree</code> 。</p>
 <p>如果使用的是Python 2，可以像这样引入模块：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>:</span><br><span class="line">    <span class="keyword">import</span> xml.etree.cElementTree <span class="keyword">as</span> ET</span><br><span class="line"><span class="keyword">except</span> ImportError:</span><br><span class="line">    <span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:</div><div class="line">    <span class="keyword">import</span> xml.etree.cElementTree <span class="keyword">as</span> ET</div><div class="line"><span class="keyword">except</span> ImportError:</div><div class="line">    <span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</div></pre></td></tr></table></figure>
 <p>如果是Python 3以上，就没有这个必要了，只需要一句话<code>import xml.etree.ElementTree as ET</code>即可，然后由模块自动来寻找适合的方式。显然Python 3相对Python 2有了很大进步。</p>
 <h3 id="常用属性和方法总结"><a href="#常用属性和方法总结" class="headerlink" title="常用属性和方法总结"></a>常用属性和方法总结</h3><p>ET里面的属性和方法不少，这里列出常用的，供使用中备查。</p>
 <h4 id="Element对象"><a href="#Element对象" class="headerlink" title="Element对象"></a>Element对象</h4><p>常用属性：</p>
@@ -638,8 +526,8 @@
 <li>parse(source, parser=None)：装载xml对象，source可以为文件名或文件类型对象.</li>
 <li>write(file, encoding=”us-ascii”, xml_declaration=None, default_namespace=None,method=”xml”)　</li>
 </ul>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></span><br><span class="line"><span class="tag">&lt;<span class="name">bookstore</span> <span class="attr">liu</span>=<span class="string">"a"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"COOKING"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Everyday Italian<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>Giada De Laurentiis<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>30.00<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"CHILDREN"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"WEB"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Learning XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>Erik T. Ray<span class="tag">&lt;/<span class="name">author</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2003<span class="tag">&lt;/<span class="name">year</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>39.95<span class="tag">&lt;/<span class="name">price</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bookstore</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</span><br><span class="line"></span><br><span class="line">fd = open(<span class="string">"xml.xml"</span>)</span><br><span class="line"></span><br><span class="line">data = fd.read()</span><br><span class="line"></span><br><span class="line">tree = ET.ElementTree(file=<span class="string">"xml.xml"</span>)</span><br><span class="line"><span class="keyword">print</span> tree</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得根元素</span></span><br><span class="line">root = tree.getroot()</span><br><span class="line"><span class="keyword">print</span> root.tag</span><br><span class="line"><span class="keyword">print</span> root.attrib</span><br><span class="line"></span><br><span class="line"><span class="comment">#获得根元素下面的元素</span></span><br><span class="line"><span class="keyword">for</span> child <span class="keyword">in</span> root:</span><br><span class="line">    <span class="keyword">print</span> child.tag,child.attrib</span><br><span class="line">    <span class="keyword">for</span> gen <span class="keyword">in</span> child:</span><br><span class="line">        <span class="keyword">print</span> gen.tag,gen.text</span><br></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span><span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">bookstore</span> <span class="attr">liu</span>=<span class="string">"a"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"COOKING"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Everyday Italian<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>Giada De Laurentiis<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>30.00<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"CHILDREN"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Harry Potter<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>J K. Rowling<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2005<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>29.99<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">book</span> <span class="attr">category</span>=<span class="string">"WEB"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">title</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span>Learning XML<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">author</span>&gt;</span>Erik T. Ray<span class="tag">&lt;/<span class="name">author</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">year</span>&gt;</span>2003<span class="tag">&lt;/<span class="name">year</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">price</span>&gt;</span>39.95<span class="tag">&lt;/<span class="name">price</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">book</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">bookstore</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> xml.etree.ElementTree <span class="keyword">as</span> ET</div><div class="line"></div><div class="line">fd = open(<span class="string">"xml.xml"</span>)</div><div class="line"></div><div class="line">data = fd.read()</div><div class="line"></div><div class="line">tree = ET.ElementTree(file=<span class="string">"xml.xml"</span>)</div><div class="line"><span class="keyword">print</span> tree</div><div class="line"></div><div class="line"><span class="comment">#获得根元素</span></div><div class="line">root = tree.getroot()</div><div class="line"><span class="keyword">print</span> root.tag</div><div class="line"><span class="keyword">print</span> root.attrib</div><div class="line"></div><div class="line"><span class="comment">#获得根元素下面的元素</span></div><div class="line"><span class="keyword">for</span> child <span class="keyword">in</span> root:</div><div class="line">    <span class="keyword">print</span> child.tag,child.attrib</div><div class="line">    <span class="keyword">for</span> gen <span class="keyword">in</span> child:</div><div class="line">        <span class="keyword">print</span> gen.tag,gen.text</div></pre></td></tr></table></figure>
 <h2 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h2><p>JSON建构于两种结构：</p>
 <ul>
 <li>“名称/值”对的集合（A collection of name/value pairs）。不同的语言中，它被理解为对象（object），纪录（record），结构（struct），字典（dictionary），哈希表（hash table），有键列表（keyed list），或者关联数组 （associative array）。</li>
@@ -650,535 +538,246 @@
 <li>序列化：encoding，把一个Python对象编码转化成JSON字符串</li>
 <li>反序列化：decoding，把JSON格式字符串解码转换为Python数据对象</li>
 </ul>
-<h3 id="encoding-dumps"><a href="#encoding-dumps" class="headerlink" title="encoding: dumps()"></a>encoding: dumps()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data_json = json.dumps(data)</span><br><span class="line">json.dumps(data, sort_keys=<span class="keyword">True</span>, indent=<span class="number">2</span>) <span class="comment">#格式化输出json数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="encoding-dumps"><a href="#encoding-dumps" class="headerlink" title="encoding: dumps()"></a>encoding: dumps()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">data_json = json.dumps(data)</div><div class="line">json.dumps(data, sort_keys=<span class="keyword">True</span>, indent=<span class="number">2</span>) <span class="comment">#格式化输出json数据</span></div></pre></td></tr></table></figure>
 <h3 id="decoding-loads"><a href="#decoding-loads" class="headerlink" title="decoding: loads()"></a>decoding: loads()</h3><h3 id="大json字符串"><a href="#大json字符串" class="headerlink" title="大json字符串"></a>大json字符串</h3><p>如果数据不是很大，上面的操作足够了。但现在是所谓“大数据”时代了，随便一个什么业务都在说自己是大数据，显然不能总让JSON很小，事实上真正的大数据，再“大”的JSON也不行了。前面的操作方法是将数据都读入内存，如果数据太大了就会内存溢出。怎么办？JSON提供了<code>load()</code>和<code>dump()</code>函数解决这个问题，注意，跟上面已经用过的函数相比，是不同的，请仔细观察。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tempfile    <span class="comment">#临时文件模块</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>data</span><br><span class="line">[&#123;<span class="string">'lang'</span>: (<span class="string">'python'</span>, <span class="string">'english'</span>), <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'qiwsir'</span>&#125;]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f = tempfile.NamedTemporaryFile(mode=<span class="string">'w+'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>json.dump(data, f)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f.flush()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> open(f.name, <span class="string">"r"</span>).read()        <span class="comment">#Python 3: print(open(f.name, "r").read())</span></span><br><span class="line">[&#123;<span class="string">"lang"</span>: [<span class="string">"python"</span>, <span class="string">"english"</span>], <span class="string">"age"</span>: <span class="number">40</span>, <span class="string">"name"</span>: <span class="string">"qiwsir"</span>&#125;]</span><br></pre></td></tr></table></figure>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="attr">"code"</span>:<span class="number">20</span>,<span class="attr">"data"</span>:<span class="string">"liuguoquan"</span>,<span class="attr">"person"</span>:[&#123;<span class="attr">"name"</span>:<span class="string">"zhang"</span>,<span class="attr">"age"</span>:<span class="number">19</span>,<span class="attr">"sex"</span>:<span class="string">"male"</span>&#125;,&#123;<span class="attr">"name"</span>:<span class="string">"zhang"</span>,<span class="attr">"age"</span>:<span class="number">20</span>,<span class="attr">"sex"</span>:<span class="string">"male"</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.age = <span class="number">0</span></span><br><span class="line">        self.name = <span class="string">""</span></span><br><span class="line">        self.sex = <span class="string">""</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>  </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.code = <span class="number">2</span></span><br><span class="line">        self.data = <span class="string">""</span></span><br><span class="line">        self.person = []</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">f = open(<span class="string">"sample.json"</span>)</span><br><span class="line">value = f.read();</span><br><span class="line"><span class="keyword">print</span> value</span><br><span class="line"></span><br><span class="line">ret = json.loads(value)</span><br><span class="line"><span class="keyword">print</span> type(ret)</span><br><span class="line"></span><br><span class="line">a = A()</span><br><span class="line"><span class="comment">#对象转为字典</span></span><br><span class="line">a.__dict__ = ret</span><br><span class="line"><span class="keyword">print</span> a.code</span><br><span class="line"><span class="keyword">print</span> a.data</span><br><span class="line"><span class="keyword">print</span> a.person</span><br><span class="line"><span class="keyword">print</span> type(a.person)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.person:</span><br><span class="line">    b = B()</span><br><span class="line">    b.__dict__ = item;</span><br><span class="line">    <span class="keyword">print</span> b.age</span><br><span class="line">    <span class="keyword">print</span> b.name</span><br><span class="line">    <span class="keyword">print</span> b.sex</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> tempfile    <span class="comment">#临时文件模块</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>data</div><div class="line">[&#123;<span class="string">'lang'</span>: (<span class="string">'python'</span>, <span class="string">'english'</span>), <span class="string">'age'</span>: <span class="number">40</span>, <span class="string">'name'</span>: <span class="string">'qiwsir'</span>&#125;]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = tempfile.NamedTemporaryFile(mode=<span class="string">'w+'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>json.dump(data, f)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f.flush()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> open(f.name, <span class="string">"r"</span>).read()        <span class="comment">#Python 3: print(open(f.name, "r").read())</span></div><div class="line">[&#123;<span class="string">"lang"</span>: [<span class="string">"python"</span>, <span class="string">"english"</span>], <span class="string">"age"</span>: <span class="number">40</span>, <span class="string">"name"</span>: <span class="string">"qiwsir"</span>&#125;]</div></pre></td></tr></table></figure>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;<span class="attr">"code"</span>:<span class="number">20</span>,<span class="attr">"data"</span>:<span class="string">"liuguoquan"</span>,<span class="attr">"person"</span>:[&#123;<span class="attr">"name"</span>:<span class="string">"zhang"</span>,<span class="attr">"age"</span>:<span class="number">19</span>,<span class="attr">"sex"</span>:<span class="string">"male"</span>&#125;,&#123;<span class="attr">"name"</span>:<span class="string">"zhang"</span>,<span class="attr">"age"</span>:<span class="number">20</span>,<span class="attr">"sex"</span>:<span class="string">"male"</span>&#125;]&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.age = <span class="number">0</span></div><div class="line">        self.name = <span class="string">""</span></div><div class="line">        self.sex = <span class="string">""</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span><span class="params">(object)</span>:</span>  </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        self.code = <span class="number">2</span></div><div class="line">        self.data = <span class="string">""</span></div><div class="line">        self.person = []</div><div class="line">    </div><div class="line"></div><div class="line">f = open(<span class="string">"sample.json"</span>)</div><div class="line">value = f.read();</div><div class="line"><span class="keyword">print</span> value</div><div class="line"></div><div class="line">ret = json.loads(value)</div><div class="line"><span class="keyword">print</span> type(ret)</div><div class="line"></div><div class="line">a = A()</div><div class="line"><span class="comment">#对象转为字典</span></div><div class="line">a.__dict__ = ret</div><div class="line"><span class="keyword">print</span> a.code</div><div class="line"><span class="keyword">print</span> a.data</div><div class="line"><span class="keyword">print</span> a.person</div><div class="line"><span class="keyword">print</span> type(a.person)</div><div class="line"></div><div class="line"><span class="keyword">for</span> item <span class="keyword">in</span> a.person:</div><div class="line">    b = B()</div><div class="line">    b.__dict__ = item;</div><div class="line">    <span class="keyword">print</span> b.age</div><div class="line">    <span class="keyword">print</span> b.name</div><div class="line">    <span class="keyword">print</span> b.sex</div></pre></td></tr></table></figure>
 <h1 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h1><h2 id="安装第三方库"><a href="#安装第三方库" class="headerlink" title="安装第三方库"></a>安装第三方库</h2><h2 id="利用源码安装"><a href="#利用源码安装" class="headerlink" title="利用源码安装"></a>利用源码安装</h2><p>在github.com网站可以下载第三方库的源码,通常会看见一个 setup.py 的文件。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure>
 <h2 id="pip管理工具"><a href="#pip管理工具" class="headerlink" title="pip管理工具"></a>pip管理工具</h2><blockquote>
 <p>pip是一个以Python计算机程序语言写成的软件包管理系统，它可以安装和管理软件包，另外不少的软件包也可以在“Python软件包索引”（英语：Python Package Index，简称PyPI）中找到。</p>
 </blockquote>
 <p><code>pip install XXXXXX</code>（XXXXXX代表第三方库的名字）即可安装第三方库。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python基础/" rel="tag">#python基础</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/08/16/Python基础之(九)错误和异常/" rel="next" title="Python基础之(九)错误和异常">
-                <i class="fa fa-chevron-left"></i> Python基础之(九)错误和异常
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/18/Python基础之(十一)数据存储/" rel="prev" title="Python基础之(十一)数据存储">
-                Python基础之(十一)数据存储 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/08/17/Python基础之(十)模块/" target="_blank" rel="external">http://yoursite.com/2016/08/17/Python基础之(十)模块/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/08/17/Python基础之(十)模块/"
-           data-title="Python基础之(十)模块和标准库" data-url="http://yoursite.com/2016/08/17/Python基础之(十)模块/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python基础/">python基础</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&title=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&title=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/17/Python基础之(十)模块/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/08/18/Python基础之(十一)数据存储/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Python基础之(十一)数据存储</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/08/16/Python基础之(九)错误和异常/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python基础之(九)错误和异常</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Python基础之(十)模块" data-title="Python基础之(十)模块和标准库" data-url="http://yoursite.com/2016/08/17/Python基础之(十)模块/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&title=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&title=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/08/17/Python基础之(十)模块/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Python基础之(十)模块和标准库》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/08/17/Python基础之(十)模块/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/08/17/Python基础之(十)模块/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQW7DMAwFUd//0i7QVYECynxSbWJqtAqCxNLzgqBIXhde9/cin3+u9Pvfv9m8ZMiQ8VgGedx6m/U3N17pf2XIkHEaY2+Q5c8hr2D9TBkyZMgg6R3ZnodOGTJkyOgzdl2G0+AuQ4YMGf2LJX8F63/9+V1chgwZD2TsbQzs/fy2/oYMGTI+hnE3Vq09ud69dioZMmTMZqSFflJQW6d6fBeSXMbVQRkyZDyQUSu08cDaKf0Hv5chQ8ZoRq0NwAte6RNqbU4ZMmTMZuw6bq1MFrzjdfCVIUPGaEbtoYSXjpSRXeIbuQwZMgYxyAU1bTrWRitaQVmGDBkHMHj4I+NZPFjXkC+m22TIkDGUQbYhQZYH305wD4YtZMiQMZqRXmt5utl/EegSK0OGjBGMNNTyNmdn2GLbXJsMGTIOYNSK/nzUjOwSDFvIkCHjGEZab09JtRbCC54MGTJGM9IH1Q7Xb22SgC5DhoypjLT4RXhp2N2QXMqQIWM0ox92SeuRF/LSdqkMGTJOYPQTwTTVS0MzOpUMGTJGM/jqJHm1Qh5vS8iQIWM2ox8KSRGfX5J5QilDhoxzGP8UrcOEkhf4rl2HkCFDxsczeMGLtxU7V01+BhkyZJzG4K2CzqGL8Z40O2XIkCEjHKEgF1fe/oxzTxkyZBzMIMdNhypqrVAZMmScyUgvsbXSWPpqeNtAhgwZsxm1vKs2TlEr4bVSRhkyZDyb8QU0pv71/A2TZAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#编写模块"><span class="nav-number">1.</span> <span class="nav-text">编写模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#模块是程序"><span class="nav-number">1.1.</span> <span class="nav-text">模块是程序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写模块-1"><span class="nav-number">1.1.1.</span> <span class="nav-text">编写模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入模块"><span class="nav-number">1.1.2.</span> <span class="nav-text">引入模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-name-“main“"><span class="nav-number">1.1.3.</span> <span class="nav-text">if name == “main“</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块的位置"><span class="nav-number">1.2.</span> <span class="nav-text">模块的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#all-在模块中的作用"><span class="nav-number">1.3.</span> <span class="nav-text">__all__在模块中的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#包或者库"><span class="nav-number">1.4.</span> <span class="nav-text">包或者库</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自带电池"><span class="nav-number">2.</span> <span class="nav-text">自带电池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引用的方式"><span class="nav-number">2.1.</span> <span class="nav-text">引用的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入探究"><span class="nav-number">2.2.</span> <span class="nav-text">深入探究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#帮助、文档和源码"><span class="nav-number">2.3.</span> <span class="nav-text">帮助、文档和源码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#标准库"><span class="nav-number">3.</span> <span class="nav-text">标准库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#sys"><span class="nav-number">3.1.</span> <span class="nav-text">sys</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-argv"><span class="nav-number">3.1.1.</span> <span class="nav-text">sys.argv</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-exit"><span class="nav-number">3.1.2.</span> <span class="nav-text">sys.exit()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sys-stdout"><span class="nav-number">3.1.3.</span> <span class="nav-text">sys.stdout</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">3.2.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#os"><span class="nav-number">3.3.</span> <span class="nav-text">os</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作文件"><span class="nav-number">3.3.1.</span> <span class="nav-text">操作文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作目录"><span class="nav-number">3.3.2.</span> <span class="nav-text">操作目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文件和目录属性"><span class="nav-number">3.3.3.</span> <span class="nav-text">文件和目录属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作命令"><span class="nav-number">3.3.4.</span> <span class="nav-text">操作命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#heapq-堆"><span class="nav-number">3.4.</span> <span class="nav-text">heapq:堆</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#headpq模块"><span class="nav-number">3.4.1.</span> <span class="nav-text">headpq模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#deque-双端队列"><span class="nav-number">3.5.</span> <span class="nav-text">deque:双端队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#calendar-日历"><span class="nav-number">3.6.</span> <span class="nav-text">calendar:日历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">3.7.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用方法"><span class="nav-number">3.7.1.</span> <span class="nav-text">常用方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#datetime"><span class="nav-number">3.8.</span> <span class="nav-text">datetime</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#date类"><span class="nav-number">3.8.1.</span> <span class="nav-text">date类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#time类"><span class="nav-number">3.8.2.</span> <span class="nav-text">time类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#timedelta类"><span class="nav-number">3.8.3.</span> <span class="nav-text">timedelta类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib"><span class="nav-number">3.9.</span> <span class="nav-text">urllib</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#urlopen"><span class="nav-number">3.9.1.</span> <span class="nav-text">urlopen()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url编码、解码"><span class="nav-number">3.9.2.</span> <span class="nav-text">url编码、解码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#urlretrieve"><span class="nav-number">3.9.3.</span> <span class="nav-text">urlretrieve()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib2"><span class="nav-number">3.10.</span> <span class="nav-text">urllib2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XML"><span class="nav-number">3.11.</span> <span class="nav-text">XML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常用属性和方法总结"><span class="nav-number">3.11.1.</span> <span class="nav-text">常用属性和方法总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Element对象"><span class="nav-number">3.11.1.1.</span> <span class="nav-text">Element对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ElementTree对象"><span class="nav-number">3.11.1.2.</span> <span class="nav-text">ElementTree对象</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">3.11.2.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSON"><span class="nav-number">3.12.</span> <span class="nav-text">JSON</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#encoding-dumps"><span class="nav-number">3.12.1.</span> <span class="nav-text">encoding: dumps()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#decoding-loads"><span class="nav-number">3.12.2.</span> <span class="nav-text">decoding: loads()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大json字符串"><span class="nav-number">3.12.3.</span> <span class="nav-text">大json字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">3.12.4.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三方库"><span class="nav-number">4.</span> <span class="nav-text">第三方库</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装第三方库"><span class="nav-number">4.1.</span> <span class="nav-text">安装第三方库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#利用源码安装"><span class="nav-number">4.2.</span> <span class="nav-text">利用源码安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pip管理工具"><span class="nav-number">4.3.</span> <span class="nav-text">pip管理工具</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

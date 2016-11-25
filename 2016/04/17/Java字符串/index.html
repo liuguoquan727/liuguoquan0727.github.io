@@ -1,69 +1,24 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="Java," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="不可变StringString对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>Java字符串 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="Java">
+  <meta name="description" content="不可变StringString对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。
 看看下面的代码：
 123456789101112131415161718public class Immutable &amp;#123;    /">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java字符串">
 <meta property="og:url" content="http://yoursite.com/2016/04/17/Java字符串/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="不可变StringString对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。
 看看下面的代码：
 123456789101112131415161718public class Immutable &amp;#123;    /">
@@ -76,790 +31,434 @@
 看看下面的代码：
 123456789101112131415161718public class Immutable &amp;#123;    /">
 <meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/string-String%E4%B8%8A%E7%9A%84%E6%93%8D%E4%BD%9C1.png">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> Java字符串 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Java字符串</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">Java字符串</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-04-17T07:17:06.000Z" itemprop="datePublished" class="page-time">
+  2016-04-17 15:17:06
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#不可变String"><span class="post-toc-number">1.</span> <span class="post-toc-text">不可变String</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#重载”-”与StringBuilder"><span class="post-toc-number">2.</span> <span class="post-toc-text">重载”+”与StringBuilder</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#无意识的递归"><span class="post-toc-number">3.</span> <span class="post-toc-text">无意识的递归</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#String上的操作"><span class="post-toc-number">4.</span> <span class="post-toc-text">String上的操作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#格式化输出"><span class="post-toc-number">5.</span> <span class="post-toc-text">格式化输出</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#System-out-printf"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">System.out.printf()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#System-out-format"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">System.out.format()</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Java字符串"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Java字符串
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">Java字符串</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-17T15:17:06+08:00" content="2016-04-17 15:17:06">
-              2016-04-17 15:17:06
-            </time>
-          </span>
+            <time datetime="2016-04-17T07:17:06.000Z" itemprop="datePublished" class="post-time">
+  2016-04-17 15:17:06
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/17/Java字符串/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Java字符串/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h2 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h2><p>String对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h2><p>String对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。</p>
 <p>看看下面的代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immutable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> args</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String str = <span class="string">"hello"</span>;</span><br><span class="line">        System.out.println(str); <span class="comment">//hello</span></span><br><span class="line">        String str1 = upCase(str);</span><br><span class="line">        System.out.println(str1); <span class="comment">//HELLO</span></span><br><span class="line">        System.out.println(str); <span class="comment">//hello</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upCase</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> s.toUpperCase();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immutable</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        String str = <span class="string">"hello"</span>;</div><div class="line">        System.out.println(str); <span class="comment">//hello</span></div><div class="line">        String str1 = upCase(str);</div><div class="line">        System.out.println(str1); <span class="comment">//HELLO</span></div><div class="line">        System.out.println(str); <span class="comment">//hello</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upCase</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> s.toUpperCase();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>结果打印如下：</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hello</span></span><br><span class="line">HELLO</span><br><span class="line">hello</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hello</span></div><div class="line">HELLO</div><div class="line">hello</div></pre></td></tr></table></figure>
 <p>当把str传给upCase()方法时，实际上传递的是引用的一个拷贝。其实，每当把String对象作为方法的参数时，都会复制一份对象的引用，而该引用所指向的对象其实一直指向同一个内存地址，从未改变。 回到upCase方法的定义，传入其中的引用有了名字s，只有upCase方法运行的时候，局部引用s才回存在，一旦upCase运行结束，s就消失了。当然upCase的返回值，其实只是最终结果的引用。而这个引用已经指向了一个新的对象，而原本的str对象还在原始的位置。</p>
 <h2 id="重载”-”与StringBuilder"><a href="#重载”-”与StringBuilder" class="headerlink" title="重载”+”与StringBuilder"></a>重载”+”与StringBuilder</h2><p>String的不可变性会带来一定的效率问题。为String对象重载的”+”操作符就是一个例子。重载的意思是，一个操作符在应用特定的类时，被赋予特殊的意义（用于String的”+”与”+=”是Java中仅有的两个重载过的操作符，而Java并不允许程序员重载任何操作符）。</p>
 <p>操作符”+”可以用来连接String：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Concatention</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * <span class="doctag">@param</span> args</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line"></span><br><span class="line">        String str = <span class="string">"hello"</span>;</span><br><span class="line">        String result = str + <span class="string">" welcom"</span> + <span class="string">" to beijing"</span>;</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">结果是:</span><br><span class="line">hello welcom to beijing</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Concatention</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        <span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">        String str = <span class="string">"hello"</span>;</div><div class="line">        String result = str + <span class="string">" welcom"</span> + <span class="string">" to beijing"</span>;</div><div class="line">        System.out.println(result);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果是:</div><div class="line">hello welcom to beijing</div></pre></td></tr></table></figure>
 <p>这段代码可能是这样工作的：String有一个append（）方法，它会生成一个新的String对象，以包含”欢迎来”与str连接后的字符串。然后，该对象再与”到北京”相连，生成一个新的String对象result。 这种工作方式当然是可行的，但是为了生成最终的String，此方式会产生一大堆需要垃圾回收的中间对象。当达到一定的数量之后，性能表现会相当糟糕。</p>
 <p>下面来看下以上代码到底是如何工作的，可以用JDK自带的工具javap命令来反编译以上代码。命令如下：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javap -<span class="built_in">c</span> <span class="type">Concatention</span>  <span class="comment">//-c 表示生产JVM字节码</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">javap -<span class="built_in">c</span> <span class="type">Concatention</span>  <span class="comment">//-c 表示生产JVM字节码</span></div></pre></td></tr></table></figure>
 <p>编译后的字节码为：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">Compiled from <span class="string">"Concatention.java"</span></span><br><span class="line"><span class="keyword">class</span> Concatention &#123;</span><br><span class="line">  Concatention();</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: aload_0</span><br><span class="line">       <span class="number">1</span>: invokespecial <span class="meta">#1                  <span class="comment">// Method java/lang/Object."&lt;init&gt;":()V</span></span></span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(java.lang.String[])</span></span>;</span><br><span class="line">    Code:</span><br><span class="line">       <span class="number">0</span>: ldc           <span class="meta">#2                  <span class="comment">// String hello</span></span></span><br><span class="line">       <span class="number">2</span>: astore_1</span><br><span class="line">       <span class="number">3</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></span><br><span class="line">       <span class="number">6</span>: dup</span><br><span class="line">       <span class="number">7</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></span><br><span class="line">      <span class="number">10</span>: aload_1</span><br><span class="line">      <span class="number">11</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">      <span class="number">14</span>: ldc           <span class="meta">#6                  <span class="comment">// String  welcom</span></span></span><br><span class="line">      <span class="number">16</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">      <span class="number">19</span>: ldc           <span class="meta">#7                  <span class="comment">// String  to beijing</span></span></span><br><span class="line">      <span class="number">21</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">      <span class="number">24</span>: invokevirtual <span class="meta">#8                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></span><br><span class="line">      <span class="number">27</span>: astore_2</span><br><span class="line">      <span class="number">28</span>: getstatic     <span class="meta">#9                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span></span><br><span class="line">      <span class="number">31</span>: aload_2</span><br><span class="line">      <span class="number">32</span>: invokevirtual <span class="meta">#10                 <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span></span><br><span class="line">      <span class="number">35</span>: <span class="keyword">return</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">Compiled from <span class="string">"Concatention.java"</span></div><div class="line">class Concatention &#123;</div><div class="line">  Concatention();</div><div class="line">    <span class="built_in">Code</span>:</div><div class="line">       <span class="number">0</span>: aload_0</div><div class="line">       <span class="number">1</span>: invokespecial <span class="meta">#1                  <span class="comment">// Method java/lang/Object."&lt;init&gt;":()V</span></span></div><div class="line">       <span class="number">4</span>: <span class="keyword">return</span></div><div class="line"></div><div class="line">  public static void main(java.lang.<span class="keyword">String</span>[]);</div><div class="line">    <span class="built_in">Code</span>:</div><div class="line">       <span class="number">0</span>: ldc           <span class="meta">#2                  <span class="comment">// String hello</span></span></div><div class="line">       <span class="number">2</span>: astore_1</div><div class="line">       <span class="number">3</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></div><div class="line">       <span class="number">6</span>: dup</div><div class="line">       <span class="number">7</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></div><div class="line">      <span class="number">10</span>: aload_1</div><div class="line">      <span class="number">11</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">      <span class="number">14</span>: ldc           <span class="meta">#6                  <span class="comment">// String  welcom</span></span></div><div class="line">      <span class="number">16</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">      <span class="number">19</span>: ldc           <span class="meta">#7                  <span class="comment">// String  to beijing</span></span></div><div class="line">      <span class="number">21</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">      <span class="number">24</span>: invokevirtual <span class="meta">#8                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></div><div class="line">      <span class="number">27</span>: astore_2</div><div class="line">      <span class="number">28</span>: getstatic     <span class="meta">#9                  <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span></span></div><div class="line">      <span class="number">31</span>: aload_2</div><div class="line">      <span class="number">32</span>: invokevirtual <span class="meta">#10                 <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V</span></span></div><div class="line">      <span class="number">35</span>: <span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>需要注意的重点是：编译器自动引入了java.lang.StringBuilder类。虽然我们在源代码中并没有使用StringBuilder类，但是编译器却自作主张地使用了它，因为它更高效。</p>
 <p>现在，你也行会觉得可以随意使用String对象，反正编译器会自动优化性能。可是在这之前，让我们更深入地看看编译器能为我们优化到什么程序。下面的程序采用两种方式生成一个String：方法一使用说个String对象，方法二使用StringBuilder</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhitherStringBuilder</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">implicit</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        String result = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.length;i++) &#123;</span><br><span class="line">            result += strs[i];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">explicit</span><span class="params">(String[] strs)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.length;i++) &#123;</span><br><span class="line">            builder.append(strs[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> builder.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhitherStringBuilder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">implicit</span><span class="params">(String[] strs)</span> </span>&#123;</div><div class="line"></div><div class="line">        String result = <span class="string">""</span>;</div><div class="line"></div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.length;i++) &#123;</div><div class="line">            result += strs[i];</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">explicit</span><span class="params">(String[] strs)</span> </span>&#123;</div><div class="line"></div><div class="line">        StringBuilder builder = <span class="keyword">new</span> StringBuilder();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; strs.length;i++) &#123;</div><div class="line">            builder.append(strs[i]);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> builder.toString();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>现在运行<code>javap -c WitherStringBuilder</code>可以看到两个方法对应的字节码，首先是implicit()方法：</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public java.lang.<span class="keyword">String</span> implicit(java.lang.<span class="keyword">String</span>[]);</span><br><span class="line">  <span class="built_in">Code</span>:</span><br><span class="line">     <span class="number">0</span>: ldc           <span class="meta">#2                  <span class="comment">// String</span></span></span><br><span class="line">     <span class="number">2</span>: astore_2</span><br><span class="line">     <span class="number">3</span>: iconst_0</span><br><span class="line">     <span class="number">4</span>: istore_3</span><br><span class="line">     <span class="number">5</span>: iload_3</span><br><span class="line">     <span class="number">6</span>: aload_1</span><br><span class="line">     <span class="number">7</span>: arraylength</span><br><span class="line">     <span class="number">8</span>: if_icmpge     <span class="number">38</span></span><br><span class="line">    <span class="number">11</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></span><br><span class="line">    <span class="number">14</span>: dup</span><br><span class="line">    <span class="number">15</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></span><br><span class="line">    <span class="number">18</span>: aload_2</span><br><span class="line">    <span class="number">19</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">    <span class="number">22</span>: aload_1</span><br><span class="line">    <span class="number">23</span>: iload_3</span><br><span class="line">    <span class="number">24</span>: aaload</span><br><span class="line">    <span class="number">25</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">    <span class="number">28</span>: invokevirtual <span class="meta">#6                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></span><br><span class="line">    <span class="number">31</span>: astore_2</span><br><span class="line">    <span class="number">32</span>: iinc          <span class="number">3</span>, <span class="number">1</span></span><br><span class="line">    <span class="number">35</span>: <span class="keyword">goto</span>          <span class="number">5</span></span><br><span class="line">    <span class="number">38</span>: aload_2</span><br><span class="line">    <span class="number">39</span>: areturn</span><br></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public java.lang.<span class="keyword">String</span> implicit(java.lang.<span class="keyword">String</span>[]);</div><div class="line">  <span class="built_in">Code</span>:</div><div class="line">     <span class="number">0</span>: ldc           <span class="meta">#2                  <span class="comment">// String</span></span></div><div class="line">     <span class="number">2</span>: astore_2</div><div class="line">     <span class="number">3</span>: iconst_0</div><div class="line">     <span class="number">4</span>: istore_3</div><div class="line">     <span class="number">5</span>: iload_3</div><div class="line">     <span class="number">6</span>: aload_1</div><div class="line">     <span class="number">7</span>: arraylength</div><div class="line">     <span class="number">8</span>: if_icmpge     <span class="number">38</span></div><div class="line">    <span class="number">11</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></div><div class="line">    <span class="number">14</span>: dup</div><div class="line">    <span class="number">15</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></div><div class="line">    <span class="number">18</span>: aload_2</div><div class="line">    <span class="number">19</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">    <span class="number">22</span>: aload_1</div><div class="line">    <span class="number">23</span>: iload_3</div><div class="line">    <span class="number">24</span>: aaload</div><div class="line">    <span class="number">25</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">    <span class="number">28</span>: invokevirtual <span class="meta">#6                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></div><div class="line">    <span class="number">31</span>: astore_2</div><div class="line">    <span class="number">32</span>: iinc          <span class="number">3</span>, <span class="number">1</span></div><div class="line">    <span class="number">35</span>: <span class="keyword">goto</span>          <span class="number">5</span></div><div class="line">    <span class="number">38</span>: aload_2</div><div class="line">    <span class="number">39</span>: areturn</div></pre></td></tr></table></figure>
 <p>从第8行到第35行构成了一个循环体。要注意的重点是：StringBuilder是在循环之内构造的，这意味着每经过循环一次，就会创建一个新的StringBuilder对象。</p>
 <p>下面是explicit()方法对应的字节码：</p>
-<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public java.lang.<span class="keyword">String</span> explicit(java.lang.<span class="keyword">String</span>[]);</span><br><span class="line">   <span class="built_in">Code</span>:</span><br><span class="line">      <span class="number">0</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></span><br><span class="line">      <span class="number">3</span>: dup</span><br><span class="line">      <span class="number">4</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></span><br><span class="line">      <span class="number">7</span>: astore_2</span><br><span class="line">      <span class="number">8</span>: iconst_0</span><br><span class="line">      <span class="number">9</span>: istore_3</span><br><span class="line">     <span class="number">10</span>: iload_3</span><br><span class="line">     <span class="number">11</span>: aload_1</span><br><span class="line">     <span class="number">12</span>: arraylength</span><br><span class="line">     <span class="number">13</span>: if_icmpge     <span class="number">30</span></span><br><span class="line">     <span class="number">16</span>: aload_2</span><br><span class="line">     <span class="number">17</span>: aload_1</span><br><span class="line">     <span class="number">18</span>: iload_3</span><br><span class="line">     <span class="number">19</span>: aaload</span><br><span class="line">     <span class="number">20</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></span><br><span class="line">     <span class="number">23</span>: <span class="keyword">pop</span></span><br><span class="line">     <span class="number">24</span>: iinc          <span class="number">3</span>, <span class="number">1</span></span><br><span class="line">     <span class="number">27</span>: <span class="keyword">goto</span>          <span class="number">10</span></span><br><span class="line">     <span class="number">30</span>: aload_2</span><br><span class="line">     <span class="number">31</span>: invokevirtual <span class="meta">#6                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></span><br><span class="line">     <span class="number">34</span>: areturn</span><br></pre></td></tr></table></figure>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public java.lang.<span class="keyword">String</span> explicit(java.lang.<span class="keyword">String</span>[]);</div><div class="line">   <span class="built_in">Code</span>:</div><div class="line">      <span class="number">0</span>: <span class="keyword">new</span>           <span class="meta">#3                  <span class="comment">// class java/lang/StringBuilder</span></span></div><div class="line">      <span class="number">3</span>: dup</div><div class="line">      <span class="number">4</span>: invokespecial <span class="meta">#4                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V</span></span></div><div class="line">      <span class="number">7</span>: astore_2</div><div class="line">      <span class="number">8</span>: iconst_0</div><div class="line">      <span class="number">9</span>: istore_3</div><div class="line">     <span class="number">10</span>: iload_3</div><div class="line">     <span class="number">11</span>: aload_1</div><div class="line">     <span class="number">12</span>: arraylength</div><div class="line">     <span class="number">13</span>: if_icmpge     <span class="number">30</span></div><div class="line">     <span class="number">16</span>: aload_2</div><div class="line">     <span class="number">17</span>: aload_1</div><div class="line">     <span class="number">18</span>: iload_3</div><div class="line">     <span class="number">19</span>: aaload</div><div class="line">     <span class="number">20</span>: invokevirtual <span class="meta">#5                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;</span></span></div><div class="line">     <span class="number">23</span>: <span class="keyword">pop</span></div><div class="line">     <span class="number">24</span>: iinc          <span class="number">3</span>, <span class="number">1</span></div><div class="line">     <span class="number">27</span>: <span class="keyword">goto</span>          <span class="number">10</span></div><div class="line">     <span class="number">30</span>: aload_2</div><div class="line">     <span class="number">31</span>: invokevirtual <span class="meta">#6                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;</span></span></div><div class="line">     <span class="number">34</span>: areturn</div></pre></td></tr></table></figure>
 <p>可以看到，不仅循环部分的代码更简短、更简单，而且它只生成一个StringBuilder对象。显示地创建StringBuilder还允许你预先为其指定大小。如果你已经知道最终的字符串大概有多长，那预先指定StringBuilder的大小可以避免多次重新分配缓冲。</p>
 <p>因此，当你为一个类编写toString()方法时，如果字符串操作比较简单，那就可以信赖编译器,它会为你合理地构造最终的字符串结果。但是，如果你要在toString方法中使用循环时，最好还是自己创建一个StringBuilder对象，用它来构造最终的结果。</p>
 <h2 id="无意识的递归"><a href="#无意识的递归" class="headerlink" title="无意识的递归"></a>无意识的递归</h2><p>Java中的每个类从根本上都是继承自Object，标准容器类自然也不例外。因此容器类都有toString方法，并复写了该方法，使得它生成的String结果能够表达容器自身，以及容器所包含的对象。例如ArrayList.toString()，它会遍历ArrayList中包含的所有对象，调用每个元素上的toString方法：</p>
 <p>如果你希望toString()方法打印出对象的内存地址，也许你会考虑使用this关键字：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfiniteRecursion</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Recursion address: "</span> + <span class="keyword">this</span> + <span class="string">"\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List&lt;InfiniteRecursion&gt; list = <span class="keyword">new</span> ArrayList&lt;InfiniteRecursion&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            list.add(<span class="keyword">new</span> InfiniteRecursion());</span><br><span class="line"></span><br><span class="line">        System.out.println(list);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">打印结果</span><br><span class="line">Exception in thread <span class="string">"main"</span> java.lang.StackOverflowError</span><br><span class="line">    at java.lang.String.getChars(String.java:<span class="number">826</span>)</span><br><span class="line">    at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:<span class="number">416</span>)</span><br><span class="line">    at java.lang.StringBuilder.append(StringBuilder.java:<span class="number">132</span>)</span><br><span class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</span><br><span class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</span><br><span class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfiniteRecursion</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Recursion address: "</span> + <span class="keyword">this</span> + <span class="string">"\n"</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        List&lt;InfiniteRecursion&gt; list = <span class="keyword">new</span> ArrayList&lt;InfiniteRecursion&gt;();</div><div class="line"></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</div><div class="line">            list.add(<span class="keyword">new</span> InfiniteRecursion());</div><div class="line"></div><div class="line">        System.out.println(list);</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果</div><div class="line">Exception in thread <span class="string">"main"</span> java.lang.StackOverflowError</div><div class="line">    at java.lang.String.getChars(String.java:<span class="number">826</span>)</div><div class="line">    at java.lang.AbstractStringBuilder.append(AbstractStringBuilder.java:<span class="number">416</span>)</div><div class="line">    at java.lang.StringBuilder.append(StringBuilder.java:<span class="number">132</span>)</div><div class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</div><div class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</div><div class="line">    at com.micheal.java.staticdemo.InfiniteRecursion.toString(InfiniteRecursion.java:<span class="number">12</span>)</div></pre></td></tr></table></figure>
 <p>这里发生了自动类型转换，由InfiniteRecursion类型转换成String类型。因为编译器看到一个String对象后面跟着”+”，而在后面的对象不是String而是this，于是编译器试着将this转换成一个String。它怎么转换的呢，正是通过调用this上的toString方法，于是就发生了递归调用，造成栈溢出。</p>
 <p>如果你真的想要打印出对象的内存地址，应该调用Objec.toString()方法，所有，你应该调用super.toString()方法.</p>
 <h2 id="String上的操作"><a href="#String上的操作" class="headerlink" title="String上的操作"></a>String上的操作</h2><p>以下是String对象具备的一些基本方法，重载的方法归纳在同一行中：</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/string-String%E4%B8%8A%E7%9A%84%E6%93%8D%E4%BD%9C1.png" alt=""> <img src="http://7xs7a3.com1.z0.glb.clouddn.com/string-String%E4%B8%8A%E7%9A%84%E6%93%8D%E4%BD%9C2.png" alt=""></p>
 <p>上上图表中可以看出，当需要改变字符串的内容时，String类的方法都会返回一个新的String对象。同时，如果内容没有发生改变，String的方法只是返回指向原对象的引用而已，这可以节约存储空间以及避免额外的开销。</p>
-<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><h3 id="System-out-printf"><a href="#System-out-printf" class="headerlink" title="System.out.printf()"></a>System.out.printf()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.printf(<span class="string">"Row: %d %s\n"</span>,<span class="number">12</span>,<span class="string">"just"</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="System-out-format"><a href="#System-out-format" class="headerlink" title="System.out.format()"></a>System.out.format()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.format(<span class="string">"Row: %d %s\n"</span>,<span class="number">12</span>,<span class="string">"just"</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><h3 id="System-out-printf"><a href="#System-out-printf" class="headerlink" title="System.out.printf()"></a>System.out.printf()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.printf(<span class="string">"Row: %d %s\n"</span>,<span class="number">12</span>,<span class="string">"just"</span>);</div></pre></td></tr></table></figure>
+<h3 id="System-out-format"><a href="#System-out-format" class="headerlink" title="System.out.format()"></a>System.out.format()</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">System.out.format(<span class="string">"Row: %d %s\n"</span>,<span class="number">12</span>,<span class="string">"just"</span>);</div></pre></td></tr></table></figure>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag">#Java</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/12/Python基础之(二)字符串列表和元组/" rel="next" title="Python基础之(二)字符串、列表和元组">
-                <i class="fa fa-chevron-left"></i> Python基础之(二)字符串、列表和元组
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/17/Java内部类/" rel="prev" title="Java内部类">
-                Java内部类 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/04/17/Java字符串/" target="_blank" rel="external">http://yoursite.com/2016/04/17/Java字符串/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/04/17/Java字符串/"
-           data-title="Java字符串" data-url="http://yoursite.com/2016/04/17/Java字符串/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Java字符串/&title=《Java字符串》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Java字符串/&title=《Java字符串》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Java字符串/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java字符串》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Java字符串/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Java字符串/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/04/17/Java内部类/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Java内部类</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/04/12/Python基础之(二)字符串列表和元组/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Python基础之(二)字符串、列表和元组</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Java字符串" data-title="Java字符串" data-url="http://yoursite.com/2016/04/17/Java字符串/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/17/Java字符串/&title=《Java字符串》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/17/Java字符串/&title=《Java字符串》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/17/Java字符串/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java字符串》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/04/17/Java字符串/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/17/Java字符串/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3awW6DQAxF0fz/T1Opq1ZRhvtskILnskINZXxYjDy2Xy98Hb/X3/v3v6yffP+vT6usn2ldMmTIeCzjWF6dgN7veQw8NhkyZOzDqG2yHEaQ6638JGYZMmTIWL6aYNbPrDdcGTJkyEgZPMnjm3W6rgwZMvZkkEMseXWnMMcLdjJkyNiN0T923nd/e39DhgwZX884wqufDl4Vyb/3y5AhYzSjX+pK0zVycK29QYYMGTsw0jGINLj0Gd6KkCFDxmxG7dTbTxlPtk5MkiFDxg6MWqC1cbHOdpwmrzJkyJjEqKVi6XgEb5GmqWR8CpchQ8ZjGenWyT9E7eibHq1lyJAxm3FtUshbCGnyF1NlyJAxiMGbjvc1IHkx7mRmRIYMGaMZtbI7Wb7/mdCvMmTI2IBRaxnWhsZqQQepoQwZMjZj8DIZ5/FNPFhLhgwZoxk3pmvLsHiDk49uyJAhYyqDp2Lpt+GJZiclDTJcGTJkPJaRhsgHIPimXGshyJAhYx8GH63gx06eIPKNO+hvyJAhYxtGykvLZPxCkciQIWM0o1+gT+t5ZIPmJBkyZOzAqBXir2oD8MTxhCpDhozRjDRFI8MT5CBaG0SLhy1kyJAxiME32fS4y8GdI7QMGTL2YXSK+ym1k/Z9RMqQIUMGXj4tvXVyWBkyZMhYDzqQsNJSXTp2JkOGjN0Y/BDbKd/z59PEVIYMGbMZtcZA2s5MV6mV9mTIkDGO8QP4BvUbdXyFVQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变String"><span class="nav-number">1.</span> <span class="nav-text">不可变String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载”-”与StringBuilder"><span class="nav-number">2.</span> <span class="nav-text">重载”+”与StringBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#无意识的递归"><span class="nav-number">3.</span> <span class="nav-text">无意识的递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String上的操作"><span class="nav-number">4.</span> <span class="nav-text">String上的操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化输出"><span class="nav-number">5.</span> <span class="nav-text">格式化输出</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#System-out-printf"><span class="nav-number">5.1.</span> <span class="nav-text">System.out.printf()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-out-format"><span class="nav-number">5.2.</span> <span class="nav-text">System.out.format()</span></a></li></ol></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>

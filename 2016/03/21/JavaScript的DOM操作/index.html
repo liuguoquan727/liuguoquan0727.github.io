@@ -1,63 +1,18 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="HTML5," />
-
-
-
-
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
-
-
-
-
-
-
-<meta name="description" content="由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。
+  <meta charset="utf-8">
+  
+  
+  
+  <title>JavaScript的DOM操作 | 刘涤生 - 应尽便须尽 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#3F51B5">
+  
+  
+  <meta name="keywords" content="HTML5">
+  <meta name="description" content="由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。
 始终记住DOM是一个树形结构。操作DOM节点实际上就是有如下几个操作：
 
 更新：更新该DOM节点的内容，相当于更新了该DOM节点表示HTML的内容
@@ -67,7 +22,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="JavaScript的DOM操作">
 <meta property="og:url" content="http://yoursite.com/2016/03/21/JavaScript的DOM操作/index.html">
-<meta property="og:site_name" content="MICHAEL - 应尽便须尽">
+<meta property="og:site_name" content="刘涤生 - 应尽便须尽">
 <meta property="og:description" content="由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。
 始终记住DOM是一个树形结构。操作DOM节点实际上就是有如下几个操作：
 
@@ -85,239 +40,172 @@
 遍历：遍历该DOM节点下的子节点，以便进一步操作
 添加：在该DOM节点下新增一个子节点，相当于动态增加了一个HTML节点
 删除：将该节点从HTML中删除，相当">
-
-
-
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
-    }
-  };
-</script>
-
-  <title> JavaScript的DOM操作 | MICHAEL - 应尽便须尽 </title>
+  
+    <link rel="alternative" href="/atom.xml" title="刘涤生 - 应尽便须尽" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body>
+  <div id="loading" class="active"></div>
 
-  
-
-
-
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
-
-
-
-
-
-
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
-      <span class="logo-line-after"><i></i></span>
+  <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
     </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="//placekitten.com/200/200">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>刘涤生 - 应尽便须尽 &copy; 2006 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
-</div>
+</aside>
 
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JavaScript的DOM操作</div>
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
+    </div>
+</header>
+<header class="content-header post-header">
 
-      
-    </ul>
-  
-
-  
-</nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
+    <div class="container fade-scale">
+        <h1 class="title">JavaScript的DOM操作</h1>
+        <h5 class="subtitle">
             
+                <time datetime="2016-03-21T15:07:27.000Z" itemprop="datePublished" class="page-time">
+  2016-03-21 23:07:27
+</time>
 
-  <div id="posts" class="posts-expand">
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
+
+            
+        </h5>
+    </div>
+
     
 
-  
-  
+</header>
 
-  
-  
-  
 
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+<div class="container body-wrap">
     
-      <header class="post-header">
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#更新DOM"><span class="post-toc-number">1.</span> <span class="post-toc-text">更新DOM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#插入DOM"><span class="post-toc-number">2.</span> <span class="post-toc-text">插入DOM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#删除DOM"><span class="post-toc-number">3.</span> <span class="post-toc-text">删除DOM</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-JavaScript的DOM操作"
+  class="post-article article-type-post fade" itemprop="blogPost">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                JavaScript的DOM操作
-              
-            
-          </h1>
-        
-
+    <div class="post-card">
+        <h1 class="post-card-title">JavaScript的DOM操作</h1>
         <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-21T23:07:27+08:00" content="2016-03-21 23:07:27">
-              2016-03-21 23:07:27
-            </time>
-          </span>
+            <time datetime="2016-03-21T15:07:27.000Z" itemprop="datePublished" class="post-time">
+  2016-03-21 23:07:27
+</time>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/HTML5/" itemprop="url" rel="index">
-                    <span itemprop="name">HTML5</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
             
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/21/JavaScript的DOM操作/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/21/JavaScript的DOM操作/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/HTML5/">HTML5</a></li></ul>
 
-          
 
-          
-          
 
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。</p>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。</p>
 <p>始终记住DOM是一个树形结构。操作DOM节点实际上就是有如下几个操作：</p>
 <ul>
 <li>更新：更新该DOM节点的内容，相当于更新了该DOM节点表示HTML的内容</li>
@@ -328,580 +216,291 @@
 <p>在操作一个DOM节点之前，我们需要通过各种方式先拿到这个DOM节点。最常用的方法是<code>getElementById()</code>和<code>getElementsByTagName()</code>，以及CSS选择器<code>getElementsByClassName()</code>。</p>
 <p>由于ID在HTML文档中是唯一的，所有<code>document。getElementByID（）可以直接定位唯一的一个DOM节点</code>。<code>getElementsByTagName()</code>和<code>getElementsByClassName()</code>总是返回一组DOM节点。要精确地选择DOM，可以先定位父节点，再从父节点开始选择，以缩小范围。</p>
 <p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回id为test的节点</span></span><br><span class="line"><span class="keyword">var</span> test = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//先定位id为table的节点，再返回内部所有tr节点</span></span><br><span class="line"><span class="keyword">var</span> tests = <span class="built_in">document</span>.getElementById(<span class="string">'table'</span>).getElementsByTagName(<span class="string">'tr'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//先定位ID为table的节点，再返回其内部所有class包含red的节点</span></span><br><span class="line"><span class="keyword">var</span> tests = <span class="built_in">document</span>.getElementById(<span class="string">'table'</span>).getElementsByClassName(<span class="string">'red'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取节点test下的所有直属节点</span></span><br><span class="line"><span class="keyword">var</span> cs = test.child;</span><br><span class="line"></span><br><span class="line"><span class="comment">//获取节点test下第一个、最后一个子节点</span></span><br><span class="line"><span class="keyword">var</span> first = test.firstElementChild;</span><br><span class="line"><span class="keyword">var</span> last = test.lastElementChild;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回id为test的节点</span></div><div class="line"><span class="keyword">var</span> test = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>);</div><div class="line"></div><div class="line"><span class="comment">//先定位id为table的节点，再返回内部所有tr节点</span></div><div class="line"><span class="keyword">var</span> tests = <span class="built_in">document</span>.getElementById(<span class="string">'table'</span>).getElementsByTagName(<span class="string">'tr'</span>);</div><div class="line"></div><div class="line"><span class="comment">//先定位ID为table的节点，再返回其内部所有class包含red的节点</span></div><div class="line"><span class="keyword">var</span> tests = <span class="built_in">document</span>.getElementById(<span class="string">'table'</span>).getElementsByClassName(<span class="string">'red'</span>);</div><div class="line"></div><div class="line"><span class="comment">//获取节点test下的所有直属节点</span></div><div class="line"><span class="keyword">var</span> cs = test.child;</div><div class="line"></div><div class="line"><span class="comment">//获取节点test下第一个、最后一个子节点</span></div><div class="line"><span class="keyword">var</span> first = test.firstElementChild;</div><div class="line"><span class="keyword">var</span> last = test.lastElementChild;</div></pre></td></tr></table></figure>
 <p>第二种方法是使用<code>querySelector()</code>和<code>querySelectorAll()</code>，需要了解selector语法，然后使用条件来获取节点：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//通过querySelector获取ID为q1的节点</span></span><br><span class="line"><span class="keyword">var</span> q1 = <span class="built_in">document</span>.querySelector(<span class="string">'#q1'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//通过querySelectorAll获取q1节点内的符合条件的所有节点</span></span><br><span class="line"><span class="keyword">var</span> ps = q1.querySelectorAll(<span class="string">'div.highlighted &gt; p'</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过querySelector获取ID为q1的节点</span></div><div class="line"><span class="keyword">var</span> q1 = <span class="built_in">document</span>.querySelector(<span class="string">'#q1'</span>);</div><div class="line"></div><div class="line"><span class="comment">//通过querySelectorAll获取q1节点内的符合条件的所有节点</span></div><div class="line"><span class="keyword">var</span> ps = q1.querySelectorAll(<span class="string">'div.highlighted &gt; p'</span>);</div></pre></td></tr></table></figure>
 <p>低版本的IE &lt; 8 不支持上面两个操作，IE8仅有限支持。</p>
 <p>严格地讲，我们这里的DOM节点是指Elment，但是DOM节点实际上是Node，在HTML中，Node包括Element、Comment、CDATA_SECTION等很多种，以及根节点Document类型，但是，绝大多数我们只关心Element，也就是实际控制页面的Node，其他类型的Node忽略即可。根节点Document已经自动绑定为全局变量document。</p>
 <h2 id="更新DOM"><a href="#更新DOM" class="headerlink" title="更新DOM"></a><strong>更新DOM</strong></h2><p>拿到一个DOM节点后，我们可以对它进行更新。可以直接修改节点的文本，方法又两种：</p>
 <ul>
 <li>一种是修改innerHTML属性，这个方式非常强大，不但可以修改一个DOM节点的文本内容，还可以直接通过HTML片段修改DOM节点内部的子树。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//获取id为p-id的元素</span></span><br><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</span><br><span class="line"><span class="comment">//设置文本为ABC</span></span><br><span class="line">p.innerHTML = <span class="string">'ABC'</span>;</span><br><span class="line"><span class="comment">//设置HTML的属性</span></span><br><span class="line">p.innerHTML = <span class="string">'ABC&lt;span style ="color:red"&gt;RED&lt;/span&gt;'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取id为p-id的元素</span></div><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</div><div class="line"><span class="comment">//设置文本为ABC</span></div><div class="line">p.innerHTML = <span class="string">'ABC'</span>;</div><div class="line"><span class="comment">//设置HTML的属性</span></div><div class="line">p.innerHTML = <span class="string">'ABC&lt;span style ="color:red"&gt;RED&lt;/span&gt;'</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>用innerHTML时要注意，是否需要写入HTML。如果写入的字符是通过网络拿到的，要注意对字符进行编码来避免XSS攻击</p>
 </blockquote>
 <ul>
 <li>第二种是修改innerText和textContent属性，这样可以自动对字符串进行HTML编码，保证无法设置任何HTML标签。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</span><br><span class="line">p.innerText = <span class="string">'abc'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</div><div class="line">p.innerText = <span class="string">'abc'</span>;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>两者的区别在于innerText不返回隐藏元素的文本，而textContent返回所有文本，注意IE &lt; 9不支持textContent。</p>
 <p>此外，修改CSS也是经常需要的操作。DOM节点的style属性对应所有的CSS，可以直接获取或设置。因为CSS允许font-size这样的名称，但它并非JavaScript有效的属性名，所以需要在JavaScript中改为驼峰式命名fontSize。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</span><br><span class="line"><span class="comment">//设置CSS</span></span><br><span class="line">p.style.color = <span class="string">'#ff0000'</span>;</span><br><span class="line">p.style.fontSize = <span class="string">'20px'</span>;</span><br><span class="line">p.style.paddingTop = <span class="string">'2em'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> p = <span class="built_in">document</span>.getElementById(<span class="string">'p-id'</span>);</div><div class="line"><span class="comment">//设置CSS</span></div><div class="line">p.style.color = <span class="string">'#ff0000'</span>;</div><div class="line">p.style.fontSize = <span class="string">'20px'</span>;</div><div class="line">p.style.paddingTop = <span class="string">'2em'</span>;</div></pre></td></tr></table></figure>
 <h2 id="插入DOM"><a href="#插入DOM" class="headerlink" title="插入DOM"></a><strong>插入DOM</strong></h2><p>当我们获取了某个DOM节点之后，如果想要在这个DOM节点内插入新的DOM节点，应该如何做？</p>
 <p>如这个DOM是空的，例如，<code>&lt;div&gt;&lt;/div&gt;</code>,那么，直接使用innerHTML = <code>&lt;span&gt;child&lt;/span&gt;</code>就可以修改DOM节点的内容，相当于插入例如新的DOM节点。<br>如果这个DOM节点不是空的，那就不能这么做，因为innerHTML会直接替换掉原来的所有子节点。这种情况下插入新节点有两个方法：</p>
 <ul>
 <li>一是使用appendChild，把一个子节点添加到父节点的最后一个子节点。</li>
 </ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--源HTML结构--&gt;</span><br><span class="line">&lt;p id="js"&gt;JavaScript&lt;/p&gt;</span><br><span class="line">&lt;div id="list"&gt;</span><br><span class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</span><br><span class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</span><br><span class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!--源HTML结构--&gt;</div><div class="line">&lt;p id="js"&gt;JavaScript&lt;/p&gt;</div><div class="line">&lt;div id="list"&gt;</div><div class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</div><div class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</div><div class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>把<code>&lt;p id=&quot;js&quot;&gt;JavaScript&lt;/p&gt;添加到&lt;div id=&quot;list&quot;&gt;</code>的最后一项：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line">    js = <span class="built_in">document</span>.getElementById(<span class="string">'js'</span>);</span><br><span class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</span><br><span class="line">list.appendChild(js);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    js = <span class="built_in">document</span>.getElementById(<span class="string">'js'</span>);</div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</div><div class="line">list.appendChild(js);</div></pre></td></tr></table></figure>
 <p>现在，HTML结构变成这样：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id="list"&gt;</span><br><span class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</span><br><span class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</span><br><span class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</span><br><span class="line">    &lt;p id="js"&gt;JavaScript&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id="list"&gt;</div><div class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</div><div class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</div><div class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</div><div class="line">    &lt;p id="js"&gt;JavaScript&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>因为我们插入的js节点已经存在于当前的DOM中，因此这个节点首先会从原先的位置删除，再插入到新的位置。</p>
 <p>下面，我们来看看从零创建一个新的节点，然后插入到指定的位置：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</span><br><span class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">haskell.id = <span class="string">'haskell'</span>;</span><br><span class="line">haskell.innerText = <span class="string">'Haskell'</span>;</span><br><span class="line">list.appendChild(haskell)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</div><div class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">haskell.id = <span class="string">'haskell'</span>;</div><div class="line">haskell.innerText = <span class="string">'Haskell'</span>;</div><div class="line">list.appendChild(haskell)</div></pre></td></tr></table></figure>
 <p>这样我们就动态添加了一个新的节点：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id="list"&gt;</span><br><span class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</span><br><span class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</span><br><span class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</span><br><span class="line">    &lt;p id="haskell"&gt;Haskell&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id="list"&gt;</div><div class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</div><div class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</div><div class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</div><div class="line">    &lt;p id="haskell"&gt;Haskell&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>动态创建一个节点然后添加到DOM树中，可以实现很多功能。举个例子，下面的代码创建一个<code>&lt;style&gt;</code>节点，然后把它添加到<code>&lt;head&gt;</code>节点的末尾，这样就动态地给文档添加了新的CSS定义：</p>
-<figure class="highlight hsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var d = document.createElement(<span class="string">'style'</span>)<span class="comment">;</span></span><br><span class="line">d.setAttribute(<span class="string">'type'</span>,<span class="string">'text/css'</span>)<span class="comment">;</span></span><br><span class="line">d.innerHTML = <span class="string">'p&#123;color:red&#125;'</span><span class="comment">;</span></span><br><span class="line">document.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(d)<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> d = <span class="built_in">document</span>.createElement(<span class="string">'style'</span>);</div><div class="line">d.setAttribute(<span class="string">'type'</span>,<span class="string">'text/css'</span>);</div><div class="line">d.innerHTML = <span class="string">'p&#123;color:red&#125;'</span>;</div><div class="line"><span class="built_in">document</span>.getElementsByTagName(<span class="string">'head'</span>)[<span class="number">0</span>].appendChild(d);</div></pre></td></tr></table></figure>
 <ul>
 <li>二是使用insertBefore，把子节点插入到指定的位置。使用parentElement.insertBefore(newElement,referenceElement),子节点会插入到referenceElement之前。</li>
 </ul>
 <p>还是以上面HTML为例，假设我们要把Haskell插入到Python之前：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id="list"&gt;</span><br><span class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</span><br><span class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</span><br><span class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;div id="list"&gt;</div><div class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</div><div class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</div><div class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>可以这么写:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</span><br><span class="line">    ref = <span class="built_in">document</span>.getElementById(<span class="string">'python'</span>);</span><br><span class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</span><br><span class="line">haskell.id = <span class="string">'haskell'</span>;</span><br><span class="line">haskell.innerText = <span class="string">'Haskell'</span>;</span><br><span class="line">list.insertBefore(haskell,ref);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'lis'</span>);</div><div class="line">    ref = <span class="built_in">document</span>.getElementById(<span class="string">'python'</span>);</div><div class="line">    haskell = <span class="built_in">document</span>.createElement(<span class="string">'p'</span>);</div><div class="line">haskell.id = <span class="string">'haskell'</span>;</div><div class="line">haskell.innerText = <span class="string">'Haskell'</span>;</div><div class="line">list.insertBefore(haskell,ref);</div></pre></td></tr></table></figure>
 <p>新的HTML结构如下</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id="list"&gt;</span><br><span class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</span><br><span class="line">	&lt;p id = "haskell"&gt;Haskell&lt;/p&gt;</span><br><span class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</span><br><span class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div id="list"&gt;</div><div class="line">    &lt;p id = "java"&gt;Java&lt;/p&gt;</div><div class="line">	&lt;p id = "haskell"&gt;Haskell&lt;/p&gt;</div><div class="line">    &lt;p id = "python"&gt;python&lt;/p&gt;</div><div class="line">    &lt;p id = "scheme"&gt;Scheme&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
 <p>可见，使用insertBefore重点是要拿到一个参考子节点的引用。很多时候，需要一个父节点的所有子节点，可以通过迭代children属性来实现。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span></span><br><span class="line">    i,c,</span><br><span class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'list'</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; list.children.length; i++) &#123;</span><br><span class="line">        c = list.children[i]; <span class="comment">//拿到第i个子节点</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span></div><div class="line">    i,c,</div><div class="line">    list = <span class="built_in">document</span>.getElementById(<span class="string">'list'</span>);</div><div class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; list.children.length; i++) &#123;</div><div class="line">        c = list.children[i]; <span class="comment">//拿到第i个子节点</span></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <h2 id="删除DOM"><a href="#删除DOM" class="headerlink" title="删除DOM"></a><strong>删除DOM</strong></h2><p>删除一个DOM节点就比插入要容易得多。要删除一个节点，首先要获得该节点本身以及它的父节点，然后，调用父节点的removeChild把自己删掉：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//拿到带删除节点</span></span><br><span class="line"><span class="keyword">var</span> self = <span class="built_in">document</span>.getElementById(<span class="string">'removed'</span>);</span><br><span class="line"><span class="comment">//拿到父节点</span></span><br><span class="line"><span class="keyword">var</span> parent = self.parentElement;</span><br><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="keyword">var</span> removed = parent.removeChild(self);</span><br><span class="line">removed == self; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//拿到带删除节点</span></div><div class="line"><span class="keyword">var</span> self = <span class="built_in">document</span>.getElementById(<span class="string">'removed'</span>);</div><div class="line"><span class="comment">//拿到父节点</span></div><div class="line"><span class="keyword">var</span> parent = self.parentElement;</div><div class="line"><span class="comment">//删除</span></div><div class="line"><span class="keyword">var</span> removed = parent.removeChild(self);</div><div class="line">removed == self; <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <p>注意到删除的DOM节点虽然不在文档树了，但其实它还在内存中，可以随时再次被添加到别的位置。<br>当你遍历一个父节点的子节点并进行删除操作时，要注意，children属性只是一个只读属性，并且它在子节点变化时会实时更新。</p>
-<p>例如，对如下的HTML结构：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id="parent" &gt;</span><br><span class="line">    &lt;p&gt;First&lt;/P&gt;</span><br><span class="line">    &lt;p&gt;Second&lt;/P&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<p>当我们用如下代码删除子节点时：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> parent = <span class="built_in">document</span>.getElementById(<span class="string">'parent'</span>);</span><br><span class="line">parent.removeChild(parent.children[<span class="number">0</span>]);</span><br><span class="line">parent.removeChild(parent.children[<span class="number">1</span>]); <span class="comment">//浏览器报错</span></span><br></pre></td></tr></table></figure></p>
+<p>例如，对如下的HTML结构：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;div id="parent" &gt;</div><div class="line">    &lt;p&gt;First&lt;/P&gt;</div><div class="line">    &lt;p&gt;Second&lt;/P&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>当我们用如下代码删除子节点时：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> parent = <span class="built_in">document</span>.getElementById(<span class="string">'parent'</span>);</div><div class="line">parent.removeChild(parent.children[<span class="number">0</span>]);</div><div class="line">parent.removeChild(parent.children[<span class="number">1</span>]); <span class="comment">//浏览器报错</span></div></pre></td></tr></table></figure></p>
 <p>浏览器报错：parent.children[1]不是一个有效节点。原因就在于，当<code>&lt;p&gt;First&lt;/P&gt;</code>节点被删除后，parent.children的节点数量已经从2变为1，索引[1]已经不存在了。因此，当删除多个节点的时，要注意children属性时刻都在变化。</p>
 
-      
-    </div>
-
-    <div>
-      
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/HTML5/" rel="tag">#HTML5</a>
-          
         </div>
-      
 
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/03/20/JavaScript和DOM/" rel="next" title="JavaScript和DOM">
-                <i class="fa fa-chevron-left"></i> JavaScript和DOM
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/22/JavaScript事件处理/" rel="prev" title="JavaScript事件处理">
-                JavaScript事件处理 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/03/21/JavaScript的DOM操作/" target="_blank" rel="external">http://yoursite.com/2016/03/21/JavaScript的DOM操作/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="//placekitten.com/200/200" alt="刘涤生">
+            刘涤生
+        </a>
     </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-        <!-- JiaThis Button BEGIN -->
-<div class="jiathis_style">
-  <a class="jiathis_button_tsina"></a>
-  <a class="jiathis_button_tqq"></a>
-  <a class="jiathis_button_weixin"></a>
-  <a class="jiathis_button_cqq"></a>
-  <a class="jiathis_button_douban"></a>
-  <a class="jiathis_button_renren"></a>
-  <a class="jiathis_button_qzone"></a>
-  <a class="jiathis_button_kaixin001"></a>
-  <a class="jiathis_button_copy"></a>
-  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
-  <a class="jiathis_counter_style"></a>
-</div>
-<script type="text/javascript" >
-  var jiathis_config={
-    hideMore:false
-  }
-</script>
-<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
-<!-- JiaThis Button END -->
-
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/03/21/JavaScript的DOM操作/"
-           data-title="JavaScript的DOM操作" data-url="http://yoursite.com/2016/03/21/JavaScript的DOM操作/">
-      </div>
-    
-  </div>
-
-
-        </div>
+</blockquote>
         
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
 
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
 
-      
 
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li></ul>
 
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
-               alt="涤生" />
-          <p class="site-author-name" itemprop="name">涤生</p>
-          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&title=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&title=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/03/21/JavaScript的DOM操作/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
         </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">104</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+    </div>
 
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/03/22/JavaScript事件处理/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">JavaScript事件处理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/03/20/JavaScript和DOM/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">JavaScript和DOM</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="JavaScript的DOM操作" data-title="JavaScript的DOM操作" data-url="http://yoursite.com/2016/03/21/JavaScript的DOM操作/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'ysblog', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.jpg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&title=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&pic=//placekitten.com/200/200" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&title=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/03/21/JavaScript的DOM操作/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JavaScript的DOM操作》 — 刘涤生 - 应尽便须尽&url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/03/21/JavaScript的DOM操作/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3a0W7CMAwF0P3/T3fPUylc22VSk9MnRAP0ZJLn2P75ia/jdJ3vXq0/rzmvv/rUzRcGBsZjGcfb6/2a/LGSjch/98UvYmBgbMC4eoj3a65W5gF6EpoxMDAwcsb31mBgYGD0GNWUMX+nmnRiYGDsxqh+XfWA2guyXzmLY2BgPJCRV93///VX+hsYGBiPYhzFKy+ZJaW03jO8eCoMDIylGdXU7a7C3DzgYmBg7MOYDElMCme9o3K524CBgbEEo5fkJfjkbhX2oZCHgYGxNCNPB5OHyLdmkoxiYGDsxshbj73UsDculqetGBgYazN6zcXCqFZrO0ZncQwMjKUZveQvKcZVD5/lYzAGBsbSjLy6npfy81Jar8EZBWIMDIxFGdUS/HxQrNcGKP8dMDAwFmJU069qMyBvWPY2EQMDY1XGZGxiPmxRTSUvMRgYGJsx8gZkUlDLy3nVFPBDwMXAwFiIMWlqzpPI6jtf6c1iYGA8kFH9QC/sVgNroXmJgYGxKKM3eJoX9O9qNkR5LgYGxtKMXosxD8d547O3BRgYGPsw8pRx/g3NjLXayMTAwHg44yhevWJZIb2LD65/7mJgYCzNmITIvGE5Oe5Wx2oxMDBWZeRBdtIYqA5klNNHDAyMDRh54Mtjdj4clv8HuFyJgYGBEZAmYxk3FPUwMDAwikEzb15WSZfbgYGBsQEjbwZUD709UnWMAwMDY23GZMCi2ra8tzyHgYGxAeMXovrGBHu25eIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
             </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">19</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-            
-              <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> Github
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
-                  
-                    <i class="fa fa-weibo"></i> Weibo
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> jianshu
-                  
-                </a>
-              </span>
-            
-              <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
-                  
-                    <i class="fa fa-globe"></i> csdn
-                  
-                </a>
-              </span>
-            
-          
+            <time class="flex-col time">{date}</time>
         </div>
+    </a>
+</li>
+</template>
 
-        
-        
+<script src="/js/search.min.js?v=1.2.7"></script>
 
-        
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
 
-      </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc-indicator-top post-toc-indicator">
-            <i class="fa fa-angle-double-up"></i>
-          </div>
-          <div class="post-toc">
-            
-              
-            
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#更新DOM"><span class="nav-number">1.</span> <span class="nav-text">更新DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入DOM"><span class="nav-number">2.</span> <span class="nav-text">插入DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除DOM"><span class="nav-number">3.</span> <span class="nav-text">删除DOM</span></a></li></ol></div>
-            
-          </div>
-          <div class="post-toc-indicator-bottom post-toc-indicator">
-            <i class="fa fa-angle-double-down"></i>
-          </div>
-        </section>
-      
 
-    </div>
-  </aside>
 
 
-        
-      </div>
-    </main>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        
-
-<div class="copyright" >
-  
-  &copy;  2015 - 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">涤生</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
-
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
-    </div>
-  </div>
-
-  
-
-
-  
-
-
-
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
-
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
-
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
-
-
-
-  
-  
-
-  
-  
-<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
-
-<script type="text/javascript" id="sidebar.toc.highlight">
-  $(document).ready(function () {
-    var tocSelector = '.post-toc';
-    var $tocSelector = $(tocSelector);
-    var activeCurrentSelector = '.active-current';
-
-    $tocSelector
-      .on('activate.bs.scrollspy', function () {
-        var $currentActiveElement = $(tocSelector + ' .active').last();
-
-        removeCurrentActiveClass();
-        $currentActiveElement.addClass('active-current');
-
-        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
-      })
-      .on('clear.bs.scrollspy', function () {
-        removeCurrentActiveClass();
-      });
-
-    function removeCurrentActiveClass () {
-      $(tocSelector + ' ' + activeCurrentSelector)
-        .removeClass(activeCurrentSelector.substring(1));
-    }
-
-    function processTOC () {
-      getTOCMaxHeight();
-      toggleTOCOverflowIndicators();
-    }
-
-    function getTOCMaxHeight () {
-      var height = $('.sidebar').height() -
-                   $tocSelector.position().top -
-                   $('.post-toc-indicator-bottom').height();
-
-      $tocSelector.css('height', height);
-
-      return height;
-    }
-
-    function toggleTOCOverflowIndicators () {
-      tocOverflowIndicator(
-        '.post-toc-indicator-top',
-        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
-      );
-
-      tocOverflowIndicator(
-        '.post-toc-indicator-bottom',
-        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
-      )
-    }
-
-    $(document).on('sidebar.motion.complete', function () {
-      processTOC();
-    });
-
-    $('body').scrollspy({ target: tocSelector });
-    $(window).on('resize', function () {
-      if ( $('.sidebar').hasClass('sidebar-active') ) {
-        processTOC();
-      }
-    });
-
-    onScroll($tocSelector);
-
-    function onScroll (element) {
-      element.on('mousewheel DOMMouseScroll', function (event) {
-          var oe = event.originalEvent;
-          var delta = oe.wheelDelta || -oe.detail;
-
-          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
-          event.preventDefault();
-
-          toggleTOCOverflowIndicators();
-      });
-    }
-
-    function tocOverflowIndicator (indicator, action) {
-      var $indicator = $(indicator);
-      var opacity = action === 'show' ? 1 : 0;
-      $indicator.velocity ?
-        $indicator.velocity('stop').velocity({
-          opacity: opacity
-        }, { duration: 100 }) :
-        $indicator.stop().animate({
-          opacity: opacity
-        }, 100);
-    }
-
-  });
-</script>
-
-<script type="text/javascript" id="sidebar.nav">
-  $(document).ready(function () {
-    var html = $('html');
-    var TAB_ANIMATE_DURATION = 200;
-    var hasVelocity = $.isFunction(html.velocity);
-
-    $('.sidebar-nav li').on('click', function () {
-      var item = $(this);
-      var activeTabClassName = 'sidebar-nav-active';
-      var activePanelClassName = 'sidebar-panel-active';
-      if (item.hasClass(activeTabClassName)) {
-        return;
-      }
-
-      var currentTarget = $('.' + activePanelClassName);
-      var target = $('.' + item.data('target'));
-
-      hasVelocity ?
-        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
-          target
-            .velocity('stop')
-            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
-            .addClass(activePanelClassName);
-        }) :
-        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
-          currentTarget.hide();
-          target
-            .stop()
-            .css({'opacity': 0, 'display': 'block'})
-            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
-              currentTarget.removeClass(activePanelClassName);
-              target.addClass(activePanelClassName);
-            });
-        });
-
-      item.siblings().removeClass(activeTabClassName);
-      item.addClass(activeTabClassName);
-    });
-
-    $('.post-toc a').on('click', function (e) {
-      e.preventDefault();
-      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
-      var offset = $(targetSelector).offset().top;
-      hasVelocity ?
-        html.velocity('stop').velocity('scroll', {
-          offset: offset  + 'px',
-          mobileHA: false
-        }) :
-        $('html, body').stop().animate({
-          scrollTop: offset
-        }, 500);
-    });
-
-    // Expand sidebar on post detail page by default, when post has a toc.
-    NexT.motion.middleWares.sidebar = function () {
-      var $tocContent = $('.post-toc-content');
-
-      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
-        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
-          NexT.utils.displaySidebar();
-        }
-      }
-    };
-  });
-</script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
-
-
-
-  
-
-  
-    
-  
-
-  <script type="text/javascript">
-    var duoshuoQuery = {short_name:"liuguoquan"};
-    (function() {
-      var ds = document.createElement('script');
-      ds.type = 'text/javascript';ds.async = true;
-      ds.id = 'duoshuo-script';
-      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
-      ds.charset = 'UTF-8';
-      (document.getElementsByTagName('head')[0]
-      || document.getElementsByTagName('body')[0]).appendChild(ds);
-    })();
-  </script>
-
-  
-    
-  
-
-
-
-
-
-  
-  
-  
-
-  
 
 
 </body>
