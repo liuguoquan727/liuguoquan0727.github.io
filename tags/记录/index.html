@@ -162,11 +162,11 @@
 
          
 
-            <a href="/tags/源码分析/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">源码分析</a>
+            <a href="/tags/实战/" style="-webkit-order:5;order:5" class="tags-list-item waves-effect waves-button waves-light">实战</a>
 
          
 
-            <a href="/tags/实战/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">实战</a>
+            <a href="/tags/源码分析/" style="-webkit-order:6;order:6" class="tags-list-item waves-effect waves-button waves-light">源码分析</a>
 
          
 
@@ -399,6 +399,28 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false }</script>
 
 <script src="/js/search.min.js?v=1.2.7"></script>
 
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
 
