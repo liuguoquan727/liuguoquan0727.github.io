@@ -5,7 +5,7 @@
   
   
   
-  <title>Android Context详解 | 求缺斋 | MICHAEL</title>
+  <title>Android Context详解 | 再读斋 | MICHAEL</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <meta name="theme-color" content="#1EF128">
@@ -16,7 +16,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android Context详解">
 <meta property="og:url" content="http://liuguoquan727.github.io/2016/06/02/Android Context详解/index.html">
-<meta property="og:site_name" content="求缺斋">
+<meta property="og:site_name" content="再读斋">
 <meta property="og:description" content="前言Activity可以new吗？Android的应用程序开发采用Java语言，Activity本质上也是一个对象，那Activity activity = new Activity()这种写法有什么问题吗？Android应用模型是基于组件的设计模式，组件的运行需要有一个完整的Android工程环境，在这个环境下，Activity、Service等系统组件才能够正常工作，而这些组件并不能采用普通的">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1187237-1b4c0cd31fd0193f.png?imageMogr2/auto-orient/strip%7CimageView2/2">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1187237-fb32b0f992da4781.png?imageMogr2/auto-orient/strip%7CimageView2/2">
@@ -27,7 +27,7 @@
 <meta name="twitter:description" content="前言Activity可以new吗？Android的应用程序开发采用Java语言，Activity本质上也是一个对象，那Activity activity = new Activity()这种写法有什么问题吗？Android应用模型是基于组件的设计模式，组件的运行需要有一个完整的Android工程环境，在这个环境下，Activity、Service等系统组件才能够正常工作，而这些组件并不能采用普通的">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1187237-1b4c0cd31fd0193f.png?imageMogr2/auto-orient/strip%7CimageView2/2">
   
-    <link rel="alternative" href="/atom.xml" title="求缺斋" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="再读斋" type="application/atom+xml">
   
   <link rel="shortcut icon" href="/icon.jpg">
   <link rel="stylesheet" href="/css/style.css?v=1.2.7">
@@ -108,7 +108,7 @@
 
       <footer class="footer">
   <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
-  <p>求缺斋 &copy; 2015 - 2016</p>
+  <p>再读斋 &copy; 2015 - 2016</p>
   <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
   <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
   <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
@@ -274,7 +274,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 再读斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -284,7 +284,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 再读斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -294,7 +294,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Context详解》 — 求缺斋&url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&via=http://liuguoquan727.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Context详解》 — 再读斋&url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -397,7 +397,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 再读斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -407,7 +407,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&title=《Android Context详解》 — 再读斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -417,7 +417,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Context详解》 — 求缺斋&url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&via=http://liuguoquan727.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Android Context详解》 — 再读斋&url=http://liuguoquan727.github.io/2016/06/02/Android Context详解/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
