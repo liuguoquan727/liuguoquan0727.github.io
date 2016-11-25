@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>iOS开发之08PopoverView | 求缺斋 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#1EF128">
+  
+  
+  <meta name="keywords" content="ios,swift,xcode">
+  <meta name="description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
+APIPopoverPresentationController
+barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
+sourceView：指定一个普视图作为锚点
+sourceRect:指定一个矩形区域作为锚点
+permittedArrowDirection：指定锚点箭头的方向（up,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发之08PopoverView">
+<meta property="og:url" content="http://yoursite.com/2016/11/25/iOS开发之08PopoverView/index.html">
+<meta property="og:site_name" content="求缺斋">
+<meta property="og:description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
+APIPopoverPresentationController
+barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
+sourceView：指定一个普视图作为锚点
+sourceRect:指定一个矩形区域作为锚点
+permittedArrowDirection：指定锚点箭头的方向（up,">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif">
+<meta property="og:updated_time" content="2016-11-25T12:37:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发之08PopoverView">
+<meta name="twitter:description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
+APIPopoverPresentationController
+barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
+sourceView：指定一个普视图作为锚点
+sourceRect:指定一个矩形区域作为锚点
+permittedArrowDirection：指定锚点箭头的方向（up,">
+<meta name="twitter:image" content="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif">
+  
+    <link rel="alternative" href="/atom.xml" title="求缺斋" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/icon.jpg">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/icon.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:michaelliu0727@gmail.com" title="michaelliu0727@gmail.com" class="mail">michaelliu0727@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liuguoquan727" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/liuguoquan0727" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>求缺斋 &copy; 2015 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">iOS开发之08PopoverView</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">iOS开发之08PopoverView</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-25T10:46:33.000Z" itemprop="datePublished" class="page-time">
+  2016-11-25 18:46:33
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#API"><span class="post-toc-number">1.</span> <span class="post-toc-text">API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PopoverPresentationController"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">PopoverPresentationController</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#UIPopoverPresentationControllerDelegate"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">UIPopoverPresentationControllerDelegate</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">3.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#效果"><span class="post-toc-number">4.</span> <span class="post-toc-text">效果</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-iOS开发之08PopoverView"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">iOS开发之08PopoverView</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-25T10:46:33.000Z" itemprop="datePublished" class="post-time">
+  2016-11-25 18:46:33
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。</p>
+<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="PopoverPresentationController"><a href="#PopoverPresentationController" class="headerlink" title="PopoverPresentationController"></a>PopoverPresentationController</h2><ul>
+<li>barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点</li>
+<li>sourceView：指定一个普视图作为锚点</li>
+<li>sourceRect:指定一个矩形区域作为锚点</li>
+<li>permittedArrowDirection：指定锚点箭头的方向（up,down.lwft,right,any,unkown)</li>
+</ul>
+<h2 id="UIPopoverPresentationControllerDelegate"><a href="#UIPopoverPresentationControllerDelegate" class="headerlink" title="UIPopoverPresentationControllerDelegate"></a>UIPopoverPresentationControllerDelegate</h2><ul>
+<li>popoverPresentationControllerShouldDismissPopover:返回true可以消失，false不可消失</li>
+<li>popoverPresentationControllerDidDismissPopover：销毁时调用</li>
+<li>func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController)：显示时调用</li>
+</ul>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>创建iOS工程</li>
+<li>拖入一个Button到界面中心，并设置点击事件，点击按钮室弹出popover view</li>
+<li>代码实现</li>
+</ol>
+<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  PopoverViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/17.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UIPopoverPresentationControllerDelegate</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mBtn: <span class="type">UIButton</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//作为popover View</span></div><div class="line">        <span class="keyword">let</span> controller = <span class="type">SelectViewController</span>();</div><div class="line">        <span class="comment">//设置为popover视图</span></div><div class="line">        controller.modalPresentationStyle = .popover</div><div class="line">        <span class="comment">//视图动画</span></div><div class="line">        controller.modalTransitionStyle = .crossDissolve</div><div class="line">        controller.preferredContentSize = <span class="type">CGSize</span>(width: <span class="number">300</span>, height: <span class="number">100</span>)</div><div class="line"></div><div class="line">        <span class="keyword">let</span> popController = controller.popoverPresentationController</div><div class="line">        popController?.sourceView = mBtn</div><div class="line">        popController?.sourceRect = mBtn.bounds</div><div class="line">        popController?.delegate = <span class="keyword">self</span></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.present(controller, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">adaptivePresentationStyle</span><span class="params">(<span class="keyword">for</span> controller: UIPresentationController)</span></span> -&gt; <span class="type">UIModalPresentationStyle</span> &#123;</div><div class="line">        <span class="comment">//popover样式</span></div><div class="line">        <span class="keyword">return</span> .<span class="keyword">none</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">prepareForPopoverPresentation</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"show"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">popoverPresentationControllerDidDismissPopover</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"hide"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">popoverPresentationControllerShouldDismissPopover</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  SelectViewController.swift</span></div><div class="line"><span class="comment">//  PopoverViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/17.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> label1:<span class="type">UILabel</span>!</div><div class="line">    <span class="keyword">var</span> label2:<span class="type">UILabel</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.view.frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">200</span>, height: <span class="number">500</span>)</div><div class="line"><span class="comment">//        label1 = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))</span></div><div class="line"><span class="comment">//        label2 = UILabel(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 200))</span></div><div class="line"><span class="comment">//        self.view.addSubview(label1)</span></div><div class="line"><span class="comment">//        self.view.addSubview(label2)</span></div><div class="line">        <span class="keyword">self</span>.view.backgroundColor = <span class="type">UIColor</span>.blue</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/11/25/iOS开发之08PopoverView/" target="_blank" rel="external">http://yoursite.com/2016/11/25/iOS开发之08PopoverView/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/icon.jpg" alt="刘涤生">
+            刘涤生
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&title=《iOS开发之08PopoverView》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&title=《iOS开发之08PopoverView》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之08PopoverView》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/25/iOS开发之07视图控制器与导航模式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">iOS开发之07视图控制器与导航模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="iOS开发之08PopoverView" data-title="iOS开发之08PopoverView" data-url="http://yoursite.com/2016/11/25/iOS开发之08PopoverView/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'liuguoquan', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/ic_wechat_pay.jpeg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/ic_ali_pay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&title=《iOS开发之08PopoverView》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&title=《iOS开发之08PopoverView》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之08PopoverView》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之08PopoverView/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACGUlEQVR42u3ay46jMBAF0P7/n85sW5qA7nWFlmIfVhEQ8GFRqod/fuLjFR/39/9/9eotP08cGBgYX8tYW9bv81eLyJ/QXn1DxcDAOIBxFcHu77kH3AfWHH+/NgwMDIyre+bhOP8cGBgYGPOA+9xzMDAwMNoidp4a5snig7U4BgbGFzLyrvvf/35kvoGBgfFVjFd53Cdn+bKSdluxKgwMjK0ZbWGZl6ltQbtW6GJgYJzDmDT6n/jv2ufDwMDYlTEvI/PBZLLQPN3EwMA4h5EPINtSdi1ZbK/Wc1QMDIwvZKyVpvnS2/bcWtjFwMDYm9E2ztptEG3imLMxMDDOYUzSsvkwIElAo7YdBgbG8YxJOTrZeJrAMDAwTmMkL0tI7RhgbZx5uVsEAwNjU0YedtsxQBE040/z5k4MDIzDGGuDzDZBvA+vyf1vilgMDIxNGe3Ysm2ofaqIrRuCGBgYGzHWguO8KM2fH/EwMDC2ZsyDbPL6tjGXfz4MDIzTGPMWf3s+L0qj8xgYGAcw5tVwGzTn80cMDIzTGM+9bG3AsFjEYmBgbMd4lUc7kvybkScGBsbejEmYaxfdbvnKC2kMDIwTGHmQTcYJa8niZIyKgYFxDqNtpeWMtlWXhH4MDAyMnDHPQEdjSwwMDIwyNWwHopONZdFuXAwMjO0Y7TBgnjiufbjLwhgDA2NrRls6fnZbRr7Ej803MDAwvonxDy0UVYNsNEIFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2.7"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

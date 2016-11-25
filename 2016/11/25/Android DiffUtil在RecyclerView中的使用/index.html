@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>DiffUtil在RecyclerView中的使用 | 求缺斋 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#1EF128">
+  
+  
+  <meta name="keywords" content="实战">
+  <meta name="description" content="概述DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DiffUtil在RecyclerView中的使用">
+<meta property="og:url" content="http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/index.html">
+<meta property="og:site_name" content="求缺斋">
+<meta property="og:description" content="概述DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/diff-normal.png">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-add.png">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-refresh.png">
+<meta property="og:updated_time" content="2016-11-25T12:32:51.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DiffUtil在RecyclerView中的使用">
+<meta name="twitter:description" content="概述DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数">
+<meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/diff-normal.png">
+  
+    <link rel="alternative" href="/atom.xml" title="求缺斋" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/icon.jpg">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/icon.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:michaelliu0727@gmail.com" title="michaelliu0727@gmail.com" class="mail">michaelliu0727@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liuguoquan727" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/liuguoquan0727" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>求缺斋 &copy; 2015 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">DiffUtil在RecyclerView中的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">DiffUtil在RecyclerView中的使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-25T10:31:12.000Z" itemprop="datePublished" class="page-time">
+  2016-11-25 18:31:12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#DiffUtil简介"><span class="post-toc-number">2.</span> <span class="post-toc-text">DiffUtil简介</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#如何使用"><span class="post-toc-number">3.</span> <span class="post-toc-text">如何使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DiffUtil类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">DiffUtil类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DiffUtil-Callback抽象类"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">DiffUtil.Callback抽象类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DiffUtil步骤"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">DiffUtil步骤</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#示例"><span class="post-toc-number">4.</span> <span class="post-toc-text">示例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#初始化RecyclerView"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">初始化RecyclerView</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现DiffUtil-Callback"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">实现DiffUtil.Callback</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用DiffUtil"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">使用DiffUtil</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结语"><span class="post-toc-number">5.</span> <span class="post-toc-text">结语</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#示例代码"><span class="post-toc-number">6.</span> <span class="post-toc-text">示例代码</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Android DiffUtil在RecyclerView中的使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">DiffUtil在RecyclerView中的使用</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-25T10:31:12.000Z" itemprop="datePublished" class="post-time">
+  2016-11-25 18:31:12
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数据需要更新。</p>
+<p>那么相比直接调用adapter.notifyDataSetChange()方法，使用DiffUtil有什么优势呢？它能在收到数据集后，提高UI更新的效率，而且你也不需要自己对新老数据集进行比较了。</p>
+<p>顾名思义，凡是数据集的比较DiffUtil都能做，所以用处并不止于更新RecyclerView。DiffUtil也提供了回调让你可以进行其他操作。本文只介绍使用DiffUtil更新RecyclerView。</p>
+<h1 id="DiffUtil简介"><a href="#DiffUtil简介" class="headerlink" title="DiffUtil简介"></a>DiffUtil简介</h1><p>在使用DiffUtil前我们先简单看看DiffUtil的特性。DiffUtil使用Eugene W. Myers的Difference算法来计算出将一个数据集转换为另一个的最小更新量，也就是用最简单的方式将一个数据集转换为另一个。除此之外，DiffUtil还可以识别一项数据在数据集中的移动。Eugene的算法对控件进行了优化，在查找两个数据集间最少加减操作时的空间复杂度为O(N)，时间复杂度为<code>O(N+D^2)</code>。而如果添加了对数据条目移动的识别，复杂度就会提高到<code>O(N^2)</code>。<strong>所以如果数据集中数据不存在移位情况，你可以关闭移动识别功能来提高性能。当数据集较大时，你应该在后台线程计算数据集的更新。</strong></p>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><h2 id="DiffUtil类"><a href="#DiffUtil类" class="headerlink" title="DiffUtil类"></a>DiffUtil类</h2><ul>
+<li>DiffUtil.Callback：这是最核心的类,你可以将它理解成比较新老数据集时的规则。</li>
+<li>DiffUtil：通过静态方法<code>DiffUtil.calculateDiff(DiffUtil.Callback)</code>来计算数据集的更新。</li>
+<li>DiffResult：是DiffUtil的计算结果对象，通过<code>DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)</code>来进行更新。</li>
+</ul>
+<p>代码模式为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallBack(mDatas, newDatas), <span class="keyword">true</span>);</div><div class="line">mAdapter.setDatas(newDatas);</div><div class="line">diffResult.dispatchUpdatesTo(mAdapter);</div></pre></td></tr></table></figure>
+<p><code>dispatchUpdatesTo()</code>方法它会自动计算新老数据集的差异，并根据差异情况，自动调用以下四个方法</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">adapter.notifyItemRangeInserted(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeRemoved(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemMoved(fromPosition, toPosition)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeChanged(position, <span class="built_in">count</span>, payload)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h2 id="DiffUtil-Callback抽象类"><a href="#DiffUtil-Callback抽象类" class="headerlink" title="DiffUtil.Callback抽象类"></a>DiffUtil.Callback抽象类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Callback</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回旧数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the old list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回新数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the new list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象是否是同一个对象</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     * <span class="doctag">@return</span> True if the two items represent the same object or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象的内容是否相同</div><div class="line">     * Called by the DiffUtil when it wants to check whether two items have the same data.</div><div class="line">     * DiffUtil uses this information to detect if the contents of an item has changed.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * DiffUtil uses this method to check equality instead of &#123;<span class="doctag">@link</span> Object#equals(Object)&#125;</div><div class="line">     * so that you can change its behavior depending on your UI.</div><div class="line">     * For example, if you are using DiffUtil with a</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.Adapter RecyclerView.Adapter&#125;, you should</div><div class="line">     * return whether the items' visual representations are the same.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * This method is called only if &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns</div><div class="line">     * &#123;<span class="doctag">@code</span> true&#125; for these items.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list which replaces the</div><div class="line">     *                        oldItem</div><div class="line">     * <span class="doctag">@return</span> True if the contents of the items are the same or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * areItemsTheSame()返回true而areContentsTheSame()返回false时调用，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">     * When &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns &#123;<span class="doctag">@code</span> true&#125; for two items and</div><div class="line">     * &#123;<span class="doctag">@link</span> #areContentsTheSame(int, int)&#125; returns false for them, DiffUtil</div><div class="line">     * calls this method to get a payload about the change.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * For example, if you are using DiffUtil with &#123;<span class="doctag">@link</span> RecyclerView&#125;, you can return the</div><div class="line">     * particular field that changed in the item and your</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.ItemAnimator ItemAnimator&#125; can use that</div><div class="line">     * information to run the correct animation.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * Default implementation returns &#123;<span class="doctag">@code</span> null&#125;.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> A payload object that represents the change between the two items.</div><div class="line">     */</div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="DiffUtil步骤"><a href="#DiffUtil步骤" class="headerlink" title="DiffUtil步骤"></a>DiffUtil步骤</h2><ol>
+<li>自定义类继承DiffUtil.Callback，通过重写特定方法给出数据比较逻辑。</li>
+<li>调用<code>DiffUtil.calculateDiff(DiffUtil.Callback callback,boolean detectMove)</code>来计算更新，得到DiffResult对象。第二个参数可省，意为是否探测数据的移动，是否关闭需要根据数据集情况来权衡。当数据集很大时，此操作可能耗时较长，需要异步计算。</li>
+<li>在UI线程中调用DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)，而后Adapter的onBindViewHolder(RecyclerView.ViewHolder holder, int position, Listpayloads)。注意这个方法比必须覆盖的onBindViewHolder(RecyclerView.ViewHolder holder, int position)方法多一个参数payloads，而里面存储了数据的更新。</li>
+</ol>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="初始化RecyclerView"><a href="#初始化RecyclerView" class="headerlink" title="初始化RecyclerView"></a>初始化RecyclerView</h2><ul>
+<li>新建一个Bean为Item：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.materialdesign.bean;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by liuguoquan on 2016/10/18.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> id = <span class="number">0</span>;</div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>新建Adapter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffUtilAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">DiffUtilAdapter</span>.<span class="title">DiffItemHolder</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> Context mContext;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mDatas;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffUtilAdapter</span><span class="params">(Context context, List&lt;Item&gt; datas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mContext = context;</div><div class="line">    <span class="keyword">this</span>.mDatas = datas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDatas</span><span class="params">(List&lt;Item&gt; mDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mDatas = mDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> DiffItemHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    View view = LayoutInflater.from(mContext).inflate(R.layout.item_diff_util, parent, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DiffItemHolder(view);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    Item info = mDatas.get(position);</div><div class="line">    holder.mInfo.setText(info.getName());</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"onBindViewHolder"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="comment">//payloads就是DiffUtil.Callback中的getChangePayload方法返回的数据集</span></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position, List&lt;Object&gt; payloads)</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (payloads.isEmpty()) &#123;</div><div class="line">      onBindViewHolder(holder,position);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//更新item</span></div><div class="line">      Bundle bundle = (Bundle) payloads.get(<span class="number">0</span>);</div><div class="line">      <span class="keyword">for</span>(String key : bundle.keySet()) &#123;</div><div class="line">        <span class="keyword">switch</span> (key) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="string">"name"</span>:</div><div class="line">            holder.mInfo.setText((CharSequence) bundle.get(key));</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mDatas != <span class="keyword">null</span> ? mDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffItemHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@BindView</span>(R.id.info) TextView mInfo;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiffItemHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>(itemView);</div><div class="line">      ButterKnife.bind(<span class="keyword">this</span>, itemView);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>初始化ReyclerView</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>;i++) &#123;</div><div class="line">    Item item = <span class="keyword">new</span> Item(i,<span class="string">"liu"</span>+i);</div><div class="line">    mDatas.add(item);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  mAdapter = <span class="keyword">new</span> DiffUtilAdapter(<span class="keyword">this</span>,mDatas);</div><div class="line">  mList.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>,LinearLayoutManager.VERTICAL,<span class="keyword">false</span>));</div><div class="line">  mList.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());</div><div class="line">  mList.setAdapter(mAdapter);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>初始化RecyclerView后效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-normal.png" alt=""></p>
+<h2 id="实现DiffUtil-Callback"><a href="#实现DiffUtil-Callback" class="headerlink" title="实现DiffUtil.Callback"></a>实现DiffUtil.Callback</h2><p>新建类继承DiffUtil.Callback</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffCallback</span> <span class="keyword">extends</span> <span class="title">DiffUtil</span>.<span class="title">Callback</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mOldDatas;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mNewDatas;</div><div class="line"></div><div class="line">  <span class="comment">//传入旧数据和新数据的集合</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffCallback</span><span class="params">(List&lt;Item&gt; oldDatas,List&lt;Item&gt; newDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mOldDatas = oldDatas;</div><div class="line">    <span class="keyword">this</span>.mNewDatas = newDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mOldDatas != <span class="keyword">null</span> ? mOldDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mNewDatas != <span class="keyword">null</span> ? mNewDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * 被DiffUtil调用，用来判断 两个对象是否是相同的Item。</div><div class="line">   * 例如，如果你的Item有唯一的id字段，这个方法就 判断id是否相等。</div><div class="line">   * 本例判断id字段是否一致</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> is = mOldDatas.get(oldItemPosition).id == mNewDatas.get(newItemPosition).id;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areItemsTheSame "</span> +oldItemPosition + <span class="string">" "</span> + newItemPosition + <span class="string">" "</span> + is);</div><div class="line">    <span class="keyword">return</span> is;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/*</span></div><div class="line">   * 被DiffUtil调用，用来检查 两个item是否含有相同的数据</div><div class="line">   * 这个方法仅仅在areItemsTheSame()返回true时，才调用。</div><div class="line">   * @param oldItemPosition The position of the item in the old list</div><div class="line">   * @param newItemPosition The position of the item in the new list which replaces the</div><div class="line">   *                        oldItem</div><div class="line">   * @return True if the contents of the items are the same or false if they are different.</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldName = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newName = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areContentsTheSame"</span></div><div class="line">        + <span class="string">" "</span> +oldName + <span class="string">" "</span> + newName);</div><div class="line">    <span class="keyword">if</span> (!oldName.equals(newName)) &#123;</div><div class="line">      Log.d(<span class="string">"lgq"</span>,<span class="string">"false"</span>);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * areItemsTheSame()返回true而areContentsTheSame()返回false，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">   * <span class="doctag">@param</span> oldItemPosition</div><div class="line">   * <span class="doctag">@param</span> newItemPosition</div><div class="line">   * <span class="doctag">@return</span></div><div class="line">   */</div><div class="line">  <span class="meta">@Nullable</span> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldItem = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newItem = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">    <span class="keyword">if</span> (!oldItem.equals(newItem)) &#123;</div><div class="line">        bundle.putString(<span class="string">"name"</span>,newItem);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (bundle.size() == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"getChangePayload"</span>);</div><div class="line">    <span class="keyword">return</span> bundle;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用DiffUtil"><a href="#使用DiffUtil" class="headerlink" title="使用DiffUtil"></a>使用DiffUtil</h2><p>下面通过两种不同的改变RecyclerView条目来介绍DiffUtil的使用。</p>
+<ul>
+<li>增加或删除条目</li>
+</ul>
+<p>这种情况下，数据集的大小改变，反映在RecyclerView的效果就是增加或者删除条目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">89</span>,<span class="string">"xiao"</span>));</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">90</span>,<span class="string">"xia"</span>));</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>增加条目后的RecyclerView的效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-add.png" alt=""></p>
+<ul>
+<li>更新具体的条目</li>
+</ul>
+<p>这种情况下数据集大小不改变，改变数据集中条目的内容，反映在RecyclerView的效果就是更新具体的条目，这回调用Callback中的getChangePayload方法，而Adapter必须要实现<code>public void onBindViewHolder(DiffItemHolder holder, int position, List&lt;Object&gt; payloads)</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  <span class="comment">//改变第三个位置的对象</span></div><div class="line">  Item item = <span class="keyword">new</span> Item(<span class="number">3</span>,<span class="string">"zhang"</span>);</div><div class="line">  mNewDatas.remove(<span class="number">3</span>);</div><div class="line">  mNewDatas.add(<span class="number">3</span>,item);</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  <span class="comment">//将新数据给Adapter</span></div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更新条目后的RecyclerView效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-refresh.png" alt=""></p>
+<p>由图可知，第四个位置的条目显示变为zhang。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>DiffUtil可用于高效进行RecyclerView的数据更新，但DiffUtil本身的作用是计算数据集的最小更新。DiffUtil有强大的算法支撑，可以利用DiffUtil完成许多其他功能。</p>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><p><a href="https://github.com/liuguoquan727/MaterialDesignDemo/blob/master/app/src/main/java/com/michael/materialdesign/recyclerview/DiffUtilActivity.java" target="_blank" rel="external">在RecyclerView目录下</a></p>
+<p>参考文章:</p>
+<p><a href="http://blog.chengdazhi.com/index.php/231?sukey=3997c0719f151520abc3703315e3fef6e18ec9dce4f81882490fce74f3aae8be1eb373fcd36a9b3faaddddcea988dbfa" target="_blank" rel="external">使用DiffUtil高效更新RecyclerView</a><br><a href="http://blog.csdn.net/zxt0601/article/details/52562770" target="_blank" rel="external">详解7.0带来的新工具类：DiffUtil</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/" target="_blank" rel="external">http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/icon.jpg" alt="刘涤生">
+            刘涤生
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&title=《DiffUtil在RecyclerView中的使用》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&title=《DiffUtil在RecyclerView中的使用》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DiffUtil在RecyclerView中的使用》 — 求缺斋&url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/11/25/iOS开发之01基础/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">iOS开发之01基础</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/09/12/Android_LoaderManager使用详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Android LoaderManager使用详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="Android DiffUtil在RecyclerView中的使用" data-title="DiffUtil在RecyclerView中的使用" data-url="http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'liuguoquan', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/ic_wechat_pay.jpeg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/ic_ali_pay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&title=《DiffUtil在RecyclerView中的使用》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&title=《DiffUtil在RecyclerView中的使用》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《DiffUtil在RecyclerView中的使用》 — 求缺斋&url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpElEQVR42u3aQW7jMAwF0Nz/0plti47TT1I0XOB5VRSpzKcCEkPy9Yqf9/j5us7VmkkMr40HDw8P72joPz9zFehVEMlqeYR5zHh4eHjbvM8HcXK4f37xxkkeXR54eHh4D+BVD+5TyTQeHh7e3+XlKXLvenjEvYeHh4cX8CbLfQbkG5GXcVdqLXh4eHgxLz+sn/PzSn8PDw8Pb2EgoFp6+HxkJ381ihYPDw9vgVdNZyehzIcJenHi4eHhneVVG1SnirnVS6X3STw8PLxtXrUZVmVcrV8tPRQKwXh4eHgLvOTFeZo7L7/mbyw3wPDw8PDWePnS+Yvnjf/eqAEeHh7eBi8PpVrSnU8xJKlzVIzAw8PDW+NNChB5OWN+qSQJfeGVeHh4eEVe77jPW/7VwanqiED+ZQAPDw/vLK93BOeJ+Dt+8u5V+f+Gh4eHd5RXDa5XL50PKIzWx8PDwzvEyw/cvLA72YJ5at68T/Dw8PDGPak8/Z0MSFU3qJri4+Hh4W3wzhZk5xWA+ezYtzXx8PDwFni9wm71Nwky37hqOo6Hh4d3ltcbKu21vqoF3Lz4i4eHh3cnL2k1JeNWeUmid8Tn+MuSBB4eHt6NvGpTv5c0V8eqCt8V8PDw8JZ5vdB7SXO10dXbejw8PLx7eNWGfXVaodpsm5Q58PDw8PZ4G2MBG0MG5YYcHh4e3hpvUkjtpeB5I23SnMPDw8M7y3sXn2opodoSmwxj4eHh4d3D6wWUbEGveFFNtV+nHjw8PLwib5Ls5mXfXoi90nDU38PDw8Mb8/JDuXo051t2+DbDw8PDewxvMmxaHdKqjhH85/N4eHh4D+D1Euvq6FWO+WUdPDw8vDVer+mVbEGOnze3Li8GPDw8vKO83jf6+W/yDe1dPHh4eHgLvH+GrhbbyvYu6gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2.7"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

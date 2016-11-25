@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>iOS开发之01基础 | 求缺斋 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#1EF128">
+  
+  
+  <meta name="keywords" content="ios,swift,xcode">
+  <meta name="description" content="Xcode中的iOS工程模板iOS工程模板分为两类-Application和Framework &amp;amp; Library。
+Application类型Application包含5个模板，具体如下所示：
+
+Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。
+Page-Based Application：可以构建类似电子书">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发之01基础">
+<meta property="og:url" content="http://yoursite.com/2016/11/25/iOS开发之01基础/index.html">
+<meta property="og:site_name" content="求缺斋">
+<meta property="og:description" content="Xcode中的iOS工程模板iOS工程模板分为两类-Application和Framework &amp;amp; Library。
+Application类型Application包含5个模板，具体如下所示：
+
+Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。
+Page-Based Application：可以构建类似电子书">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/iOS%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84.png">
+<meta property="og:updated_time" content="2016-11-25T10:49:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发之01基础">
+<meta name="twitter:description" content="Xcode中的iOS工程模板iOS工程模板分为两类-Application和Framework &amp;amp; Library。
+Application类型Application包含5个模板，具体如下所示：
+
+Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。
+Page-Based Application：可以构建类似电子书">
+<meta name="twitter:image" content="http://oeqfywnzb.bkt.clouddn.com/iOS%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84.png">
+  
+    <link rel="alternative" href="/atom.xml" title="求缺斋" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/icon.jpg">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/icon.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:michaelliu0727@gmail.com" title="michaelliu0727@gmail.com" class="mail">michaelliu0727@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liuguoquan727" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/liuguoquan0727" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>求缺斋 &copy; 2015 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">iOS开发之01基础</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">iOS开发之01基础</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-25T10:44:53.000Z" itemprop="datePublished" class="page-time">
+  2016-11-25 18:44:53
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Xcode中的iOS工程模板"><span class="post-toc-number">1.</span> <span class="post-toc-text">Xcode中的iOS工程模板</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Application类型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Application类型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Framework-amp-Library"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Framework & Library</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Xcode中的iOS工程目录"><span class="post-toc-number">2.</span> <span class="post-toc-text">Xcode中的iOS工程目录</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#iOS应用生命周期"><span class="post-toc-number">3.</span> <span class="post-toc-text">iOS应用生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非运行状态-应用启动场景"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">非运行状态-应用启动场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#点击Home键-应用退出场景"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">点击Home键-应用退出场景</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用可以在后台运行或者挂起"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">应用可以在后台运行或者挂起</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用不可以在后台运行或挂起"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">应用不可以在后台运行或挂起</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#挂起重新运行场景"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">挂起重新运行场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内存清楚-应用终止场景"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">内存清楚-应用终止场景</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#iOS-API-简介"><span class="post-toc-number">4.</span> <span class="post-toc-text">iOS API 简介</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Cocoa-Touch层"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Cocoa Touch层</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Media层"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Media层</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Core-Services层"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Core Services层</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Core-OS层"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Core OS层</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-iOS开发之01基础"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">iOS开发之01基础</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-25T10:44:53.000Z" itemprop="datePublished" class="post-time">
+  2016-11-25 18:44:53
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Xcode中的iOS工程模板"><a href="#Xcode中的iOS工程模板" class="headerlink" title="Xcode中的iOS工程模板"></a>Xcode中的iOS工程模板</h1><p>iOS工程模板分为两类-Application和Framework &amp; Library。</p>
+<h2 id="Application类型"><a href="#Application类型" class="headerlink" title="Application类型"></a>Application类型</h2><p>Application包含5个模板，具体如下所示：</p>
+<ul>
+<li>Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。</li>
+<li>Page-Based Application：可以构建类似电子书效果的应用</li>
+<li>Single View Application：可以构建简单的单个视图应用</li>
+<li>Tabbed Application：可以构建标签导航模式的应用，生成的代码中包含了标签控制器和标签栏等。</li>
+<li>Game： 可以构建基于iOS的游戏应用</li>
+</ul>
+<h2 id="Framework-amp-Library"><a href="#Framework-amp-Library" class="headerlink" title="Framework &amp; Library"></a>Framework &amp; Library</h2><ul>
+<li>Cocoa Touch Framework 可以让开发者自定义应用于UIKit的框架</li>
+<li>Cocoa Touch Static Library 可以让开发者创建基于Foundation框架的静态库。</li>
+</ul>
+<h1 id="Xcode中的iOS工程目录"><a href="#Xcode中的iOS工程目录" class="headerlink" title="Xcode中的iOS工程目录"></a>Xcode中的iOS工程目录</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/iOS%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84.png" alt="code中的iOS工程目录"></p>
+<ul>
+<li>AppDelegate.swift类文件:应用程序委托对象</li>
+<li>ViewController.swift类文件：是视图控制器类，在工程中扮演着根视图和用户事件控制类的角色</li>
+<li>Main.storyboard文件:故事板文件</li>
+<li>LaunchScreen.storyboard：应用启动界面故事板文件</li>
+<li>Assets.xcassets文件夹: 资源目录,可以用来管理图片</li>
+<li>Info.plist:工程属性文件</li>
+<li>Products组:工程将要生成的产品包</li>
+</ul>
+<blockquote>
+<p>在访问资源文件时，文件夹和组是有区别的。访问文件夹中的资源时需要将文件夹作为路径。如果icon.png文件放在images文件夹下，则访问它的路径时images/icon.png，如果images是组，则访问它的路径是icon.png.</p>
+</blockquote>
+<h1 id="iOS应用生命周期"><a href="#iOS应用生命周期" class="headerlink" title="iOS应用生命周期"></a>iOS应用生命周期</h1><p>AppDelegate类在应用生命周期的不同阶段会回调不同的方法。首先介绍iOS应用的5中状态。</p>
+<ul>
+<li>Not Running（非运行状态）：应用没有运行或被系统终止</li>
+<li>Inactive（前台非活动状态）：应用正在进入前台状态，但是还不能接受事件处理</li>
+<li>Active（前台活动状态）：应用进入前台状态，能接受事件处理</li>
+<li>Backgroud（后台状态）：应用进入后台状态，依然能够执行代码。如果有可执行的代码，就会执行代码；如果没有可执行的代码或者将可执行的代码执行完毕，应用会马上进入挂起状态</li>
+<li>Suspend（挂起状态）：被挂起的应用不能执行代码。如果系统内存不够，应用会被终止。</li>
+</ul>
+<p>在应用状态切换的过程中，iOS系统会回调AppDelegate中的一些方法，并且发送一些通知。下面介绍几个主要的方法和通知。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本地通知</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application:didFinishLaunchingWithOptions</td>
+<td>UIApllicationDidFinishedLaunchingNotification</td>
+<td>应用启动并进行初始化时会调用该方法并发出通知。这个阶段会实例化根视图控制器</td>
+</tr>
+<tr>
+<td>applicationDidBecomeActive</td>
+<td>UIApplicationDidBecomeActiveNotification</td>
+<td>应用进入前台并处于活动状态时调用该方法并发出通知。这个阶段可以恢复UI的状态</td>
+</tr>
+<tr>
+<td>applicationWillResignActive</td>
+<td>UIApplicationWillResignActiveNotification</td>
+<td>应用从活动状态进入到非活动状态时调用该方法并发出通知。这个阶段可以保存UI状态</td>
+</tr>
+<tr>
+<td>applicationDidEnterBackgroud</td>
+<td>UIApplicationDidEnterBackgroudNotification</td>
+<td>应用进入后台时调用该方法并发出通知。这个阶段可以保存用户数据，释放一些资源</td>
+</tr>
+<tr>
+<td>applicationWillEnterForegroud</td>
+<td>UIApplicationWillEnterForegroudNotification</td>
+<td>应用进入到前台，但是还没有处于活动状态时调用该方法并发出通知。这个阶段可以恢复用户数据</td>
+</tr>
+<tr>
+<td>applicationWillTerminate</td>
+<td>UIApplicationWillTerminateNotification</td>
+<td>应用被终止时调用该方法并发出通知，但内存清除时除外，这个阶段释放一些资源，也可以保存用户数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="非运行状态-应用启动场景"><a href="#非运行状态-应用启动场景" class="headerlink" title="非运行状态-应用启动场景"></a>非运行状态-应用启动场景</h2><p><strong>场景描述：</strong>用户点击应用图标时，可能是第一次启动这个应用，也可能是应用终止后再次启动。该场景的状态跃迁过程共经历两个阶段单个状态：Not running -&gt; Inactive -&gt; Active。</p>
+<ul>
+<li>Not running -&gt; Inactive阶段：调用application:didFinishLaunchingWithOptions方法，发出UIApllicationDidFinishedLaunchingNotification通知。</li>
+<li>Inactive -&gt; Active阶段：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<h2 id="点击Home键-应用退出场景"><a href="#点击Home键-应用退出场景" class="headerlink" title="点击Home键-应用退出场景"></a>点击Home键-应用退出场景</h2><p><strong>场景描述：</strong>应用出于运行状态（即Active状态）时点击Home键应用会退出。该场景的状态变迁过程分为两种情况：可以在后台运行或者挂起和不可以在后台运行或挂起，可以根据工程属性文件Info.plist中的属性Application does not run in background来控制这两种状态。</p>
+<h3 id="应用可以在后台运行或者挂起"><a href="#应用可以在后台运行或者挂起" class="headerlink" title="应用可以在后台运行或者挂起"></a>应用可以在后台运行或者挂起</h3><p>该场景的状态变迁共经历3个阶段4个状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend。</p>
+<ul>
+<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
+<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）。</li>
+<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知。</li>
+</ul>
+<h3 id="应用不可以在后台运行或挂起"><a href="#应用不可以在后台运行或挂起" class="headerlink" title="应用不可以在后台运行或挂起"></a>应用不可以在后台运行或挂起</h3><p>该场景下的状态变迁共经历4个阶段5种状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend -&gt; Not Running。</p>
+<ul>
+<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
+<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）</li>
+<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知</li>
+<li>Suspend -&gt; Not Running阶段：调用applicationWillTerminate方法，发出UIApplicationWillTerminateNotification通知。</li>
+</ul>
+<h2 id="挂起重新运行场景"><a href="#挂起重新运行场景" class="headerlink" title="挂起重新运行场景"></a>挂起重新运行场景</h2><p><strong>场景描述：</strong>挂起状态的应用重新运行。该场景的状态变迁过程共经历三个阶段4种状态：Suspend -&gt; Backgroud -&gt; Inactive -&gt; Active。</p>
+<ul>
+<li>Suspend -&gt; Backgroud阶段：应用从挂起状态进入到后台（不涉及重点的方法和通知）</li>
+<li>Backgroud -&gt; Inactive：调用applicationWillEnterForeground方法，发出UIApplicationWillEnterForegroudNotification通知。</li>
+<li>Inactive -&gt; Active：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<h2 id="内存清楚-应用终止场景"><a href="#内存清楚-应用终止场景" class="headerlink" title="内存清楚-应用终止场景"></a>内存清楚-应用终止场景</h2><p><strong>场景描述：</strong>应用在后台处理完成时进入挂起状态（这是一种休眠状态），如果这时发出低内存警告，为了满足其他应用对内存的需要，该应用就会被清除内存从而终止运行。该场景的变迁过程为：Backgroud -&gt; Suspend -&gt; Not running。</p>
+<p>内存清除的时候应用终止运行。内存清除有两种情况，可能是系统强制清楚内存，也可能是由使用者从任务栏中手动清除。内存清除后如果应用再次运行，上一次的运行状态不会被保存，相对于应用第一次运行。</p>
+<blockquote>
+<p>在内存清除的场景下，应用不会调用任何方法，也不会发出任何通知。</p>
+</blockquote>
+<h1 id="iOS-API-简介"><a href="#iOS-API-简介" class="headerlink" title="iOS API 简介"></a>iOS API 简介</h1><p>iOS的整体架构图参见图2-28，分为4层-Cocoa Touch层，Media层，Core Service层和Core OS层。</p>
+<h2 id="Cocoa-Touch层"><a href="#Cocoa-Touch层" class="headerlink" title="Cocoa Touch层"></a>Cocoa Touch层</h2><p>Cocoa Touch层提供了构建iOS应用的一些基本系统服务（如多任务、触摸输入和推送通知等）和关键框架。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConatactsUI</td>
+<td>CN</td>
+<td>访问通讯录相关UI类</td>
+</tr>
+<tr>
+<td>EventKitUI</td>
+<td>EK</td>
+<td>访问日历事件数据</td>
+</tr>
+<tr>
+<td>GameKit</td>
+<td>GK</td>
+<td>提供能够进行点对点通信的网络通信API</td>
+</tr>
+<tr>
+<td>iAd</td>
+<td>AD</td>
+<td>广告API</td>
+</tr>
+<tr>
+<td>MapKit</td>
+<td>MK</td>
+<td>地图API</td>
+</tr>
+<tr>
+<td>MessageUI</td>
+<td>MF</td>
+<td>电子邮件消息相关API</td>
+</tr>
+<tr>
+<td>PhotosUi</td>
+<td>PF</td>
+<td>照片API</td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td>TW</td>
+<td>提供发送Twitter API</td>
+</tr>
+<tr>
+<td>UIKit</td>
+<td>UK</td>
+<td>提供UI类</td>
+</tr>
+<tr>
+<td>WatchKit</td>
+<td>Wk</td>
+<td>Apple Watch相关类</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Media层"><a href="#Media层" class="headerlink" title="Media层"></a>Media层</h2><p>Media层提供了图形、音频、视频和AirPlay技术等。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets Library</td>
+<td>Al</td>
+<td>访问图片和视频的API</td>
+</tr>
+<tr>
+<td>AudioToolBox</td>
+<td>Audio</td>
+<td>录制或播放视频、音频流以及格式转换</td>
+</tr>
+<tr>
+<td>AudioUnit</td>
+<td>Audio、AU</td>
+<td>使用内置音频单元服务以及音频处理模块</td>
+</tr>
+<tr>
+<td>AV Foundation</td>
+<td>AV</td>
+<td>播放与录制音频和视频的OC API</td>
+</tr>
+<tr>
+<td>Core Audio</td>
+<td>Audio</td>
+<td>录制、制作、播放音频的C语言接口</td>
+</tr>
+<tr>
+<td>Core Graphics</td>
+<td>CG</td>
+<td>提供Quartz 2D接口</td>
+</tr>
+<tr>
+<td>Core Image</td>
+<td>CI</td>
+<td>操作视频和静态图像的接口</td>
+</tr>
+<tr>
+<td>Core MIDI</td>
+<td>MIDI</td>
+<td>处理MIDI数据的底层API</td>
+</tr>
+<tr>
+<td>Core Text</td>
+<td>CT</td>
+<td>渲染文本和处理字体的简单、高效的C语言接口</td>
+</tr>
+<tr>
+<td>Core Video</td>
+<td>CV</td>
+<td>处理音频和视频的API</td>
+</tr>
+<tr>
+<td>Image I/O</td>
+<td>CG</td>
+<td>读写图像数据类</td>
+</tr>
+<tr>
+<td>GLKit</td>
+<td>GLK</td>
+<td>构建复杂OpenGL ES应用的OC应用类</td>
+</tr>
+<tr>
+<td>Media Player</td>
+<td>MP</td>
+<td>播放接口</td>
+</tr>
+<tr>
+<td>OpenAl</td>
+<td>AL</td>
+<td>包含了OpenAL（跨平台）的C接口</td>
+</tr>
+<tr>
+<td>OpenGL ES</td>
+<td>GL</td>
+<td>包含OpenGL ES（跨平台的2D/3D图形库）的C语言接口</td>
+</tr>
+<tr>
+<td>Quartz Core</td>
+<td>CA</td>
+<td>提供动画接口类</td>
+</tr>
+<tr>
+<td>Sprite Kit</td>
+<td>SK</td>
+<td>苹果提供的基于2D游戏的开发引擎</td>
+</tr>
+<tr>
+<td>Scene Kit</td>
+<td>SCK</td>
+<td>一种高级别的3D图像框架，能创建3D动画场景和特效</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-Services层"><a href="#Core-Services层" class="headerlink" title="Core Services层"></a>Core Services层</h2><p>Core Services层提供了CloudKit、HealthKit、HomeKit、SQLite和XML支持等技术</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accounts</td>
+<td>AC</td>
+<td>用于访问用户的Twitter账户</td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>CN</td>
+<td>访问通讯录信息</td>
+</tr>
+<tr>
+<td>AdSupport</td>
+<td>AS</td>
+<td>获得iAd广告标识</td>
+</tr>
+<tr>
+<td>CFNetwork</td>
+<td>CF</td>
+<td>提供了访问Wi-Fi网络和蜂窝移动网络的API</td>
+</tr>
+<tr>
+<td>Core Data</td>
+<td>NS</td>
+<td>提供管理应用数据的ORM接口</td>
+</tr>
+<tr>
+<td>CoreFoundation</td>
+<td>CF</td>
+<td>最基本的框架包括数据集</td>
+</tr>
+<tr>
+<td>Core Location</td>
+<td>CL</td>
+<td>定位服务的API</td>
+</tr>
+<tr>
+<td>CoreMedia</td>
+<td>CM</td>
+<td>提供AV Foundation框架使用的底层媒体类型，可以精确控制音频或视频的创建及展示</td>
+</tr>
+<tr>
+<td>CoreMotion</td>
+<td>CM</td>
+<td>接收和处理重力加速度以及其他的运动操作</td>
+</tr>
+<tr>
+<td>CoreTelephony</td>
+<td>CT</td>
+<td>提供访问电话基本信息的API</td>
+</tr>
+<tr>
+<td>Event Kit</td>
+<td>EK</td>
+<td>访问日历事件数据</td>
+</tr>
+<tr>
+<td>Foundation</td>
+<td>NS</td>
+<td>是OC最基本的框架</td>
+</tr>
+<tr>
+<td>JavaScriptCore.framework</td>
+<td>JS</td>
+<td>实现OC与JS的相互调用</td>
+</tr>
+<tr>
+<td>MobileCoreServices</td>
+<td>UT</td>
+<td>定义统一标识符类型（UIT）使用的底层类型</td>
+</tr>
+<tr>
+<td>Newsstand Kit</td>
+<td>NK</td>
+<td>提供在后台下载杂志和新闻的API接口</td>
+</tr>
+<tr>
+<td>Pass Kit</td>
+<td>PK</td>
+<td>提供访问优惠券的API</td>
+</tr>
+<tr>
+<td>QuickLock</td>
+<td>QL</td>
+<td>提供预览无法直接查看的文件内容</td>
+</tr>
+<tr>
+<td>Social</td>
+<td>SL</td>
+<td>提供社交网络访问API，中国区提供新浪微博的API</td>
+</tr>
+<tr>
+<td>Store Kit</td>
+<td>SK</td>
+<td>提供处理应用内置收费的资金交易</td>
+</tr>
+<tr>
+<td>SystemConfiguration</td>
+<td>SC</td>
+<td>用于确定设备的网络配置，也可以用于判断某个主机服务是否可以使用</td>
+</tr>
+<tr>
+<td>Cloud Kit</td>
+<td>CK</td>
+<td>开发iCloud应用的API</td>
+</tr>
+<tr>
+<td>Health Kit</td>
+<td>HK</td>
+<td>开发健康和健身等服务的API</td>
+</tr>
+<tr>
+<td>Home Kit</td>
+<td>HM</td>
+<td>能够与用户家中连接的设备通信并进行控制</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-OS层"><a href="#Core-OS层" class="headerlink" title="Core OS层"></a>Core OS层</h2><p>Core OS层提供了一些低级功能，一般不直接使用它。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerate</td>
+<td>AC</td>
+<td>访问重力加速计API</td>
+</tr>
+<tr>
+<td>Core Bluetooth</td>
+<td>CB</td>
+<td>访问低功耗蓝牙设备API</td>
+</tr>
+<tr>
+<td>External Accessory</td>
+<td>EA</td>
+<td>访问外围配件API接口</td>
+</tr>
+<tr>
+<td>Generic Security Services</td>
+<td>GSS</td>
+<td>提供一组安全相关的服务</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>CSSM</td>
+<td>管理证书、公钥、私钥和安全信任策略的API</td>
+</tr>
+<tr>
+<td>LocalAuthentication</td>
+<td>LA</td>
+<td>提供用户指定的安全策略进行安全认证</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/11/25/iOS开发之01基础/" target="_blank" rel="external">http://yoursite.com/2016/11/25/iOS开发之01基础/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/icon.jpg" alt="刘涤生">
+            刘涤生
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之01基础/&title=《iOS开发之01基础》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之01基础/&title=《iOS开发之01基础》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之01基础/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之01基础》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之01基础/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之01基础/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/11/25/iOS开发之02应用界面/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">iOS开发之02应用界面</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">DiffUtil在RecyclerView中的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="iOS开发之01基础" data-title="iOS开发之01基础" data-url="http://yoursite.com/2016/11/25/iOS开发之01基础/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'liuguoquan', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/ic_wechat_pay.jpeg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/ic_ali_pay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之01基础/&title=《iOS开发之01基础》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之01基础/&title=《iOS开发之01基础》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之01基础/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之01基础》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之01基础/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之01基础/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aQY7EIAwF0b7/pTPbkTph6ttkJKBYtegk5GVhYezPB4/ra/Drf898/x7fNXnIkCFjWcY1HOMFxgs/PWE8T/69WVGGDBkHMMhLjGMdD808HJN3kyFDhoyna0g4ToPmmCdDhgwZNcYYw2fSQC9DhowzGSSZ7GwEa5/slVxchgwZCzL4qfv//36lviFDhoylGFc4+DaRlyTTYsDNW8mQIWNrBg9wfFvGw2Un4MqQIeMcRi3UkvDaSYnjZg4ZMmRszRi/XO1356A/vVeGDBknMPrH+rN4rY2mDBkyDmCQ+bSpi1yZPrnVLSJDhoxlGfxoPt3GkeenUfSPu2TIkLE1o1905JtOHqzJJwiCrwwZMjZlpIG4s/mrfQgZMmScyeCbvM72MS1FxAAZMmRsxCCJIlmSFANI0OTp8U1bmAwZMo5h8DS1f2UN+dhsIUOGjK0ZnYJirRRKDvqDVFmGDBnHMN5u/+ofwD2uIkOGjK0ZaeBLE05+rJ8WKWXIkHEmI01Ha1u9WVvMm3kZMmQcwKgVBvi9fKZYOpUhQ8YBjPQVO8E6TVzRgZ0MGTI2ZVzhqDVSpIXSuGlMhgwZWzPSMMepPOmtFSGKGBkyZCzL4EE2/RKkaaMWcIuZrgwZMhZnzAqUnSvTJFaGDBky0mV4CbPYTiFDhgwZpYDLj9L41pA/7bESK0OGjE0ZvBhADtrSdopa24cMGTLOYbQ6NSY1Z6SfplXfkCFDxkqMH01wA/FG+GYqAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2.7"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

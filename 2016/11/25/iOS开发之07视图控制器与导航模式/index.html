@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  
+  <title>iOS开发之07视图控制器与导航模式 | 求缺斋 | MICHAEL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="theme-color" content="#1EF128">
+  
+  
+  <meta name="keywords" content="ios,swift,xcode">
+  <meta name="description" content="模态视图在导航过程中，有时候需要放弃主要任务而做其他次要任务，然后在返回到次要任务，这个次要任务就是在模态视图中完成的，如注册中主要任务是登录后进入主界面，如果用户没有注册，就要先去注册，注册是次要任务，当用户注册完成后，它会关闭注册视图，回到登录界面继续进行主要任务。
+默认情况下，模态视图是从屏幕下方滑出来的。
+负责控制器模态视图的控制器称为模态视图控制器，它并不是一个专门的类，它可以是前面提到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发之07视图控制器与导航模式">
+<meta property="og:url" content="http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/index.html">
+<meta property="og:site_name" content="求缺斋">
+<meta property="og:description" content="模态视图在导航过程中，有时候需要放弃主要任务而做其他次要任务，然后在返回到次要任务，这个次要任务就是在模态视图中完成的，如注册中主要任务是登录后进入主界面，如果用户没有注册，就要先去注册，注册是次要任务，当用户注册完成后，它会关闭注册视图，回到登录界面继续进行主要任务。
+默认情况下，模态视图是从屏幕下方滑出来的。
+负责控制器模态视图的控制器称为模态视图控制器，它并不是一个专门的类，它可以是前面提到">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/%E6%A8%A1%E6%80%81%E8%AF%95%E5%9B%BEstoryboard.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E7%99%BB%E5%BD%95%E5%AF%BC%E8%88%AA.gif">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E5%88%86%E5%B1%8F%E5%AF%BC%E8%88%AA.gif">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E5%88%86%E9%A1%B5%E6%8E%A7%E5%88%B6%E5%99%A8.gif">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%88%AA%E6%95%85%E4%BA%8B%E7%89%88.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%88%AA.gif">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA.gif">
+<meta property="og:updated_time" content="2016-11-25T12:36:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发之07视图控制器与导航模式">
+<meta name="twitter:description" content="模态视图在导航过程中，有时候需要放弃主要任务而做其他次要任务，然后在返回到次要任务，这个次要任务就是在模态视图中完成的，如注册中主要任务是登录后进入主界面，如果用户没有注册，就要先去注册，注册是次要任务，当用户注册完成后，它会关闭注册视图，回到登录界面继续进行主要任务。
+默认情况下，模态视图是从屏幕下方滑出来的。
+负责控制器模态视图的控制器称为模态视图控制器，它并不是一个专门的类，它可以是前面提到">
+<meta name="twitter:image" content="http://oeqfywnzb.bkt.clouddn.com/%E6%A8%A1%E6%80%81%E8%AF%95%E5%9B%BEstoryboard.jpg">
+  
+    <link rel="alternative" href="/atom.xml" title="求缺斋" type="application/atom+xml">
+  
+  <link rel="shortcut icon" href="/icon.jpg">
+  <link rel="stylesheet" href="/css/style.css?v=1.2.7">
+</head>
+
+<body>
+  <div id="loading" class="active"></div>
+
+  <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/icon.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">刘涤生</h5>
+          <a href="mailto:michaelliu0727@gmail.com" title="michaelliu0727@gmail.com" class="mail">michaelliu0727@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/liuguoquan727" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://weibo.com/liuguoquan0727" target="_blank" >
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-link"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+
+      <footer class="footer">
+  <p><a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="Creative Commons License" style="border-width:0;vertical-align:middle;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAAAPCAMAAABEF7i9AAAAllBMVEUAAAD///+rsapERER3d3eIiIjMzMzu7u4iIiKUmZO6v7rKzsoODg4RERFVVVUNDQ0NDg0PEA8zMzNLTEtbXltmZmZydnF9gn2AgICPkI+ZmZmqqqq7u7vFxsXIzMgNDQwZGRkgICAhISEkJSMnKCcuMC4xMzE5Ozk7PTtBQkFCQkJDQ0Nna2eGhoaHh4ezuLLGysbd3d1wVGpAAAAA4UlEQVR42q2T1xqCMAyFk7QsBQeKA9x7j/d/OSm22CpX0nzcpA1/T05aAOuBVkMAScQFHLnEwoCo2f1TnQIGoVMewjZEjVFN4GH1Ue1Cn2jWqwfsOOj6wDwGvotsl/c8lv7KIq1eLOsT0HMFHMIE/RZyHnlphryT9zyV+8WH5e8yQw3wnQvgAFxPTKUVi555SHR/lOfLMgVTeDlSfN+TaoUsiTyeIm+bCkHvCA2FUKG48LDtYBZBknsYP/G8NTw0gaaHyuQf4H5pecrB/FYCT2sL9zAfy1Xyjou6L8X2W7YcLyBZCRtnq/zfAAAAAElFTkSuQmCC" /></a></p>
+  <p>求缺斋 &copy; 2015 - 2016</p>
+  <p>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme
+  <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></p>
+  <a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-2x icon-rss-square"></i></a>
+</footer>
+
+    </div>
+  </div>
+</aside>
+
+  <main id="main">
+    <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">iOS开发之07视图控制器与导航模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">iOS开发之07视图控制器与导航模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2016-11-25T10:46:06.000Z" itemprop="datePublished" class="page-time">
+  2016-11-25 18:46:06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模态视图"><span class="post-toc-number">1.</span> <span class="post-toc-text">模态视图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">效果图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分屏导航"><span class="post-toc-number">2.</span> <span class="post-toc-text">分屏导航</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤-1"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现-1"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图-1"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">效果图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分页控制器"><span class="post-toc-number">3.</span> <span class="post-toc-text">分页控制器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤-2"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现-2"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图-2"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">效果图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#标签导航"><span class="post-toc-number">4.</span> <span class="post-toc-text">标签导航</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤-3"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现-3"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图-3"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">效果图</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#树形导航"><span class="post-toc-number">5.</span> <span class="post-toc-text">树形导航</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#步骤-4"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#代码实现-4"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">代码实现</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图-4"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">效果图</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-iOS开发之07视图控制器与导航模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">iOS开发之07视图控制器与导航模式</h1>
+        <div class="post-meta">
+            <time datetime="2016-11-25T10:46:06.000Z" itemprop="datePublished" class="post-time">
+  2016-11-25 18:46:06
+</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/ios/">ios</a></li></ul>
+
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="模态视图"><a href="#模态视图" class="headerlink" title="模态视图"></a>模态视图</h1><p>在导航过程中，有时候需要放弃主要任务而做其他次要任务，然后在返回到次要任务，这个次要任务就是在模态视图中完成的，如注册中主要任务是登录后进入主界面，如果用户没有注册，就要先去注册，注册是次要任务，当用户注册完成后，它会关闭注册视图，回到登录界面继续进行主要任务。</p>
+<p>默认情况下，模态视图是从屏幕下方滑出来的。</p>
+<p>负责控制器模态视图的控制器称为模态视图控制器，它并不是一个专门的类，它可以是前面提到的控制器的子类。负责主要任务视图的控制器称为主视图控制器。在UICOntrollerView中，主要有如下两个方法：</p>
+<ul>
+<li>-present():呈现视图</li>
+<li>-dismiss()：关闭视图</li>
+</ul>
+<p>在呈现模态视图时有两种方式：一是通过使用UIViewController的present方法实现；二是通过故事板的“过渡”（Segue）实现。</p>
+<p>下面我们通过登录案例来介绍模态视图</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程，将当前控制器嵌入到一个导航控制器中，具体步骤是：在故事板中选择View Controller，然后点击Xcode菜单栏Editor-Embed In-Navigation Controller菜单就会自动创建一个导航视图</li>
+<li>点击导航栏，将导航栏的标题设为登录，然后从对象库中拖入Lable、TextField、Button等控件</li>
+<li>接下来设计第二个界面，先从对象库中拖入一个View Controller到设计界面中，然后参考步骤1将该视图控制器嵌入到导航控制器中，修改该导航栏标题为注册，然后从对象库中拖入两个Bar Button Item到导航栏两边，分别设置identifier属性为Cancel和Save</li>
+<li>接下来需要在登录场景和注册场景创建一个过渡，按住control键，从登录界面的注册按钮拖鼠标到注册导航控制器，然后松开鼠标，在弹出的视图框中选择Present Modally菜单；它是模态类型的过渡</li>
+<li>最后，添加注册控制器类，创建一个类RegisterViewController集成UIViewController，然后回到故事板中将注册视图的Class选择为RegisterViewController</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><p>ViewController.swift</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  ModalViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/9.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mUserName: <span class="type">UITextField</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// 注册消息</span></div><div class="line">        <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.addObserver(<span class="keyword">self</span>, selector: #selector(<span class="keyword">self</span>.register(<span class="number">_</span> :)), name: <span class="type">NSNotification</span>.<span class="type">Name</span>(rawValue: <span class="string">"RegisterCompletion"</span>), object: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">        <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.removeObserver(<span class="keyword">self</span>, name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="keyword">init</span>(rawValue: <span class="string">"RegisterCompletion"</span>), object: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">register</span><span class="params">(<span class="number">_</span> notification : Notification)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> text = notification.userInfo?[<span class="string">"username"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        mUserName.text = text!</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"%@"</span>,text!)</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>RegisterViewController.swift</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  RegisterViewController.swift</span></div><div class="line"><span class="comment">//  ModalViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/9.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RegisterViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mName: <span class="type">UITextField</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">save</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> userInfo = [<span class="string">"username"</span>:<span class="keyword">self</span>.mName.text!]</div><div class="line">        <span class="comment">//发送消息</span></div><div class="line">        <span class="type">NotificationCenter</span>.<span class="keyword">default</span>.post(name: <span class="type">NSNotification</span>.<span class="type">Name</span>.<span class="keyword">init</span>(rawValue: <span class="string">"RegisterCompletion"</span>), object: <span class="literal">nil</span>, userInfo: userInfo)</div><div class="line">        <span class="keyword">self</span>.dismiss(animated: <span class="literal">true</span>, completion: &#123;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> save: <span class="type">UIBarButtonItem</span>!</div><div class="line">    </div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">cancel</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</div><div class="line">        <span class="keyword">self</span>.dismiss(animated: <span class="literal">true</span>, completion: &#123;</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/%E6%A8%A1%E6%80%81%E8%AF%95%E5%9B%BEstoryboard.jpg" alt=""></p>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E7%99%BB%E5%BD%95%E5%AF%BC%E8%88%AA.gif" alt=""></p>
+<h1 id="分屏导航"><a href="#分屏导航" class="headerlink" title="分屏导航"></a>分屏导航</h1><p>基于分屏导航是平铺导航的主要实现方式，涉及的主要控件有分屏控件UIPageControll和屏幕滚动视图UIScrollView,一般不超过10屏</p>
+<h2 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建iOS工程，从对象库中拖入UIPageControll和UIScrollView到故事板中，并将其放到合适的位置，UIPageControll放在靠底部，UIScrollView全屏显示，将视图的背景设为黑色</li>
+<li>选中UIScrollView的属性检查器，设置不显示Scroll View的Indicator，同时选择滚动Scrolling Enable和分屏Paging Enable。分屏属性是Scroll View每次滑动时翻一屏</li>
+<li>选择Page Controll的属性检查器，设置Pages中的of pages总屏数为3，Current当前位置为0，并修改其宽度为300，它的高度是不能修改的。</li>
+<li>最后为这两个控件定义输出口并连接注册到ViewController类中，为Page Controll控件定义响应屏幕变化事件的方法。-changPage</li>
+</ol>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  PageControlNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/10.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UIScrollViewDelegate</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mScrollView: <span class="type">UIScrollView</span>!</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mPageControl: <span class="type">UIPageControl</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> mImage1: <span class="type">UIImageView</span>!</div><div class="line">    <span class="keyword">var</span> mImage2: <span class="type">UIImageView</span>!</div><div class="line">    <span class="keyword">var</span> mImage3: <span class="type">UIImageView</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">        <span class="keyword">self</span>.mScrollView.delegate = <span class="keyword">self</span></div><div class="line">        <span class="keyword">self</span>.mScrollView.contentSize = <span class="type">CGSize</span>(width: <span class="keyword">self</span>.view.frame.size.width * <span class="number">3</span>, height: <span class="keyword">self</span>.mScrollView.frame.size.height)</div><div class="line">        <span class="keyword">self</span>.mScrollView.frame = <span class="keyword">self</span>.view.frame</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.mImage1 = <span class="type">UIImageView</span>(frame: <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="keyword">self</span>.view.frame.size.width, height: <span class="number">480</span>))</div><div class="line">        <span class="keyword">self</span>.mImage1.image = <span class="type">UIImage</span>(named: <span class="string">"达芬奇-蒙娜丽莎"</span>)</div><div class="line">        <span class="keyword">self</span>.mScrollView.addSubview(mImage1)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.mImage2 = <span class="type">UIImageView</span>(frame: <span class="type">CGRect</span>(x: <span class="keyword">self</span>.view.frame.size.width, y: <span class="number">0</span>, width: <span class="keyword">self</span>.view.frame.size.width, height: <span class="number">480</span>))</div><div class="line">        <span class="keyword">self</span>.mImage2.image = <span class="type">UIImage</span>(named: <span class="string">"罗丹-思想者"</span>)</div><div class="line">        <span class="keyword">self</span>.mScrollView.addSubview(mImage2)</div><div class="line"></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.mImage3 = <span class="type">UIImageView</span>(frame: <span class="type">CGRect</span>(x: <span class="keyword">self</span>.view.frame.size.width * <span class="number">2</span>, y: <span class="number">0</span>, width: <span class="keyword">self</span>.view.frame.size.width, height: <span class="number">480</span>))</div><div class="line">        <span class="keyword">self</span>.mImage3.image = <span class="type">UIImage</span>(named: <span class="string">"保罗克利-肖像"</span>)</div><div class="line">        <span class="keyword">self</span>.mScrollView.addSubview(mImage3)</div><div class="line"></div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//UIPageControll事件处理</span></div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">changePage</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</div><div class="line">        <span class="type">UIView</span>.animate(withDuration: <span class="number">0.3</span>, animations: &#123;</div><div class="line">            <span class="keyword">let</span> whichPage = <span class="keyword">self</span>.mPageControl.currentPage</div><div class="line">            <span class="comment">//设置内容视图坐标原点与屏幕滚动视图坐原点的偏移量</span></div><div class="line">            <span class="keyword">self</span>.mScrollView.contentOffset = <span class="type">CGPoint</span>(x: <span class="number">320</span> * whichPage, y: <span class="number">0</span>)</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//屏幕滚动视图事件处理方法å</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">scrollViewDidScroll</span><span class="params">(<span class="number">_</span> scrollView: UIScrollView)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> offset = scrollView.contentOffset</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.mPageControl.currentPage = <span class="type">Int</span>(offset.x) / <span class="number">320</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="效果图-1"><a href="#效果图-1" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E5%88%86%E5%B1%8F%E5%AF%BC%E8%88%AA.gif" alt=""></p>
+<h1 id="分页控制器"><a href="#分页控制器" class="headerlink" title="分页控制器"></a>分页控制器</h1><p>在iOS5以后，我们可以使用分页控制器UIPageViewController构建类似于电子书效果的应用。</p>
+<p>分页控制器需要放置在一个父视图控制器中，在分页控制器下面还要有子视图控制器，每个子视图控制器对应一个页面。</p>
+<p>UIPageViewController没有对应的视图，我们需要使用代码来实现；需要在UIPageViewController所在的控制器实现UIPageViewControllerDelegate和UIPageViewControllerDataSource协议，UIPageViewControllerDataSource数据源协议必须要实现的方法有以下两个：</p>
+<ul>
+<li><code>func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController)</code></li>
+<li><code>func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController)</code></li>
+</ul>
+<p>UIPageViewControllerDelegate委托协议中一般实现的方法是：</p>
+<ul>
+<li><code>func pageViewController(_ pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation)</code> </li>
+<li><code>func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)</code></li>
+</ul>
+<h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程</li>
+<li>代码实现UIPageViewController</li>
+</ol>
+<h2 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  PageNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/10.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">enum</span> <span class="title">DirectionFroward</span> : <span class="title">Int</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">case</span> <span class="type">Before</span> = <span class="number">1</span> <span class="comment">//向前</span></div><div class="line">    <span class="keyword">case</span> <span class="type">After</span> = <span class="number">2</span> <span class="comment">//向后</span></div><div class="line">    </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UIPageViewControllerDelegate</span>,<span class="title">UIPageViewControllerDataSource</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">//当前Page的索引</span></div><div class="line">    <span class="keyword">var</span> mPageIndex = <span class="number">0</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> direct = <span class="type">DirectionFroward</span>.<span class="type">After</span></div><div class="line">    </div><div class="line">    <span class="keyword">var</span> mPageViewController : <span class="type">UIPageViewController</span>!</div><div class="line">    <span class="keyword">var</span> mViewControllers : [<span class="type">UIViewController</span>]!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> pageViewController1 = <span class="type">UIViewController</span>()</div><div class="line">        <span class="keyword">let</span> pageViewController2 = <span class="type">UIViewController</span>()</div><div class="line">        <span class="keyword">let</span> pageViewController3 = <span class="type">UIViewController</span>()</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.mViewControllers = [pageViewController1,pageViewController2,pageViewController3]</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mImage1 = <span class="type">UIImageView</span>(frame: <span class="keyword">self</span>.view.frame)</div><div class="line">        mImage1.image = <span class="type">UIImage</span>(named: <span class="string">"达芬奇-蒙娜丽莎"</span>)</div><div class="line">        pageViewController1.view.addSubview(mImage1)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mImage2 = <span class="type">UIImageView</span>(frame: <span class="keyword">self</span>.view.frame)</div><div class="line">        mImage2.image = <span class="type">UIImage</span>(named: <span class="string">"罗丹-思想者"</span>)</div><div class="line">        pageViewController2.view.addSubview(mImage2)</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">let</span> mImage3 = <span class="type">UIImageView</span>(frame: <span class="keyword">self</span>.view.frame)</div><div class="line">        mImage3.image = <span class="type">UIImage</span>(named: <span class="string">"保罗克利-肖像"</span>)</div><div class="line">        pageViewController3.view.addSubview(mImage3)</div><div class="line">        </div><div class="line">        <span class="comment">//transitionStyle: pageCurl表示翻书效果样式 scroll 滑屏效果样式</span></div><div class="line">        <span class="comment">//navigationOrientation 水平和垂直方向</span></div><div class="line">        <span class="keyword">self</span>.mPageViewController = <span class="type">UIPageViewController</span>(transitionStyle: .pageCurl, navigationOrientation: .horizontal, options: <span class="literal">nil</span>)</div><div class="line"></div><div class="line">        <span class="keyword">self</span>.mPageViewController.delegate = <span class="keyword">self</span></div><div class="line">        <span class="keyword">self</span>.mPageViewController.dataSource = <span class="keyword">self</span></div><div class="line">        </div><div class="line">        <span class="comment">//设置首页</span></div><div class="line">        <span class="comment">//direction forward向前 reverse向后</span></div><div class="line">        <span class="keyword">self</span>.mPageViewController.setViewControllers([pageViewController1], direction: .forward, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.view.addSubview(<span class="keyword">self</span>.mPageViewController.view)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//DataSource协议</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">pageViewController</span><span class="params">(<span class="number">_</span> pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController)</span></span> -&gt; <span class="type">UIViewController</span>? &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"向前翻"</span>)</div><div class="line">        mPageIndex -= <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> mPageIndex &lt; <span class="number">0</span> &#123;</div><div class="line">            mPageIndex = <span class="number">0</span>;</div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        direct = .<span class="type">Before</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.mViewControllers[mPageIndex]</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">pageViewController</span><span class="params">(<span class="number">_</span> pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController)</span></span> -&gt; <span class="type">UIViewController</span>? &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"向后翻"</span>)</div><div class="line"></div><div class="line">        mPageIndex += <span class="number">1</span></div><div class="line">        </div><div class="line">        <span class="keyword">if</span> mPageIndex &gt; <span class="number">2</span> &#123;</div><div class="line">            mPageIndex = <span class="number">2</span></div><div class="line">            <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        direct = .<span class="type">After</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.mViewControllers[mPageIndex]</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//Delegate协议</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">pageViewController</span><span class="params">(<span class="number">_</span> pageViewController: UIPageViewController, spineLocationFor orientation: UIInterfaceOrientation)</span></span> -&gt; <span class="type">UIPageViewControllerSpineLocation</span> &#123;</div><div class="line">        <span class="keyword">self</span>.mPageViewController.isDoubleSided = <span class="literal">false</span></div><div class="line">        <span class="comment">//min和max 首页显示一个视图  mid首页显示两个视图</span></div><div class="line">        <span class="keyword">return</span> .<span class="built_in">min</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">pageViewController</span><span class="params">(<span class="number">_</span> pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//翻页未成功</span></div><div class="line">        <span class="keyword">if</span> completed == <span class="literal">false</span> &#123;</div><div class="line">            <span class="keyword">if</span> direct == .<span class="type">After</span> &#123;</div><div class="line">                mPageIndex -= <span class="number">1</span></div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            <span class="keyword">if</span> direct == .<span class="type">Before</span> &#123;</div><div class="line">                mPageIndex += <span class="number">1</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="效果图-2"><a href="#效果图-2" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E5%88%86%E9%A1%B5%E6%8E%A7%E5%88%B6%E5%99%A8.gif" alt=""></p>
+<h1 id="标签导航"><a href="#标签导航" class="headerlink" title="标签导航"></a>标签导航</h1><p>使用标签栏时有一定的指导原则：标签栏位于屏幕下方，占有49个像素屏幕空间，有时可以隐藏起来；标签栏中的标签不能超过5个，如果超过5个则最后一个显示为更多，点击更多标签会出现更多的列表。</p>
+<h2 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h2><p>在开发具体应用的时候，标签导航的各个标签分别代表一个功能模块，各功能模块之间相对独立。</p>
+<ol>
+<li>创建一个iOS工程模板Tabbed Application应用，默认创建两个标签</li>
+<li>从对象库中拖入一个ViewController到故事板中</li>
+<li>添加ViewController和Tab Controller Scene的连线，具体操作是：按住control键从Tab Controller Scene拖曳鼠标到ViewController，释放鼠标，从弹出窗口中选择view controllers项即可</li>
+<li>设置三个场景的标题</li>
+<li>分别为三个场景创建三个视图类</li>
+</ol>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%88%AA%E6%95%85%E4%BA%8B%E7%89%88.jpg" alt=""></p>
+<h2 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  HeiViewController.swift</span></div><div class="line"><span class="comment">//  TabNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HeiViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line">    // MARK: - Navigation</div><div class="line"></div><div class="line">    // In a storyboard-based application, you will often want to do a little preparation before navigation</div><div class="line">    override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;</div><div class="line">        // Get the new view controller using segue.destinationViewController.</div><div class="line">        // Pass the selected object to the new view controller.</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  JiViewController.swift</span></div><div class="line"><span class="comment">//  TabNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">JiViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line">    // MARK: - Navigation</div><div class="line"></div><div class="line">    // In a storyboard-based application, you will often want to do a little preparation before navigation</div><div class="line">    override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;</div><div class="line">        // Get the new view controller using segue.destinationViewController.</div><div class="line">        // Pass the selected object to the new view controller.</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  LiaoViewController.swift</span></div><div class="line"><span class="comment">//  TabNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LiaoViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line"></div><div class="line">        <span class="comment">// Do any additional setup after loading the view.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">    <span class="comment">/*</span></div><div class="line">    // MARK: - Navigation</div><div class="line"></div><div class="line">    // In a storyboard-based application, you will often want to do a little preparation before navigation</div><div class="line">    override func prepare(for segue: UIStoryboardSegue, sender: Any?) &#123;</div><div class="line">        // Get the new view controller using segue.destinationViewController.</div><div class="line">        // Pass the selected object to the new view controller.</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="效果图-3"><a href="#效果图-3" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E6%A0%87%E7%AD%BE%E5%AF%BC%E8%88%AA.gif" alt=""></p>
+<h1 id="树形导航"><a href="#树形导航" class="headerlink" title="树形导航"></a>树形导航</h1><p>树形导航模式是将导航控制器UINavigationController与表视图结使用，主要用于构建从属关系的导航。下面我们创建一个三级视图的树形导航示例。</p>
+<h2 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建iOS工程，使用UINavigationController创建以及表视图</li>
+<li>创建二级表视图CitiesViewController<ul>
+<li>从对象库中拖入一个Table View Controller到对象库中作为二级视图控制器</li>
+<li>按住control键，从上一个Root View Controller的单元格中拖动鼠标到当前添加的Table View Controller中，释放鼠标，在弹出窗口中选择Show选项</li>
+<li>选择连接线中的过渡Segue，打开其属性检查器，然后在Indentifier属性中输入ShowCities</li>
+</ul>
+</li>
+<li>创建三级视图DetailViewController<ul>
+<li>从对象库中拖入一个View Controller到对象库中作为三级视图控制器</li>
+<li>按住control键，从上一个Table View Controller的单元格中拖动鼠标到当前添加的View Controller中，释放鼠标，在弹出窗口中选择Show选项</li>
+<li>选择连接线中的过渡Segue，打开其属性检查器，然后在Indentifier属性中输入ShowDetail</li>
+</ul>
+</li>
+<li>设置各级视图的Table View Cell的属性</li>
+</ol>
+<h2 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h2><p><strong>一级视图</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  TreeNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> dictData:<span class="type">NSDictionary</span>!</div><div class="line">    <span class="keyword">var</span> listData:<span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">        <span class="keyword">self</span>.tableView.delegate = <span class="keyword">self</span></div><div class="line">        <span class="keyword">self</span>.tableView.dataSource = <span class="keyword">self</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> path = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"provinces_cities"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.dictData = <span class="type">NSDictionary</span>(contentsOfFile: path!)</div><div class="line">        <span class="keyword">self</span>.listData = <span class="keyword">self</span>.dictData.allKeys <span class="keyword">as</span> <span class="type">NSArray</span></div><div class="line">        <span class="keyword">self</span>.title = <span class="string">"省份信息"</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listData.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"Custom"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        cell.textLabel?.text = <span class="keyword">self</span>.listData[row] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//场景过渡之前的处理 点击表视图的单元格触发</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: Any?)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> segue.identifier == <span class="string">"ShowCities"</span> &#123;</div><div class="line">            <span class="keyword">let</span> indexPath = <span class="keyword">self</span>.tableView.indexPathForSelectedRow! <span class="keyword">as</span> <span class="type">IndexPath</span></div><div class="line">            <span class="keyword">let</span> selectedIndex = indexPath.row</div><div class="line">            <span class="comment">//获取要跳转到的视图控制器对象</span></div><div class="line">            <span class="keyword">let</span> controller = segue.destination <span class="keyword">as</span>! <span class="type">CitiesTableViewController</span></div><div class="line">            <span class="keyword">let</span> selectName = <span class="keyword">self</span>.listData[selectedIndex] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">            controller.listData = <span class="keyword">self</span>.dictData[selectName] <span class="keyword">as</span>! <span class="type">NSArray</span></div><div class="line">            controller.title = selectName</div><div class="line">            </div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>二级视图</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  CitiesTableViewController.swift</span></div><div class="line"><span class="comment">//  TreeNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CitiesTableViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listData:<span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="comment">// #warning Incomplete implementation, return the number of rows</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listData.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CityCell"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        <span class="keyword">let</span> dict = <span class="keyword">self</span>.listData[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        cell.textLabel?.text = dict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//场景过渡之前的与处理</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">prepare</span><span class="params">(<span class="keyword">for</span> segue: UIStoryboardSegue, sender: Any?)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> segue.identifier == <span class="string">"ShowDetail"</span> &#123;</div><div class="line">            <span class="keyword">let</span> indexPath = <span class="keyword">self</span>.tableView.indexPathForSelectedRow! <span class="keyword">as</span> <span class="type">IndexPath</span></div><div class="line">            <span class="keyword">let</span> selectIndex = indexPath.row</div><div class="line">            <span class="keyword">let</span> dict = <span class="keyword">self</span>.listData[selectIndex] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">            <span class="comment">//获取要跳转到的视图控制器对象</span></div><div class="line">            <span class="keyword">let</span> controller = segue.destination <span class="keyword">as</span>! <span class="type">DetailViewController</span></div><div class="line">            controller.url = dict[<span class="string">"url"</span>] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">            controller.title = dict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>三级视图</strong></p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  DetailViewController.swift</span></div><div class="line"><span class="comment">//  TreeNavigation</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/15.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"><span class="keyword">import</span> WebKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">DetailViewController</span>: <span class="title">UIViewController</span>,<span class="title">WKNavigationDelegate</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> url:<span class="type">String</span>!</div><div class="line">    <span class="keyword">var</span> webView: <span class="type">WKWebView</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="type">NSLog</span>(url)</div><div class="line">        <span class="keyword">self</span>.webView = <span class="type">WKWebView</span>(frame: <span class="keyword">self</span>.view.frame)</div><div class="line">        view.addSubview(webView)</div><div class="line">        webView.navigationDelegate = <span class="keyword">self</span></div><div class="line">        <span class="comment">//let nUrl = URL(string: "https://baike.baidu.com/view/2172.htm")</span></div><div class="line">        <span class="keyword">let</span> mUrl = <span class="type">URL</span>(string: url)</div><div class="line">        <span class="keyword">let</span> request = <span class="type">URLRequest</span>(url: mUrl!)</div><div class="line">        webView.load(request)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"开始加载"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didCommit navigation: WKNavigation!)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"内容开始返回时回调"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didFinish navigation: WKNavigation!)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"加载完成"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">webView</span><span class="params">(<span class="number">_</span> webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"加载失败"</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="效果图-4"><a href="#效果图-4" class="headerlink" title="效果图"></a>效果图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/viewcontroller-%E6%A0%91%E5%BD%A2%E5%AF%BC%E8%88%AA.gif" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        这里写留言或版权声明：<a href="/2016/11/25/iOS开发之07视图控制器与导航模式/" target="_blank" rel="external">http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/</a>
+    </div>
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/icon.jpg" alt="刘涤生">
+            刘涤生
+        </a>
+    </footer>
+</blockquote>
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&title=《iOS开发之07视图控制器与导航模式》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&title=《iOS开发之07视图控制器与导航模式》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之07视图控制器与导航模式》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2016/11/25/iOS开发之08PopoverView/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">iOS开发之08PopoverView</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2016/11/25/iOS开发之06StackView/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">iOS开发之06StackView</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+<div class="duoshuo" id="comments">
+	<div class="ds-thread" data-thread-key="iOS开发之07视图控制器与导航模式" data-title="iOS开发之07视图控制器与导航模式" data-url="http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/"></div>
+</div>
+<script src="/js/embed.min.js?v=1.2.7"></script>
+<script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
+<script>
+var duoshuoQuery = {short_name:'liuguoquan', theme: 'none'}
+</script>
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/ic_wechat_pay.jpeg" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/ic_ali_pay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+  </main>
+  <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
+
+
+
+<div class="global-share" id="globalShare">
+    <div class="tit">分享到：</div>
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&title=《iOS开发之07视图控制器与导航模式》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&title=《iOS开发之07视图控制器与导航模式》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《iOS开发之07视图控制器与导航模式》 — 求缺斋&url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/11/25/iOS开发之07视图控制器与导航模式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3a0U7DMAwF0P7/Tw/BExJqe23XDKSTpwna1KeTksz2ccTj9TWSv7++jet7r68/G8fGwMPDw2uFfj3d5L/5yzoD/7yr8Arw8PDw1njXQeSwJNDJU6obFR4eHt57eUkQveN470Xg4eHh/RdeEtz8SN1LcODh4eH9Ji9JN+Sfq0fn+eb0QK4FDw8Pb6GK9Hc+L9b38PDw8AZV9Xzh7s3Qay8oPAsPDw9vgTdJy86vTxIN+UG58IsBDw8Pb8BLJkqCThbxp5K/hXQJHh4e3gKvGvS8kJ+/rGoqOUrm4uHh4Y15+eJeLZjNGwWSSG5eBB4eHt4ar7rQJ0fh3lYxSSI3q3Z4eHh4RV4v3VBt1eolHarZ6NP58fDw8BZ4veaqaiK1VzCbzICHh4e3zcthk7p8rw2rug3g4eHh7fHyh1XDnTdmJXPeRIiHh4e3xssfM+lNSI7IvStvNgY8PDy8R3nVYtKzqdhqwSyPEA8PD2+bVz0oV5fsvIWr17hQru/h4eHhjXnVPqU8uGp7VtJolSdB8PDw8DZ4vRRDnrTN07VHPJJvDA8PD2+b1/vZPymM5YGO4sHDw8Nb4CWL9Xyh77UmVDeMqPSFh4eH9yhvkpbNl/vCgbh1EL8pgOHh4eE9xJvngHutWlVMNXWCh4eHt8Hr3VxOpy4kLKIGBTw8PLxlXq85YJLSrW4V188q1/fw8PDwWrxny1pVxjyJ3PsC8PDw8Ca8V3Hkxap5uHk25XR+PDw8vAXepCTfC2LSiFBNB+Ph4eHt8XoNAdUZ8peStyAUOiPw8PDwFnj50bbXLJWnEqq72c3XgIeHh/dWXl62n19ZPeif3ouHh4f3J3n5kbcc3OB14+Hh4W3zqot7Xs5PGL1yWnS4x8PDw1vgPVUAy5MReTK3WiRbrO/h4eHhfY4PiD/aT7Q/wZAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+  <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script src="/js/main.min.js?v=1.2.7"></script>
+
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.2.7"></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
