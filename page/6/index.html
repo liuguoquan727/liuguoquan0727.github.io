@@ -158,16 +158,16 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Android Otto源码解析"
+            <article id="post-TCP-IP1模型"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time datetime="2016-04-18T15:04:06.000Z" itemprop="datePublished" class="post-time">
-  2016-04-18 23:04:06
+        <time datetime="2015-12-17T13:04:06.000Z" itemprop="datePublished" class="post-time">
+  2015-12-17 21:04:06
 </time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/网络通信/">网络通信</a></li></ul>
 
 
 
@@ -178,7 +178,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/18/Android Otto源码解析/">Otto源码解析</a>
+      <a class="post-title-link" href="/2015/12/17/TCP-IP1模型/">TCP/IP（一）分层模型</a>
     </h3>
   
 
@@ -188,19 +188,24 @@
     <div class="post-content" id="post-content" itemprop="postContent" >
 
     
-        前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
-首先来看看构造函数：
-构造函数123456789101112131415161718192021222324private final String identifier;private final ThreadEnforcer enforcer;private final HandlerFinder handlerFind...
+        OSI参考模型在OSI参考模型中，网络被分为七层，从下到上依次是：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。
+
+
+物理层：负责0、1比特流（0、1序列）与电压的高低、光的闪灭（电信号）之间的互换。
+
+数据链路层：负责物理层上互连的、节点之间的通信传输。例如一个与以太网相连的2个节点之间的通信
+
+网络层：将数据传输到目标地址。目标地址可以是多个网络通过路由器连接而成的某一个地...
     
 
-        <a href="/2016/04/18/Android Otto源码解析/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/17/TCP-IP1模型/" class="post-more waves-effect waves-button">
             阅读全文...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络通信/">网络通信</a></li></ul>
 
     </div>
     
@@ -209,16 +214,16 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Android Okhttp使用详解"
+            <article id="post-搭建和配置Hexo-Github-pages个人博客"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time datetime="2016-04-17T14:04:06.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 22:04:06
+        <time datetime="2015-12-15T13:46:03.000Z" itemprop="datePublished" class="post-time">
+  2015-12-15 21:46:03
 </time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/记录/">记录</a></li></ul>
 
 
 
@@ -229,7 +234,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android Okhttp使用详解/">Okhttp使用详解</a>
+      <a class="post-title-link" href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/">搭建和配置Hexo+Github pages个人博客</a>
     </h3>
   
 
@@ -239,422 +244,18 @@
     <div class="post-content" id="post-content" itemprop="postContent" >
 
     
-        Okhttp是高性能的http库，支持同步、异步，而且实现了spdy、http2、websocket协议，api很简洁易用，和volley一样实现了http协议的缓存。Okhttp已经被Android官方采用，实现了几乎和Java.net.HttpURLConnection一样的功能。
-下载地址官方介绍：http://square.github.io/okhttp/Github源代码：htt...
+        Window下安装GitHub Pages + Hexo本着不重复造轮子的精神，下面提供两篇博文来记录安装过程，因为这两篇文章详细记录了GitHub Pages + Hexo 的安装过程，跟着流程能够成功搭建出基本的个人博客。
+Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（一）Windows下一步步搭建自己的独立博客——使用 GitHub...
     
 
-        <a href="/2016/04/17/Android Okhttp使用详解/" class="post-more waves-effect waves-button">
+        <a href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/" class="post-more waves-effect waves-button">
             阅读全文...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android_Otto使用详解"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T12:04:06.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 20:04:06
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android_Otto使用详解/">Otto使用详解</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        Otto是Square推出的基于Guava项目的Android支持库，otto是一个事件总线，用于应用程序的不同组件之间进行有效的通信。OTTO是基于Observer的设计模式。它有发布者，订阅者这两个主要对象。OTTO的最佳实践就是通过反射牺牲了微小的性能，同时极大的降低了程序的耦合度。
-Otto官网: http://square.github.io/otto/
-目的Otto框架的主要功能...
-    
-
-        <a href="/2016/04/17/Android_Otto使用详解/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android_EventBus使用详解"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T11:22:20.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 19:22:20
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android_EventBus使用详解/">EventBus使用详解</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        概述EventBus是一个Android事件发布/订阅框架，通过解耦发布者和订阅者简化Android事件传递，这里的事件可以理解为消息。事件传递既可以用于Android四大组件间通讯，也可以用于异步线程和主线程间通讯等。传统的事件传递方式包括：Handler、BroadcastReceiver、Interface回调，相比之下EventBus的有点是代码简洁，使用简单，并将事件发布和 订阅充...
-    
-
-        <a href="/2016/04/17/Android_EventBus使用详解/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android开发模式之MVP"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:28:06.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:28:06
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/架构/">架构</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android开发模式之MVP/">Android开发模式之MVP</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        背景在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。
-MVP架构是什么MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，...
-    
-
-        <a href="/2016/04/17/Android开发模式之MVP/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/架构/">架构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android-Universal-Image-Loader源码分析"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:25:31.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:25:31
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android-Universal-Image-Loader源码分析/">Android-Universal-Image-Loader源码分析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        功能介绍Android-Universal-Image-LoaderAndroid-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。
-基本使用初始化添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：
-1...
-    
-
-        <a href="/2016/04/17/Android-Universal-Image-Loader源码分析/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/源码分析/">源码分析</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android_DataBinding使用详解"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:23:25.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:23:25
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android_DataBinding使用详解/">Android官方数据绑定框架DataBinding</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        转载自一叶飘舟
-Android新推出了一个官方的数据绑定框架Data Binding Library，既然是官方推出的新玩意，我们就有必要了解一下Android新带来的数据绑定框架，等到该框架推出正式版的时候，我们就可以快速地运用到项目中去。数据绑定框架给我们带来了很大的方便性，以前我们可能需要在Activity里写很多的findViewById，烦人的代码也增加了我们代码的耦合性，现在我们...
-    
-
-        <a href="/2016/04/17/Android_DataBinding使用详解/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Android_Butterknife使用详解"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:20:54.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:20:54
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Android/">Android</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Android_Butterknife使用详解/">Butterknife使用详解</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        项目地址GitHub地址:https://github.com/JakeWharton/butterknife
-简介ButterKnife这个开源库可以让我们从大量的findViewById和setOnClickListener中解放出来，其对性能的影响微乎其微（其自定义注解的实现都是限定为RetentionPolicy.CLASS，也就是编译出.class文件为止有效，在运行时不额外消耗性...
-    
-
-        <a href="/2016/04/17/Android_Butterknife使用详解/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java内部类"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:17:46.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:17:46
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Java内部类/">Java内部类</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        可以将一个类的定义放在另一个类的定义内部，这就是内部类。
-内部类是一种非常有用的特性，因为它允许你把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而必须要了解的是内部类与组合是完全不同的概念。
-创建局部内部类创建内部类的方式就是把类的定义置于外部类的里面。
-12345678910111213141516171819202122232425262728293031323334353...
-    
-
-        <a href="/2016/04/17/Java内部类/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java字符串"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time datetime="2016-04-17T07:17:06.000Z" itemprop="datePublished" class="post-time">
-  2016-04-17 15:17:06
-</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2016/04/17/Java字符串/">Java字符串</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent" >
-
-    
-        不可变StringString对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。
-看看下面的代码：
-123456789101112131415161718public class Immutable &#123;  ...
-    
-
-        <a href="/2016/04/17/Java字符串/" class="post-more waves-effect waves-button">
-            阅读全文...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/记录/">记录</a></li></ul>
 
     </div>
     
@@ -667,7 +268,7 @@ Android新推出了一个官方的数据绑定框架Data Binding Library，既�
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
     </div>
 </nav>
 
