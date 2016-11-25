@@ -7607,18 +7607,18 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
   
     
     <entry>
+      <title><![CDATA[分类]]></title>
+      <url>http://yoursite.com/categories/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于]]></title>
       <url>http://yoursite.com/about/index.html</url>
       <content type="html"><![CDATA[<h2 id="值得思考"><a href="#值得思考" class="headerlink" title="值得思考"></a><strong>值得思考</strong></h2><p>士人读书，第一要有志，第二要有识，第三要有恒。有志则断不甘为下流；有识则知学问无尽，不敢以一得自足；有恒则断无不成之事。此三者缺一不可。 ————曾国藩</p>
 <p>古今之成大事业、大学问者，必经过三种之境界：”昨夜西风凋碧树。独上高楼，望尽天涯路。”此第一境也。”衣带渐宽终不悔，为伊消得人憔悴。”此第二境也。”众里寻他千百度，蓦然回首，那人却在灯火阑珊处。”此第三境也。 ————————-王国维</p>
 <h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a><strong>联系方式</strong></h2><p>简书: <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" rel="external">涤生的简书</a><br>CSDN: <a href="http://blog.csdn.net/lgq2436363" target="_blank" rel="external">涤生的CSDN</a><br>Weibo:<a href="http://weibo.com/liuguoquan0727" target="_blank" rel="external">涤生的微博</a></p>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[分类]]></title>
-      <url>http://yoursite.com/categories/index.html</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
