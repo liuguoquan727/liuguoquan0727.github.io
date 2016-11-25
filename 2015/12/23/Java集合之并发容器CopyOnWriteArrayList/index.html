@@ -15,7 +15,7 @@
   <meta name="description" content="Copy-On-Write简称COW，是一种用于程序设计中的优化策略。其基本思路是，从一开始大家都在共享一个内容，当某个人想要修改这个内容的时候，才会真正把内容Copy出去形成一个新的内容然后在此基础上进行修改，这是一种延时懒惰策略。从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器，它们是CopyOnWriteArrayList和CopyOnWriteArr">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java集合之并发容器CopyOnWriteArrayList">
-<meta property="og:url" content="http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/index.html">
+<meta property="og:url" content="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/index.html">
 <meta property="og:site_name" content="求缺斋">
 <meta property="og:description" content="Copy-On-Write简称COW，是一种用于程序设计中的优化策略。其基本思路是，从一开始大家都在共享一个内容，当某个人想要修改这个内容的时候，才会真正把内容Copy出去形成一个新的内容然后在此基础上进行修改，这是一种延时懒惰策略。从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器，它们是CopyOnWriteArrayList和CopyOnWriteArr">
 <meta property="og:updated_time" content="2016-05-03T14:43:46.000Z">
@@ -211,10 +211,10 @@
 
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" target="_blank" rel="external">http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/</a>
+        这里写留言或版权声明：<a href="/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" target="_blank" rel="external">http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/</a>
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="http://liuguoquan727.github.io">
             <img src="/icon.jpg" alt="刘涤生">
             刘涤生
         </a>
@@ -240,7 +240,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -250,22 +250,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -309,7 +309,7 @@
 
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="Java集合之并发容器CopyOnWriteArrayList" data-title="Java集合之并发容器CopyOnWriteArrayList" data-url="http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/"></div>
+	<div class="ds-thread" data-thread-key="Java集合之并发容器CopyOnWriteArrayList" data-title="Java集合之并发容器CopyOnWriteArrayList" data-url="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2.7"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -363,7 +363,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -373,22 +373,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&title=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Java集合之并发容器CopyOnWriteArrayList》 — 求缺斋&url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -399,7 +399,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3a0W4bMQwEwPz/T7uvBRLbu6SUusDck1H77jQsIDEkv77i6/HX9f1fvn/77K7X9z775ffPhy88PDy8xdKfvSz5dvaW14F4TU0ChIeHh3ePlzzu9Wvab2chzteMh4eH9zm85ACYJeUJGw8PD+//5bVJ8I3qAR4eHt6/5W3S2WS7v1HSPVxrwcPDw4t5baL8CZ+v9Pfw8PDw1snrrFm1HzKYHSE/3IuHh4d3gTdr/M/Gqjabfp4u4+Hh4d3mbQ6GdkNvc+BNmQMPDw/vHi/Z3GeN/NkvZ225N8cGHh4e3q/z9odHO4iQb/pRUPDw8PCO8mZL3Bd/28Z/Gyw8PDy827y2wLovy84KE/XoFR4eHt4FXvGjxYzT2QS9Di4eHh7eNd7rbTdvaCXHQ9G+Whcs8PDw8M7y8kfvB63a5HhWNPnhLwY8PDy8a7zDjx6VJNpD5c1z8PDw8K7xZoyclNzbNsCioSs8PDy8C7zZ0vPtPkma2wDVhRI8PDy8y7x9sWBfthgm0M/eiIeHh3eU127cycHQ3puky7NjDA8PD+93eJtHt1t/O+CVFCzeHAx4eHh4a17b+J+1x/JlnUqsv2YTW3h4eHgBL9/QkwW141b5oMCw0IyHh4d3gbfZptvGWIt8BFddLsHDw8M7xNu06tuiwGyoK0+si7ji4eHhHeIlpds8Fd4EqA0ZHh4e3ifw8s/5Rp+ky2043gQIDw8P7yjvUV6bQ2Xf0KoHv/Dw8PAu8NqtNjkG2pR6Fr68YYaHh4d3g5cnuKeilWzrm/Gv6H8GDw8Pb81r0+XNctulry48PDy8D+C1ifUmTPnajh0MeHh4eBd47bHxmjorFtcTuHh4eHgXeG0jPy/d5kfFfoBgVWvBw8PDO9RVb7fm/ejVbKGrEgYeHh5eyvsD0gVzqHQjSZwAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADOElEQVR42u3ay27bQBAEQP//TytAroqo7lkSIdfFk2FR0hZ9aM/j5ye+Xn+vn/J6f9fr7Xr//afPeb9/5WzY2NjYO7Ffh9fx1xwfNz/Wp885fkD5q/84AzY2NvZ27OPjHlPb+DmOt5WYTCzY2NjYv5mdR9EsfvICpi1LsLGxsbFnRUJbbCTXf8ttbGxs7Nuz82ZNXq7MyowV6iW9NGxsbOzbs1caN3f7+cL5NjY2NvYt2a/RlTeA8iZRG0tL58fGxsbeiN22/pPGzWysm7+3HT/XW0LY2NjYD2S38TO7s31A1wUbNjY29k7sPCqSSMjHCbP2UN7u/zLewMbGxt6OnZcWbbGRFwxtKbIUltjY2NjbsdtwapGzR7Ay9I12lLCxsbG3YLft/lmL/4pAasuhj4NebGxs7I3Y+bg3CZ6VlZqzCp4vDxEbGxt7U3bbTmrbUnnJ0Q6b62UdbGxs7I3YSQy0SzZ5Gygf67Zj4DySsbGxsZ/LXl+ySY6YxM+wnCgf+sdBLzY2NvZj2bMPSkLlrNKijcziHmxsbOwt2HlcJe2h9aHsbAWnLp+wsbGxN2InB1p5te1vJZHZjjqGQwJsbGzsh7DbJZtZ/KwMgHPSsJeGjY2N/XB2fqAr/vWfxdVsjo2NjY29K3tlQacd4ub35FHUNsWW/m7Y2NjYt2cnRcLKokzOWy9UviiwsbGxN2Kf2zmflRn5eDgfPNSzEWxsbOyN2O0wOAmYtsGUh+XsnNjY2Ng7sZPWTAvLW07rsTRsNmFjY2NvxG6XaZKQWG8VtUGYPI6oqYSNjY39cPaslTM7ehtILa9oV2FjY2NvxM4jYaXBtBJpeXwO21vY2NjYD2evjHjzxZ3Zu2ZNq+jPgI2Njb0de9Z8b8e3Z40f2nFvndXY2NjYt2e/yqsNiTaEku9thxNf5tvY2NjYD2fPAuDqKJp9V1ucYGNjY+/ETkKrXaAZbgwtUNuhAjY2NvZ+7BlgpdEze+9pJQo2NjY29nIEtoGXt5+ik2NjY2P/SnYSHnnUzfZD2wWgEwIMGxsb+yHsJBLaYXByrBaWBFtU8GBjY2NvxF5v/eRxMou6PPDyYgYbGxt7C/YfSJMRJByX5jEAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

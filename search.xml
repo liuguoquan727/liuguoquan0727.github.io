@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之08PopoverView]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B08PopoverView/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B08PopoverView/</url>
       <content type="html"><![CDATA[<p>PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。</p>
 <h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="PopoverPresentationController"><a href="#PopoverPresentationController" class="headerlink" title="PopoverPresentationController"></a>PopoverPresentationController</h2><ul>
 <li>barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点</li>
@@ -31,7 +31,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之07视图控制器与导航模式]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B07%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8%E4%B8%8E%E5%AF%BC%E8%88%AA%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B07%E8%A7%86%E5%9B%BE%E6%8E%A7%E5%88%B6%E5%99%A8%E4%B8%8E%E5%AF%BC%E8%88%AA%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="模态视图"><a href="#模态视图" class="headerlink" title="模态视图"></a>模态视图</h1><p>在导航过程中，有时候需要放弃主要任务而做其他次要任务，然后在返回到次要任务，这个次要任务就是在模态视图中完成的，如注册中主要任务是登录后进入主界面，如果用户没有注册，就要先去注册，注册是次要任务，当用户注册完成后，它会关闭注册视图，回到登录界面继续进行主要任务。</p>
 <p>默认情况下，模态视图是从屏幕下方滑出来的。</p>
 <p>负责控制器模态视图的控制器称为模态视图控制器，它并不是一个专门的类，它可以是前面提到的控制器的子类。负责主要任务视图的控制器称为主视图控制器。在UICOntrollerView中，主要有如下两个方法：</p>
@@ -124,7 +124,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之06StackView]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B06StackView/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B06StackView/</url>
       <content type="html"><![CDATA[<p>在iOS开发中可以利用StackView嵌套实现比较复杂的界面，比如我们实现三个按钮呈现三角形摆放，可以这样实现，整个界面是一个垂直StackView，它的子视图是Button1和水平StackView，水平StackView的子 视图是Button2和Button3。</p>
 <h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
 <li>创建一个iOS工程，从对象库中拖入一个Vertical Stack View到设计界面中，然后再从对象库中拖入一个Horizontal Stack View到前一个垂直StackView中。</li>
@@ -143,7 +143,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之05常见表视图]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B05%E5%B8%B8%E8%A7%81%E8%A1%A8%E8%A7%86%E5%9B%BE/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B05%E5%B8%B8%E8%A7%81%E8%A1%A8%E8%A7%86%E5%9B%BE/</url>
       <content type="html"><![CDATA[<h1 id="分节表视图"><a href="#分节表视图" class="headerlink" title="分节表视图"></a>分节表视图</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
 <li>创建一个iOS工程</li>
 <li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Table View Controller到设计界面</li>
@@ -191,7 +191,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之04表视图]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B04%E8%A1%A8%E8%A7%86%E5%9B%BE/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B04%E8%A1%A8%E8%A7%86%E5%9B%BE/</url>
       <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="表视图组成"><a href="#表视图组成" class="headerlink" title="表视图组成"></a>表视图组成</h2><p>表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：</p>
 <ul>
 <li>表头视图：表视图最上边的视图</li>
@@ -399,7 +399,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之03UIView]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B03UIView/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B03UIView/</url>
       <content type="html"><![CDATA[<h1 id="UILabel"><a href="#UILabel" class="headerlink" title="UILabel"></a>UILabel</h1><p>Lable的作用是显示不可编辑的文字。</p>
 <h2 id="属性检查器"><a href="#属性检查器" class="headerlink" title="属性检查器"></a>属性检查器</h2><ul>
 <li>Text：Label显示的文字</li>
@@ -604,7 +604,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之02应用界面]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B02%E5%BA%94%E7%94%A8%E7%95%8C%E9%9D%A2/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B02%E5%BA%94%E7%94%A8%E7%95%8C%E9%9D%A2/</url>
       <content type="html"><![CDATA[<p>iOS界面应用界面主要是使用Cocoa Touch框架开发，它有一套自己的MVC模式，其中视图和控制器是UIKit中的UIVIew及其子类和UIVIewController及其子类。</p>
 <h1 id="视图控制器"><a href="#视图控制器" class="headerlink" title="视图控制器"></a>视图控制器</h1><p>Cocoa Touch中UIVIewController是所有控制器的基类，视图控制器有很多种，下面先介绍一个iOS中的控制器种类和生命周期。</p>
 <h2 id="视图控制器种类"><a href="#视图控制器种类" class="headerlink" title="视图控制器种类"></a>视图控制器种类</h2><p>与导航相关的视图控制器如下所示：</p>
@@ -685,7 +685,7 @@
     
     <entry>
       <title><![CDATA[iOS开发之01基础]]></title>
-      <url>http://yoursite.com/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B01%E5%9F%BA%E7%A1%80/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/iOS%E5%BC%80%E5%8F%91%E4%B9%8B01%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<h1 id="Xcode中的iOS工程模板"><a href="#Xcode中的iOS工程模板" class="headerlink" title="Xcode中的iOS工程模板"></a>Xcode中的iOS工程模板</h1><p>iOS工程模板分为两类-Application和Framework &amp; Library。</p>
 <h2 id="Application类型"><a href="#Application类型" class="headerlink" title="Application类型"></a>Application类型</h2><p>Application包含5个模板，具体如下所示：</p>
 <ul>
@@ -1131,7 +1131,7 @@
     
     <entry>
       <title><![CDATA[DiffUtil在RecyclerView中的使用]]></title>
-      <url>http://yoursite.com/2016/11/25/Android%20DiffUtil%E5%9C%A8RecyclerView%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <url>http://liuguoquan727.github.io/2016/11/25/Android%20DiffUtil%E5%9C%A8RecyclerView%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
       <content type="html"><![CDATA[<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数据需要更新。</p>
 <p>那么相比直接调用adapter.notifyDataSetChange()方法，使用DiffUtil有什么优势呢？它能在收到数据集后，提高UI更新的效率，而且你也不需要自己对新老数据集进行比较了。</p>
 <p>顾名思义，凡是数据集的比较DiffUtil都能做，所以用处并不止于更新RecyclerView。DiffUtil也提供了回调让你可以进行其他操作。本文只介绍使用DiffUtil更新RecyclerView。</p>
@@ -1192,7 +1192,7 @@
     
     <entry>
       <title><![CDATA[Android LoaderManager使用详解]]></title>
-      <url>http://yoursite.com/2016/09/12/Android_LoaderManager%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/09/12/Android_LoaderManager%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h1 id="LoaderManager是什么？"><a href="#LoaderManager是什么？" class="headerlink" title="LoaderManager是什么？"></a>LoaderManager是什么？</h1><p>LoaderManager用来负责管理与Activity或者Fragment联系起来的一个或多个Loaders对象。每个Activity或者Fragment都有唯一的一个LoaderManager实例，用来启动、停止、保持、重启、关闭它的Loaders。这些事件有时直接在客户端通过调用initLoader()/restartLoader()/destroyLoader()函数来实现。通常这些事件通过主要的Activity/Fragment声明周期事件来触发，而不是手动（当然也可以手动调用）。比如，当一个Activity关闭时（destroyed），改活动将指示它的LoaderManager来销毁并且关闭它的Loaders（当然也会销毁并关闭与这些Loaders关联的资源，比如Cursor）。  </p>
 <p>LoaderManager并不知道数据如何装载以及何时需要装载。相反地，LoaderManager只需要控制它的Loaders们开始、停止、重置他们的Load行为，在配置变换（比如横竖屏切换）时保持loaders们的状态，并提供一个简单的接口来获取load结果到客户端中。</p>
 <h1 id="实现LoaderManager-LoaderCallbacks接口"><a href="#实现LoaderManager-LoaderCallbacks接口" class="headerlink" title="实现LoaderManager.LoaderCallbacks接口"></a>实现LoaderManager.LoaderCallbacks<d>接口</d></h1><p>LoaderManager.LoaderCallbacks<d>接口LoaderManager用来向客户返回数据的方式。每个Loader都有自己的回调对象供与LoaderManager进行交互。该回调对象在实现LoaderManager中地位很高，告诉LoaderManager如何实例化Loader(onCreateLoader)，以及当载入行为结束或者重启（onLoadFinished或者onLoadReset）之后执行什么操作。大多数情况，你需要把该接口实现为组件的一部分，比如说让你的Activity或者Fragment实现LoadManager.LoaderCallbacks<d>接口。</d></d></p>
@@ -1210,7 +1210,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(十一)数据存储]]></title>
-      <url>http://yoursite.com/2016/08/18/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%8D%81%E4%B8%80)%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</url>
+      <url>http://liuguoquan727.github.io/2016/08/18/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%8D%81%E4%B8%80)%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/</url>
       <content type="html"><![CDATA[<h1 id="pickle"><a href="#pickle" class="headerlink" title="pickle"></a>pickle</h1><p>pickle是标准库中的一个模块，在Python 2中还有一个cpickle，两者的区别就是后者更快。所以，下面操作中，不管是用<code>import pickle</code>，还是用<code>import cpickle as pickle</code>，在功能上都是一样的。</p>
 <p>而在Python 3中，你只需要<code>import pickle</code>即可，因为它已经在Python 3中具备了Python 2中的cpickle同样的性能。</p>
 <p><code>pickle.dump(obj,file[,protocol])</code></p>
@@ -1232,7 +1232,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(十)模块和标准库]]></title>
-      <url>http://yoursite.com/2016/08/17/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%8D%81)%E6%A8%A1%E5%9D%97/</url>
+      <url>http://liuguoquan727.github.io/2016/08/17/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%8D%81)%E6%A8%A1%E5%9D%97/</url>
       <content type="html"><![CDATA[<h1 id="编写模块"><a href="#编写模块" class="headerlink" title="编写模块"></a>编写模块</h1><h2 id="模块是程序"><a href="#模块是程序" class="headerlink" title="模块是程序"></a>模块是程序</h2><p>模块就是一个扩展名为<code>.py</code>的Python程序。</p>
 <h3 id="编写模块-1"><a href="#编写模块-1" class="headerlink" title="编写模块"></a>编写模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"><span class="comment"># coding=utf-8</span></div><div class="line"></div><div class="line">lang = <span class="string">"python"</span></div></pre></td></tr></table></figure>
 <h3 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.path.append(<span class="string">"~/Documents/VBS/StartLearningPython/2code/pm.py"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> pm</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>pm.lang</div><div class="line"><span class="string">'python'</span></div></pre></td></tr></table></figure>
@@ -1594,7 +1594,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(九)错误和异常]]></title>
-      <url>http://yoursite.com/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B9%9D)%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
+      <url>http://liuguoquan727.github.io/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B9%9D)%E9%94%99%E8%AF%AF%E5%92%8C%E5%BC%82%E5%B8%B8/</url>
       <content type="html"><![CDATA[<h1 id="错误"><a href="#错误" class="headerlink" title="错误"></a>错误</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)</div><div class="line"> File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span></div><div class="line">   <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)</div><div class="line">                    ^</div><div class="line">SyntaxError: invalid syntax</div></pre></td></tr></table></figure>
 <p>上面那句话因为缺少冒号<code>:</code>，导致解释器无法解释，于是报错。这个报错行为是由Python的语法分析器完成的，并且检测到了错误所在文件和行号（<code>File &quot;&lt;stdin&gt;&quot;, line 1</code>），还以向上箭头<code>^</code>标识错误位置（后面缺少<code>:</code>），最后显示错误类型。</p>
 <p>另一种常见错误是逻辑错误。逻辑错误可能是由于不完整或者不合法的输入导致，也可能是无法生成、计算等，或者是其它逻辑问题。</p>
@@ -1674,7 +1674,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(八)类]]></title>
-      <url>http://yoursite.com/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%85%AB)%E7%B1%BB/</url>
+      <url>http://liuguoquan727.github.io/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%85%AB)%E7%B1%BB/</url>
       <content type="html"><![CDATA[<h1 id="类"><a href="#类" class="headerlink" title="类"></a>类</h1><h2 id="创建类"><a href="#创建类" class="headerlink" title="创建类"></a>创建类</h2><ul>
 <li>第一形式</li>
 </ul>
@@ -1726,7 +1726,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(七)函数]]></title>
-      <url>http://yoursite.com/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%83)%E5%87%BD%E6%95%B0/</url>
+      <url>http://liuguoquan727.github.io/2016/08/16/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%83)%E5%87%BD%E6%95%B0/</url>
       <content type="html"><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="建立函数"><a href="#建立函数" class="headerlink" title="建立函数"></a>建立函数</h2><p>在Python中，规定了一种定义函数的格式，下面的举例就是一个函数，以这个函数为例来说明定义函数的格式和调用函数的方法。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add_function</span><span class="params">(a, b)</span>:</span> <span class="comment">#冒号必须</span></div><div class="line">   c = a + b  <span class="comment">#缩进必须</span></div><div class="line">   <span class="keyword">return</span> c</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">   result = add_function(<span class="number">2</span>, <span class="number">3</span>)</div><div class="line">   <span class="keyword">print</span> result               <span class="comment">#python3: print(result)</span></div></pre></td></tr></table></figure>
 <p>定义函数的格式为：</p>
@@ -1821,7 +1821,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(六)文件]]></title>
-      <url>http://yoursite.com/2016/08/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%85%AD)%E6%96%87%E4%BB%B6/</url>
+      <url>http://liuguoquan727.github.io/2016/08/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%85%AD)%E6%96%87%E4%BB%B6/</url>
       <content type="html"><![CDATA[<h1 id="读文件"><a href="#读文件" class="headerlink" title="读文件"></a>读文件</h1><p>在某个文件夹下面建立了一个文件，名曰：130.txt，并且在里面输入了如下内容：</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">learn python</div><div class="line"><span class="string">http:</span><span class="comment">//qiwsir.github.io</span></div><div class="line">qiwsir<span class="meta">@gmail</span>.com</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">f = open(<span class="string">"123.txt"</span>) <span class="comment">#打开已经存在的文件，此文件在当前目录，若在其他目录使用绝对路径</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> f:</div><div class="line">    <span class="keyword">print</span> line, <span class="comment">#Python 3: print(line, end='')</span></div><div class="line">    </div><div class="line">learn python</div><div class="line">http://qiwsir.github.io</div><div class="line">liuguoquan@gmail.com</div></pre></td></tr></table></figure>
@@ -1909,7 +1909,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(五)语句]]></title>
-      <url>http://yoursite.com/2016/08/11/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%BA%94)%E8%AF%AD%E5%8F%A5/</url>
+      <url>http://liuguoquan727.github.io/2016/08/11/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%BA%94)%E8%AF%AD%E5%8F%A5/</url>
       <content type="html"><![CDATA[<h1 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h1><h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>前面已经讲过了四则运算，其中涉及到一些运算符：加减乘除，对应的符号分别是：+  -  *  /，此外，还有求余数的：%。这些都是算术运算符。其实，算术运算符不止这些。根据中学数学的知识，也应该想到，还应该有乘方、开方之类的。</p>
 <p>下面列出一个表格，将所有的运算符表现出来。</p>
 <table>
@@ -2185,7 +2185,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(二十三)桥接模式]]></title>
-      <url>http://yoursite.com/2016/06/16/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%B8%89)%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/16/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%B8%89)%E6%A1%A5%E6%8E%A5%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>桥接模式（Bridge Pattern）是结构型设计模式之一。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将抽象部分与实现部分分离，使得它们都可以独立地进行变化</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2218,7 +2218,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(二十二)外观模式]]></title>
-      <url>http://yoursite.com/2016/06/15/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%BA%8C)%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/15/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%BA%8C)%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>外观模式（Facade Pattern）通过一个外观类使得整个系统的接口只有一个统一的高层接口，这样能够降低用户的使用成本，也对用户屏蔽了很多实现细节。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>要求一个子系统的外部与其内部的通信必须通过一个统一的对象进行。外观模式提供一个高层次的接口，使得子系统更易于使用。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2254,7 +2254,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(二十一)享元模式]]></title>
-      <url>http://yoursite.com/2016/06/14/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%B8%80)%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/14/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81%E4%B8%80)%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>享元模式（Flyweight Pattern）是一种对象池的实现。享元模式用来尽可能减少内存使用量，它适合用于可能存在大量重复对象的场景，来缓存可共享的对象，达到对象共享、避免创建过多对象的效果。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>使用共享对象可有效地支持大量的细粒度的对象。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2287,7 +2287,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(二十)装饰模式]]></title>
-      <url>http://yoursite.com/2016/06/13/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81)%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/13/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%8C%E5%8D%81)%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>装饰者模式（Decorator Pattern）是结构性设计模式之一。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>动态地给一个对象添加一些额外的职责，就增加功能来说，装饰模式相比生成子类更为灵活。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>需要透明且动态地扩展类的功能时</p>
@@ -2313,7 +2313,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十九)适配器模式]]></title>
-      <url>http://yoursite.com/2016/06/13/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B9%9D)%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/13/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B9%9D)%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>适配器将两个不兼容的类融合在一起，将不同的东西通过一种转换使得它们能够协作起来。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>适配器模式把一个类的接口变换成客户端所期待的另一种接口，从而使原本因接口不匹配而无法在一起工作的两个类能够一起工作。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2348,7 +2348,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十八)组合模式]]></title>
-      <url>http://yoursite.com/2016/06/12/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%85%AB)%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/12/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%85%AB)%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>组合模式（Composite Pattern）是一种结构性设计模式，组合模式将一组相似的对象看作是一个对象处理，并根据一个树状结构来自组合对象，然后提供一个统一的方法去访问相应的对象，以此忽略掉对象与对象集合之间的差别。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将对象组合成树形结构以表示“整体-部分”的层次关系，使得用户对单个对象和组合对象的使用具有一致性。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2378,7 +2378,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十七)代理模式]]></title>
-      <url>http://yoursite.com/2016/06/12/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%83)%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/12/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%83)%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>代理模式（Proxy Pattern）是一种结构型设计模式。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>为其他对象提供一种代理以控制这个对象的访问。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>当无法或者不想直接访问某个对象或访问某个对象存在困难时可用通过一个代理对象来间接访问，为了保证客户端使用的透明性，委托对象与代理对象需要实现相同的接口。</p>
@@ -2402,7 +2402,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十六)中介者模式]]></title>
-      <url>http://yoursite.com/2016/06/11/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%85%AD)%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/11/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%85%AD)%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>中介者模式（Mediator Pattern）也称为调解者模式或调停者模式，Mediator本身就有调停者和调解者模的意思。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>中介者模式包装了一系列对象相互作用的方式，使得这些对象不必相互明显作用，从而使得它们可以松散耦合。当某些对象之间的作用发生改变时，不会立即影响其他的一些对象之间的作用，保证这些作用可以彼此独立的变化。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>当对象之间的交互操作很多且每个对象的行为操作都依赖彼此时，为防止在修改一个对象的行为时，同时涉及修改很多其他对象的行为，可采用中介者模式来解决紧耦合问题。该模式将对象之间的多对多关系变成一对多关系，中介者对象将系统从网状结构变成以调停者为中心的星形结构，达到降低系统的复杂性，提高可扩展性的作用。</p>
@@ -2434,7 +2434,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十五)访问者模式]]></title>
-      <url>http://yoursite.com/2016/06/11/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%BA%94)%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/11/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%BA%94)%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>访问者模式是一种将数据操作与数据结构分离的设计模式。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>封装一些作用于某种数据结构中的各元素的操作，它可以在不改变这个数据结构前提下定义作用于这些元素的新操作。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2483,7 +2483,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十四)模板方法模式]]></title>
-      <url>http://yoursite.com/2016/06/10/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%9B%9B)%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/10/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E5%9B%9B)%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在面向对象开发中，通常会遇到这样的一个问题，我们知道一个算法所需的关键步骤，并确定了这些步骤的执行顺序，但是，某些步骤的具体实现是未知的，或者说某些步骤的实现是会随着环境的变化而改变的，例如，执行程序的流程大致如下：</p>
 <ol>
 <li>检查代码的正确性</li>
@@ -2522,7 +2522,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十三)迭代器模式]]></title>
-      <url>http://yoursite.com/2016/06/10/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%89)%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/10/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%89)%E8%BF%AD%E4%BB%A3%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>迭代器模式是行为型设计模式之一。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>提供一种方法顺序访问一个容器对象中的各个元素，而又不需要暴露该对象的内部表示。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>遍历一个容器对象时。</p>
@@ -2556,7 +2556,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十二)备忘录模式]]></title>
-      <url>http://yoursite.com/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%BA%8C)%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%BA%8C)%E5%A4%87%E5%BF%98%E5%BD%95%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>备忘录模式是一种行为模式，该模式用于保存对象的当前状态，并且在之后可以再次恢复到此态。备忘录模式实现的方式需要保证被保存的对象状态不能被对象从外部访问，目的是为了保护好被保存的这些对象状态的完整性以及内部实现不向外暴露。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>在不破坏封闭的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态，这样，以后就可以将该对象恢复到原先保存的状态。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2581,7 +2581,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十一)观察者模式]]></title>
-      <url>http://yoursite.com/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%80)%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81%E4%B8%80)%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>观察者模式是一个使用率非常高的模式，它最常用的地方是GUI系统、订阅-发布系统，因为这个模式的一个重要作用就是解耦，将被观察者和观察者解耦，使得它们之间的依赖性更小，甚至做到毫无依赖。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
@@ -2614,7 +2614,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(十)命令模式]]></title>
-      <url>http://yoursite.com/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81)%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/09/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%8D%81)%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>命令模式是行为型设计模式之一，将一系列的方法调用封装，用户只需调用一个方法执行，那么所有这些被封装的方法就会被挨个执行调用。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将一个命令封装成一个对象，从而让用户使用不同的命令把客户端参数化；对命令排队或者记录命令日志，以及支持可撤销的操作。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
@@ -2656,7 +2656,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(九)解释器模式]]></title>
-      <url>http://yoursite.com/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B9%9D)%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B9%9D)%E8%A7%A3%E9%87%8A%E5%99%A8%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>解释器模式是一种行为型设计模式，但是用的较少，其提供了一种解释语言的语法或表达式的方式，该模式定义了一个表达式接口，通过该接口解释一个特定的上下文。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，该解释器使用该表示来解释语言中的句子。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2692,7 +2692,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(八)责任链模式]]></title>
-      <url>http://yoursite.com/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%85%AB)%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%85%AB)%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>责任链模式是行为型设计模式之一。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>使多个对象都有机会处理请求，从而避免了请求的发送者和接收者之间的耦合关系。将这些对象连成一条链，并沿着这条链传递该请求，直到有对象处理它为止。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
@@ -2728,7 +2728,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(七)状态模式]]></title>
-      <url>http://yoursite.com/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B8%83)%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/08/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%B8%83)%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>状态模式把对象的行为包装在不同的状态对象里，每个状态对象都有一个共同的抽象状态基类。状态模式的意图是让一个对象在其内部状态改变的时候，其行为也随之改变。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>当一个对象的内在状态改变时允许改变其行为，这个对象看起来像是改变了其类。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2758,7 +2758,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(六)策略模式]]></title>
-      <url>http://yoursite.com/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%85%AD)%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%85%AD)%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>在软件开发中常常遇到这样的情况：实现某一功能可以有很多种算法或者策略，我们根据实际情况选择不同的算法或者策略来完成该功能。例如，排序算法，可以使用插入排序、归并排序、冒泡排序等。</p>
 <p>如果将这些算法或者策略抽象出来，提供一个统一的接口，不同的算法或者策略有不同的实现类，这样在程序客户端就可以通过注入不同的实现对象来实现算法或者策略的动态替换，这种模式下的可扩展性、可维护性也就更高。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>策略模式定义了一系列的算法，并将每一个算法封装起来，而且使它们还可以相互替换。策略模式让算法独立于使用它的客户而独立变化。</p>
@@ -2799,7 +2799,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(五)抽象工厂模式]]></title>
-      <url>http://yoursite.com/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%94)%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E4%BA%94)%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>抽象工厂模式也是创建型设计模式之一。抽象工厂模式起源于以前对不同操作系统的图形化解决方案，如果不同操作系统中的按钮和文本控件其实现不同、展示效果也不一样，对于每一种操作系统其本身就构成一个产品类，而按钮与文本控件也构成一个产品类，两种产品类两种变化，各自有各自的特性。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>为创建一组相关或是相互依赖的对象提供一个接口，而不需要指定它们的具体类。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>一个对象族有相同约束时可以使用抽象工厂模式？比如Android、iOS、Window Phone下都有短信软件和拨号软件，两者都属于SoftWare软件范畴，但是它们所在的平台不一样，即便是同一家公司出品的软件，其代码实现逻辑也是不同的，这时就可以考虑使用抽象工厂方法模式来产生Android、iOS、Window Phone下的短信和拨号软件。</p>
@@ -2851,7 +2851,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式(四)工厂方法模式]]></title>
-      <url>http://yoursite.com/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%9B%9B)%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/07/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F(%E5%9B%9B)%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>工厂方法模式是创建型设计模式之一。工厂方法模式是一种结构简单的模式。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>定义一个用于创建对象的接口，让子类决定实例化哪个类。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>在任何需要生成复杂对象的地方，都可以使用工厂方法模式。复杂对象适合使用工厂模式，用new就可以完成创建的对象无需使用工厂对象。</p>
@@ -2880,7 +2880,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式之(三)原型模式]]></title>
-      <url>http://yoursite.com/2016/06/04/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%B8%89)%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/04/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%B8%89)%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>原型模式是一种创建型的模式。原型表示该模式有一个样板实例，用户从这个样板对象中复制出一个内部属性一致的对象，被复制的实例就称为原型。原型模式多用于创复杂的或者构造耗时的实例，因为这种情况下，复制一个已经存在的实例可以使程序运行更高效。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2908,7 +2908,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式之(二)Builder模式]]></title>
-      <url>http://yoursite.com/2016/06/03/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%BA%8C)Builder%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/03/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%BA%8C)Builder%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Builder模式是一步一步创建一个复杂对象的创建型模式，它允许用户在不知道内部构建细节的情况下，更精细地控制对象的构造流程。该模式是为了将构建复杂对象的过程和它的部件解耦，使得构建过程和部件的表示隔离开来。</p>
 <h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
 <h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
@@ -2943,7 +2943,7 @@
     
     <entry>
       <title><![CDATA[Android设计模式之(一)单例模式]]></title>
-      <url>http://yoursite.com/2016/06/03/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%B8%80)%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/06/03/Android%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B(%E4%B8%80)%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>单例模式是应用最广的模式之一，在应用这个模式时，单例对象的类必须保证只有一个实例存在。许多时候整个系统只需要拥有一个全局对象，这样有利于我们协调系统整体的行为。如在一个应用中，应该只有一个ImageLoader实例，这个ImageLoader中又含有线程池、缓存系统、网络请求等，很消耗资源。因此不应该让它构造多个实例。这样不能自由构造对象的情况，就是单例模式的使用场景。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</p>
 <h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><p>确保某个类有且只要一个对象的场景，避免产生多个对象消耗过多的资源，或者某种类型的对象只应该有且只有一个。例如，创建一个对象需要消耗的资源过多，如要访问IO和数据库等资源，这时就要考虑使用单例模式。</p>
@@ -3026,7 +3026,7 @@
     
     <entry>
       <title><![CDATA[Android Context详解]]></title>
-      <url>http://yoursite.com/2016/06/02/Android%20Context%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/06/02/Android%20Context%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Activity可以new吗？Android的应用程序开发采用Java语言，Activity本质上也是一个对象，那Activity activity = new Activity()这种写法有什么问题吗？Android应用模型是基于组件的设计模式，组件的运行需要有一个完整的Android工程环境，在这个环境下，Activity、Service等系统组件才能够正常工作，而这些组件并不能采用普通的Java对象创建方式，new一下就能创建实例，而是要有它们各自的上下文环境，也就是我们要介绍的Context。可以这样讲，Context是维持Android程序中各组件能够正常工作的一个核心功能类。</p>
 <h1 id="源码中的Context"><a href="#源码中的Context" class="headerlink" title="源码中的Context"></a>源码中的Context</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Interface to global information about an application environment.  This is</div><div class="line"> * an abstract class whose implementation is provided by</div><div class="line"> * the Android system.  It</div><div class="line"> * allows access to application-specific resources and classes, as well as</div><div class="line"> * up-calls for application-level operations such as launching activities,</div><div class="line"> * broadcasting and receiving intents, etc.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * File creation mode: the default mode, where the created file can only</div><div class="line">     * be accessed by the calling application (or all applications sharing the</div><div class="line">     * same user ID).</div><div class="line">     * <span class="doctag">@see</span> #MODE_WORLD_READABLE</div><div class="line">     * <span class="doctag">@see</span> #MODE_WORLD_WRITEABLE</div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MODE_PRIVATE = <span class="number">0x0000</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MODE_WORLD_WRITEABLE = <span class="number">0x0002</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MODE_APPEND = <span class="number">0x8000</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MODE_MULTI_PROCESS = <span class="number">0x0004</span>;</div><div class="line"></div><div class="line">    .</div><div class="line">    .</div><div class="line">    .</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
 <p>源码中的注释是这么来解释Context的：Context提供了关于应用环境全局信息的接口。它是一个抽象类，它的执行被Android系统所提供，它允许获取以应用为特征的资源和类型，是一个统领一些资源的上下文。就是说，它描述一个应用程序环境的信息（即上下文），是一个抽象类，Android提供了该抽象类的具体实现类；通过它我们可以获取应用程序的资源和类（包括应用级别操作，如启动Activity，发广播，接受Intent等）。既然上面Context是一个抽象类，那么肯定有他的实现类，Context抽象类的继承关系如下图所示：</p>
@@ -3081,7 +3081,7 @@
     
     <entry>
       <title><![CDATA[View的事件分发机制]]></title>
-      <url>http://yoursite.com/2016/04/26/Android-View%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
+      <url>http://liuguoquan727.github.io/2016/04/26/Android-View%E7%9A%84%E4%BA%8B%E4%BB%B6%E5%88%86%E5%8F%91%E6%9C%BA%E5%88%B6/</url>
       <content type="html"><![CDATA[<h1 id="点击事件的传递规则"><a href="#点击事件的传递规则" class="headerlink" title="点击事件的传递规则"></a>点击事件的传递规则</h1><p>首先明确我们这里要分析的对象就是MotionEvent，及点击事件。所谓点击事件的事件分发，其实就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生了以后，系统需要把这个事件传递给一个具体的View，而这个传递的过程就是分发过程。点击事件的分发过程由三个很重要的方法来共同完成：dispatchTouchEvent、onInterceptTouchEvent和onTouchEvent。</p>
 <ul>
 <li><strong>public boolean dispatchTouchEvent(MotionEvent event)</strong></li>
@@ -3175,7 +3175,7 @@
     
     <entry>
       <title><![CDATA[View的工作流程]]></title>
-      <url>http://yoursite.com/2016/04/26/Android-View%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</url>
+      <url>http://liuguoquan727.github.io/2016/04/26/Android-View%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/</url>
       <content type="html"><![CDATA[<p>View的工作流程主要指measure、layout、draw这三大流程，即测量、布局和绘制，其中measure确定View的测量宽/高，layout确定View的最终宽/高和四个顶点的位置（即View在父容器中的放置位置），draw则将View绘制到屏幕上。</p>
 <h1 id="measure过程"><a href="#measure过程" class="headerlink" title="measure过程"></a>measure过程</h1><p>measure过程要分情况来看，如果只是一个原始的View，那么通过measure方法就完成了其测量的过程，如果是一个ViewGroup，除了完成自己的测量过程外，还会遍历去调用所有子元素的measure方法，各个子元素再递归去执行这个流程。</p>
 <h2 id="View的测量过程"><a href="#View的测量过程" class="headerlink" title="View的测量过程"></a>View的测量过程</h2><p>View的measure过程是由其measure方法来完成，measure方法是一个final类型的方法，这意味着子类不能重写此方法，在View的measure方法中会去调用View的onMeasure方法，因此只需要看onMeasure的实现即可，代码如下所示：</p>
@@ -3205,7 +3205,7 @@
     
     <entry>
       <title><![CDATA[Android的消息机制]]></title>
-      <url>http://yoursite.com/2016/04/26/Android%E7%9A%84%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/</url>
+      <url>http://liuguoquan727.github.io/2016/04/26/Android%E7%9A%84%E6%B6%88%E6%81%AF%E6%9C%BA%E5%88%B6/</url>
       <content type="html"><![CDATA[<h1 id="Android的消息机制概述"><a href="#Android的消息机制概述" class="headerlink" title="Android的消息机制概述"></a>Android的消息机制概述</h1><p>Android的消息机制主要是指Handler的运行机制，Handler的运行机制需要底层的MessageQueue和Looper的支撑。</p>
 <p>MessageQueue的中文为消息队列，顾名思义，它的内部存储了一组消息，以队列的形式对外提供插入和删除的方法。虽然称为消息队列，但是它的<strong>内部存储结构并不是真正的队列，而是采用单链表的数据结构来存储消息列表</strong>。</p>
 <p>Looper的中文翻译是循环，这里可以理解为消息循环。由于MessageQueue只是一个消息的存储单元，它不能去处理消息，而Looper会以无限循环的形式其查询是否有新的消息，如果有的话就处理消息，否则就一直等待。</p>
@@ -3277,7 +3277,7 @@
     
     <entry>
       <title><![CDATA[Android的线程和线程池]]></title>
-      <url>http://yoursite.com/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
+      <url>http://liuguoquan727.github.io/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
       <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>线程在Android中是一个很重要的概念，从用途上来说，线程分为主线程和子线程，主线程主要处理和界面相关的事情，而子线程则往往用于执行耗时操作。由于Android的特性，如果在主线程中执行耗时操作那么就会导致程序无法及时地响应，因此耗时操作必须放在子线程中去执行。</p>
 <p>在操作系统中，线程是操作系统调度的最小单元，同时线程又是一种受限的系统资源，即线程不可能无限制的产生，并且线程的创建和销毁都会有相应的开销。档系统中存在大量的线程时，系统会通过时间片轮转的方式调度每个线程，因此线程不可能做到绝对的并行，除非线程数量小于等于CPU核心数，一般来说这是不可能的。正确的做法是采用线程池，一个线程池会缓存一定数量的线程，通过线程池就可以避免因为频繁创建和销毁线程所带来的系统开销。</p>
 <h1 id="主线程和子线程"><a href="#主线程和子线程" class="headerlink" title="主线程和子线程"></a>主线程和子线程</h1><p>Android沿用了Java的线程模型，其中的线程也分为主线程和子线程，其中主线程也叫UI线程。主线程的作用是运行四大组件以及处理它们和用户的交互，而子线程的作用则是执行耗时任务，比如网络请求、I/O操作等。从Android3.0开始系统要求网络访问必须在子线程中进行，否则网络访问将会失败并抛出NetworkOnMainThreadException这个异常，这样做事为了避免主线程由于耗时操作所阻塞而出现ANR异常。</p>
@@ -3423,7 +3423,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(四)集合]]></title>
-      <url>http://yoursite.com/2016/04/23/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%9B%9B)%E9%9B%86%E5%90%88/</url>
+      <url>http://liuguoquan727.github.io/2016/04/23/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E5%9B%9B)%E9%9B%86%E5%90%88/</url>
       <content type="html"><![CDATA[<p>集合Set类似字典的特点，可以用{}花括号来定义；其中的元素是没有序列，也就是非序列类型的数据；而且集合中的元素不可重复，这就类似于dict键。</p>
 <h1 id="创建集合"><a href="#创建集合" class="headerlink" title="创建集合"></a>创建集合</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s1 = set(<span class="string">"qiswri"</span>) <span class="comment">#有两个i</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s1</div><div class="line">set([<span class="string">'q'</span>, <span class="string">'i'</span>, <span class="string">'s'</span>, <span class="string">'r'</span>, <span class="string">'w'</span>]) <span class="comment">#只有一个i</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s2 = set([<span class="number">123</span>,<span class="string">"google"</span>,<span class="string">"facebook"</span>,<span class="string">"book"</span>,<span class="string">"facebook"</span>]);</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s2</div><div class="line">set([<span class="string">'facebook'</span>, <span class="number">123</span>, <span class="string">'google'</span>, <span class="string">'book'</span>]) <span class="comment">#只有一个facebook</span></div></pre></td></tr></table></figure>
 <p>说明集合中的元素是不能重复的，在创建集合的时候，如果发现了重复的元素，就会自定过滤重复的元素。并且集合中的元素也是随机排序的。</p>
@@ -3451,7 +3451,7 @@
     
     <entry>
       <title><![CDATA[Python基础之(三)字典]]></title>
-      <url>http://yoursite.com/2016/04/23/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%89)%E5%AD%97%E5%85%B8/</url>
+      <url>http://liuguoquan727.github.io/2016/04/23/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%89)%E5%AD%97%E5%85%B8/</url>
       <content type="html"><![CDATA[<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Python中有一个叫作dictionary的对象类型，翻译过来就是“字典”，用dict表示。</p>
 <h2 id="创建字典"><a href="#创建字典" class="headerlink" title="创建字典"></a>创建字典</h2><h3 id="创建空的字典"><a href="#创建空的字典" class="headerlink" title="创建空的字典"></a>创建空的字典</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>mydict = &#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>mydict</div><div class="line">&#123;&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(mydict)</div><div class="line">&lt;type <span class="string">'dict'</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person=&#123;<span class="string">"name"</span>:<span class="string">"liu"</span>,<span class="string">"sex"</span>:<span class="string">"male"</span>,<span class="string">"age"</span>:<span class="number">10</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>person</div><div class="line">&#123;<span class="string">'age'</span>: <span class="number">10</span>, <span class="string">'name'</span>: <span class="string">'liu'</span>, <span class="string">'sex'</span>: <span class="string">'male'</span>&#125;</div></pre></td></tr></table></figure>
 <p>字典dict是以键值对的形式存储数据。比如<code>&quot;name&quot;:&quot;liu&quot;</code>前面的name叫作键（key），后面的liu是前面的键所对应的值（value）。在一个字典中，键是唯一的，不能重复。值则对应于键，值可以重复。</p>
@@ -3508,7 +3508,7 @@
     
     <entry>
       <title><![CDATA[Android的IPC方式]]></title>
-      <url>http://yoursite.com/2016/04/19/Android%E7%9A%84IPC%E6%96%B9%E5%BC%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/04/19/Android%E7%9A%84IPC%E6%96%B9%E5%BC%8F/</url>
       <content type="html"><![CDATA[<h1 id="Bundle"><a href="#Bundle" class="headerlink" title="Bundle"></a>Bundle</h1><p>四大组件中的三大组件（Activity、Service、BroadcastReceiver）都是支持在Intent中传递Bundle数据的，由于Bundle实现了Parcelable接口，所以它可以方便地在不同的进程间传输，基于这一点，当我们在一个进程中启动了另一个进程的Activity、Service和BroadcastReceiver，我们就可以在Bundle中附加我们需要传输给远程进程的信息并通过Intent发送出去。当然，我们传输的数据必须能够被序列化，比如基本类型、实现了Parcelable接口的对象、实现了Serializable接口的对象以及一些Android所支持的特殊对象（如Bundle、Size、SizeF、IBinder）。</p>
 <h1 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h1><p>共享文件也是一种不错的进程间通信方式，两个进程提供读/写同一个文件来交换数据，比如A进程把数据写入文件，B进程提供读取这个文件来获取数据。通过文件交换数据很好使用，除了可以交换一些文本信息外，我们还可以序列化一个对象到文件中，从另一进程中恢复这个对象。</p>
 <p>通过文件共享方式来共享数据对文件格式是没有具体要求的，比如可以是文本文件，也可以是XML文件，只要读写双方约定数据格式即可。通过文件共享的方式是有局限性的，比如并发读/写的问题，因此我们要尽量避免并发写这种情况的发生或者考虑使用线程同步来限制多个线程的写操作。通过上面的分析可以知道，<strong>文件共享方式适合在对数据同步要求不高的进程之间进行通信</strong>，并且要妥善处理并发读/写的问题。</p>
@@ -3665,7 +3665,7 @@
     
     <entry>
       <title><![CDATA[Android的IPC机制]]></title>
-      <url>http://yoursite.com/2016/04/19/Android%E7%9A%84IPC%E6%9C%BA%E5%88%B6/</url>
+      <url>http://liuguoquan727.github.io/2016/04/19/Android%E7%9A%84IPC%E6%9C%BA%E5%88%B6/</url>
       <content type="html"><![CDATA[<h2 id="Android-IPC简介"><a href="#Android-IPC简介" class="headerlink" title="Android IPC简介"></a>Android IPC简介</h2><p>IPC是Inter-Process Communication的缩写，含义为进程间通信，是指两个进程之间进行数据交换的过程。</p>
 <p>Android中IPC的使用情况分为两种：</p>
 <ul>
@@ -3735,7 +3735,7 @@
     
     <entry>
       <title><![CDATA[Android EventBus3.0源码解析]]></title>
-      <url>http://yoursite.com/2016/04/18/Android%20EventBus3.0%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
+      <url>http://liuguoquan727.github.io/2016/04/18/Android%20EventBus3.0%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
       <content type="html"><![CDATA[<p>前面已经介绍了EventBus3.0开源库的详细使用，下面我们开始进入其源代码的学习，先看看EventBus3.0与2.x版本之间的区别。</p>
 <blockquote>
 <p>项目地址<a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">https://github.com/greenrobot/EventBus</a><br>EventBus版本是3.0</p>
@@ -3812,8 +3812,8 @@
     
     <entry>
       <title><![CDATA[Otto源码解析]]></title>
-      <url>http://yoursite.com/2016/04/18/Android%20Otto%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
-      <content type="html"><![CDATA[<p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
+      <url>http://liuguoquan727.github.io/2016/04/18/Android%20Otto%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</url>
+      <content type="html"><![CDATA[<p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
 <p>首先来看看构造函数：</p>
 <h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> String identifier;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadEnforcer enforcer;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> HandlerFinder handlerFinder;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(DEFAULT_IDENTIFIER);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(ThreadEnforcer.MAIN, identifier);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(ThreadEnforcer enforcer, String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(enforcer, identifier, HandlerFinder.ANNOTATED);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Bus(ThreadEnforcer enforcer, String identifier, HandlerFinder handlerFinder) &#123;</div><div class="line">    <span class="keyword">this</span>.enforcer =  enforcer;</div><div class="line">    <span class="keyword">this</span>.identifier = identifier;</div><div class="line">    <span class="keyword">this</span>.handlerFinder = handlerFinder;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>默认参数enforcer=ThreadEnforcer.MAIN，identifier=DEFAULT_IDENTIFIER，handlerFinder=HandlerFinder.ANNOTATED。下面来看看这些参数是什么意思：</p>
@@ -3877,7 +3877,7 @@
     
     <entry>
       <title><![CDATA[Okhttp使用详解]]></title>
-      <url>http://yoursite.com/2016/04/17/Android%20Okhttp%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android%20Okhttp%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>Okhttp是高性能的http库，支持同步、异步，而且实现了spdy、http2、websocket协议，api很简洁易用，和volley一样实现了http协议的缓存。Okhttp已经被Android官方采用，实现了几乎和Java.net.HttpURLConnection一样的功能。</p>
 <h1 id="下载地址"><a href="#下载地址" class="headerlink" title="下载地址"></a>下载地址</h1><p><a href="http://square.github.io/okhttp/" target="_blank" rel="external">官方介绍：http://square.github.io/okhttp/</a><br><a href="https://github.com/square/okhttp" target="_blank" rel="external">Github源代码：https://github.com/square/okhttp</a></p>
 <h1 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h1><ul>
@@ -3912,7 +3912,7 @@
     
     <entry>
       <title><![CDATA[Otto使用详解]]></title>
-      <url>http://yoursite.com/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>Otto是Square推出的基于Guava项目的Android支持库，otto是一个事件总线，用于应用程序的不同组件之间进行有效的通信。OTTO是基于Observer的设计模式。它有发布者，订阅者这两个主要对象。OTTO的最佳实践就是通过反射牺牲了微小的性能，同时极大的降低了程序的耦合度。</p>
 <p>Otto官网: <a href="http://square.github.io/otto/" target="_blank" rel="external">http://square.github.io/otto/</a></p>
 <h1 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h1><p>Otto框架的主要功能是帮助我们来降低多个组件通信之间的耦合度（解耦）。</p>
@@ -3934,7 +3934,7 @@
     
     <entry>
       <title><![CDATA[EventBus使用详解]]></title>
-      <url>http://yoursite.com/2016/04/17/Android_EventBus%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android_EventBus%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>EventBus是一个Android事件发布/订阅框架，通过解耦发布者和订阅者简化Android事件传递，这里的事件可以理解为消息。事件传递既可以用于Android四大组件间通讯，也可以用于异步线程和主线程间通讯等。<br>传统的事件传递方式包括：Handler、BroadcastReceiver、Interface回调，相比之下EventBus的有点是代码简洁，使用简单，并将事件发布和 订阅充分解耦。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>事件Event： </strong>又可成为消息，其实就是一个对象，可以是网络请求返回的字符串，也可以是某个开关状态等等。事件类型EventType是指事件所属的Class。</p>
 <p>事件分为一般事件和Sticky事件，相对于一般事件，Sticky事件不同之处在于，当事件发布后，再有订阅者开始订阅该类型事件，依然能收到该类型事件的最近一个Sticky事件。</p>
@@ -4010,7 +4010,7 @@
     
     <entry>
       <title><![CDATA[Android开发模式之MVP]]></title>
-      <url>http://yoursite.com/2016/04/17/Android%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVP/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E4%B9%8BMVP/</url>
       <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在开发Android App时，越到最后肯定会发现，Activity的负担非常重，既要初始化控件，又要写一些逻辑操作的展示等等，很多Activity中的代码都充当了Controller和Model的角色，因而发现Activity违背了单一职责原则，负担过重。所以，MVP架构模式应运而生。</p>
 <h2 id="MVP架构是什么"><a href="#MVP架构是什么" class="headerlink" title="MVP架构是什么"></a>MVP架构是什么</h2><p>MVP就是Model-View-Presenter，MVP是从经典的MVC演变而来，它们的基本思想有相通的地方：Controller/Presenter负责逻辑的处理，Model提供数据，View负责显示。作为一种新的模式，MVP与MVC有着一个重大的区别：在MVP中View并不会直接使用Model，它们之间的通信是通过Presenter（MVC中是Controller）来进行的，所有的交互都发生在Presenter内部，而在MVC中View会直接从Model中读取数据而不是通过Controller。</p>
 <p>在MVC里，View是可以直接访问Model的，从而View里会包含Model信息，不可避免的还要包括一些业务逻辑。在MVC模型里，更关注的是Model的不变，而同时有多个对Model的不同显示的View。所有在MVC模型里，Model不依赖于View，但是View依赖于Model的。不仅如此，因为有一些业务逻辑在View里实现了，导致要更改View也是比较困难的，至少那些业务逻辑是无法重用的。</p>
@@ -4066,7 +4066,7 @@
     
     <entry>
       <title><![CDATA[Android-Universal-Image-Loader源码分析]]></title>
-      <url>http://yoursite.com/2016/04/17/Android-Universal-Image-Loader%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android-Universal-Image-Loader%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/</url>
       <content type="html"><![CDATA[<h1 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h1><h2 id="Android-Universal-Image-Loader"><a href="#Android-Universal-Image-Loader" class="headerlink" title="Android-Universal-Image-Loader"></a>Android-Universal-Image-Loader</h2><p>Android-Universal-Image-Loader是一个强大的、可高度定制的开源图片缓存框架，简称UIL。简单的说UIL就做了一件事–获取图片并显示在相应的控件上。</p>
 <h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>添加完依赖后再Application或Activity中初始化ImageLoader，一般式在Application中初始化，如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UILApplication</span> <span class="keyword">extends</span> <span class="title">Application</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">		<span class="keyword">super</span>.onCreate();</div><div class="line"></div><div class="line">		initImageLoader(getApplicationContext());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">initImageLoader</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">//缓存目录</span></div><div class="line">		File cacheDir = StorageUtils.getCacheDirectory(context);</div><div class="line">		<span class="comment">//添加配置需求</span></div><div class="line">		ImageLoaderConfiguration config = <span class="keyword">new</span> ImageLoaderConfiguration.Builder(context)</div><div class="line">		  .memoryCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>) <span class="comment">// default = device screen dimensions</span></div><div class="line">		  .diskCacheExtraOptions(<span class="number">480</span>, <span class="number">800</span>, CompressFormat.JPEG, <span class="number">75</span>, <span class="keyword">null</span>)</div><div class="line">		  .taskExecutor(...)</div><div class="line">		  .taskExecutorForCachedImages(...)</div><div class="line">		  .threadPoolSize(<span class="number">3</span>) <span class="comment">// default 线程池大小</span></div><div class="line">		  .threadPriority(Thread.NORM_PRIORITY - <span class="number">1</span>) <span class="comment">// default 线程优先级</span></div><div class="line">		  .tasksProcessingOrder(QueueProcessingType.FIFO) <span class="comment">// default 任务队列模式</span></div><div class="line">		  .denyCacheImageMultipleSizesInMemory()</div><div class="line">		  .memoryCache(<span class="keyword">new</span> LruMemoryCache(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)) <span class="comment">//</span></div><div class="line">		  .memoryCacheSize(<span class="number">2</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">		  .memoryCacheSizePercentage(<span class="number">13</span>) <span class="comment">// default</span></div><div class="line">		  .diskCache(<span class="keyword">new</span> UnlimitedDiscCache(cacheDir)) <span class="comment">// default</span></div><div class="line">		  .diskCacheSize(<span class="number">50</span> * <span class="number">1024</span> * <span class="number">1024</span>)</div><div class="line">		  .diskCacheFileCount(<span class="number">100</span>)</div><div class="line">		  .diskCacheFileNameGenerator(<span class="keyword">new</span> HashCodeFileNameGenerator()) <span class="comment">// default</span></div><div class="line">		  .imageDownloader(<span class="keyword">new</span> BaseImageDownloader(context)) <span class="comment">// default</span></div><div class="line">		  .imageDecoder(<span class="keyword">new</span> BaseImageDecoder()) <span class="comment">// default</span></div><div class="line">		  .defaultDisplayImageOptions(DisplayImageOptions.createSimple()) <span class="comment">// default</span></div><div class="line">		  .writeDebugLogs()</div><div class="line">		  .build();</div><div class="line"></div><div class="line">		<span class="comment">// 初始化ImageLoader配置</span></div><div class="line">		ImageLoader.getInstance().init(config);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -4780,7 +4780,7 @@
     
     <entry>
       <title><![CDATA[Android官方数据绑定框架DataBinding]]></title>
-      <url>http://yoursite.com/2016/04/17/Android_DataBinding%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android_DataBinding%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>转载自<a href="http://blog.csdn.net/jdsjlzx/article/details/48133293" target="_blank" rel="external">一叶飘舟</a></p>
 <p>Android新推出了一个官方的数据绑定框架Data Binding Library，既然是官方推出的新玩意，我们就有必要了解一下Android新带来的数据绑定框架，等到该框架推出正式版的时候，我们就可以快速地运用到项目中去。数据绑定框架给我们带来了很大的方便性，以前我们可能需要在Activity里写很多的findViewById，烦人的代码也增加了我们代码的耦合性，现在我们马上就可以抛弃那些findViewById。说到这里，有人可能会问：我使用的一些注解框架也可以不用findViewById啊，是的，但是注解的缺点是拖累代码的效率，Data Binding则不会，Android官方文档说还会提高解析XML的速度，最主要的是Data Binding并不是单单减少我们的findViewById，更多的好处我们接下来一起探寻。</p>
 <p>##1.环境</p>
@@ -4984,7 +4984,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Butterknife使用详解]]></title>
-      <url>http://yoursite.com/2016/04/17/Android_Butterknife%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Android_Butterknife%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">GitHub地址:https://github.com/JakeWharton/butterknife</a></p>
 <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ButterKnife这个开源库可以让我们从大量的findViewById和setOnClickListener中解放出来，其对性能的影响微乎其微（其自定义注解的实现都是限定为RetentionPolicy.CLASS，也就是编译出.class文件为止有效，在运行时不额外消耗性能，其实通过java注解自动生成java代码的形式来完成工作），但也有一个明显的缺点，那就是代码的可读性差些，凡事有利有弊，我们需要做到有的放矢。</p>
 <h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><h3 id="Activity-Binding"><a href="#Activity-Binding" class="headerlink" title="Activity Binding"></a>Activity Binding</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ExampleActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</div><div class="line">  <span class="meta">@Bind</span>(R.id.title) TextView title;</div><div class="line">  <span class="meta">@Bind</span>(R.id.subtitle) TextView subtitle;</div><div class="line">  <span class="meta">@Bind</span>(R.id.footer) TextView footer;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.simple_activity);</div><div class="line">    ButterKnife.bind(<span class="keyword">this</span>);</div><div class="line">    <span class="comment">// TODO Use fields...</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -5015,7 +5015,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java内部类]]></title>
-      <url>http://yoursite.com/2016/04/17/Java%E5%86%85%E9%83%A8%E7%B1%BB/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Java%E5%86%85%E9%83%A8%E7%B1%BB/</url>
       <content type="html"><![CDATA[<p>可以将一个类的定义放在另一个类的定义内部，这就是内部类。</p>
 <p>内部类是一种非常有用的特性，因为它允许你把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而必须要了解的是内部类与组合是完全不同的概念。</p>
 <h2 id="创建局部内部类"><a href="#创建局部内部类" class="headerlink" title="创建局部内部类"></a>创建局部内部类</h2><p>创建内部类的方式就是把类的定义置于外部类的里面。</p>
@@ -5083,7 +5083,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java字符串]]></title>
-      <url>http://yoursite.com/2016/04/17/Java%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+      <url>http://liuguoquan727.github.io/2016/04/17/Java%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
       <content type="html"><![CDATA[<h2 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h2><p>String对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。</p>
 <p>看看下面的代码：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immutable</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> args</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        String str = <span class="string">"hello"</span>;</div><div class="line">        System.out.println(str); <span class="comment">//hello</span></div><div class="line">        String str1 = upCase(str);</div><div class="line">        System.out.println(str1); <span class="comment">//HELLO</span></div><div class="line">        System.out.println(str); <span class="comment">//hello</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upCase</span><span class="params">(String s)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> s.toUpperCase();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -5123,7 +5123,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Python基础之(二)字符串、列表和元组]]></title>
-      <url>http://yoursite.com/2016/04/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%BA%8C)%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%BB%84/</url>
+      <url>http://liuguoquan727.github.io/2016/04/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%BA%8C)%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%88%97%E8%A1%A8%E5%92%8C%E5%85%83%E7%BB%84/</url>
       <content type="html"><![CDATA[<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>在Python中，万物皆对象，显然字符串是对象类型，用str表示。字符串类型通常用单引号或者双引号包裹起来。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"Hello,world"</span></div><div class="line"><span class="string">'Hello,world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'Hello,world'</span></div><div class="line"><span class="string">'Hello,world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>type(<span class="string">"Hello,world"</span>)</div><div class="line">&lt;type <span class="string">'str'</span>&gt;</div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
 <h3 id="变量和字符串"><a href="#变量和字符串" class="headerlink" title="变量和字符串"></a>变量和字符串</h3><p>在Python中变量无类型，对象有类型</p>
@@ -5427,7 +5427,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Python基础之(一)基本数据类型]]></title>
-      <url>http://yoursite.com/2016/04/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%80)%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
+      <url>http://liuguoquan727.github.io/2016/04/12/Python%E5%9F%BA%E7%A1%80%E4%B9%8B(%E4%B8%80)%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/</url>
       <content type="html"><![CDATA[<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><ul>
 <li><strong>基本类型</strong></li>
 </ul>
@@ -5597,7 +5597,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java中的构造函数调用顺序]]></title>
-      <url>http://yoursite.com/2016/04/05/Java%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F/</url>
+      <url>http://liuguoquan727.github.io/2016/04/05/Java%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E9%A1%BA%E5%BA%8F/</url>
       <content type="html"><![CDATA[<p>面试题中经常这样的题目，分析子类父类构造函数的调用顺序，下面开始分情况讨论父类子类构造函数的调用顺序：</p>
 <p>先创建两个类A和B，其中B继承A</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"A的无参构造函数"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">A</span><span class="params">(String msg)</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"A的有参构造函数: "</span> + msg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"A的print方法"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"B的无参构造函数"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">B</span><span class="params">(String msg)</span></span>&#123;</div><div class="line">	<span class="comment">//	super(msg); //此句代码表示调用父类A的有参构造函数，不加此句代码则表示调用父类A的默认无参构造函数</span></div><div class="line">		System.out.println(<span class="string">"B的有参构造函数: "</span> + msg);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"B的print方法"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span></span>&#123;</div><div class="line">		System.out.println(<span class="string">"A的add方法"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -5617,7 +5617,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java中static关键字详解]]></title>
-      <url>http://yoursite.com/2016/04/05/Java%E4%B8%ADstatic%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/05/Java%E4%B8%ADstatic%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面五种情况：</p>
 <h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><p>我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.variableName来访问它。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> count;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> String name;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DB_NAME = <span class="string">"contacts"</span>;</div></pre></td></tr></table></figure>
@@ -5655,7 +5655,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java中final关键字详解]]></title>
-      <url>http://yoursite.com/2016/04/05/Java%E4%B8%ADfinal%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2016/04/05/Java%E4%B8%ADfinal%E5%85%B3%E9%94%AE%E5%AD%97%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。</p>
 <h2 id="final关键字的基本用法"><a href="#final关键字的基本用法" class="headerlink" title="final关键字的基本用法"></a>final关键字的基本用法</h2><p>Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。</p>
 <h3 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h3><p>当final关键字修饰一个类时，表明这个类不能被继承。final类中的成员变量可以根据需要设为final，但是要注意final类中的所有成员方法都会被隐式地指定为final方法。</p>
@@ -5708,7 +5708,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android动画之Interpolator]]></title>
-      <url>http://yoursite.com/2016/03/31/Android%E5%8A%A8%E7%94%BB%E4%B9%8BInterpolator/</url>
+      <url>http://liuguoquan727.github.io/2016/03/31/Android%E5%8A%A8%E7%94%BB%E4%B9%8BInterpolator/</url>
       <content type="html"><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Interpolator可以翻译成插值器。Android中interpolator的最底层接口如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.animation;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 时间插值器定义了一个动画的变化率。</div><div class="line"> * 这让动画让非线性的移动轨迹，例如加速和减速。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * A time interpolator defines the rate of change of an animation. This allows animations</div><div class="line"> * to have non-linear motion, such as acceleration and deceleration.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TimeInterpolator</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 将动画已经消耗的时间的分数映射到一个表示插值的分数。</div><div class="line">     * 然后将插值与动画的变化值相乘来推导出当前已经过去的动画时间的动画变化量。</div><div class="line">     * &lt;hr/&gt;</div><div class="line">     * Maps a value representing the elapsed fraction of an animation to a value that represents</div><div class="line">     * the interpolated fraction. This interpolated value is then multiplied by the change in</div><div class="line">     * value of an animation to derive the animated value at the current elapsed animation time.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> input  一个0到1.0表示动画当前点的值，0表示开头。1表示结尾&lt;br/&gt; A value between 0 and 1.0 indicating our current point</div><div class="line">     *        in the animation where 0 represents the start and 1.0 represents</div><div class="line">     *        the end</div><div class="line">     * <span class="doctag">@return</span>   插值。它的值可以大于1来超出目标值，也小于0来空破底线。</div><div class="line">     *         interpolators which overshoot their targets, or less than 0 for</div><div class="line">     *         interpolators that undershoot their targets.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>TimeInterpolator是在Android API11加入，之前的类叫Interpolator。现在Interpolator继承了TimeInterpolator</p>
@@ -5770,7 +5770,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[HTML5之Canvas]]></title>
-      <url>http://yoursite.com/2016/03/28/HTML5%E4%B9%8BCanvas/</url>
+      <url>http://liuguoquan727.github.io/2016/03/28/HTML5%E4%B9%8BCanvas/</url>
       <content type="html"><![CDATA[<h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>Canvas是HTML5新增的组件，它就是一块画布，可以用JavaScript在上画绘制各种图标、动画等。</p>
 <h3 id="Web页面增加画布"><a href="#Web页面增加画布" class="headerlink" title="Web页面增加画布"></a>Web页面增加画布</h3><p>Canvas元素是一个标准的HTML5元素，可以直接在HTML5页面中添加<code>&lt;canvas&gt;</code>标签，如</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Look what I Drew<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"draw"</span> <span class="attr">width</span>=<span class="string">"600"</span> <span class="attr">height</span>=<span class="string">"200"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -5854,7 +5854,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[JavaScript函数和对象]]></title>
-      <url>http://yoursite.com/2016/03/23/JavaScript%E5%87%BD%E6%95%B0%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
+      <url>http://liuguoquan727.github.io/2016/03/23/JavaScript%E5%87%BD%E6%95%B0%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
       <content type="html"><![CDATA[<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><ul>
 <li>创建一个函数需要用到关键字function，后面是一个函数名</li>
 <li>为函数提供0或多个参数，使用参数向函数传值</li>
@@ -5998,7 +5998,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[JavaScript事件处理]]></title>
-      <url>http://yoursite.com/2016/03/22/JavaScript%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
+      <url>http://liuguoquan727.github.io/2016/03/22/JavaScript%E4%BA%8B%E4%BB%B6%E5%A4%84%E7%90%86/</url>
       <content type="html"><![CDATA[<p>了解了JavaScript的基础知识后，开始处理HTML5与用户的交互。如果页面能响应用户的输入，它们就不再知识文档，而是有生命的、有反应的应用了。</p>
 <p>接下来我们开始学习JavaScript事件处理，这里通过一个添加音乐播放列表示例来描述JavaScript与用户的交互过程。效果图如下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1014339-6a5924b3f4714fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="效果.png"></p>
@@ -6040,7 +6040,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[JavaScript的DOM操作]]></title>
-      <url>http://yoursite.com/2016/03/21/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/</url>
+      <url>http://liuguoquan727.github.io/2016/03/21/JavaScript%E7%9A%84DOM%E6%93%8D%E4%BD%9C/</url>
       <content type="html"><![CDATA[<p>由于HTML文档被浏览器解析后就是一颗DOM树，就需要通过JavaScript来操作DOM。</p>
 <p>始终记住DOM是一个树形结构。操作DOM节点实际上就是有如下几个操作：</p>
 <ul>
@@ -6113,7 +6113,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[JavaScript和DOM]]></title>
-      <url>http://yoursite.com/2016/03/20/JavaScript%E5%92%8CDOM/</url>
+      <url>http://liuguoquan727.github.io/2016/03/20/JavaScript%E5%92%8CDOM/</url>
       <content type="html"><![CDATA[<h2 id="认识DOM"><a href="#认识DOM" class="headerlink" title="认识DOM"></a><strong>认识DOM</strong></h2><p>DOM的英文全称是Document Object Model，即文档对象模型，DOM的作用在于它能够在所有浏览器早上提供一种一致的方式，通过代码访问HTML的结构和内容。</p>
 <h3 id="创建DOM"><a href="#创建DOM" class="headerlink" title="创建DOM"></a><strong>创建DOM</strong></h3><p><strong>创建一个DOM的前提是</strong>要有一个格式正确的HTML5页面，如下所示</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My blog<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"entry1"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span>What are you doing?<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            No big deal,just three stories.</div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span></div><div class="line">            Stay hungry,stay foolish!</div><div class="line">        <span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -6144,7 +6144,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[读书札记]]></title>
-      <url>http://yoursite.com/2016/03/18/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/</url>
+      <url>http://liuguoquan727.github.io/2016/03/18/%E8%AF%BB%E4%B9%A6%E6%9C%AD%E8%AE%B0/</url>
       <content type="html"><![CDATA[<p>There is always another way.</p>
 <p>You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》</p>
 <p>思考的时候，要像外行一样单纯直接，实践的时候则要像专家一样严密细致，并且要以专业知识和方法武装起来的“我做得到”的乐观精神。要记住，独特的、好的创意和好的结果，不管对研究而言，还是对商业运作而言，都不是自己突然冒出来的东西，那一定是刻苦的努力和长期的思考带来的。 —-金出武雄</p>
@@ -6153,7 +6153,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之单一职责原则]]></title>
-      <url>http://yoursite.com/2016/03/15/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/15/%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>单一职责的英文名称是Single Responsibility Principle，缩写是SRP。</p>
 <p>SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。</p>
 <p>接下来以小明的工作过程为示例描述单一职责原则：</p>
@@ -6181,7 +6181,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[JavaScript基础知识]]></title>
-      <url>http://yoursite.com/2016/03/15/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
+      <url>http://liuguoquan727.github.io/2016/03/15/JavaScript%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
       <content type="html"><![CDATA[<p>JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。</p>
 <h2 id="JavaScript能做什么"><a href="#JavaScript能做什么" class="headerlink" title="JavaScript能做什么"></a><strong>JavaScript能做什么</strong></h2><p>一旦有一个包含&lt; script &gt;元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。</p>
 <p>你可以要求JavaScript：</p>
@@ -6258,7 +6258,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[HTML5入门]]></title>
-      <url>http://yoursite.com/2016/03/15/HTML5%E5%85%A5%E9%97%A8/</url>
+      <url>http://liuguoquan727.github.io/2016/03/15/HTML5%E5%85%A5%E9%97%A8/</url>
       <content type="html"><![CDATA[<p>HTML5是下一代的HTML。</p>
 <h2 id="什么是HTML5"><a href="#什么是HTML5" class="headerlink" title="什么是HTML5"></a><strong>什么是HTML5</strong></h2><p>HTML5将成为HTML、XHTML以及HTML DOM的新标准。<br>HTML的上一个版本诞生于1999年。自从那以后，Web世界已经经历了巨变。HTML5仍处于完善之中。然而，大部分现代浏览器已经支持HTML5特性。</p>
 <h2 id="HTML5是如何起步的"><a href="#HTML5是如何起步的" class="headerlink" title="HTML5是如何起步的?"></a>HTML5是如何起步的?</h2><p>HTML5是W3C与WHATWG合作的结果</p>
@@ -6315,7 +6315,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[博客开通记]]></title>
-      <url>http://yoursite.com/2016/03/15/%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A/</url>
+      <url>http://liuguoquan727.github.io/2016/03/15/%E5%8D%9A%E5%AE%A2%E5%BC%80%E9%80%9A/</url>
       <content type="html"><![CDATA[<p>折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。</p>
 <p>纵浪大化中，不喜亦不惧。<br>应尽便须尽，无复独多虑。</p>
 ]]></content>
@@ -6323,7 +6323,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之依赖倒置原则]]></title>
-      <url>http://yoursite.com/2016/03/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/11/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>依赖倒置原则英文全称是Dependence Inversion Principle，缩写是DIP。依赖倒置原则指代了一种特定解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。这到底是什么意思呢？</p>
 <p>依赖倒置原则则有以下关键点：</p>
 <ul>
@@ -6350,7 +6350,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之里氏替换原则]]></title>
-      <url>http://yoursite.com/2016/03/08/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/08/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。</p>
 <p>LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。</p>
 <p>LSP的第二种定义是：所有引用基类的地方必须能透明地使用其子类的对象。通俗的讲就是：只要父类能出现的地方子类就可以出现，而且替换为子类也不会产生任何错误或者异常，使用者可能根本就不需要知道是父类还是子类，但是，反过来就不行了，有子类出现的地方，父类未必就能适应。因为子类有的东西父类不一定有。</p>
@@ -6380,7 +6380,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之开闭原则]]></title>
-      <url>http://yoursite.com/2016/03/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/07/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>开闭原则的英文全称是Open Close Principle，缩写是OCP，它是Java世界里最基础的设计原则，它指导我们如何建立一个稳定的、灵活的系统。开闭原则的定义是：软件中的对象（类、模块、函数等）应该对于扩展是开放的，但是对于修改是封闭的。</p>
 <p>勃兰特-梅耶在1988年出版的《面向对象软件构造》一书中提出这一原则—开闭原则。这一想法认为，程序一旦开发完成，程序中一个类的实现只应该因错误而被修改，新的或者改变的特性应该通过新建不同的类实现，新建的类可以通过继承的方式来重用原类的代码。显然梅耶的定义提倡实现继承，已存在的实现类对于修改时封闭的，但是新的类可以通过覆写父类的接口应对变化。</p>
 <h2 id="引入其他缓存方式"><a href="#引入其他缓存方式" class="headerlink" title="引入其他缓存方式"></a><strong>引入其他缓存方式</strong></h2><p>说了这么多，下面还是以一个简单示例来说明开闭原则：</p>
@@ -6432,7 +6432,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之接口隔离原则]]></title>
-      <url>http://yoursite.com/2016/03/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/05/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>接口隔离原则英文全称是Interface Segregation Principle，缩写是ISP。</p>
 <p>ISP的定义是：客户端不应该依赖它不需要的接口。另一种定义是：类间的依赖关系应该建立在最小的接口上。接口隔离原则将非常庞大、臃肿的接口拆分成更小具体的接口，这样客户讲会只需要知道他们感兴趣的方法。接口隔离原则的目的是系统解开耦合，从而容易重构、更改和重新部署。</p>
 <p>接口隔离原则说白了就是,让客户端依赖的接口尽可能的小，这样说可能还有点抽象，我们一一个示例来说明一下。在此之前我们来说一个场景，在Java6以及之前的JDK版本中，有一个非常讨厌的问题，那就是在使用了OutputStream或者其他可关闭的对象之后，我们必须保证它们最终被关闭了，我们的SD卡缓存类中就有这样的代码：</p>
@@ -6455,7 +6455,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之接口迪米特原则]]></title>
-      <url>http://yoursite.com/2016/03/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E6%8E%A5%E5%8F%A3%E8%BF%AA%E7%B1%B3%E7%89%B9%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/04/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E6%8E%A5%E5%8F%A3%E8%BF%AA%E7%B1%B3%E7%89%B9%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>迪米特原则英文全称为Law of Demeter，缩写是LOD，也称为最少知识原则（Least of Principle）。虽然名字不同，但描述的是同一个原则：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，类的内部如何实现与调用者或者依赖者没有关系，调用者或者依赖者只需要知道它需要的方法即可，其他的可一概不管。类与类之间的关系越密切，耦合度越大，当一个类发生改变时，对另一个类的影响也越大。</p>
 <p>迪米特法则还有一个英文解释就是Only talk to your immediate friends，翻译就是：只与直接的朋友通信。什么是最直接的朋友呢？每个对象都必然会与其他对象有耦合关系，两个对象之间的耦合就成为朋友关系，这样关系的类型很多，如组合、聚合、依赖等。</p>
 <p>下面我们就以租房为例描述迪米特原则的应用：</p>
@@ -6484,7 +6484,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[面向对象编程之单一职责原则]]></title>
-      <url>http://yoursite.com/2016/03/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</url>
+      <url>http://liuguoquan727.github.io/2016/03/02/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99/</url>
       <content type="html"><![CDATA[<p>单一职责的英文名称是Single Responsibility Principle，缩写是SRP。</p>
 <p>SRP的定义就是：就一个类而言，应该仅有一个引起它变化的原因。简单说来，一个类中应该是一组相关性很高的函数、数据的封装。单一职责的划分界限并不是总是那么清晰，很多时候需要靠个人经验来界定。当然，最大的问题就是堆职责的定义，什么是类的职责，以及怎么划分类的职责。</p>
 <p>接下来以小明的工作过程为示例描述单一职责原则：</p>
@@ -6518,7 +6518,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[UMl类图的几种关系]]></title>
-      <url>http://yoursite.com/2016/03/01/UMl%E7%B1%BB%E5%9B%BE%E7%9A%84%E5%87%A0%E7%A7%8D%E5%85%B3%E7%B3%BB/</url>
+      <url>http://liuguoquan727.github.io/2016/03/01/UMl%E7%B1%BB%E5%9B%BE%E7%9A%84%E5%87%A0%E7%A7%8D%E5%85%B3%E7%B3%BB/</url>
       <content type="html"><![CDATA[<p>在UML类图中，常见的有以下6种关系：泛化(Generalization)、实现(Realization)、关联(Association)、聚合(Aggregation)、组合(Composition)、依赖(Dependency)。</p>
 <h2 id="泛化-Generalization"><a href="#泛化-Generalization" class="headerlink" title="泛化(Generalization)"></a>泛化(Generalization)</h2><p><strong>泛化关系：</strong>是一种继承关系，表示一般与特殊的关系，它指定了子类如何特化父类的所有特征和行为。例如：老虎是动物的一种，既有老虎的特性也有动物的共性。</p>
 <p><strong>箭头指向：</strong>带三角形的实现，箭头指向父类</p>
@@ -6558,7 +6558,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android 5.x之Toolbar和Palette]]></title>
-      <url>http://yoursite.com/2016/02/28/Android%205.x%E4%B9%8BToolbar%E5%92%8CPalette/</url>
+      <url>http://liuguoquan727.github.io/2016/02/28/Android%205.x%E4%B9%8BToolbar%E5%92%8CPalette/</url>
       <content type="html"><![CDATA[<p>Toolbar是Android5.0后应用的内容的标准工具栏，可以说是ActionBar的升级版，两者不是独立的关系，要使用Toolbar还是得跟ActionBar有关系的。相比ActionBar，Toolbar最明显的一点就是变得很自由，可以随处放置，具体的使用方法和ActionBar很类似。</p>
 <p>#1.Toolbar引入</p>
 <p>首先还是得引入v7包，Android studio在build.gradle配置如下代码</p>
@@ -6605,7 +6605,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android Design Support Library之CoordinatorLayout和CollapsingToolbarLayout]]></title>
-      <url>http://yoursite.com/2016/02/26/Android%20Design%20Support%20Library%E4%B9%8BCoordinatorLayout%E5%92%8CCollapsingToolbarLayout/</url>
+      <url>http://liuguoquan727.github.io/2016/02/26/Android%20Design%20Support%20Library%E4%B9%8BCoordinatorLayout%E5%92%8CCollapsingToolbarLayout/</url>
       <content type="html"><![CDATA[<p>CoordinatorLayout是Android Design Support Library中比较难的控件，它是用来组织它的子View之间协助的一个父View，它直接继承于ViewGroup。</p>
 <p>CoordinatorLayout默认情况下可理解是一个FrameLayout，它的布局方式是一层一层叠加上去的，这里我们来介绍它常用的两种情况。</p>
 <p>##1.CoordinatorLayout实现ToolBar的隐藏效果</p>
@@ -6657,7 +6657,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TabLayout实现网易新闻滑动标签效果]]></title>
-      <url>http://yoursite.com/2016/02/24/Android%20Design%20Support%20Library%E4%B9%8BTabLayout/</url>
+      <url>http://liuguoquan727.github.io/2016/02/24/Android%20Design%20Support%20Library%E4%B9%8BTabLayout/</url>
       <content type="html"><![CDATA[<p>TabLayout是Android Design Support Library库中的控件。Google在2015年的IO大会上，给我们带来了更加详细的Material Design设计规范，同时也给我们带来了全新的Android Design Support Library，在这个support库中,Google给我们提供了更加规范的MD设计风格的控件。最重要的是，Android Design Support Library可以向下兼容到Android 2.2。</p>
 <p>接下来，我们开始熟悉TabLayout的使用，并完成一个类似网易新闻客户端滑动标签的效果，它的滑动标签由Toolbar+TabLayout实现，内容显示由ViewPager+Fragment实现。</p>
 <p>#1.配置build.gradle</p>
@@ -6690,7 +6690,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android Design Support Library之NavigationView]]></title>
-      <url>http://yoursite.com/2016/02/22/Android%20Design%20Support%20Library%E4%B9%8BNavigationView/</url>
+      <url>http://liuguoquan727.github.io/2016/02/22/Android%20Design%20Support%20Library%E4%B9%8BNavigationView/</url>
       <content type="html"><![CDATA[<p>NavigationView在MD设计中非常重要，之前Google提出使用Drawlayout来实现导航抽屉。这次，在Android Design Support Library中Google官方提供了NavigationView来实现导航菜单界面。</p>
 <p>下面，我们开始用NavigationView来实现抽屉菜单界面</p>
 <p>##1.配置build.gradle:</p>
@@ -6722,7 +6722,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android 5.x之RecyclerView]]></title>
-      <url>http://yoursite.com/2016/02/20/Android%205.x%E4%B9%8BRecyclerView/</url>
+      <url>http://liuguoquan727.github.io/2016/02/20/Android%205.x%E4%B9%8BRecyclerView/</url>
       <content type="html"><![CDATA[<p>RecyclerView是Android官方推出的旨在取代ListView、GridView的控件，可以通过导入support-V7进行使用。据官方介绍，该控件用于在有限的窗口中展示大量数据集，同样能实现此效果的有ListView、GridView。</p>
 <p>那么有了ListView、GridView之后为什么还需要RecyclerView这样的控件呢？整体上看RecyclerView架构，它提供了一种插拔式的体验，高度的解耦，异常的灵活，通过设置它提供不同的LayoutManager、ItemDecoration、ItemAnimator来实现各种各样的效果。</p>
 <ul>
@@ -6809,7 +6809,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android 5.x之CardView]]></title>
-      <url>http://yoursite.com/2016/02/19/Android%205.x%E4%B9%8BCardView/</url>
+      <url>http://liuguoquan727.github.io/2016/02/19/Android%205.x%E4%B9%8BCardView/</url>
       <content type="html"><![CDATA[<p>Android 5.x版本中增加了CardView控件，CardView继承自FrameLayout类，它的功能是实现在一个卡片布局中显示相同的内容，卡片布局可以设置圆角和阴影，还可以布局其他的View。CardView即可作为一般的布局使用，也可以作为RecyclerView的Item使用。</p>
 <p>接来下，我们进入CardView学习之旅</p>
 <p>#1.build.gradle</p>
@@ -6831,7 +6831,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android 5.x之 Notification]]></title>
-      <url>http://yoursite.com/2016/02/18/Android%205.x%E4%B9%8B%20Notification/</url>
+      <url>http://liuguoquan727.github.io/2016/02/18/Android%205.x%E4%B9%8B%20Notification/</url>
       <content type="html"><![CDATA[<p>Notification可以让我们在获得消息的时候，在状态栏、锁屏界面来显示相应的消息，如果没有Notification的话，很难想象我们的QQ和微信以及其他应用就没有办法主动通知我们，我们需要时候打开手机检查是否有新的消息到来，而这着实让人不爽。接下来，我们介绍三种Notification，分别是普通Notification，折叠式Notification和悬挂式Notification。</p>
 <p>##1.普通Notification</p>
 <p>首先，创建Builder对象，创建一个PendingIntent来实现消息点击跳转事件。</p>
@@ -6879,7 +6879,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Jni头文件分析]]></title>
-      <url>http://yoursite.com/2016/01/17/Android_Jni%E5%A4%B4%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90/</url>
+      <url>http://liuguoquan727.github.io/2016/01/17/Android_Jni%E5%A4%B4%E6%96%87%E4%BB%B6%E5%88%86%E6%9E%90/</url>
       <content type="html"><![CDATA[<h2 id="编写Java文件"><a href="#编写Java文件" class="headerlink" title="编写Java文件"></a>编写Java文件</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeaderFile</span> </span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">native</span> <span class="keyword">void</span>  <span class="title">doVoid</span><span class="params">()</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doShort</span><span class="params">()</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">void</span> <span class="title">doArray</span><span class="params">(Object[] o )</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">int</span> i)</span></span>;      <span class="comment">//byte ,short ,int,long,float,double ,boolean,char        </span></div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">double</span> d)</span></span>;    <span class="comment">//byte ,short ,int,long,float,double ,boolean,char  </span></div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(Object o)</span></span>;      </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">double</span> d1,<span class="keyword">double</span> d2)</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">double</span> d1 ,<span class="keyword">double</span> d2,<span class="keyword">double</span> d3)</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">double</span> d1 ,<span class="keyword">float</span> f,<span class="keyword">boolean</span> b ,<span class="keyword">char</span>[] c )</span></span>;    </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">int</span>[] i)</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">int</span>[] i1,<span class="keyword">double</span>[] i2 )</span></span>;      </div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">doInt</span><span class="params">(<span class="keyword">int</span>[] i1,<span class="keyword">double</span>[] i2 ,Object[] o )</span></span>;  </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">doString</span><span class="params">(String s)</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> Object <span class="title">doObject</span><span class="params">(Object o )</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> Enumeration <span class="title">doInterface</span><span class="params">(Iterator it)</span></span>;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> Student <span class="title">doStudent</span><span class="params">(Student s)</span></span>;  </div><div class="line">     </div><div class="line"><span class="comment">//  native int[] doInt(int[] i);  //byte ,short ,int,long,float,double ,boolean,char  </span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">native</span> String[] doString(String[] s);  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">native</span> Object[] doObjects(Object[] o );  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">native</span> Enumeration[] doInterface(Iterator[] it);  </div><div class="line">    <span class="keyword">public</span> <span class="keyword">native</span> Student[] doStudent(Student[] s);  </div><div class="line">            </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">static</span> Object <span class="title">doAll</span><span class="params">(<span class="keyword">int</span>[] i , String[] s , Student[] student )</span></span>;               </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="生成头文件"><a href="#生成头文件" class="headerlink" title="生成头文件"></a>生成头文件</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* DO NOT EDIT THIS FILE - it is machine generated */</span>  </div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;jni.h&gt;</span>  </span></div><div class="line"><span class="comment">/* Header for class com_nedu_jni_helloword_HeaderFile */</span>  </div><div class="line">  </div><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _Included_com_nedu_jni_helloword_HeaderFile  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _Included_com_nedu_jni_helloword_HeaderFile  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus  </span></div><div class="line"><span class="keyword">extern</span> <span class="string">"C"</span> &#123;  </div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doVoid </div><div class="line"> * Signature: ()V </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doVoid</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doShort </div><div class="line"> * Signature: ()I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doShort</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doArray </div><div class="line"> * Signature: ([Ljava/lang/Object;)V </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT <span class="keyword">void</span> JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doArray</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (I)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__I</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jint)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (D)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__D</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jdouble)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (Ljava/lang/Object;)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__Ljava_lang_Object_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (DD)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__DD</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jdouble, jdouble)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (DDD)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__DDD</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jclass, jdouble, jdouble, jdouble)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: (DFZ[C)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt__DFZ_3C</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jclass, jdouble, jfloat, jboolean, jcharArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: ([I)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt___3I</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jintArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: ([I[D)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt___3I_3D</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jintArray, jdoubleArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInt </div><div class="line"> * Signature: ([I[D[Ljava/lang/Object;)I </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jint JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInt___3I_3D_3Ljava_lang_Object_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jclass, jintArray, jdoubleArray, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doString </div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jstring JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doString__Ljava_lang_String_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jstring)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doObject </div><div class="line"> * Signature: (Ljava/lang/Object;)Ljava/lang/Object; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobject JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doObject</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInterface </div><div class="line"> * Signature: (Ljava/util/Iterator;)Ljava/util/Enumeration; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobject JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInterface__Ljava_util_Iterator_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doStudent </div><div class="line"> * Signature: (Lcom/nedu/jni/helloword/Student;)Lcom/nedu/jni/helloword/Student; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobject JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doStudent__Lcom_nedu_jni_helloword_Student_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobject)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doString </div><div class="line"> * Signature: ([Ljava/lang/String;)[Ljava/lang/String; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobjectArray JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doString___3Ljava_lang_String_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doObjects </div><div class="line"> * Signature: ([Ljava/lang/Object;)[Ljava/lang/Object; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobjectArray JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doObjects</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doInterface </div><div class="line"> * Signature: ([Ljava/util/Iterator;)[Ljava/util/Enumeration; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobjectArray JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doInterface___3Ljava_util_Iterator_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doStudent </div><div class="line"> * Signature: ([Lcom/nedu/jni/helloword/Student;)[Lcom/nedu/jni/helloword/Student; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobjectArray JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doStudent___3Lcom_nedu_jni_helloword_Student_2</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jobject, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="comment">/* </span></div><div class="line"> * Class:     com_nedu_jni_helloword_HeaderFile </div><div class="line"> * Method:    doAll </div><div class="line"> * Signature: ([I[Ljava/lang/String;[Lcom/nedu/jni/helloword/Student;)Ljava/lang/Object; </div><div class="line"> */  </div><div class="line"><span class="function">JNIEXPORT jobject JNICALL <span class="title">Java_com_nedu_jni_helloword_HeaderFile_doAll</span>  </span></div><div class="line">  <span class="params">(JNIEnv *, jclass, jintArray, jobjectArray, jobjectArray)</span>;  </div><div class="line">  </div><div class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> __cplusplus  </span></div><div class="line">&#125;  </div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span>  </span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div></pre></td></tr></table></figure>
 <p>##3.头文件分析</p>
@@ -6933,7 +6933,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Jni参数类型与Java参数类型对比]]></title>
-      <url>http://yoursite.com/2016/01/17/Android_Jni%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E4%B8%8EJava%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%AF%B9%E6%AF%94/</url>
+      <url>http://liuguoquan727.github.io/2016/01/17/Android_Jni%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E4%B8%8EJava%E5%8F%82%E6%95%B0%E7%B1%BB%E5%9E%8B%E5%AF%B9%E6%AF%94/</url>
       <content type="html"><![CDATA[<p>##区别</p>
 <ul>
 <li><p>Java中的返回值void和JNI中的void完全对应（仅仅一个）</p>
@@ -6956,7 +6956,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Android NDk开发流程]]></title>
-      <url>http://yoursite.com/2016/01/17/Android-NDk%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
+      <url>http://liuguoquan727.github.io/2016/01/17/Android-NDk%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B/</url>
       <content type="html"><![CDATA[<h2 id="Java编写native方法"><a href="#Java编写native方法" class="headerlink" title="Java编写native方法"></a>Java编写native方法</h2><p>新建JniUtil类如下:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniUtil</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 回调接口</div><div class="line">	 * <span class="doctag">@author</span> jimi098</div><div class="line">	 *</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IRecFrameListener</span> </span>&#123;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRecFrameListener</span><span class="params">(String result)</span></span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> IRecFrameListener mListener;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		</div><div class="line">		System.loadLibrary(<span class="string">"test"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnRecFrameListener</span><span class="params">(IRecFrameListener listener)</span> </span>&#123;</div><div class="line">		</div><div class="line">		mListener = listener;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 供jni调用的java方法</div><div class="line">	 * <span class="doctag">@param</span> result</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRecFrame</span><span class="params">(<span class="keyword">int</span> result)</span> </span>&#123;</div><div class="line">		mListener.onRecFrameListener(String.valueOf(result));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//java本地方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">init</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">getString</span><span class="params">(String input)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="生成-h头文件"><a href="#生成-h头文件" class="headerlink" title="生成.h头文件"></a>生成.h头文件</h2><p>编译JniUtil类，生成JniUtil.class文件，然后在cmd中切换目录至android工程的src文件夹路径，运行<code>javah -jni com.example.demo.JniUtil</code>命令即可生成.h头文件</p>
@@ -6974,7 +6974,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java并发编程之多线程同步]]></title>
-      <url>http://yoursite.com/2015/12/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/</url>
+      <url>http://liuguoquan727.github.io/2015/12/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E7%BA%BF%E7%A8%8B%E5%90%8C%E6%AD%A5/</url>
       <content type="html"><![CDATA[<p>线程安全就是防止某个对象或者值在多个线程中被修改而导致的数据不一致问题，因此我们就需要通过同步机制保证在同一时刻只有一个线程能够访问到该对象或数据，修改数据完毕之后，再将最新数据同步到主存中，使得其他线程都能够得到这个最新数据。下面我们就来了解Java一些基本的同步机制。</p>
 <h1 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h1><p>Java提供了一种稍弱的同步机制即volatile变量，用来确保将变量的更新操作通知到其他线程。当把变量声明为volatile类型后，编译器与运行时都会注意到这个变量是共享的。然而，在访问volatile变量时不会执行加锁操作，因此也就不会使线程阻塞，因此volatile变量是一种比synchronized关键字更轻量级的同步机制。</p>
 <p>volatile变量对所有的线程都是可见的，对volatile变量所有的写操作都能立即反应到其他线程之中，即volatile变量在各个线程中是一致的。</p>
@@ -7092,7 +7092,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java并发编程之多线程和线程池]]></title>
-      <url>http://yoursite.com/2015/12/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
+      <url>http://liuguoquan727.github.io/2015/12/26/Java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E4%B9%8B%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/</url>
       <content type="html"><![CDATA[<p>线程允许在同一个进程中同时存在多个程序控制流，即通过线程可以实现同时处理多个任务的功能。线程会共享进程范围内的资源，例如内存句柄和文件句柄，但每个线程都有各自的程序计数器、栈以及局部变量。</p>
 <h1 id="多线程的实现"><a href="#多线程的实现" class="headerlink" title="多线程的实现"></a>多线程的实现</h1><h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>对于Java的多线程来说，我们学习的一般都是Thread和Runnable，通过我们使用如下代码启动一个新的线程：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startewThread</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">new</span> Thread()&#123;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">			<span class="comment">// 耗时任务</span></div><div class="line">		&#125;</div><div class="line"></div><div class="line">	&#125;.start();</div><div class="line">&#125;</div><div class="line">或者</div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startewThread1</span><span class="params">()</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line"></div><div class="line">		<span class="meta">@Override</span></div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="comment">// 耗时任务</span></div><div class="line"></div><div class="line">		&#125;</div><div class="line">	&#125;).start();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -7210,7 +7210,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
 </tr>
 </tbody>
 </table>
-<p><a href="http://liuguoquan727.github.io/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/" target="_blank" rel="external">线程池参数也可以参考这篇文章http://liuguoquan727.github.io/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/:</a></p>
+<p><a href="http://liuguoquan727.github.io/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/">线程池参数也可以参考这篇文章http://liuguoquan727.github.io/2016/04/25/Android%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E6%B1%A0/:</a></p>
 <p>其中workQueue有下列几个常用的实现：</p>
 <ul>
 <li>ArrayBlockingQueue</li>
@@ -7324,7 +7324,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java注解Annotation和依赖注入]]></title>
-      <url>http://yoursite.com/2015/12/25/Java%E6%B3%A8%E8%A7%A3Annotation%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</url>
+      <url>http://liuguoquan727.github.io/2015/12/25/Java%E6%B3%A8%E8%A7%A3Annotation%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</url>
       <content type="html"><![CDATA[<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。</p>
 <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><ul>
 <li>标记作用</li>
@@ -7502,7 +7502,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java反射Reflection]]></title>
-      <url>http://yoursite.com/2015/12/24/Java%E5%8F%8D%E5%B0%84Reflection/</url>
+      <url>http://liuguoquan727.github.io/2015/12/24/Java%E5%8F%8D%E5%B0%84Reflection/</url>
       <content type="html"><![CDATA[<h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a>Java反射</h1><h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>Java反射是可以让我们在运行时获取类的函数、属性、父类、接口等Class内部信息的机制。通过反射还可以让我们在运行期实例化对象，调用方法，通过调用get/set方法获取和设置变量的值，即使方法或属性是类私有的也可以通过反射的形式调用，这种“看透Class“的能力被称为内省，这种能力在框架开发中尤为重要。有些情况下，我们要使用的类在运行时才会确定，这个时候我们不能在编译期就使用它，因此只能通过反射的形式来使用在运行时才存在的类（该类符合某种特定规范，例如JDBC），这是反射用得比较多的场景。</p>
 <p>还有一个比较常见的场景就是编译时我们对于类的内部信息不可知，必须得到运行时才能获取类的具体信息。比如ORM框架，在运行时才能够获取类中的各个属性，然后通过反射的形式获取其属性名和值，存入数据库，这也是反射比较经典应用场景之一。</p>
 <h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>既然反射是操作Class信息的，那么Class又是什么呢？</p>
@@ -7565,7 +7565,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之并发容器LinkedBlockingQueue]]></title>
-      <url>http://yoursite.com/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8LinkedBlockingQueue/</url>
+      <url>http://liuguoquan727.github.io/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8LinkedBlockingQueue/</url>
       <content type="html"><![CDATA[<p>LinkedBlockingQueue是一个基于已链接节点的、范围任意的阻塞队列的实现。 此队列按 FIFO（先进先出）排序元素。队列的头部 是在队列中时间最长的元素。队列的尾部 是在队列中时间最短的元素。新元素插入到队列的尾部，并且队列检索操作会获得位于队列头部的元素。链接队列的吞吐量通常要高于基于数组的队列， 但是在大多数并发应用程序中，其可预知的性能要低。</p>
 <p>可选的容量范围构造方法参数作为防止队列过度扩展的一种方法。如果未指定容量，则它等于 Integer.MAX_VALUE。除非插入节点会使队列超出容量，否则每次插入后会动态地创建链接节点。</p>
 <h1 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedBlockingQueue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractQueue</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">        <span class="keyword">implements</span> <span class="title">BlockingQueue</span>&lt;<span class="title">E</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
@@ -7576,7 +7576,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之并发容器ConcurrentLinkedQueue]]></title>
-      <url>http://yoursite.com/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentLinkedQueue/</url>
+      <url>http://liuguoquan727.github.io/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentLinkedQueue/</url>
       <content type="html"><![CDATA[<p>在并发编程中我们有时候需要使用线程安全的队列。如果我们要实现一个线程安全的队列，有两种实现方式，一种是阻塞式队列，另外一种是非阻塞式队列。使用阻塞算法的队列可以用一个锁（入队和出对用同一把锁）或两个锁（入队和出对用不同的锁）等方式来实现，而非阻塞的实现则可以使用CAS的方式来实现。ConcurrentLinkedQueue是基于非阻塞式来实现的线程安全队列。</p>
 <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>ConcurrentLinkedQueue是一个基于链接节点的无界线程安全队列，它采用先进先出的规则对节点进行排序，当我们添加一个元素的时候，它会添加到队列的尾部，当我们获取一个元素的时候，它会返回队列头部的元素。它采用了“wait-free”算法来实现。</p>
 <h1 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcurrentLinkedQueue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractQueue</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">        <span class="keyword">implements</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
@@ -7603,7 +7603,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之并发容器CopyOnWriteArrayList]]></title>
-      <url>http://yoursite.com/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8CopyOnWriteArrayList/</url>
+      <url>http://liuguoquan727.github.io/2015/12/23/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8CopyOnWriteArrayList/</url>
       <content type="html"><![CDATA[<p>Copy-On-Write简称COW，是一种用于程序设计中的优化策略。其基本思路是，从一开始大家都在共享一个内容，当某个人想要修改这个内容的时候，才会真正把内容Copy出去形成一个新的内容然后在此基础上进行修改，这是一种延时懒惰策略。从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器，它们是CopyOnWriteArrayList和CopyOnWriteArraySet。CopyOnWrite容器非常有用，可以在非常多的并发场景中使用到。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>CopyOnWrite容器即写时复制的容器。通俗的理解是当我向一个容器中添加元素的时候，不直接往当前容器添加，而是先将当前容器进行Copy，复制出一个新的容器，然后往新的容器里添加元素，添加元素后，再将原容器的引用指向新的容器。这样做的好处是我们可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素，所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。</p>
 <h2 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyOnWriteArrayList</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
@@ -7628,7 +7628,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之并发容器ConcurrentHashMap]]></title>
-      <url>http://yoursite.com/2015/12/22/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentHashMap/</url>
+      <url>http://liuguoquan727.github.io/2015/12/22/Java%E9%9B%86%E5%90%88%E4%B9%8B%E5%B9%B6%E5%8F%91%E5%AE%B9%E5%99%A8ConcurrentHashMap/</url>
       <content type="html"><![CDATA[<h1 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h1><table>
 <thead>
 <tr>
@@ -7686,7 +7686,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之LinkedhashMap]]></title>
-      <url>http://yoursite.com/2015/12/20/Java%E9%9B%86%E5%90%88%E4%B9%8BLinkedHashMap/</url>
+      <url>http://liuguoquan727.github.io/2015/12/20/Java%E9%9B%86%E5%90%88%E4%B9%8BLinkedHashMap/</url>
       <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>LinkedHashMap是HashMap的一个子类，它在HashMap的基础上维持了一个双向链表（hash表+双向链表），在遍历的时候可以使用插入顺序（先进先出），或者是最近最少使用（LRU）的顺序。</p>
 <p>LinkedHashMap是key键有序的一种集合，使用双向链表来保证key的顺序。</p>
 <h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>一般来说，如果需要使用的Map中的key无序，选择HashMap；如果要求key有序，则选择TreeMap。<br>但是选择TreeMap就会有性能问题，因为TreeMap的get操作的时间复杂度是O(log(n))的，相比于HashMap的O(1)还是差不少的，LinkedHashMap的出现就是为了平衡这些因素，使得能够以O(1)时间复杂度增加查找元素，又能够保证key的有序性。</p>
@@ -7724,7 +7724,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之TreeMap]]></title>
-      <url>http://yoursite.com/2015/12/19/Java%E9%9B%86%E5%90%88%E4%B9%8BTreeMap/</url>
+      <url>http://liuguoquan727.github.io/2015/12/19/Java%E9%9B%86%E5%90%88%E4%B9%8BTreeMap/</url>
       <content type="html"><![CDATA[<p>TreeMap是基于红黑树结构的一种Map，要分析TreeMap的实现首先要了解红黑树这种数据结构。</p>
 <h1 id="二叉树、红黑树简介"><a href="#二叉树、红黑树简介" class="headerlink" title="二叉树、红黑树简介"></a>二叉树、红黑树简介</h1><p>先简单总结一下数组，链表，Hash表以及树的优缺点:</p>
 <ul>
@@ -7811,7 +7811,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之HashMap]]></title>
-      <url>http://yoursite.com/2015/12/19/Java%E9%9B%86%E5%90%88%E4%B9%8BHashMap/</url>
+      <url>http://liuguoquan727.github.io/2015/12/19/Java%E9%9B%86%E5%90%88%E4%B9%8BHashMap/</url>
       <content type="html"><![CDATA[<h1 id="签名（Signature）"><a href="#签名（Signature）" class="headerlink" title="签名（Signature）"></a>签名（Signature）</h1><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HashMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</span></div><div class="line">       <span class="keyword">extends</span> <span class="title">AbstractMap</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;</div><div class="line">       <span class="keyword">implements</span> <span class="title">Map</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></div></pre></td></tr></table></figure>
 <p>可以看到HashMap实现了：</p>
 <ul>
@@ -7913,7 +7913,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之ArrayList和LinkedList]]></title>
-      <url>http://yoursite.com/2015/12/18/Java%E9%9B%86%E5%90%88%E4%B9%8BArrayList%E5%92%8CLinkedList/</url>
+      <url>http://liuguoquan727.github.io/2015/12/18/Java%E9%9B%86%E5%90%88%E4%B9%8BArrayList%E5%92%8CLinkedList/</url>
       <content type="html"><![CDATA[<h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>ArrayList是 Java 集合框架中使用最为普遍的集合类之一。ArrayList 是一种 List 实现，允许包括null在内的所有元素，它的内部用一个动态数组来存储元素，因此 ArrayList 能够在添加和移除元素的时候进行动态的扩展和缩减。</p>
 <p>ArrayList有容量限制。超出限制时会增加50%容量，用System.arraycopy()复制到新的数组，因此最好能给出数组大小的预估值。默认第一次插入元素时创建大小为10的数组。</p>
 <p>ArrayList按数组下标访问元素–get(i)/set(i,e) 的性能很高，这是数组的基本优势。</p>
@@ -8000,7 +8000,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合之Arrays和Collections]]></title>
-      <url>http://yoursite.com/2015/12/18/Java%E9%9B%86%E5%90%88%E4%B9%8BArrays%E5%92%8CCollections/</url>
+      <url>http://liuguoquan727.github.io/2015/12/18/Java%E9%9B%86%E5%90%88%E4%B9%8BArrays%E5%92%8CCollections/</url>
       <content type="html"><![CDATA[<h1 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h1><p>java.util.Arrays</p>
 <p><a href="http://www.apihome.cn/api/java/Arrays.html" target="_blank" rel="external">Arrays详细介绍</a></p>
 <p>Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：</p>
@@ -8045,7 +8045,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Java集合框架简介]]></title>
-      <url>http://yoursite.com/2015/12/18/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</url>
+      <url>http://liuguoquan727.github.io/2015/12/18/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<p>Java集合代表了一组对象。Java中的集合框架定义了一套规范，用来表示、操作集合，使具体操作与实现细节解耦。</p>
 <h1 id="两大基类Collection与Map"><a href="#两大基类Collection与Map" class="headerlink" title="两大基类Collection与Map"></a>两大基类Collection与Map</h1><p>在集合框架的类继承体系中，最顶层有两个接口：</p>
 <ul>
@@ -8092,7 +8092,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[Http协议详解]]></title>
-      <url>http://yoursite.com/2015/12/18/Http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2015/12/18/Http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>HTTP是一种应用层协议，它通过TCP实现了可靠的数据传输，能够保证数据的完整性、正确性，而TCP对于数据传输控制的优点也能够体现在HTTP上，使得HTTP的数据传输吞吐量、效率得到保证。</p>
 <p>对于移动开发来说，网络应用基本上都是C/S架构，也就是客户端/服务器架构。客户端通过向服务器发起特定的请求，服务器返回结果，客户端解析结果，再将结果展示在UI上。客户端与服务器的交互如下所示：</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E4%BA%A4%E4%BA%92.png" alt=""></p>
@@ -8240,7 +8240,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TCP/IP（五）TCP协议详解]]></title>
-      <url>http://yoursite.com/2015/12/17/TCP-IP5TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</url>
+      <url>http://liuguoquan727.github.io/2015/12/17/TCP-IP5TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<p>TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。</p>
 <h1 id="数据包重发"><a href="#数据包重发" class="headerlink" title="数据包重发"></a>数据包重发</h1><h2 id="数据发送"><a href="#数据发送" class="headerlink" title="数据发送"></a>数据发送</h2><p>丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。</p>
 <p>根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个位置开始发送！“。下图表示了数据发送与确认应答的过程：</p>
@@ -8284,7 +8284,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TCP/IP（四）TCP与UDP协议]]></title>
-      <url>http://yoursite.com/2015/12/17/TCP-IP4TCP%E4%B8%8EUDP%E5%8D%8F%E8%AE%AE/</url>
+      <url>http://liuguoquan727.github.io/2015/12/17/TCP-IP4TCP%E4%B8%8EUDP%E5%8D%8F%E8%AE%AE/</url>
       <content type="html"><![CDATA[<p>传输层位于OSI七层模型的第四层，传输层的主要作用是实现应用程序之间的通信。网络层主要是保证不同数据链路下数据的可达性，至于如何传输数据则是由传输层负责。</p>
 <h1 id="传输层协议简介"><a href="#传输层协议简介" class="headerlink" title="传输层协议简介"></a>传输层协议简介</h1><p>常见的传输层协议主要有TCP协议和UDP协议。</p>
 <h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP协议是面向有连接的协议，也就是说在使用TCP协议传输数据之前一定要在发送方和接收方之间建立连接。一般情况下建立连接需要三步，关闭连接需要四步。</p>
@@ -8353,7 +8353,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TCP/IP（三）IP协议相关技术]]></title>
-      <url>http://yoursite.com/2015/12/17/TCP-IP3IP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF/</url>
+      <url>http://liuguoquan727.github.io/2015/12/17/TCP-IP3IP%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF/</url>
       <content type="html"><![CDATA[<p>IP协议旨在让最终目标主机收到数据包，但是在这一过程中仅仅有IP是无法实现通信的。必须还有能够解析主机名称和MAC地址的功能，以及数据包在发送过程中异常情况处理的功能。本文主要介绍作为IP的辅助和扩展规范的DNS、ARP、ICMP、NAT等协议。</p>
 <h1 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h1><p>全称Domain Name System，域名系统</p>
 <p>IP地址用于识别通信双方的地址，但它是一串长数字，比方便记忆，人们希望主机有自己的名字，这个名字是唯一的，而且容易记住，于是诞生了“域名”的概念。域名是一种为了识别主机名称和机构名的具有分层的名称，比如在域名neu.edu.cn中，neu是主机名，edu和cn是不同层次下的机构名。</p>
@@ -8388,7 +8388,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TCP/IP（二）IP协议]]></title>
-      <url>http://yoursite.com/2015/12/17/TCP-IP2IP%E5%8D%8F%E8%AE%AE/</url>
+      <url>http://liuguoquan727.github.io/2015/12/17/TCP-IP2IP%E5%8D%8F%E8%AE%AE/</url>
       <content type="html"><![CDATA[<p>IP协议属于TCP/IP网络模型的第三层-网络层，它的主要作用是实现终端节点之间的通信。IP协议是网络层的一个重要协议，网络层中还有ARP协议（获取MAC地址）和ICMP协议（数据发送异常通知）。</p>
 <p>数据链路层的作用在于实现同一中数据链路下的包传递，而网络层则可以实现跨越不同数据链的包传递。比如主机A通过WI-FI连接到路由器B，路由器B通过以太网连接到路由器C，而路由器C又通过WI-FI与主机D保持连接，这时主机A向D发送的数据包就依赖于网络层进行传输。</p>
 <p>IP大致分为三大作用模块：IP寻址、路由以及IP分包和组包</p>
@@ -8523,7 +8523,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[TCP/IP（一）分层模型]]></title>
-      <url>http://yoursite.com/2015/12/17/TCP-IP1%E6%A8%A1%E5%9E%8B/</url>
+      <url>http://liuguoquan727.github.io/2015/12/17/TCP-IP1%E6%A8%A1%E5%9E%8B/</url>
       <content type="html"><![CDATA[<h1 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h1><p>在OSI参考模型中，网络被分为七层，从下到上依次是：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
 <p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-osi.png" alt="osi七层模型"></p>
 <ul>
@@ -8687,7 +8687,7 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     <entry>
       <title><![CDATA[搭建和配置Hexo+Github pages个人博客]]></title>
-      <url>http://yoursite.com/2015/12/15/%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AEHexo-Github-pages%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
+      <url>http://liuguoquan727.github.io/2015/12/15/%E6%90%AD%E5%BB%BA%E5%92%8C%E9%85%8D%E7%BD%AEHexo-Github-pages%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<h2 id="Window下安装GitHub-Pages-Hexo"><a href="#Window下安装GitHub-Pages-Hexo" class="headerlink" title="Window下安装GitHub Pages + Hexo"></a>Window下安装GitHub Pages + Hexo</h2><p>本着不重复造轮子的精神，下面提供两篇博文来记录安装过程，因为这两篇文章详细记录了GitHub Pages + Hexo 的安装过程，跟着流程能够成功搭建出基本的个人博客。</p>
 <p><a href="http://www.jianshu.com/p/985d07d88ef4" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（一）</a><br><a href="http://www.jianshu.com/p/1973930813f9" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（三）</a></p>
 <p>如有自己有申请独立的域名，可参看下面这篇博文<br><a href="http://www.jianshu.com/p/098d99de63fd" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（二）</a></p>

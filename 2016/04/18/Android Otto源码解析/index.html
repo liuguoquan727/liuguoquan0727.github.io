@@ -17,7 +17,7 @@
 构造函数123456789101112131415161718192021222324private final String identifier;private final ThreadEnforcer enforcer;private final HandlerFinder handlerFinder;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Otto源码解析">
-<meta property="og:url" content="http://yoursite.com/2016/04/18/Android Otto源码解析/index.html">
+<meta property="og:url" content="http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/index.html">
 <meta property="og:site_name" content="求缺斋">
 <meta property="og:description" content="前面介绍了Otto的使用情况，下面开始进入Otto的源码分析之旅。
 首先来看看构造函数：
@@ -193,7 +193,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" target="_blank" rel="external">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
+            <p>前面介绍了<a href="http://liuguoquan727.github.io/2016/04/17/Android_Otto%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/">Otto的使用情况</a>，下面开始进入Otto的源码分析之旅。</p>
 <p>首先来看看构造函数：</p>
 <h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> String identifier;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> ThreadEnforcer enforcer;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">final</span> HandlerFinder handlerFinder;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(DEFAULT_IDENTIFIER);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(ThreadEnforcer.MAIN, identifier);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Bus</span><span class="params">(ThreadEnforcer enforcer, String identifier)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>(enforcer, identifier, HandlerFinder.ANNOTATED);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Bus(ThreadEnforcer enforcer, String identifier, HandlerFinder handlerFinder) &#123;</div><div class="line">    <span class="keyword">this</span>.enforcer =  enforcer;</div><div class="line">    <span class="keyword">this</span>.identifier = identifier;</div><div class="line">    <span class="keyword">this</span>.handlerFinder = handlerFinder;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>默认参数enforcer=ThreadEnforcer.MAIN，identifier=DEFAULT_IDENTIFIER，handlerFinder=HandlerFinder.ANNOTATED。下面来看看这些参数是什么意思：</p>
@@ -257,10 +257,10 @@
 
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2016/04/18/Android Otto源码解析/" target="_blank" rel="external">http://yoursite.com/2016/04/18/Android Otto源码解析/</a>
+        这里写留言或版权声明：<a href="/2016/04/18/Android Otto源码解析/" target="_blank" rel="external">http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/</a>
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="http://liuguoquan727.github.io">
             <img src="/icon.jpg" alt="刘涤生">
             刘涤生
         </a>
@@ -286,7 +286,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -296,22 +296,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 求缺斋&url=http://yoursite.com/2016/04/18/Android Otto源码解析/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 求缺斋&url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -355,7 +355,7 @@
 
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="Android Otto源码解析" data-title="Otto源码解析" data-url="http://yoursite.com/2016/04/18/Android Otto源码解析/"></div>
+	<div class="ds-thread" data-thread-key="Android Otto源码解析" data-title="Otto源码解析" data-url="http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2.7"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -409,7 +409,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -419,22 +419,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&title=《Otto源码解析》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 求缺斋&url=http://yoursite.com/2016/04/18/Android Otto源码解析/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Otto源码解析》 — 求缺斋&url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/18/Android Otto源码解析/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2016/04/18/Android Otto源码解析/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -445,7 +445,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aS27DMAwFwNz/0inQVYHUziPpFLU0Whlo0mi8IPh7POLz/D6vz6+f+XmO/nr0+aPvXnYwMDBuy0j+3fm1kqvk+CYVAwNjA0YeZKuAJCgnz2/ujIGBgREkfNXAnaePGBgYGL2AOyl9zxNHDAwMjEkR20sW52nixbU4BgbGDRlXhc5PPP/RfAMDA+MfM56D0xtnJkG8fBMMDIylGeettF5Kl4fO3nJGdC0MDIyFGPNWfv4ikvWL3ivAwMDYjVFtriWM6msqF7QYGBgbMKot+JyRJ53V1/RL+YqBgbEBo1d2FpYhiqtmhSoVAwNjaUYySpykgPP2XCGUY2BgLMqojifzdlvesKu22DAwMHZj5EGtWrhOQnB1TQ0DA2NtRtJuqy5J9NbC8iHom1ocAwNjOUZemlavOGn991JMDAyMVRm9Ijb5+d6SRx6IMTAwdmNUk7ZJOlgdlDaLWAwMjIUYk6/l4XhS3DYTRAwMjOUYk8A3H0zm38rXPjAwMNZjNFOxImmSIEYvBQMDYwNGr9V1VaHbSyVHKxcYGBi3YkwWKXqjynKWWk06MTAwFmI8i2c+QsgDejO3xcDAWI5xbbT+RBl8bbDGwMC4L2MSZJPEsbfqWl7awMDA2IBRDXx5s6w6SMhHqhgYGBi9wrXatquWu9EIEwMDY2PGedpXZfcCOgYGxs6M5GeqqxK9VLI5DMDAwFiaMR8MJCF4njgW0kQMDIx1GF81bdE/FF954wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3aQW7cMBAEwPz/0w6QUw6R1D0jLjZA6WTY8pJFAyTdM79+xc/Pn+f+O7Pf/fnruf+EfMT6wcPDwxtN/eq5GiCZdPL11Yj3y5TMGQ8PD+80L/+45LfaTTxfgnzOeHh4eN/AawH3W/b+YMDDw8P7X3gJINnco8nh4eHhfTEvCSPyYWZHyOaq/ULWgoeHhxfz9mHB578+WN/Dw8PDW1TVkw23vTqfKHddzhYPDw/vAG9TZMpbDe4D3LfKacV/DHh4eHhrXrsdz95MkJuAI7p84+Hh4b3K2zcHJJt+O61Z8xYeHh7eOV5bjG8ZbeNpexF/WBQ8PDy8A7z7H7fTzbf1+xHb1oSidoeHh4e35rVlrU1gMfvkNoy4vFLj4eHhvcqbFahm23feNJC3DjyEEXh4eHiv8pIB8g169ma+TG9FvXh4eHh7XjtwHry2rQPJ1p//efDw8PBO8GatUTnm3KEShRp4eHh4x3izttF9sT9f3Dwyvsxa8PDw8F7lbSLU2ZV3kxgULQt4eHh4x3jtBbdt2NqU1vJj6aG+h4eHh3eA18YEbaPA7NKcXN8vR8HDw8P7OG9zzb1/c18Yi44KPDw8vAO8Nm5og9dZAJEvNB4eHt7neZvrbz6t/OBpo+GH+eDh4eEd4M2utu323Qa7s0au6NzDw8PDW/P2G3R7hMyaqPKrPx4eHt438PIAdxPF5ozi6MLDw8M7wNuEqpv2glm76iwOxsPDw3uXV19SyyC1bR1or9R4eHh4n+ftm1DbN5MQdnZgzEpoeHh4eDNechi0wUR7tLSLlR9UeHh4eOd4m4AgD1uTA2YTRjx0luHh4eF9nNe2PeWNBZvvPywHHh4e3tfwZlt2tJWXofDDYYOHh4d3jJeHEbOCU7K5581V9ZUaDw8P71XerACWDLA/AGbL8ULrAB4eHt6/3/8Nvk3FOoE/pAoAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

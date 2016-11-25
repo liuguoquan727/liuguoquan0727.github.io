@@ -15,7 +15,7 @@
   <meta name="description" content="点击事件的传递规则首先明确我们这里要分析的对象就是MotionEvent，及点击事件。所谓点击事件的事件分发，其实就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生了以后，系统需要把这个事件传递给一个具体的View，而这个传递的过程就是分发过程。点击事件的分发过程由三个很重要的方法来共同完成：dispatchTouchEvent、onInterceptTouchEv">
 <meta property="og:type" content="article">
 <meta property="og:title" content="View的事件分发机制">
-<meta property="og:url" content="http://yoursite.com/2016/04/26/Android-View的事件分发机制/index.html">
+<meta property="og:url" content="http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/index.html">
 <meta property="og:site_name" content="求缺斋">
 <meta property="og:description" content="点击事件的传递规则首先明确我们这里要分析的对象就是MotionEvent，及点击事件。所谓点击事件的事件分发，其实就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生了以后，系统需要把这个事件传递给一个具体的View，而这个传递的过程就是分发过程。点击事件的分发过程由三个很重要的方法来共同完成：dispatchTouchEvent、onInterceptTouchEv">
 <meta property="og:updated_time" content="2016-04-26T13:25:38.000Z">
@@ -280,10 +280,10 @@
 
         <blockquote class="post-copyright">
     <div class="content">
-        这里写留言或版权声明：<a href="/2016/04/26/Android-View的事件分发机制/" target="_blank" rel="external">http://yoursite.com/2016/04/26/Android-View的事件分发机制/</a>
+        这里写留言或版权声明：<a href="/2016/04/26/Android-View的事件分发机制/" target="_blank" rel="external">http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/</a>
     </div>
     <footer>
-        <a href="http://yoursite.com">
+        <a href="http://liuguoquan727.github.io">
             <img src="/icon.jpg" alt="刘涤生">
             刘涤生
         </a>
@@ -309,7 +309,7 @@
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -319,22 +319,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/26/Android-View的事件分发机制/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《View的事件分发机制》 — 求缺斋&url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《View的事件分发机制》 — 求缺斋&url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -378,7 +378,7 @@
 
     
 <div class="duoshuo" id="comments">
-	<div class="ds-thread" data-thread-key="Android-View的事件分发机制" data-title="View的事件分发机制" data-url="http://yoursite.com/2016/04/26/Android-View的事件分发机制/"></div>
+	<div class="ds-thread" data-thread-key="Android-View的事件分发机制" data-title="View的事件分发机制" data-url="http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/"></div>
 </div>
 <script src="/js/embed.min.js?v=1.2.7"></script>
 <script src="//cdn.bootcss.com/marked/0.3.6/marked.min.js" async="async"></script>
@@ -432,7 +432,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
     <div class="tit">分享到：</div>
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&pic=http://yoursite.com/icon.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&pic=http://liuguoquan727.github.io/icon.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -442,22 +442,22 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&title=《View的事件分发机制》 — 求缺斋&source=像外行一样思考,像专家一样实践。" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/04/26/Android-View的事件分发机制/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《View的事件分发机制》 — 求缺斋&url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/&via=http://yoursite.com" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《View的事件分发机制》 — 求缺斋&url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/&via=http://liuguoquan727.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2016/04/26/Android-View的事件分发机制/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://liuguoquan727.github.io/2016/04/26/Android-View的事件分发机制/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -468,7 +468,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true }</script>
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxklEQVR42u3aQW7CQAwF0N7/0lTqCqlAvj02tNLLCkWUzMti7H7P11d83X6u+8/3d559/9l3br+u5Fmvn3h04eHh4bWW/ux6vdzk8a8Bz+7kr/hiDXh4eHhrvOTnXi+uVzDy7T75Kzw8PLy/xnvPFp+8ODw8PLz/y0ta86QJPi9OeHh4eO/nJYvL8VVMHukuZi14eHh4tR24GQR86vP6fA8PDw+vNVWvNr69zTr5zd5q8fDw8DZ4vVC1N5o6GYDlBxoushY8PDy8IV4y0OqVh16IUB28FVptPDw8vCFeb5BfjXTzAwe9OPgipcbDw8Nb4FV/6Ly0VBv36uvAw8PD2+D1Wtu9tvjk+MKDO3h4eHgLvOrDkra7WjBOEpTCIQM8PDy8IV51C85j3DzYzXnlth4PDw9vgXdyLCCJbnvFJomDyxEGHh4e3hCvuvlWR2K98wv50YSLUBgPDw9vjdfbrPNBV77R5618oTDg4eHhjfLyZroaTCTgkyNWwzEEHh4eXszLH3be7Cax73mY++DQFR4eHt4Cr3pAKllitS1eCXnx8PDw3sLrjfzzqDff6PNnRTEuHh4e3gKv92//ySvIi1C1gD0oDHh4eHijvF6YW22pe68pH31d5NN4eHh4Q7ypzbo3EptqwaOn4+Hh4Q3xeu3s7NArDyPK4zQ8PDy8BV51+64eJuj1tycYPDw8vG1e0rz2hvp5E5y/mmoJwcPDw9vgJYvIDwpUm+xmINtrpvHw8PCGeLfiVT0cUH19eRGK1oOHh4e3wKtuvoUWNm6ge6OyqaKCh4eHd3L0qrcpVzf96p3kZV2UCjw8PLw13lQ8kce71bHZUSSBh4eH91He1GHWpMD0Wu2jwoCHh4c3yqvGqXnjWw15VwoDHh4e3tCEPR9N5aOsqRCkUBjw8PDwRnm9AVi+cedF5fx41th8Dw8PD+/xN78BqZS7YAW6xxMAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awW7bMBAE0Pz/T7vXAq3VGS43cYGnkxHIEh8DkPTsfn3F1+vxenfP739vn/P8zMsXHh4e3vLQ//zuu2c+f27x7TTh4eHhbfPaIebg52U9GmIwTW//joeHh/dhvPpl5XAvvBEPDw/vA3j54Tg5Ouf34OHh4X0aL49W8+NyfnQ+m77LWQseHh5ezMurSJ/zeaW+h4eHhzeuqs9bAZ4j3TbgqEeLh4eHt8DLF9x86PkUPMOS8CI64uPh4eFd5eWLeLs053FtG+MmTQx4eHh4e7y27SkZdN5cNc8TojYFPDw8vDXePAWdHIXPpqCo7+Hh4eFd4k1C2GRAZ4FFEpFEd+Lh4eGt8c4CgskB+hl5rfUKDw8Pb4GX/3Jvo9XLUWxcSCt6x/Dw8PCOePlrzl5/NimTSf/HvoeHh4d3iZfHrMkmkd/TxrttKQ4PDw9vg9eWlNqQdxLgtpvTKLfGw8PDi3lnr2wD3zwZyJf+aGvBw8PDW+DlUcJZK0C72STTdNiqhYeHh3eV1zZXtTHuZNFvt4S/fAsPDw/vKi9pVzpb4s9ykbNGhLeTi4eHh7fAu1V2aqfmwuAmwQQeHh7eYLRJ0b3FTCLaNobAw8PD+yneWXzQRr0tY9KIgIeHh7fHmxSuJsWteZktfyMeHh7eHi8/XidRRR5q5OHF4WkZDw8P71t4r8erbS9oGw5uFeTw8PDwvod3Fp4mG0Z+pD6s1737Lh4eHt5V3qu82hfk7VmTqan/b3h4eHgD3q3h5qFDG0wUha7JhYeHh1fy8ughCVgnzQFt9BBNIh4eHt4ab76gt0NZORzj4eHh/Se8HHN2jJ60I+Dh4eF9Ai9f1s+aU3NwFDTj4eHhrfHaFquNtoBbxTY8PDy8bV778z55RL5t5MfrlcoeHh4eXsf7BYixc6iWPUhRAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
