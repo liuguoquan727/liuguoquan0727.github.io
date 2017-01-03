@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ios,swift,xcode," />
+  <meta name="keywords" content="NDK," />
 
 
 
@@ -86,33 +86,34 @@
 
 
 
-<meta name="description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
-APIPopoverPresentationController
-barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
-sourceView：指定一个普视图作为锚点
-sourceRect:指定一个矩形区域作为锚点
-permittedArrowDirection：指定锚点箭头的方向（up,">
+<meta name="description" content="区别
+Java中的返回值void和JNI中的void完全对应（仅仅一个）
+
+Java中的基本数据类型（byte ,short ,int,long,float,double ,boolean,char－8种）在JNI中对应的数据类型只要在前面加上j就可以了（jbyte ,jshort ,jint,jlong,jfloat,jdouble ,jboolean,jchar）
+
+Java中的对象，包括类库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS开发之08PopoverView">
-<meta property="og:url" content="http://liuguoquan727.github.io/2016/11/25/iOS开发之08PopoverView/index.html">
+<meta property="og:title" content="JNI之参数类型与Java参数类型对比">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/01/02/JNI之参数类型与Java参数类型对比/index.html">
 <meta property="og:site_name" content="再读斋">
-<meta property="og:description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
-APIPopoverPresentationController
-barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
-sourceView：指定一个普视图作为锚点
-sourceRect:指定一个矩形区域作为锚点
-permittedArrowDirection：指定锚点箭头的方向（up,">
-<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif">
-<meta property="og:updated_time" content="2016-11-25T12:37:15.000Z">
+<meta property="og:description" content="区别
+Java中的返回值void和JNI中的void完全对应（仅仅一个）
+
+Java中的基本数据类型（byte ,short ,int,long,float,double ,boolean,char－8种）在JNI中对应的数据类型只要在前面加上j就可以了（jbyte ,jshort ,jint,jlong,jfloat,jdouble ,jboolean,jchar）
+
+Java中的对象，包括类库">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201111/10/0_13209061602sLG.gif">
+<meta property="og:image" content="http://hi.csdn.net/attachment/201111/10/0_1320906175mxw4.gif">
+<meta property="og:updated_time" content="2017-01-03T06:36:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS开发之08PopoverView">
-<meta name="twitter:description" content="PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。
-APIPopoverPresentationController
-barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点
-sourceView：指定一个普视图作为锚点
-sourceRect:指定一个矩形区域作为锚点
-permittedArrowDirection：指定锚点箭头的方向（up,">
-<meta name="twitter:image" content="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif">
+<meta name="twitter:title" content="JNI之参数类型与Java参数类型对比">
+<meta name="twitter:description" content="区别
+Java中的返回值void和JNI中的void完全对应（仅仅一个）
+
+Java中的基本数据类型（byte ,short ,int,long,float,double ,boolean,char－8种）在JNI中对应的数据类型只要在前面加上j就可以了（jbyte ,jshort ,jint,jlong,jfloat,jdouble ,jboolean,jchar）
+
+Java中的对象，包括类库">
+<meta name="twitter:image" content="http://hi.csdn.net/attachment/201111/10/0_13209061602sLG.gif">
 
 
 
@@ -140,13 +141,13 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
 
 
 
-  <link rel="canonical" href="http://liuguoquan727.github.io/2016/11/25/iOS开发之08PopoverView/"/>
+  <link rel="canonical" href="http://liuguoquan727.github.io/2017/01/02/JNI之参数类型与Java参数类型对比/"/>
 
 
 
 
 
-  <title> iOS开发之08PopoverView | 再读斋 </title>
+  <title> JNI之参数类型与Java参数类型对比 | 再读斋 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -302,7 +303,7 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/11/25/iOS开发之08PopoverView/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/02/JNI之参数类型与Java参数类型对比/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -326,7 +327,7 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
             
             
               
-                iOS开发之08PopoverView
+                JNI之参数类型与Java参数类型对比
               
             
           </h1>
@@ -341,8 +342,8 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-25T18:46:33+08:00">
-                2016-11-25 18:46:33
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T15:32:11+08:00">
+                2017-01-02 15:32:11
               </time>
             
 
@@ -364,8 +365,19 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -382,8 +394,8 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/11/25/iOS开发之08PopoverView/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/iOS开发之08PopoverView/" itemprop="commentCount"></span>
+                <a href="/2017/01/02/JNI之参数类型与Java参数类型对比/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/02/JNI之参数类型与Java参数类型对比/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -409,26 +421,20 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
       
 
       
-        <p>PopoverView是一种临时的视图，以漂浮的形式出现在视图表面，称为浮动层。</p>
-<h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="PopoverPresentationController"><a href="#PopoverPresentationController" class="headerlink" title="PopoverPresentationController"></a>PopoverPresentationController</h2><ul>
-<li>barButtonItem：指定一个UIBarButtonItem类型按钮作为锚点</li>
-<li>sourceView：指定一个普视图作为锚点</li>
-<li>sourceRect:指定一个矩形区域作为锚点</li>
-<li>permittedArrowDirection：指定锚点箭头的方向（up,down.lwft,right,any,unkown)</li>
+        <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><ul>
+<li><p>Java中的返回值void和JNI中的void完全对应（仅仅一个）</p>
+</li>
+<li><p>Java中的基本数据类型（byte ,short ,int,long,float,double ,boolean,char－8种）在JNI中对应的数据类型只要在前面加上j就可以了（jbyte ,jshort ,jint,jlong,jfloat,jdouble ,jboolean,jchar）</p>
+</li>
+<li><p>Java中的对象，包括类库中定义的类、接口以及自定义类接口，都对应于JNI中的jobject</p>
+</li>
+<li><p>Java中的基本数据类型对应的数组对应于JNI中的j<type>Array类型（type就是8中基本数据类型）</type></p>
+</li>
+<li><p>Java中对象的数组对应于JNI中的jobjectArray类型</p>
+</li>
 </ul>
-<h2 id="UIPopoverPresentationControllerDelegate"><a href="#UIPopoverPresentationControllerDelegate" class="headerlink" title="UIPopoverPresentationControllerDelegate"></a>UIPopoverPresentationControllerDelegate</h2><ul>
-<li>popoverPresentationControllerShouldDismissPopover:返回true可以消失，false不可消失</li>
-<li>popoverPresentationControllerDidDismissPopover：销毁时调用</li>
-<li>func prepareForPopoverPresentation(_ popoverPresentationController: UIPopoverPresentationController)：显示时调用</li>
-</ul>
-<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
-<li>创建iOS工程</li>
-<li>拖入一个Button到界面中心，并设置点击事件，点击按钮室弹出popover view</li>
-<li>代码实现</li>
-</ol>
-<h1 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h1><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  PopoverViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/17.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UIPopoverPresentationControllerDelegate</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mBtn: <span class="type">UIButton</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">show</span><span class="params">(<span class="number">_</span> sender: Any)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="comment">//作为popover View</span></div><div class="line">        <span class="keyword">let</span> controller = <span class="type">SelectViewController</span>();</div><div class="line">        <span class="comment">//设置为popover视图</span></div><div class="line">        controller.modalPresentationStyle = .popover</div><div class="line">        <span class="comment">//视图动画</span></div><div class="line">        controller.modalTransitionStyle = .crossDissolve</div><div class="line">        controller.preferredContentSize = <span class="type">CGSize</span>(width: <span class="number">300</span>, height: <span class="number">100</span>)</div><div class="line"></div><div class="line">        <span class="keyword">let</span> popController = controller.popoverPresentationController</div><div class="line">        popController?.sourceView = mBtn</div><div class="line">        popController?.sourceRect = mBtn.bounds</div><div class="line">        popController?.delegate = <span class="keyword">self</span></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.present(controller, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">adaptivePresentationStyle</span><span class="params">(<span class="keyword">for</span> controller: UIPresentationController)</span></span> -&gt; <span class="type">UIModalPresentationStyle</span> &#123;</div><div class="line">        <span class="comment">//popover样式</span></div><div class="line">        <span class="keyword">return</span> .<span class="keyword">none</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">prepareForPopoverPresentation</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"show"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">popoverPresentationControllerDidDismissPopover</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"hide"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">popoverPresentationControllerShouldDismissPopover</span><span class="params">(<span class="number">_</span> popoverPresentationController: UIPopoverPresentationController)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  SelectViewController.swift</span></div><div class="line"><span class="comment">//  PopoverViewSample</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/17.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SelectViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> label1:<span class="type">UILabel</span>!</div><div class="line">    <span class="keyword">var</span> label2:<span class="type">UILabel</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.view.frame = <span class="type">CGRect</span>(x: <span class="number">0</span>, y: <span class="number">0</span>, width: <span class="number">200</span>, height: <span class="number">500</span>)</div><div class="line"><span class="comment">//        label1 = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))</span></div><div class="line"><span class="comment">//        label2 = UILabel(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 200))</span></div><div class="line"><span class="comment">//        self.view.addSubview(label1)</span></div><div class="line"><span class="comment">//        self.view.addSubview(label2)</span></div><div class="line">        <span class="keyword">self</span>.view.backgroundColor = <span class="type">UIColor</span>.blue</div><div class="line"></div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/popover-view.gif" alt=""></p>
+<h1 id="基本数据类型映射图"><a href="#基本数据类型映射图" class="headerlink" title="基本数据类型映射图"></a>基本数据类型映射图</h1><p><img src="http://hi.csdn.net/attachment/201111/10/0_13209061602sLG.gif" alt="ALT TEXT"></p>
+<h1 id="引用数据类型的映射图"><a href="#引用数据类型的映射图" class="headerlink" title="引用数据类型的映射图"></a>引用数据类型的映射图</h1><p><img src="http://hi.csdn.net/attachment/201111/10/0_1320906175mxw4.gif" alt="ALT TEXT"></p>
 
       
     </div>
@@ -452,11 +458,7 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
       
         <div class="post-tags">
           
-            <a href="/tags/ios/" rel="tag"># ios</a>
-          
-            <a href="/tags/swift/" rel="tag"># swift</a>
-          
-            <a href="/tags/xcode/" rel="tag"># xcode</a>
+            <a href="/tags/NDK/" rel="tag"># NDK</a>
           
         </div>
       
@@ -465,8 +467,8 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/25/iOS开发之07视图控制器与导航模式/" rel="next" title="iOS开发之07视图控制器与导航模式">
-                <i class="fa fa-chevron-left"></i> iOS开发之07视图控制器与导航模式
+              <a href="/2016/11/25/iOS开发之08PopoverView/" rel="next" title="iOS开发之08PopoverView">
+                <i class="fa fa-chevron-left"></i> iOS开发之08PopoverView
               </a>
             
           </div>
@@ -474,10 +476,6 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/01/02/JNI之参数类型与Java参数类型对比/" rel="prev" title="JNI之参数类型与Java参数类型对比">
-                JNI之参数类型与Java参数类型对比 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,8 +524,8 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/25/iOS开发之08PopoverView/"
-           data-title="iOS开发之08PopoverView" data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之08PopoverView/">
+      <div class="ds-thread" data-thread-key="2017/01/02/JNI之参数类型与Java参数类型对比/"
+           data-title="JNI之参数类型与Java参数类型对比" data-url="http://liuguoquan727.github.io/2017/01/02/JNI之参数类型与Java参数类型对比/">
       </div>
     
   </div>
@@ -672,7 +670,7 @@ permittedArrowDirection：指定锚点箭头的方向（up,">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#API"><span class="nav-number">1.</span> <span class="nav-text">API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PopoverPresentationController"><span class="nav-number">1.1.</span> <span class="nav-text">PopoverPresentationController</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UIPopoverPresentationControllerDelegate"><span class="nav-number">1.2.</span> <span class="nav-text">UIPopoverPresentationControllerDelegate</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#步骤"><span class="nav-number">2.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码实现"><span class="nav-number">3.</span> <span class="nav-text">代码实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#效果"><span class="nav-number">4.</span> <span class="nav-text">效果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#区别"><span class="nav-number">1.</span> <span class="nav-text">区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本数据类型映射图"><span class="nav-number">2.</span> <span class="nav-text">基本数据类型映射图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引用数据类型的映射图"><span class="nav-number">3.</span> <span class="nav-text">引用数据类型的映射图</span></a></li></ol></div>
             
 
           </div>
