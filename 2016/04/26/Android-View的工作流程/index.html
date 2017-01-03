@@ -49,7 +49,7 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="null" class="js-avatar">
+			<img src="/icon.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">刘涤生</a></h1>
@@ -63,7 +63,11 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags/随笔/">随笔</a></li>
+				<li><a href="/archives">归档</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
 	        
 			</ul>
 		</nav>
@@ -85,9 +89,9 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/liuguoquan727" title="github"><i class="icon-github"></i></a>
 		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+					<a class="weibo" target="_blank" href="http://weibo.com/liuguoquan0727" title="weibo"><i class="icon-weibo"></i></a>
 		        
 					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 		        
@@ -109,7 +113,7 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="null" class="js-avatar">
+				<img src="/icon.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">刘涤生</h1>
@@ -123,14 +127,18 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/liuguoquan727" title="github"><i class="icon-github"></i></a>
 			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+						<a class="weibo" target="_blank" href="http://weibo.com/liuguoquan0727" title="weibo"><i class="icon-weibo"></i></a>
 			        
 						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
 			        
@@ -140,12 +148,16 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+					<li style="width: 25%"><a href="/archives">归档</a></li>
+		        
+					<li style="width: 25%"><a href="/tags">标签</a></li>
+		        
+					<li style="width: 25%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -336,7 +348,25 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 
 
   
-    <div class="duoshuo"></div>
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android-View的工作流程" data-title="View的工作流程" data-url="http://liuguoquan727.github.io/2016/04/26/Android-View的工作流程/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
 
@@ -366,10 +396,10 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: false,
+		open_in_new: true,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -463,15 +493,19 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color3">架构</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color5">Android动画</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -480,10 +514,6 @@ measure过程measure过程要分情况来看，如果只是一个原始的View�
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="color5">http</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
