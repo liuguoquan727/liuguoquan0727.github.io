@@ -5,10 +5,10 @@
   
 
 
-<html class="theme-next mist use-motion">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
@@ -27,18 +27,45 @@
 
 
 
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
 
 
 
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
   <meta name="keywords" content="Hexo, NexT" />
@@ -52,7 +79,7 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=5.1.0" />
 
 
 
@@ -71,19 +98,35 @@
 
 
 
-<script type="text/javascript" id="hexo.configuration">
+<script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Mist',
+    root: '/',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
-      userId: 0,
+      userId: '0',
       author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
   };
 </script>
+
+
+
+  <link rel="canonical" href="http://liuguoquan727.github.io/page/3/"/>
+
+
+
+
 
   <title> 再读斋 </title>
 </head>
@@ -98,7 +141,7 @@
     var _hmt = _hmt || [];
     (function() {
       var hm = document.createElement("script");
-      hm.src = "//hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
       var s = document.getElementsByTagName("script")[0];
       s.parentNode.insertBefore(hm, s);
     })();
@@ -128,11 +171,13 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">MICHAEL</span>
+      <span class="site-title">再读斋</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">MICHAEL</p>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
 </div>
 
 <div class="site-nav-toggle">
@@ -153,7 +198,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
           </a>
@@ -163,7 +208,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
             归档
           </a>
@@ -173,7 +218,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
             分类
           </a>
@@ -183,19 +228,9 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
           </a>
         </li>
       
@@ -203,7 +238,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="#" class="popup-trigger">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
@@ -230,6 +265,8 @@
   
 </nav>
 
+
+
  </div>
     </header>
 
@@ -243,13 +280,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/17/Android_DataBinding使用详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -261,8 +311,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/06/02/Android Context详解/" itemprop="url">
-                  Android Context详解
+                <a class="post-title-link" href="/2016/04/17/Android_DataBinding使用详解/" itemprop="url">
+                  Android官方数据绑定框架DataBinding
                 </a>
               
             
@@ -271,24 +321,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-02T21:20:28+08:00" content="2016-06-02 21:20:28">
-              2016-06-02 21:20:28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-17T15:23:25+08:00">
+                2016-04-17 15:23:25
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android/" itemprop="url" rel="index">
                     <span itemprop="name">Android</span>
                   </a>
@@ -296,7 +358,6 @@
 
                 
                 
-
               
             </span>
           
@@ -304,9 +365,12 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/06/02/Android Context详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/02/Android Context详解/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/17/Android_DataBinding使用详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Android_DataBinding使用详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -315,6 +379,10 @@
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -330,14 +398,16 @@
       
         
           
-          前言Activity可以new吗？Android的应用程序开发采用Java语言，Activity本质上也是一个对象，那Activity activity = new Activity()这种写法有什么问题吗？Android应用模型是基于组件的设计模式，组件的运行需要有一个完整的Android工程环境
+          转载自一叶飘舟
+Android新推出了一个官方的数据绑定框架Data Binding Library，既然是官方推出的新玩意，我们就有必要了解一下Android新带来的数据绑定框架，等到该框架推出正式版的时候，我们就可以快速地运用到项目中去。数据绑定框架给我们带来了很大的方便性，以前我们可能需要在A
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/06/02/Android Context详解/#more" rel="contents">
+            <a class="btn" href="/2016/04/17/Android_DataBinding使用详解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -345,6 +415,11 @@
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -363,13 +438,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/17/Android_Butterknife使用详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -381,8 +469,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/26/Android-View的事件分发机制/" itemprop="url">
-                  View的事件分发机制
+                <a class="post-title-link" href="/2016/04/17/Android_Butterknife使用详解/" itemprop="url">
+                  Butterknife使用详解
                 </a>
               
             
@@ -391,24 +479,36 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T21:22:52+08:00" content="2016-04-26 21:22:52">
-              2016-04-26 21:22:52
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-17T15:20:54+08:00">
+                2016-04-17 15:20:54
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android/" itemprop="url" rel="index">
                     <span itemprop="name">Android</span>
                   </a>
@@ -416,7 +516,6 @@
 
                 
                 
-
               
             </span>
           
@@ -424,9 +523,12 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/26/Android-View的事件分发机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/Android-View的事件分发机制/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/17/Android_Butterknife使用详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Android_Butterknife使用详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -435,6 +537,10 @@
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -450,14 +556,16 @@
       
         
           
-          点击事件的传递规则首先明确我们这里要分析的对象就是MotionEvent，及点击事件。所谓点击事件的事件分发，其实就是对MotionEvent事件的分发过程，即当一个MotionEvent事件产生了以后，系统需要把这个事件传递给一个具体的View，而这个传递的过程就是分发过程。点击事件的分发过程由三
+          项目地址GitHub地址:https://github.com/JakeWharton/butterknife
+简介ButterKnife这个开源库可以让我们从大量的findViewById和setOnClickListener中解放出来，其对性能的影响微乎其微（其自定义注解的实现都是限定为Rete
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/26/Android-View的事件分发机制/#more" rel="contents">
+            <a class="btn" href="/2016/04/17/Android_Butterknife使用详解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -465,6 +573,11 @@
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -483,13 +596,26 @@
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/17/Java内部类/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -501,8 +627,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/04/26/Android-View的工作流程/" itemprop="url">
-                  View的工作流程
+                <a class="post-title-link" href="/2016/04/17/Java内部类/" itemprop="url">
+                  Java内部类
                 </a>
               
             
@@ -511,32 +637,43 @@
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T21:22:34+08:00" content="2016-04-26 21:22:34">
-              2016-04-26 21:22:34
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-17T15:17:46+08:00">
+                2016-04-17 15:17:46
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
                 
                 
-
               
             </span>
           
@@ -544,9 +681,12 @@
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/26/Android-View的工作流程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/Android-View的工作流程/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/17/Java内部类/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Java内部类/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -555,6 +695,10 @@
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -570,15 +714,18 @@
       
         
           
-          View的工作流程主要指measure、layout、draw这三大流程，即测量、布局和绘制，其中measure确定View的测量宽/高，layout确定View的最终宽/高和四个顶点的位置（即View在父容器中的放置位置），draw则将View绘制到屏幕上。
-measure过程measure过程要
+          可以将一个类的定义放在另一个类的定义内部，这就是内部类。
+内部类是一种非常有用的特性，因为它允许你把一些逻辑相关的类组织在一起，并控制位于内部的类的可视性。然而必须要了解的是内部类与组合是完全不同的概念。
+创建局部内部类创建内部类的方式就是把类的定义置于外部类的里面。
+123456789101112
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/26/Android-View的工作流程/#more" rel="contents">
+            <a class="btn" href="/2016/04/17/Java内部类/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -586,6 +733,11 @@ measure过程measure过程要
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -604,13 +756,26 @@ measure过程measure过程要
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/17/Java字符串/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -622,8 +787,8 @@ measure过程measure过程要
             
               
                 
-                <a class="post-title-link" href="/2016/04/26/Android的消息机制/" itemprop="url">
-                  Android的消息机制
+                <a class="post-title-link" href="/2016/04/17/Java字符串/" itemprop="url">
+                  Java字符串
                 </a>
               
             
@@ -632,32 +797,43 @@ measure过程measure过程要
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-26T21:20:28+08:00" content="2016-04-26 21:20:28">
-              2016-04-26 21:20:28
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-17T15:17:06+08:00">
+                2016-04-17 15:17:06
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
                 
                 
-
               
             </span>
           
@@ -665,9 +841,12 @@ measure过程measure过程要
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/26/Android的消息机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/26/Android的消息机制/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/17/Java字符串/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/17/Java字符串/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -676,6 +855,10 @@ measure过程measure过程要
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -691,15 +874,17 @@ measure过程measure过程要
       
         
           
-          Android的消息机制概述Android的消息机制主要是指Handler的运行机制，Handler的运行机制需要底层的MessageQueue和Looper的支撑。
-MessageQueue的中文为消息队列，顾名思义，它的内部存储了一组消息，以队列的形式对外提供插入和删除的方法。虽然称为消息队列，
+          不可变StringString对象时不可变的。查看JDK文档你就会发现，String类中每一个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，这个新的String对象来包含修改后的字符串内容，而最初的String对象则没有变化。
+看看下面的代码：
+12345678910
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/26/Android的消息机制/#more" rel="contents">
+            <a class="btn" href="/2016/04/17/Java字符串/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -707,6 +892,11 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -725,13 +915,26 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/05/Java中的构造函数调用顺序/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -743,8 +946,8 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
             
               
                 
-                <a class="post-title-link" href="/2016/04/25/Android的线程和线程池/" itemprop="url">
-                  Android的线程和线程池
+                <a class="post-title-link" href="/2016/04/05/Java中的构造函数调用顺序/" itemprop="url">
+                  Java中的构造函数调用顺序
                 </a>
               
             
@@ -753,32 +956,43 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-25T21:06:06+08:00" content="2016-04-25 21:06:06">
-              2016-04-25 21:06:06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-05T21:21:56+08:00">
+                2016-04-05 21:21:56
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
                 
                 
-
               
             </span>
           
@@ -786,9 +1000,12 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/25/Android的线程和线程池/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/25/Android的线程和线程池/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/05/Java中的构造函数调用顺序/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/Java中的构造函数调用顺序/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -797,6 +1014,10 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -812,15 +1033,17 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
         
           
-          前言线程在Android中是一个很重要的概念，从用途上来说，线程分为主线程和子线程，主线程主要处理和界面相关的事情，而子线程则往往用于执行耗时操作。由于Android的特性，如果在主线程中执行耗时操作那么就会导致程序无法及时地响应，因此耗时操作必须放在子线程中去执行。
-在操作系统中，线程是操作系统调
+          面试题中经常这样的题目，分析子类父类构造函数的调用顺序，下面开始分情况讨论父类子类构造函数的调用顺序：
+先创建两个类A和B，其中B继承A
+12345678910111213141516171819202122232425262728293031323334public class A &#123;	
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/25/Android的线程和线程池/#more" rel="contents">
+            <a class="btn" href="/2016/04/05/Java中的构造函数调用顺序/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -828,6 +1051,11 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -846,13 +1074,26 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/05/Java中static关键字详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -864,8 +1105,8 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
             
               
                 
-                <a class="post-title-link" href="/2016/04/19/Android的IPC方式/" itemprop="url">
-                  Android的IPC方式
+                <a class="post-title-link" href="/2016/04/05/Java中static关键字详解/" itemprop="url">
+                  Java中static关键字详解
                 </a>
               
             
@@ -874,32 +1115,43 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T22:49:47+08:00" content="2016-04-19 22:49:47">
-              2016-04-19 22:49:47
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-05T21:20:58+08:00">
+                2016-04-05 21:20:58
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
                 
                 
-
               
             </span>
           
@@ -907,9 +1159,12 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/19/Android的IPC方式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Android的IPC方式/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/05/Java中static关键字详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/Java中static关键字详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -918,6 +1173,10 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -933,14 +1192,16 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
         
           
-          Bundle四大组件中的三大组件（Activity、Service、BroadcastReceiver）都是支持在Intent中传递Bundle数据的，由于Bundle实现了Parcelable接口，所以它可以方便地在不同的进程间传输，基于这一点，当我们在一个进程中启动了另一个进程的Activity
+          static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面五种情况：
+静态变量我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/19/Android的IPC方式/#more" rel="contents">
+            <a class="btn" href="/2016/04/05/Java中static关键字详解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -948,6 +1209,11 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -966,13 +1232,26 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -984,8 +1263,8 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
             
               
                 
-                <a class="post-title-link" href="/2016/04/19/Android的IPC机制/" itemprop="url">
-                  Android的IPC机制
+                <a class="post-title-link" href="/2016/04/05/Java中final关键字详解/" itemprop="url">
+                  Java中final关键字详解
                 </a>
               
             
@@ -994,32 +1273,43 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-19T22:39:32+08:00" content="2016-04-19 22:39:32">
-              2016-04-19 22:39:32
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-04-05T21:19:55+08:00">
+                2016-04-05 21:19:55
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
                 
                 
-
               
             </span>
           
@@ -1027,9 +1317,12 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/19/Android的IPC机制/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/19/Android的IPC机制/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/05/Java中final关键字详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/Java中final关键字详解/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1038,6 +1331,10 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -1053,17 +1350,16 @@ MessageQueue的中文为消息队列，顾名思义，它的内部存储了一�
       
         
           
-          Android IPC简介IPC是Inter-Process Communication的缩写，含义为进程间通信，是指两个进程之间进行数据交换的过程。
-Android中IPC的使用情况分为两种：
-
-第一种情况是一个应用因为某些原因自身需要采用多进程模式来实现，至于原因，可能有很多，比如有些模块由于特
+          Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。
+final关键字的基本用法Java中，final关键字可以用来修饰类、方法和变量（包括成员变量
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/19/Android的IPC机制/#more" rel="contents">
+            <a class="btn" href="/2016/04/05/Java中final关键字详解/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1071,6 +1367,11 @@ Android中IPC的使用情况分为两种：
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -1089,13 +1390,26 @@ Android中IPC的使用情况分为两种：
       
 
   
-  
 
   
   
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/31/Android动画之Interpolator/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
 
     
       <header class="post-header">
@@ -1107,8 +1421,8 @@ Android中IPC的使用情况分为两种：
             
               
                 
-                <a class="post-title-link" href="/2016/04/18/Android EventBus3.0源码解析/" itemprop="url">
-                  Android EventBus3.0源码解析
+                <a class="post-title-link" href="/2016/03/31/Android动画之Interpolator/" itemprop="url">
+                  Android动画之Interpolator
                 </a>
               
             
@@ -1117,24 +1431,36 @@ Android中IPC的使用情况分为两种：
 
         <div class="post-meta">
           <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-18T23:05:06+08:00" content="2016-04-18 23:05:06">
-              2016-04-18 23:05:06
-            </time>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-31T21:47:19+08:00">
+                2016-03-31 21:47:19
+              </time>
+            
+
+            
+
+            
           </span>
 
           
             <span class="post-category" >
-              &nbsp; | &nbsp;
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Android/" itemprop="url" rel="index">
                     <span itemprop="name">Android</span>
                   </a>
@@ -1142,7 +1468,6 @@ Android中IPC的使用情况分为两种：
 
                 
                 
-
               
             </span>
           
@@ -1150,9 +1475,12 @@ Android中IPC的使用情况分为两种：
           
             
               <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/18/Android EventBus3.0源码解析/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/18/Android EventBus3.0源码解析/" itemprop="commentsCount"></span>
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/31/Android动画之Interpolator/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/31/Android动画之Interpolator/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1161,6 +1489,10 @@ Android中IPC的使用情况分为两种：
           
 
           
+          
+
+          
+
           
 
         </div>
@@ -1176,18 +1508,16 @@ Android中IPC的使用情况分为两种：
       
         
           
-          前面已经介绍了EventBus3.0开源库的详细使用，下面我们开始进入其源代码的学习，先看看EventBus3.0与2.x版本之间的区别。
-
-项目地址https://github.com/greenrobot/EventBusEventBus版本是3.0
-
-EventBus 3.0与2.x的区别注册
+          简介Interpolator可以翻译成插值器。Android中interpolator的最底层接口如下:
+12345678910111213141516171819202122232425262728package android.animation; /** * 时间插值器定义了一个动画的变化率。
           ...
-
+          <!--noindex-->
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/04/18/Android EventBus3.0源码解析/#more" rel="contents">
+            <a class="btn" href="/2016/03/31/Android动画之Interpolator/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1195,6 +1525,1119 @@ EventBus 3.0与2.x的区别注册
     <div>
       
     </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/18/读书札记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/18/读书札记/" itemprop="url">
+                  读书札记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-18T00:02:15+08:00">
+                2016-03-18 00:02:15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/读书札记/" itemprop="url" rel="index">
+                    <span itemprop="name">读书札记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/18/读书札记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/读书札记/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          There is always another way.
+You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. 
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/18/读书札记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/15/博客开通/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/15/博客开通/" itemprop="url">
+                  博客开通记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-15T14:49:41+08:00">
+                2016-03-15 14:49:41
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/记录/" itemprop="url" rel="index">
+                    <span itemprop="name">记录</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/15/博客开通/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/15/博客开通/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          折腾了大半天，终于搭建好自己的个人博客，使用的是Hexo和Github Pages，博客简洁大方，以后就借此平台分享自己的生活。最后感谢Hexo的作者。
+纵浪大化中，不喜亦不惧。应尽便须尽，无复独多虑。
+
+          
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/15/博客开通/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/11/面向对象编程之依赖倒置原则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/面向对象编程之依赖倒置原则/" itemprop="url">
+                  面向对象编程之依赖倒置原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T20:45:16+08:00">
+                2016-03-11 20:45:16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/11/面向对象编程之依赖倒置原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/面向对象编程之依赖倒置原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          依赖倒置原则英文全称是Dependence Inversion Principle，缩写是DIP。依赖倒置原则指代了一种特定解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。这到底是什么意思呢？
+依赖倒置原则则有以下关键点：
+
+高层模块不应该依赖底层模块，两者都应该依
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/11/面向对象编程之依赖倒置原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/08/面向对象编程之里氏替换原则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/08/面向对象编程之里氏替换原则/" itemprop="url">
+                  面向对象编程之里氏替换原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-08T23:45:48+08:00">
+                2016-03-08 23:45:48
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/08/面向对象编程之里氏替换原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/08/面向对象编程之里氏替换原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          里氏替换原则的英文全称是Liskov Substitution Principle，缩写是LSP。
+LSP第一种定义是：如果对每一个类型的为S的对象O1，都有类型为T的对象O2，使得以T定义的所有程序P在所有对象O1都替换成O2时，程序P的行为不会发生变化，那么类型S是类型T的子类型。这不太好理解。
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/08/面向对象编程之里氏替换原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/07/面向对象编程之开闭原则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/07/面向对象编程之开闭原则/" itemprop="url">
+                  面向对象编程之开闭原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-07T22:53:20+08:00">
+                2016-03-07 22:53:20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/07/面向对象编程之开闭原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/07/面向对象编程之开闭原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          开闭原则的英文全称是Open Close Principle，缩写是OCP，它是Java世界里最基础的设计原则，它指导我们如何建立一个稳定的、灵活的系统。开闭原则的定义是：软件中的对象（类、模块、函数等）应该对于扩展是开放的，但是对于修改是封闭的。
+勃兰特-梅耶在1988年出版的《面向对象软件构造》
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/07/面向对象编程之开闭原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/05/面向对象编程之接口隔离原则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/05/面向对象编程之接口隔离原则/" itemprop="url">
+                  面向对象编程之接口隔离原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-05T20:47:56+08:00">
+                2016-03-05 20:47:56
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/05/面向对象编程之接口隔离原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/05/面向对象编程之接口隔离原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          接口隔离原则英文全称是Interface Segregation Principle，缩写是ISP。
+ISP的定义是：客户端不应该依赖它不需要的接口。另一种定义是：类间的依赖关系应该建立在最小的接口上。接口隔离原则将非常庞大、臃肿的接口拆分成更小具体的接口，这样客户讲会只需要知道他们感兴趣的方法。接
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/05/面向对象编程之接口隔离原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/03/04/面向对象编程之接口迪米特原则/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/04/面向对象编程之接口迪米特原则/" itemprop="url">
+                  面向对象编程之接口迪米特原则
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-04T20:49:10+08:00">
+                2016-03-04 20:49:10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/04/面向对象编程之接口迪米特原则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/04/面向对象编程之接口迪米特原则/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          迪米特原则英文全称为Law of Demeter，缩写是LOD，也称为最少知识原则（Least of Principle）。虽然名字不同，但描述的是同一个原则：一个对象应该对其他对象有最少的了解。通俗地讲，一个类应该对自己需要耦合或调用的类知道得最少，类的内部如何实现与调用者或者依赖者没有关系，调用
+          ...
+          <!--noindex-->
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/03/04/面向对象编程之接口迪米特原则/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
 
     <footer class="post-footer">
       
@@ -1214,7 +2657,7 @@ EventBus 3.0与2.x的区别注册
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1244,7 +2687,7 @@ EventBus 3.0与2.x的区别注册
 
       
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
@@ -1253,12 +2696,15 @@ EventBus 3.0与2.x的区别注册
           <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
         </div>
         <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">77</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-categories">
@@ -1293,34 +2739,38 @@ EventBus 3.0与2.x的区别注册
           
             
               <span class="links-of-author-item">
-                <a href="https://github.com/liuguoquan727" target="_blank">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
                   
-                    <i class="fa fa-globe"></i> Github
+                    <i class="fa fa-fw fa-globe"></i>
                   
+                  Github
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://weibo.com/liuguoquan0727" target="_blank">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
                   
-                    <i class="fa fa-weibo"></i> Weibo
+                    <i class="fa fa-fw fa-weibo"></i>
                   
+                  Weibo
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="jianshu">
                   
-                    <i class="fa fa-globe"></i> jianshu
+                    <i class="fa fa-fw fa-globe"></i>
                   
+                  jianshu
                 </a>
               </span>
             
               <span class="links-of-author-item">
-                <a href="http://blog.csdn.net/lgq2436363" target="_blank">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="csdn">
                   
-                    <i class="fa fa-globe"></i> csdn
+                    <i class="fa fa-fw fa-globe"></i>
                   
+                  csdn
                 </a>
               </span>
             
@@ -1331,9 +2781,10 @@ EventBus 3.0与2.x的区别注册
         
 
         
-        <div class="links-of-blogroll motion-element">
-          
-        </div>
+        
+
+        
+
 
       </section>
 
@@ -1349,9 +2800,7 @@ EventBus 3.0与2.x的区别注册
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        
-
-<div class="copyright" >
+        <div class="copyright" >
   
   &copy;  2015 - 
   <span itemprop="copyrightYear">2017</span>
@@ -1361,30 +2810,22 @@ EventBus 3.0与2.x的区别注册
   <span class="author" itemprop="copyrightHolder">刘涤生</span>
 </div>
 
+
 <div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
 </div>
 
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Pisces
   </a>
 </div>
 
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
 
-<span id="busuanzi_container_site_pv">
-    总访问量 <span id="busuanzi_value_site_pv"></span>次 
-</span>
+        
 
-<span id="busuanzi_container_site_uv">
-  访客数 <span id="busuanzi_value_site_uv"></span>人次
-</span>
-
-
-
+        
       </div>
     </footer>
 
@@ -1395,12 +2836,6 @@ EventBus 3.0与2.x的区别注册
 
   
 
-
-  
-
-
-
-
 <script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
@@ -1408,37 +2843,61 @@ EventBus 3.0与2.x的区别注册
 </script>
 
 
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
 
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
 
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
 
 
 
   
   
 
-  
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
 
   
 
+  
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
 
 
 
@@ -1463,7 +2922,15 @@ EventBus 3.0与2.x的区别注册
 
   
     
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
   
+
+
+
+
+
 
 
 
@@ -1477,7 +2944,7 @@ EventBus 3.0与2.x的区别注册
     // Search DB path;
     var search_path = "search.xml";
     if (search_path.length == 0) {
-       search_path = "search.xml";
+      search_path = "search.xml";
     }
     var path = "/" + search_path;
     // monitor main search box;
@@ -1485,109 +2952,104 @@ EventBus 3.0与2.x的区别注册
     function proceedsearch() {
       $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
       $('.popup').toggle();
-
     }
     // search function;
     var searchFunc = function(path, search_id, content_id) {
-    'use strict';
-    $.ajax({
+      'use strict';
+      $.ajax({
         url: path,
         dataType: "xml",
         async: true,
         success: function( xmlResponse ) {
-            // get the contents from search data
-            isfetched = true;
-            $('.popup').detach().appendTo('.header-inner');
-            var datas = $( "entry", xmlResponse ).map(function() {
-                return {
-                    title: $( "title", this ).text(),
-                    content: $("content",this).text(),
-                    url: $( "url" , this).text()
-                };
-            }).get();
-            var $input = document.getElementById(search_id);
-            var $resultContent = document.getElementById(content_id);
-            $input.addEventListener('input', function(){
-                var matchcounts = 0;
-                var str='<ul class=\"search-result-list\">';                
-                var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                $resultContent.innerHTML = "";
-                if (this.value.trim().length > 1) {
-                // perform local searching
-                datas.forEach(function(data) {
-                    var isMatch = true;
-                    var content_index = [];
-                    var data_title = data.title.trim().toLowerCase();
-                    var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
-                    var data_url = data.url;
-                    var index_title = -1;
-                    var index_content = -1;
-                    var first_occur = -1;
-                    // only match artiles with not empty titles and contents
-                    if(data_title != '' && data_content != '') {
-                        keywords.forEach(function(keyword, i) {
-                            index_title = data_title.indexOf(keyword);
-                            index_content = data_content.indexOf(keyword);
-                            if( index_title < 0 && index_content < 0 ){
-                                isMatch = false;
-                            } else {
-                                if (index_content < 0) {
-                                    index_content = 0;
-                                }
-                                if (i == 0) {
-                                    first_occur = index_content;
-                                }
-                            }
-                        });
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
                     }
-                    // show search results
-                    if (isMatch) {
-                        matchcounts += 1;
-                        str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
-                        var content = data.content.trim().replace(/<[^>]+>/g,"");
-                        if (first_occur >= 0) {
-                            // cut out 100 characters
-                            var start = first_occur - 20;
-                            var end = first_occur + 80;
-                            if(start < 0){
-                                start = 0;
-                            }
-                            if(start == 0){
-                                end = 50;
-                            }
-                            if(end > content.length){
-                                end = content.length;
-                            }
-                            var match_content = content.substring(start, end);
-                            // highlight all keywords
-                            keywords.forEach(function(keyword){
-                                var regS = new RegExp(keyword, "gi");
-                                match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
-                            });
-                            
-                            str += "<p class=\"search-result\">" + match_content +"...</p>"
-                        }
-                        str += "</li>";
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
                     }
-                })};
-                str += "</ul>";
-                if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
-                if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
-                $resultContent.innerHTML = str;
-            });
-            proceedsearch();
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
         }
-    });}
+      });}
 
     // handle and trigger popup window;
-    $('.popup-trigger').mousedown(function(e) {
+    $('.popup-trigger').click(function(e) {
       e.stopPropagation();
       if (isfetched == false) {
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();
       };
-
     });
 
     $('.popup-btn-close').click(function(e){
@@ -1599,6 +3061,11 @@ EventBus 3.0与2.x的区别注册
       e.stopPropagation();
     });
   </script>
+
+
+  
+
+  
 
   
 
