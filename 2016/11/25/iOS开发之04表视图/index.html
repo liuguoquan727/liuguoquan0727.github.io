@@ -1,0 +1,1100 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ios,swift,xcode," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="概述表视图组成表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：
+
+表头视图：表视图最上边的视图
+表脚视图：表视图最下边的视图
+单元格（cell）：表视图中每一行的视图
+节(section)：由多个单元格组成，应用于分组列表
+节头
+节脚
+
+
+
+表视图的相关类UITableView继承自UIScrollView，且有两个协议：UITableViewDelegate和UI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS开发之04表视图">
+<meta property="og:url" content="http://liuguoquan727.github.io/2016/11/25/iOS开发之04表视图/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="概述表视图组成表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：
+
+表头视图：表视图最上边的视图
+表脚视图：表视图最下边的视图
+单元格（cell）：表视图中每一行的视图
+节(section)：由多个单元格组成，应用于分组列表
+节头
+节脚
+
+
+
+表视图的相关类UITableView继承自UIScrollView，且有两个协议：UITableViewDelegate和UI">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/%E8%A1%A8%E8%A7%86%E5%9B%BE%E7%9B%B8%E5%85%B3%E7%B1%BB.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/tableview-none.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/tableview-disclosureIndicator.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/tableview-detail-button.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/tableview-checkmark.jpg">
+<meta property="og:image" content="http://oeqfywnzb.bkt.clouddn.com/tableview-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E5%85%83%E6%A0%BC.jpg">
+<meta property="og:updated_time" content="2016-11-25T12:36:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="iOS开发之04表视图">
+<meta name="twitter:description" content="概述表视图组成表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：
+
+表头视图：表视图最上边的视图
+表脚视图：表视图最下边的视图
+单元格（cell）：表视图中每一行的视图
+节(section)：由多个单元格组成，应用于分组列表
+节头
+节脚
+
+
+
+表视图的相关类UITableView继承自UIScrollView，且有两个协议：UITableViewDelegate和UI">
+<meta name="twitter:image" content="http://oeqfywnzb.bkt.clouddn.com/%E8%A1%A8%E8%A7%86%E5%9B%BE%E7%9B%B8%E5%85%B3%E7%B1%BB.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title> iOS开发之04表视图 | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/11/25/iOS开发之04表视图/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                iOS开发之04表视图
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/25/iOS开发之04表视图/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/25/iOS开发之04表视图/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="表视图组成"><a href="#表视图组成" class="headerlink" title="表视图组成"></a>表视图组成</h2><p>表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：</p>
+<ul>
+<li>表头视图：表视图最上边的视图</li>
+<li>表脚视图：表视图最下边的视图</li>
+<li>单元格（cell）：表视图中每一行的视图</li>
+<li>节(section)：由多个单元格组成，应用于分组列表<ul>
+<li>节头</li>
+<li>节脚</li>
+</ul>
+</li>
+</ul>
+<h2 id="表视图的相关类"><a href="#表视图的相关类" class="headerlink" title="表视图的相关类"></a>表视图的相关类</h2><p>UITableView继承自UIScrollView，且有两个协议：UITableViewDelegate和UITableViewDataSource。此外UITableViewCell类时单元格类，UITableViewController类时UITableView的控制器，UITableViewHeaderFooterView用于为节头和节脚提供视图。</p>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/%E8%A1%A8%E8%A7%86%E5%9B%BE%E7%9B%B8%E5%85%B3%E7%B1%BB.jpg" alt=""></p>
+<h2 id="表视图分类"><a href="#表视图分类" class="headerlink" title="表视图分类"></a>表视图分类</h2><ul>
+<li>普通表视图：主要用于动态表，而动态表一般在单元格数目未知的情况下使用</li>
+<li>分组表视图：一般用于静态表，用来进行界面布局</li>
+</ul>
+<h2 id="单元格的组成和样式"><a href="#单元格的组成和样式" class="headerlink" title="单元格的组成和样式"></a>单元格的组成和样式</h2><p>单元格由图标、主标题、副标题、扩展视图组成，可以根据需要进行选择，其中内置的扩展视图在枚举类型UITableViewCellAccessoryType中定义：</p>
+<table>
+<thead>
+<tr>
+<th>Swift枚举成员</th>
+<th>Objective-C枚举成员</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>ITableViewCellAccessoryNone</td>
+<td>没有扩展图标</td>
+</tr>
+<tr>
+<td>disclosureIndicator</td>
+<td>UITableViewCellAccessoryDisclosureIndicator</td>
+<td>扩展指示器，为箭头+问号</td>
+</tr>
+<tr>
+<td>detailDisclosureButton</td>
+<td>UITableViewCellAccessoryDetailDisclosureButton</td>
+<td>细节展示图，为问号</td>
+</tr>
+<tr>
+<td>checkmark</td>
+<td>UITableViewCellAccessoryCheckmark</td>
+<td>选中标志，图标为勾</td>
+</tr>
+<tr>
+<td>detailButton</td>
+<td>UITableViewCellAccessoryDetailButton</td>
+<td>细节详情展示，图标为问号</td>
+</tr>
+</tbody>
+</table>
+<p>内置的单元格样式在枚举类型UITableViewCellStyle中定义：</p>
+<table>
+<thead>
+<tr>
+<th>Swift枚举成员</th>
+<th>Objective-C枚举成员</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>UITableViewCellStyleDefault</td>
+<td>默认样式</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>UITableViewCellStyleSubtitle</td>
+<td>有图标、主标题、副标题、副标题在主标题的下面</td>
+</tr>
+<tr>
+<td>value1</td>
+<td>UITableViewCellStyleValue1</td>
+<td>有主标题、副标题，主标题左对齐、副标题右对齐，可以有图标</td>
+</tr>
+<tr>
+<td>2alue3</td>
+<td>UITableViewCellStyleValue2</td>
+<td>有主标题、副标题，主标题和副标题居中对齐，无图标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据源协议与委托协议"><a href="#数据源协议与委托协议" class="headerlink" title="数据源协议与委托协议"></a>数据源协议与委托协议</h2><h3 id="UITableViewDataSource"><a href="#UITableViewDataSource" class="headerlink" title="UITableViewDataSource"></a>UITableViewDataSource</h3><p>数据源协议主要为表视图提供数据，主要方法如下</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>func tableView(UITableView, cellForRowAt: IndexPath)</td>
+<td>UITableViewCell</td>
+<td>为表视图单元格提供数据，必须实现</td>
+</tr>
+<tr>
+<td>tableView(UITableView, numberOfRowsInSection: Int)</td>
+<td>Int</td>
+<td>返回某个节中的行数，必须实现</td>
+</tr>
+<tr>
+<td>tableView(UITableView, titleForHeaderInSection: Int)</td>
+<td>String</td>
+<td>返回节头的标题</td>
+</tr>
+<tr>
+<td>tableView(UITableView, titleForFooterInSection: Int)</td>
+<td>String</td>
+<td>返回节脚的标题</td>
+</tr>
+<tr>
+<td>numberOfSections(in: UITableView)</td>
+<td>Int</td>
+<td>返回节的个数</td>
+</tr>
+<tr>
+<td>sectionIndexTitles(for: UITableView)</td>
+<td>[String]?</td>
+<td>返回表示图节索引标题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="UITableViewDelegate"><a href="#UITableViewDelegate" class="headerlink" title="UITableViewDelegate"></a>UITableViewDelegate</h3><p>委托协议主要主要用来设定表视图中节头和节脚的标题，以及一些动作事件，主要方法如下</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tableView(UITableView, didSelectRowAt: IndexPath)</td>
+<td></td>
+<td>单元格响应事件</td>
+</tr>
+<tr>
+<td>tableView(UITableView, accessoryButtonTappedForRowWith: IndexPath)</td>
+<td></td>
+<td>扩展视图响应事件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="简单表视图"><a href="#简单表视图" class="headerlink" title="简单表视图"></a>简单表视图</h1><h2 id="UIViewController根视图控制器实现表视图"><a href="#UIViewController根视图控制器实现表视图" class="headerlink" title="UIViewController根视图控制器实现表视图"></a>UIViewController根视图控制器实现表视图</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个iOS工程</li>
+<li>从对象库中拖入一个TableView到storyboard文件中，并将TableView覆盖整个View</li>
+<li>打开Table View的属性检查器，将PrototypeCells的值设为1，注意不要添加多个，否则会发生错误；此时Table View会添加一个Table View Cell。</li>
+<li>打开Table View Cell的属性检查器，设置Identifier属性。</li>
+<li>注册UITableViewDataSource和UITableViewDelegate协议</li>
+<li>编写代码实现功能</li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  TableViewDemo</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/26.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UITableViewDataSource</span>,<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//全部数据</span></div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">//读取资源文件数据</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回列表每行的视图</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="comment">//根据Identifier找到Cell</span></div><div class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomId"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        cell.textLabel?.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        cell.detailTextLabel?.text = <span class="string">"123"</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.imageView?.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = <span class="type">UITableViewCellAccessoryType</span>.disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回条目数目</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应条目点击事件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"点击事件"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><ul>
+<li>none模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-none.jpg" alt=""></p>
+<ul>
+<li>disclosureIndicator</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-disclosureIndicator.jpg" alt=""></p>
+<h2 id="UITableViewController根视图控制器实现表视图"><a href="#UITableViewController根视图控制器实现表视图" class="headerlink" title="UITableViewController根视图控制器实现表视图"></a>UITableViewController根视图控制器实现表视图</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个iOS工程</li>
+<li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Table View Controller到设计界面</li>
+<li>打开Table View Controller属性检查器，勾选Is Initial View Controller选项，否则应用启动后是黑屏</li>
+<li>将ViewController类的父类由UIViewController改为UITableViewController</li>
+<li>打开View Controller的属性选择器在Class列表中选择ViewController</li>
+<li>UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</li>
+</ol>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//全部数据</span></div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">//读取资源文件数据</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回列表每行的视图</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomId"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        cell.textLabel?.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        cell.detailTextLabel?.text = <span class="string">"123"</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.imageView?.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = <span class="type">UITableViewCellAccessoryType</span>.disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回条目数目</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应条目点击事件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"点击事件"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><ul>
+<li>detailButton模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-detail-button.jpg" alt=""></p>
+<ul>
+<li>checkmark模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-checkmark.jpg" alt=""></p>
+<h1 id="自定义单元格"><a href="#自定义单元格" class="headerlink" title="自定义单元格"></a>自定义单元格</h1><h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个表视图工程</li>
+<li>修改根视图控制器为表视图控制器UITableViewController，参照上节的步骤</li>
+<li>从对象库中拖入控件到单元格内部，比如Lable和ImageView</li>
+<li>创建自定义单元格类CustomCell文件，并继承UITableViewCell类</li>
+<li>在设计界面中选择View Controller Scene中的Table View Cell，并打开属性检查器，将Class设为CustomCell类，并设置单元格的Identifier</li>
+<li>为单元格中的控件Label和ImageView控件连接输出接口，将控件绑定到CustomCell类中</li>
+<li>打开ViewController类，编写代码实现</li>
+</ol>
+<h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><ul>
+<li>CustomCell类</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  CustomCell.swift</span></div><div class="line"><span class="comment">//  CustomCell</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/25.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomCell</span>: <span class="title">UITableViewCell</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mImage: <span class="type">UIImageView</span>!</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mLabel: <span class="type">UILabel</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.awakeFromNib()</div><div class="line">        <span class="comment">// Initialization code</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setSelected</span><span class="params">(<span class="number">_</span> selected: Bool, animated: Bool)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.setSelected(selected, animated: animated)</div><div class="line"></div><div class="line">        <span class="comment">// Configure the view for the selected state</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ViewController类</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  SimpleTableView</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/24.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="comment">//找到自定义单元格</span></div><div class="line">        <span class="keyword">let</span> cell:<span class="type">CustomCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomCellId"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>? <span class="type">CustomCell</span></div><div class="line">        <span class="comment">//let cell = UITableViewCell(style: .value1, reuseIdentifier: "CellIdentifier")</span></div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        <span class="comment">//设置控件属性</span></div><div class="line">        cell.mLabel.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.mImage.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = .disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E5%85%83%E6%A0%BC.jpg" alt=""></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ios/" rel="tag"># ios</a>
+          
+            <a href="/tags/swift/" rel="tag"># swift</a>
+          
+            <a href="/tags/xcode/" rel="tag"># xcode</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/iOS开发之03UIView/" rel="next" title="iOS开发之03UIView">
+                <i class="fa fa-chevron-left"></i> iOS开发之03UIView
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/25/iOS开发之05常见表视图/" rel="prev" title="iOS开发之05常见表视图">
+                iOS开发之05常见表视图 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/25/iOS开发之04表视图/"
+           data-title="iOS开发之04表视图" data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之04表视图/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表视图组成"><span class="nav-number">1.1.</span> <span class="nav-text">表视图组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表视图的相关类"><span class="nav-number">1.2.</span> <span class="nav-text">表视图的相关类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表视图分类"><span class="nav-number">1.3.</span> <span class="nav-text">表视图分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单元格的组成和样式"><span class="nav-number">1.4.</span> <span class="nav-text">单元格的组成和样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源协议与委托协议"><span class="nav-number">1.5.</span> <span class="nav-text">数据源协议与委托协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UITableViewDataSource"><span class="nav-number">1.5.1.</span> <span class="nav-text">UITableViewDataSource</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UITableViewDelegate"><span class="nav-number">1.5.2.</span> <span class="nav-text">UITableViewDelegate</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单表视图"><span class="nav-number">2.</span> <span class="nav-text">简单表视图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIViewController根视图控制器实现表视图"><span class="nav-number">2.1.</span> <span class="nav-text">UIViewController根视图控制器实现表视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">2.1.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.1.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例图"><span class="nav-number">2.1.3.</span> <span class="nav-text">示例图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UITableViewController根视图控制器实现表视图"><span class="nav-number">2.2.</span> <span class="nav-text">UITableViewController根视图控制器实现表视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例图-1"><span class="nav-number">2.2.3.</span> <span class="nav-text">示例图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#自定义单元格"><span class="nav-number">3.</span> <span class="nav-text">自定义单元格</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#步骤-2"><span class="nav-number">3.1.</span> <span class="nav-text">步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-2"><span class="nav-number">3.2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例图-2"><span class="nav-number">3.3.</span> <span class="nav-text">示例图</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="//ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

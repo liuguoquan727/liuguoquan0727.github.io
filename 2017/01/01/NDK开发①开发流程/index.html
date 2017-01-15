@@ -1,0 +1,872 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="NDK," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Java编写native方法新建JniUtil类如下:
+12345678910111213141516171819202122232425262728293031323334353637383940public class JniUtil &amp;#123;		/**	 * 回调接口	 * @author jimi098	 *	 */	public interface IRecFrameListener">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NDK开发①开发流程">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/01/01/NDK开发①开发流程/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="Java编写native方法新建JniUtil类如下:
+12345678910111213141516171819202122232425262728293031323334353637383940public class JniUtil &amp;#123;		/**	 * 回调接口	 * @author jimi098	 *	 */	public interface IRecFrameListener">
+<meta property="og:updated_time" content="2017-01-04T07:51:50.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NDK开发①开发流程">
+<meta name="twitter:description" content="Java编写native方法新建JniUtil类如下:
+12345678910111213141516171819202122232425262728293031323334353637383940public class JniUtil &amp;#123;		/**	 * 回调接口	 * @author jimi098	 *	 */	public interface IRecFrameListener">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title> NDK开发①开发流程 | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/01/NDK开发①开发流程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NDK开发①开发流程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/01/01/NDK开发①开发流程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/01/NDK开发①开发流程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Java编写native方法"><a href="#Java编写native方法" class="headerlink" title="Java编写native方法"></a>Java编写native方法</h1><p>新建JniUtil类如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JniUtil</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 回调接口</div><div class="line">	 * <span class="doctag">@author</span> jimi098</div><div class="line">	 *</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IRecFrameListener</span> </span>&#123;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRecFrameListener</span><span class="params">(String result)</span></span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> IRecFrameListener mListener;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		</div><div class="line">		System.loadLibrary(<span class="string">"test"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOnRecFrameListener</span><span class="params">(IRecFrameListener listener)</span> </span>&#123;</div><div class="line">		</div><div class="line">		mListener = listener;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 供jni调用的java方法</div><div class="line">	 * <span class="doctag">@param</span> result</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRecFrame</span><span class="params">(<span class="keyword">int</span> result)</span> </span>&#123;</div><div class="line">		mListener.onRecFrameListener(String.valueOf(result));</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">//java本地方法</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">init</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">native</span> String <span class="title">getString</span><span class="params">(String input)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="生成-h头文件"><a href="#生成-h头文件" class="headerlink" title="生成.h头文件"></a>生成.h头文件</h1><p>编译JniUtil类，生成JniUtil.class文件，然后在cmd中切换目录至android工程的src文件夹路径，运行<code>javah -jni com.example.demo.JniUtil</code>命令即可生成.h头文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">#include &lt;jni.h&gt;</div><div class="line">#include &lt;android/log.h&gt;</div><div class="line"></div><div class="line">//logcat日志</div><div class="line">#define  LOG_TAG    "Test"</div><div class="line">#define  LOGI(...)  __android_log_print(ANDROID_LOG_INFO,LOG_TAG,__VA_ARGS__)</div><div class="line">#define  LOGE(...)  __android_log_print(ANDROID_LOG_ERROR,LOG_TAG,__VA_ARGS__)</div><div class="line">/* Header for class com_example_demo_JniUtil */</div><div class="line"></div><div class="line">#ifndef _Included_com_example_demo_JniUtil</div><div class="line">#define _Included_com_example_demo_JniUtil</div><div class="line">#ifdef __cplusplus</div><div class="line">extern "C" &#123;</div><div class="line">#endif</div><div class="line">/*</div><div class="line"> * Class:     com_example_demo_JniUtil</div><div class="line"> * Method:    init</div><div class="line"> * Signature: ()I</div><div class="line"> */</div><div class="line">JNIEXPORT jint JNICALL Java_com_example_demo_JniUtil_init</div><div class="line">  (JNIEnv *, jobject);</div><div class="line"></div><div class="line">/*</div><div class="line"> * Class:     com_example_demo_JniUtil</div><div class="line"> * Method:    add</div><div class="line"> * Signature: (II)I</div><div class="line"> */</div><div class="line">JNIEXPORT jint JNICALL Java_com_example_demo_JniUtil_add</div><div class="line">  (JNIEnv *, jobject, jint, jint);</div><div class="line"></div><div class="line">/*</div><div class="line"> * Class:     com_example_demo_JniUtil</div><div class="line"> * Method:    getString</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line">JNIEXPORT jstring JNICALL Java_com_example_demo_JniUtil_getString</div><div class="line">  (JNIEnv *, jobject, jstring);</div><div class="line"></div><div class="line">#ifdef __cplusplus</div><div class="line">&#125;</div><div class="line">#endif</div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h1 id="实现jni"><a href="#实现jni" class="headerlink" title="实现jni"></a>实现jni</h1><p>新建jni文件夹，实现本地java方法</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">#include&lt;jniutil.h&gt;</div><div class="line"></div><div class="line">jobject mObject;</div><div class="line"></div><div class="line"></div><div class="line">JNIEXPORT jint JNICALL Java_com_example_demo_JniUtil_init(JNIEnv *env,</div><div class="line">		jobject obj) &#123;</div><div class="line"></div><div class="line">	//获取全局对象</div><div class="line">	mObject = (*env)-&gt;NewGlobalRef(env, obj);</div><div class="line"></div><div class="line">	jmethodID methodID;</div><div class="line">	jclass mClass;</div><div class="line"></div><div class="line">	//查找指定名称类</div><div class="line">	mClass = (*env)-&gt;GetObjectClass(env, mObject);;</div><div class="line"></div><div class="line">	//获取方法ID</div><div class="line">	methodID = (*env)-&gt;GetMethodID(env,mClass,"onRecFrame","(I)V");</div><div class="line"></div><div class="line">	//调用上层java方法</div><div class="line">	(*env)-&gt;CallVoidMethod(env,obj,methodID,89);</div><div class="line"></div><div class="line">	return 5;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * Class:     com_example_demo_JniUtil</div><div class="line"> * Method:    add</div><div class="line"> * Signature: (II)I</div><div class="line"> */</div><div class="line">JNIEXPORT jint JNICALL Java_com_example_demo_JniUtil_add(JNIEnv *env,</div><div class="line">		jobject obj, jint x, jint y) &#123;</div><div class="line"></div><div class="line">	return x + y;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line"> * Class:     com_example_demo_JniUtil</div><div class="line"> * Method:    getString</div><div class="line"> * Signature: (Ljava/lang/String;)Ljava/lang/String;</div><div class="line"> */</div><div class="line">JNIEXPORT jstring JNICALL Java_com_example_demo_JniUtil_getString(JNIEnv *env,</div><div class="line">		jobject obj, jstring result) &#123;</div><div class="line"></div><div class="line">	return result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="编写mk文件"><a href="#编写mk文件" class="headerlink" title="编写mk文件"></a>编写mk文件</h1><h2 id="Android-mk"><a href="#Android-mk" class="headerlink" title="Android.mk"></a>Android.mk</h2><p>指定编译规则</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">LOCAL_PATH <span class="symbol">:</span>= <span class="variable">$(</span>call my-dir)</div><div class="line"></div><div class="line"><span class="keyword">include</span> <span class="variable">$(</span>CLEAR_VARS)</div><div class="line"></div><div class="line">LOCAL_MODULE    <span class="symbol">:</span>= test</div><div class="line">LOCAL_SRC_FILES <span class="symbol">:</span>= test.c</div><div class="line"></div><div class="line">LOCAL_LDLIBS    <span class="symbol">:</span>= -llog</div><div class="line"><span class="keyword">include</span> <span class="variable">$(</span>BUILD_SHARED_LIBRARY)</div></pre></td></tr></table></figure>
+<h2 id="Application-mk"><a href="#Application-mk" class="headerlink" title="Application.mk"></a>Application.mk</h2><p>指定编译平台</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">APP_ABI := armeabi armeabi-v7a</div><div class="line">APP_PLATFORM := android<span class="number">-22</span></div><div class="line">APP_STL:=gnustl_static</div><div class="line">APP_CPPFLAGS:=-frtti -fexceptions</div></pre></td></tr></table></figure>
+<h1 id="配置NDK执行编译"><a href="#配置NDK执行编译" class="headerlink" title="配置NDK执行编译"></a>配置NDK执行编译</h1><p>右击工程–》Properties–》Builders–》New–》选择Program–》Main–》Location：选择ndk-build.cmd命令路径–》Working Directory：选择工程路径–》Refresh–》Build Options，配置完成后即可自动编译，不需要安装cygwin linux模拟环境</p>
+<h1 id="应用jni"><a href="#应用jni" class="headerlink" title="应用jni"></a>应用jni</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">OnClickListener</span>, <span class="title">IRecFrameListener</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> Button mButton;</div><div class="line">	</div><div class="line">	<span class="keyword">private</span> JniUtil mJniUtil;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        setContentView(R.layout.activity_main);</div><div class="line">        </div><div class="line">        mButton = (Button) findViewById(R.id.btn_click);</div><div class="line">        mButton.setOnClickListener(<span class="keyword">this</span>);</div><div class="line">        mJniUtil = <span class="keyword">new</span> JniUtil();</div><div class="line">        mJniUtil.setOnRecFrameListener(<span class="keyword">this</span>);</div><div class="line">        </div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"init: "</span> + mJniUtil.init());</div><div class="line">		System.out.println(<span class="string">"sum: "</span>+ mJniUtil.add(<span class="number">1</span>, <span class="number">2</span>));</div><div class="line">		System.out.println(<span class="string">"getString: "</span> + mJniUtil.getString(<span class="string">"wert"</span>));</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 回调，由jni方法返回数据</div><div class="line">	 */</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onRecFrameListener</span><span class="params">(String result)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(result);</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Android-Studio-2-2-开发NDK"><a href="#Android-Studio-2-2-开发NDK" class="headerlink" title="Android Studio 2.2 开发NDK"></a>Android Studio 2.2 开发NDK</h1><p><a href="http://www.jianshu.com/p/f1b8b97d2ef8" target="_blank" rel="external">NDK开发基础①使用Android Studio编写NDK</a></p>
+<h2 id="Gradle配置NDK"><a href="#Gradle配置NDK" class="headerlink" title="Gradle配置NDK"></a>Gradle配置NDK</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    compileSdkVersion <span class="number">25</span></div><div class="line">    buildToolsVersion <span class="string">"25.0.1"</span></div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId <span class="string">"com.michael.lplayer"</span></div><div class="line">        minSdkVersion <span class="number">15</span></div><div class="line">        targetSdkVersion <span class="number">22</span></div><div class="line">        versionCode <span class="number">1</span></div><div class="line">        versionName <span class="string">"1.0"</span></div><div class="line">        testInstrumentationRunner <span class="string">"android.support.test.runner.AndroidJUnitRunner"</span></div><div class="line">        externalNativeBuild &#123;</div><div class="line">            cmake &#123;</div><div class="line">                cppFlags <span class="string">""</span></div><div class="line">                arguments <span class="string">'-DANDROID_TOOLCHAIN=clang'</span></div><div class="line">                abiFilters <span class="string">"armeabi-v7a"</span></div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    buildTypes &#123;</div><div class="line">        release &#123;</div><div class="line">            minifyEnabled false</div><div class="line">            proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    externalNativeBuild &#123;</div><div class="line">        cmake &#123;</div><div class="line">            path <span class="string">"CMakeLists.txt"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    //加载外部so库</div><div class="line">    sourceSets.main &#123;</div><div class="line">        jniLibs.srcDirs = [<span class="string">'libs'</span>]</div><div class="line">        jni.srcDirs = []</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="CMakeLists-txt-配置"><a href="#CMakeLists-txt-配置" class="headerlink" title="CMakeLists.txt 配置"></a>CMakeLists.txt 配置</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"># <span class="keyword">Sets</span> the <span class="comment">minimum version of CMake required to build the native</span></div><div class="line"># library. You <span class="comment">should either keep the default value or only pass a</span></div><div class="line"># value <span class="comment">of 3.4.0 or lower.</span></div><div class="line"></div><div class="line">cmake_minimum_required(VERSION <span class="comment">3.4.1)</span></div><div class="line"></div><div class="line">find_library( # <span class="keyword">Sets</span> <span class="comment">the name of the path variable.</span></div><div class="line">              log-lib</div><div class="line"></div><div class="line">              # Specifies <span class="comment">the name of the NDK library that</span></div><div class="line">              # you <span class="comment">want CMake to locate.</span></div><div class="line">              log <span class="comment">)</span></div><div class="line"></div><div class="line"><span class="keyword">set</span>(distribution_DIR <span class="comment">$&#123;CMAKE_SOURCE_DIR&#125;</span>/../<span class="comment">..</span>/../<span class="comment">..</span>/libs)</div><div class="line">include_directories(libs/<span class="comment">include)</span></div><div class="line"></div><div class="line">add_library( avutil-55</div><div class="line">             SHARED</div><div class="line">             IMPORTED <span class="comment">)</span></div><div class="line">set_target_properties( avutil-55</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libavutil-55.so <span class="comment">)</span></div><div class="line"></div><div class="line">add_library( swresample-2</div><div class="line">             SHARED</div><div class="line">             IMPORTED <span class="comment">)</span></div><div class="line">set_target_properties( swresample-2</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libswresample-2.so <span class="comment">)</span></div><div class="line">add_library( avcodec-57</div><div class="line">             SHARED</div><div class="line">             IMPORTED <span class="comment">)</span></div><div class="line">set_target_properties( avcodec-57</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libavcodec-57.so <span class="comment">)</span></div><div class="line">add_library( avfilter-6</div><div class="line">             SHARED</div><div class="line">             IMPORTED)</div><div class="line">set_target_properties( avfilter-6</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libavfilter-6.so <span class="comment">)</span></div><div class="line">add_library( swscale-4</div><div class="line">             SHARED</div><div class="line">             IMPORTED)</div><div class="line">set_target_properties( swscale-4</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libswscale-4.so <span class="comment">)</span></div><div class="line">add_library( avformat-57</div><div class="line">             SHARED</div><div class="line">             IMPORTED)</div><div class="line">set_target_properties( avformat-57</div><div class="line">                       PROPERTIES <span class="comment">IMPORTED_LOCATION</span></div><div class="line">                       ../../../../libs/armeabi-v7a/libavformat-57.so <span class="comment">)</span></div><div class="line"></div><div class="line">#<span class="keyword">set</span>(CMAKE_CXX_FLAGS <span class="comment">"$&#123;CMAKE_CXX_FLAGS&#125; -std=gnu++11"</span><span class="comment">)</span></div><div class="line"></div><div class="line">add_library( ffmpeg</div><div class="line">             SHARED</div><div class="line">             src/main/cpp/ffmpeg_decode.c )</div><div class="line"></div><div class="line">#target_include_directories(ffmpeg PRIVATE libs/include)</div><div class="line"></div><div class="line">target_link_libraries( ffmpeg <span class="comment">avutil-55 swresample-2  avcodec-57 avfilter-6 swscale-4 avformat-57</span></div><div class="line">                       $&#123;log-lib&#125; )</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/NDK/" rel="tag"># NDK</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/25/iOS开发之08PopoverView/" rel="next" title="iOS开发之08PopoverView">
+                <i class="fa fa-chevron-left"></i> iOS开发之08PopoverView
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/02/JNI之①参数类型与Java参数类型对比/" rel="prev" title="JNI之①参数类型与Java参数类型对比">
+                JNI之①参数类型与Java参数类型对比 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/01/NDK开发①开发流程/"
+           data-title="NDK开发①开发流程" data-url="http://liuguoquan727.github.io/2017/01/01/NDK开发①开发流程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java编写native方法"><span class="nav-number">1.</span> <span class="nav-text">Java编写native方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成-h头文件"><span class="nav-number">2.</span> <span class="nav-text">生成.h头文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现jni"><span class="nav-number">3.</span> <span class="nav-text">实现jni</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编写mk文件"><span class="nav-number">4.</span> <span class="nav-text">编写mk文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-mk"><span class="nav-number">4.1.</span> <span class="nav-text">Android.mk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Application-mk"><span class="nav-number">4.2.</span> <span class="nav-text">Application.mk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置NDK执行编译"><span class="nav-number">5.</span> <span class="nav-text">配置NDK执行编译</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用jni"><span class="nav-number">6.</span> <span class="nav-text">应用jni</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Android-Studio-2-2-开发NDK"><span class="nav-number">7.</span> <span class="nav-text">Android Studio 2.2 开发NDK</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradle配置NDK"><span class="nav-number">7.1.</span> <span class="nav-text">Gradle配置NDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMakeLists-txt-配置"><span class="nav-number">7.2.</span> <span class="nav-text">CMakeLists.txt 配置</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="//ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

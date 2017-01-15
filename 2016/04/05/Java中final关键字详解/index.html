@@ -1,0 +1,911 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/icon.jpg?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。
+final关键字的基本用法Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。
+修饰类当final关键字修饰一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java中final关键字详解">
+<meta property="og:url" content="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。
+final关键字的基本用法Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。
+修饰类当final关键字修饰一">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E7%B1%BB.png">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%98%E9%87%8F.png">
+<meta property="og:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%82%E6%95%B0.png">
+<meta property="og:updated_time" content="2016-04-05T13:20:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java中final关键字详解">
+<meta name="twitter:description" content="Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。
+final关键字的基本用法Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。
+修饰类当final关键字修饰一">
+<meta name="twitter:image" content="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E7%B1%BB.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+
+
+
+
+  <title> Java中final关键字详解 | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java中final关键字详解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/04/05/Java中final关键字详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/05/Java中final关键字详解/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。</p>
+<h2 id="final关键字的基本用法"><a href="#final关键字的基本用法" class="headerlink" title="final关键字的基本用法"></a>final关键字的基本用法</h2><p>Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。</p>
+<h3 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h3><p>当final关键字修饰一个类时，表明这个类不能被继承。final类中的成员变量可以根据需要设为final，但是要注意final类中的所有成员方法都会被隐式地指定为final方法。</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E7%B1%BB.png" alt=""></p>
+<blockquote>
+<p>在使用final修饰类的时候，要注意谨慎选择，除非这个类真的在以后不会用来继承或者是出于安全的考虑，尽量不要讲类设计为final类。</p>
+</blockquote>
+<h3 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h3><p>使用final关键字修饰方法的原因有两个：第一个原因是把方法锁定，以防止任何子类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用，但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升，不需要使用final方法进行这些优化。因此，如果想要禁止该方法在子类中被覆盖，那么久可以将该方法用final关键字修饰。</p>
+<p>注：类的private方法会隐式地被指定为final方法。</p>
+<h3 id="修饰变量"><a href="#修饰变量" class="headerlink" title="修饰变量"></a>修饰变量</h3><p>final修饰变量的基本语法：</p>
+<ul>
+<li>如果final修饰的是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；</li>
+<li>如果final修饰的是引用类型的变量，则其初始化之后便不能再指向另一个对象；</li>
+</ul>
+<p>示例如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%98%E9%87%8F.png" alt=""></p>
+<p>上面代码中，对变量i和obj的重新赋值都报错了。</p>
+<h2 id="深入理解final关键字"><a href="#深入理解final关键字" class="headerlink" title="深入理解final关键字"></a>深入理解final关键字</h2><p>在了解final关键字的基本用法后，我们来看看final关键字容易混淆的地方。</p>
+<h3 id="类的final变量和普通变量有什么区别？"><a href="#类的final变量和普通变量有什么区别？" class="headerlink" title="类的final变量和普通变量有什么区别？"></a>类的final变量和普通变量有什么区别？</h3><p>当用final作用于类的成员变量时，成员变量（注意是类的成员变量，局部变量只需要保证在使用之前被初始化赋值即可）必须在定义时或者构造器中进行初始化赋值，而且final变量一旦被初始化赋值之后，就不能再被赋值了。</p>
+<p>final变量和普通变量到底有什么区别呢？先看下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	</div><div class="line">	String a = <span class="string">"helloworld"</span>;</div><div class="line">	<span class="keyword">final</span> String b = <span class="string">"hello"</span>;</div><div class="line">	String c = <span class="string">"hello"</span>;</div><div class="line">	String d = b + <span class="string">"world"</span>;</div><div class="line">	String e = c + <span class="string">"world"</span>;</div><div class="line">	</div><div class="line">	System.out.println((a == d));</div><div class="line">	System.out.println((a == e));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>为什么第一个比较结果是true，而第二个比较结果为false？<br>这就是final变量和普变量的区别了，当final变量是基本数据类型以及String类型时，如果在编译期间能知道它的确切值，则编译器会把它当做编译器常量使用，也就是说用到该final变量的地方相当于直接访问这个常量，不需要在运行时确定。因此在上面的代码中，由于b被final修饰，因此会被当做编译器常量，所以在使用到b的地方会直接将变量b替换为它的值，而对于变量c的访问则在运行时通过链接来运行。要注意，只有在编译期间确切知道final变量值的情况下，编译器才会进行这样的优化，下面的这段代码就不会进行这样的优化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	</div><div class="line">	String a = <span class="string">"helloworld"</span>;</div><div class="line">	<span class="keyword">final</span> String b = getStr();</div><div class="line">	String c = <span class="string">"hello"</span>;</div><div class="line">	String d = b + <span class="string">"world"</span>;</div><div class="line">	String e = c + <span class="string">"world"</span>;</div><div class="line">	</div><div class="line">	System.out.println((a == d));</div><div class="line">	System.out.println((a == e));</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStr</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="string">"hell0"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<h3 id="被final修饰的引用变量指向的对象内容可变吗？"><a href="#被final修饰的引用变量指向的对象内容可变吗？" class="headerlink" title="被final修饰的引用变量指向的对象内容可变吗？"></a>被final修饰的引用变量指向的对象内容可变吗？</h3><p>final修饰的引用变量一旦初始化赋值之后就不能再指向其他的对象，那么该引用变量指向的对象的内容可变吗？先看下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">final</span> Person person = <span class="keyword">new</span> Person();</div><div class="line">		person.name = <span class="string">"liu"</span>;</div><div class="line">		person.age = <span class="number">27</span>;</div><div class="line">		System.out.println(person.toString());</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> String name = <span class="string">"zhang"</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age = <span class="number">0</span>;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Person [name="</span> + name + <span class="string">", age="</span> + age + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Person</span> <span class="comment">[name=liu, age=27]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>由运行结果可知，引用变量被final修饰之后，虽然不能再指向其他的对象，但是它指向的对象的内容是可变的。</p>
+</blockquote>
+<h3 id="final和static"><a href="#final和static" class="headerlink" title="final和static"></a>final和static</h3><p>我们经常容易把final和static关键字混淆，static作用于成员变量用来表示只保存一份副本，而final的作用是用来保证变量不可变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		MyClass class1 = <span class="keyword">new</span> MyClass();</div><div class="line">		System.out.println(<span class="string">"i: "</span> + class1.i);</div><div class="line">		System.out.println(<span class="string">"j: "</span> + class1.j);</div><div class="line"></div><div class="line">		MyClass class2 = <span class="keyword">new</span> MyClass();</div><div class="line">		System.out.println(<span class="string">"i: "</span> + class2.i);</div><div class="line">		System.out.println(<span class="string">"j: "</span> + class2.j);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">double</span> i = Math.random();</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> j = Math.random();</div><div class="line">		</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">i</span>: 0.6230804434703052</div><div class="line"><span class="attribute">j</span>: 0.8707443438720905</div><div class="line"></div><div class="line"><span class="avrasm"><span class="symbol">i:</span> <span class="number">0.6451393896255735</span></span></div><div class="line"><span class="symbol">j:</span> <span class="number">0.8707443438720905</span></div></pre></td></tr></table></figure>
+<p>从结果可知，每次打印的i值不同，而j值都是一样的。从这里口可以知道final和static的区别了。</p>
+<h3 id="匿名内部类中使用的外部局部变量为什么只能是final变量？"><a href="#匿名内部类中使用的外部局部变量为什么只能是final变量？" class="headerlink" title="匿名内部类中使用的外部局部变量为什么只能是final变量？"></a>匿名内部类中使用的外部局部变量为什么只能是final变量？</h3><p>保证数据的一致性。Java编译器限定必须将外部局部变量限制为final变量，不允许对外部局部变量进行更改（对应引用类型的变量，是不允许指向新的对象），这样就保证了数据的一致性。</p>
+<h3 id="关于final参数的问题"><a href="#关于final参数的问题" class="headerlink" title="关于final参数的问题"></a>关于final参数的问题</h3><p>关于网上流传的“当你在方法中不需要改变作为参数的对象变量时，明确使用final进行声明，会防止你无意的修改而影响到调用方法外的变量”，这句话其实是不恰当的。<br>因为无论参数是基本数据类型的变量还是引用类型的变量，使用final声明都不会达到上面所说的效果。</p>
+<p>下面看例子：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%82%E6%95%B0.png" alt=""></p>
+<p>上面的代码像是让人觉得final修饰之后，就不能在方法中更改变量i的值了。殊不知，方法changValue和main方法中的变量i根本就不是一个变量，因为对于基本类型的变量，Java参数传递采用的是值传递，相当于直接将变量进行了拷贝，所以即使没有final修饰的情况下，在方法内部改变了变量i的值也不会影响方法外的i。</p>
+<p>再看下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		MyClass myClass = <span class="keyword">new</span> MyClass();</div><div class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer(<span class="string">"hello"</span>);</div><div class="line">		myClass.changValue(buffer);</div><div class="line">		System.out.println(buffer.toString());</div><div class="line">		myClass.changValue2(buffer);</div><div class="line">		System.out.println(buffer.toString());</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">		</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changValue</span><span class="params">(<span class="keyword">final</span> StringBuffer buffer)</span> </span>&#123;</div><div class="line">		buffer.append(<span class="string">"world"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changValue2</span><span class="params">(StringBuffer buffer)</span> </span>&#123;</div><div class="line">		StringBuffer buffer2 = buffer;</div><div class="line">		buffer2.append(<span class="string">"你好"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">helloworld</span></div><div class="line">helloworld你好</div></pre></td></tr></table></figure>
+<p>由结果可知，很显然，用final进行修饰参数和不修饰参数都没有阻止在changeValue中改变buffer指向的对象的内容。原因在对于引用数据类型，Java采用的是按引用传递，传递的是引用的地址，也就是变量所对象的内存空间的地址。在这里形参和实参指向的是同一个对象，因此让形参重新指向另一个对象对实参并没有任何影响。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/03/31/Android动画之Interpolator/" rel="next" title="Android动画之Interpolator">
+                <i class="fa fa-chevron-left"></i> Android动画之Interpolator
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/04/05/Java中static关键字详解/" rel="prev" title="Java中static关键字详解">
+                Java中static关键字详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/05/Java中final关键字详解/"
+           data-title="Java中final关键字详解" data-url="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">82</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#final关键字的基本用法"><span class="nav-number">1.</span> <span class="nav-text">final关键字的基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰类"><span class="nav-number">1.1.</span> <span class="nav-text">修饰类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰方法"><span class="nav-number">1.2.</span> <span class="nav-text">修饰方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰变量"><span class="nav-number">1.3.</span> <span class="nav-text">修饰变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深入理解final关键字"><span class="nav-number">2.</span> <span class="nav-text">深入理解final关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类的final变量和普通变量有什么区别？"><span class="nav-number">2.1.</span> <span class="nav-text">类的final变量和普通变量有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#被final修饰的引用变量指向的对象内容可变吗？"><span class="nav-number">2.2.</span> <span class="nav-text">被final修饰的引用变量指向的对象内容可变吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#final和static"><span class="nav-number">2.3.</span> <span class="nav-text">final和static</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名内部类中使用的外部局部变量为什么只能是final变量？"><span class="nav-number">2.4.</span> <span class="nav-text">匿名内部类中使用的外部局部变量为什么只能是final变量？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于final参数的问题"><span class="nav-number">2.5.</span> <span class="nav-text">关于final参数的问题</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="//jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="//fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="//jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="//fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="//ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
