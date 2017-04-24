@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuguoquan727.github.io/"/>
-  <updated>2017-04-24T08:17:58.000Z</updated>
+  <updated>2017-04-24T08:39:20.000Z</updated>
   <id>http://liuguoquan727.github.io/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Lambda表达式</title>
+    <title>Java8特性①Lambda表达式</title>
     <link href="http://liuguoquan727.github.io/2017/04/24/Java8%E7%89%B9%E6%80%A7%E2%91%A0Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>http://liuguoquan727.github.io/2017/04/24/Java8特性①Lambda表达式/</id>
     <published>2017-04-24T08:15:16.000Z</published>
-    <updated>2017-04-24T08:17:58.000Z</updated>
+    <updated>2017-04-24T08:39:20.000Z</updated>
     
-    <content type="html"><![CDATA[<p>[TOC]</p>
-<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>Lambda 表达式</strong>可以理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。</p>
+    <content type="html"><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p><strong>Lambda 表达式</strong>可以理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。</p>
 <ul>
 <li><strong>匿名</strong>：它不像普通方法那样有一个明确的名称；</li>
 <li><strong>函数</strong>：Lambda 表达式是函数是因为它不像方法那样属于某个特定的类，但和方法一样，Lambda 有参数列表、函数主体、返回类型，还可能有可以抛出的异常列表；</li>
@@ -291,14 +290,13 @@
 <li>环绕执行模式（即在方法所必需的代码中间，你需要执行点儿什么操作，比如资源分配 和清理）可以配合 Lambda 提高灵活性和可重用性。</li>
 <li>Lambda 表达式所需要代表的类型称为目标类型。</li>
 <li>方法引用让你重复使用现有的方法实现并直接传递它们。</li>
-<li>Comparator、Predicate和Function等函数式接口都有几个可以用来结合 Lambda 表达式的默认方法。</li>
+<li>Comparator、Predicate 和Function 等函数式接口都有几个可以用来结合 Lambda 表达式的默认方法。</li>
 </ul>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;[TOC]&lt;/p&gt;
-&lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;
+      &lt;h1 id=&quot;简介&quot;&gt;&lt;a href=&quot;#简介&quot; class=&quot;headerlink&quot; title=&quot;简介&quot;&gt;&lt;/a&gt;简介&lt;/h1&gt;&lt;h2 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h2&gt;&lt;p&gt;&lt;st
     
     </summary>
     
