@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuguoquan727.github.io/"/>
-  <updated>2017-04-24T08:39:20.000Z</updated>
+  <updated>2017-04-27T07:53:53.000Z</updated>
   <id>http://liuguoquan727.github.io/</id>
   
   <author>
@@ -14,6 +14,67 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java8特性②Stream简介</title>
+    <link href="http://liuguoquan727.github.io/2017/04/27/Java8%E7%89%B9%E6%80%A7%E2%91%A1Stream%E7%AE%80%E4%BB%8B/"/>
+    <id>http://liuguoquan727.github.io/2017/04/27/Java8特性②Stream简介/</id>
+    <published>2017-04-27T07:52:53.000Z</published>
+    <updated>2017-04-27T07:53:53.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="流是什么"><a href="#流是什么" class="headerlink" title="流是什么"></a>流是什么</h1><p><strong>流</strong>是Java API的新成员，它允许你以声明性方式处理数据集合（通过查询语句来表达，而不是临时编写一个实现）。可以把它们看成遍历数据集的高级迭代器。此外流还可以<strong>透明地并行处理</strong>，无需写任何多线程代码了。如下面代码所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">getLowCalorisInJava8</span><span class="params">(List&lt;Dish&gt; dishes)</span> </span>&#123;</div><div class="line"></div><div class="line">    List&lt;String&gt; lowColorisDish = dishes.stream() <span class="comment">//parallelStream() 并行流</span></div><div class="line">                .filter((Dish d) -&gt; d.getCalories() &lt; <span class="number">400</span>) <span class="comment">//筛选</span></div><div class="line">                .sorted(Comparator.comparing(Dish::getCalories)) <span class="comment">//排序</span></div><div class="line">                .map(Dish::getName) <span class="comment">//提取名称</span></div><div class="line">                .collect(Collectors.toList()); <span class="comment">//将所有名称存入List中</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> lowColorisDish;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Dish类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.company.bean;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.Arrays;</div><div class="line"><span class="keyword">import</span> java.util.List;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by liuguoquan on 2017/4/26.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dish</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> vegetarian;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> calories;</div><div class="line">    <span class="keyword">private</span> Type type;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">enum</span> Type &#123; MEAT, FISH, OTHER &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Dish</span><span class="params">(String name, <span class="keyword">boolean</span> vegetarian, <span class="keyword">int</span> calories, Type type)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.vegetarian = vegetarian;</div><div class="line">        <span class="keyword">this</span>.calories = calories;</div><div class="line">        <span class="keyword">this</span>.type = type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isVegetarian</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> vegetarian;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCalories</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> calories;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Type <span class="title">getType</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> type;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> List&lt;Dish&gt; menu =</div><div class="line">            Arrays.asList( <span class="keyword">new</span> Dish(<span class="string">"pork"</span>, <span class="keyword">false</span>, <span class="number">800</span>, Dish.Type.MEAT),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"beef"</span>, <span class="keyword">false</span>, <span class="number">700</span>, Dish.Type.MEAT),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"chicken"</span>, <span class="keyword">false</span>, <span class="number">400</span>, Dish.Type.MEAT),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"french fries"</span>, <span class="keyword">true</span>, <span class="number">530</span>, Dish.Type.OTHER),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"rice"</span>, <span class="keyword">true</span>, <span class="number">350</span>, Dish.Type.OTHER),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"season fruit"</span>, <span class="keyword">true</span>, <span class="number">120</span>, Dish.Type.OTHER),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"pizza"</span>, <span class="keyword">true</span>, <span class="number">550</span>, Dish.Type.OTHER),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"prawns"</span>, <span class="keyword">false</span>, <span class="number">400</span>, Dish.Type.FISH),</div><div class="line">                    <span class="keyword">new</span> Dish(<span class="string">"salmon"</span>, <span class="keyword">false</span>, <span class="number">450</span>, Dish.Type.FISH));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="流简介"><a href="#流简介" class="headerlink" title="流简介"></a>流简介</h1><p>流就是从支持数据处理操作的源生成的元素序列。</p>
+<ul>
+<li><p>元素序列：流也提供了一个接口，可以访问特定元素类型的一组有序 值。因为集合是数据结构，所以它的主要目的是以特定的时间/空间复杂度存储和访问元 素（如 ArrayList 与 LinkedList ）。但流的目的在于表达计算， 比如你前面见到的 filter、sorted和map。集合讲的是数据，流讲的是计算。</p>
+</li>
+<li><p>源：流会使用一个提供数据的源，如集合、数组或输入/输出资源。 请注意，从有序集 合生成流时会保留原有的顺序。由列表生成的流，其元素顺序与列表一致。</p>
+</li>
+<li><p>数据处理操作：流的数据处理功能支持类似于数据库的操作，以及函数式编程语言中 的常用操作，如filter、map、reduce、find、match、sort等。流操作可以顺序执 行，也可并行执行。</p>
+</li>
+</ul>
+<p>流操作的两个重要的特点：</p>
+<ul>
+<li><p><strong>流水线：</strong>很多流操作本身会返回一个流，这样多个操作就可以链接起来，形成一个大的流水线。流水线的操作可以 看作对数据源进行数据库式查询。</p>
+</li>
+<li><p><strong>内部迭代：</strong>与使用迭代器显式迭代的集合不同，流的迭代操作是在背后进行的。</p>
+</li>
+</ul>
+<h1 id="流与集合"><a href="#流与集合" class="headerlink" title="流与集合"></a>流与集合</h1><p><strong>集合与流之间的差异就在于什么时候进行计算。</strong>集合是一个内存中的数据结构， 它包含数据结构中目前所有的值——集合中的每个元素都得先算出来才能添加到集合中。流则是在概念上固定的数据结构（你不能添加或删除元素），其元素则是<strong>按需计算</strong>的。</p>
+<p><strong>流只能遍历一次。</strong>遍历完之后，这个流已经被消费掉了。可以从原始数据源那里再获得一个新的流来重新遍历一遍。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; title = Arrays.asList(<span class="string">"Java8"</span>, <span class="string">"In"</span>, <span class="string">"Action"</span>); Stream&lt;String&gt; s = title.stream()</div><div class="line">s.forEach(System.out::println); </div><div class="line">s.forEach(System.out::println); <span class="comment">//java.lang.IllegalStateException:流已被操作</span></div></pre></td></tr></table></figure>
+<p>Collection接口需要用户去做迭代（比如用for-each），这称为<strong>外部迭代</strong>。Streams库使用内部迭代——它帮你把迭代做了，还把得到的流值存在了某个地方，你只要给出一个函数说要干什么就可以了。Streams库的内部迭代可以自动选择一种适 合你硬件的数据表示和并行实现。与此相反，一旦通过写for-each而选择了外部迭代，那你基 本上就要自己管理所有的并行问题了。</p>
+<h1 id="流操作"><a href="#流操作" class="headerlink" title="流操作"></a>流操作</h1><p>java.util.stream.Stream 中的 Stream 接口定义了许多操作。它们可以分为两大类。</p>
+<ul>
+<li><strong>中间操作：</strong>filter、map、limit等可以连成一条流水线的操作；</li>
+<li><strong>终端操作：</strong>collect等触发流水线执行并关闭流的操作；</li>
+</ul>
+<h2 id="中间操作"><a href="#中间操作" class="headerlink" title="中间操作"></a>中间操作</h2><p>诸如filter或sorted等中间操作会返回另一个流。这让多个操作可以连接起来形成一个查 询。重要的是，除非流水线上触发一个终端操作，否则中间操作不会执行任何处理，这是因为中间操作一般都可以合并起来，在终端操作时一次性全部处理。尽管filter和map是两个独立的操作，但它们合并到同一次遍历中了（我们把这种技术叫作循环 合并）。</p>
+<h2 id="终端操作"><a href="#终端操作" class="headerlink" title="终端操作"></a>终端操作</h2><p>终端操作会从流的流水线生成结果。其结果是任何不是流的值，比如List、Integer，甚至void。</p>
+<h2 id="使用流"><a href="#使用流" class="headerlink" title="使用流"></a>使用流</h2><p>流的使用一般包括三件事：</p>
+<ul>
+<li>一个数据源（如集合）来执行一个查询；</li>
+<li>一个中间操作链，形成一条流的流水线；</li>
+<li>一个终端操作，执行流水线，并能生成结果；</li>
+</ul>
+<p>流的流水线背后的理念类似于构建器模式。在构建器模式中有一个调用链用来设置一套配 置（对流来说这就是一个中间操作链），接着是调用built方法（对流来说就是终端操作）。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>《Java 8 实战》</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;流是什么&quot;&gt;&lt;a href=&quot;#流是什么&quot; class=&quot;headerlink&quot; title=&quot;流是什么&quot;&gt;&lt;/a&gt;流是什么&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;流&lt;/strong&gt;是Java API的新成员，它允许你以声明性方式处理数据集合（通过查询语句来表达，而不是
+    
+    </summary>
+    
+      <category term="Java" scheme="http://liuguoquan727.github.io/categories/Java/"/>
+    
+    
+      <category term="Java8" scheme="http://liuguoquan727.github.io/tags/Java8/"/>
+    
+  </entry>
   
   <entry>
     <title>Java8特性①Lambda表达式</title>
