@@ -4,6 +4,224 @@
   
     
     <entry>
+      <title><![CDATA[Java8特性③Stream的使用]]></title>
+      <url>http://liuguoquan727.github.io/2017/05/02/Java8%E7%89%B9%E6%80%A7%E2%91%A2Stream%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h1 id="筛选和切片"><a href="#筛选和切片" class="headerlink" title="筛选和切片"></a>筛选和切片</h1><ul>
+<li>filter 方法</li>
+<li>distinct 方法</li>
+<li>limit 方法</li>
+<li>skip 方法</li>
+</ul>
+<h2 id="谓词筛选"><a href="#谓词筛选" class="headerlink" title="谓词筛选"></a>谓词筛选</h2><p>Stream 接口支持 filter 方法，该操作会接受一个谓词（一个返回 boolean的函数）作为参数，并返回一个包括所有符合谓词的元素的流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; dishes = Dish.menu.stream()</div><div class="line">      .filter(Dish::isVegetarian)</div><div class="line">      .collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h2 id="筛选重复的元素"><a href="#筛选重复的元素" class="headerlink" title="筛选重复的元素"></a>筛选重复的元素</h2><p>Stream 接口支持 distinct 的方法， 它会返回一个元素各异（根据流所生成元素的 hashCode和equals方法实现）的流。例如，以下代码会筛选出列表中所有的偶数，并确保没有 重复。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">numbers.stream().filter(i -&gt; i % <span class="number">2</span> == <span class="number">0</span>)</div><div class="line">      .distinct() <span class="comment">//去重元素2</span></div><div class="line">      .forEach(System.out::println);</div></pre></td></tr></table></figure>
+<h2 id="限制元素数量"><a href="#限制元素数量" class="headerlink" title="限制元素数量"></a>限制元素数量</h2><p>Stream 支持limit(n)方法，该方法会返回一个不超过给定长度的流。所需的长度作为参数传递 给limit。如果流是有序的，则最多会返回前n个元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; dishLimits = Dish.menu.stream()</div><div class="line">        .filter(d -&gt; d.getCalories() &gt; <span class="number">300</span>)</div><div class="line">        .limit(<span class="number">3</span>) <span class="comment">//只返回符合要求的前3个元素</span></div><div class="line">        .collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h2 id="跳过指定数量的元素"><a href="#跳过指定数量的元素" class="headerlink" title="跳过指定数量的元素"></a>跳过指定数量的元素</h2><p>Stream 支持 skip(n) 方法，返回一个扔掉了前n个元素的流。如果流中元素不足n个，则返回一 个空流。limit(n) 和 skip(n) 是互补的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;Dish&gt; dishSkip = Dish.menu.stream()</div><div class="line">        .filter(d -&gt; d.getCalories() &gt; <span class="number">300</span>)</div><div class="line">        .skip(<span class="number">2</span>) <span class="comment">//去掉符合要求的集合中的前2个元素后返回</span></div><div class="line">        .collect(Collectors.toList());</div><div class="line">dishSkip.forEach(System.out::println);</div></pre></td></tr></table></figure>
+<h1 id="映射"><a href="#映射" class="headerlink" title="映射"></a>映射</h1><h2 id="map-操作"><a href="#map-操作" class="headerlink" title="map 操作"></a>map 操作</h2><p>Stream 支持 map 方法，它会接受一个函数作为参数。这个函数会被应用到每个元素上，并将其映 射成一个新的元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; dishNames = Dish.menu.stream()</div><div class="line">      .map(Dish::getName)</div><div class="line">      .map(String::length)</div><div class="line">      .collect(Collectors.toList());</div><div class="line"> </div><div class="line">List&lt;String&gt; words = Arrays.asList(<span class="string">"Hello"</span>, <span class="string">"World"</span>);</div><div class="line">List&lt;Integer&gt; wordLens = words.stream()</div><div class="line">      .map(String::length) <span class="comment">//转为字符串长度的集合</span></div><div class="line">      .collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<h2 id="flatMap-操作"><a href="#flatMap-操作" class="headerlink" title="flatMap 操作"></a>flatMap 操作</h2><p>flatmap 方法让你把一个流中的每个值都换成另一个流，然后把所有的流连接起来成为一个流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//使用flatMap找出单词列表中各不相同的字符</span></div><div class="line">List&lt;String&gt; words = Arrays.asList(<span class="string">"Hello"</span>, <span class="string">"World"</span>);</div><div class="line">List&lt;String&gt; wordMap = words.stream()</div><div class="line">      .map(word -&gt; word.split(<span class="string">""</span>))</div><div class="line">      .flatMap(Arrays::stream)</div><div class="line">      .distinct()</div><div class="line">      .collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<p><img src="http://ooqmyazc5.bkt.clouddn.com/flatMap.jpg" alt=""></p>
+<blockquote>
+<p>给定两个数字列表，如何返回所有的数对呢？例如，给定列表[1, 2, 3]和列表[3, 4]，应该返回[(1, 3), (1, 4), (2, 3), (2, 4), (3, 3), (3, 4)]。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; num1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);</div><div class="line">List&lt;Integer&gt; num2 = Arrays.asList(<span class="number">4</span>, <span class="number">5</span>);</div><div class="line">List&lt;<span class="keyword">int</span>[]&gt; pairs = num1.stream()</div><div class="line">        .flatMap(i -&gt; num2.stream().map(j -&gt; <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;i, j&#125;))</div><div class="line">        .collect(Collectors.toList());</div><div class="line">pairs.stream().forEach( i -&gt; &#123;</div><div class="line">    Arrays.stream(i).forEach(System.out::println);</div></pre></td></tr></table></figure>
+<h1 id="查找和匹配"><a href="#查找和匹配" class="headerlink" title="查找和匹配"></a>查找和匹配</h1><h2 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h2><p>流中是否有一个元素能匹配给定的谓词。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Dish.menu.stream().anyMatch(Dish::isVegetarian)) &#123;</div><div class="line">    System.out.println(<span class="string">"Vegetarion"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h2><p>流中是否有所有元素能匹配给定的谓词。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Dish.menu.stream().allMatch(d -&gt; d.getCalories() &lt; <span class="number">1000</span>)) &#123;</div><div class="line"></div><div class="line">    System.out.println(<span class="string">"都有利于健康"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="nonMatch"><a href="#nonMatch" class="headerlink" title="nonMatch"></a>nonMatch</h2><p>流中是否有没有任何元素能匹配给定的谓词。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (Dish.menu.stream().noneMatch(d -&gt; d.getCalories() &gt;= <span class="number">1000</span>)) &#123;</div><div class="line"></div><div class="line">    System.out.println(<span class="string">"都有利于健康"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h2><p>findAny 方法将返回当前流中的任意一个元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Optional&lt;Dish&gt; dish = Dish.menu.stream().filter(Dish::isVegetarian)</div><div class="line">        .findAny();</div><div class="line">dish.ifPresent(d -&gt; System.out.println(d.toString()));</div></pre></td></tr></table></figure>
+<h2 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h2><p>findAny 方法将返回当前流中的第一个元素。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; num1 = Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);</div><div class="line">num1.stream().map(x -&gt; x * x)</div><div class="line">        .filter(x -&gt; x % <span class="number">3</span> == <span class="number">0</span>) <span class="comment">//平方能被3整除的数</span></div><div class="line">        .findFirst().ifPresent(x -&gt; System.out.println(x));</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h2 id="Optional"><a href="#Optional" class="headerlink" title="Optional"></a>Optional</h2><p><code>Optional&lt;T&gt;</code>类（java.util.Optional）是一个容器类，代表一个值存在或不存在。Optional里面y有几种显式地检查值是否存在或处理值不存在的情形的方法：</p>
+<ul>
+<li><code>isPresent()</code>将在Optional包含值的时候返回true, 否则返回false。</li>
+<li><code>ifPresent(Consumer&lt;T&gt; block)</code>)会在值存在的时候执行给定的代码块。</li>
+<li><code>T get()</code>会在值存在时返回值，否则抛出一个NoSuchElement异常。</li>
+<li><code>T orElse(T other)</code>会在值存在时返回值，否则返回一个默认值。</li>
+</ul>
+<h1 id="归约（reduce）"><a href="#归约（reduce）" class="headerlink" title="归约（reduce）"></a>归约（reduce）</h1><p>把一个流中的元素组合起来，使用 reduce 操作来表达更复杂的查 询，比如“计算菜单中的总卡路里”或“菜单中卡路里最高的菜是哪一个”。此类查询需要将流中所有元素反复结合起来，得到一个值，比如一个Integer。这样的查询可以被归类为归约操作 （将流归约成一个值）。</p>
+<p>reduce操作是如何作用于一个流的：Lambda反复结合每个元素，直到流被归约成一个值。reduce方法接受两个参数：一个初始值，这里是0；一个 <code>BinaryOperator&lt;T&gt;</code> 来将两个元素结合起来产生一个新值， 这里我们用的是 <code>lambda (a, b) -&gt; a + b</code>。</p>
+<h2 id="元素求和"><a href="#元素求和" class="headerlink" title="元素求和"></a>元素求和</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">List&lt;Integer&gt; numbers = Arrays.asList(<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">2</span>);</div><div class="line"><span class="keyword">int</span> sum1 = numbers.stream().reduce(<span class="number">0</span>,(a, b) -&gt; a + b);</div><div class="line">System.out.println(sum1);</div><div class="line"></div><div class="line"><span class="keyword">int</span> sum2 = numbers.stream().reduce(<span class="number">0</span>,Integer::sum);</div><div class="line">System.out.println(sum2);</div></pre></td></tr></table></figure>
+<h2 id="最大值"><a href="#最大值" class="headerlink" title="最大值"></a>最大值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> max = numbers.stream().reduce(<span class="number">0</span>,Integer::max);</div><div class="line">System.out.println(max);</div></pre></td></tr></table></figure>
+<h2 id="最小值"><a href="#最小值" class="headerlink" title="最小值"></a>最小值</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//reduce不接受初始值，返回一个Optional对象（考虑流中没有任何元素的情况）</span></div><div class="line">Optional&lt;Integer&gt; min = numbers.stream().reduce(Integer::min);</div><div class="line">min.ifPresent(System.out::println);</div></pre></td></tr></table></figure>
+<h1 id="数值流"><a href="#数值流" class="headerlink" title="数值流"></a>数值流</h1><h2 id="原始类型流特化"><a href="#原始类型流特化" class="headerlink" title="原始类型流特化"></a>原始类型流特化</h2><p>Java 8引入了三个原始类型特化流接口来解决这个问题： IntStream 、 DoubleStream 和 LongStream，分别将流中的元素特化为int、long和double，从而避免了暗含的装箱成本。每 个接口都带来了进行常用数值归约的新方法，比如对数值流求和的sum，找到最大元素的max。 此外还有在必要时再把它们转换回对象流的方法。这些特化的原因并不在于流的复杂性，而是装箱造成的复杂性——即类似int和Integer之间的效率差异。</p>
+<ul>
+<li><strong>映射到数值流：</strong>将流转换为特化版本的常用方法是mapToInt、mapToDouble和mapToLong。这些方法和前 面说的map方法的工作方式一样，只是它们返回的是一个特化流，而不是<code>Stream&lt;T&gt;</code>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> colories = Dish.menu.stream()</div><div class="line">        .mapToInt(Dish::getCalories) <span class="comment">//返回IntStream</span></div><div class="line">        .sum();</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>转换回对象流</strong></li>
+</ul>
+<p>通过 box 方法可以将数值流转化为 Stream 非特化流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">IntStream intStream = menu.stream().mapToInt(Dish::getCalories); <span class="comment">//将Strean转化为数值流</span></div><div class="line">Stream&lt;Integer&gt; stream = intStream.boxed(); <span class="comment">//将数值流转化为Stream</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>默认值 OptionalInt</strong></li>
+</ul>
+<p>Optional 可以用 Integer、String等参考类型来参数化。对于三种原始流特化，也分别有一个Optional原始类 型特化版本：OptionalInt、OptionalDouble和OptionalLong。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Dish.menu.stream()</div><div class="line">        .mapToInt(Dish::getCalories) <span class="comment">//返回IntStream</span></div><div class="line">        .max().ifPresent(System.out::println);</div></pre></td></tr></table></figure>
+<h2 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">IntStream.rangeClosed(<span class="number">1</span>, <span class="number">100</span>)</div><div class="line">        .filter(x -&gt; x % <span class="number">10</span> == <span class="number">0</span>)</div><div class="line">        .forEach(System.out::println);</div></pre></td></tr></table></figure>
+<p>Java 8引入了两个可以用于IntStream和LongStream的静态方法，帮助生成这种范围： range和rangeClosed。这两个方法都是第一个参数接受起始值，第二个参数接受结束值。但 range是不包含结束值的，而rangeClosed则包含结束值。</p>
+<h2 id="数值流应用：勾股数"><a href="#数值流应用：勾股数" class="headerlink" title="数值流应用：勾股数"></a>数值流应用：勾股数</h2><p>生成 (5, 12, 13)、(6, 8, 10)和(7, 24, 25) 这样有效的勾股数数组集合。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Stream&lt;<span class="keyword">int</span>[]&gt; pythagoreanTriples = IntStream.rangeClosed(<span class="number">1</span>, <span class="number">100</span>).boxed()</div><div class="line">        .flatMap(a -&gt; IntStream.rangeClosed(a,<span class="number">100</span>)</div><div class="line">                                .filter(b -&gt; Math.sqrt(a * a + b * b) % <span class="number">1</span> == <span class="number">0</span>).boxed()</div><div class="line">                                .map(b -&gt; <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;a,b,(<span class="keyword">int</span>)Math.sqrt(a * a + b * b)&#125;)</div><div class="line">        );</div><div class="line">pythagoreanTriples.forEach(t -&gt; System.out.println(t[<span class="number">0</span>] + <span class="string">";"</span> + t[<span class="number">1</span>] +<span class="string">";"</span> + t[<span class="number">2</span>]));</div></pre></td></tr></table></figure>
+<h1 id="构建流"><a href="#构建流" class="headerlink" title="构建流"></a>构建流</h1><h2 id="值创建流"><a href="#值创建流" class="headerlink" title="值创建流"></a>值创建流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Stream&lt;String&gt; streams = Stream.of(<span class="string">"Java"</span>, <span class="string">"Python"</span>);</div><div class="line">streams.map(String::toUpperCase).forEach(System.out::println);</div><div class="line"></div><div class="line">Stream.concat(Stream.of(<span class="string">"Java"</span>, <span class="string">"Python"</span>), Stream.of(<span class="string">"C++"</span>, <span class="string">"Ruby"</span>)).forEach(System.out::println);</div></pre></td></tr></table></figure>
+<h2 id="数组创建流"><a href="#数组创建流" class="headerlink" title="数组创建流"></a>数组创建流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span>[] numbers = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;;</div><div class="line"><span class="keyword">int</span> sum = Arrays.stream(numbers).sum();</div></pre></td></tr></table></figure>
+<h2 id="文件生成流"><a href="#文件生成流" class="headerlink" title="文件生成流"></a>文件生成流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String ret = Files.lines(Paths.get(<span class="string">"/Users/liuguoquan/Java/java8/src/com/company/data.txt"</span>), Charset.defaultCharset())</div><div class="line">        .reduce(<span class="string">""</span>, (a, b) -&gt; a + <span class="string">" "</span> + b);</div></pre></td></tr></table></figure>
+<h2 id="函数生成流：创建无限流"><a href="#函数生成流：创建无限流" class="headerlink" title="函数生成流：创建无限流"></a>函数生成流：创建无限流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//迭代</span></div><div class="line">Stream.iterate(<span class="number">0</span>, n -&gt; n + <span class="number">2</span>)</div><div class="line">        .limit(<span class="number">10</span>)</div><div class="line">        .forEach(System.out::println);</div><div class="line"></div><div class="line"><span class="comment">//生成</span></div><div class="line">Stream.generate(Math::random)</div><div class="line">        .limit(<span class="number">5</span>)</div><div class="line">        .forEach(System.out::println);</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h1 id="示例实战"><a href="#示例实战" class="headerlink" title="示例实战"></a>示例实战</h1><p>假设你是执行交易的交易员。你的经理让你为八个查询找到答案。你能做到吗？</p>
+<ul>
+<li>(1) 找出2016年发生的所有交易，并按交易额排序（从低到高）。</li>
+<li>(2) 交易员都在哪些不同的城市工作过？</li>
+<li>(3) 查找所有来自于北京的交易员，并按姓名排序。</li>
+<li>(4) 返回所有交易员的姓名字符串，按字母顺序排序。</li>
+<li>(5) 有没有交易员是在深圳工作的？</li>
+<li>(6) 打印生活在北京的交易员的所有交易额。</li>
+<li>(7) 所有交易中，最高的交易额是多少？</li>
+<li>(8) 找到交易额最小的交易。</li>
+</ul>
+<p><strong>交易员类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 交易人</div><div class="line"> * Created by liuguoquan on 2017/4/28.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Trader</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> String city;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Trader</span><span class="params">(String name, String city)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.city = city;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getCity</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> city;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCity</span><span class="params">(String city)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.city = city;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Trader&#123;"</span> +</div><div class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", city='"</span> + city + <span class="string">'\''</span> +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>交易类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 交易单</div><div class="line"> * Created by liuguoquan on 2017/4/28.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Transaction</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">private</span> Trader trader;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> year;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> value;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Transaction</span><span class="params">(Trader trader, <span class="keyword">int</span> year, <span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.trader = trader;</div><div class="line">        <span class="keyword">this</span>.year = year;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> Trader <span class="title">getTrader</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> trader;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTrader</span><span class="params">(Trader trader)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.trader = trader;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getYear</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> year;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYear</span><span class="params">(<span class="keyword">int</span> year)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.year = year;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.value = value;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">"Transaction&#123;"</span> +</div><div class="line">                <span class="string">"trader="</span> + trader +</div><div class="line">                <span class="string">", year='"</span> + year + <span class="string">'\''</span> +</div><div class="line">                <span class="string">", value="</span> + value +</div><div class="line">                <span class="string">'&#125;'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>计算</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TransactionProcess</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        Trader liu = <span class="keyword">new</span> Trader(<span class="string">"Lau"</span>,<span class="string">"Beijing"</span>);</div><div class="line">        Trader lee = <span class="keyword">new</span> Trader(<span class="string">"Lee"</span>,<span class="string">"Shanghai"</span>);</div><div class="line">        Trader zhang = <span class="keyword">new</span> Trader(<span class="string">"Zhang"</span>,<span class="string">"Guangzhou"</span>);</div><div class="line">        Trader wang = <span class="keyword">new</span> Trader(<span class="string">"Wang"</span>,<span class="string">"Beijing"</span>);</div><div class="line"></div><div class="line">        List&lt;Transaction&gt; transactions = Arrays.asList(</div><div class="line">                <span class="keyword">new</span> Transaction(liu,<span class="number">2016</span>,<span class="number">300</span>),</div><div class="line">                <span class="keyword">new</span> Transaction(lee,<span class="number">2015</span>,<span class="number">100</span>),</div><div class="line">                <span class="keyword">new</span> Transaction(lee,<span class="number">2016</span>,<span class="number">500</span>),</div><div class="line">                <span class="keyword">new</span> Transaction(zhang,<span class="number">2016</span>,<span class="number">9000</span>),</div><div class="line">                <span class="keyword">new</span> Transaction(wang,<span class="number">2017</span>,<span class="number">1000</span>),</div><div class="line">                <span class="keyword">new</span> Transaction(liu,<span class="number">2016</span>,<span class="number">1500</span>)</div><div class="line">        );</div><div class="line"></div><div class="line">        <span class="comment">// (1) 找出2016年发生的所有交易，并按交易额排序（从低到高）。</span></div><div class="line">        transactions.stream().filter(t -&gt; t.getYear() == <span class="number">2016</span>)</div><div class="line">                .sorted(Comparator.comparing(Transaction::getValue))</div><div class="line">                .collect(Collectors.toList());</div><div class="line"></div><div class="line">        <span class="comment">// (2) 交易员都在哪些不同的城市工作过？</span></div><div class="line">        transactions.stream().map(t -&gt; t.getTrader().getCity())</div><div class="line">                .distinct()</div><div class="line">                .collect(Collectors.toList());</div><div class="line"></div><div class="line">        <span class="comment">// (3) 查找所有来自于北京的交易员，并按姓名排序。</span></div><div class="line">        transactions.stream().map(t -&gt; t.getTrader())</div><div class="line">                .filter(t -&gt; t.getCity().equals(<span class="string">"Beijing"</span>))</div><div class="line">                .distinct()</div><div class="line">                .sorted(Comparator.comparing(Trader::getName))</div><div class="line">                .collect(Collectors.toList());</div><div class="line"></div><div class="line">        <span class="comment">// (4) 返回所有交易员的姓名字符串，按字母顺序排序。</span></div><div class="line">        transactions.stream().map(t -&gt; t.getTrader())</div><div class="line">                .map(t -&gt; t.getName())</div><div class="line">                .distinct()</div><div class="line">                .sorted()</div><div class="line">                .collect(Collectors.toList());</div><div class="line"></div><div class="line">        <span class="comment">// (5) 有没有交易员是在深圳工作的？</span></div><div class="line">        <span class="keyword">boolean</span> isExist = transactions.stream().anyMatch(t -&gt; t.getTrader().getCity().equals(<span class="string">"Shenzhen"</span>));</div><div class="line">        <span class="keyword">if</span> (isExist) &#123;</div><div class="line">            System.out.println(<span class="string">"有在深圳工作的"</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            System.out.println(<span class="string">"没有在深圳工作的"</span>);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="comment">// (6) 打印生活在北京的交易员的所有交易额。</span></div><div class="line">        <span class="keyword">int</span> sum = transactions.stream().filter(t -&gt; t.getTrader().getCity().equals(<span class="string">"Beijing"</span>))</div><div class="line">                .map(t -&gt; t.getValue())</div><div class="line">                .reduce(<span class="number">0</span>,Integer::sum);</div><div class="line">        System.out.println(sum);</div><div class="line"></div><div class="line">        <span class="comment">// (7) 所有交易中，最高的交易额是多少？</span></div><div class="line">        <span class="keyword">int</span> max = transactions.stream().map(t -&gt; t.getValue())</div><div class="line">                .reduce(<span class="number">0</span>,Integer::max);</div><div class="line">        System.out.println(max);</div><div class="line"></div><div class="line">        <span class="comment">// (8) 找到交易额最小的交易。</span></div><div class="line">        <span class="keyword">int</span> min = transactions.stream().map(t -&gt; t.getValue())</div><div class="line">                .reduce(<span class="number">0</span>,Integer::min);</div><div class="line">        System.out.println(min);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><ul>
+<li>中间操作表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>类型</th>
+<th>返回类型</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>filter</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>过滤元素</td>
+</tr>
+<tr>
+<td>distinct</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>过滤重复的元素</td>
+</tr>
+<tr>
+<td>skip</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>跳过指定数量的元素</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>限制元素的数量</td>
+</tr>
+<tr>
+<td>map</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>流的转化</td>
+</tr>
+<tr>
+<td>flatmap</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>流的扁平化</td>
+</tr>
+<tr>
+<td>sorted</td>
+<td>中间操作</td>
+<td><code>Stream&lt;T&gt;</code></td>
+<td>元素排序</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>终端操作表</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>类型</th>
+<th>返回类型</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>forEach</td>
+<td>终端操作</td>
+<td>void</td>
+<td>消费流中的每个元素，返回void</td>
+</tr>
+<tr>
+<td>count</td>
+<td>终端操作</td>
+<td>long</td>
+<td>返回流中元素的个数，返回long</td>
+</tr>
+<tr>
+<td>collect</td>
+<td>终端操作</td>
+<td>R</td>
+<td>把流归约为一个集合</td>
+</tr>
+<tr>
+<td>anyMatch</td>
+<td>终端操作</td>
+<td>boolean</td>
+<td>流中是否有符合要求的元素</td>
+</tr>
+<tr>
+<td>noneMatch</td>
+<td>终端操作</td>
+<td>boolean</td>
+<td>流中是否没有任何符合要求的元素</td>
+</tr>
+<tr>
+<td>allMatch</td>
+<td>终端操作</td>
+<td>boolean</td>
+<td>流中是否所有元素都是符合要求的</td>
+</tr>
+<tr>
+<td>findAny</td>
+<td>终端操作</td>
+<td>Optional<t></t></td>
+<td>查找符合要求的元素</td>
+</tr>
+<tr>
+<td>findFirst</td>
+<td>终端操作</td>
+<td>Optional<t></t></td>
+<td>查找第一个符合要求的元素</td>
+</tr>
+<tr>
+<td>reduce</td>
+<td>终端操作</td>
+<td>Optional<t></t></td>
+<td>归约</td>
+</tr>
+</tbody>
+</table>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>《Java 8 实战》</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Java8特性②Stream简介]]></title>
       <url>http://liuguoquan727.github.io/2017/04/27/Java8%E7%89%B9%E6%80%A7%E2%91%A1Stream%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<h1 id="流是什么"><a href="#流是什么" class="headerlink" title="流是什么"></a>流是什么</h1><p><strong>流</strong>是Java API的新成员，它允许你以声明性方式处理数据集合（通过查询语句来表达，而不是临时编写一个实现）。可以把它们看成遍历数据集的高级迭代器。此外流还可以<strong>透明地并行处理</strong>，无需写任何多线程代码了。如下面代码所示：</p>
