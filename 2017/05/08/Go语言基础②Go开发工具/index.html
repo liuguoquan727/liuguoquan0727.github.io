@@ -1,0 +1,1037 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Go基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.jpeg?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="在Go语言中，我们很多操作都是通过go命令进行的，比如我们要执行go文件的编译，就需要使用go build命令，除了build命令之外，还有很多常用的命令，这一次我们就统一进行介绍，对常用命令有一个了解，这样我们就可以更容易的开发我们的Go程序了。
+go命令概览打开 Mac 终端，运行 go 命令。
+1234567891011121314151617181920212223242526272829">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go语言基础②Go开发工具">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/05/08/Go语言基础②Go开发工具/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="在Go语言中，我们很多操作都是通过go命令进行的，比如我们要执行go文件的编译，就需要使用go build命令，除了build命令之外，还有很多常用的命令，这一次我们就统一进行介绍，对常用命令有一个了解，这样我们就可以更容易的开发我们的Go程序了。
+go命令概览打开 Mac 终端，运行 go 命令。
+1234567891011121314151617181920212223242526272829">
+<meta property="og:updated_time" content="2017-05-09T13:35:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Go语言基础②Go开发工具">
+<meta name="twitter:description" content="在Go语言中，我们很多操作都是通过go命令进行的，比如我们要执行go文件的编译，就需要使用go build命令，除了build命令之外，还有很多常用的命令，这一次我们就统一进行介绍，对常用命令有一个了解，这样我们就可以更容易的开发我们的Go程序了。
+go命令概览打开 Mac 终端，运行 go 命令。
+1234567891011121314151617181920212223242526272829">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuguoquan727.github.io/2017/05/08/Go语言基础②Go开发工具/"/>
+
+
+
+
+
+  <title> Go语言基础②Go开发工具 | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/05/08/Go语言基础②Go开发工具/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Go语言基础②Go开发工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T21:00:53+08:00">
+                2017-05-08 21:00:53
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/08/Go语言基础②Go开发工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/08/Go语言基础②Go开发工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Go语言中，我们很多操作都是通过go命令进行的，比如我们要执行go文件的编译，就需要使用go build命令，除了build命令之外，还有很多常用的命令，这一次我们就统一进行介绍，对常用命令有一个了解，这样我们就可以更容易的开发我们的Go程序了。</p>
+<h1 id="go命令概览"><a href="#go命令概览" class="headerlink" title="go命令概览"></a>go命令概览</h1><p>打开 Mac 终端，运行 go 命令。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">➜  ~ <span class="keyword">go</span></div><div class="line">Go is a tool <span class="keyword">for</span> managing Go source code.</div><div class="line"></div><div class="line">Usage:</div><div class="line"></div><div class="line">	<span class="keyword">go</span> command [arguments]</div><div class="line"></div><div class="line">The commands are:</div><div class="line"></div><div class="line">	build       compile packages and dependencies</div><div class="line">	clean       remove object files</div><div class="line">	doc         show documentation <span class="keyword">for</span> <span class="keyword">package</span> or symbol</div><div class="line">	env         <span class="built_in">print</span> Go environment information</div><div class="line">	bug         start a bug report</div><div class="line">	fix         run <span class="keyword">go</span> tool fix on packages</div><div class="line">	fmt         run gofmt on <span class="keyword">package</span> sources</div><div class="line">	generate    generate Go files by processing source</div><div class="line">	get         download and install packages and dependencies</div><div class="line">	install     compile and install packages and dependencies</div><div class="line">	list        list packages</div><div class="line">	run         compile and run Go program</div><div class="line">	test        test packages</div><div class="line">	tool        run specified <span class="keyword">go</span> tool</div><div class="line">	version     <span class="built_in">print</span> Go version</div><div class="line">	vet         run <span class="keyword">go</span> tool vet on packages</div><div class="line"></div><div class="line">Use <span class="string">"go help [command]"</span> <span class="keyword">for</span> more information about a command.</div><div class="line"></div><div class="line">Additional help topics:</div><div class="line"></div><div class="line">	c           calling between Go and C</div><div class="line">	buildmode   description of build modes</div><div class="line">	filetype    file types</div><div class="line">	gopath      GOPATH environment variable</div><div class="line">	environment environment variables</div><div class="line">	importpath  <span class="keyword">import</span> path syntax</div><div class="line">	packages    description of <span class="keyword">package</span> lists</div><div class="line">	testflag    description of testing flags</div><div class="line">	testfunc    description of testing functions</div><div class="line"></div><div class="line">Use <span class="string">"go help [topic]"</span> <span class="keyword">for</span> more information about that topic.</div></pre></td></tr></table></figure>
+<h1 id="go-build"><a href="#go-build" class="headerlink" title="go build"></a>go build</h1><p><strong>go build</strong>,是非常常用的命令，它可以启动编译，把我们的包和相关的依赖编译成一个可执行的文件。</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usage: go build <span class="string">[-o output]</span> <span class="string">[-i]</span> <span class="string">[build flags]</span> <span class="string">[packages]</span></div></pre></td></tr></table></figure>
+<p><code>go build</code>的使用比较简洁，所有的参数都可以忽略，直到只有go build，这个时候意味着使用当前目录进行编译，下面的几条命令是等价的：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> build</div><div class="line"><span class="keyword">go</span> build .</div><div class="line"><span class="keyword">go</span> build hello.<span class="keyword">go</span></div></pre></td></tr></table></figure>
+<p>以上这三种写法，都是使用当前目录编译的意思。因为我们忽略了packages,所以自然就使用当前目录进行编译了。从这里我们也可以推测出，go build本质上需要的是一个路径，让编译器可以找到哪些需要编译的go文件。packages其实是一个相对路径，是相对于我们定义的GOROOT和GOPATH这两个环境变量的，所以有了packages这个参数后，go build就可以知道哪些需要编译的go文件了。</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">go</span> <span class="keyword">build </span>github/tools</div></pre></td></tr></table></figure>
+<p>这种方式是指定包的方式，这样会明确的编译我们这个包。当然我们也可以使用通配符。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> build github.<span class="keyword">com</span>/tools/...</div></pre></td></tr></table></figure>
+<p>3个点表示匹配所有字符串，这样go build就会编译tools目录下的所有包。</p>
+<h1 id="go-clean"><a href="#go-clean" class="headerlink" title="go clean"></a>go clean</h1><p>在我们使用<code>go build</code>编译的时候，会产生编译生成的文件，尤其是在我们签入代码的时候，并不想把我们生成的文件也签入到我们的Git代码库中，这时候我们可以手动删除生成的文件，但是有时候会忘记，也很麻烦，不小心还是会提交到Git中。要解决这个问题，我们可以使用<code>go clean</code>,它可以清理我们编译生成的文件，比如生成的可执行文件，生成obj对象等等。</p>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usage: go clean <span class="string">[-i]</span> <span class="string">[-r]</span> <span class="string">[-n]</span> <span class="string">[-x]</span> <span class="string">[build flags]</span> <span class="string">[packages]</span></div></pre></td></tr></table></figure>
+<h1 id="go-run"><a href="#go-run" class="headerlink" title="go run"></a>go run</h1><p>go build是先编译，然后我们在执行可以执行文件来运行我们的程序，需要两步。go run这个命令就是可以把这两步合成一步的命令，通过go run命令，我们可以直接看到输出的结果。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">➜  ~ go <span class="keyword">help</span> run</div><div class="line"><span class="keyword">usage</span>: <span class="keyword">go</span> run [<span class="keyword">build</span> flags] [-exec xprog] gofiles... [arguments...]</div><div class="line"></div><div class="line">Run compiles <span class="keyword">and</span> runs the <span class="keyword">main</span> <span class="keyword">package</span> comprising the named <span class="keyword">Go</span> <span class="keyword">source</span> files.</div><div class="line">A <span class="keyword">Go</span> <span class="keyword">source</span> <span class="keyword">file</span> <span class="keyword">is</span> defined <span class="keyword">to</span> be a <span class="keyword">file</span> ending <span class="keyword">in</span> a literal <span class="string">".go"</span> suffix.</div><div class="line"></div><div class="line"><span class="keyword">By</span> <span class="keyword">default</span>, <span class="string">'go run'</span> runs the <span class="keyword">compiled</span> <span class="built_in">binary</span> directly: <span class="string">'a.out arguments...'</span>.</div><div class="line"><span class="keyword">If</span> the -exec flag <span class="keyword">is</span> given, <span class="string">'go run'</span> invokes the <span class="built_in">binary</span> <span class="keyword">using</span> xprog:</div><div class="line">	<span class="string">'xprog a.out arguments...'</span>.</div><div class="line"><span class="keyword">If</span> the -exec flag <span class="keyword">is</span> <span class="keyword">not</span> given, GOOS <span class="keyword">or</span> GOARCH <span class="keyword">is</span> different <span class="keyword">from</span> the <span class="keyword">system</span></div><div class="line"><span class="keyword">default</span>, <span class="keyword">and</span> a program named go_$GOOS_$GOARCH_exec can be <span class="keyword">found</span></div><div class="line"><span class="keyword">on</span> the <span class="keyword">current</span> <span class="keyword">search</span> <span class="keyword">path</span>, <span class="string">'go run'</span> invokes the <span class="built_in">binary</span> <span class="keyword">using</span> that program,</div><div class="line"><span class="keyword">for</span> example <span class="string">'go_nacl_386_exec a.out arguments...'</span>. This allows execution <span class="keyword">of</span></div><div class="line"><span class="keyword">cross</span>-<span class="keyword">compiled</span> programs <span class="keyword">when</span> a simulator <span class="keyword">or</span> other execution method <span class="keyword">is</span></div><div class="line">available.</div></pre></td></tr></table></figure>
+<p>go run 命令需要一个go文件作为参数，这个go文件必须包含main包和main函数，这样才可以运行，其他的参数和go build差不多。在运行go run的时候，如果需要的话，我们可以给我们的程序传递参数，比如：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"os"</span></div><div class="line">)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"输入的参数为："</span>,os.Args[<span class="number">1</span>])</div><div class="line">&#125;</div><div class="line"></div><div class="line">打开终端，输入如下命令执行：</div><div class="line"><span class="keyword">go</span> run main.<span class="keyword">go</span> <span class="number">12</span></div><div class="line"></div><div class="line">打印：</div><div class="line">输入的参数为： <span class="number">12</span></div></pre></td></tr></table></figure>
+<h1 id="go-test"><a href="#go-test" class="headerlink" title="go test"></a>go test</h1><p>该命令用于Go的单元测试，它也是接受一个包名作为参数，如果没有指定，使用当前目录。<br>go test运行的单元测试必须符合go的测试要求。</p>
+<ol>
+<li>写有单元测试的文件名，必须以_test.go结尾。</li>
+<li>测试文件要包含若干个测试函数。</li>
+<li>这些测试函数要以Test为前缀，还要接收一个*testing.T类型的参数。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//testing</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Add</span><span class="params">(x <span class="keyword">int</span> ,y <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</div><div class="line"></div><div class="line">	<span class="keyword">return</span> x + y</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> <span class="string">"testing"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestAdd</span><span class="params">(t *testing.T)</span></span> &#123;</div><div class="line">	<span class="keyword">if</span> Add(<span class="number">1</span>,<span class="number">2</span>) == <span class="number">3</span> &#123;</div><div class="line">		t.Log(<span class="string">"1+2=3"</span>)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> Add(<span class="number">1</span>,<span class="number">1</span>) == <span class="number">3</span> &#123;</div><div class="line">		t.Error(<span class="string">"1+1=3"</span>)</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这是一个单元测试，保存在<code>main_test.go</code>文件中，对main包里的<code>Add(a,b int)</code>函数进行单元测试。<br>如果要运行这个单元测试，在该文件目录下，执行go test 即可。</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">➜  main go test</div><div class="line">PASS</div><div class="line">ok      _<span class="regexp">/Users/</span>liuguoquan<span class="regexp">/GoglandProjects/m</span>ain <span class="number">0.006</span>s</div></pre></td></tr></table></figure>
+<h1 id="go-install"><a href="#go-install" class="headerlink" title="go install"></a>go install</h1><p>它和go build类似，不过它可以在编译后，把生成的可执行文件或者库安装到对应的目录下，以供使用。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">➜  hello go <span class="keyword">help</span> <span class="keyword">install</span></div><div class="line"><span class="keyword">usage</span>: <span class="keyword">go</span> <span class="keyword">install</span> [<span class="keyword">build</span> flags] [packages]</div><div class="line"><span class="keyword">Install</span> compiles <span class="keyword">and</span> installs the packages named <span class="keyword">by</span> the <span class="keyword">import</span> paths,</div><div class="line">along <span class="keyword">with</span> their dependencies.</div></pre></td></tr></table></figure>
+<p>它的用法和go build差不多，如果不指定一个包名，就使用当前目录。安装的目录都是约定好的，如果生成的是可执行文件，那么安装在$GOPATH/bin目录下；如果是可引用的库，那么安装在$GOPATH/pkg目录下。</p>
+<h1 id="go-get"><a href="#go-get" class="headerlink" title="go get"></a>go get</h1><p><strong>go get</strong>命令，可以从网上下载更新指定的包以及依赖的包，并对它们进行编译和安装。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> <span class="built_in">get</span> github.<span class="keyword">com</span>/astaxie/beego</div></pre></td></tr></table></figure>
+<p>以上示例，我们就可以从github上直接下载这个go库到我们GOPATH工作空间中，以供我们使用。下载的是整个源代码工程，并且会根据它们编译和安装，和执行go install类似。</p>
+<p><strong>go get</strong>支持大多数版本控制系统(VCS)，比如我们常用的git，通过它和包依赖管理结合，我们可以在代码中直接导入网络上的包以供我们使用。</p>
+<p>如果我们需要更新网络上的一个go工程，加<code>-u</code> 标记即可。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">go</span> <span class="built_in">get</span> -<span class="keyword">u</span> github.<span class="keyword">com</span>/astaxie/beego</div></pre></td></tr></table></figure>
+<p>类似的，启用-v标记，可以看到下载的进度以及更多的调试信息。</p>
+<h1 id="go-fmt"><a href="#go-fmt" class="headerlink" title="go fmt"></a>go fmt</h1><p><code>go fmt</code>可以格式化我们的源代码的布局和Go源代码一样的风格，也就是统一代码风格，这样我们再也不用为大括号要不要放到行尾还是另起一行，缩进是使用空格还是tab而争论不休了，都给我们统一了。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123; </div><div class="line">	fmt.Println(<span class="string">"输入的参数为："</span>, os.Args[<span class="number">1</span>]) &#125;</div></pre></td></tr></table></figure>
+<p>比如以上代码，我们执行<code>go fmt</code> 格式化后，会变成如下这样：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Println(<span class="string">"输入的参数为："</span>, os.Args[<span class="number">1</span>])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>go fmt也是接受一个包名作为参数，如果不传递，则使用当前目录。go fmt会自动格式化代码文件并保存，它本质上其实是调用的gofmt -l -w这个命令，我们看下gofmt的使用帮助。</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">➜  hello gofmt -h  </div><div class="line">usage: gofmt [flags] [path ...]</div><div class="line">  -<span class="ruby">cpuprofile string</span></div><div class="line">    	write cpu profile to this file</div><div class="line">  -<span class="ruby">d	display diffs instead of rewriting files</span></div><div class="line">  -<span class="ruby">e	report all errors (<span class="keyword">not</span> just the first <span class="number">10</span> on different lines)</span></div><div class="line">  -<span class="ruby">l	list files whose formatting differs from gofmt<span class="string">'s</span></span></div><div class="line">  -<span class="ruby"><span class="string">r string</span></span></div><div class="line">    	rewrite rule (e.g., 'a[b:len(a)] -&gt; a[b:]')</div><div class="line">  -<span class="ruby"><span class="string">s	simplify code</span></span></div><div class="line">  -<span class="ruby"><span class="string">w	write result to (source) file instead of stdout</span></span></div></pre></td></tr></table></figure>
+<h1 id="go-vet"><a href="#go-vet" class="headerlink" title="go vet"></a>go vet</h1><p><code>go vet</code>它会帮助我们检查我们代码中常见的错误。</p>
+<ol>
+<li>Printf这类的函数调用时，类型匹配了错误的参数。</li>
+<li>定义常用的方法时，方法签名错误。</li>
+<li>错误的结构标签。</li>
+<li>没有指定字段名的结构字面量。</li>
+</ol>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"fmt"</span></div><div class="line">)</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	fmt.Printf(<span class="string">" 哈哈"</span>,<span class="number">3.14</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个例子是一个明显错误的例子，新手经常会犯，这里我们忘记输入了格式化的指令符，这种编辑器是检查不出来的，但是如果我们使用go vet就可以帮我们检查出这类常见的小错误。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">➜  hello <span class="keyword">go</span> vet</div><div class="line">main.<span class="keyword">go</span>:<span class="number">8</span>: <span class="keyword">no</span> formatting directive in Printf <span class="keyword">call</span></div></pre></td></tr></table></figure>
+<h1 id="go-env"><a href="#go-env" class="headerlink" title="go env"></a>go env</h1><p><code>go env</code> 用于查看编译环境</p>
+<figure class="highlight protobuf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">➜  ~ go env</div><div class="line">GOARCH=<span class="string">"amd64"</span> <span class="comment">//目标处理器架构</span></div><div class="line">GOBIN=<span class="string">""</span></div><div class="line">GOEXE=<span class="string">""</span></div><div class="line">GOHOSTARCH=<span class="string">"amd64"</span></div><div class="line">GOHOSTOS=<span class="string">"darwin"</span></div><div class="line">GOOS=<span class="string">"darwin"</span> <span class="comment">//目标操作系统</span></div><div class="line">GOPATH=<span class="string">"/Users/liuguoquan/go"</span></div><div class="line">GORACE=<span class="string">""</span></div><div class="line">GOROOT=<span class="string">"/usr/local/go"</span> <span class="comment">//</span></div><div class="line">GOTOOLDIR=<span class="string">"/usr/local/go/pkg/tool/darwin_amd64"</span></div><div class="line">GCCGO=<span class="string">"gccgo"</span></div><div class="line">CC=<span class="string">"clang"</span></div><div class="line">GOGCCFLAGS=<span class="string">"-fPIC -m64 -pthread -fno-caret-diagnostics -Qunused-arguments -fmessage-length=0 -fdebug-prefix-map=/var/folders/ph/tdtx7f3167z3fzl3nqj3ht4w0000gn/T/go-build886960492=/tmp/go-build -gno-record-gcc-switches -fno-common"</span></div><div class="line">CXX=<span class="string">"clang++"</span></div><div class="line">CGO_ENABLED=<span class="string">"1"</span></div><div class="line">PKG_CONFIG=<span class="string">"pkg-config"</span></div><div class="line">CGO_CFLAGS=<span class="string">"-g -O2"</span></div><div class="line">CGO_CPPFLAGS=<span class="string">""</span></div><div class="line">CGO_CXXFLAGS=<span class="string">"-g -O2"</span></div><div class="line">CGO_FFLAGS=<span class="string">"-g -O2"</span></div><div class="line">CGO_LDFLAGS=<span class="string">"-g -O2"</span></div></pre></td></tr></table></figure>
+<p>GOOS指的是目标操作系统，它的可用值为：</p>
+<ul>
+<li>darwin</li>
+<li>freebsd</li>
+<li>linux</li>
+<li>windows</li>
+<li>android</li>
+<li>dragonfly</li>
+<li>netbsd</li>
+<li>openbsd</li>
+<li>plan9</li>
+<li>solaris</li>
+</ul>
+<p>GOARCH指的是目标处理器的架构，目前支持的有：</p>
+<ul>
+<li>arm</li>
+<li>arm64</li>
+<li>386</li>
+<li>amd64</li>
+<li>ppc64</li>
+<li>ppc64le</li>
+<li>mips64</li>
+<li>mips64le</li>
+<li>s390x</li>
+</ul>
+<p>GOOS和GOARCH组合起来，支持生成的可执行程序种类很多，具体组合参考<a href="https://golang.org/doc/install/source#environment" target="_blank" rel="external">https://golang.org/doc/install/source#environment</a>。如果我们要生成不同平台架构的可执行程序，只要改变这两个环境变量就可以了，比如要生成linux 64位的程序，命令如下：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">GOOS</span>=linux GOARCH=amd64 go build github.com/hello</div></pre></td></tr></table></figure>
+<h1 id="go-help"><a href="#go-help" class="headerlink" title="go help"></a>go help</h1><p><code>go help</code> 用于查看命令的具体作用，比如</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">go <span class="keyword">help</span> <span class="keyword">build</span></div><div class="line"><span class="keyword">go</span> <span class="keyword">help</span> <span class="keyword">test</span></div></pre></td></tr></table></figure>
+<h1 id="Go文档"><a href="#Go文档" class="headerlink" title="Go文档"></a>Go文档</h1><p>在Go语言中，Go为我们提供了快速生成文档以及查看文档的工具，让我们可以很容易的编写查看文档。</p>
+<p>Go提供了两种查看文档的方式，一种是使用go doc命令在终端查看，这种适用于使用VIM等工具在终端开发的人员，它们不用离开终端，既可以查看想查看的文档，又可以编码。</p>
+<p>第二种方式，是使用浏览器查看的方式，通过godoc命令可以在本机启动一个web服务，我们可以通过打开浏览器，访问这个服务来查看我们的Go文档。</p>
+<h2 id="从终端查看文档"><a href="#从终端查看文档" class="headerlink" title="从终端查看文档"></a>从终端查看文档</h2><p>这种方式适用于在终端开发的，它们一般不像离开终端，查完即可继续编码，这时候使用go doc命令是很不错的选择。</p>
+<h2 id="在线浏览文档"><a href="#在线浏览文档" class="headerlink" title="在线浏览文档"></a>在线浏览文档</h2><p>go doc终端查看的方式，虽然也很便捷，不过效率不高，并且没有查看细节以及进行跳转，为此Go为我们提供了基于浏览器使用的网页方式进行浏览API 文档，我们只用点点鼠标，就可以查看了，还可以在方法、包等之间进行跳转，更简洁方便。</p>
+<p>要想启动一个Web在线API文档服务很简单，使用<strong>godoc</strong>就可以了。</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">godoc -http=:<span class="number">6060</span></div></pre></td></tr></table></figure>
+<p>后面的http是要指定Web服务监听的IP和Port，运行后，我们就可以打开浏览器，输入<code>http://127.0.0.1:6060</code>进行访问了，你会发现打开的页面，和GoLang的官方网站一样，没错，这个其实就是官网的一个拷贝，但是包的文档<code>http://127.0.0.1:6060/pkg/</code>会和官网不一样,你自己启动的这个服务，是基于你电脑上<code>GOROOT</code>和<code>GOPATH</code>这两个路径下的所有包生成的文档，会比官网只是标准库的文档要多。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.flysnow.org/2017/03/08/go-in-action-go-tools.html" target="_blank" rel="external">Go开发工具</a><br><a href="http://wiki.jikexueyuan.com/project/go-command-tutorial/0.0.html" target="_blank" rel="external">标准命令详解</a><br><a href="http://www.flysnow.org/2017/03/09/go-in-action-go-doc.html" target="_blank" rel="external">Go Doc</a><br><a href="http://wiki.jikexueyuan.com/project/go-command-tutorial/0.5.html" target="_blank" rel="external">go doc与godoc</a></p>
+<p>《Go语言实战》</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/ic_wechat_pay.jpeg" alt="刘涤生 wechat" style="width: 200px; max-width: 100%;"/>
+    <div></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go基础/" rel="tag"># Go基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/08/Go语言基础①Go包管理/" rel="next" title="Go语言基础①Go包管理">
+                <i class="fa fa-chevron-left"></i> Go语言基础①Go包管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/08/Go语言基础③类型/" rel="prev" title="Go语言基础③类型">
+                Go语言基础③类型 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/08/Go语言基础②Go开发工具/"
+     data-title="Go语言基础②Go开发工具"
+     data-content=""
+     data-url="http://liuguoquan727.github.io/2017/05/08/Go语言基础②Go开发工具/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/08/Go语言基础②Go开发工具/"
+           data-title="Go语言基础②Go开发工具" data-url="http://liuguoquan727.github.io/2017/05/08/Go语言基础②Go开发工具/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">100</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#go命令概览"><span class="nav-number">1.</span> <span class="nav-text">go命令概览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-build"><span class="nav-number">2.</span> <span class="nav-text">go build</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-clean"><span class="nav-number">3.</span> <span class="nav-text">go clean</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-run"><span class="nav-number">4.</span> <span class="nav-text">go run</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-test"><span class="nav-number">5.</span> <span class="nav-text">go test</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-install"><span class="nav-number">6.</span> <span class="nav-text">go install</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-get"><span class="nav-number">7.</span> <span class="nav-text">go get</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-fmt"><span class="nav-number">8.</span> <span class="nav-text">go fmt</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-vet"><span class="nav-number">9.</span> <span class="nav-text">go vet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-env"><span class="nav-number">10.</span> <span class="nav-text">go env</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#go-help"><span class="nav-number">11.</span> <span class="nav-text">go help</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Go文档"><span class="nav-number">12.</span> <span class="nav-text">Go文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从终端查看文档"><span class="nav-number">12.1.</span> <span class="nav-text">从终端查看文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在线浏览文档"><span class="nav-number">12.2.</span> <span class="nav-text">在线浏览文档</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">13.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
