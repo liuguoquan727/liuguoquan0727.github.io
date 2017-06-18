@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://liuguoquan727.github.io/"/>
-  <updated>2017-06-11T00:00:31.000Z</updated>
+  <updated>2017-06-18T13:14:36.000Z</updated>
   <id>http://liuguoquan727.github.io/</id>
   
   <author>
@@ -14,6 +14,652 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript⑤函数</title>
+    <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A4%E5%87%BD%E6%95%B0/"/>
+    <id>http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/</id>
+    <published>2017-06-18T13:14:06.000Z</published>
+    <updated>2017-06-18T13:14:36.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
+<p>函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> diffNumber=diff(<span class="number">10</span>,<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(diffNumber);</div></pre></td></tr></table></figure>
+<p>函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； </p>
+<p>return语句可以不带任何返回值，这种情况下，函数返回值是undefined；这种写法，一般用在需要提前停止函数又不需要返回值的情况下。</p>
+<h1 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h1><ul>
+<li>function语句的定义方法</li>
+<li>函数直接量的定义方法</li>
+<li>构造函数的定义方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//function语句的定义方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//函数直接量的定义方法</span></div><div class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"函数直接量的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//构造函数的定义方法</span></div><div class="line"><span class="keyword">var</span> test3 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>,<span class="string">"arg2"</span>,<span class="string">"console.log('构造函数的定义方法:',arg1+arg2)"</span>);</div></pre></td></tr></table></figure>
+<h1 id="函数的重载"><a href="#函数的重载" class="headerlink" title="函数的重载"></a>函数的重载</h1><p>ECMAScript 函数不能实现重载，ECMAScript 没有函数签名，因为其参数是由包含0 或者多个值的数组来表示的。如果在 ECMAScript 中定义了两个名字相同的参数，则该名字只属于后定义的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num + <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num + <span class="number">200</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ret = add(<span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log(ret);</div><div class="line"><span class="comment">//300</span></div></pre></td></tr></table></figure>
+<h1 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h1><h2 id="直接调用-函数名-实参列表"><a href="#直接调用-函数名-实参列表" class="headerlink" title="直接调用:函数名(实参列表)"></a>直接调用:函数名(实参列表)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//直接调用</span></div><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//function语句的定义方法: 3</span></div></pre></td></tr></table></figure>
+<h2 id="在链接中调用"><a href="#在链接中调用" class="headerlink" title="在链接中调用"></a>在链接中调用</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"test1(9,9)"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">		<span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">			<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">			<span class="keyword">return</span>;</div><div class="line">		&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="在事件中调用"><a href="#在事件中调用" class="headerlink" title="在事件中调用"></a>在事件中调用</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> oBtn1=<span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>);</div><div class="line">oBtn1.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	test1(<span class="number">2</span>,<span class="number">2</span>)</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="递归调用"><a href="#递归调用" class="headerlink" title="递归调用"></a>递归调用</h2><blockquote>
+<p>在函数内部调用函数自身</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">name</span>=<span class="string">"button"</span> <span class="attr">id</span>=<span class="string">"btn1"</span>&gt;</span>click me<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> oBtn1=<span class="built_in">document</span>.getElementById(<span class="string">"btn1"</span>);</div><div class="line">oBtn1.onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">test1(<span class="number">10</span>,<span class="number">1</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"最开始的调用方法"</span>,arg1+arg2);</div><div class="line">arg1--;</div><div class="line"><span class="keyword">if</span>(arg1&gt;<span class="number">0</span>)&#123;</div><div class="line">test1(arg1,arg2)</div><div class="line">&#125;</div><div class="line"><span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h1><h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><blockquote>
+<p>存放实参的参数列表</p>
+</blockquote>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//[1,2]</span></div><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);<span class="comment">//[1, 2, 3, 4, 5]</span></div><div class="line">function test1()&#123;</div><div class="line">  console.log(arguments);</div><div class="line">&#125;</div><div class="line"><span class="comment">//&#123; '0': 1, '1': 2, '2': 3, '3': 4, '4': 5 &#125;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>argutments 在普通模式里，可以在函数内部修改函数的值；在严格模式下，函数内部不能修改argument的值，即使修改了，操作也是无效的；其次重写arguments值会导致语法错误，代码不执行；</p>
+</blockquote>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><blockquote>
+<p>仅能在函数体内使用</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//[1,2]</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>);<span class="comment">//arguments is not defined</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>函数声明时自动初始化</p>
+</blockquote>
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><blockquote>
+<p>length：获取函数实参的长度</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);<span class="comment">// 输出5</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="this关键字的指向"><a href="#this关键字的指向" class="headerlink" title="this关键字的指向"></a>this关键字的指向</h1><ul>
+<li>this：指向当前操作对象；</li>
+<li>callee：指向正在执行函数的指针；</li>
+</ul>
+<h1 id="函数表达式"><a href="#函数表达式" class="headerlink" title="函数表达式"></a>函数表达式</h1><h2 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h2><p>创建一个函数并把它赋值给变量，这种情况下创建的函数叫做<strong>匿名函数</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sayHi;</div><div class="line">sayHi = <span class="function"><span class="keyword">function</span> (<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"sayHi "</span> + num);</div><div class="line">&#125;</div><div class="line"></div><div class="line">sayHi(<span class="number">1</span>);</div><div class="line"><span class="comment">//sayHi 1</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个匿名函数并立即执行</span></div><div class="line"><span class="keyword">var</span> ret = (<span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> x * y;</div><div class="line">&#125;)(<span class="number">3</span>,<span class="number">8</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(ret);</div><div class="line"><span class="comment">//24</span></div></pre></td></tr></table></figure>
+<h2 id="函数闭包"><a href="#函数闭包" class="headerlink" title="函数闭包"></a>函数闭包</h2><p>闭包是指有权访问另一个 函数作用域中的变量的函数。创建闭包的常见方式，就是在一个函数内部创建另一个函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">lazy_sum</span>(<span class="params">arr</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> sum = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> arr.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line"></div><div class="line">            <span class="keyword">return</span> x * y;</div><div class="line"></div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> f = lazy_sum([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]); <span class="comment">//返回的是求和函数</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(f()); <span class="comment">//调用函数f计算求和</span></div></pre></td></tr></table></figure>
+<p>借助闭包，可以封装一个私有变量</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//闭包实现计数器</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">create_counter</span>(<span class="params">initial</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> x = initial || <span class="number">0</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        <span class="attr">inc</span>: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">            x += <span class="number">1</span>;</div><div class="line">            <span class="keyword">return</span> x;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> counter1 = create_counter();</div><div class="line"><span class="built_in">console</span>.log(counter1.inc()); <span class="comment">//1</span></div><div class="line"><span class="built_in">console</span>.log(counter1.inc()); <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(counter1.inc()); <span class="comment">//3</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> counter2 = create_counter(<span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(counter2.inc()); <span class="comment">//11</span></div><div class="line"><span class="built_in">console</span>.log(counter2.inc()); <span class="comment">//12</span></div><div class="line"><span class="built_in">console</span>.log(counter2.inc()); <span class="comment">//13</span></div></pre></td></tr></table></figure>
+<p>闭包还可以把多参数的函数变成单参数的函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">make_pow</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">x</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">Math</span>.pow(n,x);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//创建两个新函数</span></div><div class="line"><span class="keyword">var</span> pow1 = make_pow(<span class="number">2</span>);</div><div class="line"><span class="keyword">var</span> pow2 = make_pow(<span class="number">3</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(pow1(<span class="number">2</span>)); <span class="comment">// 4</span></div><div class="line"><span class="built_in">console</span>.log(pow2(<span class="number">2</span>)); <span class="comment">// 8</span></div></pre></td></tr></table></figure>
+<h1 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h1><p>ES6标准新增了一种新的函数：Arrow Function（箭头函数）。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">x</span> =&gt; x * x</div></pre></td></tr></table></figure>
+<p>上面的箭头函数相当于</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">function</span> <span class="title"></span>(x) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="type">x</span> * x;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span>;</div><div class="line"><span class="keyword">var</span> fn = <span class="function"><span class="params">x</span> =&gt;</span> x * x;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"箭头函数 "</span>+ fn(<span class="number">3</span>));</div></pre></td></tr></table></figure>
+<h1 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h1><p>JavaScript的函数其实都指向某个变量。既然变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。一个最简单的高阶函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addHigh</span>(<span class="params">x, y, f</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> f(x) + f(y);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(addHigh(<span class="number">-4</span>,<span class="number">-5</span>,<span class="built_in">Math</span>.abs)); <span class="comment">//9</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;初识函数&quot;&gt;&lt;a href=&quot;#初识函数&quot; class=&quot;headerlink&quot; title=&quot;初识函数&quot;&gt;&lt;/a&gt;初识函数&lt;/h1&gt;&lt;p&gt;ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。&lt;/p&gt;
+&lt;figure clas
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript④流程语句</title>
+    <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A3%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/</id>
+    <published>2017-06-18T13:13:06.000Z</published>
+    <updated>2017-06-18T13:13:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(条件表达式)</span> &#123;</div><div class="line">  <span class="comment">//循环执行代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><p>do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">   <span class="comment">//代码执行主体</span></div><div class="line"> &#125; <span class="keyword">while</span> <span class="comment">(条件表达式)</span>;</div></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; array.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">       array[i]</div><div class="line">       //代码执行的主体</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h2><p>for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="keyword">variable</span> <span class="keyword">in</span> <span class="keyword">object</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">object</span>.hasOwnProperty(<span class="keyword">variable</span>)) &#123;</div><div class="line">    <span class="comment">//代码执行主体</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。</li>
+<li>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。</li>
+</ul>
+<h1 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h1><ul>
+<li>return：终止函数体的运行，并返回一个值</li>
+<li>break：终止整个循环，不再进行判断</li>
+<li>continue：结束本次循环，接着去判断是否执行下次循环</li>
+</ul>
+<h1 id="label语句"><a href="#label语句" class="headerlink" title="label语句"></a>label语句</h1><p>使用 label 语句可以在代码中添加标签，以便将来使用。以下是 label 语句的语法：</p>
+<blockquote>
+<p>label: statement</p>
+</blockquote>
+<p>下面是一个示例：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">start: <span class="keyword">for</span> (var <span class="built_in">i</span>=<span class="number">0</span>; <span class="built_in">i</span> &lt; count; <span class="built_in">i</span>++) &#123; alert(i); &#125;</div></pre></td></tr></table></figure>
+<p>这个例子中定义的 start 标签可以在将来由 break 或 continue 语句引用。加标签的语句一般都 要与 for 语句等循环语句配合使用。</p>
+<h1 id="选择语句"><a href="#选择语句" class="headerlink" title="选择语句"></a>选择语句</h1><blockquote>
+<p>选择语句，有三个，if和switch、?:三目运算符</p>
+</blockquote>
+<h2 id="if"><a href="#if" class="headerlink" title="if"></a>if</h2><figure class="highlight xquery"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(条件表达式<span class="number">1</span>)&#123;</div><div class="line">  代码段<span class="number">1</span></div><div class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(条件表达式<span class="number">2</span>)&#123;</div><div class="line">  代码段<span class="number">2</span></div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">  代码段<span class="number">3</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span>(条件表达式)&#123;</div><div class="line">    <span class="keyword">case</span> 标签<span class="number">1</span>:</div><div class="line">    代码段<span class="number">1</span></div><div class="line">    <span class="keyword">break</span>;</div><div class="line">    ……</div><div class="line">    <span class="keyword">default</span>:</div><div class="line">    代码段n;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>switch 语句中使用任何数据类型（在很多其他语言中只能使用数值），无论是字符串，还是对象都没有 问题。其次，每个 case 的值不一定是常量，可以是变量，甚至是表达式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">switch</span> (<span class="string">"hello world"</span>) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">case</span> <span class="string">"hello"</span> + <span class="string">" world"</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Greeting was found."</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> <span class="string">"goodbye"</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Closing was found."</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Unexpected message was found."</span>);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> num = <span class="number">25</span>;</div><div class="line"><span class="keyword">switch</span> (<span class="literal">true</span>) &#123;</div><div class="line"></div><div class="line">    <span class="keyword">case</span> num &lt; <span class="number">0</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Less than 0."</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> num &gt;= <span class="number">0</span> &amp;&amp; num &lt;= <span class="number">10</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Between 0 and 10."</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">case</span> num &gt; <span class="number">10</span> &amp;&amp; num &lt;= <span class="number">20</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"Between 10 and 20."</span>);</div><div class="line">        <span class="keyword">break</span>;</div><div class="line">    <span class="keyword">default</span>:</div><div class="line"></div><div class="line">        <span class="built_in">console</span>.log(<span class="string">"More than 20."</span>);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>switch 语句在比较值时使用的是全等操作符，因此不会发生类型转换（例如， 字符串”10”不等于数值 10）。</p>
+</blockquote>
+<h1 id="with语句"><a href="#with语句" class="headerlink" title="with语句"></a>with语句</h1><p>with 语句的作用是将代码的作用域设置到一个特定的对象中。with 语句的语法如下：</p>
+<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">with(<span class="name">expression</span>) statement<span class="comment">;</span></div></pre></td></tr></table></figure>
+<p>严格模式下不允许使用 with 语句，否则将视为语法错误。由于大量使用 with 语句会导致性能下降，同时也会给调试代码造成困难，因此 在开发大型应用程序时，不建议使用 with 语句。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;循环语句&quot;&gt;&lt;a href=&quot;#循环语句&quot; class=&quot;headerlink&quot; title=&quot;循环语句&quot;&gt;&lt;/a&gt;循环语句&lt;/h1&gt;&lt;h2 id=&quot;while&quot;&gt;&lt;a href=&quot;#while&quot; class=&quot;headerlink&quot; title=&quot;while&quot;&gt;
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript③运算符</title>
+    <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A2%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/</id>
+    <published>2017-06-18T13:12:06.000Z</published>
+    <updated>2017-06-18T13:13:23.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="自增与自减"><a href="#自增与自减" class="headerlink" title="自增与自减"></a>自增与自减</h1><ul>
+<li>++ 对唯一的运算数进行递增操作(每次加1)</li>
+<li>– 对唯一的运算数进行递减操作(每次减1)</li>
+</ul>
+<h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="逻辑位运算"><a href="#逻辑位运算" class="headerlink" title="逻辑位运算"></a>逻辑位运算</h2><ul>
+<li>按位非~ 结果就是返回数值的反码</li>
+<li>按位与&amp;  同时为1</li>
+<li>按位或|  有一个为1</li>
+<li>按位异或^ 既不同时为0，也不同时为1</li>
+</ul>
+<h2 id="位移操作"><a href="#位移操作" class="headerlink" title="位移操作"></a>位移操作</h2><ul>
+<li>左移&lt;&lt;<ul>
+<li>将数值的所有位左移指定的位数</li>
+<li>所有空位用0补充</li>
+<li>左移1位对其X2，左移2位对其X4；依次类推</li>
+</ul>
+</li>
+<li>有符号右移&gt;&gt;<ul>
+<li>将数值的所有位右移指定的位数</li>
+<li>一处的位被舍弃</li>
+<li>保留符号位</li>
+<li>右移一位对齐除2，右移两位对齐除4，依次类推</li>
+</ul>
+</li>
+<li>无符号右移&gt;&gt;&gt;<ul>
+<li>正数，与有符号右移结果相同</li>
+<li>负数，会出现无限大的数值；</li>
+</ul>
+</li>
+</ul>
+<h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h1><h2 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非!"></a>逻辑非!</h2><p>逻辑非操作符首先会将它的操作数转换为一个布尔值，然后再 对其求反。也就是说，逻辑非操作符遵循下列规则：</p>
+<ul>
+<li>操作数是对象，返回false</li>
+<li>空字符串，返回true</li>
+<li>非空字符串，返回false</li>
+<li>0，返回true</li>
+<li>NaN，返回true</li>
+<li>Undefined，返回true</li>
+<li>非0数值(Infinity)，返回false</li>
+<li>null 返回true</li>
+</ul>
+<h2 id="逻辑与-amp-amp"><a href="#逻辑与-amp-amp" class="headerlink" title="逻辑与&amp;&amp;"></a>逻辑与&amp;&amp;</h2><ul>
+<li>只有第一个值是true的时候，才会返回第二个值；第一个值为false，则返回第一个值；意是根据原理来返回的；&amp;&amp;是必须两个都为true才为true的；看取决于哪个值的</li>
+<li>第一个操作数的对象，返回第二个操作数（第一个为true了，关键取决于第二个值，所以返回第二个）</li>
+<li>第二个操作数是对象，如果想返回第二个对象，第一个必须为true；</li>
+<li>如果两个操作数都是对象，第一个是true，则返回第二个操作数；</li>
+<li>第一个操作数是null，返回null（第一个null已经是false了，后面第二个值无论是true-还是false已经不重要了，所以返回的是第一个值）</li>
+<li>第一个操作数是NaN，返回NaN（原理同上）</li>
+<li>第一个操作数是undefined，返回undefined（原理同上）</li>
+</ul>
+<h2 id="逻辑或"><a href="#逻辑或" class="headerlink" title="逻辑或 ||"></a>逻辑或 ||</h2><ul>
+<li>两个操作数都是false的时候才为false；第一个操作数是true，则返回第一个数；无需对第二个值判断了，已经可以确定为true；如果第一个值为false的时候，返回第二个数；因为第一个已经是false了，值取决于第二个值，所以返回第二个值；</li>
+<li>第一个操作数是对象，返回第一个操作数</li>
+<li>第一个操作数值为false，返回第二个操作数</li>
+<li>两个操作数都是对象，返回第一个操作数</li>
+<li>两个操作数都是null，返回null；</li>
+<li>两个操作数都是NaN，返回NaN；</li>
+<li>两个操作数都是undefined，返回undefined</li>
+</ul>
+<h1 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h1><p>算术运算符包括：+-*/%；</p>
+<p>复合赋值运算符：+=、-=、*=、\/=、%=</p>
+<ul>
+<li>+<ul>
+<li>功能：<ul>
+<li>1、对数字进行代数求和</li>
+<li>2、对字符串进行连接操作</li>
+<li>3、将一个数值转换成字符串</li>
+</ul>
+</li>
+<li>字符串拼接<ul>
+<li>字符串+字符串—两者直接拼接</li>
+<li>字符串+数值—数值转为字符串再拼接</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>-<ul>
+<li>功能：<ul>
+<li>对操作数进行”取反”操作</li>
+<li>对数字进行减法操作</li>
+<li>将字符串转换成数值–数值型字符串-0；</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>*和/<ul>
+<li>功能：对两个运算数进行乘法（除法）运算；</li>
+<li>符号问题：同号得正，异号得负；</li>
+</ul>
+</li>
+<li>%<ul>
+<li>功能：返回两个除数的余数</li>
+<li>符号问题：和第一个运算数的符号相同；</li>
+</ul>
+</li>
+</ul>
+<h1 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h1><ul>
+<li>&lt; 如果A小于B，则返回true，否则返回值为false；</li>
+<li>&lt;= 如果A小于等于B，则返回值为true，否则返回false</li>
+<li>>= 如果A大于等于B,返回true，否则返回值为false</li>
+<li>> 如果A大于B，则返回true，否则返回值为false</li>
+</ul>
+<p>操作规则</p>
+<ul>
+<li>数值与数值的比较，比较它们的代数值；</li>
+<li>仅一个运算数是数值，将另一个运算数转换成数值，并比较他们的代数值；</li>
+<li>字符串间的比较，逐字符比较他们的Unicode数值；</li>
+<li>字符串与非数值的比较，将运算数转换成字符串并进行比较；</li>
+<li>运算数既非数字也非字符串，返回值为false；</li>
+<li>与NaN比较，返回值是false；</li>
+</ul>
+<h1 id="相等运算符"><a href="#相等运算符" class="headerlink" title="相等运算符"></a>相等运算符</h1><h2 id="相等和不相等"><a href="#相等和不相等" class="headerlink" title="相等和不相等"></a>相等和不相等</h2><ul>
+<li>==：如果两个操作数相等，则返回 true</li>
+<li>!=：如果两个操作数不相等，则返回 true。</li>
+</ul>
+<p>这两个操作符都会 先转换操作数（通常称为强制转型），然后再比较它们的相等性。</p>
+<h2 id="全等和不全等"><a href="#全等和不全等" class="headerlink" title="全等和不全等"></a>全等和不全等</h2><ul>
+<li>===</li>
+<li>!==</li>
+</ul>
+<p>这两个操作符不会自动转换数据类型，如果数据类型不一致，返回false，如果一致，再比较。所以推荐使用全等和不全等操作符。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>另一个例外是NaN这个特殊的Number与所有其他值都不相等，包括它自己：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attr">NaN</span> === NaN; // <span class="literal">false</span></div></pre></td></tr></table></figure>
+<p>唯一能判断NaN的方法是通过isNaN()函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<h1 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h1><p>?: 条件运算符，简介的if else；也叫三元运算符/三目运算符；基本格式为：条件表达式?表达式一:表达式二；其中问号之前的表示判断的条件，如果这个条件为真，则执行问号后面的语句，如果判断条件不成立，则执行冒号后面的语句。</p>
+<h1 id="赋值操作符"><a href="#赋值操作符" class="headerlink" title="赋值操作符"></a>赋值操作符</h1><ul>
+<li>*=</li>
+<li>/=</li>
+<li>%=</li>
+<li>+=</li>
+<li>-=</li>
+<li>&lt;&lt;=</li>
+<li>无符号右移/赋值 &gt;&gt;=</li>
+<li>无符号右移/赋值 &gt;&gt;&gt;=</li>
+</ul>
+<h1 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h1><p>逗号操作符可以在一行语句中执行多个不同的操作</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">var</span> <span class="selector-tag">i</span> = <span class="number">2</span>,j = <span class="number">1</span> + <span class="selector-tag">i</span>,k = <span class="number">5</span></div></pre></td></tr></table></figure>
+<p>逗号操作符还可以用于赋值。在用于赋值时，逗号 操作符总会返回表达式中的最后一项，</p>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var num = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>); <span class="comment">//num = 5</span></div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;自增与自减&quot;&gt;&lt;a href=&quot;#自增与自减&quot; class=&quot;headerlink&quot; title=&quot;自增与自减&quot;&gt;&lt;/a&gt;自增与自减&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;++ 对唯一的运算数进行递增操作(每次加1)&lt;/li&gt;
+&lt;li&gt;– 对唯一的运算数进行递减操作(每次减1
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript②数据类型</title>
+    <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/</id>
+    <published>2017-06-18T13:11:06.000Z</published>
+    <updated>2017-06-18T13:13:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；</p>
+<h1 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h1><ul>
+<li>console.log(typeof qqqq);//undefined，这个变量没有定义；</li>
+<li>console.log(typeof (222));//number，是一个数字； typeof是操作符而不是方法，所以后面可以加()也可以不加；</li>
+<li>console.log(typeof “222”);//string，是一个字符串</li>
+<li>console.log(typeof false);//boolean，是一个布尔值</li>
+<li>console.log(typeof {});//object 是一个对象</li>
+<li>console.log(typeof null);//objecy 是一个对象，在javascript里，null是一个空指针；</li>
+<li>console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象</li>
+</ul>
+<p>从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；<br>typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；</p>
+<h1 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h1><ul>
+<li>null<ul>
+<li>逻辑上null表示一个空对象的指针</li>
+<li>使用typeof检测的时候会返回object；（null是object原型的终点）</li>
+</ul>
+</li>
+<li>undefined<ul>
+<li>使用var声明变量但没有初始化</li>
+<li>区分空对象指针与尚未定义的变量</li>
+<li>对未初始化的变量以及未声明的变量使用</li>
+<li>typeof运算符均会返回undefined；</li>
+</ul>
+</li>
+<li>undefined和null的关系；是undefined派生自null；因为undefined派生子null；所以Null和undefined做比较的时候是true；但是null和undefined和别的人和类型比较都不想等；<ul>
+<li>undefined派生子null，因此在使用”==”进行比较的时候会返回true；</li>
+<li>没有必要将变量显示声明undefined；</li>
+<li>声明非空对象对应将其赋值为null；比如做定时器的时候用；</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Undefined只有一个值，就是特殊的undefine；（大写的Undefined是代表Undefined类的意思，就好比人类和人的关系；）</p>
+</blockquote>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var test1;</div><div class="line">var test2=<span class="literal">undefined</span>;</div><div class="line"><span class="built_in">console</span>.log(test1==<span class="literal">undefined</span>);<span class="regexp">//</span><span class="literal">true</span>，变量声明了，但是没有定义；</div><div class="line"><span class="built_in">console</span>.log(test1==<span class="string">"undefined"</span>);<span class="regexp">//</span><span class="literal">false</span>,<span class="string">"undefined"</span>是一个字符串，含有<span class="literal">undefined</span>的字符；而不是<span class="literal">undefined</span>类型；</div><div class="line"><span class="built_in">console</span>.log(test2==<span class="literal">undefined</span>);<span class="regexp">//</span><span class="literal">true</span>，变量声明了，但是没有被定义，<span class="literal">undefined</span>是变量的默认值；我们声不需要显示的把某个变量设置为<span class="literal">undefined</span>，因为没有赋值的变量，默认就是<span class="literal">undefined</span>;可以试验下，这里的两个等于号和三个等于号的区别，<span class="number">2</span>个是比较（会隐式转换类型，===是不转化类型的，是绝对相等）</div></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(test1);<span class="regexp">//</span><span class="literal">undefined</span></div><div class="line"><span class="built_in">console</span>.log(test2);<span class="regexp">//</span><span class="literal">undefined</span></div><div class="line"><span class="built_in">console</span>.log(test3);<span class="regexp">//</span>Error，报错了; Uncaught ReferenceError: test3 <span class="keyword">is</span> <span class="keyword">not</span> defined；</div></pre></td></tr></table></figure>
+<p>对于尚未声明的变量，只能执行一项操作，就是typeof检测其数据类型；</p>
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h2 id="字符串的特性"><a href="#字符串的特性" class="headerlink" title="字符串的特性"></a>字符串的特性</h2><ul>
+<li>由0个或多个16位unicode字符组成；</li>
+<li>单引号和双引号都可以；但是单引号和双引号不能交叉使用；（放在引号内的任何东西都是属于字符串，即使里面没有东西或者空格，都属于合法的字符串 ）</li>
+<li>使用.length属性可以访问字符串的长度</li>
+<li>转义序列表示一个字符</li>
+<li>无法精确返回双字节字符长度</li>
+<li>字符串一旦被创建，其值是不能改变的，若要改变必须销毁原有字符串，然后用另一个包含新值的字符串填充改变量；<br>转义序列（仅作了解）；</li>
+<li>\n 换行，常用的,这个需要记住；</li>
+<li>\斜杠\  常用</li>
+<li>\’单引号 常用</li>
+<li><p>\”双引号 常用</p>
+</li>
+<li><p>\t 制表符</p>
+</li>
+<li>\b 空格</li>
+<li>\r 回车符</li>
+<li>\f 分页符</li>
+<li>\xnn 十六进制，n代表0-F</li>
+<li>\unnnn 以十六进制代码表示一个unicode字符</li>
+</ul>
+<h2 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h2><ul>
+<li>toString()：转换为字符串</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="keyword">is</span> = <span class="keyword">true</span>;</div><div class="line"><span class="keyword">is</span>.toString(); <span class="comment">//"true"</span></div><div class="line"><span class="keyword">var</span> <span class="built_in">num</span> = <span class="number">10</span>;</div><div class="line"><span class="built_in">num</span>.toString(); <span class="comment">//"10"</span></div><div class="line"><span class="built_in">num</span>.toString(<span class="number">2</span>); <span class="comment">//"1010" (二进制)</span></div><div class="line"><span class="built_in">num</span>.toString(<span class="number">8</span>); <span class="comment">//"12" (八进制）</span></div><div class="line"><span class="built_in">num</span>.toString(<span class="number">16</span>); <span class="comment">//"A" （十六进制）</span></div></pre></td></tr></table></figure>
+<ul>
+<li>String()</li>
+</ul>
+<p>null和undefined没有toString方法，所以转换的时候用String()函数。如果值是null，则返回”null”,如果值是undefined则返回”undefined”。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> value1 = <span class="number">10</span>;</div><div class="line"><span class="keyword">var</span> value2 = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">var</span> value3;</div><div class="line"></div><div class="line"><span class="built_in">String</span>(value1); <span class="comment">//"10"</span></div><div class="line"><span class="built_in">String</span>(value2); <span class="comment">//"null"</span></div><div class="line"><span class="built_in">String</span>(value3); <span class="comment">//"undefined"</span></div></pre></td></tr></table></figure>
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var  intNum = <span class="number">55</span>; <span class="comment">//整数</span></div><div class="line"></div><div class="line">var octalNum = <span class="number">0</span>o70; <span class="comment">//八进制 以 0o开头</span></div><div class="line"></div><div class="line">var hexNum = <span class="number">0xAA</span>; <span class="comment">//十六进制</span></div><div class="line"></div><div class="line">var floatNum = <span class="number">1.1</span>; <span class="comment">//浮点数</span></div><div class="line"></div><div class="line">var floatNum1 = <span class="number">1.</span> <span class="comment">//解析为整数1</span></div><div class="line">var floatNum2 = <span class="number">10.0</span> <span class="comment">//解析为整数10</span></div><div class="line"></div><div class="line">floatNum = <span class="number">3.125e7</span>; <span class="comment">//e表示法</span></div></pre></td></tr></table></figure>
+<h2 id="数值范围"><a href="#数值范围" class="headerlink" title="数值范围"></a>数值范围</h2><ul>
+<li>最小值 Number.MIN_VALUE</li>
+<li>最大值 Number.MAX_VALUE：</li>
+<li>超出范围<ul>
+<li>正无穷<ul>
+<li>Infinity</li>
+<li>Number.POSITIVE_INFINTY</li>
+</ul>
+</li>
+<li>负无穷<ul>
+<li>-Infinity</li>
+<li>Number.NEGATIVE_INFINITY</li>
+</ul>
+</li>
+<li>缺陷<ul>
+<li>无法参与下一次计算</li>
+</ul>
+</li>
+<li>检测方法，用isFinite<ul>
+<li>超出范围 false</li>
+<li>合法范围true<h2 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>含义</strong></p>
+<ul>
+<li>Not a Number</li>
+<li>非数值</li>
+</ul>
+<p><strong>特点</strong></p>
+<ul>
+<li>任何涉及NaN的操作都将返回NaN</li>
+<li>NaN与任何值值都不相等包括其自身</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">NaN</span> / <span class="number">5</span>  <span class="comment">// NaN</span></div><div class="line"><span class="literal">NaN</span> == Nan <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<p><strong>检测 isNaN</strong></p>
+<ul>
+<li>可以转换为数值，为false</li>
+<li>不能转换为数值，为true</li>
+</ul>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">isNaN</span><span class="params">(NaN)</span></span> <span class="comment">// true</span></div><div class="line"><span class="function"><span class="title">isNaN</span><span class="params">(<span class="number">10</span>)</span></span> <span class="comment">//false</span></div><div class="line"><span class="function"><span class="title">isNaN</span><span class="params">(<span class="string">"10"</span>)</span></span> <span class="comment">//false</span></div><div class="line"><span class="function"><span class="title">isNaN</span><span class="params">(<span class="string">"blue"</span>)</span></span> <span class="comment">//不能转换为数值 true</span></div><div class="line"><span class="function"><span class="title">isNaN</span><span class="params">(<span class="string">"true"</span>)</span></span> <span class="comment">// false</span></div></pre></td></tr></table></figure>
+<h2 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h2><p>有三个函数可以把非数值转换为数值：Number()、parseInt()、parseFloat()。Number()可以用于任何数据类型，后面两个函数只能用于把字符串转换成数值。</p>
+<h3 id="Number-1"><a href="#Number-1" class="headerlink" title="Number()"></a>Number()</h3><p>Number()的转换规则如下：</p>
+<ul>
+<li>Boolean转换为数值的时候true转为1,flase转为0；</li>
+<li>null转换为数值的时候 转换为0</li>
+<li>undefined转换为数值的时候 转为NaN</li>
+<li>string转换为数值的时候<ul>
+<li>如果只包含数字，转为十进制数，前导0被忽略（“011”转为11）</li>
+<li>如果包含有效浮点格式，转为浮点数值，忽略前导0</li>
+<li>包含有效十六进制格式；相同大小的十六进制整数</li>
+<li>空字符串转为0；备注：””是空字符串 “ “这个就不是空字符串了</li>
+<li>其他格式字符串NaN</li>
+</ul>
+</li>
+<li>Object 调用对象的valueOf()方法，然后依照前面的规则转换返回的值，如果转换的结果是NAN，则调用对应的toString()方法，然后再次依照前面的规则转换返回的字符串值；</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"hello word"</span>));<span class="comment">//NaN</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">""</span>));<span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"000011"</span>));<span class="comment">//11</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="string">"true"</span>));<span class="comment">//NaN</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(<span class="literal">true</span>));<span class="comment">//1</span></div></pre></td></tr></table></figure>
+<h3 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt()"></a>parseInt()</h3><p>  parseInt参数</p>
+<pre><code>- 参数1、要解析的字符串
+- 参数2、转换时所使用的基数；为了消除在使用parentInt函数时可能导致的格式，第二个参数可以指定要解析的基数，16就是十六进制；一般不传第二个参数
+</code></pre><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"AF"</span>));<span class="comment">//NaN,默认十进制解析的</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(<span class="string">"AF"</span>,<span class="number">16</span>));<span class="comment">//175</span></div></pre></td></tr></table></figure>
+<h3 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a>parseFloat()</h3><ul>
+<li>从第一个字符开始解析</li>
+<li>遇到无效浮点格式后结束</li>
+<li>只有第一个小数点有效</li>
+<li>忽略前导0</li>
+<li>十六进制始终为0</li>
+<li>没有小数点或小数点后全0；转换为整数</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">parseFloat</span>(<span class="string">"1234blue"</span>); <span class="comment">//1234</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">"0xA"</span>); <span class="comment">//0</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">"22.5"</span>); <span class="comment">//22.5</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">"0908.5"</span>); <span class="comment">//908.5</span></div><div class="line"><span class="built_in">parseFloat</span>(<span class="string">"2.125e4"</span>); <span class="comment">//21250</span></div></pre></td></tr></table></figure>
+<h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><ul>
+<li>true为真，flase为假（false是布尔值，而Flase只是标识符）；通常用在if/else的判断语句中（通常还会配合逻辑与&amp;&amp;，逻辑或||来完成）</li>
+<li>true不一定=1；flase不一定=0；</li>
+<li>使用boolean()进行转换；任何数据类型的值调用Boolean()函数，都会返回一个Boolean值；也可以用(!/!!来转换)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>转换为true的值</th>
+<th>转换为false的值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>任何非空字符</td>
+<td>“”空字符串</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>任何非零数值</td>
+<td>0和NaN</td>
+</tr>
+<tr>
+<td>Object</td>
+<td>任何对象</td>
+<td>null</td>
+</tr>
+<tr>
+<td>Undefined</td>
+<td>无</td>
+<td>undefined</td>
+</tr>
+</tbody>
+</table>
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><p><strong>定义</strong></p>
+<p>一组数据或功能的集合</p>
+<p><strong>声明</strong></p>
+<ul>
+<li>Var o=new Object()//Object后面的()可以省略，但不推荐</li>
+<li>Var o={}</li>
+</ul>
+<p><strong>属性和方法</strong></p>
+<ul>
+<li>constructor：保存用于创建当前对象的函数，构造函数就是Object()</li>
+<li>HasOwnProperty(propertyName) 检测给定输定在当前对象实例中是否存在（而不是实例的原型中）</li>
+<li>isPrototypeOf(object) ：检测传入的对象是否是另一个对象的原型（而不是在实例中）；</li>
+<li>propertyIsEnumerable(propertyName)；检测给定属性是否能用for-in语句每句来枚举；</li>
+<li>toLocaleString() 返回对象的字符串表示，该字符串与执行环境的地区对应；</li>
+<li>toString() 返回对象的字符串表示</li>
+<li>valueOf() 返回对象的字符串，数值或布尔值表示；通常与toString()的值相同；</li>
+<li>在ECMAScript中，Object是所有对象的基础，因此所有对象都具有这些基本的属性和方法；方法的具体原理，后面数据类型和原型链中具体说；</li>
+<li>BOM/DOM中的对象，都是属于宿主对象，因为他们是由宿主实现提供和定义的，但是ECMAScript不负责定义宿主对象，因此宿主对象可能会也可能不会继承Object；</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；&lt;/p&gt;
+&lt;h1 id
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript①基础知识</title>
+    <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <id>http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/</id>
+    <published>2017-06-18T13:10:06.000Z</published>
+    <updated>2017-06-18T13:12:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。</p>
+<h2 id="JavaScript能做什么"><a href="#JavaScript能做什么" class="headerlink" title="JavaScript能做什么"></a>JavaScript能做什么</h2><p>一旦有一个包含<code>&lt; script &gt;</code>元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。</p>
+<p>你可以要求JavaScript：</p>
+<h3 id="1-建立一个语句"><a href="#1-建立一个语句" class="headerlink" title="1.建立一个语句"></a>1.建立一个语句</h3><p>创建一个变量并赋值、让变量相加、完成计算，还可以使用一个JavaScript库的内置功能。</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var temp</span>  = 98.6;</div><div class="line"><span class="attribute">var beanCounter</span> = 4;</div><div class="line"><span class="attribute">var reallyCool</span> = true;</div><div class="line"><span class="attribute">var motto</span> = <span class="string">"I rule"</span>;</div><div class="line"></div><div class="line"><span class="attribute">temp</span> = (temp - 32) * 5 / 9;</div><div class="line"><span class="attribute">motto</span> = motto + <span class="string">" and so do you!"</span>;</div><div class="line"><span class="attribute">var pos</span> = Math.random();</div></pre></td></tr></table></figure>
+<h3 id="2-重复做事情"><a href="#2-重复做事情" class="headerlink" title="2.重复做事情"></a>2.重复做事情</h3><p>循环完成语句，次数可以根据你的需要来定</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">while (<span class="keyword">beanCounter </span>&gt; <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">    processBeans()<span class="comment">;</span></div><div class="line">    <span class="keyword">beanCounter </span>= <span class="keyword">beanCounter </span>- <span class="number">1</span><span class="comment">;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-做出判断"><a href="#3-做出判断" class="headerlink" title="3.做出判断"></a>3.做出判断</h3><p>编写根据应用的状态并按条件执行的代码</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (isReallyCool) &#123;</div><div class="line"></div><div class="line">    <span class="attr">invite</span> = <span class="string">"You are invited!"</span></div><div class="line"></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line"></div><div class="line">    <span class="attr">invite</span> = <span class="string">"Sorry, we are at capacity."</span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="JavaScript变量"><a href="#JavaScript变量" class="headerlink" title="JavaScript变量"></a>JavaScript变量</h2><p>利用JavaScript，变量可以用来保存各种不同的东西。下面来声明一些变量:</p>
+<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> winners = <span class="number">2</span>; <span class="comment">//整数值</span></div><div class="line"><span class="keyword">var</span> money = <span class="number">212.2</span>; <span class="comment">//浮点数</span></div><div class="line"><span class="keyword">var</span> name = <span class="string">"liuguoquan"</span>; <span class="comment">//字符串</span></div><div class="line"><span class="keyword">var</span> isExist = <span class="literal">false</span>;  <span class="comment">//布尔值</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+</blockquote>
+<ul>
+<li>JavaScript不需要为变量指定一个类型，它只是创建一个通用容器，其中可以存放多种东西，所有任何变量都可以存放数字、字符串或者布尔值。因为JavaScript采用的动态类型，也就是说，JavaScript解析器会在代码运行时确定要使用说明类型。</li>
+<li><code>var scoops = null</code>；表示“没有值”；</li>
+<li>var winner；如果不赋值给变量，那么执行这个语句之后，变量winner会赋值为undefined。</li>
+</ul>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><p>有两种方式可以产生全局变量；</p>
+<ul>
+<li>在函数体外定义的变量；</li>
+<li>在函数体内部定义的无var的变量；</li>
+</ul>
+<p>全局变量的用法：在任何位置都可以调用</p>
+<ul>
+<li>直接调用变量名；（不含有同名局部变量和参数时）；</li>
+<li>通过window.varName 来调用；</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var <span class="built_in">i</span> = <span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">print</span><span class="params">()</span> &#123;</span></div><div class="line">    console.<span class="built_in">log</span>(<span class="built_in">i</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">print();</div></pre></td></tr></table></figure>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>局部变量有两种类型；</p>
+<ul>
+<li>在函数内部使用var声明的变量；</li>
+<li>函数的参数变量</li>
+</ul>
+<p>局部变量的调用方法：</p>
+<ul>
+<li>当前函数体内部；</li>
+</ul>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printLocal</span><span class="params">()</span> &#123;</span></div><div class="line">    var <span class="built_in">i</span> = <span class="number">11</span>;</div><div class="line">    console.<span class="built_in">log</span>(<span class="built_in">i</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line">printLocal();</div></pre></td></tr></table></figure>
+<h2 id="JavaScript变量命名"><a href="#JavaScript变量命名" class="headerlink" title="JavaScript变量命名"></a>JavaScript变量命名</h2><ul>
+<li>规则1：变量要以一个字母、下划线或者美元符开头。</li>
+<li>规则2：然后变量后面的可以使用任意多个字母、数字、下划线或者美元符</li>
+<li>规则3：一定要避开JavaScript的所有保留字。</li>
+</ul>
+<p>JavaScript的保留字如下图所示:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1014339-c9a14b3c3b49c3bb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h2 id="JavaScript表达式"><a href="#JavaScript表达式" class="headerlink" title="JavaScript表达式"></a>JavaScript表达式</h2><ul>
+<li>数值表达式：<code>Math.random() * 10 + 32 - 11.0</code></li>
+<li>布尔表达式：<code>level == 4</code></li>
+<li>串表达式：<code>&quot;I&quot; + &quot; am &quot; + &quot; hero!&quot;</code></li>
+<li>其他表达式：<code>function() {...}，document.getElementById(&#39;cows&#39;)，new Array(10)</code></li>
+</ul>
+<h2 id="JavaScript自动类型转换"><a href="#JavaScript自动类型转换" class="headerlink" title="JavaScript自动类型转换"></a>JavaScript自动类型转换</h2><ul>
+<li><code>message = 2 + &quot; if by sea</code>，值为2 if by sea，JavaScript会将2转换为串“2”;</li>
+<li><code>value = 2 * 3.1</code>, 值为6.2，JavaScript会把整数2转换为一个浮点数。</li>
+</ul>
+<p>JavaScript计算下面的语句会得到什么？</p>
+<ul>
+<li><code>numORString1 = &quot;3&quot; + &quot;4&quot;</code>; 值为：”34”</li>
+<li><code>numORString2 = &quot;3&quot; * &quot;4&quot;</code>; 值为：12</li>
+</ul>
+<p>##JavaScript循环</p>
+<ul>
+<li><strong>while循环</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> scoop = <span class="number">5</span>;</div><div class="line"></div><div class="line">  <span class="keyword">while</span>(scoop &gt; <span class="number">0</span>) &#123;</div><div class="line"></div><div class="line">      alert(<span class="string">"More icecream!"</span>);</div><div class="line">      scoop = scoop - <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  alert(<span class="string">"life without ice cream is not the same!"</span>);</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>for循环</strong></li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="actionscript"></span></div><div class="line"></div><div class="line">  <span class="keyword">var</span> scoop;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(scoop = <span class="number">5</span>; scoop &gt; <span class="number">0</span>; scoop--) &#123;</div><div class="line"></div><div class="line">      alert(<span class="string">"More icecream!"</span>);</div><div class="line">      </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  alert(<span class="string">"life without ice cream is not the same!"</span>);</div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="HTML页面增加JavaScript"><a href="#HTML页面增加JavaScript" class="headerlink" title="HTML页面增加JavaScript"></a>HTML页面增加JavaScript</h2><p>要使用JavaScript，必须把它增加到一个Web页面中。不过在哪里加呢？下面介绍向页面增加JavaScript代码的三种方式</p>
+<ul>
+<li><strong>联机脚本放在<head>元素中</head></strong></li>
+</ul>
+<p>向页面增加代码时，最常用的方式就是在页面的head部分放置一个script元素。在head元素中增加JavaScript部分就会最先执行这个代码，然后才解析页面的其余部分。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line">        ...语句</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>通过引用一个单独的JavaScript文件夹来增加脚本</strong></li>
+</ul>
+<p>还可以链接一个包含了JavaScript代码的单独的文件。将这个文件的URL放在开始script表计的src属性中，另外一定要用&lt; /script&gt;结束这个脚本元素。如果链接到同一目录的某个文件，可以不提供该文件夹的完整路径。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"mycode.js"</span> &gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>将代码增加到文档体中，可以作为内联代码，也可以作为一个单独文件的链接</strong></li>
+</ul>
+<p>也可以把代码直接放在HTML5的body中。同样的，将JavaScript代码包围在script元素中（或者在src属性中引用一个单独的文件）。浏览器解析体时就会执行页面体重的JavaScript（而且通常会从上向下执行）。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="handlebars"><span class="xml"></span></span></div><div class="line">        ...语句</div><div class="line">    <span class="tag">&lt;/<span class="name">sript</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="JavaScript与HTML5页面交互"><a href="#JavaScript与HTML5页面交互" class="headerlink" title="JavaScript与HTML5页面交互"></a>JavaScript与HTML5页面交互</h2><ul>
+<li>1.在浏览器总加载一个页面时，浏览器会解析HTML，并创建文档的一个内部模型，其中包含HTML标记中的所有元素。</li>
+<li>2.JavaScript可以与DOM交互来访问元素以及元素中的内容。JavaScript还可以使用DOM来创建或删除元素。</li>
+<li>3.JavaScript修改了DOM时，浏览器会动态更新页面，所有你会看到页面上的新内容。</li>
+</ul>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><p>ECMAScript5 引入了严格模式的概念。严格模式是为 JavaScript 定义了一种不同的解析与执行模型。在严格模式下 ECMAScript3 的一些不确定的行为将得到处理而且对某些不安全的操作也会抛出错误。要在脚本中启用严格模式，可以在顶部添加如下代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span>;</div></pre></td></tr></table></figure>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>javascript的注释。单行注释是”//注释文字”，多行注释是<code>/*注释文字*/</code></p>
+<figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//单行注释</span></div><div class="line"></div><div class="line">/*</div><div class="line"><span class="bullet">* </span>多行注释1</div><div class="line"><span class="bullet">* </span>多行注释2</div><div class="line"><span class="bullet">* </span>/</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交
+    
+    </summary>
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/categories/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://liuguoquan727.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>Go语言基础⑨Go接口和嵌入类型</title>
@@ -9663,450 +10309,6 @@ android:text=&quot;@{map[</code>`firstName`]}”</p>
     
     
       <category term="Collection" scheme="http://liuguoquan727.github.io/tags/Collection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java集合之Arrays和Collections</title>
-    <link href="http://liuguoquan727.github.io/2015/12/18/Java%E9%9B%86%E5%90%88%E4%B9%8BArrays%E5%92%8CCollections/"/>
-    <id>http://liuguoquan727.github.io/2015/12/18/Java集合之Arrays和Collections/</id>
-    <published>2015-12-18T13:22:21.000Z</published>
-    <updated>2016-04-23T14:53:48.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h1><p>java.util.Arrays</p>
-<p><a href="http://www.apihome.cn/api/java/Arrays.html" target="_blank" rel="external">Arrays详细介绍</a></p>
-<p>Array是Java特有的数组。在你知道所要处理数据元素个数的情况下非常好用。java.util.Arrays 包含了许多处理数据的实用方法：</p>
-<p>Arrays.asList：可以从 Array 转换成 List。可以作为其他集合类型构造器的参数。</p>
-<p>Arrays.binarySearch：在一个已排序的或者其中一段中快速查找。</p>
-<p>Arrays.copyOf：如果你想扩大数组容量又不想改变它的内容的时候可以使用这个方法。</p>
-<p>Arrays.copyOfRange：可以复制整个数组或其中的一部分。</p>
-<p>Arrays.deepEquals、Arrays.deepHashCode：Arrays.equals/hashCode的高级版本，支持子数组的操作。</p>
-<p>Arrays.equals：如果你想要比较两个数组是否相等，应该调用这个方法而不是数组对象中的 equals方法（数组对象中没有重写equals()方法，所以这个方法之比较引用而不比较内容）。这个方法集合了Java 5的自动装箱和无参变量的特性，来实现将一个变量快速地传给 equals() 方法——所以这个方法在比较了对象的类型之后是直接传值进去比较的。</p>
-<p>Arrays.fill：用一个给定的值填充整个数组或其中的一部分。</p>
-<p>Arrays.hashCode：用来根据数组的内容计算其哈希值（数组对象的hashCode()不可用）。这个方法集合了Java 5的自动装箱和无参变量的特性，来实现将一个变量快速地传给 Arrays.hashcode方法——只是传值进去，不是对象。</p>
-<p>Arrays.sort：对整个数组或者数组的一部分进行排序。也可以使用此方法用给定的比较器对对象数组进行排序。</p>
-<p>Arrays.toString：打印数组的内容。</p>
-<p>如果想要复制整个数组或其中一部分到另一个数组，可以调用 System.arraycopy方法。此方法从源数组中指定的位置复制指定个数的元素到目标数组里。这无疑是一个简便的方法。（有时候用 ByteBuffer bulk复制会更快。可以参考这篇文章）.</p>
-<p>最后，所有的集合都可以用T[] Collection.toArray( T[] a ) 这个方法复制到数组中。通常会用这样的方式调用：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">return</span> coll.toArray( <span class="keyword">new</span> T[ coll.<span class="built_in">size</span>() ] );</div></pre></td></tr></table></figure></p>
-<p>这个方法会分配足够大的数组来储存所有的集合，这样 toArray 在返回值时就不必再分配空间了。</p>
-<h1 id="Collections"><a href="#Collections" class="headerlink" title="Collections"></a>Collections</h1><p>java.util.Collections</p>
-<p><a href="http://www.apihome.cn/api/java/Collections.html" target="_blank" rel="external">Collections详细介绍</a></p>
-<p>就像有专门的java.util.Arrays来处理数组，Java中对集合也有java.util.Collections来处理。</p>
-<p>第一组方法主要返回集合的各种数据：</p>
-<p>Collections.checkedCollection / checkedList / checkedMap / checkedSet / checkedSortedMap / checkedSortedSet：检查要添加的元素的类型并返回结果。任何尝试添加非法类型的变量都会抛出一个ClassCastException异常。这个功能可以防止在运行的时候出错。//fixme</p>
-<p>Collections.emptyList / emptyMap / emptySet ：返回一个固定的空集合，不能添加任何元素。</p>
-<p>Collections.singleton / singletonList / singletonMap：返回一个只有一个入口的 set/list/map 集合。</p>
-<p>Collections.synchronizedCollection / synchronizedList / synchronizedMap / synchronizedSet / synchronizedSortedMap / synchronizedSortedSet：获得集合的线程安全版本（多线程操作时开销低但不高效，而且不支持类似put或update这样的复合操作）</p>
-<p>Collections.unmodifiableCollection / unmodifiableList / unmodifiableMap / unmodifiableSet / unmodifiableSortedMap / unmodifiableSortedSet：返回一个不可变的集合。当一个不可变对象中包含集合的时候，可以使用此方法。</p>
-<p>第二组方法中，其中有一些方法因为某些原因没有加入到集合中：</p>
-<p>Collections.addAll：添加一些元素或者一个数组的内容到集合中。</p>
-<p>Collections.binarySearch：和数组的Arrays.binarySearch功能相同。</p>
-<p>Collections.disjoint：检查两个集合是不是没有相同的元素。</p>
-<p>Collections.fill：用一个指定的值代替集合中的所有元素。</p>
-<p>Collections.frequency：集合中有多少元素是和给定元素相同的。</p>
-<p>Collections.indexOfSubList / lastIndexOfSubList：和String.indexOf(String) / lastIndexOf(String)方法类似——找出给定的List中第一个出现或者最后一个出现的子表。</p>
-<p>Collections.max / min：找出基于自然顺序或者比较器排序的集合中，最大的或者最小的元素。</p>
-<p>Collections.replaceAll：将集合中的某一元素替换成另一个元素。</p>
-<p>Collections.reverse：颠倒排列元素在集合中的顺序。如果你要在排序之后使用这个方法的话，在列表排序时，最好使用Collections.reverseOrder比较器。</p>
-<p>Collections.rotate：根据给定的距离旋转元素。</p>
-<p>Collections.shuffle：随机排放List集合中的节点，可以给定你自己的生成器——例如java.util.Random / java.util.ThreadLocalRandom or java.security.SecureRandom。</p>
-<p>Collections.sort：将集合按照自然顺序或者给定的顺序排序。</p>
-<p>Collections.swap：交换集合中两个元素的位置（多数开发者都是自己实现这个操作的）。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Arrays&quot;&gt;&lt;a href=&quot;#Arrays&quot; class=&quot;headerlink&quot; title=&quot;Arrays&quot;&gt;&lt;/a&gt;Arrays&lt;/h1&gt;&lt;p&gt;java.util.Arrays&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.apihome.cn
-    
-    </summary>
-    
-      <category term="Java" scheme="http://liuguoquan727.github.io/categories/Java/"/>
-    
-    
-      <category term="Collection" scheme="http://liuguoquan727.github.io/tags/Collection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java集合框架简介</title>
-    <link href="http://liuguoquan727.github.io/2015/12/18/Java%E9%9B%86%E5%90%88%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/"/>
-    <id>http://liuguoquan727.github.io/2015/12/18/Java集合框架简介/</id>
-    <published>2015-12-18T13:20:21.000Z</published>
-    <updated>2016-04-23T14:53:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>Java集合代表了一组对象。Java中的集合框架定义了一套规范，用来表示、操作集合，使具体操作与实现细节解耦。</p>
-<h1 id="两大基类Collection与Map"><a href="#两大基类Collection与Map" class="headerlink" title="两大基类Collection与Map"></a>两大基类Collection与Map</h1><p>在集合框架的类继承体系中，最顶层有两个接口：</p>
-<ul>
-<li>Collection表示一组纯数据</li>
-<li>Map表示一组key-value键值对</li>
-</ul>
-<p>一般继承自Collection或Map的集合类，会提供两个标准的构造函数：</p>
-<ul>
-<li>没有参数的构造函数，创建一个空的集合类，如ArrayList()</li>
-<li>有一个类型与基类（Collection或Map）相同的构造函数，创建一个与给定参数具有相同元素的新集合类，如ArrayList(Collection&lt;? extends E&gt; c)</li>
-</ul>
-<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>先看看常用的Collection集合类</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Collection.png" alt="Collection"></p>
-<p>Collection类主要有三个接口：</p>
-<ul>
-<li>Set表示不允许有重复元素的集合</li>
-<li>List表示允许有重复元素的集合</li>
-<li>Queue主要用于存储数据而不是处理数据</li>
-</ul>
-<h2 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h2><p>下图为常用的Map集合类</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Map.png" alt="Map"></p>
-<p>Map并不是一个真正意义上的集合，但是这个接口提供了三种“集合视角”，使得可以像操作集合一样操作他们。具体如下：</p>
-<ul>
-<li>把Map的内容看成key的集合</li>
-<li>把Map的内容看成value的集合</li>
-<li>把Map的内容看成key-value映射的集合</li>
-</ul>
-<h1 id="Java集合与数据结构"><a href="#Java集合与数据结构" class="headerlink" title="Java集合与数据结构"></a>Java集合与数据结构</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>特点：可以随机访问，查询效率较高，增删效率较低、内存固定</p>
-<p>Java集合：ArrayList、Vector</p>
-<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>特点：插入和删除效率高，查询效率低</p>
-<p>Java集合：LinkedList、LinkedHashMap、LinkedHashSet</p>
-<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>特点：查找效率高，插入和删除较快，内存固定，存在散列冲突。</p>
-<p>Java集合：HashMap、HashSet、HashTable、LinkedHashMap、LinkedHashSet</p>
-<h2 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h2><p>特点：插入、删除效率高，对最大项、最小项存储快，其他项存取较慢。</p>
-<p>Java集合：PriorityQueue（二叉堆实现的优先队列）</p>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>特点：先进后出（FILO）</p>
-<p>Java集合：Stack</p>
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>特点：先进先出（FIFO）</p>
-<p>Java集合：ArrayDeque（双端队列）、LinkedList（双端队列）</p>
-<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p>特点：查询、删除、插入都比较快，但算法复杂</p>
-<p>Java集合：TreeMap（红黑树）、TreeSet（红黑树）</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Java集合代表了一组对象。Java中的集合框架定义了一套规范，用来表示、操作集合，使具体操作与实现细节解耦。&lt;/p&gt;
-&lt;h1 id=&quot;两大基类Collection与Map&quot;&gt;&lt;a href=&quot;#两大基类Collection与Map&quot; class=&quot;headerlink&quot; 
-    
-    </summary>
-    
-      <category term="Java" scheme="http://liuguoquan727.github.io/categories/Java/"/>
-    
-    
-      <category term="Collection" scheme="http://liuguoquan727.github.io/tags/Collection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Http协议详解</title>
-    <link href="http://liuguoquan727.github.io/2015/12/18/Http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://liuguoquan727.github.io/2015/12/18/Http协议详解/</id>
-    <published>2015-12-18T13:08:05.000Z</published>
-    <updated>2016-04-24T15:31:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>HTTP是一种应用层协议，它通过TCP实现了可靠的数据传输，能够保证数据的完整性、正确性，而TCP对于数据传输控制的优点也能够体现在HTTP上，使得HTTP的数据传输吞吐量、效率得到保证。</p>
-<p>对于移动开发来说，网络应用基本上都是C/S架构，也就是客户端/服务器架构。客户端通过向服务器发起特定的请求，服务器返回结果，客户端解析结果，再将结果展示在UI上。客户端与服务器的交互如下所示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E4%BA%A4%E4%BA%92.png" alt=""></p>
-<p>详细的交互流程有如下几步：</p>
-<ol>
-<li>客户端执行网络请求，从URL解析出服务器的主机名。</li>
-<li>将服务器的主机名转换成服务器的IP地址。</li>
-<li>将端口号从URL中解析出来</li>
-<li>建立一条客户端与Web服务器的TCP连接；</li>
-<li>客户端通过输出流向服务器发送一条HTTP请求；</li>
-<li>服务器向客户端返回一条HTTP响应报文；</li>
-<li>客户端从输入流获取报文；</li>
-<li>客户端解析报文，关闭连接；</li>
-<li>客户端将结果显示在UI上；</li>
-</ol>
-<h1 id="HTTP请求方式"><a href="#HTTP请求方式" class="headerlink" title="HTTP请求方式"></a>HTTP请求方式</h1><p>HTTP提供了几种请求方式，每种请求方式都有不同的作用。被大家熟知的请求方式有7种GET、POST、DELETE、PUT、HEAD、TRACE、OPTIONS。其中PUT、DELETE、POST、GET分别对应着增、删、该、查4个操作，也是客户端运用最多的4个请求。</p>
-<h2 id="GET请求"><a href="#GET请求" class="headerlink" title="GET请求"></a>GET请求</h2><p>GET的作用是获取服务器的某个资源。下图提供一个例子，客户端用GET方法发起一次HTTP请求，然后服务端将对应的资源返回客户端。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-Get%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<p>需要注意的是：GET请求的参数都需要放到请求的URL中，第一个参数之前有一个？，参数的格式为：参数名=参数值。参数之间通过“&amp;”连接。</p>
-<h2 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h2><p>POST起初是用来向服务器传递数据的。POST请求通常会用来提交HTML的表单。表单中填好的数据会被传输给服务器，然后由服务器对这些数据进行处理。下图显示一个用POST请求的执行流程。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-POST%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<h2 id="PUT请求"><a href="#PUT请求" class="headerlink" title="PUT请求"></a>PUT请求</h2><p>与GET从服务器读取资源相反，PUT方法会向服务器写入资源。有些发布系统允许用户创建Web页面，并用PUT直接将其传输到Web服务器上。如下图所示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-PUT%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<p>PUT方法的语义就是让服务器用请求的主题部分来创建一个由所请求的URL命名的新文档，如果那个URL已经存在的话，就用这个资源来替代它。</p>
-<h2 id="DELETE请求"><a href="#DELETE请求" class="headerlink" title="DELETE请求"></a>DELETE请求</h2><p>DELETE方法所做的事情就是请服务器删除请求URL所指定的资源。但是，客户端无法保证删除操作一定会被执行。因为，HTTP规范允许服务器在不通知客户端的情况下撤销请求。</p>
-<p>DELETE方式与GET请求一样，参数都需要放在请求的URL中。下图显示了一个DELETE方法实例。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-DELETE%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<h2 id="HEAD请求"><a href="#HEAD请求" class="headerlink" title="HEAD请求"></a>HEAD请求</h2><p>HEAD方法与GET方法的行为很类似，但服务器在响应中只返回首部。不会返回实体的主体部分，这就允许客户端在未获取实际资源的情况下，对资源的首部进行检查。使用HEAD可以在不获取资源的情况下了解资源的情况（比如，判断其类型）；通过查看响应中的状态码，看看某个对象是否存在；通过查看首部，测试资源是否被修改了。服务器开发者必须确保返回的首部与GET请求所返回的首部完全相同。遵循HTTP/1.1规范，就必须实现HEAD方法。如下图所示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-HEAD%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<h2 id="TRACE请求"><a href="#TRACE请求" class="headerlink" title="TRACE请求"></a>TRACE请求</h2><p>客户端发起一个请求时，这个请求可能要穿越防火墙、代理、网关或其他一些应用程序。每个中间节点都可能会修改原始的HTTP请求。TRACE方法运行客户端在最终将请求发送给服务器时，看看它变成了什么样子。</p>
-<p>TRACE请求会在目的服务端发起一个“环回”诊断。行程最后一站的服务器会弹回一条TRACE响应，并在响应主体中携带它收到的原始请求报文。这样客户端就可以查看在所有中间HTTP应用程序组成的请求/响应链上，原始报文是否以及如何被毁坏或修改过，如下图所示。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-TRACE%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<p>TRACE方法主要用于诊断，也就是说，用于验证请求是否如愿穿过了请求/响应链。</p>
-<h2 id="OPTIONS请求"><a href="#OPTIONS请求" class="headerlink" title="OPTIONS请求"></a>OPTIONS请求</h2><p>OPTIONS方法请求Web服务器告知其支持的各种功能。可以询问服务器通常支持哪些方法，或者对某些特殊资源支持哪些方法（有些服务器可能只支持对一种特殊类型的对象使用特定的操作）这为客户端应用程序提供了一种手段，使其不用实际访问那些资源就能判定访问各种资源最优方式）。如下图所示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-OPTIONS%E8%AF%B7%E6%B1%82.png" alt=""></p>
-<h1 id="HTTP报文格式"><a href="#HTTP报文格式" class="headerlink" title="HTTP报文格式"></a>HTTP报文格式</h1><h2 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h2><p>通常一个HTTP请求报文由请求行（request line）、请求头部（header）、空行和请求数据4个部分组成。下图为请求报文的一般格式。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/http-%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F.jpg" alt=""></p>
-<ul>
-<li><strong>起始行</strong></li>
-</ul>
-<p>报文的第一行就是起始行，在请求报文中用来说明要以说明方式做什么请求，而在响应报文中初略说明了报文的执行结果。</p>
-<ul>
-<li><strong>首部字段</strong></li>
-</ul>
-<p>起始行后面有零个或多个首部字段。每个首部字段都包含一个名字和一个值，为了便于解析，两者之间用冒号（如Connection：keep-Alive）来分隔。首部以一个空行结束。添加一个首部字段和添加新行一样简单。</p>
-<ul>
-<li><strong>主体</strong></li>
-</ul>
-<p>首部字段的空行之后就是可选的报文主体了，其中包含了所以类型的数据。请求主体中包括了要发送给Web服务器的数据；响应主体中装载了要返回给客户端的数据。起始行和首部都是结构化的文本形式，而主体则可以包含任意的二进制数据（如图片、视频、音轨、软件程序）。当然，主体中也可以包含文本。</p>
-<h2 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h2><p>HTTP响应也由3个部分组成，分别是：状态行、消息报头、响应正文。如下所示，HTTP响应的格式与请求的格式十分类似：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">状态行</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">响应报文header</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">空行</span>&gt;</span></div><div class="line">[响应报文内容]</div></pre></td></tr></table></figure>
-<p>在响应报文中第一行用状态信息代替了请求信息。状态行通过提供一个状态码来说明所请求的资源情况。<br>状态行格式：<br>  HTTP-Version Status-Code Reason-Phrase CRLF</p>
-<p>HTTP-Version表示服务器HTTP协议的版本；<br>Status-Code表示服务器发回的响应状态代码；<br>Reason-Phrase表示状态代码的文本描述；</p>
-<p>状态码由三位数字组成，第一个数字定义了响应的类别，且有5中可能取值。</p>
-<table>
-<thead>
-<tr>
-<th>取值范围</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>100~199</td>
-<td>指示信息。表示请求已接收，继续处理</td>
-</tr>
-<tr>
-<td>200~299</td>
-<td>请求成功。表示请求已被成功接收理解</td>
-</tr>
-<tr>
-<td>300~399</td>
-<td>重定向。要完成请求必须进行更进一步的操作</td>
-</tr>
-<tr>
-<td>400~499</td>
-<td>客户端错误。请求有语法错误或请求无法实现</td>
-</tr>
-<tr>
-<td>500~599</td>
-<td>服务器端错误。服务器未能实现合法的请求</td>
-</tr>
-</tbody>
-</table>
-<p>常见状态代码、状态描述的说明如下：</p>
-<ul>
-<li>200 OK:客户端请求成功</li>
-<li>202 Accepted 服务器已接收请求，但尚未处理。</li>
-<li>400 Bad Request：客户端请求有语法错误，不能被服务器所理解</li>
-<li>401 Unauthorized：请求未授权，这个状态码必须和WWW-Authenticate报头域一起使用。</li>
-<li>403 Forbidden：服务器收到请求，但是拒绝提供服务。</li>
-<li>404 Not Found：请求资源不存在，举个例子：输入了错误的URL。</li>
-<li>408 Request Timeout 请求超时</li>
-<li>500 Internal Server Error：服务器发生不可预期的错误。</li>
-<li>502 Bad Gateway 错误的网关</li>
-<li>503 Server Unavailable：服务器当前不能处理客户端的请求，一段时间后可能恢复正常，举个例子：HTTP/1.1 200 OK</li>
-<li>504 网关超时</li>
-</ul>
-<p>下面是一个GET去请求的Response返回示例：</p>
-<figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">HTTP/<span class="number">1.1</span> <span class="number">200</span> OK</div><div class="line"><span class="symbol">Date:</span>Sat, <span class="number">31</span> Dec <span class="number">2005</span> <span class="number">23</span>:<span class="number">59</span>:<span class="number">59</span> GMT</div><div class="line">Content-Type: text/html;charset=utf<span class="number">-8</span></div><div class="line">Content-Length: <span class="number">122</span></div><div class="line"></div><div class="line"><span class="params">&lt;html&gt;</span></div><div class="line">	<span class="params">&lt;head&gt;</span></div><div class="line">		<span class="params">&lt;title&gt;</span>开发技术前线<span class="params">&lt;/title&gt;</span></div><div class="line">	<span class="params">&lt;/head&gt;</span></div><div class="line">	</div><div class="line">	<span class="params">&lt;body&gt;</span></div><div class="line">	<span class="params">&lt;/body&gt;</span></div><div class="line"><span class="params">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="请求头部"><a href="#请求头部" class="headerlink" title="请求头部"></a>请求头部</h2><p>请求头部由键值对组成，每行一对，关键字和值用英文冒号“：”分隔。HTTP规范定义了几种首部字段，应用程序也可以随意发明自己所用的头部。HTTP首部可以分为以下几类，如表所示：</p>
-<table>
-<thead>
-<tr>
-<th>首部类型</th>
-<th>作用</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>通用首部</td>
-<td>既可以出现在请求报文中，也可以出现在响应报文中</td>
-</tr>
-<tr>
-<td>请求首部</td>
-<td>提供更多有关请求的信息</td>
-</tr>
-<tr>
-<td>响应首部</td>
-<td>提供更多有关响应的信息</td>
-</tr>
-<tr>
-<td>实体首部</td>
-<td>描述主体的长度和内容，或者资源自身</td>
-</tr>
-<tr>
-<td>扩展首部</td>
-<td>HTTP规范中没有定义的新首部</td>
-</tr>
-</tbody>
-</table>
-<p>请求头部通知服务器关于客户端请求的信息，典型的请求头有。</p>
-<ul>
-<li>Content-Type：请求数据的格式</li>
-<li>Content-Length：消息长度</li>
-<li>Host：请求的主机名，允许多个域名同处一个IP地址，即虚拟主机</li>
-<li>User-Agent：发出请求的浏览器类型，可以自行设置</li>
-<li>Accept：客户端可识别的内容类型列表</li>
-<li>Accept-Encoding：客户端可识别的数据编码</li>
-<li>Connection：允许客户端和服务器指定与请求/响应连接有关的选项，例如设置为Keep-Alive则表示保持连接</li>
-<li>Transfer-Encoding：告知接收端为了保证报文的可靠传输，对报文采用了什么编码方式。</li>
-</ul>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;HTTP是一种应用层协议，它通过TCP实现了可靠的数据传输，能够保证数据的完整性、正确性，而TCP对于数据传输控制的优点也能够体现在HTTP上，使得HTTP的数据传输吞吐量、效率得到保证。&lt;/p&gt;
-&lt;p&gt;对于移动开发来说，网络应用基本上都是C/S架构，也就是客户端/服务器架
-    
-    </summary>
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-      <category term="http" scheme="http://liuguoquan727.github.io/tags/http/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP/IP（五）TCP协议详解</title>
-    <link href="http://liuguoquan727.github.io/2015/12/17/TCP-IP5TCP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://liuguoquan727.github.io/2015/12/17/TCP-IP5TCP协议详解/</id>
-    <published>2015-12-17T13:08:05.000Z</published>
-    <updated>2016-04-19T13:21:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。</p>
-<h1 id="数据包重发"><a href="#数据包重发" class="headerlink" title="数据包重发"></a>数据包重发</h1><h2 id="数据发送"><a href="#数据发送" class="headerlink" title="数据发送"></a>数据发送</h2><p>丢包重发的前提是发送方能够知道接收方是否成功的接收了消息。所以，在TCP协议中，接收端会给发送端返回一个消息，也叫确认应答（ACK），这表示接收方已经收到了数据包。</p>
-<p>根据上一节对TCP首部的分析得知：ACK的值和下次发送数据包的序列号相等。因此ACK也可以理解为：“发送方，下次你从这个位置开始发送！“。下图表示了数据发送与确认应答的过程：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_ack%E7%A1%AE%E8%AE%A4.png" alt=""></p>
-<p>由于各种原因，数据包和ACK应答包都有可能丢失，在这种情况下，发送方如果在一段时间内没有收到ACK，就会重发数据：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E9%87%8D%E5%8F%91%E6%95%B0%E6%8D%AE.png" alt=""></p>
-<p>即使网络正常，由于延迟的存在，接收方也有可能收到重复的数据包，因此接收方通过TCP首部中的SYN判断这个数据包是否曾经接收过。如果已经接收，就会丢弃该数据包。</p>
-<h2 id="重传超时时间（RTO）"><a href="#重传超时时间（RTO）" class="headerlink" title="重传超时时间（RTO）"></a>重传超时时间（RTO）</h2><p>如果发送方等待一段时间后，还是没有收到 ACK 确认，就会启动超时重传。这个等待的时间被称为重传超时时间(RTO，Retransmission TimeOut)。RTO 的值具体是多久呢？</p>
-<p>首先，RTO 的值不是固定的，它是一个动态变化的时间。这个时间总是略大于连接往返时间（RTT，Round Trip Time）。这个设定可以这样理解：“数据发送给对方，再返回到我这里，假设需要 10 秒，那我就等待 12秒，如果超过 12 秒，那估计就是回不来了。”</p>
-<p>RTT 是动态变化的，因为谁也不知道网络下一时刻是否拥堵。而当前的 RTO 需要根据未来的 RTT 估算得出。RTO 不能估算太大，否则会多等待太多时间；也不能太小，否则会因为网络突然变慢而将不该重传的数据进行重传。</p>
-<h2 id="TCP窗口"><a href="#TCP窗口" class="headerlink" title="TCP窗口"></a>TCP窗口</h2><p>按照之前的理论，在数据包发出后，直至 ACK 确认返回以前，发送端都无法发送数据，而且包的往返时间越长，网络利用效率和通信性能就越低。前两张图片形象的解释了这一点。</p>
-<p>为了解决这个问题，TCP 使用了“窗口”这个概念。窗口具有大小，它表示无需等待确认应答就可以继续发送数据包的最大数量。比如窗口大小为 4 时，数据发送的示意图如下：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png" alt=""></p>
-<p>不等确认就连续发送若干个数据包会不会有问题呢？我们首先来看数据包丢失问题。</p>
-<p>我们知道 TCP 首部中的 ACK 字段表示接收方已经收到数据的最后位置。因此，接收方成功接收到了 1-1000 字节的数据后，它会发送一个 ACK = 1001 的确认包。假设 1001-2000 字节的数据包丢失了，由于窗口长度比较大，发送方会继续发送 2001-3000 字节的数据包。接收端并不会返回这个数据包的确认，因为它最后收到的数据还是 1-1000 字节的数据包。</p>
-<p>因此，接收端返回的数据包的 ACK 依然是 1001。这表示：“喂，发数据的，别往后发了，你第 1001 字节开始的数据还没来呢”。可以想见，发送端以后每次发送数据包得到的确认中，ACK 的值都是 1001。当连续收到三次确认之后，发送方会意识到：“对方还没有接收到数据，这个包需要重传”。</p>
-<p>因此，引入窗口的概念后，被发送的数据不能立刻丢弃，需要缓存起来以备将来需要重发。</p>
-<p>利用窗口发送数据的过程可以用下图表示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E7%AA%97%E5%8F%A3.png" alt=""></p>
-<p>果是数据包没有丢失，但是确认包丢失了呢？这就是窗口最擅长处理的问题了。假设发送发收到的确认包中的 ACK 第一次是 1001，第二次是 4001。那么我们完全可以相信中间的两个包是成功被接收的。因为如果有没接收到的包，接收方是不会增加 ACK 的。</p>
-<p>在这种情况下，如果不使用窗口，发送方就需要重传第二、三个数据包，但是有了窗口的概念后，发送方就省略了两次重传。因此使用窗口实际上可以理解为“空间换时间”。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%9F%90%E4%BA%9B%E7%A1%AE%E8%AE%A4%E5%8C%85%E4%B8%A2%E5%A4%B1%E6%97%B6%E4%B8%8D%E7%94%A8%E9%87%8D%E5%8F%91.png" alt=""></p>
-<h1 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h1><h2 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h2><p>如果窗口过大，会导致接收方的缓存区数据溢出。这时候本该被接收的数据反而丢弃了，就会导致无意义的重传。因此，窗口大小是一个可以改变的值，它由接收端主机控制，附加在 TCP 首部的“窗口大小”字段中。</p>
-<h2 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h2><p>在连接建立的初期，如果窗口比较大，发送方可能会突然发送大量数据，导致网络瘫痪。因此，在通信一开始时，TCP 会通过慢启动算法得出窗口的大小，对发送数据量进行控制。</p>
-<p>流量控制是由发送方和接收方共同控制的。刚刚我们介绍了接收方会把自己能够承受的最大窗口长度写在 TCP 首部中，实际上在发送方这里，也存在流量控制，它叫拥塞窗口。TCP 协议中的窗口是指发送方窗口和接收方窗口的较小值。</p>
-<p>慢启动过程如下：</p>
-<ol>
-<li>通信开始时，发送方的拥塞窗口大小为 1。每收到一个 ACK 确认后，拥塞窗口翻倍。</li>
-<li>由于指数级增长非常快，很快地，就会出现确认包超时。</li>
-<li>此时设置一个“慢启动阈值”，它的值是当前拥塞窗口大小的一半。</li>
-<li>同时将拥塞窗口大小设置为 1，重新进入慢启动过程。</li>
-<li>由于现在“慢启动阈值”已经存在，当拥塞窗口大小达到阈值时，不再翻倍，而是线性增加。</li>
-<li>随着窗口大小不断增加，可能收到三次重复确认应答，进入“快速重发”阶段。</li>
-<li>这时候，TCP 将“慢启动阈值”设置为当前拥塞窗口大小的一半，再将拥塞窗口大小设置成阈值大小（也有说加 3）。</li>
-<li>拥塞窗口又会线性增加，直至下一次出现三次重复确认应答或超时。</li>
-</ol>
-<p>以上过程可以用下图概括：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcp_%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6.png" alt=""></p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;TCP协议是面向有连接的协议，它具有丢包重发和流量控制的功能，这是它区别UDP协议最大的特点。&lt;/p&gt;
-&lt;h1 id=&quot;数据包重发&quot;&gt;&lt;a href=&quot;#数据包重发&quot; class=&quot;headerlink&quot; title=&quot;数据包重发&quot;&gt;&lt;/a&gt;数据包重发&lt;/h1&gt;&lt;h2 id
-    
-    </summary>
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-      <category term="TCP/IP" scheme="http://liuguoquan727.github.io/tags/TCP-IP/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>TCP/IP（四）TCP与UDP协议</title>
-    <link href="http://liuguoquan727.github.io/2015/12/17/TCP-IP4TCP%E4%B8%8EUDP%E5%8D%8F%E8%AE%AE/"/>
-    <id>http://liuguoquan727.github.io/2015/12/17/TCP-IP4TCP与UDP协议/</id>
-    <published>2015-12-17T13:07:53.000Z</published>
-    <updated>2016-04-19T13:21:24.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>传输层位于OSI七层模型的第四层，传输层的主要作用是实现应用程序之间的通信。网络层主要是保证不同数据链路下数据的可达性，至于如何传输数据则是由传输层负责。</p>
-<h1 id="传输层协议简介"><a href="#传输层协议简介" class="headerlink" title="传输层协议简介"></a>传输层协议简介</h1><p>常见的传输层协议主要有TCP协议和UDP协议。</p>
-<h2 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h2><p>TCP协议是面向有连接的协议，也就是说在使用TCP协议传输数据之前一定要在发送方和接收方之间建立连接。一般情况下建立连接需要三步，关闭连接需要四步。</p>
-<p>建立TCP连接后，由于有数据重传、流量控制等功能，TCP协议能够正确处理丢包问题，保证接收方能够收到数据，与此同时还能够有效利用网络带宽。然而TCP协议中定义了很多复杂的规范，因此效率不如UDP协议，不适合实时的视频和音频传输。</p>
-<h2 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h2><p>UDP协议是面向无连接的协议，它只会把数据传递给接收端，但是不保证接收端是否真正收到了数据。这种特性适合多播、实时的视频和音频传输，因为个别数据包的丢失并不会影响视频和音频的整体效果。</p>
-<h2 id="端口号"><a href="#端口号" class="headerlink" title="端口号"></a>端口号</h2><p>IP协议中的两大关键要素是源IP地址和目标IP地址。传输层新增了三个要素：源端口号、目标端口号和协议号。</p>
-<p>端口号用于区分同一台主机上不同的应用程序。假设你打开了两个浏览器，浏览器A发出的请求不会被浏览器B接收，就是因为A和B具有不要的端口号。</p>
-<p>协议号用于区分使用的是TCP还是UDP。</p>
-<p>所以：源IP地址、目标IP地址、源端口号、目标端口号和协议号这五个信息只要有一个不同，都被认为是不同的通信。</p>
-<h1 id="UDP首部"><a href="#UDP首部" class="headerlink" title="UDP首部"></a>UDP首部</h1><p>UDP协议的特点就是简单，它的首部如下图所示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/trans-udp%E9%A6%96%E9%83%A8.png" alt="udp"></p>
-<ul>
-<li>包长度表示UDP首部长度和UDP数据长度之和</li>
-<li>校验和用来判断数据在传输过程中是否丢失。</li>
-</ul>
-<h1 id="TCP首部"><a href="#TCP首部" class="headerlink" title="TCP首部"></a>TCP首部</h1><p>TCP首部要复杂得多。解析这个首部的时间也相应的增加，这也是导致TCP连接的效率低于UDP的原因之一。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/trans-tcp%E9%A6%96%E9%83%A8.png" alt="tcp"></p>
-<p>关键字段解释如下：</p>
-<ul>
-<li><p>序列号：它表示发送数据的位置，假设当前的序列号为s，发送数据长度为I，则下次发送数据的序列号为S + I。在建立连接时通常由计算机生成一个随机数作为序列号的初始值。</p>
-</li>
-<li><p>确认应答号：它等于下一次应该接收到的数据的序列号。假设当前的序列号为s，发送数据长度为I，则接收端返回的确认应答号为S + I。发送端接收到这个确认应答后，可以认为这个位置以前所有的数据都已被正常接收。</p>
-</li>
-<li><p>数据偏移：TCP首部的长度，单位为4个字节。如果没有可选字段，那么这里的值就是5，表示TCP首部的长度为20字节。</p>
-</li>
-<li><p>控制位：长度为8bit，分别有8个控制标志，依次是CWR、ECE、URG、ACK、PSH、RST、SYN和FIN</p>
-<ul>
-<li>CWR</li>
-<li>ECE</li>
-<li>URG</li>
-<li>ACK:改位为1时，确认应答的字段变为有效。TCP规定除了最初建立连接时的SYN包之外改位必须设置为1</li>
-<li>PSH</li>
-<li>RST</li>
-<li>SYN：用于建立连接。SYN为1表示希望建立连接</li>
-<li>FIN：为1时，表示希望断开连接</li>
-</ul>
-</li>
-<li><p>窗口大小：用于表示从应答号开始能够接收多少个字节。如果窗口为0，可以发送窗口探测</p>
-</li>
-<li><p>紧急指针：仅仅在URG控制位为1时有效。表示紧急数据的末尾在TCP数据部分中的位置，通常在暂时中断通信时使用（比如Ctrl + C）</p>
-</li>
-</ul>
-<h1 id="TCP握手"><a href="#TCP握手" class="headerlink" title="TCP握手"></a>TCP握手</h1><p>TCP是面向连接的协议，连接在每次通信前被建立，通信结束时被关闭。了解TCP连接建立和关闭的过程通常是考察的重点。TCP连接的建立和关闭过程可用下图表示：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/trans-tcp%E8%BF%9E%E6%8E%A5%E5%BB%BA%E7%AB%8B%E5%92%8C%E5%85%B3%E9%97%AD.png" alt=""></p>
-<h2 id="三次握手建立连接"><a href="#三次握手建立连接" class="headerlink" title="三次握手建立连接"></a>三次握手建立连接</h2><ol>
-<li>客户端请求连接SYN</li>
-<li>服务端确认客户端连接请求</li>
-<li>客户端确认服务端已收到连接请求，建立连接开始通信</li>
-</ol>
-<h2 id="为什么是三次握手"><a href="#为什么是三次握手" class="headerlink" title="为什么是三次握手"></a>为什么是三次握手</h2><p>三次握手的目的是“为了防止已失效的连接请求报文段突然又传送到了服务端，因而产生错误”</p>
-<p>这是因为在网络请求时，我们时刻要注意“网络是不可靠的，数据包是可能丢失的”。假设没有第三次确认的情况下，客户端向服务端发送SYN，请求建立连接。由于延迟，服务端没有及时收到这个包。于是客户端重新发送一个SYN包。</p>
-<p>假设服务端接收到了第二个SYN包，建立了通信，一段时间后通信结束，连接被关闭。这是最初被发送的SYN包抵达服务端，服务端又会发送一次ACK确认。由于两次握手就建立连接，此时的服务端就会建立一个新的连接，然而客户端认为没有请求建立连接，所以就不会向服务端发送数据，从而导致服务端建立一个空连接，浪费资源。</p>
-<h2 id="ACK确认包丢失怎么办？"><a href="#ACK确认包丢失怎么办？" class="headerlink" title="ACK确认包丢失怎么办？"></a>ACK确认包丢失怎么办？</h2><p>三次握手其实解决了第二步的数据包丢失的问题，那么第三步的ACK确认包丢失后，TCP协议是如何处理的呢？</p>
-<p>按照TCP协议处理丢包的一般方法，服务端会重新向客户端发送数据包，直至收到ACK确认为止。但实际上这种做法有可能遭到SYN泛洪攻击。泛洪攻击，是指发送方伪造多个IP地址，模拟三个握手的过程。当服务器返回ACK后，攻击方故意不确认，从而使得服务器不断重发，由于服务器长时间出于半连接状态，最后消耗过多的CPU和内存资源导致死机。</p>
-<p>正确的处理方法是服务端发送RST报文，进入CLOSE状态。这个RST数据包的TCP首部中，控制位中的RST设置为1.这表示连接信息全部初始化，原有的TCP通信不能继续进行。客户端如果还想重新建立TCP连接，就必须重新开始第一次握手。</p>
-<p>##　四次握手关闭连接</p>
-<ol>
-<li>客户端发送FIN通知服务端 客户端要关闭连接</li>
-<li>服务端发送ACK确认客户端关闭连接</li>
-<li>服务端发送FIN通知客户端 服务端要关闭连接</li>
-<li>客户端发送ACK确认服务端关闭连接</li>
-</ol>
-<p>由于连接是双向的，所以双方都要主动关闭自己这一侧的连接。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;传输层位于OSI七层模型的第四层，传输层的主要作用是实现应用程序之间的通信。网络层主要是保证不同数据链路下数据的可达性，至于如何传输数据则是由传输层负责。&lt;/p&gt;
-&lt;h1 id=&quot;传输层协议简介&quot;&gt;&lt;a href=&quot;#传输层协议简介&quot; class=&quot;headerlink&quot; 
-    
-    </summary>
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-    
-      <category term="网络通信" scheme="http://liuguoquan727.github.io/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/"/>
-    
-      <category term="TCP/IP" scheme="http://liuguoquan727.github.io/tags/TCP-IP/"/>
     
   </entry>
   
