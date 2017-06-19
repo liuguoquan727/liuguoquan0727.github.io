@@ -94,7 +94,7 @@
 <meta property="og:site_name" content="再读斋">
 <meta property="og:description" content="初识函数ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。
 123456789101112// 基本的语法function functionName(argument1,argument2)&amp;#123; /*一堆的代码*/&amp;#125;//下面是函数的一个实例，function diff(a,b)&amp;#123; console.log(a-b);&amp;#125;di">
-<meta property="og:updated_time" content="2017-06-18T13:14:36.000Z">
+<meta property="og:updated_time" content="2017-06-19T13:47:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript⑤函数">
 <meta name="twitter:description" content="初识函数ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。
@@ -406,7 +406,7 @@
 
       
         <h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
 <p>函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> diffNumber=diff(<span class="number">10</span>,<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(diffNumber);</div></pre></td></tr></table></figure>
 <p>函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； </p>
@@ -607,7 +607,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">114</span>
+                <span class="site-state-item-count">122</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

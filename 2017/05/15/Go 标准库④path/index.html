@@ -1,0 +1,978 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Go基础," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.jpeg?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="path 包path实现了对斜杠分隔的路径进行操作的函数。
+
+func IsAbs(path string) bool // 判断是否是一个绝对路径
+func Split(path string) (dir, file string) // 将路径分割为路径和文件名
+func Join(elem …string) string // 将多个字符串合并为一个路径
+func Ext(path stri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go 标准库介绍④path">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="path 包path实现了对斜杠分隔的路径进行操作的函数。
+
+func IsAbs(path string) bool // 判断是否是一个绝对路径
+func Split(path string) (dir, file string) // 将路径分割为路径和文件名
+func Join(elem …string) string // 将多个字符串合并为一个路径
+func Ext(path stri">
+<meta property="og:updated_time" content="2017-06-19T13:48:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Go 标准库介绍④path">
+<meta name="twitter:description" content="path 包path实现了对斜杠分隔的路径进行操作的函数。
+
+func IsAbs(path string) bool // 判断是否是一个绝对路径
+func Split(path string) (dir, file string) // 将路径分割为路径和文件名
+func Join(elem …string) string // 将多个字符串合并为一个路径
+func Ext(path stri">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/"/>
+
+
+
+
+
+  <title> Go 标准库介绍④path | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Go 标准库介绍④path
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-15T21:50:53+08:00">
+                2017-05-15 21:50:53
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Go/" itemprop="url" rel="index">
+                    <span itemprop="name">Go</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/15/Go 标准库④path/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/15/Go 标准库④path/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="path-包"><a href="#path-包" class="headerlink" title="path 包"></a>path 包</h1><p>path实现了对斜杠分隔的路径进行操作的函数。</p>
+<ul>
+<li>func IsAbs(path string) bool // 判断是否是一个绝对路径</li>
+<li>func Split(path string) (dir, file string) // 将路径分割为路径和文件名</li>
+<li>func Join(elem …string) string // 将多个字符串合并为一个路径</li>
+<li>func Ext(path string) string // 返回路径中扩展部分</li>
+<li>func Base(path string) string // 返回路径的最后一个元素</li>
+<li>func Dir(path string) string // 返回路径中目录部分</li>
+<li>func Clean(path string) string // 返回同目录的最短路径</li>
+<li>func Match(pattern, name string) (matched bool, err error) // 正则是否匹配路径（shell 文件名匹配）</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 path</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"path"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    pt := <span class="string">"~/gocode/src/go_note/package/path"</span></div><div class="line"> </div><div class="line">    <span class="comment">// 判断是否是一个绝对路径</span></div><div class="line">    is_abs := path.IsAbs(pt)</div><div class="line">    fmt.Println(is_abs) <span class="comment">// false</span></div><div class="line"> </div><div class="line">    <span class="comment">// 将路径分割为路径和文件名</span></div><div class="line">    pf := <span class="string">"~gocode/src/go_note/package/path/path.go"</span></div><div class="line">    dir, file := path.Split(pf)</div><div class="line">    fmt.Println(dir, file) <span class="comment">// ~gocode/src/go_note/package/path/ path.go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 将多个字符串合并为一个路径</span></div><div class="line">    dir_join := path.Join(<span class="string">"usr"</span>, <span class="string">"local"</span>, <span class="string">"bin"</span>)</div><div class="line">    fmt.Println(dir_join) <span class="comment">// usr/local/bin</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径中扩展</span></div><div class="line">    file_ext := path.Ext(pf)</div><div class="line">    fmt.Println(file_ext) <span class="comment">// .go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径的最后一个元素</span></div><div class="line">    dir_base := path.Base(pf)</div><div class="line">    fmt.Println(dir_base) <span class="comment">// path.go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径中目录部分</span></div><div class="line">    dir = path.Dir(pf)</div><div class="line">    fmt.Println(dir) <span class="comment">// ~gocode/src/go_note/package/path</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回同目录的最短路径</span></div><div class="line">    dir_a := <span class="string">"/usr/../etc/../etc/ssh"</span></div><div class="line">    fmt.Println(path.Clean(dir_a)) <span class="comment">// /etc/ssh</span></div><div class="line"> </div><div class="line">    <span class="comment">// 正则是否匹配路径</span></div><div class="line">    is_match, err := path.Match(<span class="string">"*.xml"</span>, <span class="string">"a.xml"</span>)</div><div class="line">    fmt.Println(is_match, err) <span class="comment">// true &amp;lt;nil&amp;gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="path-filepath-包"><a href="#path-filepath-包" class="headerlink" title="path/filepath 包"></a>path/filepath 包</h1><p>filepath 包实现了兼容各操作系统的文件路径操作函数。</p>
+<ul>
+<li>filepath.Separator // 预定义变量，表示路径分隔符 /</li>
+<li>filepath.ListSeparator // 预定义变量，表示环境变量分隔符 :</li>
+<li>func Abs(path string) (string, error) // 返回path 相对当前路径的绝对路径</li>
+<li>func Clean(path string) string // 返回path 的最短路径</li>
+<li>func Rel(basepath, targpath string) (string, error) // 返回targpath 相对 basepath路径</li>
+<li>func EvalSymlinks(path string) (string, error) // 返回软链指向的路径</li>
+<li>func VolumeName(path string) string // 返回路径最前面的卷名</li>
+<li>func ToSlash(path string) string // 路径分隔符替换为 /</li>
+<li>func FromSlash(path string) string // / 替换为路径分隔符</li>
+<li>func SplitList(path string) []string // 分隔环境变量里面的路径</li>
+<li>func Walk(root string, walkFn WalkFunc) error // 遍历 root 目录下的文件树，并调用 walkFn</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 path/filepath</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">    <span class="string">"path/filepath"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="comment">// 打印路径名称</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathName</span><span class="params">(path <span class="keyword">string</span>, info os.FileInfo, err error)</span> <span class="title">error</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">return</span> err</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        fmt.Println(path)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 预定义变量</span></div><div class="line">    fmt.Println(<span class="keyword">string</span>(filepath.Separator), <span class="keyword">string</span>(filepath.ListSeparator))</div><div class="line"> </div><div class="line">    <span class="comment">// 返回path 相对当前路径的绝对路径</span></div><div class="line">    dir := <span class="string">"~/gocode/src/go_note/package/filepath"</span></div><div class="line">    real_dir, err := filepath.Abs(dir)</div><div class="line">    fmt.Println(real_dir, err)</div><div class="line"> </div><div class="line">    <span class="comment">// 返回path 的最短路径</span></div><div class="line">    dir = <span class="string">"/usr/../etc/../tmp"</span></div><div class="line">    clear_dir := filepath.Clean(dir)</div><div class="line">    fmt.Println(clear_dir) <span class="comment">// /tmp</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回targpath 相对 basepath路径</span></div><div class="line">    basepath, targpath := <span class="string">"/usr/local"</span>, <span class="string">"/usr/local/go/bin"</span></div><div class="line">    rel_dir, err := filepath.Rel(basepath, targpath)</div><div class="line">    fmt.Println(rel_dir, err) <span class="comment">// go/bin &amp;lt;nil&amp;gt;</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回软链指向的路径</span></div><div class="line">    symlink := <span class="string">"/usr/local"</span></div><div class="line">    real_dir, err = filepath.EvalSymlinks(symlink)</div><div class="line">    fmt.Println(real_dir, err) <span class="comment">// /usr/local &amp;lt;nil&amp;gt;</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径最前面的卷名</span></div><div class="line">    root := <span class="string">"/usr/local/go"</span></div><div class="line">    vol := filepath.VolumeName(root)</div><div class="line">    fmt.Println(vol) <span class="comment">// ''</span></div><div class="line"> </div><div class="line">    <span class="comment">// 路径分隔符替换为 `/`</span></div><div class="line">    slash_dir := filepath.ToSlash(root)</div><div class="line">    fmt.Println(slash_dir) <span class="comment">// /usr/local/go</span></div><div class="line"> </div><div class="line">    <span class="comment">//  `/` 替换为路径分隔符</span></div><div class="line">    from_slash := filepath.FromSlash(slash_dir)</div><div class="line">    fmt.Println(from_slash) <span class="comment">// /usr/local/go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 分隔环境变量里面的路径</span></div><div class="line">    env_path := <span class="string">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"</span></div><div class="line">    env_slice := filepath.SplitList(env_path)</div><div class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> env_slice &#123;</div><div class="line">        fmt.Println(k, v)</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 0 /usr/local/bin</span></div><div class="line">    <span class="comment">// 1 /usr/bin</span></div><div class="line">    <span class="comment">// 2 /bin</span></div><div class="line">    <span class="comment">// 3 /usr/sbin</span></div><div class="line">    <span class="comment">// 4 /sbin</span></div><div class="line">    <span class="comment">// 5 /opt/X11/bin</span></div><div class="line">    <span class="comment">// 6 /usr/local/go/bin</span></div><div class="line"> </div><div class="line">    <span class="comment">// 遍历 root 目录下的文件树，并调用 walkFn</span></div><div class="line">    root_dir, err := os.Getwd()</div><div class="line">    err = filepath.Walk(root_dir, pathName)</div><div class="line">    fmt.Println(err)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/ic_wechat_pay.jpeg" alt="刘涤生 wechat" style="width: 200px; max-width: 100%;"/>
+    <div></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Go基础/" rel="tag"># Go基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/14/Go 标准库③os/" rel="next" title="Go 标准库介绍③os">
+                <i class="fa fa-chevron-left"></i> Go 标准库介绍③os
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/16/Go 标准库⑤io/" rel="prev" title="Go 标准库介绍⑤io">
+                Go 标准库介绍⑤io <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/05/15/Go 标准库④path/"
+     data-title="Go 标准库介绍④path"
+     data-content=""
+     data-url="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/05/15/Go 标准库④path/"
+           data-title="Go 标准库介绍④path" data-url="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">122</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#path-包"><span class="nav-number">1.</span> <span class="nav-text">path 包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#path-filepath-包"><span class="nav-number">2.</span> <span class="nav-text">path/filepath 包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
