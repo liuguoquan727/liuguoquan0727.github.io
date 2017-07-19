@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android进阶," />
+  <meta name="keywords" content="Android绘制," />
 
 
 
@@ -86,14 +86,16 @@
 
 
 
-<meta name="description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础&amp;amp;version=12020810&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=cNya6fxGbygCgP%2BZuKaXIUFc1VL6LjQX2Xnqv0vihhGhje4I76DJYvVZI85YkV%2Be)
-自定义绘制知识的四个级别Canva">
+<meta name="description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础
+自定义绘制知识的四个级别CanvasCanvas 的 drawXXX() 方法及 Paint 最常见的使用。
+Canvas.drawXXX() 是自定义绘制最基本的操作。掌握了这些方法，才知道怎么绘制内容，例如怎么画圆、画方、画图形和文字。组合绘制这些内容，再配合Paint上的一些常见方法来对绘制内容的颜色和风格进行">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义View1-1绘制基础">
 <meta property="og:url" content="http://liuguoquan727.github.io/2017/07/19/自定义View1-1绘制基础/index.html">
 <meta property="og:site_name" content="再读斋">
-<meta property="og:description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础&amp;amp;version=12020810&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=cNya6fxGbygCgP%2BZuKaXIUFc1VL6LjQX2Xnqv0vihhGhje4I76DJYvVZI85YkV%2Be)
-自定义绘制知识的四个级别Canva">
+<meta property="og:description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础
+自定义绘制知识的四个级别CanvasCanvas 的 drawXXX() 方法及 Paint 最常见的使用。
+Canvas.drawXXX() 是自定义绘制最基本的操作。掌握了这些方法，才知道怎么绘制内容，例如怎么画圆、画方、画图形和文字。组合绘制这些内容，再配合Paint上的一些常见方法来对绘制内容的颜色和风格进行">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-764d6f89dadf10635f60e9f1444b4a3f_b.png">
 <meta property="og:image" content="https://pic3.zhimg.com/v2-4c904db3ec7c80b1946bfe8d81332bea_b.png">
 <meta property="og:image" content="https://pic4.zhimg.com/v2-325d2d5e4ca61b9acc4d9f2fa9daa7fb_b.png">
@@ -135,11 +137,12 @@
 <meta property="og:image" content="https://pic2.zhimg.com/v2-9641f6ef40ed0f60510ceacf3566a6d1_b.png">
 <meta property="og:image" content="https://pic3.zhimg.com/v2-692d88842aa31152567833caa062e072_b.png">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-32a19f7fcac54fe9d185c7ac0b3bf360_b.png">
-<meta property="og:updated_time" content="2017-07-19T07:57:43.000Z">
+<meta property="og:updated_time" content="2017-07-19T08:08:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="自定义View1-1绘制基础">
-<meta name="twitter:description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础&amp;amp;version=12020810&amp;amp;nettype=WIFI&amp;amp;fontScale=100&amp;amp;pass_ticket=cNya6fxGbygCgP%2BZuKaXIUFc1VL6LjQX2Xnqv0vihhGhje4I76DJYvVZI85YkV%2Be)
-自定义绘制知识的四个级别Canva">
+<meta name="twitter:description" content="原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础
+自定义绘制知识的四个级别CanvasCanvas 的 drawXXX() 方法及 Paint 最常见的使用。
+Canvas.drawXXX() 是自定义绘制最基本的操作。掌握了这些方法，才知道怎么绘制内容，例如怎么画圆、画方、画图形和文字。组合绘制这些内容，再配合Paint上的一些常见方法来对绘制内容的颜色和风格进行">
 <meta name="twitter:image" content="https://pic4.zhimg.com/v2-764d6f89dadf10635f60e9f1444b4a3f_b.png">
 
 
@@ -402,8 +405,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
+                  <a href="/categories/Android进阶/" itemprop="url" rel="index">
+                    <span itemprop="name">Android进阶</span>
                   </a>
                 </span>
 
@@ -447,7 +450,7 @@
       
 
       
-        <p><a href="https://mp.weixin.qq.com/s?__biz=MzIwNTczNTY0NA==&amp;mid=2247483657&amp;idx=1&amp;sn=0e3a9f84d9924ef4125c885592dbb843&amp;chksm=972d12baa05a9bac18af5d335d65eba9b71146a9fec143be6ecf62d4a4bd2e7179c726cdbb81&amp;mpshare=1&amp;scene=24&amp;srcid=07198ZDmC9iwJgUAtM9I453i&amp;key=227c90f337be412aaf4e8e422d287da09f02743be42e35a090c39b2a61994661951872e3119c6bcfef2d0ea2d84c207a010b149bbb00f0515eed4035fbbfd3c8cbc6a2962364de91f0b866659697e3b1&amp;ascene=0&amp;uin=MjU2OTM5MzI4MA%3D%3D&amp;devicetype=iMac+MacBookPro11%2C4+OSX+OSX+10.12.5+build(16F73" target="_blank" rel="external">原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础</a>&amp;version=12020810&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=cNya6fxGbygCgP%2BZuKaXIUFc1VL6LjQX2Xnqv0vihhGhje4I76DJYvVZI85YkV%2Be)</p>
+        <p><a href="https://zhuanlan.zhihu.com/p/27787919" target="_blank" rel="external">原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础</a></p>
 <h1 id="自定义绘制知识的四个级别"><a href="#自定义绘制知识的四个级别" class="headerlink" title="自定义绘制知识的四个级别"></a>自定义绘制知识的四个级别</h1><h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>Canvas 的 drawXXX() 方法及 Paint 最常见的使用。</p>
 <p>Canvas.drawXXX() 是自定义绘制最基本的操作。掌握了这些方法，才知道怎么绘制内容，例如怎么画圆、画方、画图形和文字。组合绘制这些内容，再配合Paint上的一些常见方法来对绘制内容的颜色和风格进行简单的配置，就能实现大部分的绘制需求了。</p>
 <p><img src="https://pic4.zhimg.com/v2-764d6f89dadf10635f60e9f1444b4a3f_b.png" alt=""></p>
@@ -755,7 +758,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android进阶/" rel="tag"># Android进阶</a>
+            <a href="/tags/Android绘制/" rel="tag"># Android绘制</a>
           
         </div>
       
@@ -874,7 +877,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
