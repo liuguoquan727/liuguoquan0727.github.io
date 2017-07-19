@@ -4,6 +4,368 @@
   
     
     <entry>
+      <title><![CDATA[自定义View1-1绘制基础]]></title>
+      <url>http://liuguoquan727.github.io/2017/07/19/%E8%87%AA%E5%AE%9A%E4%B9%89View1-1%E7%BB%98%E5%88%B6%E5%9F%BA%E7%A1%80/</url>
+      <content type="html"><![CDATA[<p><a href="https://mp.weixin.qq.com/s?__biz=MzIwNTczNTY0NA==&amp;mid=2247483657&amp;idx=1&amp;sn=0e3a9f84d9924ef4125c885592dbb843&amp;chksm=972d12baa05a9bac18af5d335d65eba9b71146a9fec143be6ecf62d4a4bd2e7179c726cdbb81&amp;mpshare=1&amp;scene=24&amp;srcid=07198ZDmC9iwJgUAtM9I453i&amp;key=227c90f337be412aaf4e8e422d287da09f02743be42e35a090c39b2a61994661951872e3119c6bcfef2d0ea2d84c207a010b149bbb00f0515eed4035fbbfd3c8cbc6a2962364de91f0b866659697e3b1&amp;ascene=0&amp;uin=MjU2OTM5MzI4MA%3D%3D&amp;devicetype=iMac+MacBookPro11%2C4+OSX+OSX+10.12.5+build(16F73" target="_blank" rel="external">原文转载自扔物线：Android 开发进阶: 自定义 View 1-1 绘制基础</a>&amp;version=12020810&amp;nettype=WIFI&amp;fontScale=100&amp;pass_ticket=cNya6fxGbygCgP%2BZuKaXIUFc1VL6LjQX2Xnqv0vihhGhje4I76DJYvVZI85YkV%2Be)</p>
+<h1 id="自定义绘制知识的四个级别"><a href="#自定义绘制知识的四个级别" class="headerlink" title="自定义绘制知识的四个级别"></a>自定义绘制知识的四个级别</h1><h2 id="Canvas"><a href="#Canvas" class="headerlink" title="Canvas"></a>Canvas</h2><p>Canvas 的 drawXXX() 方法及 Paint 最常见的使用。</p>
+<p>Canvas.drawXXX() 是自定义绘制最基本的操作。掌握了这些方法，才知道怎么绘制内容，例如怎么画圆、画方、画图形和文字。组合绘制这些内容，再配合Paint上的一些常见方法来对绘制内容的颜色和风格进行简单的配置，就能实现大部分的绘制需求了。</p>
+<p><img src="https://pic4.zhimg.com/v2-764d6f89dadf10635f60e9f1444b4a3f_b.png" alt=""></p>
+<p><img src="https://pic3.zhimg.com/v2-4c904db3ec7c80b1946bfe8d81332bea_b.png" alt=""></p>
+<p><img src="https://pic4.zhimg.com/v2-325d2d5e4ca61b9acc4d9f2fa9daa7fb_b.png" alt=""></p>
+<h2 id="Paint的完全攻略"><a href="#Paint的完全攻略" class="headerlink" title="Paint的完全攻略"></a>Paint的完全攻略</h2><p>Paint可以做的事不只是设置颜色，也不只是实心空心、线条粗细、有没有阴影，它可以做的风格设置非常多，例如：</p>
+<blockquote>
+<p>拐弯要什么形状？</p>
+</blockquote>
+<p><img src="https://pic2.zhimg.com/v2-c1ceb235034c191ee3038cbdd759abf5_b.png" alt=""></p>
+<blockquote>
+<p>开不开双线性过滤？</p>
+</blockquote>
+<p><img src="https://pic3.zhimg.com/v2-6b75511ed15d18875158311b74ac60ce_b.png" alt=""></p>
+<blockquote>
+<p>加不加特效？</p>
+</blockquote>
+<p><img src="https://pic3.zhimg.com/v2-d5ac530b894810ed6551cf68a1fc0656_b.png" alt=""></p>
+<h2 id="范围裁剪和几何变换"><a href="#范围裁剪和几何变换" class="headerlink" title="范围裁剪和几何变换"></a>范围裁剪和几何变换</h2><p>范围裁剪和几何变换一般用于辅助绘制</p>
+<p>范围裁剪：</p>
+<p><img src="https://pic3.zhimg.com/v2-5b054225e346034d70cf6d4d6240ee56_b.png" alt=""></p>
+<p>几何变换：</p>
+<p><img src="https://pic3.zhimg.com/v2-785dbc3841fcab4677a47444794ad39e_b.png" alt=""></p>
+<h2 id="控制绘制顺序"><a href="#控制绘制顺序" class="headerlink" title="控制绘制顺序"></a>控制绘制顺序</h2><p><strong>控制绘制顺序解决的并不是「做不到」的问题，而是性能问题</strong>。同样的一种效果，你不用绘制顺序的控制往往也能做到，但需要用多个 View 甚至是多层 View 才能拼凑出来，因此代价是 UI 的性能；而使用绘制顺序的话，一个View就全部搞定了。</p>
+<p>自定义绘制的知识，大概就分为上面这四个级别。在你把这四个级别依次掌握了之后，你就是一个自定义绘制的高手了。下面开始第一篇： Canvas.drawXXX() 系列方法及 Paint 最基本的使用。</p>
+<h1 id="一切的开始：OnDraw"><a href="#一切的开始：OnDraw" class="headerlink" title="一切的开始：OnDraw()"></a>一切的开始：OnDraw()</h1><p>自定义绘制的过程非常简单：提前创建好Paint对象，重写onDraw()，把绘制代码写在onDraw()里面，这就是自定义绘制最基本的实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Paint paint = <span class="keyword">new</span> Paint();</div><div class="line"></div><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onDraw(canvas);</div><div class="line"></div><div class="line">    <span class="comment">// 绘制一个圆</span></div><div class="line">    canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="Canvas-drawXXX-和-Paint-基础"><a href="#Canvas-drawXXX-和-Paint-基础" class="headerlink" title="Canvas.drawXXX() 和 Paint 基础"></a>Canvas.drawXXX() 和 Paint 基础</h1><p>drawXXX() 系列方法和 Paint 的基础掌握了，就能够应付简单的绘制需求。它们主要包括：</p>
+<ul>
+<li>Canvas 类下的所有 draw- 打头的方法，例如 <code>drawCircle() drawBitmap()</code>。</li>
+<li>Paint 类的几个最常用的方法。具体是：<ul>
+<li>Paint.setStyle(Style style) 设置绘制模式</li>
+<li>Paint.setColor(int color) 设置颜色</li>
+<li>Paint.setStrokeWidth(float width) 设置线条宽度</li>
+<li>Paint.setTextSize(float textSize) 设置文字大小</li>
+<li>Paint.setAntiAlias(boolean aa) 设置抗锯齿开关</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://developer.android.google.cn/reference/android/graphics/Canvas.html" target="_blank" rel="external">Canvas官方文档</a><br><a href="https://developer.android.google.cn/reference/android/graphics/Paint.html" target="_blank" rel="external">Paint官方文档</a></p>
+<h2 id="drawColor"><a href="#drawColor" class="headerlink" title="drawColor"></a>drawColor</h2><blockquote>
+<p>Canvas.drawColor(@ColorInt int color) 颜色填充，这是最基本的 drawXXX() 方法：在整个绘制区域统一涂上指定的颜色。</p>
+</blockquote>
+<p>例如 drawColor(Color.BLACK) 会把整个区域染成纯黑色，覆盖掉原有内容； <code>drawColor(Color.parse(&quot;#88880000&quot;)</code> 会在原有的绘制效果上加一层半透明的红色遮罩</p>
+<p><code>drawColor(Color.BLACK);  // 纯黑</code></p>
+<p><img src="https://pic2.zhimg.com/v2-bd7b32f98a2ca396362e32eef607da91_b.png" alt=""></p>
+<p><code>drawColor(Color.parse(&quot;#88880000&quot;); // 半透明红色</code></p>
+<p><img src="https://pic1.zhimg.com/v2-7fb1a6ddde036c532a25b45a830e2468_b.png" alt=""></p>
+<p>类似的方法还有 <code>drawRGB(int r, int g, int b)</code> 和 <code>drawARGB(int a, int r, int g, int b)</code> ，它们和 <code>drawColor(color)</code> 只是使用方式不同，作用都是一样的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">canvas.drawRGB(<span class="number">100</span>, <span class="number">200</span>, <span class="number">100</span>);</div><div class="line">canvas.drawARGB(<span class="number">100</span>, <span class="number">100</span>, <span class="number">200</span>, <span class="number">100</span>);</div></pre></td></tr></table></figure>
+<p><strong>这类颜色填充方法一般用于在绘制之前设置底色，或者在绘制之后为界面设置半透明蒙版。</strong></p>
+<h2 id="drawCircle"><a href="#drawCircle" class="headerlink" title="drawCircle"></a>drawCircle</h2><blockquote>
+<p>drawCircle(float centerX, float centerY, float radius, Paint paint) 画圆</p>
+</blockquote>
+<ul>
+<li>centerX centerY：是圆心的坐标，单位是像素</li>
+<li>radius：是圆的半径，单位是像素</li>
+<li>paint：画笔，它提供基本信息之外的所有风格信息，例如颜色、线条粗细、阴影等。</li>
+</ul>
+<blockquote>
+<p>canvas.drawCircle(300, 300, 200, paint);</p>
+</blockquote>
+<p><img src="https://pic3.zhimg.com/v2-57bfe51b2fdf4e5c9b4d6d57987d86ca_b.png" alt=""></p>
+<p>在Android坐标系中的位置：</p>
+<p><img src="https://pic4.zhimg.com/v2-7379659fce2874d477f79fc81490d42b_b.png" alt=""></p>
+<p>圆心坐标和半径，这些都是圆的基本信息，也是它的独有信息。什么叫独有信息？就是只有它有，别人没有的信息。你画圆有圆心坐标和半径，画方有吗？画椭圆有吗？这就叫独有信息。独有信息都是直接作为参数写进 drawXXX() 方法里的（比如 drawCircle(centerX, centerY, radius, paint) 的前三个参数）。</p>
+<p>而除此之外，其他的都是公有信息。比如图形的颜色、空心实心这些，你不管是画圆还是画方都有可能用到的，这些信息则是统一放在 paint 参数里的。</p>
+<h3 id="Paint-setColor-int-color"><a href="#Paint-setColor-int-color" class="headerlink" title="Paint.setColor(int color)"></a>Paint.setColor(int color)</h3><p>例如，你要画一个红色的圆，并不是写成 canvas.drawCircle(300, 300, 200, RED, paint) 这样，而是像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paint.setColor(Color.RED); <span class="comment">// 设置为红色</span></div><div class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic4.zhimg.com/v2-299df7cf4a404f2cee837a76778aec67_b.png" alt=""></p>
+<p>Paint.setColor(int color) 是 Paint 最常用的方法之一，用来设置绘制内容的颜色。你不止可以用它画红色的圆，也可以用它来画红色的矩形、红色的五角星、红色的文字。</p>
+<h3 id="Paint-setStyle-Paint-Style-style"><a href="#Paint-setStyle-Paint-Style-style" class="headerlink" title="Paint.setStyle(Paint.Style style)"></a>Paint.setStyle(Paint.Style style)</h3><p>而如果你想画的不是实心圆，而是空心圆（或者叫环形），也可以使用 paint.setStyle(Paint.Style.STROKE) 来把绘制模式改为画线模式。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Paint.Style.STROKE); <span class="comment">// Style 修改为画线模式</span></div><div class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure>
+<p><code>setStyle(Style style)</code> 这个方法设置的是绘制的 Style 。Style 具体来说有三种： FILL, STROKE 和 FILL_AND_STROKE 。FILL 是填充模式，STROKE 是画线模式（即勾边模式），FILL_AND_STROKE 是两种模式一并使用：既画线又填充。它的默认值是 FILL，填充模式。</p>
+<h3 id="Paint-setStrokeWidth-float-width"><a href="#Paint-setStrokeWidth-float-width" class="headerlink" title="Paint.setStrokeWidth(float width)"></a>Paint.setStrokeWidth(float width)</h3><p>在 STROKE 和 FILL_AND_STROKE 下，还可以使用 paint.setStrokeWidth(float width) 来设置线条的宽度：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Paint.Style.STROKE);</div><div class="line">paint.setStrokeWidth(<span class="number">20</span>); <span class="comment">// 线条宽度为 20 像素</span></div><div class="line">canvas.drawCircle(<span class="number">300</span>, <span class="number">300</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-33317c32913d3b18a2bd936aa0f5b5c0_b.png" alt=""></p>
+<h3 id="Paint-setAntiAlias-boolean-aa"><a href="#Paint-setAntiAlias-boolean-aa" class="headerlink" title="Paint.setAntiAlias(boolean aa)"></a>Paint.setAntiAlias(boolean aa)</h3><p>在绘制的时候，往往需要开启抗锯齿来让图形和文字的边缘更加平滑。开启抗锯齿很简单，只要在 new Paint() 的时候加上一个 ANTI_ALIAS_FLAG 参数就行：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Paint paint = <span class="keyword">new</span> Paint(Paint.ANTI_ALIAS_FLAG);</div></pre></td></tr></table></figure>
+<p>另外，你也可以使用 Paint.setAntiAlias(boolean aa) 来动态开关抗锯齿。抗锯齿的效果如下：</p>
+<p><img src="https://pic1.zhimg.com/v2-7dcde98a1ed45327e10244279faaca08_b.png" alt=""></p>
+<h2 id="drawRect"><a href="#drawRect" class="headerlink" title="drawRect"></a>drawRect</h2><blockquote>
+<p>drawRect(float left, float top, float right, float bottom, Paint paint) 画矩形<br>drawRect(RectF rect, Paint paint) 通过RectF对象画矩形<br>drawRect(Rect rect, Paint paint) 通过Rect对象画矩形</p>
+</blockquote>
+<ul>
+<li>left, top, right, bottom 是矩形四条边的坐标</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.FILL);</div><div class="line">canvas.drawRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">500</span>, <span class="number">500</span>, paint);</div><div class="line">  </div><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">canvas.drawRect(<span class="number">700</span>, <span class="number">100</span>, <span class="number">1100</span>, <span class="number">500</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-716c6e178ae6cae876495e13e76394ba_b.png" alt=""></p>
+<h2 id="drawPoint"><a href="#drawPoint" class="headerlink" title="drawPoint"></a>drawPoint</h2><blockquote>
+<p>drawPoint(float x, float y, Paint paint) 画点</p>
+</blockquote>
+<p>x 和 y 是点的坐标。点的大小可以通过 paint.setStrokeWidth(width) 来设置；点的形状可以通过 paint.setStrokeCap(cap) 来设置：ROUND 画出来是圆形的点，SQUARE 或 BUTT 画出来是方形的点。<a href="https://developer.android.google.cn/reference/android/graphics/Paint.Cap.html" target="_blank" rel="external">Cap官方文档</a></p>
+<blockquote>
+<p>注：Paint.setStrokeCap(cap) 可以设置点的形状，但这个方法并不是专门用来设置点的形状的，而是一个设置线条端点形状的方法。端点有圆头 (ROUND)、平头 (BUTT) 和方头 (SQUARE) 三种</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStrokeWidth(<span class="number">20</span>);</div><div class="line">paint.setStrokeCap(Paint.Cap.ROUND);</div><div class="line">canvas.drawPoint(<span class="number">50</span>, <span class="number">50</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-b71189c7d0e3f47dccc5c40ae0ec21da_b.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStrokeWidth(<span class="number">20</span>);</div><div class="line">paint.setStrokeCap(Paint.Cap.SQUARE;</div><div class="line">canvas.drawPoint(<span class="number">50</span>, <span class="number">50</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-2dba848a12123f8769ac682ad018038c_b.png" alt=""></p>
+<h2 id="drawPoints"><a href="#drawPoints" class="headerlink" title="drawPoints"></a>drawPoints</h2><blockquote>
+<p>drawPoints(float[] pts, int offset, int count, Paint paint)<br>drawPoints(float[] pts, Paint paint) 画点（批量）</p>
+</blockquote>
+<ul>
+<li>pts 这个数组是点的坐标，每两个成一对</li>
+<li>offset 表示跳过数组的前几个数再开始记坐标</li>
+<li>count 表示坐标的个数</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span>[] points = &#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">50</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">150</span>, <span class="number">50</span>, <span class="number">150</span>, <span class="number">100</span>&#125;;</div><div class="line"><span class="comment">// 绘制四个点：(50, 50) (50, 100) (100, 50) (100, 100)</span></div><div class="line">canvas.drawPoints(points, <span class="number">2</span> <span class="comment">/* 跳过两个数，即前两个 0 */</span>,</div><div class="line">          <span class="number">8</span> <span class="comment">/* 一共绘制 8 个数（4 个点）*/</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-d9037a7ffc3ff2ace2c8e60861b1be7c_b.png" alt=""></p>
+<h2 id="drawOval"><a href="#drawOval" class="headerlink" title="drawOval"></a>drawOval</h2><blockquote>
+<p>drawOval(RectF rect, Paint paint)<br>drawOval(float left, float top, float right, float bottom, Paint paint) 画椭圆<br>只能绘制横着的或者竖着的椭圆。left, top, right, bottom 是这个椭圆的左、上、右、下四个边界点的坐标。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.FILL);</div><div class="line">canvas.drawOval(<span class="number">50</span>, <span class="number">50</span>, <span class="number">350</span>, <span class="number">200</span>, paint);</div><div class="line"></div><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">canvas.drawOval(<span class="number">400</span>, <span class="number">50</span>, <span class="number">700</span>, <span class="number">200</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-4d7afb1aa2ba028d36243f2dc6a8430d_b.png" alt=""></p>
+<h2 id="drawLine"><a href="#drawLine" class="headerlink" title="drawLine"></a>drawLine</h2><blockquote>
+<p>drawLine(float startX, float startY, float stopX, float stopY, Paint paint) 画线</p>
+</blockquote>
+<ul>
+<li>startX, startY, stopX, stopY 分别是线的起点和终点坐标。</li>
+</ul>
+<blockquote>
+<p>drawLines(float[] pts, Paint paint)  批量画线<br>drawLines(float[] pts, int offset, int count, Paint paint)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas.drawLine(<span class="number">200</span>, <span class="number">200</span>, <span class="number">800</span>, <span class="number">500</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-d47cb08fdf64f6cf9b6631bb43c27534_b.png" alt=""></p>
+<blockquote>
+<p>由于直线不是封闭图形，所以 setStyle(style) 对直线没有影响。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">float</span>[] points = &#123;<span class="number">20</span>, <span class="number">20</span>, <span class="number">120</span>, <span class="number">20</span>, <span class="number">70</span>, <span class="number">20</span>, <span class="number">70</span>, <span class="number">120</span>, <span class="number">20</span>, <span class="number">120</span>, <span class="number">120</span>, <span class="number">120</span>, <span class="number">150</span>, <span class="number">20</span>, <span class="number">250</span>, <span class="number">20</span>, <span class="number">150</span>, <span class="number">20</span>, <span class="number">150</span>, <span class="number">120</span>, <span class="number">250</span>, <span class="number">20</span>, <span class="number">250</span>, <span class="number">120</span>, <span class="number">150</span>, <span class="number">120</span>, <span class="number">250</span>, <span class="number">120</span>&#125;;</div><div class="line">canvas.drawLines(points, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic4.zhimg.com/v2-2fc1c7f19de673e332db5180304eceef_b.png" alt=""></p>
+<h2 id="drawRoundRect"><a href="#drawRoundRect" class="headerlink" title="drawRoundRect"></a>drawRoundRect</h2><blockquote>
+<p>drawRoundRect(RectF rect, float rx, float ry, Paint paint)<br>drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, Paint paint) 画圆角矩形</p>
+</blockquote>
+<ul>
+<li>left, top, right, bottom 是四条边的坐标</li>
+<li>rx 和 ry 是圆角的横向半径和纵向半径</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas.drawRoundRect(<span class="number">100</span>, <span class="number">100</span>, <span class="number">500</span>, <span class="number">300</span>, <span class="number">50</span>, <span class="number">50</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-435b255556293566c99a8a54c12383a5_b.png" alt=""></p>
+<h2 id="drawArc"><a href="#drawArc" class="headerlink" title="drawArc"></a>drawArc</h2><blockquote>
+<p>drawArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean useCenter, Paint paint) 绘制弧形或扇形</p>
+</blockquote>
+<ul>
+<li>left, top, right, bottom 描述的是这个弧形所在的椭圆;</li>
+<li>startAngle 是弧形的起始角度（x 轴的正向，即正右的方向，是 0 度的位置；顺时针为正角度，逆时针为负角度）;</li>
+<li>sweepAngle 是弧形划过的角度;</li>
+<li>useCenter 表示是否连接到圆心，如果不连接到圆心，就是弧形，如果连接到圆心，就是扇形。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Paint.Style.FILL); <span class="comment">// 填充模式</span></div><div class="line">canvas.drawArc(<span class="number">200</span>, <span class="number">100</span>, <span class="number">800</span>, <span class="number">500</span>, -<span class="number">110</span>, <span class="number">100</span>, <span class="keyword">true</span>, paint); <span class="comment">// 绘制扇形</span></div><div class="line">canvas.drawArc(<span class="number">200</span>, <span class="number">100</span>, <span class="number">800</span>, <span class="number">500</span>, <span class="number">20</span>, <span class="number">140</span>, <span class="keyword">false</span>, paint); <span class="comment">// 绘制弧形</span></div><div class="line">paint.setStyle(Paint.Style.STROKE); <span class="comment">// 画线模式</span></div><div class="line">canvas.drawArc(<span class="number">200</span>, <span class="number">100</span>, <span class="number">800</span>, <span class="number">500</span>, <span class="number">180</span>, <span class="number">60</span>, <span class="keyword">false</span>, paint); <span class="comment">// 绘制不封口的弧形</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-96faf09a2471c5dbcb76e9a118ffd292_b.png" alt=""></p>
+<p>到此为止，以上就是 Canvas 所有的简单图形的绘制。除了简单图形的绘制， Canvas 还可以使用 drawPath(Path path) 来绘制自定义图形。</p>
+<h2 id="drawBitmap"><a href="#drawBitmap" class="headerlink" title="drawBitmap"></a>drawBitmap</h2><blockquote>
+<p>drawBitmap(Bitmap bitmap, float left, float top, Paint paint) 画 Bitmap<br>drawBitmap(Bitmap bitmap, Rect src, RectF dst, Paint paint)<br>drawBitmap(Bitmap bitmap, Rect src, Rect dst, Paint paint)<br>drawBitmap(Bitmap bitmap, Matrix matrix, Paint paint)</p>
+</blockquote>
+<p>绘制 Bitmap 对象，也就是把这个 Bitmap 中的像素内容贴过来。其中 left 和 top 是要把 bitmap绘制到的位置坐标。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drawBitmap(bitmap, <span class="number">200</span>, <span class="number">100</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic1.zhimg.com/v2-2216a99e4aa817855def6265ee572bc0_b.png" alt=""></p>
+<h2 id="drawText"><a href="#drawText" class="headerlink" title="drawText"></a>drawText</h2><blockquote>
+<p>drawText(String text, float x, float y, Paint paint) 绘制文字</p>
+</blockquote>
+<ul>
+<li>参数 text 是用来绘制的字符串;</li>
+<li>x 和 y 是绘制的起点坐标;</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">canvas.drawText(text, <span class="number">200</span>, <span class="number">100</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-a18a85ff3555029c5b56706d4ff71e02_b.png" alt=""></p>
+<h3 id="Paint-setTextSize-float-textSize"><a href="#Paint-setTextSize-float-textSize" class="headerlink" title="Paint.setTextSize(float textSize)"></a>Paint.setTextSize(float textSize)</h3><p>通过 Paint.setTextSize(textSize)，可以设置文字的大小。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">paint.setTextSize(<span class="number">18</span>);</div><div class="line">canvas.drawText(text, <span class="number">100</span>, <span class="number">25</span>, paint);</div><div class="line">paint.setTextSize(<span class="number">36</span>);</div><div class="line">canvas.drawText(text, <span class="number">100</span>, <span class="number">70</span>, paint);</div><div class="line">paint.setTextSize(<span class="number">60</span>);</div><div class="line">canvas.drawText(text, <span class="number">100</span>, <span class="number">145</span>, paint);</div><div class="line">paint.setTextSize(<span class="number">84</span>);</div><div class="line">canvas.drawText(text, <span class="number">100</span>, <span class="number">240</span>, paint);</div></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-10c7a042deb59e69c9be3fe044b83c0d_b.png" alt=""></p>
+<h2 id="drawPath"><a href="#drawPath" class="headerlink" title="drawPath"></a>drawPath</h2><blockquote>
+<p>drawPath(Path path, Paint paint) 画自定义图形 <a href="https://developer.android.google.cn/reference/android/graphics/Path.html" target="_blank" rel="external">Path官方文档</a></p>
+</blockquote>
+<p>前面的这些方法，都是绘制某个给定的图形，而 drawPath() 可以绘制自定义图形。当你要绘制的图形比较特殊，使用前面的那些方法做不到的时候，就可以使用 drawPath() 来绘制。</p>
+<p><img src="https://pic3.zhimg.com/v2-555a511cce80232edfb792906d02b4e2_b.png" alt=""></p>
+<p>drawPath(path) 这个方法是通过描述路径的方式来绘制图形的，它的 path 参数就是用来描述图形路径的对象。path 的类型是 Path ，使用方法大概像下面这样：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PathView</span> <span class="keyword">extends</span> <span class="title">View</span> </span>&#123;</div><div class="line"></div><div class="line">    Paint paint = <span class="keyword">new</span> Paint();</div><div class="line">    Path path = <span class="keyword">new</span> Path(); <span class="comment">// 初始化 Path 对象</span></div><div class="line">    </div><div class="line">    ......</div><div class="line">    </div><div class="line">    &#123;</div><div class="line">      <span class="comment">// 使用 path 对图形进行描述（这段描述代码不必看懂）</span></div><div class="line">      path.addArc(<span class="number">200</span>, <span class="number">200</span>, <span class="number">400</span>, <span class="number">400</span>, -<span class="number">225</span>, <span class="number">225</span>);</div><div class="line">      path.arcTo(<span class="number">400</span>, <span class="number">200</span>, <span class="number">600</span>, <span class="number">400</span>, -<span class="number">180</span>, <span class="number">225</span>, <span class="keyword">false</span>);</div><div class="line">      path.lineTo(<span class="number">400</span>, <span class="number">542</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>.onDraw(canvas);</div><div class="line">      </div><div class="line">      canvas.drawPath(path, paint); <span class="comment">// 绘制出 path 描述的图形（心形），大功告成</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-ea827ac49efdebece7167dcdc67b2445_b.png" alt=""></p>
+<p>Path 可以描述直线、二次曲线、三次曲线、圆、椭圆、弧形、矩形、圆角矩形。把这些图形结合起来，就可以描述出很多复杂的图形。下面我就说一下具体的怎么把这些图形描述出来。</p>
+<p>Path 有两类方法，一类是直接描述路径的，另一类是辅助的设置或计算。</p>
+<h3 id="Path-方法第一类：直接描述路径"><a href="#Path-方法第一类：直接描述路径" class="headerlink" title="Path 方法第一类：直接描述路径"></a>Path 方法第一类：直接描述路径</h3><h4 id="addXxx-——添加子图形"><a href="#addXxx-——添加子图形" class="headerlink" title="addXxx() ——添加子图形"></a>addXxx() ——添加子图形</h4><ul>
+<li>addCircle(float x, float y, float radius, Direction dir) 添加圆</li>
+</ul>
+<blockquote>
+<p>x, y, radius 这三个参数是圆的基本信息，最后一个参数 dir 是画圆的路径的方向。<br>路径方向有两种：顺时针 (CW clockwise) 和逆时针 (CCW counter-clockwise) 。对于普通情况，这个参数填 CW 还是填 CCW 没有影响。它只是在需要填充图形 (Paint.Style 为 FILL 或 FILL_AND_STROKE) ，并且图形出现自相交时，用于判断填充范围的。</p>
+</blockquote>
+<ul>
+<li><p>addOval(float left, float top, float right, float bottom, Direction dir) / addOval(RectF oval, Direction dir) 添加椭圆</p>
+</li>
+<li><p>addRect(float left, float top, float right, float bottom, Direction dir) / addRect(RectF rect, Direction dir) 添加矩形</p>
+</li>
+<li><p>addRoundRect(RectF rect, float rx, float ry, Direction dir) / addRoundRect(float left, float top, float right, float bottom, float rx, float ry, Direction dir) / addRoundRect(RectF rect, float[] radii, Direction dir) / addRoundRect(float left, float top, float right, float bottom, float[] radii, Direction dir) 添加圆角矩形</p>
+</li>
+<li><p>addArc(float left, float top, float right, float bottom, float startAngle, float sweepAngle) / addArc(RectF oval, float startAngle, float sweepAngle) 添加弧形</p>
+</li>
+<li><p>addPath(Path path) 添加另一个 Path</p>
+</li>
+</ul>
+<h4 id="xxxTo-——画线（直线或曲线）"><a href="#xxxTo-——画线（直线或曲线）" class="headerlink" title="xxxTo() ——画线（直线或曲线）"></a>xxxTo() ——画线（直线或曲线）</h4><ul>
+<li>lineTo(float x, float y) / rLineTo(float x, float y) 画直线</li>
+</ul>
+<p>从<strong>当前位置</strong>向目标位置画一条直线， x 和 y 是目标位置的坐标。这两个方法的区别是，lineTo(x, y)的参数是<strong>绝对坐标</strong>，而 rLineTo(x, y) 的参数是相对当前位置的<strong>相对坐标</strong> （前缀 r 指的就是 relatively 「相对地」)。</p>
+<blockquote>
+<p><strong>当前位置</strong>：所谓当前位置，即最后一次调用画 Path 的方法的终点位置。初始值为原点 (0, 0)。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">path.lineTo(<span class="number">100</span>, <span class="number">100</span>); <span class="comment">// 由当前位置 (0, 0) 向 (100, 100) 画一条直线</span></div><div class="line">path.rLineTo(<span class="number">100</span>, <span class="number">0</span>); <span class="comment">// 由当前位置 (100, 100) 向正右方 100 像素的位置画一条直线</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic4.zhimg.com/v2-7657eee8380b034d95d4333591d4698f_b.png" alt=""></p>
+<ul>
+<li>quadTo(float x1, float y1, float x2, float y2) / rQuadTo(float dx1, float dy1, float dx2, float dy2) 画二次贝塞尔曲线</li>
+</ul>
+<blockquote>
+<p>这条二次贝塞尔曲线的起点就是当前位置，而参数中的 x1, y1 和 x2, y2 则分别是控制点和终点的坐标。和 rLineTo(x, y) 同理，rQuadTo(dx1, dy1, dx2, dy2) 的参数也是相对坐标</p>
+</blockquote>
+<ul>
+<li><p>cubicTo(float x1, float y1, float x2, float y2, float x3, float y3) / rCubicTo(float x1, float y1, float x2, float y2, float x3, float y3) 画三阶贝塞尔曲线</p>
+</li>
+<li><p>moveTo(float x, float y) / rMoveTo(float x, float y) 移动到目标位置</p>
+</li>
+</ul>
+<blockquote>
+<p>不论是直线还是贝塞尔曲线，都是以当前位置作为起点，而不能指定起点。但你可以通过 moveTo(x, y)或 rMoveTo() 来改变当前位置，从而间接地设置这些方法的起点。</p>
+</blockquote>
+<ul>
+<li>arcTo(RectF oval, float startAngle, float sweepAngle, boolean forceMoveTo) / arcTo(float left, float top, float right, float bottom, float startAngle, float sweepAngle, boolean forceMoveTo) / arcTo(RectF oval, float startAngle, float sweepAngle) 画弧形</li>
+</ul>
+<blockquote>
+<p>forceMoveTo 参数的意思是，绘制是要「抬一下笔移动过去」，还是「直接拖着笔过去」，区别在于是否留下移动的痕迹。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">path.lineTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">path.arcTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">300</span>, -<span class="number">90</span>, <span class="number">90</span>, <span class="keyword">true</span>); <span class="comment">// 强制移动到弧形起点（无痕迹）</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic4.zhimg.com/v2-8faa6acdbd58d50789f43b03badd0b2b_b.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">path.lineTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">path.arcTo(<span class="number">100</span>, <span class="number">100</span>, <span class="number">300</span>, <span class="number">300</span>, -<span class="number">90</span>, <span class="number">90</span>, <span class="keyword">false</span>); <span class="comment">// 直接连线连到弧形起点（有痕迹</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic3.zhimg.com/v2-0e058857d727d56f9a23ec5f5daa4fa6_b.png" alt=""></p>
+<h4 id="close-封闭当前子图形"><a href="#close-封闭当前子图形" class="headerlink" title="close() 封闭当前子图形"></a>close() 封闭当前子图形</h4><p>它的作用是把当前的子图形封闭，即由当前位置向当前子图形的起点绘制一条直线。close() 和 lineTo(起点坐标) 是完全等价的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">path.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">path.lineTo(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line">path.lineTo(<span class="number">150</span>, <span class="number">150</span>);</div><div class="line"><span class="comment">// 子图形未封闭</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic2.zhimg.com/v2-46f06258fd6fba811aadb5f5a80add8d_b.png" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">paint.setStyle(Style.STROKE);</div><div class="line">path.moveTo(<span class="number">100</span>, <span class="number">100</span>);</div><div class="line">path.lineTo(<span class="number">200</span>, <span class="number">100</span>);</div><div class="line">path.lineTo(<span class="number">150</span>, <span class="number">150</span>);</div><div class="line">path.close(); <span class="comment">// 使用 close() 封闭子图形。等价于 path.lineTo(100, 100)</span></div></pre></td></tr></table></figure>
+<p><img src="https://pic4.zhimg.com/v2-0d4b07fa8cc9c32b7a58596a6ce2853f_b.png" alt=""></p>
+<h3 id="Path-方法第二类：辅助的设置或计算"><a href="#Path-方法第二类：辅助的设置或计算" class="headerlink" title="Path 方法第二类：辅助的设置或计算"></a>Path 方法第二类：辅助的设置或计算</h3><h4 id="Path-op-Path-path-Path-Op-op"><a href="#Path-op-Path-path-Path-Op-op" class="headerlink" title="Path.op(Path path, Path.Op op)"></a>Path.op(Path path, Path.Op op)</h4><p>op(Path path, Path.Op op) 方法，用于将两个Path路径进行组合之后的效果设置，靠op方法可以快速组合生成一些复杂的图形效果，例如月牙形 </p>
+<p>Path.Op有如下几种参数  </p>
+<ul>
+<li>Path.Op.DIFFERENCE：减去Path2后Path1剩下的部分   </li>
+<li>Path.Op.INTERSECT：保留Path1与Path2共同的部分   </li>
+<li>Path.Op.REVERSE_DIFFERENCE：减去Path1后Path2剩下的部分   </li>
+<li>Path.Op.UNION：保留全部Path1和Path2    </li>
+<li>Path.Op.XOR：包含Path1与Path2但不包括两者相交的部分 </li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</div><div class="line">   <span class="comment">//设置绘制风格</span></div><div class="line">   setViewPaint();</div><div class="line">   <span class="comment">//设置填充风格，方便观察效果</span></div><div class="line">   paint.setStyle(Paint.Style.FILL);</div><div class="line">   <span class="comment">//构建path</span></div><div class="line">   Path path=<span class="keyword">new</span> Path();</div><div class="line">   path.addCircle(<span class="number">150</span>, <span class="number">150</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   Path path2 = <span class="keyword">new</span> Path();</div><div class="line">   path2.addCircle(<span class="number">300</span>, <span class="number">150</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path.op(path2,Path.Op.UNION);</div><div class="line">   <span class="comment">//Path.Op.UNION</span></div><div class="line">   canvas.drawPath(path,paint);</div><div class="line"></div><div class="line">   <span class="comment">//清除路径</span></div><div class="line">   path.reset();</div><div class="line">   path2.reset();</div><div class="line">   path.addCircle(<span class="number">150</span>, <span class="number">400</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path2.addCircle(<span class="number">300</span>, <span class="number">400</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path.op(path2,Path.Op.REVERSE_DIFFERENCE);</div><div class="line">   <span class="comment">//Path.Op.REVERSE_DIFFERENCE</span></div><div class="line">   canvas.drawPath(path,paint);</div><div class="line"></div><div class="line">   <span class="comment">//清除路径</span></div><div class="line">   path.reset();</div><div class="line">   path2.reset();</div><div class="line">   path.addCircle(<span class="number">150</span>, <span class="number">650</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path2.addCircle(<span class="number">300</span>, <span class="number">650</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path.op(path2,Path.Op.INTERSECT);</div><div class="line">   <span class="comment">//Path.Op.INTERSECT</span></div><div class="line">   canvas.drawPath(path,paint);</div><div class="line"></div><div class="line">   <span class="comment">//清除路径</span></div><div class="line">   path.reset();</div><div class="line">   path2.reset();</div><div class="line">   path.addCircle(<span class="number">150</span>, <span class="number">900</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path2.addCircle(<span class="number">300</span>, <span class="number">900</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path.op(path2,Path.Op.DIFFERENCE);</div><div class="line">   <span class="comment">//Path.Op.DIFFERENCE</span></div><div class="line">   canvas.drawPath(path,paint);</div><div class="line"></div><div class="line">   <span class="comment">//清除路径</span></div><div class="line">   path.reset();</div><div class="line">   path2.reset();</div><div class="line">   path.addCircle(<span class="number">150</span>, <span class="number">1150</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path2.addCircle(<span class="number">300</span>, <span class="number">1150</span>, <span class="number">100</span>, Path.Direction.CW);</div><div class="line">   path.op(path2,Path.Op.XOR);</div><div class="line">   <span class="comment">//Path.Op.XOR</span></div><div class="line">   canvas.drawPath(path,paint);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/path-path%E4%B8%ADop%E6%96%B9%E6%B3%95%E7%9A%84%E7%94%A8%E6%B3%95.png" alt=""></p>
+<h4 id="Path-setFillType-Path-FillType-ft"><a href="#Path-setFillType-Path-FillType-ft" class="headerlink" title="Path.setFillType(Path.FillType ft)"></a>Path.setFillType(Path.FillType ft)</h4><p>Path.setFillType(Path.FillType ft) 设置填充方式。</p>
+<p>前面在说 dir 参数的时候提到， Path.setFillType(fillType) 是用来设置图形自相交时的填充算法的：</p>
+<p><img src="https://pic1.zhimg.com/v2-83ebbc6bd6a13fcc7217abeafcc6a5b4_b.png" alt=""></p>
+<p>方法中填入不同的 FillType 值，就会有不同的填充效果。FillType 的取值有四个：</p>
+<ul>
+<li>EVEN_ODD EVEN_ODD </li>
+<li>WINDING （默认值）全填充</li>
+<li>INVERSE_EVEN_ODD</li>
+<li>INVERSE_WINDING</li>
+</ul>
+<p><img src="https://pic1.zhimg.com/v2-bc3da8bcc5833989e9e70ec121346f04_b.png" alt=""></p>
+<h5 id="EVEN-ODD的原理"><a href="#EVEN-ODD的原理" class="headerlink" title="EVEN_ODD的原理"></a>EVEN_ODD的原理</h5><p>即 even-odd rule （奇偶原则）：对于平面中的任意一点，向任意方向射出一条射线，这条射线和图形相交的次数（相交才算，相切不算哦）如果是奇数，则这个点被认为在图形内部，是要被涂色的区域；如果是偶数，则这个点被认为在图形外部，是不被涂色的区域。还以左右相交的双圆为例：</p>
+<p><img src="https://pic4.zhimg.com/v2-932fe07e7d5a514a699cf0687d4f9147_r.png" alt=""></p>
+<blockquote>
+<p>射线的方向无所谓，同一个点射向任何方向的射线，结果都是一样的，不信你可以试试。</p>
+</blockquote>
+<p>从上图可以看出，射线每穿过图形中的一条线，内外状态就发生一次切换，这就是为什么 EVEN_ODD 是一个「交叉填充」的模式。</p>
+<h5 id="WINDING的原理"><a href="#WINDING的原理" class="headerlink" title="WINDING的原理"></a>WINDING的原理</h5><p>即 non-zero winding rule （非零环绕数原则）：首先，它需要你图形中的所有线条都是有绘制方向的：</p>
+<p><img src="https://pic2.zhimg.com/v2-9641f6ef40ed0f60510ceacf3566a6d1_b.png" alt=""></p>
+<p>然后，同样是从平面中的点向任意方向射出一条射线，但计算规则不一样：以 0 为初始值，对于射线和图形的所有交点，遇到每个顺时针的交点（图形从射线的左边向右穿过）把结果加 1，遇到每个逆时针的交点（图形从射线的右边向左穿过）把结果减 1，最终把所有的交点都算上，得到的结果如果不是 0，则认为这个点在图形内部，是要被涂色的区域；如果是 0，则认为这个点在图形外部，是不被涂色的区域。</p>
+<p><img src="https://pic3.zhimg.com/v2-692d88842aa31152567833caa062e072_b.png" alt=""></p>
+<blockquote>
+<p>和 EVEN_ODD 相同，射线的方向并不影响结果。</p>
+</blockquote>
+<p>所以，前面的那个「简单粗暴」的总结，对于 WINDING 来说并不完全正确：如果你所有的图形都用相同的方向来绘制，那么 WINDING 确实是一个「全填充」的规则；但如果使用不同的方向来绘制图形，结果就不一样了。</p>
+<blockquote>
+<p>图形的方向：对于添加子图形类方法（如 Path.addCircle() Path.addRect()）的方向，由方法的 dir 参数来控制，这个在前面已经讲过了；而对于画线类的方法（如 Path.lineTo()Path.arcTo()）就更简单了，线的方向就是图形的方向。</p>
+</blockquote>
+<p>所以，完整版的 EVEN_ODD 和 WINDING 的效果应该是这样的：</p>
+<p><img src="https://pic1.zhimg.com/v2-32a19f7fcac54fe9d185c7ac0b3bf360_b.png" alt=""></p>
+<p>而 INVERSE_EVEN_ODD 和 INVERSE_WINDING ，只是把这两种效果进行反转而已。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[JavaScript⑦对象]]></title>
+      <url>http://liuguoquan727.github.io/2017/06/21/JavaScript%E2%91%A6%E5%AF%B9%E8%B1%A1/</url>
+      <content type="html"><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><ul>
+<li>创建一个函数需要用到关键字function，后面是一个函数名</li>
+<li>为函数提供0或多个参数，使用参数向函数传值</li>
+<li>可以返回一个值作为调用这个函数的结果，这是可选的</li>
+<li>编写函数体，包含完成函数工作的所有代码</li>
+</ul>
+<p>JavaScript有两种方式定义函数，第一种方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">x,y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>注意，函数体内部的语句在执行时，一旦执行到return时，函数就执行完毕，并将结果返回。因此，函数内部通过运算可以实现非常复杂的逻辑。如果没有return语句，函数执行完毕后也会返回结果，只是结果为undefined。</p>
+<p>由于JavaScript函数也是一个对象，上述定义的add()函数实际上是一个函数对象，而函数名add可以视为指向该函数的变量。<br>因此，第二种定义函数的方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> x + y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这种方式下，<code>function{....}</code>是一个匿名函数，它没有函数名，但是这个匿名函数赋值给了变量add，所有通过变量add就可以调用该函数。</p>
+<p>上述两种定义是等价的，注意第二种方式按照完整语法需要在末尾加一个；号，表示赋值语句结束。</p>
+<blockquote>
+<p>函数声明可以出现在脚本中的任何位置。使用多个外部JavaScript文件时有一点要记住，如果不同文件中有两个同名的函数，将使用浏览器最后看到的那个函数。</p>
+</blockquote>
+<h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>调用函数时，按顺序传入参数即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = add(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//返回3</span></div></pre></td></tr></table></figure>
+<p>由于JavaScript允许任意参数而不影响调用，因此传入的参数比定义的参数多也没有问题，虽然函数内部并不需要这些参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = add(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>); <span class="comment">//返回3</span></div></pre></td></tr></table></figure>
+<p>传入的参数比定义的少也没有问题：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = add(); <span class="comment">//返回NaN</span></div></pre></td></tr></table></figure>
+<p>此时，add的参数将受到undefined，计算结果为NaN</p>
+<h1 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h1><h2 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h2><p>如果一个变量在函数外声明，这个变量就是全局变量。可以在JavaScript代码中的任何地方访问。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>; <span class="comment">//全局变量</span></div><div class="line"><span class="keyword">var</span> y = <span class="number">4</span>;</div><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> z = <span class="number">4</span>; <span class="comment">//局部变量</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h2><p>如果一个变量在函数内声明，这个变量就是局部变量。只能在函数体内部使用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">3</span>; <span class="comment">//全局变量</span></div><div class="line"><span class="keyword">var</span> y = <span class="number">4</span>;</div><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">x,y</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">var</span> z = <span class="number">4</span>; <span class="comment">//局部变量</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h2><p>JavaScript函数定义有个特点，它会先扫描整个函数体的语句，把所有声明的变量提升到函数顶部</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">'use strict'</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> x = <span class="string">"hello,"</span> + y;</div><div class="line">    alert(x);</div><div class="line">    y = <span class="string">"world"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">foo();</div></pre></td></tr></table></figure>
+<p>虽然是strict模式，但语句<code>var x = &quot;hello,&quot; + y</code>并不报错，原因是变量y在稍后说明了。但是alert显示hello，undefined，说明变量y的值为undefined。这正是因为JavaScript引擎自动提升了变量y的声明，但不会提升变量y的赋值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> y; <span class="comment">// 提升变量y的申明</span></div><div class="line">    <span class="keyword">var</span> x = <span class="string">'Hello, '</span> + y;</div><div class="line">    alert(x);</div><div class="line">    y = <span class="string">'Bob'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>由于JavaScript的这一特性，我们在函数内部定义变量时，请严格遵守“在函数内部首先声明所有变量”这一规则。最常见的做法是用一个var声明函数内部所用到的变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span></div><div class="line">        x = <span class="number">1</span>, <span class="comment">// x初始化为1</span></div><div class="line">        y = x + <span class="number">1</span>, <span class="comment">// y初始化为2</span></div><div class="line">        z, i; <span class="comment">// z和i为undefined</span></div><div class="line">    <span class="comment">// 其他语句:</span></div><div class="line">    <span class="keyword">for</span> (i=<span class="number">0</span>; i&lt;<span class="number">100</span>; i++) &#123;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h1><h2 id="普通创建对象"><a href="#普通创建对象" class="headerlink" title="普通创建对象"></a>普通创建对象</h2><h3 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h3><p>已经有了一个包含一些属性的对象。如何使用JavaScript创建这个对象呢？方法如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fido = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"Fido"</span>,</div><div class="line">    <span class="attr">weight</span>: <span class="number">40</span>,</div><div class="line">    <span class="attr">breed</span>: <span class="string">"Mixed"</span>,</div><div class="line">    <span class="attr">loves</span>: [<span class="string">"walks"</span>,<span class="string">"fetching balls"</span>]</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="访问和操作对象"><a href="#访问和操作对象" class="headerlink" title="访问和操作对象"></a>访问和操作对象</h3><ul>
+<li>使用“点”记法访问对象属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (fido.weight &gt; <span class="number">25</span>) &#123;</div><div class="line">    alert(<span class="string">"Wonderful"</span>);</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    alert(<span class="string">"keep moving"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>使用一个串结合[]记法访问属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> breed = fido[<span class="string">"breed"</span>];</div><div class="line"><span class="keyword">if</span> (breed == <span class="string">"mixed"</span>) &#123;</div><div class="line">    alert(<span class="string">"Best in show"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>改变属性的值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fido.weight = <span class="number">27</span>; <span class="comment">//改变Fido的重量</span></div><div class="line">fido.loves.push(<span class="string">"chewing bones"</span>); <span class="comment">//向它的loves数组增加一个新元素</span></div></pre></td></tr></table></figure>
+<ul>
+<li>枚举对象的所有属性</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> prop;</div><div class="line"><span class="keyword">for</span>(prop <span class="keyword">in</span> fido) &#123;</div><div class="line">    alert(<span class="string">"Fido has a"</span> + prop + <span class="string">" property"</span>); <span class="comment">//每次循环迭代时，变量prop会得到下一个属性名的相应串值</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>处理对象的数组</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> likes = fido.loves;</div><div class="line"><span class="keyword">var</span> likesStr = <span class="string">"Fido likes"</span>;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; likes.length; i++) &#123;</div><div class="line">    likesStr += <span class="string">" "</span> + likes[i];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>向函数传入一个对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bark</span>(<span class="params">dog</span>) </span>&#123;</div><div class="line">    dog.weight = <span class="number">28</span>; <span class="comment">//会同时改变fido中的值</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">bark(fido);</div></pre></td></tr></table></figure>
+<p>注意：将一个对象赋值给变量时，这个变量会包含这个对象的一个引用，而不是对象的副本，可以把引用想成是对象的一个指针。所有对该变量中属性的改变都会改变原对象的属性。</p>
+<p>上述代码中，改变dog对象的weight属性时，实际上是修改的原对象fido的属性，而不是副本，所有不仅函数体内的dog对象发生了改变，函数体外的fido对象也发生了改变。</p>
+<h3 id="给对象增加方法"><a href="#给对象增加方法" class="headerlink" title="给对象增加方法"></a>给对象增加方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fido = &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">"Fido"</span>;</div><div class="line">    weight: <span class="number">40</span>;</div><div class="line">    breed: <span class="string">"Mixed"</span>;</div><div class="line">    loves: [<span class="string">"walks"</span>,<span class="string">"fetching balls"</span>]</div><div class="line"></div><div class="line">    bark: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="string">"Woof Woof"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">fido.bark(); <span class="comment">//调用方法</span></div></pre></td></tr></table></figure>
+<h2 id="构造函数创建对象"><a href="#构造函数创建对象" class="headerlink" title="构造函数创建对象"></a>构造函数创建对象</h2><h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">name,breed,weight</span>) </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.breed = breed;</div><div class="line">    <span class="keyword">this</span>.weight = weight;</div><div class="line"></div><div class="line">    <span class="keyword">this</span>.bark = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.weight) &#123;</div><div class="line">            alert(<span class="keyword">this</span>.name + <span class="string">" say Woof!"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line">注意这个语法和对象的语法有所不同。这些是语句，所有需要一个“;”结束各语句。<span class="keyword">this</span>用于指示对象中的属性，它就代表了新创建的实例对象。</div></pre></td></tr></table></figure>
+<h3 id="创建对象-1"><a href="#创建对象-1" class="headerlink" title="创建对象"></a>创建对象</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fido = <span class="keyword">new</span> Dog(<span class="string">"Fido"</span>,<span class="string">"Mixed"</span>,<span class="number">38</span>); <span class="comment">//new关键字创建一个对象</span></div><div class="line"><span class="keyword">var</span> tiny = <span class="keyword">new</span> Dog(<span class="string">"Tiny"</span>,<span class="string">"Chawalla"</span>,<span class="number">18</span>);</div><div class="line"></div><div class="line">fido.bark();</div><div class="line">tiny.bark();</div></pre></td></tr></table></figure>
+<h2 id="prototype属性创建对象"><a href="#prototype属性创建对象" class="headerlink" title="prototype属性创建对象"></a>prototype属性创建对象</h2><p>prototype属性包含一个对象，所有实例对象需要共享的属性和方法，都放在这个对象里面；那些不需要共享的属性和方法，就放在构造函数里面。</p>
+<p>实例对象一旦创建，将自动引用prototype对象的属性和方法。也就是说，实例对象的属性和方法分为两种，一种是本地的，一种是引用的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">　　<span class="function"><span class="keyword">function</span> <span class="title">DOG</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">　　　　<span class="keyword">this</span>.name = name;</div><div class="line">　　&#125;</div><div class="line">　　DOG.prototype = &#123; <span class="attr">species</span> : <span class="string">'犬科'</span> &#125;;</div><div class="line"></div><div class="line">　　<span class="keyword">var</span> dogA = <span class="keyword">new</span> DOG(<span class="string">'大毛'</span>);</div><div class="line">　　<span class="keyword">var</span> dogB = <span class="keyword">new</span> DOG(<span class="string">'二毛'</span>);</div><div class="line"></div><div class="line">　　alert(dogA.species); <span class="comment">// 犬科</span></div><div class="line">　　alert(dogB.species); <span class="comment">// 犬科</span></div></pre></td></tr></table></figure>
+<p>现在，species属性放在prototype对象中，两个实例对象共享的，只要修改了prototype对象，就会同时影响到两个实例对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DOG.prototype.species = <span class="string">'猫科'</span>;</div><div class="line">alert(dogA.species); <span class="comment">// 猫科</span></div><div class="line">alert(dogB.species); <span class="comment">// 猫科</span></div></pre></td></tr></table></figure>
+<p>综上所述，由于所有实例对象共享同一个prototype对象，那么在外界看起来，prototype对象就好像是实例对象的原型，而实例对象则好像继承了prototype对象一样。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript⑥引用类型RegExp]]></title>
       <url>http://liuguoquan727.github.io/2017/06/19/JavaScript%E2%91%A5%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8BRegExp/</url>
       <content type="html"><![CDATA[<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><ul>
