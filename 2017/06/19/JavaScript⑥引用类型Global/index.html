@@ -29,7 +29,7 @@ decodeURI() 和 decodeURIComponent()
 eval()
 
 URI编码encodeURI() 和 encodeURIComponent()">
-<meta property="og:updated_time" content="2017-06-19T13:38:20.000Z">
+<meta property="og:updated_time" content="2017-08-16T08:59:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript⑥引用类型Global">
 <meta name="twitter:description" content="所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。
@@ -68,7 +68,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
@@ -148,6 +148,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
 </blockquote>
 <h2 id="decodeURI-和-decodeURIComponent"><a href="#decodeURI-和-decodeURIComponent" class="headerlink" title="decodeURI() 和 decodeURIComponent()"></a>decodeURI() 和 decodeURIComponent()</h2><p>其中， decodeURI() 只能对使用 encodeURI() 替换的字符进行解码,decodeURIComponent可以解析encodeURI的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri1 = <span class="string">"https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw"</span>;</div><div class="line"><span class="keyword">var</span> uri2 = <span class="string">"http://www.wrox.com/illegal%20value.htm#start"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri1));<span class="comment">//https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri1));<span class="comment">//https://www.google.com.hk/webhp?tab=Tw</span></div><div class="line">    </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h1><p>eval()方法就像是一个完整的 ECMAScript 解析器,它只接受一个参数，即要执行的 ECMAScript （或 JavaScript）字符串。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">eval</span>(<span class="string">"console.log('test name')"</span>); <span class="comment">//"test name"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> msg = <span class="string">"hello world"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"console.log(msg)"</span>); <span class="comment">//"hello world"</span></div></pre></td></tr></table></figure>
 <blockquote>
@@ -161,9 +162,9 @@ URI编码encodeURI() 和 encodeURIComponent()">
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6er1fwr006i6y192iln46rs" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6esdimx006hra19qbqld62e" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -175,7 +176,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
     
  <script src="/jquery/jquery.min.js"></script>
   <div id="random_posts">
-    <h2>推荐文章</h2>
+    <h2>Recommended Posts</h2>
     <div class="random_posts_ul">
       <script>
           var random_count =4
@@ -218,7 +219,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
 <nav id="article-nav">
   
     <a href="/2017/06/19/JavaScript⑥引用类型RegExp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           JavaScript⑥引用类型RegExp
@@ -228,7 +229,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
   
   
     <a href="/2017/06/19/JavaScript⑥引用类型Date/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">JavaScript⑥引用类型Date</div>
     </a>
   
@@ -267,7 +268,7 @@ URI编码encodeURI() 和 encodeURIComponent()">
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
               <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#URI编码"><span class="toc-number">1.</span> <span class="toc-text">URI编码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#encodeURI-和-encodeURIComponent"><span class="toc-number">1.1.</span> <span class="toc-text">encodeURI() 和 encodeURIComponent()</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#decodeURI-和-decodeURIComponent"><span class="toc-number">1.2.</span> <span class="toc-text">decodeURI() 和 decodeURIComponent()</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#eval"><span class="toc-number">2.</span> <span class="toc-text">eval()</span></a></li></ol>
           </div>

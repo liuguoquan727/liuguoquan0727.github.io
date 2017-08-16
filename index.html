@@ -40,7 +40,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
@@ -102,8 +102,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><ul>
+        <h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><ul>
 <li>创建一个函数需要用到关键字function，后面是一个函数名</li>
 <li>为函数提供0或多个参数，使用参数向函数传值</li>
 <li>可以返回一个值作为调用这个函数的结果，这是可选的</li>
@@ -127,9 +126,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/" data-id="cj6er1fwu006l6y195ub21oh7" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/" data-id="cj6esdin3006pra191eyhtr3e" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -169,8 +168,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><ul>
 <li>字面量</li>
 </ul>
@@ -235,47 +232,17 @@
 </ul>
 </li>
 </ul>
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><h2 id="实例属性"><a href="#实例属性" class="headerlink" title="实例属性"></a>实例属性</h2><p>RegExp 的每个实例都具有下列属性，通过这些属性可以取得有关模式的各种信息。</p>
-<ul>
-<li>global：布尔值，检测是走设置g标记</li>
-<li>ignoreCase：布尔值，检测是否设置i标记</li>
-<li>nultiline：    布尔值，检测是否设置了m标记</li>
-<li>lastIndex：    整数，表示开始搜索下一个匹配项的字符位置，从 0 算起。</li>
-<li>source            返回正则表达式的字符串表示,按照字面量形式而非传入构造函数中的字符串模式返回。</li>
-</ul>
-<p>通过这些属性可以获知一个正则表达式的各方面信息，但却没有多大用处，因为这些信息全都包含在模式声明中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/\[bc\]at/i</span>;</div><div class="line"><span class="built_in">console</span>.log(pattern1.global); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.ignoreCase); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.multiline); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.lastIndex); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.source); <span class="comment">//"\[bc\]at"</span></div><div class="line"><span class="keyword">var</span> pattern2 = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"\\[bc\\]at"</span>, <span class="string">"i"</span>);</div><div class="line"><span class="built_in">console</span>.log(pattern2.global); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.ignoreCase); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.multiline); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.lastIndex); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.source); <span class="comment">//"\[bc\]at"</span></div></pre></td></tr></table></figure>
-<p>尽管第一个模式使用的是字面量，第二个模式使用了 RegExp 构造函数，但它们的source 属性是相同的。可见， source 属性保存的是规范形式的字符串，即字面量形式所用的字符串。</p>
-<h2 id="构造函数属性"><a href="#构造函数属性" class="headerlink" title="构造函数属性"></a>构造函数属性</h2><ul>
-<li>$_        input    返回最近一次匹配的字符串</li>
-<li>$&amp;        lastMatch    返回最近一次的匹配项</li>
-<li>$+        lastParen    返回最近一次匹配的捕获组</li>
-<li>$`        leftContext    返回被查找的字符串中从字符串开始位置到最后匹配之前的位置之间的字符</li>
-<li>$’        rightContext    返回被搜索的字符串中从最后一个匹配位置开始到字符串结尾之间的字符</li>
-<li>$*        multiline        检测表达式是否采用多行匹配m</li>
-</ul>
-<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h2><blockquote>
-<p>test()方法在字符串中检测模式匹配，返回true或false</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> re = <span class="literal">null</span>, i;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    re = <span class="regexp">/cat/g</span>;</div><div class="line">    <span class="built_in">console</span>.log(re.test(<span class="string">"catastrophe"</span>)); <span class="comment">//true</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">    re = <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">"cat"</span>, <span class="string">"g"</span>);</div><div class="line">    <span class="built_in">console</span>.log(re.test(<span class="string">"catastrophe"</span>)); <span class="comment">//true</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>RegExp 对象的主要方法是 exec()，该方法是专门为捕获组而设计的。exec()接受一个参数，即 要应用模式的字符串，然后返回包含第一个匹配项信息的数组；或者在没有匹配项的情况下返回 null。 返回的数组虽然是 Array 的实例，但包含两个额外的属性：index 和 input。其中，index 表示匹配 项在字符串中的位置，而 input 表示应用正则表达式的字符串。在数组中，第一项是与整个模式匹配 的字符串，其他项是与模式中的捕获组匹配的字符串（如果模式中没有捕获组，则该数组只包含一项）。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> text = <span class="string">"cat, bat, sat, fat"</span>;</div><div class="line"><span class="keyword">var</span> pattern1 = <span class="regexp">/.at/</span>;</div><div class="line"><span class="keyword">var</span> matches = pattern1.exec(text);</div><div class="line"><span class="built_in">console</span>.log(matches.index); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]); <span class="comment">//cat</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.lastIndex); <span class="comment">//0</span></div><div class="line">matches = pattern1.exec(text);</div><div class="line"><span class="built_in">console</span>.log(matches.index); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]); <span class="comment">//cat</span></div><div class="line"><span class="built_in">console</span>.log(pattern1.lastIndex); <span class="comment">//0</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> pattern2 = <span class="regexp">/.at/g</span>;</div><div class="line"><span class="keyword">var</span> matches = pattern2.exec(text);</div><div class="line"><span class="built_in">console</span>.log(matches.index); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]); <span class="comment">//cat</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.lastIndex); <span class="comment">//3</span></div><div class="line"></div><div class="line">matches = pattern2.exec(text);</div><div class="line"><span class="built_in">console</span>.log(matches.index); <span class="comment">//5</span></div><div class="line"><span class="built_in">console</span>.log(matches[<span class="number">0</span>]); <span class="comment">//bat</span></div><div class="line"><span class="built_in">console</span>.log(pattern2.lastIndex); <span class="comment">//8</span></div></pre></td></tr></table></figure>
-<p>第一个模式 pattern1 不是全局模式，因此每次调用 exec() 返回的都是第一个匹配项（ “cat” ）。而第二个模式 pattern2 是全局模式，因此每次调用 exec() 都会返回字符串中的下一个匹配项，直至搜索到字符串末尾为止。此外，还应该注意模式的 lastIndex 属性的变化情况。在全局匹配模式下， lastIndex 的值在每次调用 exec() 后都会增加，而在非全局模式下则始终保持不变。</p>
-<h2 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h2><ul>
-<li>match        找到一个或者多个正则表达式的匹配</li>
-<li>replace    替换与正则表达式匹配的子串</li>
-<li>search        检索与正则表达式匹配的值</li>
-<li>split        把字符串分割为字符串数组</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/19/JavaScript⑥引用类型RegExp/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/" data-id="cj6er1fx200756y197cptnzmr" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/" data-id="cj6esdin1006mra194tztkwl8" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -315,8 +282,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <p>所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</p>
 <ul>
 <li>isNaN() </li>
@@ -335,22 +300,17 @@
 </blockquote>
 <h2 id="decodeURI-和-decodeURIComponent"><a href="#decodeURI-和-decodeURIComponent" class="headerlink" title="decodeURI() 和 decodeURIComponent()"></a>decodeURI() 和 decodeURIComponent()</h2><p>其中， decodeURI() 只能对使用 encodeURI() 替换的字符进行解码,decodeURIComponent可以解析encodeURI的。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri1 = <span class="string">"https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw"</span>;</div><div class="line"><span class="keyword">var</span> uri2 = <span class="string">"http://www.wrox.com/illegal%20value.htm#start"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri1));<span class="comment">//https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri1));<span class="comment">//https://www.google.com.hk/webhp?tab=Tw</span></div><div class="line">    </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div></pre></td></tr></table></figure>
-<h1 id="eval"><a href="#eval" class="headerlink" title="eval()"></a>eval()</h1><p>eval()方法就像是一个完整的 ECMAScript 解析器,它只接受一个参数，即要执行的 ECMAScript （或 JavaScript）字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">eval</span>(<span class="string">"console.log('test name')"</span>); <span class="comment">//"test name"</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> msg = <span class="string">"hello world"</span>;</div><div class="line"><span class="built_in">eval</span>(<span class="string">"console.log(msg)"</span>); <span class="comment">//"hello world"</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>在 eval() 中创建的任何变量或函数都不会被提升，因为在解析代码的时候，它们被包含在一个字符串中；它们只在 eval() 执行的时候创建。</p>
-</blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> testVar;</div><div class="line"><span class="built_in">console</span>.log(testVar);<span class="comment">//undefined</span></div><div class="line"><span class="built_in">console</span>.log(msg);<span class="comment">//Uncaught ReferenceError: msg is not defined</span></div><div class="line"><span class="built_in">eval</span>(<span class="string">'var msg = "hello world eval"'</span>);</div><div class="line"><span class="built_in">eval</span>(<span class="string">"console.log(msg)"</span>); <span class="comment">//"hello world"</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>严格模式下，在外部访问不到 eval() 中创建的任何变量或函数，因此前面两个例子都会导致错误。同样，在严格模式下，为 eval 赋值也会导致错误</p>
-</blockquote>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/19/JavaScript⑥引用类型Global/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6er1fwr006i6y192iln46rs" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6esdimx006hra19qbqld62e" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -390,8 +350,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <h1 id="创建Date对象"><a href="#创建Date对象" class="headerlink" title="创建Date对象"></a>创建Date对象</h1><ul>
 <li>“月/日/年”，如 6/13/2004；</li>
 <li>“英文月名 日,年”，如 January 12,2016；</li>
@@ -403,38 +361,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//取得开始时间</div><div class="line">var start = Date.now();</div><div class="line">//调用函数</div><div class="line">for(var i=0;i&lt;10000000;i++)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//取得停止时间</div><div class="line">var end = Date.now();</div><div class="line">console.log(end-start);</div></pre></td></tr></table></figure>
 <p>支持 Data.now() 方法的浏览器包括 IE9+、Firefox 3+、Safari 3+、Opera 10.5 和 Chrome。在不支持它的浏览器中，使用+操作符把 Data 对象转换成字符串，也可以达到同样的目的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//取得开始时间</div><div class="line">var start = +Date.now();</div><div class="line">//调用函数</div><div class="line">for(var i=0;i&lt;10000000;i++)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//取得停止时间</div><div class="line">var end = +Date.now();</div><div class="line">console.log(end-start);</div></pre></td></tr></table></figure>
-<h1 id="日期的比较"><a href="#日期的比较" class="headerlink" title="日期的比较"></a>日期的比较</h1><blockquote>
-<p>原理：比较的是转成毫秒数后，然后再比较毫秒数；日期越靠后，毫秒数越大；<br>Date 类上有一个 valueOf() 方法，返回日期的毫秒表示（距离1970年午夜的毫秒差）。</p>
-</blockquote>
-<p>如下；</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> testDate1=<span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"8/13/2016"</span>);</div><div class="line"><span class="keyword">var</span> testDate2=<span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"9/13/2016"</span>);</div><div class="line"><span class="keyword">var</span> testDate3=<span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"1/1/1970"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(testDate1 &gt; testDate2);<span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(testDate1 &lt; testDate2);<span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(testDate1.valueOf());<span class="comment">//1471017600000</span></div><div class="line"><span class="built_in">console</span>.log(testDate2.valueOf());<span class="comment">//1473696000000</span></div><div class="line"><span class="built_in">console</span>.log(testDate3.valueOf()-testDate3.getTime());<span class="comment">//1473696000000</span></div></pre></td></tr></table></figure>
-<h1 id="日期格式化"><a href="#日期格式化" class="headerlink" title="日期格式化"></a>日期格式化</h1><ul>
-<li>toDateString()——以特定于实现的格式显示星期几、月、日和年；</li>
-<li>toTimeString()——以特定于实现的格式显示时、分、秒和时区；</li>
-<li>toLocaleDateString()——以特定于地区的格式显示星期几、月、日和年；</li>
-<li>toLocaleTimeString()——以特定于实现的格式显示时、分、秒；</li>
-<li>toUTCString()——以特定于实现的格式完整的 UTC 日期。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="built_in">console</span>.log(date.toDateString());</div><div class="line"><span class="built_in">console</span>.log(date.toTimeString());</div><div class="line"><span class="built_in">console</span>.log(date.toLocaleDateString());</div><div class="line"><span class="built_in">console</span>.log(date.toLocaleTimeString());</div><div class="line"><span class="built_in">console</span>.log(date.toUTCString());</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *Mon Jun 19 2017</div><div class="line"> 13:49:00 GMT+0800 (CST)</div><div class="line"> 6/19/2017</div><div class="line"> 1:49:00 PM</div><div class="line"> Mon, 19 Jun 2017 05:49:00 GMT</div><div class="line"> */</div></pre></td></tr></table></figure>
-<h1 id="Date的常用方法"><a href="#Date的常用方法" class="headerlink" title="Date的常用方法"></a>Date的常用方法</h1><ul>
-<li>getTime(); //返回表示日期的毫秒数</li>
-<li>getFullYear();//获取四位年</li>
-<li>getMonth();//获取月0-11代表1-12月;用的时候，记得补1;</li>
-<li>getDate();//获取日期月份中的天数(1~31)</li>
-<li>getDay();//获取星期0-6代表周日-周六</li>
-<li>getHours();//获取小时</li>
-<li>getMinutes();//获取分</li>
-<li>getSeconds();//获取秒</li>
-<li>getMilliseconds();//获取毫秒</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(date.getTime());</div><div class="line"><span class="built_in">console</span>.log(date.getFullYear()+<span class="string">"年"</span>);</div><div class="line"><span class="built_in">console</span>.log(date.getMonth()+<span class="number">1</span>+<span class="string">"月"</span>);</div><div class="line"><span class="built_in">console</span>.log(date.getDate()+<span class="string">"日"</span>);</div><div class="line"><span class="built_in">console</span>.log(date.getHours()+<span class="string">"时"</span>);</div><div class="line"><span class="built_in">console</span>.log(date.getMinutes()+<span class="string">"分"</span>);</div><div class="line"><span class="built_in">console</span>.log(date.getSeconds()+<span class="string">"秒"</span>);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> 1497851952517</div><div class="line"> 2017年</div><div class="line"> 6月</div><div class="line"> 19日</div><div class="line"> 13时</div><div class="line"> 59分</div><div class="line"> 12秒</div><div class="line"> */</div></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/19/JavaScript⑥引用类型Date/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/" data-id="cj6er1fwp006e6y19p4ldba3h" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/" data-id="cj6esdimv006era19xsm4s0h1" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -474,69 +411,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <p>JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。</p>
 <h1 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建空数组</span></div><div class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line"><span class="comment">//创建长度为10的数组</span></div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colors.length);</div><div class="line"></div><div class="line"><span class="comment">//改变数组长度，用undefined元素补全</span></div><div class="line">colors.length = <span class="number">4</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"></div><div class="line"><span class="comment">//索引超出范围同样会改变数组长度，未复制的元素用undefined补全</span></div><div class="line">colors[<span class="number">5</span>] = <span class="number">45</span>;</div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"><span class="comment">//[ 'red', 'blue', 'green', , , 45 ]</span></div></pre></td></tr></table></figure>
 <h1 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//判断是否是数组</span></div><div class="line"><span class="keyword">if</span> (colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//ECMAScript5新增方法</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(colors)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>instanceof 操作符的问题在于，它假定只有一个全局执行环境。如果网页中包含多个框架，那实 际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。</p>
 <p>ECMAScript 5 新增了 <code>Array.isArray()</code>方法。这个方法的目的是最终确定某 个值到底是不是数组，而不管它是在哪个全局执行环境中创建的。</p>
-<h1 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line"></div><div class="line"><span class="comment">//返回以逗号分隔元素值的字符串</span></div><div class="line"><span class="built_in">console</span>.log(colors.toString());</div><div class="line"><span class="comment">//red,blue,green,45</span></div><div class="line"></div><div class="line"><span class="comment">//返回以指定字符串分隔元素值的字符串</span></div><div class="line"><span class="built_in">console</span>.log(colors.join(<span class="string">"|"</span>));</div><div class="line"><span class="comment">//red|blue|green</span></div><div class="line"></div><div class="line"><span class="comment">//返回数组</span></div><div class="line"><span class="built_in">console</span>.log(colors.valueOf());</div><div class="line"><span class="comment">//[ 'red', 'blue', 'green', 45 ]</span></div></pre></td></tr></table></figure>
-<h1 id="添加删除元素"><a href="#添加删除元素" class="headerlink" title="添加删除元素"></a>添加删除元素</h1><h2 id="push-和-pop"><a href="#push-和-pop" class="headerlink" title="push 和 pop"></a>push 和 pop</h2><ul>
-<li>push()：接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。</li>
-<li>pop()：pop()方法则从数组末尾移除最后一项，减少数组的 length 值，然后返回移除的项。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//数组末尾增加元素</span></div><div class="line">colors.push(<span class="string">"gray"</span>);</div><div class="line">colors.push(<span class="string">"white"</span>);</div><div class="line">colors.push(<span class="string">"dark"</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"></div><div class="line"><span class="comment">//删除最后一个元素，同时返回这个元素</span></div><div class="line"><span class="built_in">console</span>.log(colors.pop());</div></pre></td></tr></table></figure>
-<h2 id="shift-和-unshift"><a href="#shift-和-unshift" class="headerlink" title="shift 和 unshift"></a>shift 和 unshift</h2><ul>
-<li>shift()：能够移 除数组中的第一个项并返回该项，同时将数组长度减 1。</li>
-<li>unshift()：它能在数组前端添加任意个项并返回新数组的长度。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//删除并返回第一个元素</span></div><div class="line"><span class="built_in">console</span>.log(colors.shift());</div><div class="line"></div><div class="line"><span class="comment">//在数组首位添加元素并返回新数组的长度</span></div><div class="line"><span class="built_in">console</span>.log(colors.unshift(<span class="string">"red"</span>,<span class="string">"orange"</span>));</div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"><span class="comment">//[ 'red', 'orange', 'blue', 'green', 'gray', 'white' ]</span></div></pre></td></tr></table></figure>
-<h1 id="排序方法"><a href="#排序方法" class="headerlink" title="排序方法"></a>排序方法</h1><h2 id="reverse"><a href="#reverse" class="headerlink" title="reverse"></a>reverse</h2><p>reverse()方法会反转数组项的顺序。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//反转数组元素</span></div><div class="line"><span class="keyword">var</span> values = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">0</span>];</div><div class="line">values.reverse();</div><div class="line"><span class="built_in">console</span>.log(values);</div><div class="line"><span class="comment">//[ 0, 5, 4, 3, 2, 1 ]</span></div></pre></td></tr></table></figure>
-<h2 id="sort"><a href="#sort" class="headerlink" title="sort"></a>sort</h2><p>在默认情况下，sort()方法按升序排列数组项——即最小的值位于最前面，最大的值排在最后面。 为了实现排序，sort()方法会调用每个数组项的 toString()转型方法，然后比较得到的字符串，以 确定如何排序。即使数组中的每一项都是数值，sort()方法比较的也是字符串，</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">values = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>];</div><div class="line"><span class="comment">//数组排序</span></div><div class="line">values.sort();</div><div class="line"><span class="built_in">console</span>.log(values);</div><div class="line"><span class="comment">//[ 0, 1, 10, 15, 5 ]</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>因为数值 5 虽然小于 10，但在进行字符串比较时，”10”则位于”5”的前面，于是数组的顺序就被修改了。</p>
-</blockquote>
-<p>sort()方法可以接收一个比较函数作为参数，以便我们指定哪个值位于哪个值的前面。比较函数接收两个参数，如果第一个参数应该位于第二个之前则返回一个负数，如果两个参数相等 则返回 0，如果第一个参数应该位于第二个之后则返回一个正数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">v1,v2</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (v1 &lt; v2) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (v1 &gt; v2) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//数组排序</span></div><div class="line">values.sort(compare);</div><div class="line"><span class="built_in">console</span>.log(values);</div><div class="line"><span class="comment">//[ 0, 1, 5, 10, 15 ]</span></div></pre></td></tr></table></figure>
-<h1 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h1><h2 id="splice"><a href="#splice" class="headerlink" title="splice"></a>splice</h2><p>splice()方法始终都会返回一个数组，该数组中包含从原始数组中删除的项（如果没有删除任何项，则返回一个空数组）。</p>
-<p>splice()的主要用途是向数组的中部插入项，但使用这种方法的方式则有如下 3 种。</p>
-<ul>
-<li><strong>删除元素：</strong>可以删除任意数量的项，只需指定 2 个参数：要删除的第一项的位置和要删除的项数。 例如，splice(0,2)会删除数组中的前两项。</li>
-<li><strong>插入元素：</strong>可以向指定位置插入任意数量的项，只需提供 3 个参数：起始位置、0（要删除的项数）和要插入的项（可以是多项）。</li>
-<li><strong>替换元素：</strong>可以向指定位置插入任意数量的项，且同时删除任意数量的项，只需指定 3 个参数：起 始位置、要删除的项数和要插入的任意数量的项。插入的项数不必与删除的项数相等。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> company = [<span class="string">'Microsoft'</span>, <span class="string">'Apple'</span>, <span class="string">'Yahoo'</span>, <span class="string">'AOL'</span>, <span class="string">'Excite'</span>, <span class="string">'Oracle'</span>];</div><div class="line"><span class="comment">//删除指定位置0开始的2个元素</span></div><div class="line">company.splice(<span class="number">0</span>,<span class="number">2</span>);</div><div class="line"><span class="built_in">console</span>.log(company);</div><div class="line"></div><div class="line"><span class="comment">//删除并添加元素</span></div><div class="line">company.splice(<span class="number">0</span>,<span class="number">1</span>,<span class="string">"facebook"</span>);</div><div class="line"><span class="built_in">console</span>.log(company);</div><div class="line"></div><div class="line"><span class="comment">//指定位置2添加元素</span></div><div class="line">company.splice(<span class="number">2</span>,<span class="number">0</span>,<span class="string">"Google"</span>,<span class="string">"Airbnb"</span>);</div><div class="line"><span class="built_in">console</span>.log(company);</div></pre></td></tr></table></figure>
-<h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><p>slice()方法可以 接受一或两个参数，即要返回项的起始和结束位置。在只有一个参数的情况下，slice()方法返回从该 参数指定位置开始到当前数组末尾的所有项。如果有两个参数，该方法返回起始和结束位置之间的项— —但不包括结束位置的项。注意，slice()方法不会影响原始数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//截取Array的部分元素</span></div><div class="line"><span class="keyword">var</span> a = company.slice(<span class="number">0</span>,<span class="number">3</span>);</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"></div><div class="line"><span class="comment">//复制Array</span></div><div class="line">a = company.slice();</div><div class="line"><span class="built_in">console</span>.log(a);</div><div class="line"><span class="built_in">console</span>.log(a == arr); <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<h2 id="concat"><a href="#concat" class="headerlink" title="concat"></a>concat</h2><p>concat()方法可以基于当前数 组中的所有项创建一个新数组。具体来说，这个方法会先创建当前数组一个副本，然后将接收到的参数 添加到这个副本的末尾，最后返回新构建的数组。在没有给 concat()方法传递参数的情况下，它只是 复制当前数组并返回副本。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//合并两个Array，并返回一个新的Array</span></div><div class="line"><span class="keyword">var</span> l1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</div><div class="line"><span class="keyword">var</span> l2 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>];</div><div class="line"><span class="keyword">var</span> l = l1.concat(l2);</div><div class="line"><span class="built_in">console</span>.log(l);</div><div class="line"><span class="built_in">console</span>.log(l == l1); <span class="comment">//false</span></div></pre></td></tr></table></figure>
-<h1 id="位置方法"><a href="#位置方法" class="headerlink" title="位置方法"></a>位置方法</h1><h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="string">'30'</span>, <span class="string">'xyz'</span>,<span class="number">10</span>];</div><div class="line"><span class="comment">//返回指定元素的第一次出现位置</span></div><div class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">10</span>));</div><div class="line"><span class="comment">//没有找到返回 -1</span></div><div class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">0</span>));</div></pre></td></tr></table></figure>
-<h2 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a>lastIndexOf</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//返回元素最后一次出现的位置</span></div><div class="line"><span class="built_in">console</span>.log(arr.lastIndexOf(<span class="number">10</span>));</div></pre></td></tr></table></figure>
-<h2 id="迭代方法"><a href="#迭代方法" class="headerlink" title="迭代方法"></a>迭代方法</h2><p>ECMAScript 5 为数组定义了 5 个迭代方法。每个方法都接收两个参数：要在每一项上运行的函数和（可选的）运行该函数的作用域对象——影响 this 的值。传入这些方法中的函数会接收三个参数：数 组项的值、该项在数组中的位置和数组对象本身。</p>
-<ul>
-<li>every()：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。</li>
-<li>some()：对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true。</li>
-<li>filter()：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。</li>
-<li>map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。</li>
-<li>forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> numbers = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>];</div><div class="line"></div><div class="line"><span class="comment">//每一项都返回true，则结果为true</span></div><div class="line"><span class="keyword">var</span> everyResult = numbers.every(<span class="function"><span class="keyword">function</span> (<span class="params">item,index,array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> item &gt; <span class="number">2</span>;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(everyResult);</div><div class="line"><span class="comment">//false</span></div><div class="line"></div><div class="line"><span class="comment">//有一项返回true，则结果为true</span></div><div class="line"><span class="keyword">var</span> someResult = numbers.some(<span class="function"><span class="keyword">function</span> (<span class="params">item,index,array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> item &gt; <span class="number">2</span>;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(sommeResult);</div><div class="line"><span class="comment">//true</span></div><div class="line"></div><div class="line"><span class="comment">//筛选出指定条件的元素数组</span></div><div class="line"><span class="keyword">var</span> filterResult = numbers.filter(<span class="function"><span class="keyword">function</span> (<span class="params">item,index,array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> item &gt; <span class="number">2</span>;</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(filterResult);</div><div class="line"><span class="comment">//[ 3, 4, 5, 6, 7, 8, 9, 5, 4, 3 ]</span></div><div class="line"></div><div class="line"><span class="comment">//对数组每一项都运行给定的函数，返回计算后的元素数组</span></div><div class="line"><span class="keyword">var</span> mapResult = numbers.map(<span class="function"><span class="keyword">function</span> (<span class="params">item, index, array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> item * <span class="number">2</span>;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(mapResult);</div><div class="line"><span class="comment">//[ 2, 4, 6, 8, 10, 12, 14, 16, 18, 10, 8, 6, 4, 2 ]</span></div><div class="line"></div><div class="line"><span class="comment">//遍历数组</span></div><div class="line">numbers.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item,index,array</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(item);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h1 id="归并方法"><a href="#归并方法" class="headerlink" title="归并方法"></a>归并方法</h1><p>ECMAScript 5 还新增了两个归并数组的方法：reduce()和 reduceRight()。这两个方法都会迭 代数组的所有项，然后构建一个最终返回的值。这两个方法都接收两个参数：一个在每一项上调用的函数和（可选的）作为归并基础的初始值。</p>
-<p>传给 reduce()和 reduceRight()的函数接收 4 个参数：前一个值、当前值、项的索引和数组对象。这 个函数返回的任何值都会作为第一个参数自动传给下一项。</p>
-<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>reduce()方法从数组的第一项开始，逐个遍历到最后。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = nums.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">prev,cur,index,array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> prev + cur;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(sum); <span class="comment">//45</span></div></pre></td></tr></table></figure>
-<h2 id="reduceRight"><a href="#reduceRight" class="headerlink" title="reduceRight"></a>reduceRight</h2><p>reduceRight()则从数组的最后一项开始，向前遍历到第一项。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> nums = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>];</div><div class="line"></div><div class="line">sum = nums.reduceRight(<span class="function"><span class="keyword">function</span> (<span class="params">prev,cur,index,array</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> prev + cur;</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(sum); <span class="comment">//45</span></div></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/19/JavaScript⑥引用类型Array/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6er1fwn006b6y198n58l2zx" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6esdimu0069ra194mdvwebz" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -576,8 +466,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
-        
         <h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p>Boolean类型是与布尔值对应的引用类型。要创建 Boolean 对象，可以像下面这样调用 Boolean 构造函数并传入 true 或 false 值。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</div><div class="line"><span class="built_in">console</span>.log(obj.valueOf());</div><div class="line"><span class="built_in">console</span>.log(obj.toString());</div></pre></td></tr></table></figure>
 <p>Boolean 对象在 ECMAScript 中的用处不大，因为它经 常会造成人们的误解。其中最常见的问题就是在布尔表达式中使用 Boolean 对象。</p>
@@ -591,15 +479,17 @@
 <li>toPrecision()会根据要处理的数值决定到底是调用 toFixed()还是调用 toExponential()。</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(num.toString());</div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)); <span class="comment">//二进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">8</span>)); <span class="comment">//八进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">16</span>)); <span class="comment">//16进制</span></div><div class="line"></div><div class="line"><span class="comment">//指定小数位数</span></div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line"></div><div class="line"><span class="comment">//自动四舍五入</span></div><div class="line">num = <span class="number">10.004</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line">num = <span class="number">10.005</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.01</span></div><div class="line"></div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">//指数表示法表示的数值的字符串形式</span></div><div class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">2</span>)); <span class="comment">//1.00e+1</span></div><div class="line"></div><div class="line"></div><div class="line">num = <span class="number">99</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">1</span>)); <span class="comment">//1e+2</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">2</span>)); <span class="comment">//99</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">3</span>)); <span class="comment">//99.0</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">4</span>)); <span class="comment">//99.00</span></div></pre></td></tr></table></figure>
-<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><p>String 类型是字符串的对象包装类型，可以像下面这样使用 String 构造函数来创建。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> str = <span class="keyword">new</span> <span class="built_in">String</span>(<span class="string">"Hello world"</span>);</div><div class="line"><span class="built_in">console</span>.log(str.valueOf());</div><div class="line"><span class="built_in">console</span>.log(str.toString());</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"字符串长度: "</span>+str.length);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"字符方法"</span>)</div><div class="line"><span class="built_in">console</span>.log(str.charAt(<span class="number">1</span>));</div><div class="line"><span class="built_in">console</span>.log(str.charCodeAt(<span class="number">1</span>));</div><div class="line"><span class="built_in">console</span>.log(str[<span class="number">1</span>]);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"字符串操作"</span>);</div><div class="line"><span class="comment">//拼接</span></div><div class="line"><span class="built_in">console</span>.log(str.concat(<span class="string">" welcome"</span>));</div><div class="line"><span class="comment">//返回子字符串</span></div><div class="line"><span class="built_in">console</span>.log(str.slice(<span class="number">0</span>,<span class="number">5</span>));</div><div class="line"><span class="built_in">console</span>.log(str.substr(<span class="number">0</span>,<span class="number">5</span>));</div><div class="line"><span class="comment">/**</span></div><div class="line"> substr()的第二个参数是返回的字符个数，</div><div class="line">如果没有传递该参数则将字符串的长度作为结束位置</div><div class="line">*/</div><div class="line"><span class="built_in">console</span>.log(str.substr(<span class="number">0</span>));</div><div class="line"><span class="built_in">console</span>.log(str.substring(<span class="number">0</span>,<span class="number">5</span>));</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">"字符串查找"</span>);</div><div class="line"><span class="built_in">console</span>.log(str.indexOf(<span class="string">"e"</span>,<span class="number">0</span>));</div><div class="line"><span class="built_in">console</span>.log(str.lastIndexOf(<span class="string">"l"</span>));</div><div class="line"></div><div class="line"><span class="comment">//搜索所有字符l的位置</span></div><div class="line"><span class="keyword">var</span> pos = str.indexOf(<span class="string">"l"</span>);</div><div class="line"><span class="keyword">var</span> positions = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line"><span class="keyword">while</span> (pos &gt; <span class="number">-1</span>) &#123;</div><div class="line">    positions.push(pos);</div><div class="line">    pos = str.indexOf(<span class="string">"l"</span>, pos + <span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(positions);</div><div class="line"></div><div class="line"><span class="comment">//去掉前后空格</span></div><div class="line">str = <span class="string">" Hello World  "</span>;</div><div class="line">str = str.trim();</div><div class="line"><span class="built_in">console</span>.log(str.trim());</div><div class="line"></div><div class="line"><span class="comment">//大小写</span></div><div class="line"><span class="built_in">console</span>.log(str.toLocaleUpperCase());</div><div class="line"><span class="built_in">console</span>.log(str.toUpperCase());</div><div class="line"><span class="built_in">console</span>.log(str.toLocaleLowerCase());</div><div class="line"><span class="built_in">console</span>.log(str.toLowerCase());</div><div class="line"></div><div class="line"><span class="comment">//搜索匹配字符串</span></div><div class="line"><span class="built_in">console</span>.log(str.match(<span class="string">"ll"</span>));</div><div class="line"><span class="built_in">console</span>.log(str.search(<span class="string">"ll"</span>));</div><div class="line"></div><div class="line"><span class="comment">//替换字符串</span></div><div class="line"><span class="built_in">console</span>.log(str.replace(<span class="string">"ll"</span>,<span class="string">"rr"</span>));</div><div class="line"></div><div class="line"><span class="comment">//分割字符串</span></div><div class="line">str = <span class="string">"green,yellow,blue"</span>;</div><div class="line"><span class="built_in">console</span>.log(str.split(<span class="string">","</span>))</div><div class="line"></div><div class="line"><span class="comment">//比较字符串</span></div><div class="line">str = <span class="string">"blue"</span>;</div><div class="line"><span class="built_in">console</span>.log(str.localeCompare(<span class="string">"area"</span>)); <span class="comment">//1</span></div><div class="line"><span class="built_in">console</span>.log(str.localeCompare(<span class="string">"blue"</span>)); <span class="comment">//0</span></div><div class="line"><span class="built_in">console</span>.log(str.localeCompare(<span class="string">"cat"</span>)); <span class="comment">// -1</span></div><div class="line"></div><div class="line"><span class="comment">//fromCharCode()。这个方法的任务是接收一或 多个字符编码，然后将它们转换成一个字符串。</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>.fromCharCode(<span class="number">104</span>, <span class="number">101</span>, <span class="number">108</span>, <span class="number">108</span>, <span class="number">111</span>)); <span class="comment">//hello</span></div></pre></td></tr></table></figure>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/06/19/JavaScript⑥基本包装类型/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/" data-id="cj6er1fwl00686y199kevr3zc" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/" data-id="cj6esdimr0061ra19kamot0nr" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -705,9 +595,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/" data-id="cj6er1fwk00646y19m9ylzt76" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/" data-id="cj6esdimt0066ra191d7cauvh" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -789,9 +679,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/" data-id="cj6er1fwi00616y19cswl5pya" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/" data-id="cj6esdimo005tra19ch4rdmqz" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -977,9 +867,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/" data-id="cj6er1fwa005x6y19jbafp86w" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/" data-id="cj6esdimq005yra19ufi8s0o5" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1225,9 +1115,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/" data-id="cj6er1fw9005u6y19paypqx9w" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/" data-id="cj6esdimm005lra196nh11u57" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1369,9 +1259,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/" data-id="cj6er1fw7005p6y19jm00nuc2" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/" data-id="cj6esdimn005qra19h0ljr0bf" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1419,9 +1309,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/" data-id="cj6er1fvh003t6y194pjq5nei" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/" data-id="cj6esdilk003bra19ipk28k24" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1503,9 +1393,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/" data-id="cj6er1fvf003o6y19mqxf11r5" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/" data-id="cj6esdilm003jra19ccmm4a49" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1584,9 +1474,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/" data-id="cj6er1fvd003l6y19q1ptv62j" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/" data-id="cj6esdilj0037ra19uf06ww34" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1695,9 +1585,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/" data-id="cj6er1fvb003g6y19163mro77" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/" data-id="cj6esdilh002zra19dlwf5oft" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -1714,7 +1604,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Neste&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Volgende&raquo;</a>
   </nav>
 </section>
            
@@ -1747,7 +1637,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title categories">Kategorier</h3>
+    <h3 class="widget-title categories">Categorieën</h3>
     <div class="widget" id="categories">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/">Android</a><span class="category-list-count">32</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Android/NDK/">NDK</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Android/架构/">架构</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Go/">Go</a><span class="category-list-count">17</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/ios/">ios</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络通信/">网络通信</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/记录/">记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计模式/">设计模式</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书札记/">读书札记</a><span class="category-list-count">1</span></li></ul>
     </div>
@@ -1766,7 +1656,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title recent-posts">Siste innlegg</h3>
+    <h3 class="widget-title recent-posts">Recente berichten</h3>
     <div class="widget">
       <ul>
         
@@ -1797,7 +1687,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title archive">Arkiv</h3>
+    <h3 class="widget-title archive">Archieven</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">May 2017</a><span class="archive-list-count">30</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">March 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">September 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">April 2016</a><span class="archive-list-count">20</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">March 2016</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">December 2015</a><span class="archive-list-count">21</span></li></ul>
     </div>

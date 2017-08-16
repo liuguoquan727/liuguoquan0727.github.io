@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="再读斋">
 <meta property="og:description" content="JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。
 创建数组123456789101112131415161718192021//创建空数组var arr1 = new Array();//创建长度为10的数组var arr2 = new Array(10);var arr3 = new Array(&quot;red&quot;,&quot;blue&quot;,&quot;green&quot;);var colors =">
-<meta property="og:updated_time" content="2017-06-19T13:37:45.000Z">
+<meta property="og:updated_time" content="2017-08-16T08:59:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript⑥引用类型Array">
 <meta name="twitter:description" content="JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。
@@ -44,7 +44,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
@@ -111,6 +111,7 @@
 <h1 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//判断是否是数组</span></div><div class="line"><span class="keyword">if</span> (colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//ECMAScript5新增方法</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(colors)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>instanceof 操作符的问题在于，它假定只有一个全局执行环境。如果网页中包含多个框架，那实 际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。</p>
 <p>ECMAScript 5 新增了 <code>Array.isArray()</code>方法。这个方法的目的是最终确定某 个值到底是不是数组，而不管它是在哪个全局执行环境中创建的。</p>
+<a id="more"></a>
 <h1 id="转换方法"><a href="#转换方法" class="headerlink" title="转换方法"></a>转换方法</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line"></div><div class="line"><span class="comment">//返回以逗号分隔元素值的字符串</span></div><div class="line"><span class="built_in">console</span>.log(colors.toString());</div><div class="line"><span class="comment">//red,blue,green,45</span></div><div class="line"></div><div class="line"><span class="comment">//返回以指定字符串分隔元素值的字符串</span></div><div class="line"><span class="built_in">console</span>.log(colors.join(<span class="string">"|"</span>));</div><div class="line"><span class="comment">//red|blue|green</span></div><div class="line"></div><div class="line"><span class="comment">//返回数组</span></div><div class="line"><span class="built_in">console</span>.log(colors.valueOf());</div><div class="line"><span class="comment">//[ 'red', 'blue', 'green', 45 ]</span></div></pre></td></tr></table></figure>
 <h1 id="添加删除元素"><a href="#添加删除元素" class="headerlink" title="添加删除元素"></a>添加删除元素</h1><h2 id="push-和-pop"><a href="#push-和-pop" class="headerlink" title="push 和 pop"></a>push 和 pop</h2><ul>
 <li>push()：接收任意数量的参数，把它们逐个添加到数组末尾，并返回修改后数组的长度。</li>
@@ -164,9 +165,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6er1fwn006b6y198n58l2zx" class="article-share-link">Share</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6esdimu0069ra194mdvwebz" class="article-share-link">Delen</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/#ds-thread" class="article-comment-link">Kommentarer</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/#ds-thread" class="article-comment-link">Commentaren</a>
       
       
       
@@ -178,7 +179,7 @@
     
  <script src="/jquery/jquery.min.js"></script>
   <div id="random_posts">
-    <h2>推荐文章</h2>
+    <h2>Recommended Posts</h2>
     <div class="random_posts_ul">
       <script>
           var random_count =4
@@ -221,7 +222,7 @@
 <nav id="article-nav">
   
     <a href="/2017/06/19/JavaScript⑥引用类型Date/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Nieuwer</strong>
       <div class="article-nav-title">
         
           JavaScript⑥引用类型Date
@@ -231,7 +232,7 @@
   
   
     <a href="/2017/06/19/JavaScript⑥基本包装类型/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ouder</strong>
       <div class="article-nav-title">JavaScript⑥基本包装类型</div>
     </a>
   
@@ -270,7 +271,7 @@
     
       <div class="widget" id="toc-widget-fixed">
       
-        <strong class="toc-title">文章目录</strong>
+        <strong class="toc-title">Content</strong>
         <div class="toc-widget-list">
               <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#创建数组"><span class="toc-number">1.</span> <span class="toc-text">创建数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#检测数组"><span class="toc-number">2.</span> <span class="toc-text">检测数组</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#转换方法"><span class="toc-number">3.</span> <span class="toc-text">转换方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#添加删除元素"><span class="toc-number">4.</span> <span class="toc-text">添加删除元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#push-和-pop"><span class="toc-number">4.1.</span> <span class="toc-text">push 和 pop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shift-和-unshift"><span class="toc-number">4.2.</span> <span class="toc-text">shift 和 unshift</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#排序方法"><span class="toc-number">5.</span> <span class="toc-text">排序方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#reverse"><span class="toc-number">5.1.</span> <span class="toc-text">reverse</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#sort"><span class="toc-number">5.2.</span> <span class="toc-text">sort</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#操作方法"><span class="toc-number">6.</span> <span class="toc-text">操作方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#splice"><span class="toc-number">6.1.</span> <span class="toc-text">splice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#slice"><span class="toc-number">6.2.</span> <span class="toc-text">slice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#concat"><span class="toc-number">6.3.</span> <span class="toc-text">concat</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#位置方法"><span class="toc-number">7.</span> <span class="toc-text">位置方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#indexOf"><span class="toc-number">7.1.</span> <span class="toc-text">indexOf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#lastIndexOf"><span class="toc-number">7.2.</span> <span class="toc-text">lastIndexOf</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#迭代方法"><span class="toc-number">7.3.</span> <span class="toc-text">迭代方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#归并方法"><span class="toc-number">8.</span> <span class="toc-text">归并方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#reduce"><span class="toc-number">8.1.</span> <span class="toc-text">reduce</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#reduceRight"><span class="toc-number">8.2.</span> <span class="toc-text">reduceRight</span></a></li></ol></li></ol>
           </div>
