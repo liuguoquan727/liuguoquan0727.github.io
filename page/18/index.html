@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>再读斋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="像外行一样思考,像专家一样实践。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="再读斋">
+<meta property="og:url" content="http://liuguoquan727.github.io/page/18/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="像外行一样思考,像专家一样实践。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再读斋">
+<meta name="twitter:description" content="像外行一样思考,像专家一样实践。">
+  
+    <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">再读斋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">MICHAEL</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java中static关键字详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/Java中static关键字详解/" class="article-date">
+  <time datetime="2016-04-05T13:20:58.000Z" itemprop="datePublished">2016-04-05 21:20:58</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/05/Java中static关键字详解/">Java中static关键字详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>static是Java的一个关键字，我们在Java开发中经常使用static，static主要用于下面五种情况：</p>
+<h2 id="静态变量"><a href="#静态变量" class="headerlink" title="静态变量"></a>静态变量</h2><p>我们可以将类级别的变量声明为static，静态变量是属于类的，而不是属于类创建的对象或实例的。因为静态变量被类的所有实例共用，所以是线程不安全的。通常静态变量还和关键字final一起用，作为所有对象共用的资源或常量。如果静态变量不是私有的，那么可以通过ClassName.variableName来访问它。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> count;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> String name;</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String DB_NAME = <span class="string">"contacts"</span>;</div></pre></td></tr></table></figure>
+<h2 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h2><p>静态方法也属于类，不属于实例。静态类只能访问类的静态变量或调用类的静态方法。通常静态方法作为工具方法，被其他类使用，而不需要创建类的实例。<br>静态方法如果没有使用静态变量，则是线程安全的。因为静态方法内部声明的变量，每个线程调用时都会重新创建一份，而不会共用同一个存储单元。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MathUtils</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x + y;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="静态块"><a href="#静态块" class="headerlink" title="静态块"></a>静态块</h2><p>静态块是类加载器加载对象时要执行的一组语句，它用于初始化静态变量，通常用于类加载的时候创建静态资源。我们在静态块中不能访问非静态变量。我们可以在一个类中有多个静态块，尽管这么做没什么意义，静态块只会在类加载到内存中的时候执行一次。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String str;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">new</span> FinalDemo();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x + y;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		System.out.println(<span class="string">"静态块3"</span>);</div><div class="line">		<span class="comment">//仅能访问静态变量和静态方法</span></div><div class="line">		str = <span class="string">"Just"</span>;</div><div class="line">		add(<span class="number">3</span>,<span class="number">4</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		System.out.println(<span class="string">"静态块1"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">FinalDemo</span><span class="params">()</span> </span>&#123;</div><div class="line">		System.out.println(<span class="string">"构造函数"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">静态块<span class="number">3</span></div><div class="line">静态块<span class="number">1</span></div><div class="line">构造函数</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>由运行结果可知：</p>
+<ul>
+<li>静态块最先加载，其次是构造函数；</li>
+<li>有多个静态块时，按静态块顺序加载；</li>
+<li>静态块内部代码按顺序运行;</li>
+</ul>
+</blockquote>
+<h2 id="静态类"><a href="#静态类" class="headerlink" title="静态类"></a>静态类</h2><p>一般我们对嵌套类使用static关键字，static不能用于最外层的类。静态的嵌套类和其他外层的类别无区别，嵌套只是方便打包。</p>
+<p>下面我们来看一个使用static关键字的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 静态变量</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String str;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"str: "</span> + str);</div><div class="line">		System.out.println(<span class="string">"add(3,4):"</span>+add(<span class="number">3</span>, <span class="number">4</span>));</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 静态方法</div><div class="line">	 * <span class="doctag">@param</span> x</div><div class="line">	 * <span class="doctag">@param</span> y</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> x + y;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 静态块</div><div class="line">	 */</div><div class="line">	<span class="keyword">static</span> &#123;</div><div class="line">		System.out.println(<span class="string">"静态块3"</span>);</div><div class="line">		<span class="comment">//仅能访问静态变量和静态方法</span></div><div class="line">		str = <span class="string">"Test"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 静态类</div><div class="line">	 * TODO</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">MyStaticClass</span> </span>&#123;</div><div class="line">		</div><div class="line">		<span class="function"><span class="keyword">public</span> String <span class="title">getTag</span><span class="params">()</span> </span>&#123;</div><div class="line">			<span class="comment">//只能访问外部类的静态变量或方法</span></div><div class="line">			<span class="keyword">return</span> str;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是：<br><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">静态块<span class="number">3</span></div><div class="line">str: Test</div><div class="line"><span class="keyword">add</span><span class="bash">(3,4):7</span></div><div class="line">staticclass tag: Test</div></pre></td></tr></table></figure></p>
+<h2 id="静态导包"><a href="#静态导包" class="headerlink" title="静态导包"></a>静态导包</h2><p>静态导包就是java包的静态导入，用import static静态导入包是JDK1.5引入的特性。<br>一般我们导入一个类都用import com.java…className；而静态导入是这样：<code>import static com.java..className.*</code>。这里多了static关键字，还有就是类名后面多了<code>.*</code>，意思是导入这个类里所有的静态方法。当然也可以只导入某个静态方法，只要把<code>.*</code>替换成静态方法名就行了。然后在这个类中，就可以直接调用方法名来调用静态方法，而不必用<code>ClassName.</code>方法名的方式来调用。</p>
+<p>优点：<br>这种方法可以简化一些操作，例如打印System.out.println()，就可以将其导入一个静态方法，在使用时直接println()就可以了。下面通过代码来看看两种方式的导包:</p>
+<p>普通导包:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalImport</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        System.out.println(Integer.MAX_VALUE);</div><div class="line">        System.out.println(Integer.toHexString(<span class="number">42</span>));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>静态导包:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticImport</span> </span>&#123;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span> <span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">        out.println(MAX_VALUE);</div><div class="line">        out.println(toHexString(<span class="number">43</span>));</div><div class="line"></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>两个类的运行结果都是一样的。</p>
+<p>静态导包的几条原则：</p>
+<ul>
+<li>必须是import static而不是static import</li>
+<li>提防含糊不清的static成员。例如，如果对Integer类和Long类执行了静态导入，引用MAX_VALUE时将导致一个编译器错误，因为Integer和Long都有一个MAX_VALUE常量，并且Java不会知道你在引用哪个MAX_VALUE。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/04/05/Java中static关键字详解/" data-id="cj6f0sobx006lf519yb094p6t" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/04/05/Java中static关键字详解/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Java中final关键字详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/05/Java中final关键字详解/" class="article-date">
+  <time datetime="2016-04-05T13:19:55.000Z" itemprop="datePublished">2016-04-05 21:19:55</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/05/Java中final关键字详解/">Java中final关键字详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>Java开发中，我们常常见到final关键字，经常在使用匿名内部类的时候可能会经常用到final关键字。Java中的String类就是一个final类，下面我们就来详细了解一下final这个关键字的用法。</p>
+<h2 id="final关键字的基本用法"><a href="#final关键字的基本用法" class="headerlink" title="final关键字的基本用法"></a>final关键字的基本用法</h2><p>Java中，final关键字可以用来修饰类、方法和变量（包括成员变量和局部变量）。下面就从这三个方面来学习下final关键字的基本用法。</p>
+<h3 id="修饰类"><a href="#修饰类" class="headerlink" title="修饰类"></a>修饰类</h3><p>当final关键字修饰一个类时，表明这个类不能被继承。final类中的成员变量可以根据需要设为final，但是要注意final类中的所有成员方法都会被隐式地指定为final方法。</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E7%B1%BB.png" alt=""></p>
+<blockquote>
+<p>在使用final修饰类的时候，要注意谨慎选择，除非这个类真的在以后不会用来继承或者是出于安全的考虑，尽量不要讲类设计为final类。</p>
+</blockquote>
+<h3 id="修饰方法"><a href="#修饰方法" class="headerlink" title="修饰方法"></a>修饰方法</h3><p>使用final关键字修饰方法的原因有两个：第一个原因是把方法锁定，以防止任何子类修改它的含义；第二个原因是效率。在早期的Java实现版本中，会将final方法转为内嵌调用，但是如果方法过于庞大，可能看不到内嵌调用带来的任何性能提升，不需要使用final方法进行这些优化。因此，如果想要禁止该方法在子类中被覆盖，那么久可以将该方法用final关键字修饰。</p>
+<p>注：类的private方法会隐式地被指定为final方法。</p>
+<h3 id="修饰变量"><a href="#修饰变量" class="headerlink" title="修饰变量"></a>修饰变量</h3><p>final修饰变量的基本语法：</p>
+<ul>
+<li>如果final修饰的是基本数据类型的变量，则其数值一旦在初始化之后便不能更改；</li>
+<li>如果final修饰的是引用类型的变量，则其初始化之后便不能再指向另一个对象；</li>
+</ul>
+<p>示例如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%98%E9%87%8F.png" alt=""></p>
+<p>上面代码中，对变量i和obj的重新赋值都报错了。</p>
+<h2 id="深入理解final关键字"><a href="#深入理解final关键字" class="headerlink" title="深入理解final关键字"></a>深入理解final关键字</h2><p>在了解final关键字的基本用法后，我们来看看final关键字容易混淆的地方。</p>
+<h3 id="类的final变量和普通变量有什么区别？"><a href="#类的final变量和普通变量有什么区别？" class="headerlink" title="类的final变量和普通变量有什么区别？"></a>类的final变量和普通变量有什么区别？</h3><p>当用final作用于类的成员变量时，成员变量（注意是类的成员变量，局部变量只需要保证在使用之前被初始化赋值即可）必须在定义时或者构造器中进行初始化赋值，而且final变量一旦被初始化赋值之后，就不能再被赋值了。</p>
+<p>final变量和普通变量到底有什么区别呢？先看下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	</div><div class="line">	String a = <span class="string">"helloworld"</span>;</div><div class="line">	<span class="keyword">final</span> String b = <span class="string">"hello"</span>;</div><div class="line">	String c = <span class="string">"hello"</span>;</div><div class="line">	String d = b + <span class="string">"world"</span>;</div><div class="line">	String e = c + <span class="string">"world"</span>;</div><div class="line">	</div><div class="line">	System.out.println((a == d));</div><div class="line">	System.out.println((a == e));</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">true</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<p>为什么第一个比较结果是true，而第二个比较结果为false？<br>这就是final变量和普变量的区别了，当final变量是基本数据类型以及String类型时，如果在编译期间能知道它的确切值，则编译器会把它当做编译器常量使用，也就是说用到该final变量的地方相当于直接访问这个常量，不需要在运行时确定。因此在上面的代码中，由于b被final修饰，因此会被当做编译器常量，所以在使用到b的地方会直接将变量b替换为它的值，而对于变量c的访问则在运行时通过链接来运行。要注意，只有在编译期间确切知道final变量值的情况下，编译器才会进行这样的优化，下面的这段代码就不会进行这样的优化：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">	</div><div class="line">	String a = <span class="string">"helloworld"</span>;</div><div class="line">	<span class="keyword">final</span> String b = getStr();</div><div class="line">	String c = <span class="string">"hello"</span>;</div><div class="line">	String d = b + <span class="string">"world"</span>;</div><div class="line">	String e = c + <span class="string">"world"</span>;</div><div class="line">	</div><div class="line">	System.out.println((a == d));</div><div class="line">	System.out.println((a == e));</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getStr</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="string">"hell0"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="literal">false</span></div><div class="line"><span class="literal">false</span></div></pre></td></tr></table></figure></p>
+<h3 id="被final修饰的引用变量指向的对象内容可变吗？"><a href="#被final修饰的引用变量指向的对象内容可变吗？" class="headerlink" title="被final修饰的引用变量指向的对象内容可变吗？"></a>被final修饰的引用变量指向的对象内容可变吗？</h3><p>final修饰的引用变量一旦初始化赋值之后就不能再指向其他的对象，那么该引用变量指向的对象的内容可变吗？先看下面的例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">final</span> Person person = <span class="keyword">new</span> Person();</div><div class="line">		person.name = <span class="string">"liu"</span>;</div><div class="line">		person.age = <span class="number">27</span>;</div><div class="line">		System.out.println(person.toString());</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> String name = <span class="string">"zhang"</span>;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> age = <span class="number">0</span>;</div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Person [name="</span> + name + <span class="string">", age="</span> + age + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>结果是：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Person</span> <span class="comment">[name=liu, age=27]</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>由运行结果可知，引用变量被final修饰之后，虽然不能再指向其他的对象，但是它指向的对象的内容是可变的。</p>
+</blockquote>
+<h3 id="final和static"><a href="#final和static" class="headerlink" title="final和static"></a>final和static</h3><p>我们经常容易把final和static关键字混淆，static作用于成员变量用来表示只保存一份副本，而final的作用是用来保证变量不可变。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		MyClass class1 = <span class="keyword">new</span> MyClass();</div><div class="line">		System.out.println(<span class="string">"i: "</span> + class1.i);</div><div class="line">		System.out.println(<span class="string">"j: "</span> + class1.j);</div><div class="line"></div><div class="line">		MyClass class2 = <span class="keyword">new</span> MyClass();</div><div class="line">		System.out.println(<span class="string">"i: "</span> + class2.i);</div><div class="line">		System.out.println(<span class="string">"j: "</span> + class2.j);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">double</span> i = Math.random();</div><div class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> j = Math.random();</div><div class="line">		</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">i</span>: 0.6230804434703052</div><div class="line"><span class="attribute">j</span>: 0.8707443438720905</div><div class="line"></div><div class="line"><span class="avrasm"><span class="symbol">i:</span> <span class="number">0.6451393896255735</span></span></div><div class="line"><span class="symbol">j:</span> <span class="number">0.8707443438720905</span></div></pre></td></tr></table></figure>
+<p>从结果可知，每次打印的i值不同，而j值都是一样的。从这里口可以知道final和static的区别了。</p>
+<h3 id="匿名内部类中使用的外部局部变量为什么只能是final变量？"><a href="#匿名内部类中使用的外部局部变量为什么只能是final变量？" class="headerlink" title="匿名内部类中使用的外部局部变量为什么只能是final变量？"></a>匿名内部类中使用的外部局部变量为什么只能是final变量？</h3><p>保证数据的一致性。Java编译器限定必须将外部局部变量限制为final变量，不允许对外部局部变量进行更改（对应引用类型的变量，是不允许指向新的对象），这样就保证了数据的一致性。</p>
+<h3 id="关于final参数的问题"><a href="#关于final参数的问题" class="headerlink" title="关于final参数的问题"></a>关于final参数的问题</h3><p>关于网上流传的“当你在方法中不需要改变作为参数的对象变量时，明确使用final进行声明，会防止你无意的修改而影响到调用方法外的变量”，这句话其实是不恰当的。<br>因为无论参数是基本数据类型的变量还是引用类型的变量，使用final声明都不会达到上面所说的效果。</p>
+<p>下面看例子：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/final-final%E4%BF%AE%E9%A5%B0%E5%8F%82%E6%95%B0.png" alt=""></p>
+<p>上面的代码像是让人觉得final修饰之后，就不能在方法中更改变量i的值了。殊不知，方法changValue和main方法中的变量i根本就不是一个变量，因为对于基本类型的变量，Java参数传递采用的是值传递，相当于直接将变量进行了拷贝，所以即使没有final修饰的情况下，在方法内部改变了变量i的值也不会影响方法外的i。</p>
+<p>再看下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FinalDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * <span class="doctag">@param</span> args</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		MyClass myClass = <span class="keyword">new</span> MyClass();</div><div class="line">		StringBuffer buffer = <span class="keyword">new</span> StringBuffer(<span class="string">"hello"</span>);</div><div class="line">		myClass.changValue(buffer);</div><div class="line">		System.out.println(buffer.toString());</div><div class="line">		myClass.changValue2(buffer);</div><div class="line">		System.out.println(buffer.toString());</div><div class="line">		</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</div><div class="line">		</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changValue</span><span class="params">(<span class="keyword">final</span> StringBuffer buffer)</span> </span>&#123;</div><div class="line">		buffer.append(<span class="string">"world"</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">changValue2</span><span class="params">(StringBuffer buffer)</span> </span>&#123;</div><div class="line">		StringBuffer buffer2 = buffer;</div><div class="line">		buffer2.append(<span class="string">"你好"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行结果是：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">helloworld</span></div><div class="line">helloworld你好</div></pre></td></tr></table></figure>
+<p>由结果可知，很显然，用final进行修饰参数和不修饰参数都没有阻止在changeValue中改变buffer指向的对象的内容。原因在对于引用数据类型，Java采用的是按引用传递，传递的是引用的地址，也就是变量所对象的内存空间的地址。在这里形参和实参指向的是同一个对象，因此让形参重新指向另一个对象对实参并没有任何影响。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/" data-id="cj6f0sobw006hf51975nlt72z" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/04/05/Java中final关键字详解/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Android动画之Interpolator" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/31/Android动画之Interpolator/" class="article-date">
+  <time datetime="2016-03-31T13:47:19.000Z" itemprop="datePublished">2016-03-31 21:47:19</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/31/Android动画之Interpolator/">Android动画之Interpolator</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Interpolator可以翻译成插值器。Android中interpolator的最底层接口如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.animation;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 时间插值器定义了一个动画的变化率。</div><div class="line"> * 这让动画让非线性的移动轨迹，例如加速和减速。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * A time interpolator defines the rate of change of an animation. This allows animations</div><div class="line"> * to have non-linear motion, such as acceleration and deceleration.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">TimeInterpolator</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 将动画已经消耗的时间的分数映射到一个表示插值的分数。</div><div class="line">     * 然后将插值与动画的变化值相乘来推导出当前已经过去的动画时间的动画变化量。</div><div class="line">     * &lt;hr/&gt;</div><div class="line">     * Maps a value representing the elapsed fraction of an animation to a value that represents</div><div class="line">     * the interpolated fraction. This interpolated value is then multiplied by the change in</div><div class="line">     * value of an animation to derive the animated value at the current elapsed animation time.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> input  一个0到1.0表示动画当前点的值，0表示开头。1表示结尾&lt;br/&gt; A value between 0 and 1.0 indicating our current point</div><div class="line">     *        in the animation where 0 represents the start and 1.0 represents</div><div class="line">     *        the end</div><div class="line">     * <span class="doctag">@return</span>   插值。它的值可以大于1来超出目标值，也小于0来空破底线。</div><div class="line">     *         interpolators which overshoot their targets, or less than 0 for</div><div class="line">     *         interpolators that undershoot their targets.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>TimeInterpolator是在Android API11加入，之前的类叫Interpolator。现在Interpolator继承了TimeInterpolator</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.animation.TimeInterpolator;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * </div><div class="line"> * 一个定义动画变化率的插值器。</div><div class="line"> * 它允许对基本的（如透明，缩放，平移，旋转）进行加速，减速，重复等动画效果</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator defines the rate of change of an animation. This allows</div><div class="line"> * the basic animation effects (alpha, scale, translate, rotate) to be</div><div class="line"> * accelerated, decelerated, repeated, etc.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Interpolator</span> <span class="keyword">extends</span> <span class="title">TimeInterpolator</span> </span>&#123;</div><div class="line">    <span class="comment">// A new interface, TimeInterpolator, was introduced for the new android.animation</span></div><div class="line">    <span class="comment">// package. This older Interpolator interface extends TimeInterpolator so that users of</span></div><div class="line">    <span class="comment">// the new Animator-based animations can use either the old Interpolator implementations or</span></div><div class="line">    <span class="comment">// new classes that implement TimeInterpolator directly.</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="插值器分析"><a href="#插值器分析" class="headerlink" title="插值器分析"></a>插值器分析</h2><h3 id="AccelerateInterpolator-加速插值器"><a href="#AccelerateInterpolator-加速插值器" class="headerlink" title="AccelerateInterpolator  加速插值器"></a>AccelerateInterpolator  加速插值器</h3><p>效果：在动画开始的地方速率改变比较慢，然后开始加速</p>
+<p>源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * </div><div class="line"> * 一个开始很慢然后不断加速的插值器。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator where the rate of change starts out slowly and</div><div class="line"> * and then accelerates.</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccelerateInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mFactor;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">double</span> mDoubleFactor;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccelerateInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">        mFactor = <span class="number">1.0f</span>;</div><div class="line">        mDoubleFactor = <span class="number">2.0</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Constructor</div><div class="line">     * </div><div class="line">     * <span class="doctag">@param</span> factor </div><div class="line">     *     动画的快慢度。将factor设置为1.0f会产生一条y=x^2的抛物线。</div><div class="line">增加factor到1.0f之后为加大这种渐入效果（也就是说它开头更加慢，结尾更加快）</div><div class="line">     *   &lt;br/&gt;Degree to which the animation should be eased. Seting</div><div class="line">     *        factor to 1.0f produces a y=x^2 parabola（抛物线）. Increasing factor above</div><div class="line">     *        1.0f  exaggerates the ease-in effect (i.e., it starts even</div><div class="line">     *        slower and ends evens faster)</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccelerateInterpolator</span><span class="params">(<span class="keyword">float</span> factor)</span> </span>&#123;</div><div class="line">        mFactor = factor;</div><div class="line">        mDoubleFactor = <span class="number">2</span> * mFactor;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccelerateInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a =</div><div class="line">                context.obtainStyledAttributes(attrs, com.android.internal.R.styleable.AccelerateInterpolator);</div><div class="line"> </div><div class="line">        mFactor = a.getFloat(com.android.internal.R.styleable.AccelerateInterpolator_factor, <span class="number">1.0f</span>);</div><div class="line">        mDoubleFactor = <span class="number">2</span> * mFactor;</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (mFactor == <span class="number">1.0f</span>) &#123;</div><div class="line">            <span class="keyword">return</span> input * input;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> (<span class="keyword">float</span>)Math.pow(input, mDoubleFactor);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据getInterpolation方法可知加速度的大小由参数mFactor决定。<br>当mFactor值为1.0f时，动画加速轨迹相对于一条y=x^2的抛物线。如下图</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AccelerateInterpolator_1.png" alt=""></p>
+<p>当mFactor不为1时，轨迹曲线是y=x^(2 * mFactor)(0 &lt; x &lt;= 1)的曲线。<br>示例：当mFractor为4时，插值器的加速轨迹曲线如下图:</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AccelerateInterpolator_2.png" alt=""></p>
+<p>如果你在使用AccelerateInterpolator，想要那种一开始很慢，然后突然就很快的加速的动画效果的话，就将mFractor的值设置大点。</p>
+<h3 id="DecelerateInterpolator减速插值器"><a href="#DecelerateInterpolator减速插值器" class="headerlink" title="DecelerateInterpolator减速插值器"></a>DecelerateInterpolator减速插值器</h3><p>效果：在动画开始的地方速率改变比较慢，然后开始加速</p>
+<p>源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个开始比较快然后减速的插值器</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator where the rate of change starts out quickly and</div><div class="line"> * and then decelerates.</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DecelerateInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DecelerateInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * Constructor</div><div class="line">     * </div><div class="line">     * <span class="doctag">@param</span> factor</div><div class="line">     *        动画的快慢度。将factor值设置为1.0f时将产生一条从上向下的y=x^2抛物线。</div><div class="line">     *        增加factor到1.0f以上将使渐入的效果增强（也就是说，开头更快，结尾更慢）</div><div class="line">     *        &lt;br/&gt;</div><div class="line">     *        Degree to which the animation should be eased. Setting factor to 1.0f produces</div><div class="line">     *        an upside-down y=x^2 parabola. Increasing factor above 1.0f makes exaggerates the</div><div class="line">     *        ease-out effect (i.e., it starts even faster and ends evens slower)</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DecelerateInterpolator</span><span class="params">(<span class="keyword">float</span> factor)</span> </span>&#123;</div><div class="line">        mFactor = factor;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DecelerateInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a =</div><div class="line">                context.obtainStyledAttributes(attrs, com.android.internal.R.styleable.DecelerateInterpolator);</div><div class="line"> </div><div class="line">        mFactor = a.getFloat(com.android.internal.R.styleable.DecelerateInterpolator_factor, <span class="number">1.0f</span>);</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">        <span class="keyword">float</span> result;</div><div class="line">        <span class="keyword">if</span> (mFactor == <span class="number">1.0f</span>) &#123;</div><div class="line">            result = (<span class="number">1.0f</span> - ((<span class="number">1.0f</span> - input) * (<span class="number">1.0f</span> - input)));</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            result = (<span class="keyword">float</span>)(<span class="number">1.0f</span> - Math.pow((<span class="number">1.0f</span> - input), <span class="number">2</span> * mFactor));</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mFactor = <span class="number">1.0f</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据getInterpolation方法可知加速度的大小由参数mFactor决定。<br>当mFactor为1.0f时，它减速的轨迹函数为y=1-(1 - X)^2;如下图</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-DecelerateInterpolator_1.png" alt=""></p>
+<p>当mFactor不为1.0f时，它减速的轨迹函数为:y=1.0 - (1.0 -x )^(2 * mFactor)。<br>当mFactor增大到4时，曲线轨迹如下图所示：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-DecelerateInterpolator_2.png" alt=""></p>
+<h3 id="AccelerateDecelerateInterpolator-加速减速插值器"><a href="#AccelerateDecelerateInterpolator-加速减速插值器" class="headerlink" title="AccelerateDecelerateInterpolator  加速减速插值器"></a>AccelerateDecelerateInterpolator  加速减速插值器</h3><p>效果：动画开始与结束的地方速率改变比较慢，在中间的时候加速</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个变化率开始慢从中间后开始变快。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator where the rate of change starts and ends slowly but</div><div class="line"> * accelerates through the middle.</div><div class="line"> * </div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AccelerateDecelerateInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccelerateDecelerateInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"UnusedDeclaration"</span>&#125;)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AccelerateDecelerateInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">float</span>)(Math.cos((input + <span class="number">1</span>) * Math.PI) / <span class="number">2.0f</span>) + <span class="number">0.5f</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据getInterpolation方法可以得出其变化曲线如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AccelerateDecelerateInterpolator.png" alt=""></p>
+<h3 id="LinearInterpolator-线性插值器"><a href="#LinearInterpolator-线性插值器" class="headerlink" title="LinearInterpolator 线性插值器"></a>LinearInterpolator 线性插值器</h3><p>效果:动画按常速率变化</p>
+<p>源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * An interpolator where the rate of change is constant</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinearInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinearInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LinearInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> input;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="BounceInterpolator-弹跳插值器"><a href="#BounceInterpolator-弹跳插值器" class="headerlink" title="BounceInterpolator 弹跳插值器"></a>BounceInterpolator 弹跳插值器</h3><p>效果:动画结束的时候弹起</p>
+<p>源代码如下:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 这个插值器的插值在后面呈弹跳状态。</div><div class="line"> * An interpolator where the change bounces at the end.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BounceInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BounceInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@SuppressWarnings</span>(&#123;<span class="string">"UnusedDeclaration"</span>&#125;)</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BounceInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> <span class="title">bounce</span><span class="params">(<span class="keyword">float</span> t)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> t * t * <span class="number">8.0f</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> t)</span> </span>&#123;</div><div class="line">        <span class="comment">// _b(t) = t * t * 8</span></div><div class="line">        <span class="comment">// bs(t) = _b(t) for t &lt; 0.3535</span></div><div class="line">        <span class="comment">// bs(t) = _b(t - 0.54719) + 0.7 for t &lt; 0.7408</span></div><div class="line">        <span class="comment">// bs(t) = _b(t - 0.8526) + 0.9 for t &lt; 0.9644</span></div><div class="line">        <span class="comment">// bs(t) = _b(t - 1.0435) + 0.95 for t &lt;= 1.0</span></div><div class="line">        <span class="comment">// b(t) = bs(t * 1.1226)</span></div><div class="line">        t *= <span class="number">1.1226f</span>;</div><div class="line">        <span class="keyword">if</span> (t &lt; <span class="number">0.3535f</span>) <span class="keyword">return</span> bounce(t);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; <span class="number">0.7408f</span>) <span class="keyword">return</span> bounce(t - <span class="number">0.54719f</span>) + <span class="number">0.7f</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; <span class="number">0.9644f</span>) <span class="keyword">return</span> bounce(t - <span class="number">0.8526f</span>) + <span class="number">0.9f</span>;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> bounce(t - <span class="number">1.0435f</span>) + <span class="number">0.95f</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据getInterpolation方法得到以下插值曲线图：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-BounceInterpolator.png" alt=""></p>
+<h3 id="AnticipateInterpolator-回荡秋千插值器"><a href="#AnticipateInterpolator-回荡秋千插值器" class="headerlink" title="AnticipateInterpolator 回荡秋千插值器"></a>AnticipateInterpolator 回荡秋千插值器</h3><p>效果：开始的时候向后，然后向前甩</p>
+<p>源代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个开始向后荡，然后向前荡的插值器。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator where the change starts backward then flings forward.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnticipateInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mTension;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">        mTension = <span class="number">2.0f</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> tension </div><div class="line">     *  绷紧程度，当绷紧程序为0.0f时，也就没有了反向作用力。插值器将退化成一个y=x^3的加速插值器。</div><div class="line">     * &lt;br/&gt;</div><div class="line">     * Amount of anticipation. When tension equals 0.0f, there is</div><div class="line">     *                no anticipation and the interpolator becomes a simple</div><div class="line">     *                acceleration interpolator.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateInterpolator</span><span class="params">(<span class="keyword">float</span> tension)</span> </span>&#123;</div><div class="line">        mTension = tension;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a = context.obtainStyledAttributes(attrs,</div><div class="line">                com.android.internal.R.styleable.AnticipateInterpolator);</div><div class="line"> </div><div class="line">        mTension =</div><div class="line">                a.getFloat(com.android.internal.R.styleable.AnticipateInterpolator_tension, <span class="number">2.0f</span>);</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> t)</span> </span>&#123;</div><div class="line">        <span class="comment">// a(t) = t * t * ((tension + 1) * t - tension)</span></div><div class="line">        <span class="keyword">return</span> t * t * (((mTension + <span class="number">1</span>) * t) - mTension);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>根据getInterpolation方法：</p>
+<p>当tension为默认值2时，曲线图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AnticipateInterpolator_1.png" alt=""></p>
+<p>当tension为4时，曲线图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AnticipateInterpolator_2.png" alt=""></p>
+<h3 id="AnticipateOvershootInterpolator"><a href="#AnticipateOvershootInterpolator" class="headerlink" title="AnticipateOvershootInterpolator"></a>AnticipateOvershootInterpolator</h3><p>效果：开始的时候向后，然后向前甩一定值后 返回最后的值</p>
+<p>源代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * 一个插值器它开始向上推，然后向下荡，荡过最低线。然后再回到最低线。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * An interpolator where the change starts backward then flings forward and overshoots</div><div class="line"> * the target value and finally goes back to the final value.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnticipateOvershootInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mTension;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateOvershootInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">        mTension = <span class="number">2.0f</span> * <span class="number">1.5f</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> tension </div><div class="line">     *  anticipation/overshoot的比值。当和tension值为0.0f时，</div><div class="line">     *  也就没有anticipation/overshoot的比值了，插值器退化为一个加速/减速插值器。</div><div class="line">     *  &lt;br/&gt;</div><div class="line">     * Amount of anticipation/overshoot. When tension equals 0.0f,</div><div class="line">     *                there is no anticipation/overshoot and the interpolator becomes</div><div class="line">     *                a simple acceleration/deceleration interpolator.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateOvershootInterpolator</span><span class="params">(<span class="keyword">float</span> tension)</span> </span>&#123;</div><div class="line">        mTension = tension * <span class="number">1.5f</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> tension Amount of anticipation/overshoot. When tension equals 0.0f,</div><div class="line">     *                there is no anticipation/overshoot and the interpolator becomes</div><div class="line">     *                a simple acceleration/deceleration interpolator.</div><div class="line">     * <span class="doctag">@param</span> extraTension </div><div class="line">     * 乘以tension的值。例如，在上面构造函数中extraTension的值为1.5f</div><div class="line">     * &lt;br/&gt;</div><div class="line">     * Amount by which to multiply the tension. For instance,</div><div class="line">     *                     to get the same overshoot as an OvershootInterpolator with</div><div class="line">     *                     a tension of 2.0f, you would use an extraTension of 1.5f.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateOvershootInterpolator</span><span class="params">(<span class="keyword">float</span> tension, <span class="keyword">float</span> extraTension)</span> </span>&#123;</div><div class="line">        mTension = tension * extraTension;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">AnticipateOvershootInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a = context.obtainStyledAttributes(attrs, AnticipateOvershootInterpolator);</div><div class="line"> </div><div class="line">        mTension = a.getFloat(AnticipateOvershootInterpolator_tension, <span class="number">2.0f</span>) *</div><div class="line">                a.getFloat(AnticipateOvershootInterpolator_extraTension, <span class="number">1.5f</span>);</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> <span class="title">a</span><span class="params">(<span class="keyword">float</span> t, <span class="keyword">float</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> t * t * (((s + <span class="number">1</span>) * t) - s);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">float</span> <span class="title">o</span><span class="params">(<span class="keyword">float</span> t, <span class="keyword">float</span> s)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> t * t * (((s + <span class="number">1</span>) * t) + s);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> t)</span> </span>&#123;</div><div class="line">        <span class="comment">// a(t, s) = t * t * ((s + 1) * t - s)</span></div><div class="line">                <span class="comment">// o(t, s) = t * t * ((s + 1) * t + s)</span></div><div class="line">        <span class="comment">// f(t) = 0.5 * a(t * 2, tension * extraTension), when t &lt; 0.5</span></div><div class="line">        <span class="comment">// f(t) = 0.5 * (o(t * 2 - 2, tension * extraTension) + 2), when t &lt;= 1.0</span></div><div class="line">        <span class="keyword">if</span> (t &lt; <span class="number">0.5f</span>) <span class="keyword">return</span> <span class="number">0.5f</span> * a(t * <span class="number">2.0f</span>, mTension);</div><div class="line">        <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0.5f</span> * (o((t * <span class="number">2.0f</span>) - <span class="number">2.0f</span>, mTension) + <span class="number">2.0f</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当tension为默认值时，曲线图为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-AnticipateOvershootInterpolator.png" alt=""></p>
+<h3 id="CycleInterpolator-正弦周期变化插值器"><a href="#CycleInterpolator-正弦周期变化插值器" class="headerlink" title="CycleInterpolator 正弦周期变化插值器"></a>CycleInterpolator 正弦周期变化插值器</h3><p> 效果：动画循环播放特定的次数，速率改变沿着正弦曲线</p>
+<p>源代码为：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * </div><div class="line"> * 以指定的周期重复动画。变化率曲线为正弦。</div><div class="line"> * &lt;hr/&gt;</div><div class="line"> * Repeats the animation for a specified number of cycles（周期）. The</div><div class="line"> * rate of change follows a sinusoidal（正弦） pattern.</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CycleInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * </div><div class="line">     * <span class="doctag">@param</span> cycles 要重复的周期数</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CycleInterpolator</span><span class="params">(<span class="keyword">float</span> cycles)</span> </span>&#123;</div><div class="line">        mCycles = cycles;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CycleInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a =</div><div class="line">                context.obtainStyledAttributes(attrs, com.android.internal.R.styleable.CycleInterpolator);</div><div class="line"> </div><div class="line">        mCycles = a.getFloat(com.android.internal.R.styleable.CycleInterpolator_cycles, <span class="number">1.0f</span>);</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> input)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> (<span class="keyword">float</span>)(Math.sin(<span class="number">2</span> * mCycles * Math.PI * input));</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="keyword">private</span> <span class="keyword">float</span> mCycles;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当cycle值为1时，即变化一周时，曲线图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-CycleInterpolator%20png.png" alt=""></p>
+<h3 id="OvershootInterpolator"><a href="#OvershootInterpolator" class="headerlink" title="OvershootInterpolator"></a>OvershootInterpolator</h3><p>效果：向前甩一定值后再回到原来位置</p>
+<p>源代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> android.view.animation;</div><div class="line"> </div><div class="line"><span class="keyword">import</span> android.content.Context;</div><div class="line"><span class="keyword">import</span> android.content.res.TypedArray;</div><div class="line"><span class="keyword">import</span> android.util.AttributeSet;</div><div class="line"> </div><div class="line"><span class="comment">/**</span></div><div class="line"> * An interpolator where the change flings forward and overshoots the last value</div><div class="line"> * then comes back.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OvershootInterpolator</span> <span class="keyword">implements</span> <span class="title">Interpolator</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> mTension;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OvershootInterpolator</span><span class="params">()</span> </span>&#123;</div><div class="line">        mTension = <span class="number">2.0f</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * <span class="doctag">@param</span> tension Amount of overshoot. When tension equals 0.0f, there is</div><div class="line">     *                no overshoot and the interpolator becomes a simple</div><div class="line">     *                deceleration interpolator.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OvershootInterpolator</span><span class="params">(<span class="keyword">float</span> tension)</span> </span>&#123;</div><div class="line">        mTension = tension;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">OvershootInterpolator</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</div><div class="line">        TypedArray a = context.obtainStyledAttributes(attrs,</div><div class="line">                com.android.internal.R.styleable.OvershootInterpolator);</div><div class="line"> </div><div class="line">        mTension =</div><div class="line">                a.getFloat(com.android.internal.R.styleable.OvershootInterpolator_tension, <span class="number">2.0f</span>);</div><div class="line"> </div><div class="line">        a.recycle();</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">float</span> <span class="title">getInterpolation</span><span class="params">(<span class="keyword">float</span> t)</span> </span>&#123;</div><div class="line">        <span class="comment">// _o(t) = t * t * ((tension + 1) * t + tension)</span></div><div class="line">        <span class="comment">// o(t) = _o(t - 1) + 1</span></div><div class="line">        t -= <span class="number">1.0f</span>;</div><div class="line">        <span class="keyword">return</span> (t * t * (((mTension + <span class="number">1</span>) * t) + mTension)) + <span class="number">1.0f</span>;</div><div class="line">        <span class="comment">//plot &#123;(x-1)(x-1)((tension+1)(x-1)+tension)+1,(0&lt;x&lt;=1)&#125;</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当tension为默认值2时，曲线图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-OvershootInterpolator%20_1.png" alt=""></p>
+<p>当tension的值为4时，曲线图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/Interpolator-OvershootInterpolator_3.png" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/03/31/Android动画之Interpolator/" data-id="cj6f0so9t001vf519t0efb3g3" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/03/31/Android动画之Interpolator/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android动画/">Android动画</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-读书札记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/18/读书札记/" class="article-date">
+  <time datetime="2016-03-17T16:02:15.000Z" itemprop="datePublished">2016-03-18 00:02:15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/读书札记/">读书札记</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/18/读书札记/">读书札记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>There is always another way.</p>
+<p>You know, people get up everyday, do the same thing, they tell themselves they change their life one day, they never do. I am gonna change my life. —-《城中大盗》</p>
+<p>思考的时候，要像外行一样单纯直接，实践的时候则要像专家一样严密细致，并且要以专业知识和方法武装起来的“我做得到”的乐观精神。要记住，独特的、好的创意和好的结果，不管对研究而言，还是对商业运作而言，都不是自己突然冒出来的东西，那一定是刻苦的努力和长期的思考带来的。 —-金出武雄</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/03/18/读书札记/" data-id="cj6f0soeq00ebf519s7kur3t6" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/03/18/读书札记/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书札记/">读书札记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-面向对象编程之依赖倒置原则" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/11/面向对象编程之依赖倒置原则/" class="article-date">
+  <time datetime="2016-03-11T12:45:16.000Z" itemprop="datePublished">2016-03-11 20:45:16</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/11/面向对象编程之依赖倒置原则/">面向对象编程之依赖倒置原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>依赖倒置原则英文全称是Dependence Inversion Principle，缩写是DIP。依赖倒置原则指代了一种特定解耦形式，使得高层次的模块不依赖于低层次的模块的实现细节的目的，依赖模块被颠倒了。这到底是什么意思呢？</p>
+<p>依赖倒置原则则有以下关键点：</p>
+<ul>
+<li>高层模块不应该依赖底层模块，两者都应该依赖其抽象；</li>
+<li>抽象不应该依赖细节。</li>
+<li>细节应该依赖抽象。</li>
+</ul>
+<p>在Java语言中，抽象就是指接口或抽象类，两者都是不能直接被实例化的；细节就是实现类，实现接口或者继承抽象类而产生的类就是细节，其特点就是，可以直接被实例化，也就是可以加上关键字new产生的对象。<strong>高层模块就是调用端，底层模块就是具体实现类。</strong></p>
+<p>依赖倒置原则在Java语言中的表现就是：模块间的依赖通过抽象发生，实现类之间不发生直接的依赖关系，其依赖关系是通过接口或者抽象类产生的。概况为一句话就是：面向接口编程，或者说是面向抽象编程，这里的抽象只得就是接口或抽象类。面向接口是面向对象的精髓之一。</p>
+<p>如果类与类直接依赖于细节，那么他们之间就有直接的耦合，当具体实现需要变化时，意味着需要同时修改依赖者的代码，这限制了系统的可扩展性。</p>
+<p>在前面的面向对象编程之开闭原则这一节中，ImageLoader直接依赖于MemoryCache，这个MemoryCache事一个具体实现，而不是一个抽象类或者接口。这就导致了ImageLoader直接依赖了具体的细节，当MemoryCache不能满足ImageLoader而需要被其他缓存实现替换时，此时就必须修改ImageLoader的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageLoader</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 图片缓存</div><div class="line">     */</div><div class="line">    MemoryCache mMemoryCache = <span class="keyword">new</span> MemoryCache();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 显示图片</div><div class="line">     * <span class="doctag">@param</span> url</div><div class="line">     * <span class="doctag">@param</span> imageView</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView imageView)</span> </span>&#123;</div><div class="line">        <span class="comment">//判断使用哪种缓存</span></div><div class="line">        Bitmap bitmap =   mMemoryCache.get(url);</div><div class="line">        <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</div><div class="line">            imageView.setImageBitmap(bitmap);</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		dowloadImage(url,imageView);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>随着产品的升级，用户发现MemoryCache以及不能满足需求，用户需要小民的ImageLoader可以将图片同时缓存到内存和SD卡中，或者可以让用户自定义实现缓存。此时，我们的 MemoryCache这个类名不仅不能够表达内存缓存和SD卡缓存的意义，也不能满足功能。另外，用户需要自定义缓存实现时还必须继承自MemoryCache，而用户的缓存实现可不一定与内存缓存有关，这在命名上的限制也让用户体验不好。重构的时候到了！第一种方案是将MemoryCache修改为DoubleCache，然后在DoubleCache中实现具体的缓存功能。我们需要将ImageLoader修改如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageLoader</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 图片缓存</div><div class="line">     */</div><div class="line">    DoubleCache mDoubleCache = <span class="keyword">new</span> DoubleCache();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 显示图片</div><div class="line">     * <span class="doctag">@param</span> url</div><div class="line">     * <span class="doctag">@param</span> imageView</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView imageView)</span> </span>&#123;</div><div class="line">        <span class="comment">//判断使用哪种缓存</span></div><div class="line">        Bitmap bitmap =   mDoubleCache.get(url);</div><div class="line">        <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</div><div class="line">            imageView.setImageBitmap(bitmap);</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		dowloadImage(url,imageView);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>在程序中我们将MemoryCache修改成DoubleCache，然后修改了ImageLoader中缓存类的具体实现，轻轻松松就满足了用户需求。这不还是依赖具体的实现类吗？当用户的需求发生变化时，我们又要通过修改缓存实现类和ImageLoader代码来实现？</p>
+<p>针对这些问题，给出的解决方案就要能够让缓存系统更加灵活。一句话概括起来就是：依赖抽象，而不是依赖具体实现。针对图片缓存，建立ImageCache抽象（开闭原则小节所述），该抽象增加了get和put方法用以实现图片的存取。每种缓存实现都必须实现这个接口，并且实现自己的存取方法。当用户需要使用不同的缓存实现时，直接通过依赖注入即可，保证了系统的灵活性。我们来回顾一下相关代码：</p>
+<p>ImageCache缓存接口类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ImageCache</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 获取图片</div><div class="line">     * <span class="doctag">@param</span> url</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> Bitmap <span class="title">get</span><span class="params">(String url)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 缓存图片</div><div class="line">     * <span class="doctag">@param</span> url</div><div class="line">     * <span class="doctag">@param</span> bitmap</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(String url, Bitmap bitmap)</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ImageLoader类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ImageLoader</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 图片缓存</div><div class="line">     */</div><div class="line">    ImageCache mImageCache = <span class="keyword">new</span> MemoryCache();</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 注入缓存实现</div><div class="line">     * <span class="doctag">@param</span> cache</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setIamgeCache</span><span class="params">(ImageCache cache)</span> </span>&#123;</div><div class="line">        mImageCache = cache;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">displayImage</span><span class="params">(<span class="keyword">final</span> String url, <span class="keyword">final</span> ImageView imageView)</span> </span>&#123;</div><div class="line">        <span class="comment">//判断使用哪种缓存</span></div><div class="line">        Bitmap bitmap =   mImageCache.get(url);</div><div class="line">        <span class="keyword">if</span> (bitmap != <span class="keyword">null</span>) &#123;</div><div class="line">            imageView.setImageBitmap(bitmap);</div><div class="line">            <span class="keyword">return</span> ;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">		dowloadImage(url,imageView);</div></pre></td></tr></table></figure>
+<p>在这里，我们建立了ImageCache抽象类，并且让ImageLoader依赖于抽象而不是具体细节。当需求发生变化时，只要实现ImageCache类或者继承其他已有的ImageCache子类完成相应的缓存功能，然后将具体的实现类注入到ImageLoader即可实现缓存功能的替换，这就保证的缓存系统的高可扩展性，有了拥抱变化的能力，这就是依赖倒置原则。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/03/11/面向对象编程之依赖倒置原则/" data-id="cj6f0soet00eff519oti1o2zr" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/03/11/面向对象编程之依赖倒置原则/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/17/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/19/">下一页&raquo;</a>
+  </nav>
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title recent-posts">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/21/JavaScript⑦对象/">JavaScript⑦对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型RegExp/">JavaScript⑥引用类型RegExp</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Global/">JavaScript⑥引用类型Global</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Date/">JavaScript⑥引用类型Date</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Array/">JavaScript⑥引用类型Array</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 刘涤生&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;michaelliu0727@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

@@ -76,14 +76,14 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-TCP-IP2IP协议" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android设计模式(十一)观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/17/TCP-IP2IP协议/" class="article-date">
-  <time datetime="2015-12-17T13:05:33.000Z" itemprop="datePublished">2015-12-17 21:05:33</time>
+    <a href="/2016/06/09/Android设计模式(十一)观察者模式/" class="article-date">
+  <time datetime="2016-06-09T13:20:01.000Z" itemprop="datePublished">2016-06-09 21:20:01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/网络通信/">网络通信</a>
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
   </div>
 
   </div>
@@ -94,7 +94,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/17/TCP-IP2IP协议/">TCP/IP（二）IP协议</a>
+      <a class="article-title" href="/2016/06/09/Android设计模式(十一)观察者模式/">Android设计模式(十一)观察者模式</a>
     </h1>
   
 
@@ -104,146 +104,44 @@
       
         <!-- Table of Contents -->
         
-        <p>IP协议属于TCP/IP网络模型的第三层-网络层，它的主要作用是实现终端节点之间的通信。IP协议是网络层的一个重要协议，网络层中还有ARP协议（获取MAC地址）和ICMP协议（数据发送异常通知）。</p>
-<p>数据链路层的作用在于实现同一中数据链路下的包传递，而网络层则可以实现跨越不同数据链的包传递。比如主机A通过WI-FI连接到路由器B，路由器B通过以太网连接到路由器C，而路由器C又通过WI-FI与主机D保持连接，这时主机A向D发送的数据包就依赖于网络层进行传输。</p>
-<p>IP大致分为三大作用模块：IP寻址、路由以及IP分包和组包</p>
-<h1 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h1><p>IP地址是一种在网络层用于识别通信对端信息的地址，它有别于数据链路层中的MAC地址，后者用于标识同一链路下不同的计算机。</p>
-<p>IP地址由32为正整数表示，为了直观的表示，我们把它分成4个部分，每个部分由8位整数组成，对应十进制的范围就是0-255。比如172.20.1.1可以表示为：10101100 00010100 00000001 00000001.转换规则很简单，就是分别把四个部分的十进制（0-255）与8位二进制数进行转换。</p>
-<p>从功能上看，IP地址由两部分组成：网络标识和主机标识。</p>
-<ul>
-<li>网络标识用于区分不同的网段，相同段内的主机必须拥有相同的网络标识，不同段内的主机不能拥有相同的网络标识。</li>
-<li>主机标识用于区分同一网段下不同的主机，它不能在同一网段内重复出现。</li>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>观察者模式是一个使用率非常高的模式，它最常用的地方是GUI系统、订阅-发布系统，因为这个模式的一个重要作用就是解耦，将被观察者和观察者解耦，使得它们之间的依赖性更小，甚至做到毫无依赖。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并被自动更新。</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ul>
+<li>关联行为场景，需要注意的是，关联行为是可拆分的，而不是组合关系；</li>
+<li>事件多级触发场景；</li>
+<li>跨系统的消息交换场景，如消息队列、事件总线的处理机制；</li>
 </ul>
-<p>32为IP地址被分为两个部分，到底前多少为是网络标识呢？一般有两种方法表示：IP地址分类、子网掩码</p>
-<h2 id="IP分类"><a href="#IP分类" class="headerlink" title="IP分类"></a>IP分类</h2><p>IP地址分为四个级别，分为A类、B类、C类和D类。分类的依据是IP地址的前四位。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ip%E5%9C%B0%E5%9D%80-ip%E5%9C%B0%E5%9D%80%E7%9A%84%E5%88%86%E7%B1%BB.png" alt=""></p>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8FUML.png" alt=""></p>
+<p>角色介绍：</p>
 <ul>
-<li>A类地址</li>
+<li>Subject：抽象主题，也就是被观察者(Observable)角色，抽象主题角色把所有观察者对象的引用保存在一个集合里，每个主题都可以有任意数量的观察者，抽象主题提供一个接口，可以增加和删除观察者对象。</li>
+<li>ConcreteSubject：具体主题，该角色将有关状态存入具体观察者对象，在具体主题的内部状态发生改变时，给所有注册过的观察者发出通知，具体主题角色又叫做具体被观察者(ConcreteObservable)角色。</li>
+<li>Observer：抽象观察者，该角色是观察者的抽象类，它定义了一个更新接口，使得在得到主题的更改通知时更新自己。</li>
+<li>ConcreteObserver：具体的观察者，该角色实现抽象观察者角色所定义的更新接口，以便在主题的主题发生改变时更新自身的状态。</li>
 </ul>
-<p>A类IP地址是第一位是0的地址。从第1位到第8位是A类IP地址的网络标识，用十进制标识的0.0.0.0~127.0.0.0是A类IP地址的理论范围。A类地址的后24位相当于主机标识。因此一个网段内可容纳的主机地址上线为2的24次方个。</p>
-<ul>
-<li>B类地址</li>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>发布-订阅模式也称为观察者模式。下面通过实例来了解观察者模式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 程序员是观察者</div><div class="line"> */</div><div class="line"><span class="keyword">import</span> java.util.Observable;</div><div class="line"><span class="keyword">import</span> java.util.Observer;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Coder</span> <span class="keyword">implements</span> <span class="title">Observer</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> String mName;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Coder</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">		<span class="keyword">this</span>.mName = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(Observable o, Object arg)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Hi,"</span> + mName + <span class="string">"更新啦，内容是: "</span> + arg);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Coder [mName="</span> + mName + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 被观察者，发布者</div><div class="line"> */</div><div class="line"><span class="keyword">import</span> java.util.Observable;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DevTechFrontier</span> <span class="keyword">extends</span> <span class="title">Observable</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postNewPublication</span><span class="params">(String content)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">//标识状态或内容改变</span></div><div class="line">		setChanged();</div><div class="line"></div><div class="line">		<span class="comment">//通知所有观察者</span></div><div class="line">		notifyObservers(content);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		DevTechFrontier devTechFrontier = <span class="keyword">new</span> DevTechFrontier();</div><div class="line"></div><div class="line">		Coder coder = <span class="keyword">new</span> Coder(<span class="string">"liu"</span>);</div><div class="line">		Coder coder2 = <span class="keyword">new</span> Coder(<span class="string">"lee"</span>);</div><div class="line">		Coder coder3 = <span class="keyword">new</span> Coder(<span class="string">"zhang"</span>);</div><div class="line"></div><div class="line">		<span class="comment">//注册观察者到观察者列表中</span></div><div class="line">		devTechFrontier.addObserver(coder);</div><div class="line">		devTechFrontier.addObserver(coder2);</div><div class="line">		devTechFrontier.addObserver(coder3);</div><div class="line"></div><div class="line">		<span class="comment">//发布消息</span></div><div class="line">		devTechFrontier.postNewPublication(<span class="string">"新一期周报发布啦!"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Hi,zhang更新啦，内容是: 新一期周报发布啦!</div><div class="line">Hi,lee更新啦，内容是: 新一期周报发布啦!</div><div class="line">Hi,liu更新啦，内容是: 新一期周报发布啦!</div></pre></td></tr></table></figure>
+<p>Observer和Observable是JDK中的内置类型，可见观察者模式是非常重要的，这里Observer是抽象的观察者角色，Coder是具体观察者角色；Observable是抽象的主题角色，DevTechFrontier是具体的主题角色。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>观察者模式主要的作用就是对象解耦，经观察者与被观察者完全隔离，只依赖于Observer和Observable抽象。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>观察者和被观察者之间是抽象耦合，应对业务变化。</li>
+<li>增强系统灵活性、可扩展性。</li>
 </ul>
-<p>B类IP地址是前两位为“10”的地址。B类地址的前16位是网络标识，用十进制标识的话是128.0.0.0~191.255.0.0是B类地址的范围。B类地址的后16位是主机标识，因此一个网段可容纳主机地址上限为65534个。</p>
-<ul>
-<li>C类地址</li>
-</ul>
-<p>C类IP地址是前三位是“110”的地址。C类地址的前24位是网络标识，用十进制标识的话192.0.0.0~223.255.255.0是C类地址的范围。C类地址的后8位是主机标识，因此一个网段可容纳主机地址上限为254个。</p>
-<ul>
-<li>D类地址</li>
-</ul>
-<p>D类IP地址是前四位是“1110”的地址。D类地址的前32位是网络标识。用十进制表示的话224.0.0.0~239.255.255.255是D类地址的网络地址，D类地址没有主机标识，因此常用于多播。</p>
-<ul>
-<li>关于分配IP主句地址的注意事项</li>
-</ul>
-<p>在分配IP地址时关于主机标识有一点需要注意，即要用比特位表示主机地址时，不可以全部为0或者全部为1.因为全部为0只有在表示对应的网络地址或IP地址不可或知的情况下才使用，而全部为1的主机地址通常作为广播地址。</p>
-<p>因为在分配过程中，应该去掉这两种情况，这也是为什么C类地址每个网段最多只能有254（2^8 - 2）个主机地址的原因。</p>
-<h2 id="广播地址"><a href="#广播地址" class="headerlink" title="广播地址"></a>广播地址</h2><p>广播地址用于在同一个链路中相互连接的主机之间发送数据的发送端IP地址中的主机地址部分全部设置为1，就是广播地址。例如把172.20.0.0用二进制表示如下：<br>10101100.00010100.00000000.00000000<br>将这个地址的主机部分全部改为1，形成广播地址：<br>10101100.00010100.11111111.11111111<br>再将这个地址用十进制表示，则为172.20.255.255</p>
-<p>广播分为本地广播和直接广播</p>
-<ul>
-<li>本地广播</li>
-</ul>
-<p>在本网络内的广播叫做本地广播。例如网络地址为192.168.0.4的情况下，广播地址是192.168.0.255.因为这个广播地址的IP包会被路由器屏蔽，所以不会到达192.168.0.4以外（如192.168.1.4）的其他链路上。</p>
-<ul>
-<li>直接广播</li>
-</ul>
-<p>在不同网络之间的广播叫做直接广播。例如网络地址192.168.0.4的主机地址想192.168.1.255的目标地址发送IP包。收到这个包的路由器，将数据转发给192.168.1.0，从而使得所以192.168.1.1~192.168.1.254的主机都能收到这个包。</p>
-<h2 id="IP多播"><a href="#IP多播" class="headerlink" title="IP多播"></a>IP多播</h2><p>多播用于将数据包发送给特定组内的所有主机。由于其直接使用IP协议，因此是不可靠的传输。</p>
-<p>多播使用D类地址。因此，如果IP地址的前四位是“1110”，就可以认为是多播地址，而剩下的28位可以成为多播的组编号。</p>
-<h2 id="子网编码"><a href="#子网编码" class="headerlink" title="子网编码"></a>子网编码</h2><p>一个IP地址有两种识别码：一是IP地址本身，而是表示网络部分的子网掩码。子网掩码用二进制表示的话也是一个32位的数字。它对应IP地址网络标识部分的位全部为“1”，对应IP地址主机标识的部分则全部为“0”。由此，一个IP地址可以不再受限于自己的类别，而是可以用这样的子网掩码自由地定位自己的网络标识长度。当然，子网掩码必须是IP地址的首位开始连续的“1”。</p>
-<p>以IP地址172.20.100.52为例，它本来是一个B类IP地址（前16位是网络标识），但通过子网掩码，它可以扩展为前26位是网络标识的IP地址，其中定义类10位子网掩码，如图所示。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ip%E5%9C%B0%E5%9D%80-%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81.jpg" alt=""></p>
-<h1 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h1><h2 id="路由控制表"><a href="#路由控制表" class="headerlink" title="路由控制表"></a>路由控制表</h2><p>发送数据包时所使用的地址是网络层的地址，即IP地址。然而仅仅有IP地址还不足以实现将数据包发送到对端目标地址，在数据发送过程中还需类似于“指明路由器或主机”的信息，以便真正发往目标地址。保存这种信息的就是路由控制表（Routing Table）。实现IP通信的主机和路由器都必须持有一张这样的表，它们也正是在这个表格的基础上才得以进行数据包发送的。</p>
-<p>路由控制表的形成方式有两种：一种是管理员手动设置，另一种是路由器与其他路由器相互交换信息时自动刷新。前者也叫静态路由控制，而后者叫做动态路由控制。为了让动态路由及时刷新路由表，在网络上互连的路由器之间必须设置好路由协议，保证正常读取路由控制信息。</p>
-<p>IP协议始终认为路由表是正确的。然而，IP本身并没有定义制作路由控制表的协议。即IP没有制作路由控制表的机制。该表是由一个叫做“路由协议”的协议制作而成。</p>
-<h2 id="路由控制"><a href="#路由控制" class="headerlink" title="路由控制"></a>路由控制</h2><p>路由器中保存着路由控制表，它在路由控制表中查找目标IP地址对应的下一个路由器地址。</p>
-<p>IP地址的网络地址部分用于进行路由控制，如下图所示</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/%E8%B7%AF%E7%94%B1-%E8%B7%AF%E7%94%B1%E6%8E%A7%E5%88%B6%E8%A1%A8%E4%B8%8EIP%E5%8C%85%E5%8F%91%E9%80%81.png" alt=""></p>
-<p>主机A的地址是10.1.1.30，要把数据发往地址为10.1.2.10的主机。在主机A的路由表中，保存了两个字段，由于目标地址10.1.2.10与10.1.1.0/24段不匹配，所以它被发往默认路由10.1.1.1也就是图中路由器1的IP地址。</p>
-<p>路由器1继续在它自己的路由控制表中查找目标地址10.1.2.10，它发现目标地址属于10.1.2.0/24这一段，因此将数据转发至下一个路由器10.1.0.2，也就是路由器2的左侧网卡IP地址</p>
-<p>路由器在自己的路由控制表中查找目标地址10.1.2.10，根据表中记录将数据发往10.1.2.1接口，也就是路由器右侧网卡的IP地址，主机B检查目标IP地址和自己相同，于是接收数据。</p>
-<h2 id="环路"><a href="#环路" class="headerlink" title="环路"></a>环路</h2><p>上图中，假设主机A向一个不存在的IP地址发送数据，并且路由器1、2、3设置的默认路由形成了一个循环，那么数据将在网络中不断转发最终导致网络拥堵，这个问题将在下文分析IP首部时得到解决。</p>
-<h2 id="IP报文分割与重组"><a href="#IP报文分割与重组" class="headerlink" title="IP报文分割与重组"></a>IP报文分割与重组</h2><p>在数据链路层中，我们已经提到过不同的数据链路有不同的最大传输单元（MTU）。因此IP协议的一个任务是对数据进行分片和重组，分片由发送端主机和路由器负责，重组由接收端主机负责。</p>
-<h3 id="路径MTU发现"><a href="#路径MTU发现" class="headerlink" title="路径MTU发现"></a>路径MTU发现</h3><p>分片会加重路由器的负担，因此只要条件允许，我们都不希望路由器对IP数据包进行分片处理。另外，如果一个分片丢失，整个IP数据报都会作废。</p>
-<p>解决以上问题的技术是“路径MTU发现”。主机首先获取整个路径中所有数据链路的最小MTU，并按照整个大小将数据分片。因此传输过程中的任何一个路由器都不用进行分片工作。</p>
-<p>为了找到路径MTU，主机首先发送整个数据包，并将IP首部的禁止分片标志设为1.这样路由器在遇到需要分片才能处理的包时不会分片，而是直接丢弃数据并通过ICMP协议将整个不可达的消息发回主机。主机将ICMP通知中的MTU设置为当前MTU，根据真个MTU对数据进行分片处理。如此反复下去，直到不再收到ICMP通知，此时的MTU就是路径MTU。</p>
-<p>以UDP协议发送数据为例：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/%E8%B7%AF%E7%94%B1-%E8%B7%AF%E5%BE%84MTU%E5%8F%91%E7%8E%B0.png" alt=""></p>
-<h3 id="重组"><a href="#重组" class="headerlink" title="重组"></a>重组</h3><p>接收端根据IP首部中的标志（Flag）和片偏移（Fragment Offset）进行数据重组。</p>
-<h2 id="IP首部（IPv4）"><a href="#IP首部（IPv4）" class="headerlink" title="IP首部（IPv4）"></a>IP首部（IPv4）</h2><p>IP首部是一个有些复杂的结构，我们不用记忆它的结构，只需了解每个部分的作用即可，这样可以加深对IP协议的理解。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/%E8%B7%AF%E7%94%B1-Ip%E9%A6%96%E9%83%A8.jpg" alt=""></p>
-<ul>
-<li>版本</li>
-</ul>
-<p>由4比特构成，表示标识IP首部的版本号。IPv4的版本号即为4</p>
-<ul>
-<li>首部长度（IHL，Internet Header Length）</li>
-</ul>
-<p>由4比特构成，表明IP首部的大小，单位为4字节。对于没有可选项的IP包，首部长度则设置为5.也就是说，当没有可选项时，IP首部的长度为20字节（4 * 5 = 20）</p>
-<ul>
-<li>区分服务（TOS：Type of Service）</li>
-</ul>
-<p>由8比特组成，用来表明服务质量</p>
-<p>DSCP（Differential Services Codepoint，差分服务代码点）是TOS的一部分，用来进行质量控制，由6个字节组成。<br>ECN（Explicit Congestion Nofication，显示拥塞通告），用来报告网络拥堵情况，由2bit构成。</p>
-<ul>
-<li>总长度</li>
-</ul>
-<p>表示IP首部与数据部分结合起来的总字节数。该字段为16bit。因此IP包的最大长度为65535（2^16）个字节。虽然不同数据链路的MTU不同，但是IP协议屏蔽了这些区别，通过自己实现的数据分片功能，从上层的角度来看，IP协议总是能够以65535为最大包长进行传输。</p>
-<ul>
-<li>标识（ID）</li>
-</ul>
-<p>由16比特组成，用于分片重组。同一分片的标识值相同，不同分片的标识值不同。通过每发送一个IP包，它的值也逐渐递增。此外即使ID相同，如果目标地址、源地址或协议不同的话，也会被认为是不同的分片。</p>
-<ul>
-<li>标志（Flags）</li>
-</ul>
-<p>由3bit组成，表示包被分片的相关信息</p>
-<ul>
-<li>片偏移（FO，Fragment Offset）</li>
-</ul>
-<p>由13bit构成，用来标识被分片的每一个分段相对于原始数据的位置。第一个分片对应的值为0.由于FO域占13位，因此最多可以表示8192（2^13）个相对位置。单位为8字节，因此最大可表示原始数据8 * 8192 = 65536字节的位置。</p>
-<ul>
-<li>生存时间（TTL：Time To Live）</li>
-</ul>
-<p>由8比特构成，以秒为单位记录当前包在网络上应该生存的时间。在实际中它是指可以中转多少个路由器的意思。每经过一个路由器，TTL会减少1，直到变成0则丢弃该包。</p>
-<ul>
-<li>协议（Protocol）</li>
-</ul>
-<p>由8bit构成，表示IP首部的下一个首部隶属于哪个协议。</p>
-<ul>
-<li>首部校验和（Header Checksum）</li>
-</ul>
-<p>由16比特构成，也叫IP首部校验和。该字段只校验首部，不校验数据部分，主要用来确保IP数据包不被破坏。</p>
-<ul>
-<li>源地址（Source Address）</li>
-</ul>
-<p>由32bit构成，表示发送端IP地址</p>
-<ul>
-<li>目标地址（Destination Address）</li>
-</ul>
-<p>由32bit构成，表示接收端IP地址</p>
-<ul>
-<li>可选项（Options）</li>
-</ul>
-<p>长度可变，通常只在进行实验或诊断时使用</p>
-<ul>
-<li>填充（Padding）</li>
-</ul>
-<p>在有可选项的情况下，首部长度可能不是32bit的整数倍。为此，通过向字段填充0，调整32bit的整数倍。</p>
-<ul>
-<li>数据（Data）</li>
-</ul>
-<p>存入数据。将IP协议的首部也作为数据进行处理。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>在Java中消息的通知默认是顺序执行的，一个观察者卡顿，会影响整体的执行效率，在这种情况下，一般考虑采用异步的方式。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2015/12/17/TCP-IP2IP协议/" data-id="cj6esnzg6009mwg190dgm2k7s" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/06/09/Android设计模式(十一)观察者模式/" data-id="cj6f0soa8002vf519cznadq4g" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2015/12/17/TCP-IP2IP协议/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2016/06/09/Android设计模式(十一)观察者模式/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络通信/">网络通信</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -253,14 +151,14 @@
 
 
   
-    <article id="post-TCP-IP1模型" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android设计模式(五)抽象工厂模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/17/TCP-IP1模型/" class="article-date">
-  <time datetime="2015-12-17T13:04:06.000Z" itemprop="datePublished">2015-12-17 21:04:06</time>
+    <a href="/2016/06/07/Android设计模式(五)抽象工厂模式/" class="article-date">
+  <time datetime="2016-06-07T13:35:01.000Z" itemprop="datePublished">2016-06-07 21:35:01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/网络通信/">网络通信</a>
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
   </div>
 
   </div>
@@ -271,7 +169,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/17/TCP-IP1模型/">TCP/IP（一）分层模型</a>
+      <a class="article-title" href="/2016/06/07/Android设计模式(五)抽象工厂模式/">Android设计模式(五)抽象工厂模式</a>
     </h1>
   
 
@@ -281,175 +179,63 @@
       
         <!-- Table of Contents -->
         
-        <h1 id="OSI参考模型"><a href="#OSI参考模型" class="headerlink" title="OSI参考模型"></a>OSI参考模型</h1><p>在OSI参考模型中，网络被分为七层，从下到上依次是：物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-osi.png" alt="osi七层模型"></p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>抽象工厂模式也是创建型设计模式之一。抽象工厂模式起源于以前对不同操作系统的图形化解决方案，如果不同操作系统中的按钮和文本控件其实现不同、展示效果也不一样，对于每一种操作系统其本身就构成一个产品类，而按钮与文本控件也构成一个产品类，两种产品类两种变化，各自有各自的特性。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>为创建一组相关或是相互依赖的对象提供一个接口，而不需要指定它们的具体类。</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>一个对象族有相同约束时可以使用抽象工厂模式？比如Android、iOS、Window Phone下都有短信软件和拨号软件，两者都属于SoftWare软件范畴，但是它们所在的平台不一样，即便是同一家公司出品的软件，其代码实现逻辑也是不同的，这时就可以考虑使用抽象工厂方法模式来产生Android、iOS、Window Phone下的短信和拨号软件。</p>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8FUML%E7%B1%BB%E5%9B%BE.png" alt=""></p>
+<p>主要有四类角色：</p>
 <ul>
-<li><p>物理层：负责0、1比特流（0、1序列）与电压的高低、光的闪灭（电信号）之间的互换。</p>
+<li><p>AbstractFactory：抽象工厂类，它声明了一组用于创建一种产品的方法，每一种方法对应一中产品，类图中分别创建产品A和产品B。</p>
 </li>
-<li><p>数据链路层：负责物理层上互连的、节点之间的通信传输。例如一个与以太网相连的2个节点之间的通信</p>
+<li><p>ConcreteFactory：具体工厂类，它实现类在抽象工厂中定义的创建产品的方法，生成一组具体产品，这些产品构成一个产品种类。如类图中的ConcreteFactory1和ConcreteFactory2.</p>
 </li>
-<li><p>网络层：将数据传输到目标地址。目标地址可以是多个网络通过路由器连接而成的某一个地址。因此这一层主要是负责寻址和路由选择。</p>
+<li><p>AbstractProduct：抽象产品类，它为每种产品声明接口，如类图中的AbstractProductA和AbstractProductB。</p>
 </li>
-<li><p>传输层：可靠地传输数据。只在通信双方节点上进行处理，而无需在路由器上处理。</p>
-</li>
-<li><p>会话层：负责建立和断开通信连接，以及数据的分割等数据传输相关的管理。</p>
-</li>
-<li><p>表示层：将应用处理的信息转换为适合网络传输的格式，或将来自下一层的数据转换为上层能够处理的格式。因此它主要负责数据格式的转换。</p>
-</li>
-<li><p>应用层：为应用程序提供服务并规定应用程序中通信相关的细节。包括文件传输、电子邮件、远程登录等协议。</p>
+<li><p>ConcreteProduct：具体产品类，它定义具体工厂生产的具体产品对象，实现抽象产品接口中声明的方法，如类图中的ConcreteProductA1、ConcreteProductB1、ConcreteProductA2、ConcreteProductB2。</p>
 </li>
 </ul>
-<h1 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h1><p>数据链路层中有两个重要的概念：MAC 地址和分组交换</p>
-<h2 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><p>MAC 地址是被烧录到网卡 ROM 中的一串数字，长度为 48 比特，它在世界范围内唯一(不考虑虚拟机自定义 MAC 地址)。由于 MAC 地址的唯一性，它可以被用来区分不同的节点，一旦指定了 MAC 地址，就不可能出现不知道往哪个设备传输数据的情况。</p>
-<h2 id="分组交换"><a href="#分组交换" class="headerlink" title="分组交换"></a>分组交换</h2><p>分组交换是指将大数据分割为一个个叫做包的较小单位进行传输的方法。使用分组交换的原因是不同的数据链路有各自的最大传输单元（MTU）。以以太网为例，它的MTU是1500字节，也就是通过以太网的数据，必须分割为若干帧，每个帧的数据长度不超过1500字节。如果上层传来的数据超过这个长度，数据链路层需要分割后再发送。</p>
-<h1 id="传输方式的分类"><a href="#传输方式的分类" class="headerlink" title="传输方式的分类"></a>传输方式的分类</h1><ul>
-<li>面向连接型和面向无连接型（网络数据传输方式）</li>
-<li>电路交换和分组交换（网络通信方式）</li>
-<li>单播、广播、多播、任播（根据接收端数量分类）<ul>
-<li>单播：一对一通信</li>
-<li>广播：将消息从1台主机发送给与之相连的所有其他主机，典型例子就是电视播放</li>
-<li>多播（组播）：有一台主机发送消息给特定的多台主机</li>
-<li>任播：从目标主机群中选择一台最符合网络条件的主机作为目标主机发送消息，发送端将只会跟这台主机进行通信。</li>
-</ul>
-</li>
-</ul>
-<h1 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h1><h2 id="TCP-IP的具体含义"><a href="#TCP-IP的具体含义" class="headerlink" title="TCP/IP的具体含义"></a>TCP/IP的具体含义</h2><p>全称：Transmission Control Protocol/Internet Protocol</p>
-<p>TCP/IP是指利用IP进行通信时所必须用到的协议群的统称。具体来说，IP或ICMP、TCP或UDP、TELNET或FTP、以及HTTP等都属于TCP/IP协议。它们与TCP或IP的关系密切，是互联网必不可少的组成部分。TCP/IP泛指这些协议，有时也称为TCP/IP为网际协议族。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-tcpip%E5%8D%8F%E8%AE%AE%E6%97%8F.png" alt=""></p>
-<h2 id="TCP-IP规范-RFC"><a href="#TCP-IP规范-RFC" class="headerlink" title="TCP/IP规范-RFC"></a>TCP/IP规范-RFC</h2><p>那些需要标准化的协议被列入RFC（Request for Comment）文档并在互联网上公布。RFC不仅记录了协议规范内容，还包含了协议的实现和运用的相关信息以及实验方面的信息。</p>
-<table>
-<thead>
-<tr>
-<th>协议</th>
-<th>RFC</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IPv4</td>
-<td>RFC791</td>
-</tr>
-<tr>
-<td>IPv6</td>
-<td>RFC2460</td>
-</tr>
-<tr>
-<td>TCP</td>
-<td>RFC793</td>
-</tr>
-<tr>
-<td>UDP</td>
-<td>RFC768</td>
-</tr>
-<tr>
-<td>HTTP(1.1)</td>
-<td>RFC2616</td>
-</tr>
-<tr>
-<td>FTP</td>
-<td>RFC959</td>
-</tr>
-<tr>
-<td>TELNET</td>
-<td>RFC 854</td>
-</tr>
-</tbody>
-</table>
-<h2 id="TCP-IP参考模型"><a href="#TCP-IP参考模型" class="headerlink" title="TCP/IP参考模型"></a>TCP/IP参考模型</h2><p>TCP/IP参考模型中，网络分为五层，从下到上依次为：物理层、网络接口层、网络层、传输层、应用层。TCP/IP更强调“在计算机上实现协议应该开发哪种程序”。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-tcpip%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B.png" alt="tcpip参考模型"></p>
-<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>TCP/IP物理层是负责数据传输的硬件。</p>
-<h3 id="网络接口层"><a href="#网络接口层" class="headerlink" title="网络接口层"></a>网络接口层</h3><p>网络接口层利用以太网的数据链路层进行通信</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>网络层使用IP协议，相当于OSI参考模型的第三层网络层。IP协议基于IP地址转发分包数据，作用是将分组数据报发送到目的主机。</p>
-<p>TCP/IP分层中的网络层与传输层的功能通常由操作系统提供。尤其是路由器，它必须实现通过网络层转发分组数据包的功能。此外，连接互联网的所有主机跟路由器都必须实现IP的功能。</p>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>在工厂模式中，以小明的车厂为例讲述了工厂方法模式，但是小明后来发现一个问题，虽然Q3、Q5都是一个车系，但是三者之间的零部件差别却是很大，使用了不同的发动机、轮胎、制动系统等零部件。Q3、Q7对应的是一系列车，而发动机、轮胎、制动系统则对应的是一系列零部件，两者是不同的产品类型，这是就可以将抽象工厂模式应用其中，首先，汽车工厂需要生产轮胎、发动机、制动系统这3种部件，然后再根据车型组装这些零部件。</p>
 <ul>
-<li>IP</li>
+<li>抽象车厂类</li>
 </ul>
-<p>IP是跨越网络传送数据包，使整个互联网都能收到数据的协议。IP协议使数据能够发送到地球的另一端，这期间它使用IP地址作为主机的标识。</p>
-<p>IP还隐含着数据链路层的功能。通过IP相互通信的主机之间不论经过怎样的底层数据链路都能够实现通信</p>
-<p>IP也是分组交换的一种协议，但是它不具有重发机制。即使分组数据包未能到达对端主机也不会重发，因此属于非可靠性传输协议。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">CarFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/*</span></div><div class="line">	 *生产轮胎</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> ITire <span class="title">createTire</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 生产发动机</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> IEngine <span class="title">createEngine</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 生产制动系统</div><div class="line">	 * <span class="doctag">@return</span></div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> IBrake <span class="title">createBrake</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是零部件产品类：</p>
 <ul>
-<li>ICMP</li>
+<li>轮胎相关类</li>
 </ul>
-<p>IP数据包在发送过程中一旦发生异常导致无法到达对端目标地址时，需要给发送方发送一个发送异常的通知。ICMP就是为这一功能而制定的，它有时也被用来诊断网络的健康状况。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">ITire</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tire</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalTire</span> <span class="keyword">implements</span> <span class="title">ITire</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tire</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"普通轮胎"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SUVTire</span> <span class="keyword">implements</span> <span class="title">ITire</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tire</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"SUV 轮胎"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>ARP</li>
+<li>发动机相关类</li>
 </ul>
-<p>从分组数据包中的IP地址中解析出物理地址（MAC地址）的一种协议。</p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>传输层的主要功能就是让应用程序之间实现通信。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IEngine</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">engine</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DomesticEngine</span> <span class="keyword">implements</span> <span class="title">IEngine</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">engine</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		System.out.println(<span class="string">"国产发动机"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForeignEngine</span> <span class="keyword">implements</span> <span class="title">IEngine</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">engine</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		System.out.println(<span class="string">"进口发动机"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>TCP传输控制协议</li>
+<li>制动系统相关类</li>
 </ul>
-<p>TCP是一种面向有连接的传输层协议，它可以保证两端通信主机之间的数据完整性。TCP能够正确处理在传输过程中丢包、传输顺序乱掉等异常情况。此外TCP还能够有效利用宽带，缓解网络拥堵。然而，为了建立与断开连接，有时它需要至少7次的发包收包，导致网络流量的浪费。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">IBrake</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brake</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">NormalBrake</span> <span class="keyword">implements</span> <span class="title">IBrake</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brake</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		System.out.println(<span class="string">"普通刹车"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SeniorBrake</span> <span class="keyword">implements</span> <span class="title">IBrake</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">brake</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		System.out.println(<span class="string">"高级刹车"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面是具体车型的生产工厂类:</p>
 <ul>
-<li>UDP用户数据包协议</li>
+<li>生产工厂类</li>
 </ul>
-<p>UDP是一种面向无连接的传输层协议。它不能保证两端通信主机之间的数据完整性，它是不可靠的。</p>
-<h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>TCP/IP应用的架构大多数属于客户端/服务器模型。常见的应用有www、E-mail、FTP、TELNET、SNMP（网络管理）。</p>
-<h2 id="TCP-IP通信示例"><a href="#TCP-IP通信示例" class="headerlink" title="TCP/IP通信示例"></a>TCP/IP通信示例</h2><h3 id="数据包首部"><a href="#数据包首部" class="headerlink" title="数据包首部"></a>数据包首部</h3><p>每个分层中，都会对所发送的数据附加一个首部，在这个首部中包含了该层必要的信息，如发送的目标地址以及协议相关信息。通常，为协议提供的信息为包首部，所要发送的内容为数据。如下图所示，在下一层的角度看，从上一层收到的包全部都被认为是本层的数据。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-%E6%95%B0%E6%8D%AE%E5%8C%85%E9%A6%96%E9%83%A8.png" alt=""></p>
-<h3 id="发送数据包"><a href="#发送数据包" class="headerlink" title="发送数据包"></a>发送数据包</h3><p>假设甲给乙发送电子邮件，内容为：“早上好”。而从TCP/IP通信上看，是从一台计算机A向另一台计算机B发送电子邮件。下面，我们通过这个例子来讲解一下TCP/IP通信的过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//Q3工厂类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Q3Factory</span> <span class="keyword">extends</span> <span class="title">CarFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ITire <span class="title">createTire</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> NormalTire();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IEngine <span class="title">createEngine</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> DomesticEngine();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IBrake <span class="title">createBrake</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> NormalBrake();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Q7工厂类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Q7Factory</span> <span class="keyword">extends</span> <span class="title">CarFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> ITire <span class="title">createTire</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> SUVTire();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IEngine <span class="title">createEngine</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> ForeignEngine();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> IBrake <span class="title">createBrake</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> <span class="keyword">new</span> SeniorBrake();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>[1]应用程序处理</li>
+<li>客户类</li>
 </ul>
-<p>启动应用程序新建邮件，将收件人邮箱填好，再由键盘输入邮件内容“早上好”，鼠标点击“发送”按钮就可以开始TCP/IP通信了。</p>
-<p>首先应用程序会进行编码处理。例如，电子邮件使用UTF-8进行编码，这些编码相当于OSI的表示层功能。</p>
-<p>应用在发送邮件的那一刻建立TCP连接，从而利用这个TCP连接发送数据。它的过程首先是将应用的数据发送给下一层的TCP，再做实际的转发处理。</p>
-<ul>
-<li>[2]TCP模块的处理</li>
-</ul>
-<p>TCP根据应用的指示，负责建立连接、发送数据以及断开连接。TCP提供将应用层发来的数据顺利发送至对端的可靠传输。</p>
-<p>为了实现TCP的这一功能，需要在应用层数据的前端附加一个TCP首部。TCP首部中包括源端口号和目标端口号（用以识别发送主机跟接收主机上的应用）、序号（用以识别发送的包中哪部分是数据）以及校验码。随后将附加类TCP首部的包再发送给IP。</p>
-<ul>
-<li>[3]IP模块的处理</li>
-</ul>
-<p>IP将TCP传过来的TCP首部和TCP数据组合起来作为IP包的数据，并在TCP首部的前端加上IP包的首部。因此，IP数据包中IP首部后面紧跟着TCP首部，然后才是应用的数据首部和数据本身。IP首部中包含数据接收端IP地址以及发送端IP地址。紧随IP首部的还有用来判断数据时TCP还是UDP的信息。</p>
-<p>IP包生成后，参考路由控制表决定接受此IP包的路由或主机。随后，IP包将被发送给连接这些路由器或主机网络接口的驱动程序，以实现真正发送数据。</p>
-<p>如果不知道接收端的MAC地址，可以利用ARP查找。只要知道了对端的MAC地址，就可以将MAC地址和IP地址交给以太网驱动程序，实现数据传输。</p>
-<ul>
-<li>[4]网络接口层的处理</li>
-</ul>
-<p>从IP传过来的包，对于以太网驱动来说不过就是数据。给这数据附加上以太网首部并进行发送处理。以太网首部中包含接收端MAC地址、发送端MAC地址以及标志以太网类型的以太网数据的协议。根据上述信息产生的以太网数据包将通过物理层传输给接收端。发送处理中的FCS由硬件计算，添加到包的最后。设置FCS的目的是为了判断数据包是否由于噪声而被破坏。</p>
-<p>下图为展示TCP/IP各层对邮件的收发处理</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-%E9%82%AE%E4%BB%B6%E6%94%B6%E5%8F%91%E5%A4%84%E7%90%86.png" alt=""></p>
-<h3 id="经过数据链路的包"><a href="#经过数据链路的包" class="headerlink" title="经过数据链路的包"></a>经过数据链路的包</h3><p>分组数据包经过以太网的数据链路时的大致流程如下图所示。</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/tcpip-%E5%88%86%E5%B1%82%E4%B8%AD%E5%8C%85%E7%9A%84%E7%BB%93%E6%9E%84.png" alt=""></p>
-<p>包流动时，从前往后依次被附加了以太网包首部、IP包首部、TCP包首部以及应用自己的包首部和数据。而包的最后则追加以太网包尾。</p>
-<p>每个包首部中至少都会包含两个信息：一是发送端和接收端的地址，另一个是上一层的协议类型。</p>
-<p>经过每个协议层时，都必须有识别包发送端和接收端的信息。以太网会用MAC地址，IP会用IP地址，而TCP/UDP则会用端口号作为识别两端主机的地址。即使在应用程序中，像电子邮件地址这样的信息也是一种地址标识。这些地址信息都在每个包经由各个分层时，附加到协议对应的包首部里面。</p>
-<p>此外，每个分层的包首部中还包含一个识别位，它是用来标识上一层协议的种类信息。例如以太网的包首部中的以太网类型，IP中的协议类型以及TCP/UDP中两个端口的端口号等都起着识别协议类型的作用。就是在应用的首部信息中，有时也会包含一个用来识别其数据类型的标签。</p>
-<h3 id="数据包接收处理"><a href="#数据包接收处理" class="headerlink" title="数据包接收处理"></a>数据包接收处理</h3><p>包的接收流程是发送流程的逆序过程。</p>
-<ul>
-<li>[5]网络接口层的处理</li>
-</ul>
-<p>主机收到以太网包以后，首先以太网的包首部找到MAC地址判断是否为发给自己的包。如果不是发给自己的包则丢弃数据。</p>
-<p>而如果接收到了恰好是发给自己的包，就查找以太网包首部中的类型域从而确定以太网协议所传送过来的数据类型。在这个例子中数据类型显然是IP包，因此再将数据传给处理IP的子程序，如果这时不是IP而是其他诸如ARP的协议，就把数据传给ARP处理。总之，如果以太网包首部的类型域包含了一个无法识别的协议类型，则丢弃数据。</p>
-<ul>
-<li>[6]IP模块的处理</li>
-</ul>
-<p>IP模块接收到IP包首部及后面的数据部分以后，也做类似的处理。如果判断得出包首部中的IP地址与自己的IP地址匹配，则可接收数据并从中查找上一层的协议。如果上一层是TCP就将IP包首部之后的部分传给TCP处理；如果是UDP则将IP包首部后面的部分传给UDP处理。对于有路由器的情况下，接收端地址往往不是自己的地址，此时，需要借助路由控制表，在调查应该送达的主机或路由器以后再转发数据。</p>
-<ul>
-<li>[7]TCP模块的处理</li>
-</ul>
-<p>在TCP模块中，首先会计算一下校验和，判断数据是否被破坏。然后检查是否在按照序号接收数据。最后检查端口号，确定具体的应用程序。</p>
-<p>数据接收完毕后，接收端则发送一个“确定回执”给发送端。如果这个回执信息未能达到发送端，那么发送端会认为接收端没有接收到数据而一直反复发送。</p>
-<p>数据被完整地接收以后，会传给由端口号识别的应用程序。</p>
-<ul>
-<li>[8]应用程序的处理</li>
-</ul>
-<p>接收端应用程序会直接接收发送端发送的数据。通过解析数据可以获知邮件的收件人地址是乙的地址。如果主机B上没有乙的邮件信箱，那么主机B返回给发送端一个“无此收件地址”的报错信箱。</p>
-<p>但在这个例子中，主机B上有乙的收件箱，所有主机B和收件人乙能够收到电子邮箱的正文。邮件会被保存到本机的硬盘上。如果保存也能正常进行，那么接收端会返回一个“处理正常”的回执给发送端。反之，一旦出现磁盘满、邮件未能成功保存等问题，就会发送一个“处理异常”的回执给发送端。</p>
-<p>由此，用户以就可以利用主机B的邮件客户端，接收并阅读由主机A上的用户甲所发送过来的电子邮件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		<span class="comment">//构造Q3的工厂</span></div><div class="line">		CarFactory factoryQ3 = <span class="keyword">new</span> Q3Factory();</div><div class="line">		factoryQ3.createTire().tire();;</div><div class="line">		factoryQ3.createEngine().engine();;</div><div class="line">		factoryQ3.createBrake().brake();</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"--------------------"</span>);</div><div class="line">		<span class="comment">//构造Q7的工厂</span></div><div class="line">		CarFactory factoryQ7 = <span class="keyword">new</span> Q7Factory();</div><div class="line">		factoryQ7.createTire().tire();;</div><div class="line">		factoryQ7.createEngine().engine();;</div><div class="line">		factoryQ7.createBrake().brake();;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">普通轮胎</div><div class="line">国产发动机</div><div class="line">普通刹车</div><div class="line">--------------------</div><div class="line">SUV 轮胎</div><div class="line">进口发动机</div><div class="line">高级刹车</div></pre></td></tr></table></figure>
+<p>上面只是模拟了Q3和Q7的工厂，如果需要增加Q5的工厂，那么对于的轮胎、制动系统、发动机类又要增加，这里看出抽象工厂类的一个弊端就是类大量增加，如果工厂类过多，势必导致类文件非常多。因此开发中一定要权衡利弊。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>一个显著的优点是分离接口与实现，客户端使用抽象工厂来创建需要的对象，而客户端根本就不知道具体的实现是谁，客户端只是面向产品的接口编程而已，使其从具体的产品实现中解耦，同时基于接口与实现的分离，使抽象该工厂方法模式在切换产品类时更加灵活简单。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>一是类文件的爆炸性增加，二是不太容易扩展新的产品类，因为每当我们增加一个产品类就需要修改抽象工厂，那么所有的具体工厂类均会修改。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2015/12/17/TCP-IP1模型/" data-id="cj6esnzg5009jwg19u3fyal1r" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/06/07/Android设计模式(五)抽象工厂模式/" data-id="cj6f0so9w0023f519hdw85rt4" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2015/12/17/TCP-IP1模型/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2016/06/07/Android设计模式(五)抽象工厂模式/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TCP-IP/">TCP/IP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网络通信/">网络通信</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -459,14 +245,14 @@
 
 
   
-    <article id="post-搭建和配置Hexo-Github-pages个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Android设计模式(四)工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/" class="article-date">
-  <time datetime="2015-12-15T13:46:03.000Z" itemprop="datePublished">2015-12-15 21:46:03</time>
+    <a href="/2016/06/07/Android设计模式(四)工厂方法模式/" class="article-date">
+  <time datetime="2016-06-07T12:34:01.000Z" itemprop="datePublished">2016-06-07 20:34:01</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/记录/">记录</a>
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
   </div>
 
   </div>
@@ -477,7 +263,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/">搭建和配置Hexo+Github pages个人博客</a>
+      <a class="article-title" href="/2016/06/07/Android设计模式(四)工厂方法模式/">Android设计模式(四)工厂方法模式</a>
     </h1>
   
 
@@ -487,116 +273,187 @@
       
         <!-- Table of Contents -->
         
-        <h2 id="Window下安装GitHub-Pages-Hexo"><a href="#Window下安装GitHub-Pages-Hexo" class="headerlink" title="Window下安装GitHub Pages + Hexo"></a>Window下安装GitHub Pages + Hexo</h2><p>本着不重复造轮子的精神，下面提供两篇博文来记录安装过程，因为这两篇文章详细记录了GitHub Pages + Hexo 的安装过程，跟着流程能够成功搭建出基本的个人博客。</p>
-<p><a href="http://www.jianshu.com/p/985d07d88ef4" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（一）</a><br><a href="http://www.jianshu.com/p/1973930813f9" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（三）</a></p>
-<p>如有自己有申请独立的域名，可参看下面这篇博文<br><a href="http://www.jianshu.com/p/098d99de63fd" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（二）</a></p>
-<h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><ul>
-<li>安装</li>
-</ul>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo</div></pre></td></tr></table></figure>
-<ul>
-<li>升级</li>
-</ul>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> update hexo</div></pre></td></tr></table></figure>
-<ul>
-<li>初始化</li>
-</ul>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo init</span></div></pre></td></tr></table></figure>
-<ul>
-<li>创建</li>
-</ul>
-<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"新的文件"</span> <span class="meta">#新建文章</span></div><div class="line">hexo <span class="keyword">new</span> page <span class="string">"新的页面"</span> <span class="meta">#新的页面</span></div></pre></td></tr></table></figure>
-<ul>
-<li>操作</li>
-</ul>
-<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">hexo clean #清除缓存 网页正常情况下可以忽略此条命令</div><div class="line">hexo g == hexo <span class="keyword">generate</span>#生成</div><div class="line">hexo s == hexo server #启动服务预览</div><div class="line">hexo d == hexo deploy#部署</div><div class="line"></div><div class="line">hexo server -s #静态模式</div><div class="line">hexo server -p <span class="number">5000</span> #更改端口</div><div class="line">hexo server -i <span class="number">192</span><span class="variable">.168</span><span class="variable">.1</span><span class="variable">.1</span> #自定义 IP</div><div class="line"></div><div class="line">hexo <span class="keyword">generate</span> #使用 Hexo 生成静态文件快速而且简单</div><div class="line">hexo <span class="keyword">generate</span> --watch #监视文件变动</div><div class="line"></div><div class="line"><span class="comment">//完成后部署</span></div><div class="line">hexo <span class="keyword">generate</span> --deploy</div><div class="line">hexo deploy --<span class="keyword">generate</span></div></pre></td></tr></table></figure>
-<h2 id="文章头配置"><a href="#文章头配置" class="headerlink" title="文章头配置"></a>文章头配置</h2><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">title: 使用Hexo搭建个人博客</div><div class="line">layout: post</div><div class="line">date: 2014<span class="string">-03</span><span class="string">-03</span> 19:07:43</div><div class="line">comments: true</div><div class="line">categories: Blog</div><div class="line"><span class="keyword">tags:</span> Hexo</div><div class="line">keywords: Hexo, Blog</div><div class="line">description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。</div></pre></td></tr></table></figure>
-<h2 id="创建”关于我”页面"><a href="#创建”关于我”页面" class="headerlink" title="创建”关于我”页面"></a>创建”关于我”页面</h2><p>新建一个about页面：</p>
-<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">$hexo</span> <span class="keyword">new</span> page <span class="string">"about"</span></div></pre></td></tr></table></figure>
-<p>菜单显示about链接，在主题theme的_config.yml设置中将menu、中about前面的注释去掉即可。</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div><div class="line">  abou<span class="variable">t:</span> /about</div></pre></td></tr></table></figure>
-<h2 id="创建”分类”页面"><a href="#创建”分类”页面" class="headerlink" title="创建”分类”页面"></a>创建”分类”页面</h2><ul>
-<li>1.新建一个页面，命名为categories。终端命令如下：</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">"categories"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>2.编辑刚刚新建的页面，将页面的类型设置为categories，主题自动为这个页面显示所有分类。</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> 分类</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：如果有启用多说或者Dis去上、评论，默认页面也会带有评论。需要关闭的话，请添加字段comments并将值设置为false，如下所示：</p>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> 分类</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
-<ul>
-<li>3.在菜单中添加链接。编辑主题的 _config.yml ，将 menu 中的 categories: /categories 注释去掉，如下:</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  categorie<span class="variable">s:</span> /categories</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div></pre></td></tr></table></figure>
-<h2 id="创建”标签云”页面"><a href="#创建”标签云”页面" class="headerlink" title="创建”标签云”页面"></a>创建”标签云”页面</h2><p>添加一个标签云页面，并在菜单中显示页面链接。</p>
-<ul>
-<li>1.新建一个页面，命名为 tags 。命令如下：</li>
-</ul>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">"tags"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>2.编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> All tags</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
-<blockquote>
-<p>注意：如果有启用多说 或者 Disqus 评论，默认页面也会带有评论。需要关闭的话，请添加字段 comments 并将值设置为 false，如：</p>
-</blockquote>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">title:</span> All tags</div><div class="line"><span class="string">date:</span> <span class="number">2014</span><span class="number">-12</span><span class="number">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="string">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="string">comments:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
-<hr>
-<ul>
-<li>3.在菜单中添加链接。编辑主题的 _config.yml ，添加 tags 到 menu 中，如下:</li>
-</ul>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div></pre></td></tr></table></figure>
-<h2 id="设置侧边栏头像"><a href="#设置侧边栏头像" class="headerlink" title="设置侧边栏头像"></a>设置侧边栏头像</h2><p>编辑站点的 _config.yml，新增字段 avatar， 值设置成头像的链接地址。</p>
-<p>其中，头像的链接地址可以是：</p>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>工厂方法模式是创建型设计模式之一。工厂方法模式是一种结构简单的模式。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>定义一个用于创建对象的接口，让子类决定实例化哪个类。</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>在任何需要生成复杂对象的地方，都可以使用工厂方法模式。复杂对象适合使用工厂模式，用new就可以完成创建的对象无需使用工厂对象。</p>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95UML%E7%B1%BB%E5%9B%BE.png" alt=""></p>
+<p>这里的角色主要分为四个模块：</p>
 <ol>
-<li>完整的互联网 URL，例如：<a href="https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460" target="_blank" rel="external">https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460</a></li>
-<li><p>站点内的地址，例如：</p>
-<ul>
-<li>/uploads/avatar.jpg 需要将你的头像图片放置在 站点的 source/uploads/（可能需要新建uploads目录）</li>
-<li>/images/avatar.jpg 需要将你的头像图片放置在 主题的 source/images/ 目录下。</li>
-</ul>
-</li>
+<li>抽象工厂Factory，其为工厂方法的核心；</li>
+<li>具体工厂ConcreteFactory，实现了具体的业务逻辑；</li>
+<li>抽象产品Product，是工厂方法模式所创建的产品的父类；</li>
+<li>具体产品ConcreteFactory，实现抽象产品的某个具体产品的对象；</li>
 </ol>
-<h2 id="设置侧边栏社交链接"><a href="#设置侧边栏社交链接" class="headerlink" title="设置侧边栏社交链接"></a>设置侧边栏社交链接</h2><p>编辑站点的 _config.yml，新增字段 social，然后添加社交站点名称与地址即可。例如：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">social</span>:</div><div class="line">  <span class="attribute">github</span>: <span class="attribute">https</span>:<span class="comment">//github.com/your-user-name</span></div><div class="line">  <span class="attribute">twitter</span>: <span class="attribute">https</span>:<span class="comment">//twitter.com/your-user-name</span></div><div class="line">  <span class="attribute">weibo</span>: <span class="attribute">http</span>:<span class="comment">//weibo.com/your-user-name</span></div><div class="line">  <span class="attribute">douban</span>: <span class="attribute">http</span>:<span class="comment">//douban.com/people/your-user-name</span></div><div class="line">  <span class="attribute">zhihu</span>: <span class="attribute">http</span>:<span class="comment">//www.zhihu.com/people/your-user-name</span></div></pre></td></tr></table></figure>
-<h2 id="设置网页标签LOGO"><a href="#设置网页标签LOGO" class="headerlink" title="设置网页标签LOGO"></a>设置网页标签LOGO</h2><p>编辑主题的 _config.yml,在favicon: /icon.jpg字段设置LOGO标志，图片防止在Hexo/source/目录下</p>
-<h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>NexT 目前支持六种语言版本：</p>
-<p>English<br>中文简体 (zh-Hans)<br>French (fr-FR)<br>正体中文 (zh-hk/zh-tw)<br>Russian (ru)<br>German (de)</p>
-<p>默认语言是英文。编辑站点的 _config.yml ，将 language 字段更改为你所需要的语言版本代号：</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">language: <span class="keyword">default</span></div><div class="line"><span class="meta"># language: zh-Hans</span></div><div class="line"><span class="meta"># language: fr-FR</span></div><div class="line"><span class="meta"># language: zh-hk</span></div><div class="line"><span class="meta"># language: zh-tw</span></div><div class="line"><span class="meta"># language: ru</span></div><div class="line"><span class="meta"># language: de</span></div></pre></td></tr></table></figure>
-<h2 id="设置代码高亮主题"><a href="#设置代码高亮主题" class="headerlink" title="设置代码高亮主题"></a>设置代码高亮主题</h2><p>NexT 使用 <a href="https://github.com/chriskempson/tomorrow-theme" target="_blank" rel="external">Tomorrow Theme</a> 作为代码高亮，共有5款主题供你选择.</p>
-<p>编辑主题的 _config.yml,找到highlight_theme字段，设置目标主题</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">highlight_theme:</span> night</div></pre></td></tr></table></figure>
-<h2 id="设置站点建立时间"><a href="#设置站点建立时间" class="headerlink" title="设置站点建立时间"></a>设置站点建立时间</h2><p>这个时间将在站点的底部显示，例如 © 2013 - 2015</p>
-<p>编辑站点的 _config.yml，新增字段 since。</p>
-<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">since</span>: <span class="number">2013</span></div></pre></td></tr></table></figure>
-<h2 id="添加站点访问统计与访客数量统计功能"><a href="#添加站点访问统计与访客数量统计功能" class="headerlink" title="添加站点访问统计与访客数量统计功能"></a>添加站点访问统计与访客数量统计功能</h2><p>网站的浏览次数，即pv；网站的访客数为uv。pv的计算方式是，单个用户连续点击n篇文章，记录n次访问量；uv的计算方式是，单个用户连续点击n篇文章，只记录1次访客数。你可以根据需要添加相应的统计功能。</p>
-<ul>
-<li><strong>安装busuanzi.js脚本</strong></li>
-</ul>
-<p>如果你使用的是NexT主题（其他主题类似），打开/theme/next/layout/_partial/footer.swig文件，拷贝下面的代码至文件的开头。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
-<ul>
-<li><strong>显示统计标签</strong></li>
-</ul>
-<p>同样编辑/theme/next/layout/_partial/footer.swig文件。</p>
-<p>如果你想要显示pv统计量，复制以下代码至你想要放置的位置，</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span></div><div class="line">    本站总访问量<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次</div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>如果你想要显示uv统计量，复制以下代码至你想要放置的位置，</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_uv"</span>&gt;</span></div><div class="line">  本站访客数<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>人次</div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>小明是一家汽车厂的厂长，对他来说，组装汽车就是讲一些进口的核心部件，比如发动机和一些零部件组装起来，小明的汽车厂主要组装某款SUV车型，比如Q3、Q5，对于这类车型来说内部结构差异并不是很大，因此小明只需要一条生产线就足以应付这2种车型，对于该类生产线小明提供一个抽象类定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 抽象生产线类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 某车型的工厂方法</div><div class="line">	 * <span class="doctag">@param</span> clz 具体的车型类</div><div class="line">	 * <span class="doctag">@return</span> 具体型号的车对象</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends AudiCar&gt; <span class="function">T <span class="title">createAudiCar</span><span class="params">(Class&lt;T&gt; clz)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>生产线的具体实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 生产线具体类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiCarFactory</span> <span class="keyword">extends</span> <span class="title">AudiFactory</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="keyword">public</span> &lt;T extends AudiCar&gt; <span class="function">T <span class="title">createAudiCar</span><span class="params">(Class&lt;T&gt; clz)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		AudiCar car = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">			car = (AudiCar) Class.forName(clz.getName()).newInstance();</div><div class="line"></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> (T) car;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>对于这两种车型，除了一些车的基本共性之外，还提供了自动导航功能，这些都使用一个抽象的基本类来声明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 汽车的抽象产品类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 行为方法，车可以驾驶</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 行为方法，车可以自动导航</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>接下来就是具体的车型了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiQ3</span> <span class="keyword">extends</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q3 run"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q3 navi"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiQ5</span> <span class="keyword">extends</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q5 run"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q5 navi"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>最后我们将各个类组装起来形成一条完整的流水线：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		AudiFactory factory = <span class="keyword">new</span> AudiCarFactory();</div><div class="line"></div><div class="line">		AudiQ3 audiQ3 = factory.createAudiCar(AudiQ3.class);</div><div class="line">		audiQ3.drive();</div><div class="line">		audiQ3.selfNavigation();</div><div class="line"></div><div class="line">		AudiQ5 audiQ5 = factory.createAudiCar(AudiQ5.class);</div><div class="line">		audiQ5.drive();</div><div class="line">		audiQ5.selfNavigation();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Q3 run</div><div class="line">Q3 navi</div><div class="line">Q5 run</div><div class="line">Q5 navi</div></pre></td></tr></table></figure>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说，工厂方法模式是一个很好的设计模式，但是也存在缺点，就是每次我们为工厂方法模式添加新的产品时就要编写一个新的产品类，同时还要引入抽象层，这必然导致类结构的复杂化，所以工作中需要权衡。</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2015/12/15/搭建和配置Hexo-Github-pages个人博客/" data-id="cj6esnzgq00apwg1910kpogt1" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/06/07/Android设计模式(四)工厂方法模式/" data-id="cj6f0soa0002ef519wxhcs46z" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2015/12/15/搭建和配置Hexo-Github-pages个人博客/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2016/06/07/Android设计模式(四)工厂方法模式/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/记录/">记录</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Android设计模式之(三)原型模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/04/Android设计模式之(三)原型模式/" class="article-date">
+  <time datetime="2016-06-04T14:34:01.000Z" itemprop="datePublished">2016-06-04 22:34:01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/04/Android设计模式之(三)原型模式/">Android设计模式之(三)原型模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>原型模式是一种创建型的模式。原型表示该模式有一个样板实例，用户从这个样板对象中复制出一个内部属性一致的对象，被复制的实例就称为原型。原型模式多用于创复杂的或者构造耗时的实例，因为这种情况下，复制一个已经存在的实例可以使程序运行更高效。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
+<li>类初始化需要消耗非常多的资源，包括数据、硬件资源等，通过原型拷贝避免这些消耗。</li>
+<li>通过new产生一个对象需要非常繁琐的数据准备或访问权限，这时可以使用原型模式。</li>
+<li>一个对象需要提供给其他对象访问，而且各个调用者可能需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用，即保护性拷贝。</li>
+</ol>
+<p>需要注意的是，通过实现Cloneable接口的原型模式在调用clone函数构造实例时并不一定比通过new操作速度快，只有当通过new构造对象较为耗时或者资源消耗比较大时，通过clone方法才能获得效率上的提升。因此，使用Cloneable时需要考虑构建对象的成本以及做一些效率上的测试。当然，实现原型模式也并不一定非要实现Cloneable接口，也有其他的实现方式。</p>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>原型模式的UML类图如下：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FUML%E7%B1%BB%E5%9B%BE.png" alt="原型模式的UML类图"></p>
+<p>角色介绍：</p>
+<ul>
+<li>Client：客户端用户</li>
+<li>Prototype：抽象类或者接口，声明具clone的能力</li>
+<li>ConcretePrototype：具体的原型类</li>
+</ul>
+<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>下面以简单的文档拷贝为例来演示一下简单的原型模式，例子中首先创建一个文档对象，即WordDocument，这个文档包括文字和图片。用户经过产时间的内容编辑后，打开该文档做进一步的编辑，但是这个文档编辑后是否被采用还不确定，因此为了安全起见，用户需要将当前文档拷贝一份，然后再在这个文档副本上进行修改。如下所示</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.prototype;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 文档类型，扮演的是ConcretePrototype角色，而Cloneable是代表Prototype角色</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordDocument</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//文本</span></div><div class="line">	<span class="keyword">private</span> String text;</div><div class="line"></div><div class="line">	<span class="comment">//图片名列表</span></div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; images = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">WordDocument</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">		System.out.println(<span class="string">"---WordDocument构造函数---"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getText</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> text;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setText</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.text = text;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">getImages</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> images;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addImage</span><span class="params">(String image)</span> </span>&#123;</div><div class="line">		images.add(image);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> WordDocument <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">			WordDocument document = (WordDocument) <span class="keyword">super</span>.clone();</div><div class="line">			document.text = <span class="keyword">this</span>.text;</div><div class="line">			<span class="comment">//浅拷贝</span></div><div class="line">			document.images = <span class="keyword">this</span>.images;</div><div class="line">			<span class="comment">//深拷贝</span></div><div class="line"><span class="comment">//			document.images = (ArrayList&lt;String&gt;) this.images.clone();</span></div><div class="line">			<span class="keyword">return</span> document;</div><div class="line"></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"WordDocument [text="</span> + text + <span class="string">", images="</span> + images + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">package</span> com.lgq.pattern.prototype;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		WordDocument document = <span class="keyword">new</span> WordDocument();</div><div class="line">		document.setText(<span class="string">"这是一篇文档"</span>);</div><div class="line">		document.addImage(<span class="string">"image1"</span>);</div><div class="line">		document.addImage(<span class="string">"image2"</span>);</div><div class="line">		System.out.println(document.toString());</div><div class="line"></div><div class="line">		<span class="comment">//拷贝一份副本</span></div><div class="line">		WordDocument document2 = document.clone();</div><div class="line">		System.out.println(document2.toString());</div><div class="line">		<span class="comment">//修改文档副本，不会影响原始文档</span></div><div class="line">		document2.setText(<span class="string">"这是修改过的document2文档"</span>);</div><div class="line">		System.out.println(document2.toString());</div><div class="line"></div><div class="line">		System.out.println(document.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果：</div><div class="line"></div><div class="line">---WordDocument构造函数---</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是修改过的document2文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div></pre></td></tr></table></figure>
+<p>需要注意的是，<strong>上述的例子中WordDocument的构造函数只运行了一次，通过clone拷贝对象时并不会执行构造函数！</strong></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>原型模式本质上是对象拷贝，容易出现的问题是深拷贝、浅拷贝。使用原型模式可以解决构建复杂对象的资源消耗问题，能够在某些场景下提升创建对象的效率。还有一个重要用途就是保护性拷贝，也就是某个对象对外可能是只读的，为了防止外部对这个只读对象修改，通过可以通过返回一个对象拷贝的形式实现只读的限制。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>原型模式是在内存中二进制流的拷贝，要比直接new一个对象性能好很多，特别是要在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>直接在内存中拷贝时，构造函数是不会执行的，在实际开发中应该注意这个潜在的问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/06/04/Android设计模式之(三)原型模式/" data-id="cj6f0soa4002pf519cglflady" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/06/04/Android设计模式之(三)原型模式/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Android设计模式之(二)Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/03/Android设计模式之(二)Builder模式/" class="article-date">
+  <time datetime="2016-06-03T13:34:01.000Z" itemprop="datePublished">2016-06-03 21:34:01</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/03/Android设计模式之(二)Builder模式/">Android设计模式之(二)Builder模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Builder模式是一步一步创建一个复杂对象的创建型模式，它允许用户在不知道内部构建细节的情况下，更精细地控制对象的构造流程。该模式是为了将构建复杂对象的过程和它的部件解耦，使得构建过程和部件的表示隔离开来。</p>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
+<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
+<li>相同的方法，不同的执行顺序，产生不同的事件结果时；</li>
+<li>多个部件或零件都可以装配到一个对象中，但是产生的运行结果又不相同时；</li>
+<li>产品类非常复杂，或者产品类中的调用顺序不同产生了不同的作用，这个时候使用建造者模式非常适合；</li>
+<li>当初始化一个对象特别复杂，如参数多，且很多参数都具有默认值的情况下；</li>
+</ol>
+<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图角色介绍：</p>
+<ul>
+<li>Product产品类-产品的抽象类；</li>
+<li>Builder-抽象Builder类，规范产品的组建，一般由子类实现具体的组件过程；</li>
+<li>ConcreteBuilder-具体的Builder类,组装对象；</li>
+</ul>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-Builder%E6%A8%A1%E5%BC%8FUML%E7%B1%BB%E5%9B%BE.png" alt="Builder模式UML"></p>
+<h1 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Computer抽象类 即 Product角色</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Computer</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">protected</span> String mBoard;</div><div class="line">	<span class="keyword">protected</span> String mDisplay;</div><div class="line">	<span class="keyword">protected</span> String mOS;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置主板</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBoard</span><span class="params">(String mBoard)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.mBoard = mBoard;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置显示器</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDisplay</span><span class="params">(String mDisplay)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.mDisplay = mDisplay;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置操作系统</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setOs</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Computer [mBoard="</span> + mBoard + <span class="string">", mDisplay="</span> + mDisplay + <span class="string">", mOS="</span> + mOS + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 具体的Computer类</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MacBookPro</span> <span class="keyword">extends</span> <span class="title">Computer</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MacBookPro</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOs</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mOS = <span class="string">"Mac OS X 10.11"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 抽象Builder</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setBoard</span><span class="params">(String board)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setDisplay</span><span class="params">(String display)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setOs</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Computer <span class="title">create</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Builder具体实现类</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MacBookBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Computer mComputer = <span class="keyword">new</span> MacBookPro();</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setBoard</span><span class="params">(String board)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setBoard(board);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setDisplay</span><span class="params">(String display)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setDisplay(display);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setOs</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setOs();</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Computer <span class="title">create</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> mComputer;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		Computer computer = <span class="keyword">new</span> MacBookBuilder().setBoard(<span class="string">"APPLE"</span>).setDisplay(<span class="string">"Retina"</span>).setOs().create();</div><div class="line"></div><div class="line">		System.out.println(computer.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Computer [mBoard=APPLE, mDisplay=Retina, mOS=Mac OS X <span class="number">10.11</span>]</div></pre></td></tr></table></figure>
+<p>上述示例中，通过具体的MacBookBuilder来构建MacBookPro对象，Builder将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。</p>
+<h1 id="Android中应用"><a href="#Android中应用" class="headerlink" title="Android中应用"></a>Android中应用</h1><ul>
+<li>AlertDialog</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
+<li>良好的封装性，使用建造者模式可以使得客户端不必知道产品内部组成的细节。</li>
+<li>建造者独立，容易扩展</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>会产生多余的Builder对象，消耗内存。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/06/03/Android设计模式之(二)Builder模式/" data-id="cj6f0soa7002sf519bt0rq8ri" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/06/03/Android设计模式之(二)Builder模式/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -609,7 +466,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
   </nav>
 </section>
            

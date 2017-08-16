@@ -126,7 +126,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/" data-id="cj6esnzej006bwg19nqelmygy" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/" data-id="cj6f0soby006nf519ctozrhr9" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2017/06/21/JavaScript⑦对象/#ds-thread" class="article-comment-link">留言</a>
       
@@ -240,7 +240,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/" data-id="cj6esnzei0068wg19vnsd98m5" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/" data-id="cj6f0sobu006ef519ltjngahn" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型RegExp/#ds-thread" class="article-comment-link">留言</a>
       
@@ -308,7 +308,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6esnzep006fwg19ee4d2l6a" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/" data-id="cj6f0sobq006af519f41sa5ga" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/#ds-thread" class="article-comment-link">留言</a>
       
@@ -369,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/" data-id="cj6esnzeg0064wg19y55yh6qw" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/" data-id="cj6f0sobk005wf519ytem3fs9" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/#ds-thread" class="article-comment-link">留言</a>
       
@@ -424,336 +424,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6esnzee0061wg194rze59v9" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/" data-id="cj6f0sobm0063f5198st4xrdx" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-JavaScript⑥基本包装类型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/19/JavaScript⑥基本包装类型/" class="article-date">
-  <time datetime="2017-06-19T13:14:06.000Z" itemprop="datePublished">2017-06-19 21:14:06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/19/JavaScript⑥基本包装类型/">JavaScript⑥基本包装类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p>Boolean类型是与布尔值对应的引用类型。要创建 Boolean 对象，可以像下面这样调用 Boolean 构造函数并传入 true 或 false 值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</div><div class="line"><span class="built_in">console</span>.log(obj.valueOf());</div><div class="line"><span class="built_in">console</span>.log(obj.toString());</div></pre></td></tr></table></figure>
-<p>Boolean 对象在 ECMAScript 中的用处不大，因为它经 常会造成人们的误解。其中最常见的问题就是在布尔表达式中使用 Boolean 对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> falseObj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</div><div class="line"><span class="comment">//对象在布尔表达式中表示true</span></div><div class="line"><span class="keyword">var</span> ret = falseObj &amp;&amp; <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(ret); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>检测Boolean对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> falseObj);</div><div class="line"><span class="built_in">console</span>.log(falseObj <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>);</div></pre></td></tr></table></figure>
-<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><p>Number 是与数字值对应的引用类型。要创建 Number 对象，可以在调用 Number 构造函数时向其中传递相应的数值。</p>
-<ul>
-<li>toFixed()方法会按照指定的小数位返回数值的字符串表示</li>
-<li>toExponential()，该方法返回以指数表示法（也称 e 表示法） 表示的数值的字符串形式。</li>
-<li>toPrecision()会根据要处理的数值决定到底是调用 toFixed()还是调用 toExponential()。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(num.toString());</div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)); <span class="comment">//二进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">8</span>)); <span class="comment">//八进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">16</span>)); <span class="comment">//16进制</span></div><div class="line"></div><div class="line"><span class="comment">//指定小数位数</span></div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line"></div><div class="line"><span class="comment">//自动四舍五入</span></div><div class="line">num = <span class="number">10.004</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line">num = <span class="number">10.005</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.01</span></div><div class="line"></div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">//指数表示法表示的数值的字符串形式</span></div><div class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">2</span>)); <span class="comment">//1.00e+1</span></div><div class="line"></div><div class="line"></div><div class="line">num = <span class="number">99</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">1</span>)); <span class="comment">//1e+2</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">2</span>)); <span class="comment">//99</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">3</span>)); <span class="comment">//99.0</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">4</span>)); <span class="comment">//99.00</span></div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/19/JavaScript⑥基本包装类型/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/" data-id="cj6esnzeb005xwg19tm8ybomh" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-JavaScript⑤函数" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/18/JavaScript⑤函数/" class="article-date">
-  <time datetime="2017-06-18T13:14:06.000Z" itemprop="datePublished">2017-06-18 21:14:06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/JavaScript⑤函数/">JavaScript⑤函数</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
-<p>函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> diffNumber=diff(<span class="number">10</span>,<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(diffNumber);</div></pre></td></tr></table></figure>
-<p>函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； </p>
-<p>return语句可以不带任何返回值，这种情况下，函数返回值是undefined；这种写法，一般用在需要提前停止函数又不需要返回值的情况下。</p>
-<h1 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h1><ul>
-<li>function语句的定义方法</li>
-<li>函数直接量的定义方法</li>
-<li>构造函数的定义方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//function语句的定义方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//函数直接量的定义方法</span></div><div class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"函数直接量的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//构造函数的定义方法</span></div><div class="line"><span class="keyword">var</span> test3 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>,<span class="string">"arg2"</span>,<span class="string">"console.log('构造函数的定义方法:',arg1+arg2)"</span>);</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/18/JavaScript⑤函数/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/" data-id="cj6esnzer006iwg19onc5776j" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-JavaScript④流程语句" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/18/JavaScript④流程语句/" class="article-date">
-  <time datetime="2017-06-18T13:13:06.000Z" itemprop="datePublished">2017-06-18 21:13:06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/JavaScript④流程语句/">JavaScript④流程语句</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(条件表达式)</span> &#123;</div><div class="line">  <span class="comment">//循环执行代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><p>do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">   <span class="comment">//代码执行主体</span></div><div class="line"> &#125; <span class="keyword">while</span> <span class="comment">(条件表达式)</span>;</div></pre></td></tr></table></figure>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; array.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">       array[i]</div><div class="line">       //代码执行的主体</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
-<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h2><p>for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="keyword">variable</span> <span class="keyword">in</span> <span class="keyword">object</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">object</span>.hasOwnProperty(<span class="keyword">variable</span>)) &#123;</div><div class="line">    <span class="comment">//代码执行主体</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意事项</strong></p>
-<ul>
-<li>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。</li>
-<li>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/18/JavaScript④流程语句/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/" data-id="cj6esnzea005uwg19k6ky432r" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-JavaScript③运算符" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/18/JavaScript③运算符/" class="article-date">
-  <time datetime="2017-06-18T13:12:06.000Z" itemprop="datePublished">2017-06-18 21:12:06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/JavaScript③运算符/">JavaScript③运算符</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="自增与自减"><a href="#自增与自减" class="headerlink" title="自增与自减"></a>自增与自减</h1><ul>
-<li>++ 对唯一的运算数进行递增操作(每次加1)</li>
-<li>– 对唯一的运算数进行递减操作(每次减1)</li>
-</ul>
-<h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="逻辑位运算"><a href="#逻辑位运算" class="headerlink" title="逻辑位运算"></a>逻辑位运算</h2><ul>
-<li>按位非~ 结果就是返回数值的反码</li>
-<li>按位与&amp;  同时为1</li>
-<li>按位或|  有一个为1</li>
-<li>按位异或^ 既不同时为0，也不同时为1</li>
-</ul>
-<h2 id="位移操作"><a href="#位移操作" class="headerlink" title="位移操作"></a>位移操作</h2><ul>
-<li>左移&lt;&lt;<ul>
-<li>将数值的所有位左移指定的位数</li>
-<li>所有空位用0补充</li>
-<li>左移1位对其X2，左移2位对其X4；依次类推</li>
-</ul>
-</li>
-<li>有符号右移&gt;&gt;<ul>
-<li>将数值的所有位右移指定的位数</li>
-<li>一处的位被舍弃</li>
-<li>保留符号位</li>
-<li>右移一位对齐除2，右移两位对齐除4，依次类推</li>
-</ul>
-</li>
-<li>无符号右移&gt;&gt;&gt;<ul>
-<li>正数，与有符号右移结果相同</li>
-<li>负数，会出现无限大的数值；</li>
-</ul>
-</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/18/JavaScript③运算符/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/" data-id="cj6esnze8005qwg19vw58a1n1" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-JavaScript②数据类型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/06/18/JavaScript②数据类型/" class="article-date">
-  <time datetime="2017-06-18T13:11:06.000Z" itemprop="datePublished">2017-06-18 21:11:06</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/JavaScript②数据类型/">JavaScript②数据类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；</p>
-<h1 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h1><ul>
-<li>console.log(typeof qqqq);//undefined，这个变量没有定义；</li>
-<li>console.log(typeof (222));//number，是一个数字； typeof是操作符而不是方法，所以后面可以加()也可以不加；</li>
-<li>console.log(typeof “222”);//string，是一个字符串</li>
-<li>console.log(typeof false);//boolean，是一个布尔值</li>
-<li>console.log(typeof {});//object 是一个对象</li>
-<li>console.log(typeof null);//objecy 是一个对象，在javascript里，null是一个空指针；</li>
-<li>console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象</li>
-</ul>
-<p>从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；<br>typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/06/18/JavaScript②数据类型/#more">继续阅读全文 »</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/" data-id="cj6esnze7005nwg195bn5chr2" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/#ds-thread" class="article-comment-link">留言</a>
       
       
       
@@ -770,7 +443,7 @@
 
 
   <nav id="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/2/">下一页&raquo;</a>
   </nav>
 </section>
            

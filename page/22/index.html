@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>再读斋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="像外行一样思考,像专家一样实践。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="再读斋">
+<meta property="og:url" content="http://liuguoquan727.github.io/page/22/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="像外行一样思考,像专家一样实践。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再读斋">
+<meta name="twitter:description" content="像外行一样思考,像专家一样实践。">
+  
+    <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">再读斋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">MICHAEL</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Java反射Reflection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/24/Java反射Reflection/" class="article-date">
+  <time datetime="2015-12-24T12:04:06.000Z" itemprop="datePublished">2015-12-24 20:04:06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/24/Java反射Reflection/">Java反射Reflection</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="Java反射"><a href="#Java反射" class="headerlink" title="Java反射"></a>Java反射</h1><h2 id="什么是反射"><a href="#什么是反射" class="headerlink" title="什么是反射"></a>什么是反射</h2><p>Java反射是可以让我们在运行时获取类的函数、属性、父类、接口等Class内部信息的机制。通过反射还可以让我们在运行期实例化对象，调用方法，通过调用get/set方法获取和设置变量的值，即使方法或属性是类私有的也可以通过反射的形式调用，这种“看透Class“的能力被称为内省，这种能力在框架开发中尤为重要。有些情况下，我们要使用的类在运行时才会确定，这个时候我们不能在编译期就使用它，因此只能通过反射的形式来使用在运行时才存在的类（该类符合某种特定规范，例如JDBC），这是反射用得比较多的场景。</p>
+<p>还有一个比较常见的场景就是编译时我们对于类的内部信息不可知，必须得到运行时才能获取类的具体信息。比如ORM框架，在运行时才能够获取类中的各个属性，然后通过反射的形式获取其属性名和值，存入数据库，这也是反射比较经典应用场景之一。</p>
+<h2 id="Class类"><a href="#Class类" class="headerlink" title="Class类"></a>Class类</h2><p>既然反射是操作Class信息的，那么Class又是什么呢？</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/reflection-class%E7%B1%BB.png" alt=""></p>
+<p>当我们编写完一个Java项目之后，所有的Java文件都会被编译成一个.class文件，这些Class对象承载了这个类型的父类、接口、构造函数、方法、属性等原始信息，这些class文件在程序运行时会被ClassLoader加载到虚拟机中。当一个类被加载以后，Java虚拟机就会在内存中自动产生一个Class对象。我们通过new的形式创建对象实际上就是通过这些Class来创建，只是这个过程对于我们是不透明而已。</p>
+<h1 id="反射Class以及构造对象"><a href="#反射Class以及构造对象" class="headerlink" title="反射Class以及构造对象"></a>反射Class以及构造对象</h1><h2 id="获取Class对象"><a href="#获取Class对象" class="headerlink" title="获取Class对象"></a>获取Class对象</h2><p>在你想检查一个类的信息之前，你首先需要获取类的Class对象。Java中的所有类型包括基本类型，即使是数组都有与之关联的Class类的对象。如果你在编译期知道一个类的名字的话，那么你可以使用如下的方式获取一个类的Class对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Class&lt;String&gt; myClass = String.class;</div><div class="line">System.out.println(myClass);</div><div class="line"></div><div class="line">打印：</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">String</span></span></div></pre></td></tr></table></figure>
+<p>如果你已经得到了某个对象，但是你想获取这个对象的Class对象，那么你可以通过下面的方法得到：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">String str = <span class="keyword">new</span> String();</div><div class="line">Class&lt;String&gt; myClass = str.getClass();</div><div class="line">System.out.println(myClass);</div><div class="line"></div><div class="line">打印：</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">String</span></span></div></pre></td></tr></table></figure>
+<p>如果你在编译期获取不到目标类型，但是你知道它的完整类路径，那么你可以通过如下的形式来获取Class对象：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">Class&lt;?&gt; myClass = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">	myClass = Class.forName(<span class="string">"java.lang.String"</span>);</div><div class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</div><div class="line">	<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div><div class="line">System.out.println(myClass);</div><div class="line"></div><div class="line">打印结果：</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">java</span>.<span class="title">lang</span>.<span class="title">String</span></span></div></pre></td></tr></table></figure>
+<p>在使用Class.forName()方法时，你必须提供一个类的全名，这个全名包括类所在的包的名字。例如String类位于java.lang包中，那么它的完整路径就是java.lang.String。如果在调用Class.forName()方法时，没有在编译路径下（classpath）找到对象的类，那么将会抛出ClassNotFoundException。</p>
+<p><strong>方法说明</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line">* 加载指定的Class对象</div><div class="line">*<span class="doctag">@param</span> className 要加载的类的完整路径，例如java.lang.String。</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String className)<span class="keyword">throws</span> ClassNotFoundException</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">* 加载指定的Class对象</div><div class="line">*<span class="doctag">@param</span> className 要加载的类的完整路径，例如java.lang.String。</div><div class="line">*<span class="doctag">@param</span> initialize 是否要初始化该Class对象</div><div class="line">*<span class="doctag">@param</span> loader  指定加载该类的ClassLoader</div><div class="line">*/</div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String name, <span class="keyword">boolean</span> initialize,ClassLoader loader)<span class="keyword">throws</span> ClassNotFoundException</div></pre></td></tr></table></figure>
+<h2 id="通过Class对象构造目标类型的对象"><a href="#通过Class对象构造目标类型的对象" class="headerlink" title="通过Class对象构造目标类型的对象"></a>通过Class对象构造目标类型的对象</h2><p>一旦你拿到Class对象之后，你就可以为所欲为了，但获取Class对象只是第一步，我们需要在执行那些强大的行为之前通过Class对象构造出该类型的对象，然后才能通过该对象释放它的功能。我们知道，在java中要构造对象，必须通过该类的构造函数，那么其实反射也是一样的。但是它们确实是有区别的，通过反射构造对象，我们首先要获取类的Constructor（构造器）对象，然后通过Constructor来创建目标类的对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">classForName</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">//1.获取Class对象</span></div><div class="line">		Class&lt;?&gt; clz = Class.forName(<span class="string">"com.michael.java.reflection.Student"</span>);</div><div class="line"></div><div class="line">		<span class="comment">//2.通过Class对象获取Constructor，Student构造函数中有一个String参数</span></div><div class="line">		Constructor&lt;?&gt; constructor = clz.getConstructor(String.class);</div><div class="line"></div><div class="line">		<span class="comment">//3.通过Constructor创建Student对象</span></div><div class="line">		Student object = (Student) constructor.newInstance(<span class="string">"michael"</span>);</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"obj: "</span> + object.toString());</div><div class="line">		object.showMyName();</div><div class="line">		object.takeAnExamination();</div><div class="line"></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果：</div><div class="line"></div><div class="line">obj:  Student :  michael</div><div class="line">My name is michael</div><div class="line"> takeAnExamination</div></pre></td></tr></table></figure>
+<p>通过上述代码，我们就可以在运行时通过完整的类名来构建对象。</p>
+<p><strong>获取构造函数方法</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//获取一个公有的构造函数，参数为可变参数，如果构造函数有参数，那么需要将参数的类型传递给getConstructor方法</span></div><div class="line"><span class="function"><span class="keyword">public</span> Constructor&lt;T&gt; <span class="title">getConstructor</span><span class="params">(Class&lt;?&gt;... parameterTypes)</span></span></div><div class="line"></div><div class="line"><span class="comment">//获取目标类所有的公有构造函数</span></div><div class="line"><span class="keyword">public</span> Constructor&lt;?&gt;[] <span class="title">getConstructors</span><span class="params">()</span> <span class="keyword">throws</span> SecurityException</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，当你通过反射获取到Constructor、Method、Filed后，在反射调用之前将此对象的accessible标志设置为true，以此来提升反射速度。值为true则指示反射的对象在使用时应该取消Java语言访问检查。值为false则指示反射的对象应该实施Java语言访问检查。例如：</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//设置Constructor的Accessible</span></div><div class="line">Constructor&lt;?&gt; constructor = clz.getConstructor(String.class);</div><div class="line">constructor.setAccessible(<span class="keyword">true</span>);</div><div class="line"></div><div class="line">Method learnMethod = Student.class.getMethod(<span class="string">"learn"</span>, String.class);</div><div class="line"><span class="comment">//设置Method的Accessible</span></div><div class="line">learnMethod.setAccessible(<span class="keyword">true</span>);</div></pre></td></tr></table></figure>
+<p>Student.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.java.reflection;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Examination</span></span>&#123;</div><div class="line"></div><div class="line">    <span class="comment">// 年级</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">int</span> mGrade;</div><div class="line">    <span class="keyword">private</span> String age;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String aName)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(aName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> grade, String aName)</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>(aName);</div><div class="line">        mGrade = grade;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">learn</span><span class="params">(String course,<span class="keyword">int</span> count)</span> </span>&#123;</div><div class="line">        System.out.println(mName + <span class="string">" learn "</span> + course + <span class="string">"--"</span>+ count);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeAnExamination</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">" takeAnExamination "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">" Student :  "</span> + mName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Person.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.java.reflection;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line"></div><div class="line">    String mName;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String aName)</span> </span>&#123;</div><div class="line">        mName = aName;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">(String friendName)</span> </span>&#123;</div><div class="line">        System.out.println(mName + <span class="string">" say hello to "</span> + friendName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">showMyName</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"My name is "</span> + mName);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breathe</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">" take breathe "</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Examination.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.java.reflection;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Examination</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">takeAnExamination</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Breathe.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.java.reflection;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Breathe</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">breathe</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="反射获取类中函数"><a href="#反射获取类中函数" class="headerlink" title="反射获取类中函数"></a>反射获取类中函数</h1><h2 id="获取当前类中定义的方法"><a href="#获取当前类中定义的方法" class="headerlink" title="获取当前类中定义的方法"></a>获取当前类中定义的方法</h2><p>要获取当前类中定义的所有方法可以通过Class中的getDeclaredMethods函数，它会获取当前类中的public、default、protected、private的所有方法。<code>getDeclaredMethod(String name, Class...&lt;?&gt; parameterTypes)</code>则是获取某个指定的方法。代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showDeclaredMethods</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	Student student = <span class="keyword">new</span> Student(<span class="string">"Michael"</span>);</div><div class="line"></div><div class="line">	<span class="comment">// 获取类中所有方法</span></div><div class="line">	Method[] methods = student.getClass().getDeclaredMethods();</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (Method method : methods) &#123;</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"方法名: "</span> + method.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		Method learnMethod = student.getClass().getDeclaredMethod(<span class="string">"learn"</span>,</div><div class="line">				String.class, Integer.TYPE);</div><div class="line">		<span class="comment">// 获取方法的参数类型列表</span></div><div class="line">		Class&lt;?&gt;[] paramClasses = learnMethod.getParameterTypes();</div><div class="line"></div><div class="line">		<span class="keyword">for</span> (Class&lt;?&gt; clz : paramClasses) &#123;</div><div class="line">			System.out.println(<span class="string">"learn 方法的参数类型: "</span> + clz.getName());</div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="comment">// 是否是 private 函数，属性是否是 private 也可以使用这种方式判断</span></div><div class="line">		System.out.println(learnMethod.getName() + <span class="string">" is private method: "</span></div><div class="line">				+ Modifier.isPrivate(learnMethod.getModifiers()));</div><div class="line"></div><div class="line">		<span class="comment">//调用私有learn函数</span></div><div class="line">		learnMethod.setAccessible(<span class="keyword">true</span>);</div><div class="line">		learnMethod.invoke(student, <span class="string">"java---&gt;"</span>,<span class="number">2</span>);</div><div class="line"></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">运行结果:</div><div class="line"></div><div class="line">方法名: toString</div><div class="line">方法名: learn</div><div class="line">方法名: takeAnExamination</div><div class="line">learn 方法的参数类型: java.lang.String</div><div class="line">learn 方法的参数类型: <span class="keyword">int</span></div><div class="line">learn is <span class="keyword">private</span> method: <span class="keyword">true</span></div><div class="line">Michael learn java---&gt;---<span class="number">2</span></div></pre></td></tr></table></figure>
+<h2 id="获取当前类、父类中定义的公有方法"><a href="#获取当前类、父类中定义的公有方法" class="headerlink" title="获取当前类、父类中定义的公有方法"></a>获取当前类、父类中定义的公有方法</h2><p>要获取当前类以及父类中的所有public方法可以通过Class中的getMethods函数，而getMethod则是获取某个指定的方法。代码示例如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showMethods</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	Student student = <span class="keyword">new</span> Student(<span class="string">"Michael"</span>);</div><div class="line">	<span class="comment">//获取所有公有方法</span></div><div class="line">	Method[] methods = student.getClass().getMethods();</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(Method method : methods)&#123;</div><div class="line">		System.out.println(<span class="string">"公有方法名： "</span> + method.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">//通过 getMethod 只能获取公有方法，如果获取私有方法则会抛出异常</span></div><div class="line">		Method method = student.getClass().getMethod(<span class="string">"takeAnExamination"</span>);</div><div class="line"></div><div class="line">		method.invoke(student);</div><div class="line"></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">公有方法名： toString</div><div class="line">公有方法名： takeAnExamination</div><div class="line">公有方法名： breathe</div><div class="line">公有方法名： wait</div><div class="line">公有方法名： wait</div><div class="line">公有方法名： wait</div><div class="line">公有方法名： equals</div><div class="line">公有方法名： hashCode</div><div class="line">公有方法名： getClass</div><div class="line">公有方法名： notify</div><div class="line">公有方法名： notifyAll</div><div class="line"> takeAnExamination</div></pre></td></tr></table></figure>
+<p><strong>接口说明</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//获取Class对象中指定的所有函数，不包括从父类继承的函数</span></div><div class="line"><span class="keyword">public</span> Method[] getDeclaredMethods()</div><div class="line"></div><div class="line"><span class="comment">//获取Class对象中指定函数名和参数的函数，参数name表示函数名；参数parameterTypes表示参数类型列表</span></div><div class="line"><span class="function"><span class="keyword">public</span> Method <span class="title">getDeclaredMethod</span><span class="params">(String name, Class&lt;?&gt;... parameterTypes)</span></span></div><div class="line"></div><div class="line"><span class="comment">//获取Class对象中的所有公有函数（包括从父类和接口类继承的函数）</span></div><div class="line"><span class="keyword">public</span> Method[] <span class="title">getMethods</span><span class="params">()</span></div><div class="line"></div><div class="line"><span class="comment">//获取Class对象中指定函数名和参数的公有函数，参数name表示函数名；参数parameterTypes表示参数类型列表</span></div><div class="line"><span class="keyword">public</span> Method <span class="title">getMethod</span><span class="params">(String name, Class&lt;?&gt;... parameterTypes)</span></div></pre></td></tr></table></figure>
+<p>这里需要注意的是 getDeclaredMethod 和 getDeclaredMethods 包含 private、protected、default、public 的函数，并且通过这两个函数获取到的只是在自身中定义的函数，从父类中集成的函数不能够获取到。而 getMethod 和 getMethods 只包含 public 函数，父类中的公有函数也能够获取到。</p>
+<h1 id="反射类获取类中的属性"><a href="#反射类获取类中的属性" class="headerlink" title="反射类获取类中的属性"></a>反射类获取类中的属性</h1><h2 id="获取当前类中定义的属性"><a href="#获取当前类中定义的属性" class="headerlink" title="获取当前类中定义的属性"></a>获取当前类中定义的属性</h2><p>要获取当前类中定义的所有属性可以通过Class中的getDeclaredFields函数，它会获取到当前类中的public、protected、private的所有属性，而getDeclaredField则是获取指定的属性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showDeclaredFields</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	Student student = <span class="keyword">new</span> Student(<span class="string">"Michael"</span>);</div><div class="line"></div><div class="line">	<span class="comment">//获取当前类的所有属性</span></div><div class="line">	Field[] fields = student.getClass().getDeclaredFields();</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(Field field : fields) &#123;</div><div class="line">		System.out.println(<span class="string">"属性名： "</span> + field.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		<span class="comment">//获取当前类的指定属性</span></div><div class="line">		Field gradeField = student.getClass().getDeclaredField(<span class="string">"mGrade"</span>);</div><div class="line">		<span class="comment">//获取属性值</span></div><div class="line">		System.out.println(<span class="string">"grade is:"</span> + gradeField.getInt(student));</div><div class="line">		<span class="comment">//设置属性值</span></div><div class="line">		gradeField.set(student, <span class="number">10</span>);</div><div class="line">		System.out.println(<span class="string">"grade is:"</span> + gradeField.getInt(student));</div><div class="line"></div><div class="line">		Field ageField = student.getClass().getDeclaredField(<span class="string">"age"</span>);</div><div class="line">		ageField.setAccessible(<span class="keyword">true</span>);</div><div class="line">		System.out.println(<span class="string">"age: "</span> + ageField.get(student));</div><div class="line"></div><div class="line">		ageField.set(student, <span class="string">"26"</span>);</div><div class="line"></div><div class="line">		System.out.println(<span class="string">"age: "</span> + ageField.get(student));</div><div class="line"></div><div class="line"></div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">属性名： mGrade</div><div class="line">属性名： age</div><div class="line">grade is:<span class="number">0</span></div><div class="line">grade is:<span class="number">10</span></div><div class="line">age: <span class="keyword">null</span></div><div class="line">age: <span class="number">26</span></div></pre></td></tr></table></figure>
+<h2 id="获取当前类、父类中定义的公有属性"><a href="#获取当前类、父类中定义的公有属性" class="headerlink" title="获取当前类、父类中定义的公有属性"></a>获取当前类、父类中定义的公有属性</h2><p>要获取当前类以及父类中的所有 public 属性可以通过 Class 中的 getFields 函数，而 getField 则是获取某个指定的属性。代码示例如下 :</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line">private static void showFields() &#123;</div><div class="line"></div><div class="line">	Student student = new Student("Michael");</div><div class="line"></div><div class="line">	//获取当前类的所有属性</div><div class="line">	Field[] fields = student.getClass().getFields();</div><div class="line"></div><div class="line">	for(Field field : fields) &#123;</div><div class="line">		System.out.println("属性名： " + field.getName());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	try &#123;</div><div class="line">		//获取当前类的指定属性</div><div class="line">		Field gradeField = student.getClass().getField("mGrade");</div><div class="line">		//获取属性值</div><div class="line">		System.out.println("grade is:" + gradeField.getInt(student));</div><div class="line">		//设置属性值</div><div class="line">		gradeField.set(student, 10);</div><div class="line">		System.out.println("grade is:" + gradeField.getInt(student));</div><div class="line"></div><div class="line">		//getField()方法不能获取私有属性</div><div class="line">		Field ageField = student.getClass().getField("age");</div><div class="line">		//私有属性需调用次函数 JDK 1.8</div><div class="line">		ageField.setAccessible(true);</div><div class="line">		System.out.println("age: " + ageField.get(student));</div><div class="line"></div><div class="line"></div><div class="line">	&#125; catch (Exception e) &#123;</div><div class="line">		// TODO Auto-generated catch block</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">属性名： mGrade</div><div class="line">grade is:0</div><div class="line">grade is:10</div><div class="line">java.lang.NoSuchFieldException: age  ##getField()方法不能获取私有属性</div><div class="line">	at java.lang.Class.getField(Unknown Source)</div><div class="line">	at com.michael.java.reflection.Main.showFields(Main.java:153)</div><div class="line">	at com.michael.java.reflection.Main.main(Main.java:172)</div></pre></td></tr></table></figure>
+<p><strong>接口说明</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取 Class 对象中指定属性名的属性，参数一为属性名</span></div><div class="line"><span class="function"><span class="keyword">public</span> Method <span class="title">getDeclaredField</span> <span class="params">(String name)</span></span></div><div class="line"></div><div class="line"><span class="comment">// 获取该 Class 对象中的所有属性( 不包含从父类继承的属性 )</span></div><div class="line"><span class="keyword">public</span> Method[] <span class="title">getDeclaredFields</span> <span class="params">()</span></div><div class="line"></div><div class="line"><span class="comment">// 获取Class 对象中的指定的公有属性，参数一为属性名</span></div><div class="line"><span class="keyword">public</span> Method <span class="title">getField</span> <span class="params">(String name)</span></div><div class="line"></div><div class="line"><span class="comment">// 获取该 Class 对象中的所有公有属性 ( 包含从父类和接口类集成下来的公有属性 )</span></div><div class="line"><span class="keyword">public</span> Method[] <span class="title">getFields</span> <span class="params">()</span></div></pre></td></tr></table></figure>
+<p>这里需要注意的是 getDeclaredField 和 getDeclaredFields 包含 private、protected、default、public 的属性，并且通过这两个函数获取到的只是在自身中定义的属性，从父类中集成的属性不能够获取到。而 getField 和 getFields 只包含 public 属性，父类中的公有属性也能够获取到。</p>
+<h1 id="反射获取父类与接口"><a href="#反射获取父类与接口" class="headerlink" title="反射获取父类与接口"></a>反射获取父类与接口</h1><h2 id="获取父类"><a href="#获取父类" class="headerlink" title="获取父类"></a>获取父类</h2><p>获取Class对象的父类</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private static void showSuperClass() &#123;</div><div class="line"></div><div class="line">	Student student = new Student("Michael");</div><div class="line">	Class&lt;?&gt; superClass = student.getClass().getSuperclass();</div><div class="line"></div><div class="line">	while(superClass != null) &#123;</div><div class="line">		System.out.println("super class is : " + superClass.getName());</div><div class="line"></div><div class="line">		//再获取父类的上一层父类，知道最后的Object类，Object的父类为null</div><div class="line">		superClass = superClass.getSuperclass();</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果:</div><div class="line"></div><div class="line">super class is : com.michael.java.reflection.Person</div><div class="line">super class is : java.lang.Object</div></pre></td></tr></table></figure>
+<h2 id="获取接口"><a href="#获取接口" class="headerlink" title="获取接口"></a>获取接口</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showIntefaces</span><span class="params">()</span> </span>&#123;</div><div class="line">	Student student = <span class="keyword">new</span> Student(<span class="string">"Michael"</span>);</div><div class="line">	Class&lt;?&gt;[] interfaces = student.getClass().getInterfaces();</div><div class="line"></div><div class="line">	<span class="keyword">for</span>(Class&lt;?&gt; clz : interfaces) &#123;</div><div class="line">		System.out.println(<span class="string">"Student的接口有: "</span> + clz.getName());</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Student的接口有: com.michael.java.reflection.Examination</div></pre></td></tr></table></figure>
+<h1 id="获取注解信息"><a href="#获取注解信息" class="headerlink" title="获取注解信息"></a>获取注解信息</h1><p>在框架开发中，注解加反射的组合使用是最为常见形式的。定义注解时我们会通过@Target 指定该注解能够作用的类型，看如下示例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Target</span>(&#123;</div><div class="line">		ElementType.METHOD, ElementType.FIELD, ElementType.TYPE</div><div class="line">&#125;)</div><div class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</div><div class="line"><span class="keyword">static</span> <span class="meta">@interface</span> Test &#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>上述注解的@target 表示该注解只能用在函数上，还有 Type、Field、PARAMETER 等类型，可以参考上述给出的参考资料。通过反射 api 我们也能够获取一个 Class 对象获取类型、属性、函数等相关的对象，通过这些对象的 getAnnotation 接口获取到对应的注解信息。 首先我们需要在目标对象上添加上注解，例如 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Test</span>(tag = <span class="string">"Student class Test Annoatation"</span>)</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Examination</span> </span>&#123;</div><div class="line">    <span class="comment">// 年级</span></div><div class="line">    <span class="meta">@Test</span>(tag = <span class="string">"mGrade Test Annotation "</span>)</div><div class="line">    <span class="keyword">int</span> mGrade;</div><div class="line"></div><div class="line">    <span class="comment">// ......</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后通过相关的注解函数得到注解信息，如下所示 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getAnnotationInfos</span><span class="params">()</span> </span>&#123;</div><div class="line">	Student student = <span class="keyword">new</span> Student(<span class="string">"mr.simple"</span>);</div><div class="line">	Test classTest = student.getClass().getAnnotation(Test.class);</div><div class="line">	System.out.println(<span class="string">"class Annotatation tag = "</span> + classTest.tag());</div><div class="line"></div><div class="line">	Field field = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		field = student.getClass().getDeclaredField(<span class="string">"mGrade"</span>);</div><div class="line">		Test testAnnotation = field.getAnnotation(Test.class);</div><div class="line">		System.out.println(<span class="string">"属性的 Test 注解 tag : "</span> + testAnnotation.tag());</div><div class="line">	&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出结果为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">class Annotatation tag = Student class Test Annoatation</div><div class="line">属性的 Test 注解 tag : mGrade Test Annotation</div></pre></td></tr></table></figure></p>
+<p><strong>接口说明</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取指定类型的注解</span></div><div class="line"><span class="keyword">public</span> &lt;A extends Annotation&gt; <span class="function">A <span class="title">getAnnotation</span><span class="params">(Class&lt;A&gt; annotationClass)</span> </span>;</div><div class="line"><span class="comment">// 获取 Class 对象中的所有注解</span></div><div class="line"><span class="keyword">public</span> Annotation[] getAnnotations() ;</div></pre></td></tr></table></figure></p>
+<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>反射作为 Java 语言的重要特性，在开发中有着极为重要的作用。很多开发框架都是基于反射来实现对目标对象的操作，而反射配合注解更是设计开发框架的主流选择</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/24/Java反射Reflection/" data-id="cj6f0soc0006uf519dt3ey37h" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/24/Java反射Reflection/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Java集合之并发容器LinkedBlockingQueue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/23/Java集合之并发容器LinkedBlockingQueue/" class="article-date">
+  <time datetime="2015-12-23T14:40:21.000Z" itemprop="datePublished">2015-12-23 22:40:21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/23/Java集合之并发容器LinkedBlockingQueue/">Java集合之并发容器LinkedBlockingQueue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>LinkedBlockingQueue是一个基于已链接节点的、范围任意的阻塞队列的实现。 此队列按 FIFO（先进先出）排序元素。队列的头部 是在队列中时间最长的元素。队列的尾部 是在队列中时间最短的元素。新元素插入到队列的尾部，并且队列检索操作会获得位于队列头部的元素。链接队列的吞吐量通常要高于基于数组的队列， 但是在大多数并发应用程序中，其可预知的性能要低。</p>
+<p>可选的容量范围构造方法参数作为防止队列过度扩展的一种方法。如果未指定容量，则它等于 Integer.MAX_VALUE。除非插入节点会使队列超出容量，否则每次插入后会动态地创建链接节点。</p>
+<h1 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedBlockingQueue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractQueue</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">        <span class="keyword">implements</span> <span class="title">BlockingQueue</span>&lt;<span class="title">E</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
+<p>LinkedBlockingQueue实现是线程安全的，实现了先进先出等特性，是作为生产者消费者的首选</p>
+<h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedBlockingQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">this</span>(Integer.MAX_VALUE);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedBlockingQueue</span><span class="params">(<span class="keyword">int</span> capacity)</span> </span>&#123;</div><div class="line">	<span class="keyword">if</span> (capacity &lt;= <span class="number">0</span>) <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</div><div class="line">	<span class="keyword">this</span>.capacity = capacity;</div><div class="line">	last = head = <span class="keyword">new</span> Node&lt;E&gt;(<span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedBlockingQueueDemo</span> </span>&#123;</div><div class="line"></div><div class="line">	 <span class="comment">/**</span></div><div class="line">     * </div><div class="line">     * 定义装苹果的篮子</div><div class="line">     * </div><div class="line">     */</div><div class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Basket</span> </span>&#123;</div><div class="line">        <span class="comment">// 篮子，能够容纳3个苹果</span></div><div class="line">        BlockingQueue&lt;String&gt; basket = <span class="keyword">new</span> LinkedBlockingQueue&lt;String&gt;(<span class="number">3</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 生产苹果，放入篮子</span></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">produce</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">            <span class="comment">// put方法放入一个苹果，若basket满了，等到basket有位置</span></div><div class="line">            basket.put(<span class="string">"An apple"</span>); <span class="comment">//阻塞</span></div><div class="line"> <span class="comment">//           basket.offer("An Apple"); //非阻塞</span></div><div class="line">         &#125;</div><div class="line"></div><div class="line">        <span class="comment">// 消费苹果，从篮子中取走</span></div><div class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">consume</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</div><div class="line">            <span class="comment">// take方法取出一个苹果，若basket为空，等到basket有苹果为止(获取并移除此队列的头部)</span></div><div class="line">            <span class="keyword">return</span> basket.take();  <span class="comment">//阻塞</span></div><div class="line">            <span class="comment">//return basket.poll(); //非阻塞</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 定义苹果生产者</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> String instance;</div><div class="line">        <span class="keyword">private</span> Basket basket;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(String instance, Basket basket)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.instance = instance;</div><div class="line">            <span class="keyword">this</span>.basket = basket;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">                    <span class="comment">// 生产苹果</span></div><div class="line">                    System.out.println(<span class="string">"生产者准备生产苹果："</span> + instance);</div><div class="line">                    basket.produce();</div><div class="line">                    <span class="comment">// 休眠300ms</span></div><div class="line">                    Thread.sleep(<span class="number">300</span>);</div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</div><div class="line">                System.out.println(<span class="string">"Producer Interrupted"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">// 定义苹果消费者</span></div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">        <span class="keyword">private</span> String instance;</div><div class="line">        <span class="keyword">private</span> Basket basket;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(String instance, Basket basket)</span> </span>&#123;</div><div class="line">            <span class="keyword">this</span>.instance = instance;</div><div class="line">            <span class="keyword">this</span>.basket = basket;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">                    <span class="comment">// 消费苹果</span></div><div class="line">                    System.out.println(<span class="string">"消费者准备消费苹果："</span> + instance);</div><div class="line">                    System.out.println(<span class="string">"consume: "</span> + basket.consume());</div><div class="line">                    <span class="comment">// 休眠1000ms</span></div><div class="line"><span class="comment">//                    Thread.sleep(1000);</span></div><div class="line">                &#125;</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException ex) &#123;</div><div class="line">                System.out.println(<span class="string">"Consumer Interrupted"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">    	</div><div class="line">        LinkedBlockingQueueDemo test = <span class="keyword">new</span> LinkedBlockingQueueDemo();</div><div class="line"></div><div class="line">        <span class="comment">// 建立一个装苹果的篮子</span></div><div class="line">        Basket basket = test.new Basket();</div><div class="line"></div><div class="line">        ExecutorService service = Executors.newCachedThreadPool();</div><div class="line">        Producer producer = test.new Producer(<span class="string">"生产者001"</span>, basket);</div><div class="line"><span class="comment">//        Producer producer2 = test.new Producer("生产者002", basket);</span></div><div class="line"><span class="comment">//        Consumer consumer = test.new Consumer("消费者001", basket);</span></div><div class="line">        service.submit(producer);</div><div class="line"><span class="comment">//        service.submit(producer2);</span></div><div class="line"><span class="comment">//        service.submit(consumer);</span></div><div class="line">        <span class="comment">// 程序运行5s后，所有任务停止</span></div><div class="line"><span class="comment">//        try &#123;</span></div><div class="line"><span class="comment">//            Thread.sleep(1000 * 1);</span></div><div class="line"><span class="comment">//        &#125; catch (InterruptedException e) &#123;</span></div><div class="line"><span class="comment">//            e.printStackTrace();</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line"><span class="comment">//        service.shutdownNow();</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器LinkedBlockingQueue/" data-id="cj6f0socg0080f519s9fh1rnz" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器LinkedBlockingQueue/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Collection/">Collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发编程/">并发编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Java集合之并发容器ConcurrentLinkedQueue" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/23/Java集合之并发容器ConcurrentLinkedQueue/" class="article-date">
+  <time datetime="2015-12-23T14:35:21.000Z" itemprop="datePublished">2015-12-23 22:35:21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/23/Java集合之并发容器ConcurrentLinkedQueue/">Java集合之并发容器ConcurrentLinkedQueue</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>在并发编程中我们有时候需要使用线程安全的队列。如果我们要实现一个线程安全的队列，有两种实现方式，一种是阻塞式队列，另外一种是非阻塞式队列。使用阻塞算法的队列可以用一个锁（入队和出对用同一把锁）或两个锁（入队和出对用不同的锁）等方式来实现，而非阻塞的实现则可以使用CAS的方式来实现。ConcurrentLinkedQueue是基于非阻塞式来实现的线程安全队列。</p>
+<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>ConcurrentLinkedQueue是一个基于链接节点的无界线程安全队列，它采用先进先出的规则对节点进行排序，当我们添加一个元素的时候，它会添加到队列的尾部，当我们获取一个元素的时候，它会返回队列头部的元素。它采用了“wait-free”算法来实现。</p>
+<h1 id="签名"><a href="#签名" class="headerlink" title="签名"></a>签名</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcurrentLinkedQueue</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractQueue</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">        <span class="keyword">implements</span> <span class="title">Queue</span>&lt;<span class="title">E</span>&gt;, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
+<h1 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h1><p>首先来看看ConcurrentLinkedQueue的类图</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ConcurrentLinkedQueue-%E7%B1%BB%E5%9B%BE.jpg" alt=""></p>
+<p>ConcurrentLinkedQueue由head节点和tail节点组成，每个节点（Node）由节点元素（item）和指向下一个节点的引用（next）组成，从而组成一张链表结构的队列。默认情况下head节点存储的元素为空，tail节点等于header节点</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;E&gt; head;</div><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;E&gt; tail;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ConcurrentLinkedQueue</span><span class="params">()</span> </span>&#123;</div><div class="line">	head = tail = <span class="keyword">new</span> Node&lt;E&gt;(<span class="keyword">null</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="offer入队列"><a href="#offer入队列" class="headerlink" title="offer入队列"></a>offer入队列</h1><p>入队列就是将新元素添加到队列的尾部，如下图所示</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ConcurrentLinekedQueue-%E9%98%9F%E5%88%97%E5%85%A5%E9%98%9F%E7%BB%93%E6%9E%84%E5%8F%98%E5%8C%96%E5%9B%BE.jpg" alt=""></p>
+<ul>
+<li>第一步添加元素1。队列更新head节点的next节点为元素1节点。又因为tail节点默认情况下等于head节点，所以它们的next节点都指向元素1节点。</li>
+<li>第二步添加元素2。队列首先设置元素1节点的next节点为元素2节点，然后更新tail节点指向元素2节点。</li>
+<li>第三步添加元素3，设置tail节点的next节点为元素3节点。</li>
+<li>第四步添加元素4，设置元素3的next节点为元素4节点，然后将tail节点指向元素4节点。</li>
+</ul>
+<p>入队过程主要做两件事情：第一是将入队节点设置成当前队列尾节点的下一个节点。第二是更新tail节点，如果tail节点的next节点不为空，则将入队节点设置成tail节点；如果tail节点的next节点为空，则将入队节点设置成tail的next节点，所以tail节点不总是尾节点。</p>
+<p>上面的分析让我们从单线程入队的角度来理解入队过程，但是多个线程同时进行入队情况就变得更加复杂，因为可能会出现其他线程插队的情况。如果有一个线程正在入队，那么它必须先获取尾节点，然后设置尾节点的下一个节点为入队节点，但这时可能有另外一个线程插队了，那么队列的尾节点就会发生变化，这时当前线程要暂停入队操作，然后重新获取尾节点。让我们再通过源码来详细分析下它是如何使用CAS算法来入队的。</p>
+<p>源码分析：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">	checkNotNull(e);</div><div class="line">	<span class="comment">//创建一个新节点</span></div><div class="line">	<span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;E&gt;(e);</div><div class="line"></div><div class="line">	<span class="keyword">for</span> (Node&lt;E&gt; t = tail, p = t;;) &#123;</div><div class="line">		Node&lt;E&gt; q = p.next;</div><div class="line">		<span class="keyword">if</span> (q == <span class="keyword">null</span>) &#123;</div><div class="line">			<span class="comment">// p is last node</span></div><div class="line">			<span class="keyword">if</span> (p.casNext(<span class="keyword">null</span>, newNode)) &#123;</div><div class="line">				<span class="comment">// Successful CAS is the linearization point</span></div><div class="line">				<span class="comment">// for e to become an element of this queue,</span></div><div class="line">				<span class="comment">// and for newNode to become "live".</span></div><div class="line">				<span class="keyword">if</span> (p != t) <span class="comment">// hop two nodes at a time</span></div><div class="line">					casTail(t, newNode);  <span class="comment">// Failure is OK.</span></div><div class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="comment">// Lost CAS race to another thread; re-read next</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (p == q)</div><div class="line">			<span class="comment">// We have fallen off list.  If tail is unchanged, it</span></div><div class="line">			<span class="comment">// will also be off-list, in which case we need to</span></div><div class="line">			<span class="comment">// jump to head, from which all live nodes are always</span></div><div class="line">			<span class="comment">// reachable.  Else the new tail is a better bet.</span></div><div class="line">			p = (t != (t = tail)) ? t : head;</div><div class="line">		<span class="keyword">else</span></div><div class="line">			<span class="comment">// Check for tail updates after two hops.</span></div><div class="line">			p = (p != t &amp;&amp; t != (t = tail)) ? t : q;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="poll出队列"><a href="#poll出队列" class="headerlink" title="poll出队列"></a>poll出队列</h1><p>出队列的就是从队列里返回一个节点元素，并清空该节点对元素的引用。</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ConcurrentLinekedQueue-%E9%98%9F%E5%88%97%E5%87%BA%E9%98%9F%E7%BB%93%E6%9E%84%E5%8F%98%E5%8C%96%E5%9B%BE.jpg" alt=""></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">poll</span><span class="params">()</span> </span>&#123;</div><div class="line">	restartFromHead:</div><div class="line">	<span class="keyword">for</span> (;;) &#123;</div><div class="line">		<span class="keyword">for</span> (Node&lt;E&gt; h = head, p = h, q;;) &#123;</div><div class="line">			E item = p.item;</div><div class="line"></div><div class="line">			<span class="keyword">if</span> (item != <span class="keyword">null</span> &amp;&amp; p.casItem(item, <span class="keyword">null</span>)) &#123;</div><div class="line">				<span class="comment">// Successful CAS is the linearization point</span></div><div class="line">				<span class="comment">// for item to be removed from this queue.</span></div><div class="line">				<span class="keyword">if</span> (p != h) <span class="comment">// hop two nodes at a time</span></div><div class="line">					updateHead(h, ((q = p.next) != <span class="keyword">null</span>) ? q : p);</div><div class="line">				<span class="keyword">return</span> item;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> ((q = p.next) == <span class="keyword">null</span>) &#123;</div><div class="line">				updateHead(h, p);</div><div class="line">				<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (p == q)</div><div class="line">				<span class="keyword">continue</span> restartFromHead;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				p = q;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器ConcurrentLinkedQueue/" data-id="cj6f0soci0083f519n3ba8o6u" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器ConcurrentLinkedQueue/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Collection/">Collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发编程/">并发编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Java集合之并发容器CopyOnWriteArrayList" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" class="article-date">
+  <time datetime="2015-12-23T13:28:21.000Z" itemprop="datePublished">2015-12-23 21:28:21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/">Java集合之并发容器CopyOnWriteArrayList</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>Copy-On-Write简称COW，是一种用于程序设计中的优化策略。其基本思路是，从一开始大家都在共享一个内容，当某个人想要修改这个内容的时候，才会真正把内容Copy出去形成一个新的内容然后在此基础上进行修改，这是一种延时懒惰策略。从JDK1.5开始Java并发包里提供了两个使用CopyOnWrite机制实现的并发容器，它们是CopyOnWriteArrayList和CopyOnWriteArraySet。CopyOnWrite容器非常有用，可以在非常多的并发场景中使用到。</p>
+<h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>CopyOnWrite容器即写时复制的容器。通俗的理解是当我向一个容器中添加元素的时候，不直接往当前容器添加，而是先将当前容器进行Copy，复制出一个新的容器，然后往新的容器里添加元素，添加元素后，再将原容器的引用指向新的容器。这样做的好处是我们可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素，所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。</p>
+<h2 id="继承关系"><a href="#继承关系" class="headerlink" title="继承关系"></a>继承关系</h2><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CopyOnWriteArrayList</span>&lt;<span class="title">E</span>&gt;</span></div><div class="line">    <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></div></pre></td></tr></table></figure>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><h3 id="add"><a href="#add" class="headerlink" title="add()"></a>add()</h3><p>以下代码是向CopyOnWriteArrayList中添加元素add方法的实现，可以发现在添加的时候是需要加锁的，否则多线程写的时候会复制出N个副本出来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</div><div class="line">	<span class="keyword">final</span> ReentrantLock lock = <span class="keyword">this</span>.lock;</div><div class="line">	lock.lock();</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		Object[] elements = getArray();</div><div class="line">		<span class="keyword">int</span> len = elements.length;</div><div class="line">		Object[] newElements = Arrays.copyOf(elements, len + <span class="number">1</span>);</div><div class="line">		newElements[len] = e;</div><div class="line">		setArray(newElements);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">	&#125; <span class="keyword">finally</span> &#123;</div><div class="line">		lock.unlock();</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h3><p>而读数据的时候不需要加锁，如果读的时候有多个线程正在向CopyOnWriteArrayList添加数据，读还是会读到旧的数据，因为写的时候不会锁住旧的CopyOnWriteArrayList。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">get</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</div><div class="line">	<span class="keyword">return</span> get(getArray(), index);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>CopyOnWrite并发容器用于读多写少的并发场景，比如白名单、黑名单、商场类目的访问和更新场景。</p>
+<p>使用CopyOnWrite需要注意两件事情：</p>
+<ol>
+<li>减少扩容开销。根据时间需要初始化CopyOnWriteArrayList的大小，避免写数据时扩容的开销；</li>
+<li>使用批量添加。因为每次添加，容器每次都会进行复制，所以减少添加次数，可以减少容器的复制次数。</li>
+</ol>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><h3 id="内存占用问题"><a href="#内存占用问题" class="headerlink" title="内存占用问题"></a>内存占用问题</h3><p>因为CopyOnWrite的写时复制机制，所以在进行写操作的时候，内存里会同时驻扎两个对象的内存，旧的对象和新写入的对象（注意:在复制的时候只是复制容器里的引用，只是在写的时候会创建新对象添加到新容器里，而旧容器的对象还在使用，所以有两份对象内存）。如果这些对象占用的内存比较大，比如说200M左右，那么再写入100M数据进去，内存就会占用300M，那么这个时候很有可能造成频繁的Yong GC和Full GC。之前我们系统中使用了一个服务由于每晚使用CopyOnWrite机制更新大对象，造成了每晚15秒的Full GC，应用响应时间也随之变长。</p>
+<p>　　针对内存占用问题，可以通过压缩容器中的元素的方法来减少大对象的内存消耗，比如，如果元素全是10进制的数字，可以考虑把它压缩成36进制或64进制。或者不使用CopyOnWrite容器，而使用其他的并发容器如ConcurrentHashMap。</p>
+<h3 id="数据一致性问题"><a href="#数据一致性问题" class="headerlink" title="数据一致性问题"></a>数据一致性问题</h3><p>CopyOnWrite容器只能保证数据的最终一致性，不能保证数据的实时一致性。所以如果你希望写入的的数据，马上能读到，请不要使用CopyOnWrite容器。</p>
+<p>参考文章<a href="http://www.cnblogs.com/dolphin0520/p/3938914.html" target="_blank" rel="external">Java并发编程：并发容器之CopyOnWriteArrayList</a></p>
+<p>下面这篇文章验证了CopyOnWriteArrayList和同步容器的性能：<br><a href="http://blog.csdn.net/wind5shy/article/details/5396887" target="_blank" rel="external">http://blog.csdn.net/wind5shy/article/details/5396887</a></p>
+<p>下面这篇文章简单描述了CopyOnWriteArrayList的使用:<br><a href="http://blog.csdn.net/imzoer/article/details/9751591" target="_blank" rel="external">http://blog.csdn.net/imzoer/article/details/9751591</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/" data-id="cj6f0socf007wf519b5u2gjce" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/23/Java集合之并发容器CopyOnWriteArrayList/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Collection/">Collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发编程/">并发编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Java集合之并发容器ConcurrentHashMap" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/22/Java集合之并发容器ConcurrentHashMap/" class="article-date">
+  <time datetime="2015-12-22T14:35:21.000Z" itemprop="datePublished">2015-12-22 22:35:21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/22/Java集合之并发容器ConcurrentHashMap/">Java集合之并发容器ConcurrentHashMap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="术语定义"><a href="#术语定义" class="headerlink" title="术语定义"></a>术语定义</h1><table>
+<thead>
+<tr>
+<th>术语</th>
+<th>英文</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>哈希算法</td>
+<td>Hash algorithm</td>
+<td>是一种将任意内容的输入转换成相同长度输出的加密方式，其输出被称为哈希值</td>
+</tr>
+<tr>
+<td>哈希表</td>
+<td>hash table</td>
+<td>根据设定的哈希函数和处理冲突方法将一组关键字映射到一个有限的地址区间上，并以关键字在地址区间中的项作为记录在表中的存储位置，这种表称为哈希表或散列，所得存储位置称为哈希地址或散列地址。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="线程不安全的HashMap"><a href="#线程不安全的HashMap" class="headerlink" title="线程不安全的HashMap"></a>线程不安全的HashMap</h1><p>因为多线程环境下，使用HashMap进行put操作会引起使循环，导致CPU利用率接近100%，所以在并发情况下不能使用HashMap。</p>
+<h1 id="效率低下的HashTable"><a href="#效率低下的HashTable" class="headerlink" title="效率低下的HashTable"></a>效率低下的HashTable</h1><p>HashTable使用synchronized来保证线程安全，但在线程竞争激烈的情况下HashTable的效率非常低下。因为当一个线程访问HashTable同步方法时，其他线程访问HashTable的同步方法时，可能会进入阻塞或轮询状态。如线程1使用put进行添加元素，线程2不但不能使用put方法添加元素，并且也不能使用个图方法来获取元素，所以竞争越激烈效率越低。</p>
+<h1 id="ConcurrentHashMap锁分段技术"><a href="#ConcurrentHashMap锁分段技术" class="headerlink" title="ConcurrentHashMap锁分段技术"></a>ConcurrentHashMap锁分段技术</h1><p>HashTable在竞争激烈的并发环境下表现出效率低下的原因是因为所有访问HashTable的线程都必须竞争同一把锁。</p>
+<p>假如容器里有多把锁，每一把锁用于锁容器其中一部分数据，那么当多线程访问容器里不同数据段的数据时，线程间就不会存在锁竞争，从而可以有效的提高并发访问效率，这就是ConcurrentHasMap所使用的锁分段技术，首先将数据分成一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据的时候，其他段的数据也能被其他线程访问。</p>
+<h1 id="ConcurrentHasMap结构"><a href="#ConcurrentHasMap结构" class="headerlink" title="ConcurrentHasMap结构"></a>ConcurrentHasMap结构</h1><p>先看看ConcurrentHasMap的类图</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ConcurrentHashMap-%E7%B1%BB%E5%9B%BE.jpg" alt=""></p>
+<p>ConcurrentHasMap是由Segment数组结构和HashEntry数组结构组成。Segment是一种可重入锁ReentrantLock，在ConcurrentHasMap里扮演锁的角色，HashEntry则用于存储键值对数据。一个ConcurrentHasMap里包含一个Segment数组，Segment的结构和HashMap类似，是一种数组和链表结构，一个Segment里包含一个HashEntry数组，每个HashEntry是一个链表结构的元素，每个Segment守护着一个HashEntry数组里的元素，当对HashEntry数组的数据进行修改时，必须首先获得它对应的Segment的锁，由于每一个segment写操作只锁定自己的HashEntry数组，所以可能存在多个线程同时写的情况。</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/ConcurrentHashMap-%E7%BB%93%E6%9E%84%E5%9B%BE.jpg" alt=""></p>
+<h1 id="ConcurrentHasMap源码"><a href="#ConcurrentHasMap源码" class="headerlink" title="ConcurrentHasMap源码"></a>ConcurrentHasMap源码</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>ConcurrentHasMap初始化是通过initialCapacityu、loadFactor、concurrencyLevel几个参数来初始化Segment数组的，段偏移量segmentShift，段掩码segmentMask和每个segment里面的HashEntry数组。</p>
+<h3 id="初始化Segment数组"><a href="#初始化Segment数组" class="headerlink" title="初始化Segment数组"></a>初始化Segment数组</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="number">16</span>;</div><div class="line"></div><div class="line"><span class="comment">//默认加载因子,加载因子是表示Hsah表中元素的填满的程度.若:加载因子越大,填满的元素越多,好处是,空间利用率高了,但:冲突的机会加大了.反之,加载因子越小,填满的元素越少,好处是:冲突的机会减小了,但:空间浪费多了.</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="number">0.75f</span>;</div><div class="line"></div><div class="line"><span class="comment">//默认并发等级</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CONCURRENCY_LEVEL = <span class="number">16</span>;</div><div class="line"></div><div class="line"><span class="comment">//最大容量</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAXIMUM_CAPACITY = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;</div><div class="line"></div><div class="line"><span class="comment">//最小Segment</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MIN_SEGMENT_TABLE_CAPACITY = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="comment">//最大Segment</span></div><div class="line"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> MAX_SEGMENTS = <span class="number">1</span> &lt;&lt; <span class="number">16</span>; <span class="comment">// slightly conservative</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">ConcurrentHashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity,</span></span></div><div class="line">						 <span class="keyword">float</span> loadFactor, <span class="keyword">int</span> concurrencyLevel) &#123;</div><div class="line">	<span class="keyword">if</span> (!(loadFactor &gt; <span class="number">0</span>) || initialCapacity &lt; <span class="number">0</span> || concurrencyLevel &lt;= <span class="number">0</span>)</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException();</div><div class="line">	<span class="keyword">if</span> (concurrencyLevel &gt; MAX_SEGMENTS)</div><div class="line">		concurrencyLevel = MAX_SEGMENTS;</div><div class="line">	<span class="comment">// Find power-of-two sizes best matching arguments</span></div><div class="line">	<span class="keyword">int</span> sshift = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> ssize = <span class="number">1</span>;</div><div class="line">	<span class="keyword">while</span> (ssize &lt; concurrencyLevel) &#123;</div><div class="line">		++sshift;</div><div class="line">		<span class="comment">//Segment数组大小 2的N次方</span></div><div class="line">		ssize &lt;&lt;= <span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">this</span>.segmentShift = <span class="number">32</span> - sshift;</div><div class="line">	<span class="keyword">this</span>.segmentMask = ssize - <span class="number">1</span>;</div><div class="line">	<span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</div><div class="line">		initialCapacity = MAXIMUM_CAPACITY;</div><div class="line">	<span class="keyword">int</span> c = initialCapacity / ssize;</div><div class="line">	<span class="keyword">if</span> (c * ssize &lt; initialCapacity)</div><div class="line">		++c;</div><div class="line">	<span class="keyword">int</span> cap = MIN_SEGMENT_TABLE_CAPACITY;</div><div class="line">	<span class="keyword">while</span> (cap &lt; c)</div><div class="line">		cap &lt;&lt;= <span class="number">1</span>;</div><div class="line">	<span class="comment">// create segments and segments[0]</span></div><div class="line">	Segment&lt;K,V&gt; s0 =</div><div class="line">		<span class="keyword">new</span> Segment&lt;K,V&gt;(loadFactor, (<span class="keyword">int</span>)(cap * loadFactor),</div><div class="line">						 (HashEntry&lt;K,V&gt;[])<span class="keyword">new</span> HashEntry[cap]);</div><div class="line">	Segment&lt;K,V&gt;[] ss = (Segment&lt;K,V&gt;[])<span class="keyword">new</span> Segment[ssize];</div><div class="line">	UNSAFE.putOrderedObject(ss, SBASE, s0); <span class="comment">// ordered write of segments[0]</span></div><div class="line">	<span class="keyword">this</span>.segments = ss; <span class="comment">//初始化Segment数组</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ssize数组长度是通过concurrencyLevel计算出来的。为了能通过按位与的哈希算法来定位segments数组的索引，必须保证segments的长度是2的N次方，所以必须计算出一个是大于或等于concurrencyLevel的最小2的N次方来作为segments数组的长度。假如concurrencyLevel等于14、15或16.ssize都会等于16，即容器里锁的个数也是16.注意concurrencyLevel的最大大小为65535，意味着segments数组的最大长度为65536，即2^16次方。</p>
+<p>segmentShift用于定位参与hash运算的位数，segmentShift等于32减去sshift，sshift等于ssize从1向左移位的次数，在默认情况下concurrencyLevel等于16,1需要向左移动4位，所以sshift等于4，因此segmentShift等于28.<br>segmentMask是哈希运算的掩码，等于ssize-1，即15，掩码的二进制各个位的值都是1。<br>因为ssize的最长度是65536，所以segmentShift的最大值是16，segmentMask的最大值是65535，即2^16 -1，每位都是1.</p>
+<h2 id="get操作"><a href="#get操作" class="headerlink" title="get操作"></a>get操作</h2><p>Segment的get操作实现非常简单和高效，先获取key的哈希值，然后使用这个哈希值通过哈希运算定位到segment，然后遍历该segment的HashEntry数组找到指定的key。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//jdk 1.7</span></div><div class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;</div><div class="line">	Segment&lt;K,V&gt; s; <span class="comment">// manually integrate access methods to reduce overhead</span></div><div class="line">	HashEntry&lt;K,V&gt;[] tab;</div><div class="line">	<span class="keyword">int</span> h = hash(key);</div><div class="line">	<span class="comment">//定位Segment</span></div><div class="line">	<span class="keyword">long</span> u = (((h &gt;&gt;&gt; segmentShift) &amp; segmentMask) &lt;&lt; SSHIFT) + SBASE;</div><div class="line">	<span class="keyword">if</span> ((s = (Segment&lt;K,V&gt;)UNSAFE.getObjectVolatile(segments, u)) != <span class="keyword">null</span> &amp;&amp;</div><div class="line">		(tab = s.table) != <span class="keyword">null</span>) &#123;</div><div class="line">		<span class="comment">//遍历HashEntry</span></div><div class="line">		<span class="keyword">for</span> (HashEntry&lt;K,V&gt; e = (HashEntry&lt;K,V&gt;) UNSAFE.getObjectVolatile</div><div class="line">				 (tab, ((<span class="keyword">long</span>)(((tab.length - <span class="number">1</span>) &amp; h)) &lt;&lt; TSHIFT) + TBASE);</div><div class="line">			 e != <span class="keyword">null</span>; e = e.next) &#123;</div><div class="line">			K k;</div><div class="line">			<span class="keyword">if</span> ((k = e.key) == key || (e.hash == h &amp;&amp; key.equals(k)))</div><div class="line">				<span class="keyword">return</span> e.value;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>get操作的高效之处在于整个get过程不需要加锁，除非读到的值是空的才会加锁重读。</p>
+<p>jdk1.7中的get方法没有使用锁同步，而是使用轻量级同步volatile原语sun.misc.Unsafe.getObjectVolatile(Object, long)，保证读到的是最新的对象。</p>
+<p>jdk1.6中get方法里将要使用的共享变量都定义成volatile，如用于统计当前Segement大小的count字段和用于存储值的HashEntry的value。定义成volatile的变量，能够在线程之间保持可见性，能够被多线程同时读，并且保证不会读到过期的值，但是只能被单线程写（有一种情况可以被多线程写，就是写入的值不依赖于原值），在get操作里只需要读不需要写共享变量count和value，所以可以不用加锁。之所以不会读到过期的值，是根据java内存模型的happen before原则，对volatile字段的写入操作先于读操作，即使两个线程同时修改和获取volatile变量，get操作也能拿到最新的值，这是用volatile替换锁的经典应用场景。</p>
+<h2 id="put操作"><a href="#put操作" class="headerlink" title="put操作"></a>put操作</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> V <span class="title">put</span><span class="params">(K key, V value)</span> </span>&#123;</div><div class="line">	Segment&lt;K,V&gt; s;</div><div class="line">	<span class="keyword">if</span> (value == <span class="keyword">null</span>)</div><div class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</div><div class="line">	<span class="keyword">int</span> hash = hash(key);</div><div class="line">	<span class="keyword">int</span> j = (hash &gt;&gt;&gt; segmentShift) &amp; segmentMask;</div><div class="line">	<span class="keyword">if</span> ((s = (Segment&lt;K,V&gt;)UNSAFE.getObject          <span class="comment">// nonvolatile; recheck</span></div><div class="line">		 (segments, (j &lt;&lt; SSHIFT) + SBASE)) == <span class="keyword">null</span>) <span class="comment">//  in ensureSegment</span></div><div class="line">		s = ensureSegment(j);</div><div class="line">	<span class="keyword">return</span> s.put(key, hash, value, <span class="keyword">false</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>如果段不为空，那么进入java.util.concurrent.ConcurrentHashMap.Segment.put(K, int, V, boolean)，否则构造段。由此可以看出段的构造是以懒加载的方式，按需构造。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line"> <span class="function"><span class="keyword">final</span> V <span class="title">put</span><span class="params">(K key, <span class="keyword">int</span> hash, V value, <span class="keyword">boolean</span> onlyIfAbsent)</span> </span>&#123;</div><div class="line">	HashEntry&lt;K,V&gt; node = tryLock() ? <span class="keyword">null</span> :</div><div class="line">		scanAndLockForPut(key, hash, value);</div><div class="line">	V oldValue;</div><div class="line">	<span class="keyword">try</span> &#123;</div><div class="line">		HashEntry&lt;K,V&gt;[] tab = table;</div><div class="line">		<span class="keyword">int</span> index = (tab.length - <span class="number">1</span>) &amp; hash;</div><div class="line">		HashEntry&lt;K,V&gt; first = entryAt(tab, index);</div><div class="line">		<span class="keyword">for</span> (HashEntry&lt;K,V&gt; e = first;;) &#123;</div><div class="line">			<span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</div><div class="line">				K k;</div><div class="line">				<span class="keyword">if</span> ((k = e.key) == key ||</div><div class="line">					(e.hash == hash &amp;&amp; key.equals(k))) &#123;</div><div class="line">					oldValue = e.value;</div><div class="line">					<span class="keyword">if</span> (!onlyIfAbsent) &#123;</div><div class="line">						e.value = value;</div><div class="line">						++modCount;</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">				e = e.next;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> &#123;</div><div class="line">				<span class="keyword">if</span> (node != <span class="keyword">null</span>)</div><div class="line">					node.setNext(first);</div><div class="line">				<span class="keyword">else</span></div><div class="line">					node = <span class="keyword">new</span> HashEntry&lt;K,V&gt;(hash, key, value, first);</div><div class="line">				<span class="keyword">int</span> c = count + <span class="number">1</span>;</div><div class="line">				<span class="keyword">if</span> (c &gt; threshold &amp;&amp; tab.length &lt; MAXIMUM_CAPACITY)</div><div class="line">					rehash(node);</div><div class="line">				<span class="keyword">else</span></div><div class="line">					setEntryAt(tab, index, node);</div><div class="line">				++modCount;</div><div class="line">				count = c;</div><div class="line">				oldValue = <span class="keyword">null</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125; <span class="keyword">finally</span> &#123;</div><div class="line">		unlock();</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> oldValue;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>进入段中执行最终put的时候，会使用可重入锁进行tryLock可轮询请求锁，如果成功获取锁，那么条目的插入方式和普通hashmap没多大区别。<br>如果此时有其他线程也再对这个段进行更新操作，那么执行scanAndLockForPut进行重试。</p>
+<p>重试的处理逻辑:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> HashEntry&lt;K,V&gt; <span class="title">scanAndLockForPut</span><span class="params">(K key, <span class="keyword">int</span> hash, V value)</span> </span>&#123;</div><div class="line">	HashEntry&lt;K,V&gt; first = entryForHash(<span class="keyword">this</span>, hash);</div><div class="line">	HashEntry&lt;K,V&gt; e = first;</div><div class="line">	HashEntry&lt;K,V&gt; node = <span class="keyword">null</span>;</div><div class="line">	<span class="keyword">int</span> retries = -<span class="number">1</span>; <span class="comment">// negative while locating node</span></div><div class="line">	<span class="keyword">while</span> (!tryLock()) &#123;</div><div class="line">		HashEntry&lt;K,V&gt; f; <span class="comment">// to recheck first below</span></div><div class="line">		<span class="keyword">if</span> (retries &lt; <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">if</span> (e == <span class="keyword">null</span>) &#123;</div><div class="line">				<span class="keyword">if</span> (node == <span class="keyword">null</span>) <span class="comment">// speculatively create node</span></div><div class="line">					node = <span class="keyword">new</span> HashEntry&lt;K,V&gt;(hash, key, value, <span class="keyword">null</span>);</div><div class="line">				retries = <span class="number">0</span>;</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span> (key.equals(e.key))</div><div class="line">				retries = <span class="number">0</span>;</div><div class="line">			<span class="keyword">else</span></div><div class="line">				e = e.next;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (++retries &gt; MAX_SCAN_RETRIES) &#123;</div><div class="line">			lock();</div><div class="line">			<span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span> ((retries &amp; <span class="number">1</span>) == <span class="number">0</span> &amp;&amp;</div><div class="line">				 (f = entryForHash(<span class="keyword">this</span>, hash)) != first) &#123;</div><div class="line">			e = first = f; <span class="comment">// re-traverse if entry changed</span></div><div class="line">			retries = -<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> node;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一旦未获得锁 while (!tryLock()) 则进行重试循环。</p>
+<p>第一次重试中retries &lt; 0，如果桶条目不为空，那么遍历桶中条目链表，如果key已经存在，那么直接进入下一个循环，否则构造新条目，进入下一个循环；如果重试次数达到极限，那么使用阻塞同步方法；每隔一次循环，校验下所在桶有没有更新，如果更新了，那么重试次数重置，重新开始。<br>一旦获得锁，直接返回，进行常规的hash put操作。</p>
+<p>总的来说，put的同步机制是如果没有其他线程在更新该段，那么直接put。否则轮询请求锁，直至获得锁。</p>
+<h1 id="ConcurrentHasMap是弱一致性的迭代器"><a href="#ConcurrentHasMap是弱一致性的迭代器" class="headerlink" title="ConcurrentHasMap是弱一致性的迭代器"></a>ConcurrentHasMap是弱一致性的迭代器</h1><p>java.util.concurrent 集合返回的迭代器称为弱一致的（weakly consistent）迭代器</p>
+<p>ConcurrentHashMap与其他并发容器所提供的多线程环境下不会抛出并发修改异常的迭代器是由其返回的弱一致性迭代器决定的，弱一致性迭代器可以容许并发修改。当迭代器创建的时，它会遍历已有元素，并且可以感应到在迭代器被创建后对容器的修改。这种弱一致性在调用那些需要对整个容器进行加锁的方法如size或isEmpty时可能提供不精确的值，因此只有当程序需要在独占访问中加锁时，才不能使用ConcurrentHashMap，而在绝大多数情况下ConcurrentHashMap可以带来更好的伸缩性。</p>
+<p>参考文章</p>
+<p><a href="http://blog.csdn.net/chjttony/article/details/46608271" target="_blank" rel="external">《Java并发编程实践》笔记2——基础同步类</a></p>
+<p><a href="http://ifeve.com/concurrenthashmap/" target="_blank" rel="external">聊聊并发（4）：深入分析ConcurrentHashMap</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/22/Java集合之并发容器ConcurrentHashMap/" data-id="cj6f0sock008af5199xirppci" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/22/Java集合之并发容器ConcurrentHashMap/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Collection/">Collection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/并发编程/">并发编程</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/21/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/23/">下一页&raquo;</a>
+  </nav>
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title recent-posts">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/21/JavaScript⑦对象/">JavaScript⑦对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型RegExp/">JavaScript⑥引用类型RegExp</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Global/">JavaScript⑥引用类型Global</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Date/">JavaScript⑥引用类型Date</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型Array/">JavaScript⑥引用类型Array</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 刘涤生&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;michaelliu0727@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

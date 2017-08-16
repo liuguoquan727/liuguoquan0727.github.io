@@ -76,10 +76,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-JavaScript①基础知识" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript⑥基本包装类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/06/18/JavaScript①基础知识/" class="article-date">
-  <time datetime="2017-06-18T13:10:06.000Z" itemprop="datePublished">2017-06-18 21:10:06</time>
+    <a href="/2017/06/19/JavaScript⑥基本包装类型/" class="article-date">
+  <time datetime="2017-06-19T13:14:06.000Z" itemprop="datePublished">2017-06-19 21:14:06</time>
 </a>
     
   <div class="article-category">
@@ -94,7 +94,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/18/JavaScript①基础知识/">JavaScript①基础知识</a>
+      <a class="article-title" href="/2017/06/19/JavaScript⑥基本包装类型/">JavaScript⑥基本包装类型</a>
     </h1>
   
 
@@ -102,20 +102,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。</p>
-<h2 id="JavaScript能做什么"><a href="#JavaScript能做什么" class="headerlink" title="JavaScript能做什么"></a>JavaScript能做什么</h2><p>一旦有一个包含<code>&lt; script &gt;</code>元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。</p>
-<p>你可以要求JavaScript：</p>
+        <h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p>Boolean类型是与布尔值对应的引用类型。要创建 Boolean 对象，可以像下面这样调用 Boolean 构造函数并传入 true 或 false 值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</div><div class="line"><span class="built_in">console</span>.log(obj.valueOf());</div><div class="line"><span class="built_in">console</span>.log(obj.toString());</div></pre></td></tr></table></figure>
+<p>Boolean 对象在 ECMAScript 中的用处不大，因为它经 常会造成人们的误解。其中最常见的问题就是在布尔表达式中使用 Boolean 对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> falseObj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</div><div class="line"><span class="comment">//对象在布尔表达式中表示true</span></div><div class="line"><span class="keyword">var</span> ret = falseObj &amp;&amp; <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(ret); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>检测Boolean对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> falseObj);</div><div class="line"><span class="built_in">console</span>.log(falseObj <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>);</div></pre></td></tr></table></figure>
+<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><p>Number 是与数字值对应的引用类型。要创建 Number 对象，可以在调用 Number 构造函数时向其中传递相应的数值。</p>
+<ul>
+<li>toFixed()方法会按照指定的小数位返回数值的字符串表示</li>
+<li>toExponential()，该方法返回以指数表示法（也称 e 表示法） 表示的数值的字符串形式。</li>
+<li>toPrecision()会根据要处理的数值决定到底是调用 toFixed()还是调用 toExponential()。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(num.toString());</div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)); <span class="comment">//二进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">8</span>)); <span class="comment">//八进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">16</span>)); <span class="comment">//16进制</span></div><div class="line"></div><div class="line"><span class="comment">//指定小数位数</span></div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line"></div><div class="line"><span class="comment">//自动四舍五入</span></div><div class="line">num = <span class="number">10.004</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line">num = <span class="number">10.005</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.01</span></div><div class="line"></div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">//指数表示法表示的数值的字符串形式</span></div><div class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">2</span>)); <span class="comment">//1.00e+1</span></div><div class="line"></div><div class="line"></div><div class="line">num = <span class="number">99</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">1</span>)); <span class="comment">//1e+2</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">2</span>)); <span class="comment">//99</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">3</span>)); <span class="comment">//99.0</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">4</span>)); <span class="comment">//99.00</span></div></pre></td></tr></table></figure>
         
           <p class="article-more-link">
-            <a href="/2017/06/18/JavaScript①基础知识/#more">继续阅读全文 »</a>
+            <a href="/2017/06/19/JavaScript⑥基本包装类型/#more">继续阅读全文 »</a>
           </p>
         
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/" data-id="cj6esnze6005jwg19ewftdzep" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/" data-id="cj6f0sobo0067f5195rj7k3vj" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/#ds-thread" class="article-comment-link">留言</a>
       
       
       
@@ -129,14 +139,14 @@
 
 
   
-    <article id="post-Go 标准库⑧XML文件处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript⑤函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/19/Go 标准库⑧XML文件处理/" class="article-date">
-  <time datetime="2017-05-19T13:50:53.000Z" itemprop="datePublished">2017-05-19 21:50:53</time>
+    <a href="/2017/06/18/JavaScript⑤函数/" class="article-date">
+  <time datetime="2017-06-18T13:14:06.000Z" itemprop="datePublished">2017-06-18 21:14:06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
   </div>
 
   </div>
@@ -147,7 +157,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/19/Go 标准库⑧XML文件处理/">Go 标准库⑧XML文件处理</a>
+      <a class="article-title" href="/2017/06/18/JavaScript⑤函数/">JavaScript⑤函数</a>
     </h1>
   
 
@@ -155,21 +165,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
+<p>函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> diffNumber=diff(<span class="number">10</span>,<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(diffNumber);</div></pre></td></tr></table></figure>
+<p>函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； </p>
+<p>return语句可以不带任何返回值，这种情况下，函数返回值是undefined；这种写法，一般用在需要提前停止函数又不需要返回值的情况下。</p>
+<h1 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h1><ul>
+<li>function语句的定义方法</li>
+<li>函数直接量的定义方法</li>
+<li>构造函数的定义方法</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//function语句的定义方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//函数直接量的定义方法</span></div><div class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"函数直接量的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//构造函数的定义方法</span></div><div class="line"><span class="keyword">var</span> test3 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>,<span class="string">"arg2"</span>,<span class="string">"console.log('构造函数的定义方法:',arg1+arg2)"</span>);</div></pre></td></tr></table></figure>
         
-        <h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="XML文件"><a href="#XML文件" class="headerlink" title="XML文件"></a>XML文件</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"utf-8"</span> <span class="meta">?&gt;</span></span></div><div class="line"><span class="tag">&lt;<span class="name">servers</span> <span class="attr">version</span>=<span class="string">"1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">server</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">serverName</span>&gt;</span>Shanghai_VPN<span class="tag">&lt;/<span class="name">serverName</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">serverIP</span>&gt;</span>192.168.1.2<span class="tag">&lt;/<span class="name">serverIP</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">server</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">server</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">serverName</span>&gt;</span>Beijing_VPN<span class="tag">&lt;/<span class="name">serverName</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">serverIP</span>&gt;</span>192.168.1.3<span class="tag">&lt;/<span class="name">serverIP</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">server</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="XML处理"><a href="#XML处理" class="headerlink" title="XML处理"></a>XML处理</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"encoding/xml"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> ServerHost <span class="keyword">struct</span> &#123;</div><div class="line">	ServerName <span class="keyword">string</span> <span class="string">`xml:"serverName"`</span> <span class="comment">//序列化xml字段名为serverName</span></div><div class="line">	ServerIp <span class="keyword">string</span> <span class="string">`xml:"serverIP"`</span></div><div class="line">	Port <span class="keyword">int</span> <span class="string">`xml:"port"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> Servers <span class="keyword">struct</span> &#123;</div><div class="line">	XMLName xml.Name <span class="string">`xml:"servers"`</span> <span class="comment">//</span></div><div class="line">	Version <span class="keyword">string</span> <span class="string">`xml:"version,attr"`</span></div><div class="line">	ServerHosts []ServerHost <span class="string">`xml:"server"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> s Servers</div><div class="line"></div><div class="line">	path := <span class="string">"/Users/liuguoquan/go/src/liu/basic/liu.xml"</span></div><div class="line">	fin, err := os.Open(path)</div><div class="line"></div><div class="line">	<span class="keyword">defer</span> fin.Close() <span class="comment">//延迟关闭资源</span></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		fmt.Println(err)</div><div class="line">		<span class="keyword">return</span></div><div class="line">	&#125;</div><div class="line">	decoder := xml.NewDecoder(fin)</div><div class="line">	<span class="comment">//xml反序列化</span></div><div class="line">	decoder.Decode(&amp;s)</div><div class="line"></div><div class="line">	fmt.Println(<span class="string">"Version:"</span> +s.Version)</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s.ServerHosts);i++ &#123;</div><div class="line">	   fmt.Println(s.ServerHosts[i].ServerName,s.ServerHosts[i].ServerIp,s.ServerHosts[i].Port)</div><div class="line">	&#125;</div><div class="line">	fmt.Println()</div><div class="line"></div><div class="line">	server1 := ServerHost &#123;ServerName:<span class="string">"liu"</span>,ServerIp:<span class="string">"192.168.1.12"</span>,Port:<span class="number">8888</span>&#125;</div><div class="line">	server2 := ServerHost &#123;ServerName:<span class="string">"lee"</span>,ServerIp:<span class="string">"192.168.1.13"</span>,Port:<span class="number">8888</span>&#125;</div><div class="line">	s2 := Servers &#123; Version:<span class="string">"1"</span> &#125;</div><div class="line">	s2.ServerHosts = <span class="built_in">append</span>(s2.ServerHosts,server1)</div><div class="line">	s2.ServerHosts = <span class="built_in">append</span>(s2.ServerHosts,server2)</div><div class="line">	<span class="comment">//xml序列化</span></div><div class="line">	out,err := xml.MarshalIndent(s2,<span class="string">""</span>,<span class="string">"  "</span>)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	fmt.Print(xml.Header)</div><div class="line">	fmt.Println(<span class="keyword">string</span>(out))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">Version:1</div><div class="line">Shanghai_VPN 192.168.1.2 8080</div><div class="line">Beijing_VPN 192.168.1.3 8080</div><div class="line"></div><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line">&lt;servers version="1"&gt;</div><div class="line">  &lt;server&gt;</div><div class="line">    &lt;serverName&gt;liu&lt;/serverName&gt;</div><div class="line">    &lt;serverIP&gt;192.168.1.12&lt;/serverIP&gt;</div><div class="line">    &lt;port&gt;8888&lt;/port&gt;</div><div class="line">  &lt;/server&gt;</div><div class="line">  &lt;server&gt;</div><div class="line">    &lt;serverName&gt;lee&lt;/serverName&gt;</div><div class="line">    &lt;serverIP&gt;192.168.1.13&lt;/serverIP&gt;</div><div class="line">    &lt;port&gt;8888&lt;/port&gt;</div><div class="line">  &lt;/server&gt;</div><div class="line">&lt;/servers&gt;</div><div class="line"> */</div></pre></td></tr></table></figure>
-
+          <p class="article-more-link">
+            <a href="/2017/06/18/JavaScript⑤函数/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/" data-id="cj6esnzcp003qwg195g8pc2r1" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/" data-id="cj6f0sobl0060f519lxbg7y7j" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/19/Go 标准库⑧XML文件处理/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -179,14 +201,14 @@
 
 
   
-    <article id="post-Go 标准库⑦JSON文件处理" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript④流程语句" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/18/Go 标准库⑦JSON文件处理/" class="article-date">
-  <time datetime="2017-05-18T13:50:53.000Z" itemprop="datePublished">2017-05-18 21:50:53</time>
+    <a href="/2017/06/18/JavaScript④流程语句/" class="article-date">
+  <time datetime="2017-06-18T13:13:06.000Z" itemprop="datePublished">2017-06-18 21:13:06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
   </div>
 
   </div>
@@ -197,7 +219,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/18/Go 标准库⑦JSON文件处理/">Go 标准库⑦JSON文件处理</a>
+      <a class="article-title" href="/2017/06/18/JavaScript④流程语句/">JavaScript④流程语句</a>
     </h1>
   
 
@@ -205,55 +227,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(条件表达式)</span> &#123;</div><div class="line">  <span class="comment">//循环执行代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><p>do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">   <span class="comment">//代码执行主体</span></div><div class="line"> &#125; <span class="keyword">while</span> <span class="comment">(条件表达式)</span>;</div></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; array.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">       array[i]</div><div class="line">       //代码执行的主体</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h2><p>for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。</p>
+<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="keyword">variable</span> <span class="keyword">in</span> <span class="keyword">object</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">object</span>.hasOwnProperty(<span class="keyword">variable</span>)) &#123;</div><div class="line">    <span class="comment">//代码执行主体</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>注意事项</strong></p>
+<ul>
+<li>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。</li>
+<li>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。</li>
+</ul>
         
-        <p>GO语言标准库<code>encoding/json</code>用于处理JSON文本数据。</p>
-<h1 id="序列化"><a href="#序列化" class="headerlink" title="序列化"></a>序列化</h1><p>将一个对象编码成JSON数据，接受一个interface{}对象，返回[]byte和error：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Marshal</span><span class="params">(v <span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">([]<span class="keyword">byte</span>, error)</span></span></div></pre></td></tr></table></figure>
-<p>Marshal函数将会递归遍历整个对象，依次按成员类型对这个对象进行编码，类型转换规则如下：</p>
-<ul>
-<li>bool类型 转换为JSON的Boolean</li>
-<li>整数、浮点数等数值类型 转换为JSON的Number</li>
-<li>string 转换为JSON的字符串(带””引号)</li>
-<li>struct 转换为JSON的Object，再根据各个成员的类型递归打包</li>
-<li>数组或切片 转换为JSON的Array</li>
-<li>[]byte 会先进行base64编码然后转换为JSON字符串</li>
-<li>map 转换为JSON的Object，key必须是string</li>
-<li>interface{} 按照内部的实际类型进行转换</li>
-<li>nil 转为JSON的null</li>
-<li>channel,func等类型 会返回UnsupportedTypeError</li>
-</ul>
-<h1 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h1><p>将JSON数据解析为Go结构体</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Unmarshal</span><span class="params">(data []<span class="keyword">byte</span>, v <span class="keyword">interface</span>&#123;&#125;)</span> <span class="title">error</span></span></div></pre></td></tr></table></figure>
-<p>interface{}类型在Unmarshal时，会自动将JSON转换为对应的数据类型：</p>
-<ul>
-<li>JSON的boolean 转换为bool</li>
-<li>JSON的数值 转换为float64</li>
-<li>JSON的字符串 转换为string</li>
-<li>JSON的Array 转换为[]interface{}</li>
-<li>JSON的Object 转换为map[string]interface{}</li>
-<li><p>JSON的null 转换为nil</p>
-</li>
-<li><p>结构体必须是大写字母开头的成员才会被JSON处理到，小写字母开头的成员不会有影响。</p>
-</li>
-<li>Unmashal时，会自动匹配对应的变量名进行赋值，大小写不敏感。</li>
-<li>Unmarshal时，如果JSON中有多余的字段，会被直接抛弃掉；如果JSON缺少某个字段，则直接忽略不对结构体中变量赋值，不会报错。</li>
-</ul>
-<h1 id="StructTag"><a href="#StructTag" class="headerlink" title="StructTag"></a>StructTag</h1><p>如果希望手动配置结构体的成员和JSON字段的对应关系，可以在定义结构体的时候给成员打标签</p>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">type Message struct &#123;  </div><div class="line">    Name string `json:<span class="string">"msg_name"</span>`       <span class="comment">// 对应JSON的msg_name  </span></div><div class="line">    Body string `json:<span class="string">"body,omitempty"</span>` <span class="comment">// 如果为空置则忽略字段  </span></div><div class="line">    Time int64  `json:<span class="string">"-"</span>`              <span class="comment">// 直接忽略字段  </span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="JSON文件"><a href="#JSON文件" class="headerlink" title="JSON文件"></a>JSON文件</h2><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"servers"</span>:[</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"serverName"</span>:<span class="string">"Shanghai_VPN"</span>,</div><div class="line">      <span class="attr">"serverIp"</span>:<span class="string">"127.0.0.1"</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">8080</span></div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">      <span class="attr">"serverName"</span>:<span class="string">"Beijing_VPN"</span>,</div><div class="line">      <span class="attr">"serverIp"</span>:<span class="string">"127.0.0.2"</span>,</div><div class="line">      <span class="attr">"port"</span>:<span class="number">8080</span></div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="JSON序列化和反序列化"><a href="#JSON序列化和反序列化" class="headerlink" title="JSON序列化和反序列化"></a>JSON序列化和反序列化</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"></div><div class="line"><span class="keyword">import</span> (</div><div class="line">	<span class="string">"os"</span></div><div class="line">	<span class="string">"fmt"</span></div><div class="line">	<span class="string">"encoding/json"</span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">type</span> Server <span class="keyword">struct</span> &#123;</div><div class="line">	ServerName <span class="keyword">string</span> <span class="string">`json:"serverName"`</span> <span class="comment">//序列化json字段名为serverName</span></div><div class="line">	ServerIp <span class="keyword">string</span> <span class="string">`json:"serverIp"`</span></div><div class="line">	Port <span class="keyword">int</span> <span class="string">`json:"port"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">type</span> ServerSlice <span class="keyword">struct</span> &#123;</div><div class="line">	Servers []Server <span class="string">`json:"servers"`</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line"></div><div class="line">	<span class="keyword">var</span> s ServerSlice</div><div class="line">	<span class="keyword">var</span> count <span class="keyword">int</span></div><div class="line"></div><div class="line">	path := <span class="string">"/Users/liuguoquan/go/src/liu/basic/123.json"</span></div><div class="line">	fin, err := os.Open(path)</div><div class="line"></div><div class="line">	<span class="keyword">defer</span> fin.Close() <span class="comment">//延迟关闭资源</span></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		fmt.Println(err)</div><div class="line">		<span class="keyword">return</span></div><div class="line">	&#125;</div><div class="line">	buf := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">1024</span>) <span class="comment">//创建一个初始容量为1024的slice,作为缓冲容器</span></div><div class="line">	<span class="keyword">for</span> &#123;</div><div class="line">		<span class="comment">//循环读取文件数据到缓冲容器中,返回读取到的个数</span></div><div class="line">		n, _ := fin.Read(buf)</div><div class="line">		count += n</div><div class="line">		<span class="keyword">if</span> <span class="number">0</span> == n &#123;</div><div class="line">			<span class="keyword">break</span> <span class="comment">//如果读到个数为0,则读取完毕,跳出循环</span></div><div class="line">		&#125;</div><div class="line">		<span class="comment">//从缓冲slice中写出数据,从slice下标0到n,通过os.Stdout写出到控制台</span></div><div class="line">		<span class="comment">//os.Stdout.Write(buf[:n])</span></div><div class="line">	&#125;</div><div class="line">	fmt.Println(count)</div><div class="line">	input := buf[<span class="number">0</span>:count]</div><div class="line">	<span class="comment">//json反序列化</span></div><div class="line">	err = json.Unmarshal(input, &amp;s)</div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">		fmt.Println(err)</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s.Servers);i++ &#123;</div><div class="line">		fmt.Println(s.Servers[i].ServerName,s.Servers[i].ServerIp,s.Servers[i].Port)</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	server1 := Server &#123;ServerName:<span class="string">"liu"</span>,ServerIp:<span class="string">"192.168.1.12"</span>,Port:<span class="number">8888</span>&#125;</div><div class="line">	server2 := Server &#123;ServerName:<span class="string">"lee"</span>,ServerIp:<span class="string">"192.168.1.13"</span>,Port:<span class="number">8888</span>&#125;</div><div class="line">	s2 := ServerSlice &#123; Servers:[]Server&#123;server1,server2&#125; &#125;</div><div class="line">	<span class="comment">//json序列化</span></div><div class="line">	out,err := json.Marshal(s2)</div><div class="line"></div><div class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line">	os.Stdout.Write(out)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//打印</span></div><div class="line">Shanghai_VPN <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> <span class="number">8080</span></div><div class="line">Beijing_VPN <span class="number">127.0</span><span class="number">.0</span><span class="number">.2</span> <span class="number">8080</span></div><div class="line">&#123;<span class="string">"servers"</span>:[&#123;<span class="string">"serverName"</span>:<span class="string">"liu"</span>,<span class="string">"serverIp"</span>:<span class="string">"192.168.1.12"</span>,<span class="string">"port"</span>:<span class="number">8888</span>&#125;,&#123;<span class="string">"serverName"</span>:<span class="string">"lee"</span>,<span class="string">"serverIp"</span>:<span class="string">"192.168.1.13"</span>,<span class="string">"port"</span>:<span class="number">8888</span>&#125;]&#125;</div></pre></td></tr></table></figure>
-
+          <p class="article-more-link">
+            <a href="/2017/06/18/JavaScript④流程语句/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/" data-id="cj6esnzci003dwg19ajie6yo9" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/" data-id="cj6f0sobj005tf519ps91p9ok" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/18/Go 标准库⑦JSON文件处理/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -263,14 +262,14 @@
 
 
   
-    <article id="post-Go 标准库⑥log" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript③运算符" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/17/Go 标准库⑥log/" class="article-date">
-  <time datetime="2017-05-17T13:50:53.000Z" itemprop="datePublished">2017-05-17 21:50:53</time>
+    <a href="/2017/06/18/JavaScript③运算符/" class="article-date">
+  <time datetime="2017-06-18T13:12:06.000Z" itemprop="datePublished">2017-06-18 21:12:06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
   </div>
 
   </div>
@@ -281,7 +280,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/17/Go 标准库⑥log/">Go 标准库介绍⑥log</a>
+      <a class="article-title" href="/2017/06/18/JavaScript③运算符/">JavaScript③运算符</a>
     </h1>
   
 
@@ -289,52 +288,51 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <h1 id="自增与自减"><a href="#自增与自减" class="headerlink" title="自增与自减"></a>自增与自减</h1><ul>
+<li>++ 对唯一的运算数进行递增操作(每次加1)</li>
+<li>– 对唯一的运算数进行递减操作(每次减1)</li>
+</ul>
+<h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="逻辑位运算"><a href="#逻辑位运算" class="headerlink" title="逻辑位运算"></a>逻辑位运算</h2><ul>
+<li>按位非~ 结果就是返回数值的反码</li>
+<li>按位与&amp;  同时为1</li>
+<li>按位或|  有一个为1</li>
+<li>按位异或^ 既不同时为0，也不同时为1</li>
+</ul>
+<h2 id="位移操作"><a href="#位移操作" class="headerlink" title="位移操作"></a>位移操作</h2><ul>
+<li>左移&lt;&lt;<ul>
+<li>将数值的所有位左移指定的位数</li>
+<li>所有空位用0补充</li>
+<li>左移1位对其X2，左移2位对其X4；依次类推</li>
+</ul>
+</li>
+<li>有符号右移&gt;&gt;<ul>
+<li>将数值的所有位右移指定的位数</li>
+<li>一处的位被舍弃</li>
+<li>保留符号位</li>
+<li>右移一位对齐除2，右移两位对齐除4，依次类推</li>
+</ul>
+</li>
+<li>无符号右移&gt;&gt;&gt;<ul>
+<li>正数，与有符号右移结果相同</li>
+<li>负数，会出现无限大的数值；</li>
+</ul>
+</li>
+</ul>
         
-        <blockquote>
-<p>log 包实现了简单的日志服务，log 包定义了Logger类型，该类型提供了一些格式化输出的方法。本包也提供了一个预定义的“标准”Logger，可以通过辅助函数Print[f|ln]、Fatal[f|ln]和Panic[f|ln]访问，比手工创建一个Logger对象更容易使用。Logger会打印每条日志信息的日期、时间，默认输出到标准错误。Fatal系列函数会在写入日志信息后调用os.Exit(1)。Panic系列函数会在写入日志信息后调用panic。</p>
-</blockquote>
-<h1 id="Logger结构体"><a href="#Logger结构体" class="headerlink" title="Logger结构体"></a>Logger结构体</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Logger <span class="keyword">struct</span> &#123;</div><div class="line">    mu     sync.Mutex <span class="comment">// ensures atomic writes; protects the following fields</span></div><div class="line">    prefix <span class="keyword">string</span>     <span class="comment">// prefix to write at beginning of each line</span></div><div class="line">    flag   <span class="keyword">int</span>        <span class="comment">// properties</span></div><div class="line">    out    io.Writer  <span class="comment">// destination for output</span></div><div class="line">    buf    []<span class="keyword">byte</span>     <span class="comment">// for accumulating text to write</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Logger 类型表示一个记录日志的对象，它会生成一行行的输出写入一个io.Writer 接口。每一条日志操作会调用一次io.Writer 接口的Write 方法。Logger 类型的对象可以被多个线程安全的同时使用，它会保证对io.Writer 接口的顺序访问。</p>
-<ul>
-<li><p>func New(out io.Writer, prefix string, flag int) *Logger // 创建一个Logger, out设置日志信息写入的目的地, prefix 添加到生成的每一条日志前面, flag定义日志的属性</p>
-</li>
-<li><p>func (l *Logger) Flags() int // Flags返回logger的输出选项</p>
-</li>
-<li><p>func (l *Logger) SetFlags(flag int) // SetFlags设置logger的输出选项</p>
-</li>
-<li><p>func (l *Logger) Prefix() string // Prefix返回logger的输出前缀</p>
-</li>
-<li><p>func (l *Logger) SetPrefix(prefix string) // SSetPrefix设置logger的输出前缀</p>
-</li>
-<li><p>func (l *Logger) Output(calldepth int, s string) error // 输出一条日志</p>
-</li>
-<li><p>func (l *Logger) Printf(format string, v …interface{}) // 将生成的格式化字符串输出到out</p>
-</li>
-<li><p>func (l *Logger) Fatal(v …interface{}) // Fatal等价于{l.Print(v…); os.Exit(1)}</p>
-</li>
-<li><p>func (l *Logger) Panic(v …interface{}) // Panic等价于{l.Print(v…); panic(…)}</p>
-</li>
-</ul>
-<h1 id="log导出函数"><a href="#log导出函数" class="headerlink" title="log导出函数"></a>log导出函数</h1><p>log 导出函数基于预定义的 std 变量 <code>var std = New(os.Stderr, &quot;&quot;, LstdFlags)</code> 实现。</p>
-<ul>
-<li>func Flags() int // 获取预定义“标准”日志输出属性</li>
-<li>func Prefix() string // 获取预定义“标准”日志前缀</li>
-<li>func SetOutput(w io.Writer) // 设置预定义“标准”日志输出位置</li>
-<li>func Print(v …interface{}) // 打印一条标准日志</li>
-</ul>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 log</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"log"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    logger := log.New(os.Stdout, <span class="string">"a log:"</span>, log.Lshortfile)</div><div class="line">    logger.SetFlags(log.Llongfile)</div><div class="line">    fmt.Println(logger.Flags()) <span class="comment">// 8</span></div><div class="line"> </div><div class="line">    logger.SetPrefix(<span class="string">"debug:"</span>)</div><div class="line">    fmt.Println(logger.Prefix()) <span class="comment">// de<span class="doctag">bug:</span></span></div><div class="line"> </div><div class="line">    logger.Print(<span class="string">"hello, log file"</span>)</div><div class="line"> </div><div class="line">    err := logger.Output(<span class="number">2</span>, <span class="string">"world"</span>)</div><div class="line">    fmt.Println(err)</div><div class="line"> </div><div class="line">    logger.Printf(<span class="string">"%v\t%v"</span>, <span class="string">"hello"</span>, <span class="string">"go"</span>)</div><div class="line"> </div><div class="line">    <span class="comment">// logger.Fatal("fatal log")</span></div><div class="line">    <span class="comment">// logger.Panic("Panic log")</span></div><div class="line"> </div><div class="line">    <span class="comment">// 使用预定义日志类型</span></div><div class="line">    fmt.Println(log.Flags())         <span class="comment">// 3</span></div><div class="line">    fmt.Println(log.Prefix())        <span class="comment">// ''</span></div><div class="line">    log.Print(<span class="string">"hello predefine log"</span>) <span class="comment">// 2017/03/04 16:34:27 hello predefine log</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+          <p class="article-more-link">
+            <a href="/2017/06/18/JavaScript③运算符/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/" data-id="cj6esnzcl003lwg192p0zakyq" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/" data-id="cj6f0sobh005pf519j2v8hd64" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/17/Go 标准库⑥log/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -344,14 +342,14 @@
 
 
   
-    <article id="post-Go 标准库⑤io" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-JavaScript②数据类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/05/16/Go 标准库⑤io/" class="article-date">
-  <time datetime="2017-05-16T13:50:53.000Z" itemprop="datePublished">2017-05-16 21:50:53</time>
+    <a href="/2017/06/18/JavaScript②数据类型/" class="article-date">
+  <time datetime="2017-06-18T13:11:06.000Z" itemprop="datePublished">2017-06-18 21:11:06</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
+    <a class="article-category-link" href="/categories/JavaScript/">JavaScript</a>
   </div>
 
   </div>
@@ -362,7 +360,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/16/Go 标准库⑤io/">Go 标准库介绍⑤io</a>
+      <a class="article-title" href="/2017/06/18/JavaScript②数据类型/">JavaScript②数据类型</a>
     </h1>
   
 
@@ -370,557 +368,32 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!-- Table of Contents -->
+        <p>ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；</p>
+<h1 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h1><ul>
+<li>console.log(typeof qqqq);//undefined，这个变量没有定义；</li>
+<li>console.log(typeof (222));//number，是一个数字； typeof是操作符而不是方法，所以后面可以加()也可以不加；</li>
+<li>console.log(typeof “222”);//string，是一个字符串</li>
+<li>console.log(typeof false);//boolean，是一个布尔值</li>
+<li>console.log(typeof {});//object 是一个对象</li>
+<li>console.log(typeof null);//objecy 是一个对象，在javascript里，null是一个空指针；</li>
+<li>console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象</li>
+</ul>
+<p>从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；<br>typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；</p>
         
-        <h1 id="io-包的接口"><a href="#io-包的接口" class="headerlink" title="io 包的接口"></a>io 包的接口</h1><ul>
-<li>Reader</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Reader <span class="keyword">interface</span> &#123;</div><div class="line">    Read(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Reader 接口用于包装基本的读取方法。Read 方法读取 len(p) 字节数据写入p。它返回写入的字节数和遇到的任何错误。即使Read方法返回值 n &lt; len(p)，本方法在被调用时仍可能使用p的全部长度作为暂存空间。如果有部分可用数据，但不够len(p)字节，Read会返回可以读取到的数据，而不是等待更多数据。</p>
-<ul>
-<li>Writer</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Writer <span class="keyword">interface</span> &#123;</div><div class="line">    Write(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Writer 接口用于包装基本的写入方法。Write 方法将 len(p) 字节数据从p写入底层的数据流。它会返回写入的字节数据<code>(0 &lt;= n &lt;= len(p))</code> 和遇到的任何导致写入提取结束的错误。如果它返回的 n &lt; len(p), Write必须返回非nil的错误。</p>
-<ul>
-<li>Closer</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Closer <span class="keyword">interface</span> &#123;</div><div class="line">    Close() error</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Closer 接口用于包装基本的关闭方法。</p>
-<ul>
-<li>Seeker</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Seeker <span class="keyword">interface</span> &#123;</div><div class="line">    Seek(offset <span class="keyword">int64</span>, whence <span class="keyword">int</span>) (<span class="keyword">int64</span>, error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>Seeker 接口用于包装基本的移位方法。Seek方法设定下一次读写的位置：偏移量为offset，校准点由whence确定：0表示相对于文件起始；1表示相对于当前位置；2表示相对于文件结尾。Seek方法返回新的位置以及可能遇到的错误。</p>
-<ul>
-<li>ReaderAt</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> ReaderAt <span class="keyword">interface</span> &#123;</div><div class="line">    ReadAt(p []<span class="keyword">byte</span>, off <span class="keyword">int64</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ReaderAt 接口包装了基本的ReadAt方法。ReadAt从底层输入流的偏移量off位置读取len(p) 字节数据写入p， 它返回读取的字节数(0 &lt;= n &lt;= len(p)) 和遇到的任何错误。</p>
-<ul>
-<li>ByteReader</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> ByteReader <span class="keyword">interface</span> &#123;</div><div class="line">    ReadByte() (c <span class="keyword">byte</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ByteReader 是基本的ReadByte方法的包装。ReadByte读取输入中的单个字节并返回。如果没有字节可读取，会返回错误。</p>
-<ul>
-<li>ByteScanner</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> ByteScanner <span class="keyword">interface</span> &#123;</div><div class="line">    ByteReader</div><div class="line">    UnreadByte() error</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ByteScanner 接口在基本的ReadByte 方法之外还添加了UnreadByte方法。UnreadByte方法让下一次调用ReadByte时返回之前调用ReadByte时返回的同一个字节。连续调用两次UnreadByte方法而中间没有调用ReadByte时，可能会导致错误</p>
-<ul>
-<li>ReaderFrom</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> ReaderFrom <span class="keyword">interface</span> &#123;</div><div class="line">    ReadFrom(r Reader) (n <span class="keyword">int64</span>, err error)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>ReaderFrom 接口包装了基本的ReadFrom方法。ReadFrom 方法从r 读取数据直到EOF或者遇到错误。返回值n是读取的字节数，执行时遇到的错误（EOF除外）也会被返回</p>
-<ul>
-<li>LimitedReader</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> LimitedReader <span class="keyword">struct</span> &#123;</div><div class="line">    R Reader <span class="comment">// underlying reader</span></div><div class="line">    N <span class="keyword">int64</span>  <span class="comment">// max bytes remaining</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>LimitedReader 从R中读取数据，但限制可以读取的数据的量为最多N 字节，每次调用Read方法都会更新N 以标记剩余可以读取的字节数。</p>
-<ul>
-<li>func LimitReader(r Reader, n int64) LimitedReader // 创建一个 LimitedReader</li>
-<li><p>func (l *LimitedReader) Read(p []byte) (n int, err error)</p>
-</li>
-<li><p>SectionReader</p>
-</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> SectionReader <span class="keyword">struct</span> &#123;</div><div class="line">    r     ReaderAt</div><div class="line">    base  <span class="keyword">int64</span></div><div class="line">    off   <span class="keyword">int64</span></div><div class="line">    limit <span class="keyword">int64</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>SectionReader 实现了对底层满足ReadAt 接口的输入流某个片段的Read、ReadAt、Seek方法。</p>
-<ul>
-<li>func NewSectionReader(r ReaderAt, off int64, n int64) *SectionReader // 返回一个从r中的偏移量off处为起始，读取n个字节后以停止的SectionReader</li>
-<li>func (s *SectionReader) Size() int64 // Size返回该片段的字节数</li>
-</ul>
-<h1 id="io-导出函数"><a href="#io-导出函数" class="headerlink" title="io 导出函数"></a>io 导出函数</h1><ul>
-<li>func WriteString(w Writer, s string) (n int, err error) // 将字符串s的内容写入w中</li>
-<li>func Copy(dst Writer, src Reader) (written int64, err error) // 将src的数据拷贝到dst，直到在src上到达EOF或发生错误。返回拷贝的字节数和遇到的第一个错误</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"io"</span></div><div class="line">    <span class="string">"log"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">    <span class="string">"strings"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    r := strings.NewReader(<span class="string">"go is a programming language\n"</span>)</div><div class="line">    <span class="keyword">if</span> n, err := io.Copy(os.Stdout, r); err != <span class="literal">nil</span> &#123;</div><div class="line">        log.Fatal(n, err)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// writestring</span></div><div class="line">    io.WriteString(os.Stdout, <span class="string">"hello go\n"</span>)</div><div class="line"> </div><div class="line">    <span class="comment">// 从标准输入copy 到标准输出</span></div><div class="line">    <span class="keyword">if</span> n, err := io.Copy(os.Stdout, os.Stdin); err != <span class="literal">nil</span> &#123;</div><div class="line">        fmt.Println(n, err)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+          <p class="article-more-link">
+            <a href="/2017/06/18/JavaScript②数据类型/#more">继续阅读全文 »</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/" data-id="cj6esnzck003iwg193obp8grt" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/" data-id="cj6f0sobg005mf519l76ux9yk" class="article-share-link">分享</a>
       
-        <a href="http://liuguoquan727.github.io/2017/05/16/Go 标准库⑤io/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Go 标准库④path" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/15/Go 标准库④path/" class="article-date">
-  <time datetime="2017-05-15T13:50:53.000Z" itemprop="datePublished">2017-05-15 21:50:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/15/Go 标准库④path/">Go 标准库介绍④path</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="path-包"><a href="#path-包" class="headerlink" title="path 包"></a>path 包</h1><p>path实现了对斜杠分隔的路径进行操作的函数。</p>
-<ul>
-<li>func IsAbs(path string) bool // 判断是否是一个绝对路径</li>
-<li>func Split(path string) (dir, file string) // 将路径分割为路径和文件名</li>
-<li>func Join(elem …string) string // 将多个字符串合并为一个路径</li>
-<li>func Ext(path string) string // 返回路径中扩展部分</li>
-<li>func Base(path string) string // 返回路径的最后一个元素</li>
-<li>func Dir(path string) string // 返回路径中目录部分</li>
-<li>func Clean(path string) string // 返回同目录的最短路径</li>
-<li>func Match(pattern, name string) (matched bool, err error) // 正则是否匹配路径（shell 文件名匹配）</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 path</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"path"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    pt := <span class="string">"~/gocode/src/go_note/package/path"</span></div><div class="line"> </div><div class="line">    <span class="comment">// 判断是否是一个绝对路径</span></div><div class="line">    is_abs := path.IsAbs(pt)</div><div class="line">    fmt.Println(is_abs) <span class="comment">// false</span></div><div class="line"> </div><div class="line">    <span class="comment">// 将路径分割为路径和文件名</span></div><div class="line">    pf := <span class="string">"~gocode/src/go_note/package/path/path.go"</span></div><div class="line">    dir, file := path.Split(pf)</div><div class="line">    fmt.Println(dir, file) <span class="comment">// ~gocode/src/go_note/package/path/ path.go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 将多个字符串合并为一个路径</span></div><div class="line">    dir_join := path.Join(<span class="string">"usr"</span>, <span class="string">"local"</span>, <span class="string">"bin"</span>)</div><div class="line">    fmt.Println(dir_join) <span class="comment">// usr/local/bin</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径中扩展</span></div><div class="line">    file_ext := path.Ext(pf)</div><div class="line">    fmt.Println(file_ext) <span class="comment">// .go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径的最后一个元素</span></div><div class="line">    dir_base := path.Base(pf)</div><div class="line">    fmt.Println(dir_base) <span class="comment">// path.go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径中目录部分</span></div><div class="line">    dir = path.Dir(pf)</div><div class="line">    fmt.Println(dir) <span class="comment">// ~gocode/src/go_note/package/path</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回同目录的最短路径</span></div><div class="line">    dir_a := <span class="string">"/usr/../etc/../etc/ssh"</span></div><div class="line">    fmt.Println(path.Clean(dir_a)) <span class="comment">// /etc/ssh</span></div><div class="line"> </div><div class="line">    <span class="comment">// 正则是否匹配路径</span></div><div class="line">    is_match, err := path.Match(<span class="string">"*.xml"</span>, <span class="string">"a.xml"</span>)</div><div class="line">    fmt.Println(is_match, err) <span class="comment">// true &amp;lt;nil&amp;gt;</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="path-filepath-包"><a href="#path-filepath-包" class="headerlink" title="path/filepath 包"></a>path/filepath 包</h1><p>filepath 包实现了兼容各操作系统的文件路径操作函数。</p>
-<ul>
-<li>filepath.Separator // 预定义变量，表示路径分隔符 /</li>
-<li>filepath.ListSeparator // 预定义变量，表示环境变量分隔符 :</li>
-<li>func Abs(path string) (string, error) // 返回path 相对当前路径的绝对路径</li>
-<li>func Clean(path string) string // 返回path 的最短路径</li>
-<li>func Rel(basepath, targpath string) (string, error) // 返回targpath 相对 basepath路径</li>
-<li>func EvalSymlinks(path string) (string, error) // 返回软链指向的路径</li>
-<li>func VolumeName(path string) string // 返回路径最前面的卷名</li>
-<li>func ToSlash(path string) string // 路径分隔符替换为 /</li>
-<li>func FromSlash(path string) string // / 替换为路径分隔符</li>
-<li>func SplitList(path string) []string // 分隔环境变量里面的路径</li>
-<li>func Walk(root string, walkFn WalkFunc) error // 遍历 root 目录下的文件树，并调用 walkFn</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 path/filepath</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">    <span class="string">"path/filepath"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="comment">// 打印路径名称</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">pathName</span><span class="params">(path <span class="keyword">string</span>, info os.FileInfo, err error)</span> <span class="title">error</span></span> &#123;</div><div class="line">    <span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</div><div class="line">        <span class="keyword">return</span> err</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        fmt.Println(path)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">nil</span></div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 预定义变量</span></div><div class="line">    fmt.Println(<span class="keyword">string</span>(filepath.Separator), <span class="keyword">string</span>(filepath.ListSeparator))</div><div class="line"> </div><div class="line">    <span class="comment">// 返回path 相对当前路径的绝对路径</span></div><div class="line">    dir := <span class="string">"~/gocode/src/go_note/package/filepath"</span></div><div class="line">    real_dir, err := filepath.Abs(dir)</div><div class="line">    fmt.Println(real_dir, err)</div><div class="line"> </div><div class="line">    <span class="comment">// 返回path 的最短路径</span></div><div class="line">    dir = <span class="string">"/usr/../etc/../tmp"</span></div><div class="line">    clear_dir := filepath.Clean(dir)</div><div class="line">    fmt.Println(clear_dir) <span class="comment">// /tmp</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回targpath 相对 basepath路径</span></div><div class="line">    basepath, targpath := <span class="string">"/usr/local"</span>, <span class="string">"/usr/local/go/bin"</span></div><div class="line">    rel_dir, err := filepath.Rel(basepath, targpath)</div><div class="line">    fmt.Println(rel_dir, err) <span class="comment">// go/bin &amp;lt;nil&amp;gt;</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回软链指向的路径</span></div><div class="line">    symlink := <span class="string">"/usr/local"</span></div><div class="line">    real_dir, err = filepath.EvalSymlinks(symlink)</div><div class="line">    fmt.Println(real_dir, err) <span class="comment">// /usr/local &amp;lt;nil&amp;gt;</span></div><div class="line"> </div><div class="line">    <span class="comment">// 返回路径最前面的卷名</span></div><div class="line">    root := <span class="string">"/usr/local/go"</span></div><div class="line">    vol := filepath.VolumeName(root)</div><div class="line">    fmt.Println(vol) <span class="comment">// ''</span></div><div class="line"> </div><div class="line">    <span class="comment">// 路径分隔符替换为 `/`</span></div><div class="line">    slash_dir := filepath.ToSlash(root)</div><div class="line">    fmt.Println(slash_dir) <span class="comment">// /usr/local/go</span></div><div class="line"> </div><div class="line">    <span class="comment">//  `/` 替换为路径分隔符</span></div><div class="line">    from_slash := filepath.FromSlash(slash_dir)</div><div class="line">    fmt.Println(from_slash) <span class="comment">// /usr/local/go</span></div><div class="line"> </div><div class="line">    <span class="comment">// 分隔环境变量里面的路径</span></div><div class="line">    env_path := <span class="string">"/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"</span></div><div class="line">    env_slice := filepath.SplitList(env_path)</div><div class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> env_slice &#123;</div><div class="line">        fmt.Println(k, v)</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 0 /usr/local/bin</span></div><div class="line">    <span class="comment">// 1 /usr/bin</span></div><div class="line">    <span class="comment">// 2 /bin</span></div><div class="line">    <span class="comment">// 3 /usr/sbin</span></div><div class="line">    <span class="comment">// 4 /sbin</span></div><div class="line">    <span class="comment">// 5 /opt/X11/bin</span></div><div class="line">    <span class="comment">// 6 /usr/local/go/bin</span></div><div class="line"> </div><div class="line">    <span class="comment">// 遍历 root 目录下的文件树，并调用 walkFn</span></div><div class="line">    root_dir, err := os.Getwd()</div><div class="line">    err = filepath.Walk(root_dir, pathName)</div><div class="line">    fmt.Println(err)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/" data-id="cj6esnzch003awg19t54j6ea0" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/05/15/Go 标准库④path/#ds-thread" class="article-comment-link">留言</a>
+        <a href="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/#ds-thread" class="article-comment-link">留言</a>
       
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Go 标准库③os" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/14/Go 标准库③os/" class="article-date">
-  <time datetime="2017-05-14T13:50:53.000Z" itemprop="datePublished">2017-05-14 21:50:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/14/Go 标准库③os/">Go 标准库介绍③os</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>os 包提供了不依赖平台的操作系统函数接口。错误处理设计为go 风格，失败的调用会返回错误值而非错误码。通常错误值里包含更多信息。</p>
-<h1 id="os-常用导出函数"><a href="#os-常用导出函数" class="headerlink" title="os 常用导出函数"></a>os 常用导出函数</h1><ul>
-<li>func Hostname() (name string, err error) // Hostname返回内核提供的主机名</li>
-<li>func Environ() []string // Environ返回表示环境变量的格式为”key=value”的字符串的切片拷贝</li>
-<li>func Getenv(key string) string // Getenv检索并返回名为key的环境变量的值</li>
-<li>func Getpid() int // Getpid返回调用者所在进程的进程ID</li>
-<li>func Exit(code int) // Exit让当前程序以给出的状态码code退出。一般来说，状态码0表示成功，非0表示出错。程序会立刻终止，defer的函数不会被执行</li>
-<li>func Stat(name string) (fi FileInfo, err error) // 获取文件信息</li>
-<li>func Getwd() (dir string, err error) // Getwd返回一个对应当前工作目录的根路径</li>
-<li>func Mkdir(name string, perm FileMode) error // 使用指定的权限和名称创建一个目录</li>
-<li>func MkdirAll(path string, perm FileMode) error // 使用指定的权限和名称创建一个目录，包括任何必要的上级目录，并返回nil，否则返回错误</li>
-<li>func Remove(name string) error // 删除name指定的文件或目录</li>
-<li>func TempDir() string // 返回一个用于保管临时文件的默认目录</li>
-<li>var Args []string Args保管了命令行参数，第一个是程序名。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 os</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 预定义变量, 保存命令行参数</span></div><div class="line">    fmt.Println(os.Args)</div><div class="line"> </div><div class="line">    <span class="comment">// 获取host name</span></div><div class="line">    fmt.Println(os.Hostname())</div><div class="line">    fmt.Println(os.Getpid())</div><div class="line"> </div><div class="line">    <span class="comment">// 获取全部环境变量</span></div><div class="line">    env := os.Environ()</div><div class="line">    <span class="keyword">for</span> k, v := <span class="keyword">range</span> env &#123;</div><div class="line">        fmt.Println(k, v)</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// 终止程序</span></div><div class="line">    <span class="comment">// os.Exit(1)</span></div><div class="line"> </div><div class="line">    <span class="comment">// 获取一条环境变量</span></div><div class="line">    fmt.Println(os.Getenv(<span class="string">"PATH"</span>))</div><div class="line"> </div><div class="line">    <span class="comment">// 获取当前目录</span></div><div class="line">    dir, err := os.Getwd()</div><div class="line">    fmt.Println(dir, err)</div><div class="line"> </div><div class="line">    <span class="comment">// 创建目录</span></div><div class="line">    err = os.Mkdir(dir+<span class="string">"/new_file"</span>, <span class="number">0755</span>)</div><div class="line">    fmt.Println(err)</div><div class="line"> </div><div class="line">    <span class="comment">// 创建目录</span></div><div class="line">    err = os.MkdirAll(dir+<span class="string">"/new"</span>, <span class="number">0755</span>)</div><div class="line">    fmt.Println(err)</div><div class="line"> </div><div class="line">    <span class="comment">// 删除目录</span></div><div class="line">    err = os.Remove(dir + <span class="string">"/new_file"</span>)</div><div class="line">    err = os.Remove(dir + <span class="string">"/new"</span>)</div><div class="line">    fmt.Println(err)</div><div class="line"> </div><div class="line">    <span class="comment">// 创建临时目录</span></div><div class="line">    tmp_dir := os.TempDir()</div><div class="line">    fmt.Println(tmp_dir)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="File-结构体"><a href="#File-结构体" class="headerlink" title="File 结构体"></a>File 结构体</h1><ul>
-<li>func Create(name string) (file *File, err error) // Create采用模式0666（任何人都可读写，不可执行）创建一个名为name的文件，如果文件已存在会截断它（为空文件）</li>
-<li>func Open(name string) (file *File, err error) // Open打开一个文件用于读取。如果操作成功，返回的文件对象的方法可用于读取数据；对应的文件描述符具有O_RDONLY模式</li>
-<li>func (f *File) Stat() (fi FileInfo, err error) // Stat返回描述文件f的FileInfo类型值</li>
-<li>func (f *File) Readdir(n int) (fi []FileInfo, err error) // Readdir读取目录f的内容，返回一个有n个成员的[]FileInfo，这些FileInfo是被Lstat返回的，采用目录顺序</li>
-<li>func (f *File) Read(b []byte) (n int, err error) // Read方法从f中读取最多len(b)字节数据并写入b</li>
-<li>func (f *File) WriteString(s string) (ret int, err error) // 向文件中写入字符串</li>
-<li>func (f *File) Sync() (err error) // Sync递交文件的当前内容进行稳定的存储。一般来说，这表示将文件系统的最近写入的数据在内存中的拷贝刷新到硬盘中稳定保存</li>
-<li>func (f *File) Close() error // Close关闭文件f，使文件不能用于读写</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 os.File</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"os"</span></div><div class="line">    <span class="string">"time"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    <span class="comment">// 获取当前目录</span></div><div class="line">    dir, err := os.Getwd()</div><div class="line">    fmt.Println(dir, err)</div><div class="line"> </div><div class="line">    file := dir + <span class="string">"/new"</span></div><div class="line">    <span class="keyword">var</span> fh *os.File</div><div class="line"> </div><div class="line">    fi, _ := os.Stat(file)</div><div class="line">    <span class="keyword">if</span> fi == <span class="literal">nil</span> &#123;</div><div class="line">        fh, _ = os.Create(file) <span class="comment">// 文件不存在就创建</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        fh, _ = os.OpenFile(file, os.O_RDWR, <span class="number">0666</span>) <span class="comment">// 文件存在就打开</span></div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    w := []<span class="keyword">byte</span>(<span class="string">"hello go language"</span> + time.Now().String())</div><div class="line">    n, err := fh.Write(w)</div><div class="line">    fmt.Println(n, err)</div><div class="line"> </div><div class="line">    <span class="comment">// 设置下次读写位置</span></div><div class="line">    ret, err := fh.Seek(<span class="number">0</span>, <span class="number">0</span>)</div><div class="line">    fmt.Println(<span class="string">"当前文件指针位置"</span>, ret, err)</div><div class="line"> </div><div class="line">    b := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">128</span>)</div><div class="line">    n, err = fh.Read(b)</div><div class="line">    fmt.Println(n, err, <span class="keyword">string</span>(b))</div><div class="line"> </div><div class="line">    fh.Close()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="FileInfo-结构体"><a href="#FileInfo-结构体" class="headerlink" title="FileInfo 结构体"></a>FileInfo 结构体</h1><p>FileInfo用来描述一个文件对象</p>
-<p>结构体定义:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> FileInfo <span class="keyword">interface</span> &#123;</div><div class="line">    Name() <span class="keyword">string</span>       <span class="comment">// base name of the file</span></div><div class="line">    Size() <span class="keyword">int64</span>        <span class="comment">// length in bytes for regular files; system-dependent for others</span></div><div class="line">    Mode() FileMode     <span class="comment">// file mode bits</span></div><div class="line">    ModTime() time.Time <span class="comment">// modification time</span></div><div class="line">    IsDir() <span class="keyword">bool</span>        <span class="comment">// abbreviation for Mode().IsDir()</span></div><div class="line">    Sys() <span class="keyword">interface</span>&#123;&#125;   <span class="comment">// underlying data source (can return nil)</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>func Stat(name string) (fi FileInfo, err error) // Stat 返回描述文件的FileInfo。如果指定的文件对象是一个符号链接，返回的FileInfo描述该符号链接指向的文件的信息，本函数会尝试跳转该链接</li>
-<li>func Lstat(name string) (fi FileInfo, err error) // Lstat 返回描述文件对象的FileInfo。如果指定的文件对象是一个符号链接，返回的FileInfo描述该符号链接的信息，本函数不会试图跳转该链接。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fi, _ := os.Stat(file)</div><div class="line"><span class="keyword">if</span> fi == <span class="literal">nil</span> &#123;</div><div class="line">    fh, _ = os.Create(file) <span class="comment">// 文件不存在就创建</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    fh, _ = os.OpenFile(file, os.O_RDWR, <span class="number">0666</span>) <span class="comment">// 文件存在就打开</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/14/Go 标准库③os/" data-id="cj6esnzcg0037wg19unt44gu7" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/05/14/Go 标准库③os/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Go 标准库②time" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/13/Go 标准库②time/" class="article-date">
-  <time datetime="2017-05-13T13:50:53.000Z" itemprop="datePublished">2017-05-13 21:50:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/13/Go 标准库②time/">Go 标准库介绍②time</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="时间处理类型"><a href="#时间处理类型" class="headerlink" title="时间处理类型"></a>时间处理类型</h1><p>Go 中时间处理依赖的数据类型: time.Time, time.Month, time.Weekday, time.Duration, time.Location。</p>
-<h2 id="time-Time时间点"><a href="#time-Time时间点" class="headerlink" title="time.Time时间点"></a>time.Time时间点</h2><p>time.Time 代表一个纳秒精度的时间点。Time结构体定义如下:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Time <span class="keyword">struct</span> &#123;</div><div class="line">    sec <span class="keyword">int64</span> <span class="comment">// 从1年1月1日 00:00:00 UTC 至今过去的秒数</span></div><div class="line">    nsec <span class="keyword">int32</span> <span class="comment">// 最近一秒到下一秒过去的纳秒数</span></div><div class="line">    loc *Location <span class="comment">// 时区</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> t time.Time <span class="comment">// 定义 time.Time 类型变量</span></div><div class="line">t = time.Now()  <span class="comment">// 获取当前时间</span></div><div class="line">fmt.Printf(<span class="string">"时间: %v, 时区:  %v,  时间类型: %T\n"</span>, t, t.Location(), t)</div><div class="line"><span class="comment">// 时间: 2017-02-22 09:06:05.816187261 +0800 CST, 时区:  Local,  时间类型: time.Time</span></div><div class="line"> </div><div class="line"><span class="comment">// time.UTC() time 返回UTC 时区的时间</span></div><div class="line">fmt.Printf(<span class="string">"时间: %v, 时区:  %v,  时间类型: %T\n"</span>, t.UTC(), t.UTC().Location(), t)</div><div class="line"><span class="comment">// 时间: 2017-02-22 01:07:15.179280004 +0000 UTC, 时区:  UTC,  时间类型: time.Time</span></div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"year: %d "</span>,t.Year())</div><div class="line">fmt.Printf(<span class="string">"month: %d "</span>,t.Month())</div><div class="line">fmt.Printf(<span class="string">"day: %d\n"</span>,t.Day())</div><div class="line"></div><div class="line">fmt.Printf(<span class="string">"hour: %d "</span>,t.Hour())</div><div class="line">fmt.Printf(<span class="string">"minute: %d "</span>,t.Minute())</div><div class="line">fmt.Printf(<span class="string">"second: %d \n"</span>,t.Second())</div></pre></td></tr></table></figure>
-<p>代码中应使用time.Time 类型值来保存和传递时间，而不能用指针。表示时间的变量和字段，应为time.Time类型，而不是*time.Time类型。</p>
-<h2 id="time-Month月份"><a href="#time-Month月份" class="headerlink" title="time.Month月份"></a>time.Month月份</h2><p>time.Month 代表一年中的某个月</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Month <span class="keyword">int</span></div><div class="line"></div><div class="line"><span class="comment">//Month相关的常量</span></div><div class="line"><span class="keyword">const</span> (</div><div class="line">    January Month = <span class="number">1</span> + <span class="literal">iota</span></div><div class="line">    February</div><div class="line">    March</div><div class="line">    April</div><div class="line">    May</div><div class="line">    June</div><div class="line">    July</div><div class="line">    August</div><div class="line">    September</div><div class="line">    October</div><div class="line">    November</div><div class="line">    December</div><div class="line">)</div></pre></td></tr></table></figure>
-<h2 id="time-Weekday星期"><a href="#time-Weekday星期" class="headerlink" title="time.Weekday星期"></a>time.Weekday星期</h2><p>time.Weekday 代表一周的周几。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Weekday <span class="keyword">int</span></div><div class="line"></div><div class="line"><span class="comment">//Weekday相关的常量</span></div><div class="line"><span class="keyword">const</span> (</div><div class="line">    Sunday Weekday = <span class="literal">iota</span></div><div class="line">    Monday</div><div class="line">    Tuesday</div><div class="line">    Wednesday</div><div class="line">    Thursday</div><div class="line">    Friday</div><div class="line">    Saturday</div><div class="line">)</div></pre></td></tr></table></figure>
-<h2 id="time-Duration时间段"><a href="#time-Duration时间段" class="headerlink" title="time.Duration时间段"></a>time.Duration时间段</h2><p>time.Duration 类型代表两个时间点之间经过的纳秒数，可表示的最长时间段约为290年。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Duration <span class="keyword">int64</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> (</div><div class="line">    Nanosecond  Duration = <span class="number">1</span></div><div class="line">    Microsecond          = <span class="number">1000</span> * Nanosecond</div><div class="line">    Millisecond          = <span class="number">1000</span> * Microsecond</div><div class="line">    Second               = <span class="number">1000</span> * Millisecond</div><div class="line">    Minute               = <span class="number">60</span> * Second</div><div class="line">    Hour                 = <span class="number">60</span> * Minute</div><div class="line">)</div></pre></td></tr></table></figure>
-<h2 id="time-Location时区"><a href="#time-Location时区" class="headerlink" title="time.Location时区"></a>time.Location时区</h2><p>Location代表一个地点，以及该地点所在的时区信息。北京时间可以使用 <code>Asia/Shanghai</code>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Location <span class="keyword">struct</span> &#123;</div><div class="line">    name <span class="keyword">string</span></div><div class="line">    zone []zone</div><div class="line">    tx   []zoneTrans</div><div class="line">    cacheStart <span class="keyword">int64</span></div><div class="line">    cacheEnd   <span class="keyword">int64</span></div><div class="line">    cacheZone  *zone</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="time-Time-方法"><a href="#time-Time-方法" class="headerlink" title="time.Time 方法"></a>time.Time 方法</h1><h2 id="获取一个时间的方法"><a href="#获取一个时间的方法" class="headerlink" title="获取一个时间的方法"></a>获取一个时间的方法</h2><ul>
-<li>func Now() Time {} // 当前本地时间</li>
-<li>func Unix(sec int64, nsec int64) Time {} // 根据时间戳返回本地时间</li>
-<li>func Date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time {} // 返回指定时间</li>
-</ul>
-<h2 id="时间显示"><a href="#时间显示" class="headerlink" title="时间显示"></a>时间显示</h2><ul>
-<li>func (t Time) UTC() Time {} // 获取指定时间在UTC 时区的时间表示</li>
-<li>func (t Time) Local() Time {} // 以本地时区表示</li>
-<li>func (t Time) In(loc *Location) Time {} // 时间在指定时区的表示</li>
-<li>func (t Time) Format(layout string) string {} // 按指定格式显示时间</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 获取指定时间在UTC 时区的时间表示</span></div><div class="line">t_by_utc := t.UTC()</div><div class="line">fmt.Println(<span class="string">"'t.UTC': "</span>, t_by_utc)</div><div class="line"> </div><div class="line"><span class="comment">// 获取本地时间表示</span></div><div class="line">t_by_local := t.Local()</div><div class="line">fmt.Println(<span class="string">"'t.Local': "</span>, t_by_local)</div><div class="line"> </div><div class="line"><span class="comment">// 时间在指定时区的表示</span></div><div class="line">t_in := t.In(time.UTC)</div><div class="line">fmt.Println(<span class="string">"'t.In': "</span>, t_in)</div><div class="line"> </div><div class="line"><span class="comment">// Format</span></div><div class="line">fmt.Println(<span class="string">"t.Format"</span>, t.Format(time.RFC3339))</div></pre></td></tr></table></figure>
-<h2 id="获取日期信息"><a href="#获取日期信息" class="headerlink" title="获取日期信息"></a>获取日期信息</h2><ul>
-<li>func (t Time) Date() (year int, month Month, day int) {} // 返回时间的日期信息</li>
-<li>func (t Time) Year() int {} // 返回年</li>
-<li>func (t Time) Month() Month {} // 月</li>
-<li>func (t Time) Day() int {} // 日</li>
-<li>func (t Time) Weekday() Weekday {} // 星期</li>
-<li>func (t Time) ISOWeek() (year, week int) {} // 返回年，星期范围编号</li>
-<li>func (t Time) Clock() (hour, min, sec int) {} // 返回时间的时分秒</li>
-<li>func (t Time) Hour() int {} // 返回小时</li>
-<li>func (t Time) Minute() int {} // 分钟</li>
-<li>func (t Time) Second() int {} // 秒</li>
-<li>func (t Time) Nanosecond() int {} // 纳秒</li>
-<li>func (t Time) YearDay() int {} // 一年中对应的天</li>
-<li>func (t Time) Location() *Location {} // 时间的时区</li>
-<li>func (t Time) Zone() (name string, offset int) {} // 时间所在时区的规范名和想对UTC 时间偏移量</li>
-<li>func (t Time) Unix() int64 {} // 时间转为时间戳</li>
-<li>func (t Time) UnixNano() int64 {} // 时间转为时间戳（纳秒）</li>
-</ul>
-<h2 id="时间比较与计算"><a href="#时间比较与计算" class="headerlink" title="时间比较与计算"></a>时间比较与计算</h2><ul>
-<li>func (t Time) IsZero() bool {} // 是否是零时时间</li>
-<li>func (t Time) After(u Time) bool {} // 时间在u 之前</li>
-<li>func (t Time) Before(u Time) bool {} // 时间在u 之后</li>
-<li>func (t Time) Equal(u Time) bool {} // 时间与u 相同</li>
-<li>func (t Time) Add(d Duration) Time {} // 返回t +d 的时间点</li>
-<li>func (t Time) Sub(u Time) Duration {} // 返回 t-u</li>
-<li>func (t Time) AddDate(years int, months int, days int) Time {} 返回增加了给出的年份、月份和天数的时间点Time</li>
-</ul>
-<h2 id="时间序列化"><a href="#时间序列化" class="headerlink" title="时间序列化"></a>时间序列化</h2><ul>
-<li>func (t Time) MarshalBinary() ([]byte, error) {} // 时间序列化</li>
-<li>func (t Time) UnmarshalBinary(data []byte) error {} // 反序列化</li>
-<li>func (t Time) MarshalJSON() ([]byte, error) {} // 时间序列化</li>
-<li>func (t Time) MarshalText() ([]byte, error) {} // 时间序列化</li>
-<li>func (t Time) GobEncode() ([]byte, error) {} // 时间序列化</li>
-<li>func (t Time) GobDecode() ([]byte, error) {} // 时间序列化</li>
-</ul>
-<h1 id="time-Duration-方法"><a href="#time-Duration-方法" class="headerlink" title="time.Duration 方法"></a>time.Duration 方法</h1><ul>
-<li>func (d Duration) String() string // 格式化输出 Duration</li>
-<li>func (d Duration) Nanoseconds() int64 // 将时间段表示为纳秒</li>
-<li>func (d Duration) Seconds() float64 // 将时间段表示为秒</li>
-<li>func (d Duration) Minutes() float64 // 将时间段表示为分钟</li>
-<li>func (d Duration) Hours() float64 // 将时间段表示为小时</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// time.Duration 时间段</span></div><div class="line">fmt.Println(<span class="string">"time.Duration 时间段"</span>)</div><div class="line">d = time.Duration(<span class="number">10000000000000</span>)</div><div class="line"> </div><div class="line">fmt.Printf(<span class="string">"'String: %v', 'Nanoseconds: %v', 'Seconds: %v', 'Minutes: %v', 'Hours: %v'\n"</span>, </div><div class="line">d.String(), d.Nanoseconds(), d.Seconds(), d.Minutes(), d.Hours())</div></pre></td></tr></table></figure>
-<h1 id="time-Location-方法"><a href="#time-Location-方法" class="headerlink" title="time.Location 方法"></a>time.Location 方法</h1><ul>
-<li>func (l *Location) String() string // 输出时区名</li>
-<li>func FixedZone(name string, offset int) *Location // FixedZone 使用给定的地点名name和时间偏移量offset（单位秒）创建并返回一个Location</li>
-<li>func LoadLocation(name string) (*Location, error) // LoadLocation 使用给定的名字创建Location</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> local *time.Location</div><div class="line">local, ok := time.LoadLocation(<span class="string">"Asia/Shanghai"</span>)</div><div class="line">fmt.Printf(<span class="string">"%v, %T, %v\n"</span>, local, local, ok)</div></pre></td></tr></table></figure>
-<h1 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h1><ul>
-<li>func Sleep(d Duration) // Sleep阻塞当前go线程至少d代表的时间段。d&lt;=0时，Sleep会立刻返回。</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">d_second := time.Second</div><div class="line">time.Sleep(d_second)</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/13/Go 标准库②time/" data-id="cj6esnzcf0032wg19ubfdl21r" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/05/13/Go 标准库②time/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Go 标准库①strings" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/12/Go 标准库①strings/" class="article-date">
-  <time datetime="2017-05-12T13:50:53.000Z" itemprop="datePublished">2017-05-12 21:50:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/12/Go 标准库①strings/">Go 标准库介绍①string</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>strings 包实现了用于操作字符串的简单函数，包括 string 导出函数和 Reader, Replacer 两个结构体。</p>
-<h1 id="strings-常用导出函数"><a href="#strings-常用导出函数" class="headerlink" title="strings 常用导出函数"></a>strings 常用导出函数</h1><h2 id="判断字符串与子串关系"><a href="#判断字符串与子串关系" class="headerlink" title="判断字符串与子串关系"></a>判断字符串与子串关系</h2><ul>
-<li>func EqualFold(s, t string) bool // 判断两个utf-8编码字符串，大小写不敏感</li>
-<li>func HasPrefix(s, prefix string) bool // 判断s是否有前缀字符串prefix</li>
-<li>func Contains(s, substr string) bool // 判断字符串s是否包含子串substr</li>
-<li>func ContainsAny(s, chars string) bool // 判断字符串s是否包含字符串chars中的任一字符</li>
-<li>func Count(s, sep string) int // 返回字符串s中有几个不重复的sep子串</li>
-<li><p>获取字符串中子串位置</p>
-</li>
-<li><p>func Index(s, sep string) int // 子串sep在字符串s中第一次出现的位置，不存在则返回-1</p>
-</li>
-<li>func IndexByte(s string, c byte) int // 字符c在s中第一次出现的位置，不存在则返回-</li>
-<li>func IndexAny(s, chars string) int // 字符串chars中的任一utf-8码值在s中第一次出现的位置，如果不存在或者chars为空字符串则返回-1</li>
-<li>func IndexFunc(s string, f func(rune) bool) int // s中第一个满足函数f的位置i（该处的utf-8码值r满足f(r)==true），不存在则返回-1</li>
-<li>func LastIndex(s, sep string) int // 子串sep在字符串s中最后一次出现的位置，不存在则返回-1</li>
-</ul>
-<h2 id="字符处理"><a href="#字符处理" class="headerlink" title="字符处理"></a>字符处理</h2><ul>
-<li>func Title(s string) string // 返回s中每个单词的首字母都改为标题格式的字符串拷贝</li>
-<li>func ToLower(s string) string // 返回将所有字母都转为对应的小写版本的拷贝</li>
-<li>func ToUpper(s string) string // 返回将所有字母都转为对应的大写版本的拷贝</li>
-<li>func Repeat(s string, count int) string // 返回count个s串联的字符串</li>
-<li>func Replace(s, old, new string, n int) string // 返回将s中前n个不重叠old子串都替换为new的新字符串，如果n&lt;0会替换所有old子串</li>
-<li>func Map(mapping func(rune) rune, s string) string // 将s的每一个unicode码值r都替换为mapping(r)，返回这些新码值组成的字符串拷贝。如果mapping返回一个负值，将会丢弃该码值而不会被替换</li>
-</ul>
-<h2 id="字符串前后端处理"><a href="#字符串前后端处理" class="headerlink" title="字符串前后端处理"></a>字符串前后端处理</h2><ul>
-<li>func Trim(s string, cutset string) string // 返回将s前后端所有cutset包含的utf-8码值都去掉的字符串</li>
-<li>func TrimSpace(s string) string // 返回将s前后端所有空白（unicode.IsSpace指定）都去掉的字符串</li>
-<li>func TrimFunc(s string, f func(rune) bool) string // 返回将s前后端所有满足f的unicode码值都去掉的字符串</li>
-</ul>
-<h2 id="分割与合并"><a href="#分割与合并" class="headerlink" title="分割与合并"></a>分割与合并</h2><ul>
-<li>func Fields(s string) []string // 返回将字符串按照空白（通过unicode.IsSpace判断，可以是一到多个连续的空白字符）分割的多个字符串</li>
-<li>func Split(s, sep string) []string // 用去掉s中出现的sep的方式进行分割，会分割到结尾，并返回生成的所有片段组成的切片</li>
-<li>func Join(a []string, sep string) string // 将一系列字符串连接为一个字符串，之间用sep来分隔</li>
-</ul>
-<h1 id="Reader结构体"><a href="#Reader结构体" class="headerlink" title="Reader结构体"></a>Reader结构体</h1><p>Reader 类型从一个字符串读取数据，实现了io.Reader, io.Seeker等接口。</p>
-<ul>
-<li>func NewReader(s string) *Reader // 通过字符串 s 创建一个 Reader</li>
-<li>func (r *Reader) Len() int // 返回 r 还没有读取部分的长度</li>
-<li>func (r *Reader) Read(b []byte) (n int, err error) // 读取部分数据到 b 中，读取的长度取决于 b 的容量</li>
-<li>func (r *Reader) ReadByte() (b byte, err error) // 从 r 中读取一字节数据</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// go 标准库 strings.Reader</span></div><div class="line"><span class="keyword">package</span> main</div><div class="line"> </div><div class="line"><span class="keyword">import</span> (</div><div class="line">    <span class="string">"fmt"</span></div><div class="line">    <span class="string">"strings"</span></div><div class="line">)</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">    s := <span class="string">"hello world"</span></div><div class="line">    <span class="comment">// 创建 Reader</span></div><div class="line">    r := strings.NewReader(s)</div><div class="line"> </div><div class="line">    fmt.Println(r) <span class="comment">// &amp;amp;&#123;hello world 0 -1&#125;</span></div><div class="line">    fmt.Println(r.Size()) <span class="comment">// 11 获取字符串长度</span></div><div class="line">    fmt.Println(r.Len()) <span class="comment">// 11 获取未读取长度</span></div><div class="line"> </div><div class="line">    <span class="comment">// 读取前6个字符</span></div><div class="line">    <span class="keyword">for</span> r.Len() &lt; <span class="number">5</span> &#123;</div><div class="line">        b, err := r.ReadByte() <span class="comment">// 读取1 byte</span></div><div class="line">        fmt.Println(<span class="keyword">string</span>(b), err, r.Len(), r.Size())</div><div class="line">        <span class="comment">// h &amp;lt;nil&amp;gt; 10 11</span></div><div class="line">        <span class="comment">// e &amp;lt;nil&amp;gt; 9 11</span></div><div class="line">        <span class="comment">// l &amp;lt;nil&amp;gt; 8 11</span></div><div class="line">        <span class="comment">// l &amp;lt;nil&amp;gt; 7 11</span></div><div class="line">        <span class="comment">// o &amp;lt;nil&amp;gt; 6 11</span></div><div class="line">        <span class="comment">//   &amp;lt;nil&amp;gt; 5 11</span></div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// 读取还未被读取字符串中5字符的数据</span></div><div class="line">    b_s := <span class="built_in">make</span>([]<span class="keyword">byte</span>, <span class="number">5</span>)</div><div class="line">    n, err := r.Read(b_s)</div><div class="line">    fmt.Println(<span class="keyword">string</span>(b_s), n ,err) <span class="comment">// world 5 &amp;lt;nil&amp;gt;</span></div><div class="line">    fmt.Println(r.Size()) <span class="comment">// 11</span></div><div class="line">    fmt.Println(r.Len()) <span class="comment">// 0</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h1 id="Replacer-结构体"><a href="#Replacer-结构体" class="headerlink" title="Replacer 结构体"></a>Replacer 结构体</h1><p>Replacer 类型实现字符串替换的操作</p>
-<ul>
-<li>func NewReplacer(oldnew …string) <em>Replacer // 使用提供的多组old、new字符串对创建一个</em>Replacer</li>
-<li>func (r *Replacer) Replace(s string) string // 返回s 所有替换完后的拷贝</li>
-<li>func (r *Replacer) WriteString(w io.Writer, s string) (n int, err error) // 向w中写入s替换完后的拷贝</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">// go 标准库 strings.Replacer</div><div class="line">package main</div><div class="line"> </div><div class="line">import (</div><div class="line">    "fmt"</div><div class="line">    "strings"</div><div class="line">    "os"</div><div class="line">)</div><div class="line"> </div><div class="line">func main() &#123;</div><div class="line">    s := "</div><div class="line"> </div><div class="line">Go Language</div><div class="line"> </div><div class="line">"</div><div class="line">    r := strings.NewReplacer("&amp;lt;", "&amp;lt;", "&amp;gt;", "&amp;gt;")</div><div class="line">    fmt.Println(r.Replace(s))</div><div class="line"> </div><div class="line">    r.WriteString(os.Stdout, s)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/12/Go 标准库①strings/" data-id="cj6esnzce002zwg19l70ajqjt" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/05/12/Go 标准库①strings/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Go语言基础⑨Go接口和嵌入类型" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/05/11/Go语言基础⑨Go接口和嵌入类型/" class="article-date">
-  <time datetime="2017-05-11T13:50:53.000Z" itemprop="datePublished">2017-05-11 21:50:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Go/">Go</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/11/Go语言基础⑨Go接口和嵌入类型/">Go语言基础⑨Go接口和嵌入类型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>接口是一种约定，它是一个抽象的类型，和我们见到的具体的类型如int、map、slice等不一样。具体的类型，我们可以知道它是什么，并且可以知道可以用它做什么；但是接口不一样，接口是抽象的，它只有一组接口方法，我们并不知道它的内部实现，所以我们不知道接口是什么，但是我们知道可以利用它提供的方法做什么。</p>
-<p>抽象就是接口的优势，它不用和具体的实现细节绑定在一起，我们只需定义接口，告诉编码人员它可以做什么，这样我们可以把具体实现分开，这样编码就会更加灵活方面，适应能力也会非常强。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> b bytes.Buffer</div><div class="line">	fmt.Fprint(&amp;b,<span class="string">"Hello World"</span>)</div><div class="line">	fmt.Println(b.String())</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上就是一个使用接口的例子，我们先看下fmt.Fprint函数的实现。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">Fprint</span><span class="params">(w io.Writer, a ...<span class="keyword">interface</span>&#123;&#125;)</span> <span class="params">(n <span class="keyword">int</span>, err error)</span></span> &#123;</div><div class="line">	p := newPrinter()</div><div class="line">	p.doPrint(a)</div><div class="line">	n, err = w.Write(p.buf)</div><div class="line">	p.free()</div><div class="line">	<span class="keyword">return</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>从上面的源代码中，我们可以看到，<code>fmt.Fprint</code>函数的第一个参数是<code>io.Writer</code>这个接口，所以只要实现了这个接口的具体类型都可以作为参数传递给fmt.Fprint函数，而bytes.Buffer恰恰实现了<code>io.Writer</code>接口，所以可以作为参数传递给<code>fmt.Fprint</code>函数。</p>
-<h2 id="内部实现"><a href="#内部实现" class="headerlink" title="内部实现"></a>内部实现</h2><p>我们前面提过接口是用来定义行为的类型，它是抽象的，这些定义的行为不是由接口直接实现，而是通过方法由用户定义的类型实现。如果用户定义的类型，实现了接口类型声明的所有方法，那么这个用户定义的类型就实现了这个接口，所以这个用户定义类型的值就可以赋值给接口类型的值。</p>
-<p>赋值操作执行后，如果我们对接口方法执行调用，其实是调用存储的用户定义类型的对应方法，这里我们可以把用户定义的类型称之为<strong>实体类型</strong>。</p>
-<p>我们可以定义很多类型，让它们实现一个接口，那么这些类型都可以赋值给这个接口，这时候接口方法的调用，其实就是对应实体类型对应方法的调用，这就是多态。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> a animal</div><div class="line">	<span class="keyword">var</span> c cat</div><div class="line">	a=c</div><div class="line">	a.printInfo()</div><div class="line">	<span class="comment">//使用另外一个类型赋值</span></div><div class="line">	<span class="keyword">var</span> d dog</div><div class="line">	a=d</div><div class="line">	a.printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> animal <span class="keyword">interface</span> &#123;</div><div class="line">	printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> cat <span class="keyword">int</span></div><div class="line"><span class="keyword">type</span> dog <span class="keyword">int</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c cat)</span> <span class="title">printInfo</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"a cat"</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(d dog)</span> <span class="title">printInfo</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"a dog"</span>)</div><div class="line">&#125;</div><div class="line"></div><div class="line">a cat</div><div class="line">a cat</div><div class="line">a dog</div><div class="line">a dog</div></pre></td></tr></table></figure>
-<p>以上例子演示了一个多态。我们定义了一个接口animal,然后定义了两种类型cat和dog实现了接口animal。在使用的时候，分别把类型cat的值c、类型dog的值d赋值给接口animal的值a,然后分别执行a的printInfo方法，可以看到不同的输出。</p>
-<blockquote>
-<p>接口的值是一个两个字长度的数据结构，第一个字<strong>包含一个指向内部表结构的指针</strong>，这个内部表里存储的有实体类型的信息以及相关联的方法集；第二个字<strong>包含的是一个指向存储的实体类型值的指针</strong>。所以接口的值结构其实是两个指针，这也可以说明接口其实一个引用类型。</p>
-</blockquote>
-<h2 id="方法集"><a href="#方法集" class="headerlink" title="方法集"></a>方法集</h2><p>我们都知道，如果要实现一个接口，必须实现这个接口提供的所有方法，但是实现方法的时候，我们可以使用指针接收者实现，也可以使用值接收者实现，这两者是有区别的，下面我们就好好分析下这两者的区别。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> c cat</div><div class="line">	<span class="comment">//值作为参数传递</span></div><div class="line">	invoke(c)</div><div class="line">&#125;</div><div class="line"><span class="comment">//需要一个animal接口作为参数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">invoke</span><span class="params">(a animal)</span></span>&#123;</div><div class="line">	a.printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> animal <span class="keyword">interface</span> &#123;</div><div class="line">	printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> cat <span class="keyword">int</span></div><div class="line"><span class="comment">//值接收者实现animal接口</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c cat)</span> <span class="title">printInfo</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"a cat"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>还是原来的例子改改，增加一个invoke函数，该函数接收一个animal接口类型的参数，例子中传递参数的时候，也是以类型cat的值c传递的，运行程序可以正常执行。现在我们稍微改造一下，使用类型cat的指针&amp;c作为参数传递。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> c cat</div><div class="line">	<span class="comment">//指针作为参数传递</span></div><div class="line">	invoke(&amp;c)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>只修改这一处，其他保持不变，我们运行程序，发现也可以正常执行。通过这个例子我们可以得出结论：<strong>实体类型以值接收者实现接口的时候，不管是实体类型的值，还是实体类型值的指针，都实现了该接口</strong>。</p>
-<p>下面我们把接收者改为指针试试。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> c cat</div><div class="line">	<span class="comment">//值作为参数传递</span></div><div class="line">	invoke(c)</div><div class="line">&#125;</div><div class="line"><span class="comment">//需要一个animal接口作为参数</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">invoke</span><span class="params">(a animal)</span></span>&#123;</div><div class="line">	a.printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> animal <span class="keyword">interface</span> &#123;</div><div class="line">	printInfo()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> cat <span class="keyword">int</span></div><div class="line"><span class="comment">//指针接收者实现animal接口</span></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *cat)</span> <span class="title">printInfo</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"a cat"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个例子中把实现接口的接收者改为指针，但是传递参数的时候，我们还是按值进行传递，点击运行程序，会出现以下异常提示：</p>
-<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">./main.go:<span class="number">10</span>: cannot use c (<span class="keyword">type</span> cat) <span class="keyword">as</span> <span class="keyword">type</span> animal <span class="keyword">in</span> argument <span class="keyword">to</span> invoke:</div><div class="line">	cat does <span class="keyword">not</span> implement animal (printInfo <span class="function"><span class="keyword">method</span> <span class="title">has</span> <span class="title">pointer</span> <span class="title">receiver</span>)</span></div></pre></td></tr></table></figure>
-<p>提示中告诉我们，说cat没有实现animal接口，因为printInfo方法有一个指针接收者，所以cat类型的值c不能作为接口类型animal传参使用。下面我们再稍微修改下，改为以指针作为参数传递。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	<span class="keyword">var</span> c cat</div><div class="line">	<span class="comment">//指针作为参数传递</span></div><div class="line">	invoke(&amp;c)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其他都不变，只是把以前使用值的参数，改为使用指针作为参数，我们再运行程序，就可以正常运行了。由此可见<strong>实体类型以指针接收者实现接口的时候，只有指向这个类型的指针才被认为实现了该接口</strong>。</p>
-<h1 id="嵌入类型"><a href="#嵌入类型" class="headerlink" title="嵌入类型"></a>嵌入类型</h1><p>嵌入类型，或者嵌套类型，这是一种可以把已有的类型声明在新的类型里的一种方式，这种功能对代码复用非常重要。</p>
-<p>在其他语言中，有继承可以做同样的事情，但是在Go语言中，没有继承的概念，Go提倡的代码复用的方式是组合，所以这也是嵌入类型的意义所在，组合而不是继承，所以Go才会更灵活。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Reader <span class="keyword">interface</span> &#123;</div><div class="line">	Read(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Writer <span class="keyword">interface</span> &#123;</div><div class="line">	Write(p []<span class="keyword">byte</span>) (n <span class="keyword">int</span>, err error)</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Closer <span class="keyword">interface</span> &#123;</div><div class="line">	Close() error</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> ReadWriter <span class="keyword">interface</span> &#123;</div><div class="line">	Reader</div><div class="line">	Writer</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> ReadCloser <span class="keyword">interface</span> &#123;</div><div class="line">	Reader</div><div class="line">	Closer</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> WriteCloser <span class="keyword">interface</span> &#123;</div><div class="line">	Writer</div><div class="line">	Closer</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上是标准库io包里，我们常用的接口，可以看到ReadWriter接口是嵌入Reader和Reader接口而组合成的新接口，这样我们就不用重复的定义被嵌入接口里的方法，直接通过嵌入就可以了。嵌入类型同样适用于结构体类型，我们再来看个例子：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">	email <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> admin <span class="keyword">struct</span> &#123;</div><div class="line">	user</div><div class="line">	level <span class="keyword">string</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>嵌入后，被嵌入的类型称之为内部类型、新定义的类型称之为外部类型，这里user就是内部类型，而admin是外部类型。</p>
-<p>通过嵌入类型，与内部类型相关联的所有字段、方法、标志符等等所有，都会被外包类型所拥有，就像外部类型自己的一样，这就达到了代码快捷复用组合的目的，而且定义非常简单，只需声明这个类型的名字就可以了。</p>
-<p>同时，外部类型还可以添加自己的方法、字段属性等，可以很方便的扩展外部类型的功能。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	ad:=admin&#123;user&#123;<span class="string">"张三"</span>,<span class="string">"zhangsan@flysnow.org"</span>&#125;,<span class="string">"管理员"</span>&#125;</div><div class="line">	fmt.Println(<span class="string">"可以直接调用,名字为："</span>,ad.name)</div><div class="line">	fmt.Println(<span class="string">"也可以通过内部类型调用,名字为："</span>,ad.user.name)</div><div class="line">	fmt.Println(<span class="string">"但是新增加的属性只能直接调用，级别为："</span>,ad.level)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>以上是嵌入类型的使用，可以看到，我们在初始化的时候，采用的是字面值的方式，所以要按其定义的结构进行初始化，先初始化user这个内部类型的，再初始化新增的level 属性。</p>
-<p>对于内部类型的属性和方法访问上，我们可以用外部类型直接访问，也可以通过内部类型进行访问；但是我们为<strong>外部类型新增的方法属性字段，只能使用外部类型访问，因为内部类型没有这些</strong>。</p>
-<p>当然，外部类型也可以声明同名的字段或者方法，来覆盖内部类型的，这种情况方法比较多，我们以方法为例</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	ad:=admin&#123;user&#123;<span class="string">"张三"</span>,<span class="string">"zhangsan@flysnow.org"</span>&#125;,<span class="string">"管理员"</span>&#125;</div><div class="line">	ad.user.sayHello()</div><div class="line">	ad.sayHello()</div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> user <span class="keyword">struct</span> &#123;</div><div class="line">	name <span class="keyword">string</span></div><div class="line">	email <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> admin <span class="keyword">struct</span> &#123;</div><div class="line">	user</div><div class="line">	level <span class="keyword">string</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u user)</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"Hello，i am a user"</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(a admin)</span> <span class="title">sayHello</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"Hello，i am a admin"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>内部类型user有一个sayHello方法，外部类型对其进行了覆盖，同名重写sayHello，然后我们在main方法里分别访问这两个类型的方法，打印输出:</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Hello，i am a user</div><div class="line">Hello，i am a admin</div></pre></td></tr></table></figure>
-<p>嵌入类型的强大，还体现在：<strong>如果内部类型实现了某个接口，那么外部类型也被认为实现了这个接口</strong>。我们稍微改造下例子看下。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</div><div class="line">	ad:=admin&#123;user&#123;<span class="string">"张三"</span>,<span class="string">"zhangsan@flysnow.org"</span>&#125;,<span class="string">"管理员"</span>&#125;</div><div class="line">	sayHello(ad.user)<span class="comment">//使用user作为参数</span></div><div class="line">	sayHello(ad)<span class="comment">//使用admin作为参数</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">type</span> Hello <span class="keyword">interface</span> &#123;</div><div class="line">	hello()</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(u user)</span> <span class="title">hello</span><span class="params">()</span></span>&#123;</div><div class="line">	fmt.Println(<span class="string">"Hello，i am a user"</span>)</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">sayHello</span><span class="params">(h Hello)</span></span>&#123;</div><div class="line">	h.hello()</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>实现这个接口，最后我们定义了一个sayHello方法，它接受一个Hello接口类型的参数，最终我们在main函数演示的时候，发现不管是user类型，还是admin类型作为参数传递给sayHello方法的时候，都可以正常调用。</p>
-<p>这里就可以说明admin实现了接口Hello,但是我们又没有显示的声明类型admin实现，所以这个实现是通过内部类型user实现的，因为admin包含了user所有的方法函数，所以也就实现了接口Hello。</p>
-<p>当然外部类型也可以重新实现，只需要像上面例子一样覆盖同名的方法即可。这里要说明的是，不管我们如何同名覆盖，都不会影响内部类型，我们还可以通过访问内部类型来访问它的方法、属性字段等。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2017/05/11/Go语言基础⑨Go接口和嵌入类型/" data-id="cj6esnzdk004hwg19wjsradh3" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2017/05/11/Go语言基础⑨Go接口和嵌入类型/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Go基础/">Go基础</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/">JavaScript</a></li></ul>
 
     </footer>
   </div>
@@ -933,7 +406,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/">下一页&raquo;</a>
   </nav>
 </section>
            
