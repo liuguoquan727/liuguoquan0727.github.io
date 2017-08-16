@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Android系统架构与源码目录 | 再读斋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Android系统架构Android 系统架构分为5层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux 内核层。如下图所示：
+
+应用层系统内置的应用程序以及非系统级的应用程序均属于应用层，负责与用户直接交互，通常都是由 Java 进行开发。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android系统架构与源码目录">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/08/15/Android系统架构与源码目录/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="Android系统架构Android 系统架构分为5层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux 内核层。如下图所示：
+
+应用层系统内置的应用程序以及非系统级的应用程序均属于应用层，负责与用户直接交互，通常都是由 Java 进行开发。">
+<meta property="og:image" content="http://img.blog.csdn.net/20170123173332254?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaXRhY2hpODU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-08-16T13:05:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android系统架构与源码目录">
+<meta name="twitter:description" content="Android系统架构Android 系统架构分为5层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux 内核层。如下图所示：
+
+应用层系统内置的应用程序以及非系统级的应用程序均属于应用层，负责与用户直接交互，通常都是由 Java 进行开发。">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170123173332254?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaXRhY2hpODU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+  
+    <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">再读斋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">MICHAEL</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Android系统架构与源码目录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/15/Android系统架构与源码目录/" class="article-date">
+  <time datetime="2017-08-15T14:22:06.000Z" itemprop="datePublished">2017-08-15 22:22:06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>►<a class="article-category-link" href="/categories/Android/Framwork/">Framwork</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Android系统架构与源码目录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="Android系统架构"><a href="#Android系统架构" class="headerlink" title="Android系统架构"></a>Android系统架构</h1><p>Android 系统架构分为5层，从上到下依次是应用层、应用框架层、系统运行库层、硬件抽象层和Linux 内核层。如下图所示：</p>
+<p><img src="http://img.blog.csdn.net/20170123173332254?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaXRhY2hpODU=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt=""></p>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>系统内置的应用程序以及非系统级的应用程序均属于应用层，负责与用户直接交互，通常都是由 Java 进行开发。</p>
+<a id="more"></a>
+<h2 id="应用框架层（Java-Framework）"><a href="#应用框架层（Java-Framework）" class="headerlink" title="应用框架层（Java Framework）"></a>应用框架层（Java Framework）</h2><p>应用框架层为开发人员提供了可以开发应用程序所需要的API，我们平常开发应用程序都是调用的这一层所提供的API，当然也包括系统的应用。这一层的是由Java代码编写的，可以称为Java Framework。下面来看这一层所提供的主要的组件。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity Manager（活动管理器）</td>
+<td>管理各个应用程序生命周期以及通常的导航回退功能</td>
+</tr>
+<tr>
+<td>Location Manager(位置管理器)</td>
+<td>提供地理位置以及定位功能服务</td>
+</tr>
+<tr>
+<td>Package Manager(包管理器)</td>
+<td>管理所有安装在Android系统中的应用程序</td>
+</tr>
+<tr>
+<td>Notification Manager(通知管理器)</td>
+<td>使得应用程序可以在状态栏中显示自定义的提示信息</td>
+</tr>
+<tr>
+<td>Resource Manager（资源管理器）</td>
+<td>提供应用程序使用的各种非代码资源，<br>如本地化字符串、图片、布局文件、颜色文件等</td>
+</tr>
+<tr>
+<td>Telephony Manager(电话管理器)</td>
+<td>管理所有的移动设备功能</td>
+</tr>
+<tr>
+<td>Window Manager（窗口管理器）</td>
+<td>管理所有开启的窗口程序</td>
+</tr>
+<tr>
+<td>Content Providers（内容提供器）</td>
+<td>使得不同应用程序之间可以共享数据</td>
+</tr>
+<tr>
+<td>View System（视图系统）</td>
+<td>构建应用程序的基本组件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="系统运行库层（Native）"><a href="#系统运行库层（Native）" class="headerlink" title="系统运行库层（Native）"></a>系统运行库层（Native）</h2><p>系统运行库层分为两部分，分别是C/C++程序库和Android运行时库。下面分别来介绍它们。</p>
+<h3 id="C-C-程序库"><a href="#C-C-程序库" class="headerlink" title="C/C++程序库"></a>C/C++程序库</h3><p>C/C++程序库能被Android系统中的不同组件所使用，并通过应用程序框架为开发者提供服务，主要的C/C++程序库如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OpenGL ES</td>
+<td>3D绘图函数库</td>
+</tr>
+<tr>
+<td>Libc</td>
+<td>从BSD继承来的标准C系统函数库，专门为基于嵌入式Linux的设备定制</td>
+</tr>
+<tr>
+<td>Media Framework</td>
+<td>多媒体库，支持多种常用的音频、视频格式录制和回放。</td>
+</tr>
+<tr>
+<td>SQLite</td>
+<td>轻型的关系型数据库引擎</td>
+</tr>
+<tr>
+<td>SGL</td>
+<td>底层的2D图形渲染引擎</td>
+</tr>
+<tr>
+<td>SSL</td>
+<td>安全套接层，是为网络通信提供安全及数据完整性的一种安全协议</td>
+</tr>
+<tr>
+<td>FreeType</td>
+<td>可移植的字体引擎，它提供统一的接口来访问多种字体格式文件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="Android-运行时库"><a href="#Android-运行时库" class="headerlink" title="Android 运行时库"></a>Android 运行时库</h3><p>运行时库又分为核心库和ART(5.0系统之后，Dalvik虚拟机被ART取代)。核心库提供了Java语言核心库的大多数功能，这样开发者可以使用Java语言来编写Android应用。相较于JVM，Dalvik虚拟机是专门为移动设备定制的，允许在有限的内存中同时运行多个虚拟机的实例，并且每一个Dalvik 应用作为一个独立的Linux 进程执行。独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。而替代Dalvik虚拟机的ART 的机制与Dalvik 不同。在Dalvik下，应用每次运行的时候，字节码都需要通过即时编译器转换为机器码，这会拖慢应用的运行效率，而在ART 环境中，应用在第一次安装的时候，字节码就会预先编译成机器码，使其成为真正的本地应用。</p>
+<h2 id="硬件抽象层（HAL）"><a href="#硬件抽象层（HAL）" class="headerlink" title="硬件抽象层（HAL）"></a>硬件抽象层（HAL）</h2><p>硬件抽象层是位于操作系统内核与硬件电路之间的接口层，其目的在于将硬件抽象化，为了保护硬件厂商的知识产权，它隐藏了特定平台的硬件接口细节，为操作系统提供虚拟硬件平台，使其具有硬件无关性，可在多种平台上进行移植。 从软硬件测试的角度来看，软硬件的测试工作都可分别基于硬件抽象层来完成，使得软硬件测试工作的并行进行成为可能。通俗来讲，就是将控制硬件的动作放在硬件抽象层中。</p>
+<h2 id="Linux-内核层"><a href="#Linux-内核层" class="headerlink" title="Linux 内核层"></a>Linux 内核层</h2><p>Android 的核心系统服务基于Linux 内核，在此基础上添加了部分Android专用的驱动。系统的安全性、内存管理、进程管理、网络协议栈和驱动模型等都依赖于 Linux 内核。</p>
+<h1 id="Android系统源码目录"><a href="#Android系统源码目录" class="headerlink" title="Android系统源码目录"></a>Android系统源码目录</h1><ul>
+<li><a href="https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/" target="_blank" rel="external">清华大学Android镜像https://mirrors.tuna.tsinghua.edu.cn/help/AOSP/</a></li>
+<li><a href="http://pan.baidu.com/s/1ngsZs" target="_blank" rel="external">百度网盘源码下载 http://pan.baidu.com/s/1ngsZs</a></li>
+</ul>
+<h2 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h2><p>各个版本的源码目录基本是类似，如果是编译后的源码目录会多增加一个out文件夹，用来存储编译产生的文件。Android7.1的根目录结构说明如下表所示。</p>
+<table>
+<thead>
+<tr>
+<th>Android源码根目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abi</td>
+<td>应用程序二进制接口</td>
+</tr>
+<tr>
+<td>art</td>
+<td>ART运行环境</td>
+</tr>
+<tr>
+<td>bionic</td>
+<td>系统C库</td>
+</tr>
+<tr>
+<td>bootable</td>
+<td>系统启动引导代码</td>
+</tr>
+<tr>
+<td>build</td>
+<td>存放系统编译规则及 generic 等基础开发包配置</td>
+</tr>
+<tr>
+<td>cts</td>
+<td>Android 兼容性测试套件标准</td>
+</tr>
+<tr>
+<td>dalvik</td>
+<td>Dalvik虚拟机</td>
+</tr>
+<tr>
+<td>developers</td>
+<td>开发者目录</td>
+</tr>
+<tr>
+<td>development</td>
+<td>应用程序开发相关</td>
+</tr>
+<tr>
+<td>device</td>
+<td>设备相关配置</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>参考文档目录</td>
+</tr>
+<tr>
+<td>external</td>
+<td>开源模组相关文件</td>
+</tr>
+<tr>
+<td>frameworks*</td>
+<td>应用程序框架，Android系统核心部分，由Java 和 C++ 编写</td>
+</tr>
+<tr>
+<td>hardware</td>
+<td>硬件抽象层文件</td>
+</tr>
+<tr>
+<td>libcore</td>
+<td>核心库文件</td>
+</tr>
+<tr>
+<td>libnativehelper</td>
+<td>动态库，实现 JNI 库的基础</td>
+</tr>
+<tr>
+<td>ndk</td>
+<td>NDK 编译工具</td>
+</tr>
+<tr>
+<td>out</td>
+<td>源代码编译输出目录</td>
+</tr>
+<tr>
+<td>pdk</td>
+<td>Plug Development Kit 本地开发套件</td>
+</tr>
+<tr>
+<td>platform_testing</td>
+<td>平台测试</td>
+</tr>
+<tr>
+<td>prebuilts</td>
+<td>x86 和 arm 架构下预编译的资源</td>
+</tr>
+<tr>
+<td>sdk</td>
+<td>SDK 和 模拟器</td>
+</tr>
+<tr>
+<td>packages*</td>
+<td>应用程序包</td>
+</tr>
+<tr>
+<td>system</td>
+<td>底层文件系统、应用和组件</td>
+</tr>
+<tr>
+<td>toolchain</td>
+<td>编译工具链文件</td>
+</tr>
+<tr>
+<td>tools</td>
+<td>编译工具文件</td>
+</tr>
+<tr>
+<td>Makefile</td>
+<td>全局Makefile文件，定义编译规则</td>
+</tr>
+</tbody>
+</table>
+<p>接下来分析packages中的内容，也就是应用层部分。</p>
+<h2 id="应用层部分"><a href="#应用层部分" class="headerlink" title="应用层部分"></a>应用层部分</h2><p>应用层位于整个Android系统的最上层，开发者开发的应用程序以及系统内置的应用程序都是在应用层。源码根目录中的packages目录对应着系统应用层。它的目录结构如下所示：</p>
+<table>
+<thead>
+<tr>
+<th>packages目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>apps</td>
+<td>核心应用程序</td>
+</tr>
+<tr>
+<td>experimental</td>
+<td>第三方应用程序</td>
+</tr>
+<tr>
+<td>inputmethods</td>
+<td>输入法目录</td>
+</tr>
+<tr>
+<td>provides</td>
+<td>系统内容提供者目录</td>
+</tr>
+<tr>
+<td>screensaves</td>
+<td>屏幕保护</td>
+</tr>
+<tr>
+<td>services</td>
+<td>通信服务</td>
+</tr>
+<tr>
+<td>wallapers</td>
+<td>系统墙纸</td>
+</tr>
+</tbody>
+</table>
+<h2 id="应用框架层部分"><a href="#应用框架层部分" class="headerlink" title="应用框架层部分"></a>应用框架层部分</h2><p>应用框架层是系统的核心部分，一方面向上提供接口给应用层调用，另一方面向下与C/C++程序库以及硬件抽象层等进行衔接。 应用框架层的主要实现代码在/frameworks/base和/frameworks/av目录下，其中/frameworks/base目录结构如下所示</p>
+<table>
+<thead>
+<tr>
+<th>frameworks/base目录</th>
+<th>描述</th>
+<th>frameworks/base目录</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api</td>
+<td>定义 API</td>
+<td>media</td>
+<td>多媒体库</td>
+</tr>
+<tr>
+<td>cmds</td>
+<td>命令：am等</td>
+<td>native</td>
+<td>本地库</td>
+</tr>
+<tr>
+<td>core</td>
+<td>核心库</td>
+<td>nfc-extras</td>
+<td>NFC 相关</td>
+</tr>
+<tr>
+<td>data</td>
+<td>字体和声音等数据文件</td>
+<td>obex</td>
+<td>蓝牙相关</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>文档</td>
+<td>opengl</td>
+<td>2D/3D图像 API</td>
+</tr>
+<tr>
+<td>graphics</td>
+<td>图形图像相关</td>
+<td>packages</td>
+<td>设置、TTS、VPN程序</td>
+</tr>
+<tr>
+<td>include</td>
+<td>头文件</td>
+<td>sax</td>
+<td>XML 解析器</td>
+</tr>
+<tr>
+<td>keystore</td>
+<td>数字签名证书相关</td>
+<td>services</td>
+<td>系统服务</td>
+</tr>
+<tr>
+<td>libs</td>
+<td>库</td>
+<td>telephony</td>
+<td>电话通信管理</td>
+</tr>
+<tr>
+<td>location</td>
+<td>地理位置相关库</td>
+<td>test-runner</td>
+<td>测试工具相关</td>
+</tr>
+<tr>
+<td>tests</td>
+<td>测试相关</td>
+<td>tools</td>
+<td>工具</td>
+</tr>
+<tr>
+<td>wifi</td>
+<td>Wi-Fi 无线网络</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="C-C-程序库部分"><a href="#C-C-程序库部分" class="headerlink" title="C/C++程序库部分"></a>C/C++程序库部分</h2><p>系统运行库层（Native)中的 C/C++程序库的类型繁多，功能强大，C/C++程序库并不完全在一个目录中，这里给出几个常用且比较重要的C/C++程序库所在的目录位置。</p>
+<table>
+<thead>
+<tr>
+<th>目录位置</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bionic/</td>
+<td>Google开发的系统C库，以BSD许可形式开源。</td>
+</tr>
+<tr>
+<td>/frameworks/av/media</td>
+<td>系统媒体库</td>
+</tr>
+<tr>
+<td>/frameworks/native/opengl</td>
+<td>第三方图形渲染库</td>
+</tr>
+<tr>
+<td>/frameworks/native/services/surfaceflinger</td>
+<td>图形显示库，主要负责图形的渲染、叠加和绘制等功能</td>
+</tr>
+<tr>
+<td>external/sqlite</td>
+<td>轻量型关系数据库SQLite的C++实现</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>剩下的Android运行时库的代码放在art/目录中。硬件抽象层的代码在hardware/目录中，这一部分是手机厂商改动最大的一部分，根据手机终端所采用的硬件平台会有不同的实现。</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2017/08/15/Android系统架构与源码目录/" data-id="cj6f2gflq002t4h193jf6vgr5" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2017/08/15/Android系统架构与源码目录/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android系统/">Android系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/16/Android启动流程①init进程分析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Android启动流程①init进程分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/14/Mac编译Android源码/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Mac编译Android源码</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/15/Android系统架构与源码目录/"
+           data-title="Android系统架构与源码目录" data-url="http://liuguoquan727.github.io/2017/08/15/Android系统架构与源码目录/">
+      </div>
+      
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android系统架构"><span class="toc-number">1.</span> <span class="toc-text">Android系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#应用层"><span class="toc-number">1.1.</span> <span class="toc-text">应用层</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用框架层（Java-Framework）"><span class="toc-number">1.2.</span> <span class="toc-text">应用框架层（Java Framework）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#系统运行库层（Native）"><span class="toc-number">1.3.</span> <span class="toc-text">系统运行库层（Native）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-C-程序库"><span class="toc-number">1.3.1.</span> <span class="toc-text">C/C++程序库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-运行时库"><span class="toc-number">1.3.2.</span> <span class="toc-text">Android 运行时库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#硬件抽象层（HAL）"><span class="toc-number">1.4.</span> <span class="toc-text">硬件抽象层（HAL）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-内核层"><span class="toc-number">1.5.</span> <span class="toc-text">Linux 内核层</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Android系统源码目录"><span class="toc-number">2.</span> <span class="toc-text">Android系统源码目录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#整体结构"><span class="toc-number">2.1.</span> <span class="toc-text">整体结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用层部分"><span class="toc-number">2.2.</span> <span class="toc-text">应用层部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#应用框架层部分"><span class="toc-number">2.3.</span> <span class="toc-text">应用框架层部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C-C-程序库部分"><span class="toc-number">2.4.</span> <span class="toc-text">C/C++程序库部分</span></a></li></ol></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 刘涤生&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;michaelliu0727@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

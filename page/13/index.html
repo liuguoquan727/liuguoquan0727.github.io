@@ -76,6 +76,657 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS开发之01基础" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/iOS开发之01基础/" class="article-date">
+  <time datetime="2016-11-25T10:44:53.000Z" itemprop="datePublished">2016-11-25 18:44:53</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/iOS开发之01基础/">iOS开发之01基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="Xcode中的iOS工程模板"><a href="#Xcode中的iOS工程模板" class="headerlink" title="Xcode中的iOS工程模板"></a>Xcode中的iOS工程模板</h1><p>iOS工程模板分为两类-Application和Framework &amp; Library。</p>
+<h2 id="Application类型"><a href="#Application类型" class="headerlink" title="Application类型"></a>Application类型</h2><p>Application包含5个模板，具体如下所示：</p>
+<ul>
+<li>Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。</li>
+<li>Page-Based Application：可以构建类似电子书效果的应用</li>
+<li>Single View Application：可以构建简单的单个视图应用</li>
+<li>Tabbed Application：可以构建标签导航模式的应用，生成的代码中包含了标签控制器和标签栏等。</li>
+<li>Game： 可以构建基于iOS的游戏应用</li>
+</ul>
+<h2 id="Framework-amp-Library"><a href="#Framework-amp-Library" class="headerlink" title="Framework &amp; Library"></a>Framework &amp; Library</h2><ul>
+<li>Cocoa Touch Framework 可以让开发者自定义应用于UIKit的框架</li>
+<li>Cocoa Touch Static Library 可以让开发者创建基于Foundation框架的静态库。</li>
+</ul>
+<h1 id="Xcode中的iOS工程目录"><a href="#Xcode中的iOS工程目录" class="headerlink" title="Xcode中的iOS工程目录"></a>Xcode中的iOS工程目录</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/iOS%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84.png" alt="code中的iOS工程目录"></p>
+<ul>
+<li>AppDelegate.swift类文件:应用程序委托对象</li>
+<li>ViewController.swift类文件：是视图控制器类，在工程中扮演着根视图和用户事件控制类的角色</li>
+<li>Main.storyboard文件:故事板文件</li>
+<li>LaunchScreen.storyboard：应用启动界面故事板文件</li>
+<li>Assets.xcassets文件夹: 资源目录,可以用来管理图片</li>
+<li>Info.plist:工程属性文件</li>
+<li>Products组:工程将要生成的产品包</li>
+</ul>
+<blockquote>
+<p>在访问资源文件时，文件夹和组是有区别的。访问文件夹中的资源时需要将文件夹作为路径。如果icon.png文件放在images文件夹下，则访问它的路径时images/icon.png，如果images是组，则访问它的路径是icon.png.</p>
+</blockquote>
+<h1 id="iOS应用生命周期"><a href="#iOS应用生命周期" class="headerlink" title="iOS应用生命周期"></a>iOS应用生命周期</h1><p>AppDelegate类在应用生命周期的不同阶段会回调不同的方法。首先介绍iOS应用的5中状态。</p>
+<ul>
+<li>Not Running（非运行状态）：应用没有运行或被系统终止</li>
+<li>Inactive（前台非活动状态）：应用正在进入前台状态，但是还不能接受事件处理</li>
+<li>Active（前台活动状态）：应用进入前台状态，能接受事件处理</li>
+<li>Backgroud（后台状态）：应用进入后台状态，依然能够执行代码。如果有可执行的代码，就会执行代码；如果没有可执行的代码或者将可执行的代码执行完毕，应用会马上进入挂起状态</li>
+<li>Suspend（挂起状态）：被挂起的应用不能执行代码。如果系统内存不够，应用会被终止。</li>
+</ul>
+<p>在应用状态切换的过程中，iOS系统会回调AppDelegate中的一些方法，并且发送一些通知。下面介绍几个主要的方法和通知。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>本地通知</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application:didFinishLaunchingWithOptions</td>
+<td>UIApllicationDidFinishedLaunchingNotification</td>
+<td>应用启动并进行初始化时会调用该方法并发出通知。这个阶段会实例化根视图控制器</td>
+</tr>
+<tr>
+<td>applicationDidBecomeActive</td>
+<td>UIApplicationDidBecomeActiveNotification</td>
+<td>应用进入前台并处于活动状态时调用该方法并发出通知。这个阶段可以恢复UI的状态</td>
+</tr>
+<tr>
+<td>applicationWillResignActive</td>
+<td>UIApplicationWillResignActiveNotification</td>
+<td>应用从活动状态进入到非活动状态时调用该方法并发出通知。这个阶段可以保存UI状态</td>
+</tr>
+<tr>
+<td>applicationDidEnterBackgroud</td>
+<td>UIApplicationDidEnterBackgroudNotification</td>
+<td>应用进入后台时调用该方法并发出通知。这个阶段可以保存用户数据，释放一些资源</td>
+</tr>
+<tr>
+<td>applicationWillEnterForegroud</td>
+<td>UIApplicationWillEnterForegroudNotification</td>
+<td>应用进入到前台，但是还没有处于活动状态时调用该方法并发出通知。这个阶段可以恢复用户数据</td>
+</tr>
+<tr>
+<td>applicationWillTerminate</td>
+<td>UIApplicationWillTerminateNotification</td>
+<td>应用被终止时调用该方法并发出通知，但内存清除时除外，这个阶段释放一些资源，也可以保存用户数据</td>
+</tr>
+</tbody>
+</table>
+<h2 id="非运行状态-应用启动场景"><a href="#非运行状态-应用启动场景" class="headerlink" title="非运行状态-应用启动场景"></a>非运行状态-应用启动场景</h2><p><strong>场景描述：</strong>用户点击应用图标时，可能是第一次启动这个应用，也可能是应用终止后再次启动。该场景的状态跃迁过程共经历两个阶段单个状态：Not running -&gt; Inactive -&gt; Active。</p>
+<ul>
+<li>Not running -&gt; Inactive阶段：调用application:didFinishLaunchingWithOptions方法，发出UIApllicationDidFinishedLaunchingNotification通知。</li>
+<li>Inactive -&gt; Active阶段：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<h2 id="点击Home键-应用退出场景"><a href="#点击Home键-应用退出场景" class="headerlink" title="点击Home键-应用退出场景"></a>点击Home键-应用退出场景</h2><p><strong>场景描述：</strong>应用出于运行状态（即Active状态）时点击Home键应用会退出。该场景的状态变迁过程分为两种情况：可以在后台运行或者挂起和不可以在后台运行或挂起，可以根据工程属性文件Info.plist中的属性Application does not run in background来控制这两种状态。</p>
+<h3 id="应用可以在后台运行或者挂起"><a href="#应用可以在后台运行或者挂起" class="headerlink" title="应用可以在后台运行或者挂起"></a>应用可以在后台运行或者挂起</h3><p>该场景的状态变迁共经历3个阶段4个状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend。</p>
+<ul>
+<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
+<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）。</li>
+<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知。</li>
+</ul>
+<h3 id="应用不可以在后台运行或挂起"><a href="#应用不可以在后台运行或挂起" class="headerlink" title="应用不可以在后台运行或挂起"></a>应用不可以在后台运行或挂起</h3><p>该场景下的状态变迁共经历4个阶段5种状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend -&gt; Not Running。</p>
+<ul>
+<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
+<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）</li>
+<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知</li>
+<li>Suspend -&gt; Not Running阶段：调用applicationWillTerminate方法，发出UIApplicationWillTerminateNotification通知。</li>
+</ul>
+<h2 id="挂起重新运行场景"><a href="#挂起重新运行场景" class="headerlink" title="挂起重新运行场景"></a>挂起重新运行场景</h2><p><strong>场景描述：</strong>挂起状态的应用重新运行。该场景的状态变迁过程共经历三个阶段4种状态：Suspend -&gt; Backgroud -&gt; Inactive -&gt; Active。</p>
+<ul>
+<li>Suspend -&gt; Backgroud阶段：应用从挂起状态进入到后台（不涉及重点的方法和通知）</li>
+<li>Backgroud -&gt; Inactive：调用applicationWillEnterForeground方法，发出UIApplicationWillEnterForegroudNotification通知。</li>
+<li>Inactive -&gt; Active：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
+</ul>
+<h2 id="内存清楚-应用终止场景"><a href="#内存清楚-应用终止场景" class="headerlink" title="内存清楚-应用终止场景"></a>内存清楚-应用终止场景</h2><p><strong>场景描述：</strong>应用在后台处理完成时进入挂起状态（这是一种休眠状态），如果这时发出低内存警告，为了满足其他应用对内存的需要，该应用就会被清除内存从而终止运行。该场景的变迁过程为：Backgroud -&gt; Suspend -&gt; Not running。</p>
+<p>内存清除的时候应用终止运行。内存清除有两种情况，可能是系统强制清楚内存，也可能是由使用者从任务栏中手动清除。内存清除后如果应用再次运行，上一次的运行状态不会被保存，相对于应用第一次运行。</p>
+<blockquote>
+<p>在内存清除的场景下，应用不会调用任何方法，也不会发出任何通知。</p>
+</blockquote>
+<h1 id="iOS-API-简介"><a href="#iOS-API-简介" class="headerlink" title="iOS API 简介"></a>iOS API 简介</h1><p>iOS的整体架构图参见图2-28，分为4层-Cocoa Touch层，Media层，Core Service层和Core OS层。</p>
+<h2 id="Cocoa-Touch层"><a href="#Cocoa-Touch层" class="headerlink" title="Cocoa Touch层"></a>Cocoa Touch层</h2><p>Cocoa Touch层提供了构建iOS应用的一些基本系统服务（如多任务、触摸输入和推送通知等）和关键框架。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ConatactsUI</td>
+<td>CN</td>
+<td>访问通讯录相关UI类</td>
+</tr>
+<tr>
+<td>EventKitUI</td>
+<td>EK</td>
+<td>访问日历事件数据</td>
+</tr>
+<tr>
+<td>GameKit</td>
+<td>GK</td>
+<td>提供能够进行点对点通信的网络通信API</td>
+</tr>
+<tr>
+<td>iAd</td>
+<td>AD</td>
+<td>广告API</td>
+</tr>
+<tr>
+<td>MapKit</td>
+<td>MK</td>
+<td>地图API</td>
+</tr>
+<tr>
+<td>MessageUI</td>
+<td>MF</td>
+<td>电子邮件消息相关API</td>
+</tr>
+<tr>
+<td>PhotosUi</td>
+<td>PF</td>
+<td>照片API</td>
+</tr>
+<tr>
+<td>Twitter</td>
+<td>TW</td>
+<td>提供发送Twitter API</td>
+</tr>
+<tr>
+<td>UIKit</td>
+<td>UK</td>
+<td>提供UI类</td>
+</tr>
+<tr>
+<td>WatchKit</td>
+<td>Wk</td>
+<td>Apple Watch相关类</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Media层"><a href="#Media层" class="headerlink" title="Media层"></a>Media层</h2><p>Media层提供了图形、音频、视频和AirPlay技术等。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Assets Library</td>
+<td>Al</td>
+<td>访问图片和视频的API</td>
+</tr>
+<tr>
+<td>AudioToolBox</td>
+<td>Audio</td>
+<td>录制或播放视频、音频流以及格式转换</td>
+</tr>
+<tr>
+<td>AudioUnit</td>
+<td>Audio、AU</td>
+<td>使用内置音频单元服务以及音频处理模块</td>
+</tr>
+<tr>
+<td>AV Foundation</td>
+<td>AV</td>
+<td>播放与录制音频和视频的OC API</td>
+</tr>
+<tr>
+<td>Core Audio</td>
+<td>Audio</td>
+<td>录制、制作、播放音频的C语言接口</td>
+</tr>
+<tr>
+<td>Core Graphics</td>
+<td>CG</td>
+<td>提供Quartz 2D接口</td>
+</tr>
+<tr>
+<td>Core Image</td>
+<td>CI</td>
+<td>操作视频和静态图像的接口</td>
+</tr>
+<tr>
+<td>Core MIDI</td>
+<td>MIDI</td>
+<td>处理MIDI数据的底层API</td>
+</tr>
+<tr>
+<td>Core Text</td>
+<td>CT</td>
+<td>渲染文本和处理字体的简单、高效的C语言接口</td>
+</tr>
+<tr>
+<td>Core Video</td>
+<td>CV</td>
+<td>处理音频和视频的API</td>
+</tr>
+<tr>
+<td>Image I/O</td>
+<td>CG</td>
+<td>读写图像数据类</td>
+</tr>
+<tr>
+<td>GLKit</td>
+<td>GLK</td>
+<td>构建复杂OpenGL ES应用的OC应用类</td>
+</tr>
+<tr>
+<td>Media Player</td>
+<td>MP</td>
+<td>播放接口</td>
+</tr>
+<tr>
+<td>OpenAl</td>
+<td>AL</td>
+<td>包含了OpenAL（跨平台）的C接口</td>
+</tr>
+<tr>
+<td>OpenGL ES</td>
+<td>GL</td>
+<td>包含OpenGL ES（跨平台的2D/3D图形库）的C语言接口</td>
+</tr>
+<tr>
+<td>Quartz Core</td>
+<td>CA</td>
+<td>提供动画接口类</td>
+</tr>
+<tr>
+<td>Sprite Kit</td>
+<td>SK</td>
+<td>苹果提供的基于2D游戏的开发引擎</td>
+</tr>
+<tr>
+<td>Scene Kit</td>
+<td>SCK</td>
+<td>一种高级别的3D图像框架，能创建3D动画场景和特效</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-Services层"><a href="#Core-Services层" class="headerlink" title="Core Services层"></a>Core Services层</h2><p>Core Services层提供了CloudKit、HealthKit、HomeKit、SQLite和XML支持等技术</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accounts</td>
+<td>AC</td>
+<td>用于访问用户的Twitter账户</td>
+</tr>
+<tr>
+<td>Contacts</td>
+<td>CN</td>
+<td>访问通讯录信息</td>
+</tr>
+<tr>
+<td>AdSupport</td>
+<td>AS</td>
+<td>获得iAd广告标识</td>
+</tr>
+<tr>
+<td>CFNetwork</td>
+<td>CF</td>
+<td>提供了访问Wi-Fi网络和蜂窝移动网络的API</td>
+</tr>
+<tr>
+<td>Core Data</td>
+<td>NS</td>
+<td>提供管理应用数据的ORM接口</td>
+</tr>
+<tr>
+<td>CoreFoundation</td>
+<td>CF</td>
+<td>最基本的框架包括数据集</td>
+</tr>
+<tr>
+<td>Core Location</td>
+<td>CL</td>
+<td>定位服务的API</td>
+</tr>
+<tr>
+<td>CoreMedia</td>
+<td>CM</td>
+<td>提供AV Foundation框架使用的底层媒体类型，可以精确控制音频或视频的创建及展示</td>
+</tr>
+<tr>
+<td>CoreMotion</td>
+<td>CM</td>
+<td>接收和处理重力加速度以及其他的运动操作</td>
+</tr>
+<tr>
+<td>CoreTelephony</td>
+<td>CT</td>
+<td>提供访问电话基本信息的API</td>
+</tr>
+<tr>
+<td>Event Kit</td>
+<td>EK</td>
+<td>访问日历事件数据</td>
+</tr>
+<tr>
+<td>Foundation</td>
+<td>NS</td>
+<td>是OC最基本的框架</td>
+</tr>
+<tr>
+<td>JavaScriptCore.framework</td>
+<td>JS</td>
+<td>实现OC与JS的相互调用</td>
+</tr>
+<tr>
+<td>MobileCoreServices</td>
+<td>UT</td>
+<td>定义统一标识符类型（UIT）使用的底层类型</td>
+</tr>
+<tr>
+<td>Newsstand Kit</td>
+<td>NK</td>
+<td>提供在后台下载杂志和新闻的API接口</td>
+</tr>
+<tr>
+<td>Pass Kit</td>
+<td>PK</td>
+<td>提供访问优惠券的API</td>
+</tr>
+<tr>
+<td>QuickLock</td>
+<td>QL</td>
+<td>提供预览无法直接查看的文件内容</td>
+</tr>
+<tr>
+<td>Social</td>
+<td>SL</td>
+<td>提供社交网络访问API，中国区提供新浪微博的API</td>
+</tr>
+<tr>
+<td>Store Kit</td>
+<td>SK</td>
+<td>提供处理应用内置收费的资金交易</td>
+</tr>
+<tr>
+<td>SystemConfiguration</td>
+<td>SC</td>
+<td>用于确定设备的网络配置，也可以用于判断某个主机服务是否可以使用</td>
+</tr>
+<tr>
+<td>Cloud Kit</td>
+<td>CK</td>
+<td>开发iCloud应用的API</td>
+</tr>
+<tr>
+<td>Health Kit</td>
+<td>HK</td>
+<td>开发健康和健身等服务的API</td>
+</tr>
+<tr>
+<td>Home Kit</td>
+<td>HM</td>
+<td>能够与用户家中连接的设备通信并进行控制</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Core-OS层"><a href="#Core-OS层" class="headerlink" title="Core OS层"></a>Core OS层</h2><p>Core OS层提供了一些低级功能，一般不直接使用它。</p>
+<table>
+<thead>
+<tr>
+<th>框架</th>
+<th>前缀</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accelerate</td>
+<td>AC</td>
+<td>访问重力加速计API</td>
+</tr>
+<tr>
+<td>Core Bluetooth</td>
+<td>CB</td>
+<td>访问低功耗蓝牙设备API</td>
+</tr>
+<tr>
+<td>External Accessory</td>
+<td>EA</td>
+<td>访问外围配件API接口</td>
+</tr>
+<tr>
+<td>Generic Security Services</td>
+<td>GSS</td>
+<td>提供一组安全相关的服务</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>CSSM</td>
+<td>管理证书、公钥、私钥和安全信任策略的API</td>
+</tr>
+<tr>
+<td>LocalAuthentication</td>
+<td>LA</td>
+<td>提供用户指定的安全策略进行安全认证</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之01基础/" data-id="cj6f2gfor00af4h19e0ozwzsz" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之01基础/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Android DiffUtil在RecyclerView中的使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/" class="article-date">
+  <time datetime="2016-11-25T10:31:12.000Z" itemprop="datePublished">2016-11-25 18:31:12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/">DiffUtil在RecyclerView中的使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数据需要更新。</p>
+<p>那么相比直接调用adapter.notifyDataSetChange()方法，使用DiffUtil有什么优势呢？它能在收到数据集后，提高UI更新的效率，而且你也不需要自己对新老数据集进行比较了。</p>
+<p>顾名思义，凡是数据集的比较DiffUtil都能做，所以用处并不止于更新RecyclerView。DiffUtil也提供了回调让你可以进行其他操作。本文只介绍使用DiffUtil更新RecyclerView。</p>
+<h1 id="DiffUtil简介"><a href="#DiffUtil简介" class="headerlink" title="DiffUtil简介"></a>DiffUtil简介</h1><p>在使用DiffUtil前我们先简单看看DiffUtil的特性。DiffUtil使用Eugene W. Myers的Difference算法来计算出将一个数据集转换为另一个的最小更新量，也就是用最简单的方式将一个数据集转换为另一个。除此之外，DiffUtil还可以识别一项数据在数据集中的移动。Eugene的算法对控件进行了优化，在查找两个数据集间最少加减操作时的空间复杂度为O(N)，时间复杂度为<code>O(N+D^2)</code>。而如果添加了对数据条目移动的识别，复杂度就会提高到<code>O(N^2)</code>。<strong>所以如果数据集中数据不存在移位情况，你可以关闭移动识别功能来提高性能。当数据集较大时，你应该在后台线程计算数据集的更新。</strong></p>
+<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><h2 id="DiffUtil类"><a href="#DiffUtil类" class="headerlink" title="DiffUtil类"></a>DiffUtil类</h2><ul>
+<li>DiffUtil.Callback：这是最核心的类,你可以将它理解成比较新老数据集时的规则。</li>
+<li>DiffUtil：通过静态方法<code>DiffUtil.calculateDiff(DiffUtil.Callback)</code>来计算数据集的更新。</li>
+<li>DiffResult：是DiffUtil的计算结果对象，通过<code>DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)</code>来进行更新。</li>
+</ul>
+<p>代码模式为</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallBack(mDatas, newDatas), <span class="keyword">true</span>);</div><div class="line">mAdapter.setDatas(newDatas);</div><div class="line">diffResult.dispatchUpdatesTo(mAdapter);</div></pre></td></tr></table></figure>
+<p><code>dispatchUpdatesTo()</code>方法它会自动计算新老数据集的差异，并根据差异情况，自动调用以下四个方法</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">adapter.notifyItemRangeInserted(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeRemoved(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemMoved(fromPosition, toPosition)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeChanged(position, <span class="built_in">count</span>, payload)<span class="comment">;</span></div></pre></td></tr></table></figure>
+<h2 id="DiffUtil-Callback抽象类"><a href="#DiffUtil-Callback抽象类" class="headerlink" title="DiffUtil.Callback抽象类"></a>DiffUtil.Callback抽象类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Callback</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回旧数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the old list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回新数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the new list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象是否是同一个对象</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     * <span class="doctag">@return</span> True if the two items represent the same object or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象的内容是否相同</div><div class="line">     * Called by the DiffUtil when it wants to check whether two items have the same data.</div><div class="line">     * DiffUtil uses this information to detect if the contents of an item has changed.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * DiffUtil uses this method to check equality instead of &#123;<span class="doctag">@link</span> Object#equals(Object)&#125;</div><div class="line">     * so that you can change its behavior depending on your UI.</div><div class="line">     * For example, if you are using DiffUtil with a</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.Adapter RecyclerView.Adapter&#125;, you should</div><div class="line">     * return whether the items' visual representations are the same.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * This method is called only if &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns</div><div class="line">     * &#123;<span class="doctag">@code</span> true&#125; for these items.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list which replaces the</div><div class="line">     *                        oldItem</div><div class="line">     * <span class="doctag">@return</span> True if the contents of the items are the same or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * areItemsTheSame()返回true而areContentsTheSame()返回false时调用，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">     * When &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns &#123;<span class="doctag">@code</span> true&#125; for two items and</div><div class="line">     * &#123;<span class="doctag">@link</span> #areContentsTheSame(int, int)&#125; returns false for them, DiffUtil</div><div class="line">     * calls this method to get a payload about the change.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * For example, if you are using DiffUtil with &#123;<span class="doctag">@link</span> RecyclerView&#125;, you can return the</div><div class="line">     * particular field that changed in the item and your</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.ItemAnimator ItemAnimator&#125; can use that</div><div class="line">     * information to run the correct animation.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * Default implementation returns &#123;<span class="doctag">@code</span> null&#125;.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> A payload object that represents the change between the two items.</div><div class="line">     */</div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="DiffUtil步骤"><a href="#DiffUtil步骤" class="headerlink" title="DiffUtil步骤"></a>DiffUtil步骤</h2><ol>
+<li>自定义类继承DiffUtil.Callback，通过重写特定方法给出数据比较逻辑。</li>
+<li>调用<code>DiffUtil.calculateDiff(DiffUtil.Callback callback,boolean detectMove)</code>来计算更新，得到DiffResult对象。第二个参数可省，意为是否探测数据的移动，是否关闭需要根据数据集情况来权衡。当数据集很大时，此操作可能耗时较长，需要异步计算。</li>
+<li>在UI线程中调用DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)，而后Adapter的onBindViewHolder(RecyclerView.ViewHolder holder, int position, Listpayloads)。注意这个方法比必须覆盖的onBindViewHolder(RecyclerView.ViewHolder holder, int position)方法多一个参数payloads，而里面存储了数据的更新。</li>
+</ol>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="初始化RecyclerView"><a href="#初始化RecyclerView" class="headerlink" title="初始化RecyclerView"></a>初始化RecyclerView</h2><ul>
+<li>新建一个Bean为Item：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.materialdesign.bean;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by liuguoquan on 2016/10/18.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> id = <span class="number">0</span>;</div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>新建Adapter</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffUtilAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">DiffUtilAdapter</span>.<span class="title">DiffItemHolder</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> Context mContext;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mDatas;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffUtilAdapter</span><span class="params">(Context context, List&lt;Item&gt; datas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mContext = context;</div><div class="line">    <span class="keyword">this</span>.mDatas = datas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDatas</span><span class="params">(List&lt;Item&gt; mDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mDatas = mDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> DiffItemHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    View view = LayoutInflater.from(mContext).inflate(R.layout.item_diff_util, parent, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DiffItemHolder(view);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    Item info = mDatas.get(position);</div><div class="line">    holder.mInfo.setText(info.getName());</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"onBindViewHolder"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="comment">//payloads就是DiffUtil.Callback中的getChangePayload方法返回的数据集</span></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position, List&lt;Object&gt; payloads)</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (payloads.isEmpty()) &#123;</div><div class="line">      onBindViewHolder(holder,position);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//更新item</span></div><div class="line">      Bundle bundle = (Bundle) payloads.get(<span class="number">0</span>);</div><div class="line">      <span class="keyword">for</span>(String key : bundle.keySet()) &#123;</div><div class="line">        <span class="keyword">switch</span> (key) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="string">"name"</span>:</div><div class="line">            holder.mInfo.setText((CharSequence) bundle.get(key));</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mDatas != <span class="keyword">null</span> ? mDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffItemHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@BindView</span>(R.id.info) TextView mInfo;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiffItemHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>(itemView);</div><div class="line">      ButterKnife.bind(<span class="keyword">this</span>, itemView);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>初始化ReyclerView</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>;i++) &#123;</div><div class="line">    Item item = <span class="keyword">new</span> Item(i,<span class="string">"liu"</span>+i);</div><div class="line">    mDatas.add(item);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  mAdapter = <span class="keyword">new</span> DiffUtilAdapter(<span class="keyword">this</span>,mDatas);</div><div class="line">  mList.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>,LinearLayoutManager.VERTICAL,<span class="keyword">false</span>));</div><div class="line">  mList.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());</div><div class="line">  mList.setAdapter(mAdapter);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>初始化RecyclerView后效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-normal.png" alt=""></p>
+<h2 id="实现DiffUtil-Callback"><a href="#实现DiffUtil-Callback" class="headerlink" title="实现DiffUtil.Callback"></a>实现DiffUtil.Callback</h2><p>新建类继承DiffUtil.Callback</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffCallback</span> <span class="keyword">extends</span> <span class="title">DiffUtil</span>.<span class="title">Callback</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mOldDatas;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mNewDatas;</div><div class="line"></div><div class="line">  <span class="comment">//传入旧数据和新数据的集合</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffCallback</span><span class="params">(List&lt;Item&gt; oldDatas,List&lt;Item&gt; newDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mOldDatas = oldDatas;</div><div class="line">    <span class="keyword">this</span>.mNewDatas = newDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mOldDatas != <span class="keyword">null</span> ? mOldDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mNewDatas != <span class="keyword">null</span> ? mNewDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * 被DiffUtil调用，用来判断 两个对象是否是相同的Item。</div><div class="line">   * 例如，如果你的Item有唯一的id字段，这个方法就 判断id是否相等。</div><div class="line">   * 本例判断id字段是否一致</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> is = mOldDatas.get(oldItemPosition).id == mNewDatas.get(newItemPosition).id;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areItemsTheSame "</span> +oldItemPosition + <span class="string">" "</span> + newItemPosition + <span class="string">" "</span> + is);</div><div class="line">    <span class="keyword">return</span> is;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/*</span></div><div class="line">   * 被DiffUtil调用，用来检查 两个item是否含有相同的数据</div><div class="line">   * 这个方法仅仅在areItemsTheSame()返回true时，才调用。</div><div class="line">   * @param oldItemPosition The position of the item in the old list</div><div class="line">   * @param newItemPosition The position of the item in the new list which replaces the</div><div class="line">   *                        oldItem</div><div class="line">   * @return True if the contents of the items are the same or false if they are different.</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldName = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newName = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areContentsTheSame"</span></div><div class="line">        + <span class="string">" "</span> +oldName + <span class="string">" "</span> + newName);</div><div class="line">    <span class="keyword">if</span> (!oldName.equals(newName)) &#123;</div><div class="line">      Log.d(<span class="string">"lgq"</span>,<span class="string">"false"</span>);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * areItemsTheSame()返回true而areContentsTheSame()返回false，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">   * <span class="doctag">@param</span> oldItemPosition</div><div class="line">   * <span class="doctag">@param</span> newItemPosition</div><div class="line">   * <span class="doctag">@return</span></div><div class="line">   */</div><div class="line">  <span class="meta">@Nullable</span> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldItem = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newItem = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">    <span class="keyword">if</span> (!oldItem.equals(newItem)) &#123;</div><div class="line">        bundle.putString(<span class="string">"name"</span>,newItem);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (bundle.size() == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"getChangePayload"</span>);</div><div class="line">    <span class="keyword">return</span> bundle;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="使用DiffUtil"><a href="#使用DiffUtil" class="headerlink" title="使用DiffUtil"></a>使用DiffUtil</h2><p>下面通过两种不同的改变RecyclerView条目来介绍DiffUtil的使用。</p>
+<ul>
+<li>增加或删除条目</li>
+</ul>
+<p>这种情况下，数据集的大小改变，反映在RecyclerView的效果就是增加或者删除条目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">89</span>,<span class="string">"xiao"</span>));</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">90</span>,<span class="string">"xia"</span>));</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>增加条目后的RecyclerView的效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-add.png" alt=""></p>
+<ul>
+<li>更新具体的条目</li>
+</ul>
+<p>这种情况下数据集大小不改变，改变数据集中条目的内容，反映在RecyclerView的效果就是更新具体的条目，这回调用Callback中的getChangePayload方法，而Adapter必须要实现<code>public void onBindViewHolder(DiffItemHolder holder, int position, List&lt;Object&gt; payloads)</code>方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  <span class="comment">//改变第三个位置的对象</span></div><div class="line">  Item item = <span class="keyword">new</span> Item(<span class="number">3</span>,<span class="string">"zhang"</span>);</div><div class="line">  mNewDatas.remove(<span class="number">3</span>);</div><div class="line">  mNewDatas.add(<span class="number">3</span>,item);</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  <span class="comment">//将新数据给Adapter</span></div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更新条目后的RecyclerView效果为：</p>
+<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-refresh.png" alt=""></p>
+<p>由图可知，第四个位置的条目显示变为zhang。</p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>DiffUtil可用于高效进行RecyclerView的数据更新，但DiffUtil本身的作用是计算数据集的最小更新。DiffUtil有强大的算法支撑，可以利用DiffUtil完成许多其他功能。</p>
+<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><p><a href="https://github.com/liuguoquan727/MaterialDesignDemo/blob/master/app/src/main/java/com/michael/materialdesign/recyclerview/DiffUtilActivity.java" target="_blank" rel="external">在RecyclerView目录下</a></p>
+<p>参考文章:</p>
+<p><a href="http://blog.chengdazhi.com/index.php/231?sukey=3997c0719f151520abc3703315e3fef6e18ec9dce4f81882490fce74f3aae8be1eb373fcd36a9b3faaddddcea988dbfa" target="_blank" rel="external">使用DiffUtil高效更新RecyclerView</a><br><a href="http://blog.csdn.net/zxt0601/article/details/52562770" target="_blank" rel="external">详解7.0带来的新工具类：DiffUtil</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-id="cj6f2gfkm000f4h19z9cx6ssx" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/11/25/Android DiffUtil在RecyclerView中的使用/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-Android_LoaderManager使用详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/12/Android_LoaderManager使用详解/" class="article-date">
+  <time datetime="2016-09-12T12:23:25.000Z" itemprop="datePublished">2016-09-12 20:23:25</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/12/Android_LoaderManager使用详解/">Android LoaderManager使用详解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="LoaderManager是什么？"><a href="#LoaderManager是什么？" class="headerlink" title="LoaderManager是什么？"></a>LoaderManager是什么？</h1><p>LoaderManager用来负责管理与Activity或者Fragment联系起来的一个或多个Loaders对象。每个Activity或者Fragment都有唯一的一个LoaderManager实例，用来启动、停止、保持、重启、关闭它的Loaders。这些事件有时直接在客户端通过调用initLoader()/restartLoader()/destroyLoader()函数来实现。通常这些事件通过主要的Activity/Fragment声明周期事件来触发，而不是手动（当然也可以手动调用）。比如，当一个Activity关闭时（destroyed），改活动将指示它的LoaderManager来销毁并且关闭它的Loaders（当然也会销毁并关闭与这些Loaders关联的资源，比如Cursor）。  </p>
+<p>LoaderManager并不知道数据如何装载以及何时需要装载。相反地，LoaderManager只需要控制它的Loaders们开始、停止、重置他们的Load行为，在配置变换（比如横竖屏切换）时保持loaders们的状态，并提供一个简单的接口来获取load结果到客户端中。</p>
+<h1 id="实现LoaderManager-LoaderCallbacks接口"><a href="#实现LoaderManager-LoaderCallbacks接口" class="headerlink" title="实现LoaderManager.LoaderCallbacks接口"></a>实现LoaderManager.LoaderCallbacks<d>接口</d></h1><p>LoaderManager.LoaderCallbacks<d>接口LoaderManager用来向客户返回数据的方式。每个Loader都有自己的回调对象供与LoaderManager进行交互。该回调对象在实现LoaderManager中地位很高，告诉LoaderManager如何实例化Loader(onCreateLoader)，以及当载入行为结束或者重启（onLoadFinished或者onLoadReset）之后执行什么操作。大多数情况，你需要把该接口实现为组件的一部分，比如说让你的Activity或者Fragment实现LoadManager.LoaderCallbacks<d>接口。</d></d></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">D</span>&gt; </span>&#123;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> Loader&lt;D&gt; <span class="title">onCreateLoader</span><span class="params">(<span class="keyword">int</span> id, Bundle args)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;D&gt; loader, D data)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span><span class="params">(Loader&lt;D&gt; loader)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="comment">/* ... */</span>  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>一旦实现该接口，客户端将回调对象（本例中为“this”）作为LoaderManager的initLoader函数的第三个参数传输。<br>总的来说，实现回调接口非常直接明了。每个回调方法都有各自明确的与LoaderManager进行交互的目的：</p>
+<ul>
+<li>onCreateLoader是一个工厂方法，用来返回一个新的Loader。LoaderManager将会在它第一次创建Loader的时候调用该方法。</li>
+<li>onLoadFinished方法将在Loader创建完毕的时候自动调用。典型用法是，当载入数据完毕，客户端（译者注：调用它的Activity之类的）需要更新应用UI。客户端假设每次有新数据的时候，新数据都会返回到这个方法中。记住，检测数据源是Loader的工作，Loader也会执行实际的同步载入操作。一旦Loader载入数据完成，LoaderManager将会接受到这些载入数据，并且将将结果传给回调对象的onLoadFinished方法，这样客户端（比如Activity或者Fragment）就能使用该数据了。</li>
+<li>最后，当Loader们的数据被重置的时候将会调用onLoadReset。该方法让你可以从就的数据中移除不再有用的数据。</li>
+</ul>
+<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.loadermanagerdemo;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.database.Cursor;</div><div class="line"><span class="keyword">import</span> android.os.Looper;</div><div class="line"><span class="keyword">import</span> android.provider.MediaStore;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.LoaderManager;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.CursorLoader;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.FileProvider;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.Loader;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.PermissionChecker;</div><div class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"><span class="keyword">import</span> com.orhanobut.logger.Logger;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">Cursor</span>&gt;</span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] PROJECTION = <span class="keyword">new</span> String[] &#123; MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">final</span> String[] DOC_PROJECTION = &#123;</div><div class="line">      MediaStore.Files.FileColumns.DATA,</div><div class="line">      MediaStore.Files.FileColumns.MIME_TYPE,</div><div class="line">      MediaStore.Files.FileColumns.TITLE</div><div class="line"></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADER_ID = <span class="number">1</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADER_FILE_ID = <span class="number">2</span>;</div><div class="line"></div><div class="line">  LoaderManager mLoaderManager;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">    Logger.init(<span class="string">"loader"</span>);</div><div class="line"></div><div class="line">    <span class="comment">//1.获取LoadManager实例</span></div><div class="line">    mLoaderManager = getSupportLoaderManager();</div><div class="line">    <span class="comment">//2.设置LoadManager传输的参数</span></div><div class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">    bundle.putString(<span class="string">"liu"</span>,<span class="string">"liuguoquan"</span>);</div><div class="line">    <span class="comment">//3.初始化LoadManager</span></div><div class="line">    mLoaderManager.initLoader(LOADER_FILE_ID,bundle,<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Loader&lt;Cursor&gt; <span class="title">onCreateLoader</span><span class="params">(<span class="keyword">int</span> id, Bundle bundle)</span> </span>&#123;</div><div class="line">    Logger.d(<span class="string">"bundle: "</span> + bundle.getString(<span class="string">"liu"</span>));</div><div class="line">    <span class="keyword">if</span> (id == LOADER_ID) &#123;</div><div class="line">      <span class="comment">//获取图片信息</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(MainActivity.<span class="keyword">this</span>, MediaStore.Images.Media.EXTERNAL_CONTENT_URI,</div><div class="line">          PROJECTION, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == LOADER_FILE_ID) &#123;</div><div class="line">      <span class="comment">//获取文件名</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(MainActivity.<span class="keyword">this</span>,MediaStore.Files.getContentUri(<span class="string">"external"</span>),DOC_PROJECTION,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;Cursor&gt; loader, Cursor cursor)</span> </span>&#123;</div><div class="line">    <span class="comment">//创建完毕后调用</span></div><div class="line">    <span class="keyword">switch</span> (loader.getId()) &#123;</div><div class="line">      <span class="keyword">case</span> LOADER_ID:</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (cursor.moveToNext()) &#123;</div><div class="line">          Long id = cursor.getLong(<span class="number">0</span>);</div><div class="line">          String data = cursor.getString(<span class="number">1</span>);</div><div class="line">          Log.d(<span class="string">"loader"</span>,<span class="string">"id:"</span> + id + <span class="string">"; data: "</span> + data);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> LOADER_FILE_ID:</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (cursor.moveToNext()) &#123;</div><div class="line">          String title =  cursor.getString(<span class="number">2</span>);</div><div class="line">          Log.d(<span class="string">"loader"</span>,<span class="string">"title: "</span> + title);</div><div class="line">        &#125;</div><div class="line">        cursor.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span><span class="params">(Loader&lt;Cursor&gt; loader)</span> </span>&#123;</div><div class="line">    <span class="comment">//数据重置时调用</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><a href="http://blog.csdn.net/murphykwu/article/details/35288477" target="_blank" rel="external">LoaderManager使用详解（三）—实现Loaders</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/09/12/Android_LoaderManager使用详解/" data-id="cj6f2gfl6001i4h19wzsat0v4" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/09/12/Android_LoaderManager使用详解/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-Android设计模式(十一)观察者模式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/09/Android设计模式(十一)观察者模式/" class="article-date">
@@ -135,7 +786,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/06/09/Android设计模式(十一)观察者模式/" data-id="cj6f0soa8002vf519cznadq4g" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/06/09/Android设计模式(十一)观察者模式/" data-id="cj6f2gflj002d4h19ch2411b4" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2016/06/09/Android设计模式(十一)观察者模式/#ds-thread" class="article-comment-link">留言</a>
       
@@ -229,227 +880,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/06/07/Android设计模式(五)抽象工厂模式/" data-id="cj6f0so9w0023f519hdw85rt4" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/06/07/Android设计模式(五)抽象工厂模式/" data-id="cj6f2gfli00294h1991nsvw7f" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2016/06/07/Android设计模式(五)抽象工厂模式/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Android设计模式(四)工厂方法模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/07/Android设计模式(四)工厂方法模式/" class="article-date">
-  <time datetime="2016-06-07T12:34:01.000Z" itemprop="datePublished">2016-06-07 20:34:01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/07/Android设计模式(四)工厂方法模式/">Android设计模式(四)工厂方法模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>工厂方法模式是创建型设计模式之一。工厂方法模式是一种结构简单的模式。</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>定义一个用于创建对象的接口，让子类决定实例化哪个类。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>在任何需要生成复杂对象的地方，都可以使用工厂方法模式。复杂对象适合使用工厂模式，用new就可以完成创建的对象无需使用工厂对象。</p>
-<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图如下：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95UML%E7%B1%BB%E5%9B%BE.png" alt=""></p>
-<p>这里的角色主要分为四个模块：</p>
-<ol>
-<li>抽象工厂Factory，其为工厂方法的核心；</li>
-<li>具体工厂ConcreteFactory，实现了具体的业务逻辑；</li>
-<li>抽象产品Product，是工厂方法模式所创建的产品的父类；</li>
-<li>具体产品ConcreteFactory，实现抽象产品的某个具体产品的对象；</li>
-</ol>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>小明是一家汽车厂的厂长，对他来说，组装汽车就是讲一些进口的核心部件，比如发动机和一些零部件组装起来，小明的汽车厂主要组装某款SUV车型，比如Q3、Q5，对于这类车型来说内部结构差异并不是很大，因此小明只需要一条生产线就足以应付这2种车型，对于该类生产线小明提供一个抽象类定义：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 抽象生产线类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiFactory</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 某车型的工厂方法</div><div class="line">	 * <span class="doctag">@param</span> clz 具体的车型类</div><div class="line">	 * <span class="doctag">@return</span> 具体型号的车对象</div><div class="line">	 */</div><div class="line">	<span class="keyword">public</span> <span class="keyword">abstract</span> &lt;T extends AudiCar&gt; <span class="function">T <span class="title">createAudiCar</span><span class="params">(Class&lt;T&gt; clz)</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>生产线的具体实现类：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 生产线具体类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiCarFactory</span> <span class="keyword">extends</span> <span class="title">AudiFactory</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="keyword">public</span> &lt;T extends AudiCar&gt; <span class="function">T <span class="title">createAudiCar</span><span class="params">(Class&lt;T&gt; clz)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		AudiCar car = <span class="keyword">null</span>;</div><div class="line"></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">			car = (AudiCar) Class.forName(clz.getName()).newInstance();</div><div class="line"></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></div><div class="line">		&#125;</div><div class="line"></div><div class="line">		<span class="keyword">return</span> (T) car;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>对于这两种车型，除了一些车的基本共性之外，还提供了自动导航功能，这些都使用一个抽象的基本类来声明：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 汽车的抽象产品类</div><div class="line"> * <span class="doctag">@author</span> Administrator</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 行为方法，车可以驾驶</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * 行为方法，车可以自动导航</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>接下来就是具体的车型了：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiQ3</span> <span class="keyword">extends</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q3 run"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q3 navi"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AudiQ5</span> <span class="keyword">extends</span> <span class="title">AudiCar</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">drive</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q5 run"</span>);</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">selfNavigation</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		System.out.println(<span class="string">"Q5 navi"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>最后我们将各个类组装起来形成一条完整的流水线：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		AudiFactory factory = <span class="keyword">new</span> AudiCarFactory();</div><div class="line"></div><div class="line">		AudiQ3 audiQ3 = factory.createAudiCar(AudiQ3.class);</div><div class="line">		audiQ3.drive();</div><div class="line">		audiQ3.selfNavigation();</div><div class="line"></div><div class="line">		AudiQ5 audiQ5 = factory.createAudiCar(AudiQ5.class);</div><div class="line">		audiQ5.drive();</div><div class="line">		audiQ5.selfNavigation();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Q3 run</div><div class="line">Q3 navi</div><div class="line">Q5 run</div><div class="line">Q5 navi</div></pre></td></tr></table></figure>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总的来说，工厂方法模式是一个很好的设计模式，但是也存在缺点，就是每次我们为工厂方法模式添加新的产品时就要编写一个新的产品类，同时还要引入抽象层，这必然导致类结构的复杂化，所以工作中需要权衡。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/06/07/Android设计模式(四)工厂方法模式/" data-id="cj6f0soa0002ef519wxhcs46z" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/06/07/Android设计模式(四)工厂方法模式/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Android设计模式之(三)原型模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/04/Android设计模式之(三)原型模式/" class="article-date">
-  <time datetime="2016-06-04T14:34:01.000Z" itemprop="datePublished">2016-06-04 22:34:01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/04/Android设计模式之(三)原型模式/">Android设计模式之(三)原型模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>原型模式是一种创建型的模式。原型表示该模式有一个样板实例，用户从这个样板对象中复制出一个内部属性一致的对象，被复制的实例就称为原型。原型模式多用于创复杂的或者构造耗时的实例，因为这种情况下，复制一个已经存在的实例可以使程序运行更高效。</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>用原型实例指定创建对象的种类，并通过拷贝这些原型创建新的对象。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
-<li>类初始化需要消耗非常多的资源，包括数据、硬件资源等，通过原型拷贝避免这些消耗。</li>
-<li>通过new产生一个对象需要非常繁琐的数据准备或访问权限，这时可以使用原型模式。</li>
-<li>一个对象需要提供给其他对象访问，而且各个调用者可能需要修改其值时，可以考虑使用原型模式拷贝多个对象供调用者使用，即保护性拷贝。</li>
-</ol>
-<p>需要注意的是，通过实现Cloneable接口的原型模式在调用clone函数构造实例时并不一定比通过new操作速度快，只有当通过new构造对象较为耗时或者资源消耗比较大时，通过clone方法才能获得效率上的提升。因此，使用Cloneable时需要考虑构建对象的成本以及做一些效率上的测试。当然，实现原型模式也并不一定非要实现Cloneable接口，也有其他的实现方式。</p>
-<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>原型模式的UML类图如下：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8FUML%E7%B1%BB%E5%9B%BE.png" alt="原型模式的UML类图"></p>
-<p>角色介绍：</p>
-<ul>
-<li>Client：客户端用户</li>
-<li>Prototype：抽象类或者接口，声明具clone的能力</li>
-<li>ConcretePrototype：具体的原型类</li>
-</ul>
-<h1 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h1><p>下面以简单的文档拷贝为例来演示一下简单的原型模式，例子中首先创建一个文档对象，即WordDocument，这个文档包括文字和图片。用户经过产时间的内容编辑后，打开该文档做进一步的编辑，但是这个文档编辑后是否被采用还不确定，因此为了安全起见，用户需要将当前文档拷贝一份，然后再在这个文档副本上进行修改。如下所示</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.prototype;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.util.ArrayList;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 文档类型，扮演的是ConcretePrototype角色，而Cloneable是代表Prototype角色</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WordDocument</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="comment">//文本</span></div><div class="line">	<span class="keyword">private</span> String text;</div><div class="line"></div><div class="line">	<span class="comment">//图片名列表</span></div><div class="line">	<span class="keyword">private</span> ArrayList&lt;String&gt; images = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">WordDocument</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">		System.out.println(<span class="string">"---WordDocument构造函数---"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getText</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> text;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setText</span><span class="params">(String text)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.text = text;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> ArrayList&lt;String&gt; <span class="title">getImages</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> images;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addImage</span><span class="params">(String image)</span> </span>&#123;</div><div class="line">		images.add(image);</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">protected</span> WordDocument <span class="title">clone</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line"></div><div class="line">			WordDocument document = (WordDocument) <span class="keyword">super</span>.clone();</div><div class="line">			document.text = <span class="keyword">this</span>.text;</div><div class="line">			<span class="comment">//浅拷贝</span></div><div class="line">			document.images = <span class="keyword">this</span>.images;</div><div class="line">			<span class="comment">//深拷贝</span></div><div class="line"><span class="comment">//			document.images = (ArrayList&lt;String&gt;) this.images.clone();</span></div><div class="line">			<span class="keyword">return</span> document;</div><div class="line"></div><div class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">			<span class="comment">// <span class="doctag">TODO:</span> handle exception</span></div><div class="line">		&#125;</div><div class="line">		<span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"WordDocument [text="</span> + text + <span class="string">", images="</span> + images + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">package</span> com.lgq.pattern.prototype;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line"></div><div class="line">		WordDocument document = <span class="keyword">new</span> WordDocument();</div><div class="line">		document.setText(<span class="string">"这是一篇文档"</span>);</div><div class="line">		document.addImage(<span class="string">"image1"</span>);</div><div class="line">		document.addImage(<span class="string">"image2"</span>);</div><div class="line">		System.out.println(document.toString());</div><div class="line"></div><div class="line">		<span class="comment">//拷贝一份副本</span></div><div class="line">		WordDocument document2 = document.clone();</div><div class="line">		System.out.println(document2.toString());</div><div class="line">		<span class="comment">//修改文档副本，不会影响原始文档</span></div><div class="line">		document2.setText(<span class="string">"这是修改过的document2文档"</span>);</div><div class="line">		System.out.println(document2.toString());</div><div class="line"></div><div class="line">		System.out.println(document.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">打印结果：</div><div class="line"></div><div class="line">---WordDocument构造函数---</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是修改过的document2文档, images=[image1, image2]]</div><div class="line">WordDocument [text=这是一篇文档, images=[image1, image2]]</div></pre></td></tr></table></figure>
-<p>需要注意的是，<strong>上述的例子中WordDocument的构造函数只运行了一次，通过clone拷贝对象时并不会执行构造函数！</strong></p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>原型模式本质上是对象拷贝，容易出现的问题是深拷贝、浅拷贝。使用原型模式可以解决构建复杂对象的资源消耗问题，能够在某些场景下提升创建对象的效率。还有一个重要用途就是保护性拷贝，也就是某个对象对外可能是只读的，为了防止外部对这个只读对象修改，通过可以通过返回一个对象拷贝的形式实现只读的限制。</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>原型模式是在内存中二进制流的拷贝，要比直接new一个对象性能好很多，特别是要在一个循环体内产生大量的对象时，原型模式可以更好地体现其优点。</p>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>直接在内存中拷贝时，构造函数是不会执行的，在实际开发中应该注意这个潜在的问题。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/06/04/Android设计模式之(三)原型模式/" data-id="cj6f0soa4002pf519cglflady" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/06/04/Android设计模式之(三)原型模式/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Android设计模式之(二)Builder模式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/03/Android设计模式之(二)Builder模式/" class="article-date">
-  <time datetime="2016-06-03T13:34:01.000Z" itemprop="datePublished">2016-06-03 21:34:01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/设计模式/">设计模式</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/03/Android设计模式之(二)Builder模式/">Android设计模式之(二)Builder模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p>Builder模式是一步一步创建一个复杂对象的创建型模式，它允许用户在不知道内部构建细节的情况下，更精细地控制对象的构造流程。该模式是为了将构建复杂对象的过程和它的部件解耦，使得构建过程和部件的表示隔离开来。</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。</p>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><ol>
-<li>相同的方法，不同的执行顺序，产生不同的事件结果时；</li>
-<li>多个部件或零件都可以装配到一个对象中，但是产生的运行结果又不相同时；</li>
-<li>产品类非常复杂，或者产品类中的调用顺序不同产生了不同的作用，这个时候使用建造者模式非常适合；</li>
-<li>当初始化一个对象特别复杂，如参数多，且很多参数都具有默认值的情况下；</li>
-</ol>
-<h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p>UML类图角色介绍：</p>
-<ul>
-<li>Product产品类-产品的抽象类；</li>
-<li>Builder-抽象Builder类，规范产品的组建，一般由子类实现具体的组件过程；</li>
-<li>ConcreteBuilder-具体的Builder类,组装对象；</li>
-</ul>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/uml-Builder%E6%A8%A1%E5%BC%8FUML%E7%B1%BB%E5%9B%BE.png" alt="Builder模式UML"></p>
-<h1 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Computer抽象类 即 Product角色</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Computer</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">protected</span> String mBoard;</div><div class="line">	<span class="keyword">protected</span> String mDisplay;</div><div class="line">	<span class="keyword">protected</span> String mOS;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Computer</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置主板</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBoard</span><span class="params">(String mBoard)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.mBoard = mBoard;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置显示器</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDisplay</span><span class="params">(String mDisplay)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.mDisplay = mDisplay;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">//设置操作系统</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">setOs</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Computer [mBoard="</span> + mBoard + <span class="string">", mDisplay="</span> + mDisplay + <span class="string">", mOS="</span> + mOS + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 具体的Computer类</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MacBookPro</span> <span class="keyword">extends</span> <span class="title">Computer</span></span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">MacBookPro</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOs</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mOS = <span class="string">"Mac OS X 10.11"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 抽象Builder</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Builder</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setBoard</span><span class="params">(String board)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setDisplay</span><span class="params">(String display)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Builder <span class="title">setOs</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> Computer <span class="title">create</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.lgq.pattern.builder;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Builder具体实现类</div><div class="line"> * <span class="doctag">@author</span> liuguoquan</div><div class="line"> *</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MacBookBuilder</span> <span class="keyword">extends</span> <span class="title">Builder</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> Computer mComputer = <span class="keyword">new</span> MacBookPro();</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setBoard</span><span class="params">(String board)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setBoard(board);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setDisplay</span><span class="params">(String display)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setDisplay(display);</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Builder <span class="title">setOs</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		mComputer.setOs();</div><div class="line">		<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> Computer <span class="title">create</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line">		<span class="keyword">return</span> mComputer;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated method stub</span></div><div class="line"></div><div class="line">		Computer computer = <span class="keyword">new</span> MacBookBuilder().setBoard(<span class="string">"APPLE"</span>).setDisplay(<span class="string">"Retina"</span>).setOs().create();</div><div class="line"></div><div class="line">		System.out.println(computer.toString());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">结果打印：</div><div class="line"></div><div class="line">Computer [mBoard=APPLE, mDisplay=Retina, mOS=Mac OS X <span class="number">10.11</span>]</div></pre></td></tr></table></figure>
-<p>上述示例中，通过具体的MacBookBuilder来构建MacBookPro对象，Builder将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的对象。</p>
-<h1 id="Android中应用"><a href="#Android中应用" class="headerlink" title="Android中应用"></a>Android中应用</h1><ul>
-<li>AlertDialog</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ol>
-<li>良好的封装性，使用建造者模式可以使得客户端不必知道产品内部组成的细节。</li>
-<li>建造者独立，容易扩展</li>
-</ol>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>会产生多余的Builder对象，消耗内存。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/06/03/Android设计模式之(二)Builder模式/" data-id="cj6f0soa7002sf519bt0rq8ri" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/06/03/Android设计模式之(二)Builder模式/#ds-thread" class="article-comment-link">留言</a>
       
       
       
@@ -466,7 +899,7 @@
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/12/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/14/">下一页&raquo;</a>
   </nav>
 </section>
            
@@ -489,23 +922,23 @@
       <ul>
         
           <li>
+            <a href="/2017/08/16/Android启动流程①init进程分析/">Android启动流程①init进程分析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/Android系统架构与源码目录/">Android系统架构与源码目录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/14/Mac编译Android源码/">Mac编译Android源码</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/21/JavaScript⑦对象/">JavaScript⑦对象</a>
           </li>
         
           <li>
             <a href="/2017/06/19/JavaScript⑥引用类型RegExp/">JavaScript⑥引用类型RegExp</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Global/">JavaScript⑥引用类型Global</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Date/">JavaScript⑥引用类型Date</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Array/">JavaScript⑥引用类型Array</a>
           </li>
         
       </ul>

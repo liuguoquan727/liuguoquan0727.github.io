@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Mac编译Android源码 | 再读斋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="编译Android源码本机的系统环境如下：
+
+macOs Sierra 10.12.5
+JDK 1.8.0_131
+Xcode 8.3.3
+本地源码路径 /Volumes/android/aosp
+源码版本 android-7.1.2_r1**
+
+配置系统环境
+Mac创建大小写分区映像 120G
+安装JDK
+安装 xcode 命令行工具
+安装macports，并配置到系统环境 export PAT">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac编译Android源码">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/08/14/Mac编译Android源码/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="编译Android源码本机的系统环境如下：
+
+macOs Sierra 10.12.5
+JDK 1.8.0_131
+Xcode 8.3.3
+本地源码路径 /Volumes/android/aosp
+源码版本 android-7.1.2_r1**
+
+配置系统环境
+Mac创建大小写分区映像 120G
+安装JDK
+安装 xcode 命令行工具
+安装macports，并配置到系统环境 export PAT">
+<meta property="og:updated_time" content="2017-08-16T13:41:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac编译Android源码">
+<meta name="twitter:description" content="编译Android源码本机的系统环境如下：
+
+macOs Sierra 10.12.5
+JDK 1.8.0_131
+Xcode 8.3.3
+本地源码路径 /Volumes/android/aosp
+源码版本 android-7.1.2_r1**
+
+配置系统环境
+Mac创建大小写分区映像 120G
+安装JDK
+安装 xcode 命令行工具
+安装macports，并配置到系统环境 export PAT">
+  
+    <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">再读斋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">MICHAEL</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Mac编译Android源码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/14/Mac编译Android源码/" class="article-date">
+  <time datetime="2017-08-14T13:01:06.000Z" itemprop="datePublished">2017-08-14 21:01:06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Android/">Android</a>►<a class="article-category-link" href="/categories/Android/Framwork/">Framwork</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Mac编译Android源码
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="编译Android源码"><a href="#编译Android源码" class="headerlink" title="编译Android源码"></a>编译Android源码</h1><p>本机的系统环境如下：</p>
+<ul>
+<li>macOs Sierra 10.12.5</li>
+<li>JDK 1.8.0_131</li>
+<li>Xcode 8.3.3</li>
+<li>本地源码路径 /Volumes/android/aosp</li>
+<li>源码版本 android-7.1.2_r1**</li>
+</ul>
+<h2 id="配置系统环境"><a href="#配置系统环境" class="headerlink" title="配置系统环境"></a>配置系统环境</h2><ul>
+<li>Mac创建大小写分区映像 120G</li>
+<li>安装JDK</li>
+<li>安装 xcode 命令行工具</li>
+<li>安装macports，并配置到系统环境 <code>export PATH=/opt/local/bin:$PATH</code></li>
+<li>通过 macports 安装 make , git 以及 GPG</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ POSIXLY_CORRECT=<span class="number">1</span> sudo port <span class="keyword">install</span> gmake libsdl git gnupg</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h2><ul>
+<li>安装Repo <code>curl https://storage.googleapis.com/git-repo-downloads/repo &gt; ~/bin/repo</code></li>
+<li>将<code>~/bin</code>目录添加到PATH路径</li>
+<li><code>chmod a+x ~/bin/repo</code>打开可执行权限</li>
+<li>在创建的源码目录初始化repo仓库<code>$ repo init -u https://android.googlesource.com/platform/manifest -b android-7.1.2_r1</code></li>
+<li>同步源码到本地<code>repo sync</code>，最好是在晚上下载</li>
+</ul>
+<h2 id="编译源码"><a href="#编译源码" class="headerlink" title="编译源码"></a>编译源码</h2><figure class="highlight gauss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//清空 out 输出目录中的所有文件</span></div><div class="line"><span class="built_in">make</span> clobber</div><div class="line"><span class="comment">// 初始化我们的编译环境</span></div><div class="line">source build/envsetup.sh</div><div class="line"><span class="comment">//选择我们需要编译的目标</span></div><div class="line">lunch</div><div class="line"></div><div class="line"><span class="comment">//编译源码 指定线程数量</span></div><div class="line"><span class="built_in">make</span> -j8</div><div class="line"></div><div class="line"><span class="comment">//模拟器启动</span></div><div class="line">emulator</div></pre></td></tr></table></figure>
+<h2 id="花费时间"><a href="#花费时间" class="headerlink" title="花费时间"></a>花费时间</h2><ul>
+<li>下载源码时间大概10个小时左右</li>
+<li>编译源码时间大约2小时左右 8线程编译</li>
+</ul>
+<h2 id="could-not-find-jdk-tools-jar"><a href="#could-not-find-jdk-tools-jar" class="headerlink" title="could not find jdk tools.jar"></a>could not find jdk tools.jar</h2><ul>
+<li>现象</li>
+</ul>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ make -j16</div><div class="line">build/core/config.<span class="symbol">mk:</span><span class="number">600</span>: *** <span class="symbol">Error:</span> could not find jdk tools.jar at /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/../<span class="class"><span class="keyword">lib</span>/<span class="title">tools</span>.<span class="title">jar</span>, <span class="title">please</span> <span class="title">check</span> <span class="title">if</span> <span class="title">your</span> <span class="title">JDK</span> <span class="title">was</span> <span class="title">installed</span> <span class="title">correctly</span>.  <span class="title">Stop</span>.</span></div></pre></td></tr></table></figure>
+<ul>
+<li>解决方案</li>
+</ul>
+<p>主要是因为环境变量没有设置ANDROID_JAVA_HOME 导致的，添加对应的环境变量即可，输入下面的命令：</p>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export ANDROID_JAV<span class="built_in">A_HOME</span>=$(/usr/libexec/jav<span class="built_in">a_home</span> -v <span class="number">1.8</span>)</div></pre></td></tr></table></figure>
+<h2 id="‘syscall’-is-deprecated"><a href="#‘syscall’-is-deprecated" class="headerlink" title="‘syscall’ is deprecated"></a>‘syscall’ is deprecated</h2><ul>
+<li>错误现象</li>
+</ul>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">system/core/libcutils/threads.c:<span class="number">38</span>:<span class="number">10</span>: error: <span class="string">'syscall'</span> <span class="keyword">is</span> <span class="keyword">deprecated</span>: first <span class="keyword">deprecated</span> <span class="keyword">in</span> OS X <span class="number">10.12</span> - syscall(<span class="number">2</span>) <span class="keyword">is</span> unsupported; please switch <span class="keyword">to</span> a supported <span class="keyword">interface</span>. <span class="keyword">For</span> SYS_kdebug_trace use kdebug_signpost(). [-Werror,-Wdeprecated-declarations]</div><div class="line">return syscall(SYS_thread_selfid);</div></pre></td></tr></table></figure>
+<ul>
+<li>解决方案</li>
+</ul>
+<p>这是因为最新的macOS的调整引起的，个人下载的最新版的源码也没有解决这个问题，最终采用的方法是使用更早版本的macOS的SDK，下载地址参考前面准备工作中的说明。解压(也会用时比较久)zip包以后将MacOSX10.11.sdk拷贝到/Applications/XCode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs。为了避免下次升级的时候再被删除，建议拷贝到自定义目录，然后建立软链接。例如我放在~/lib目录下，再给它创建一个软链接：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ln -s ~<span class="regexp">/lib/</span>MacOSX10.<span class="number">11</span>.sdk <span class="regexp">/Applications/</span>XCode.app<span class="regexp">/Contents/</span>Developer<span class="regexp">/Platforms/</span>MacOSX.platform<span class="regexp">/Developer/</span>SDKs<span class="regexp">/MacOSX10.11.sdk</span></div></pre></td></tr></table></figure>
+<p>然后确保AOSP源码下build/core/combo/mac_version.mk文件中<br><code>mac_sdk_versions_supported := 10.9 10.10 10.11</code><br>后面不要写10.12。</p>
+<h1 id="导入源码到Android-Studio"><a href="#导入源码到Android-Studio" class="headerlink" title="导入源码到Android Studio"></a>导入源码到Android Studio</h1><h2 id="生成-IDE-相关的项目文件"><a href="#生成-IDE-相关的项目文件" class="headerlink" title="生成 IDE 相关的项目文件"></a>生成 IDE 相关的项目文件</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">make</span> idegen &amp;&amp; development/tools/idegen/idegen.<span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<p>命令必须在bash下运行，zsh下不能运行，bash 和 zsh 切换命令如下</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">切换<span class="keyword">bash</span></div><div class="line"><span class="symbol">chsh</span> -s /<span class="keyword">bin/bash</span></div><div class="line">切换zsh</div><div class="line"><span class="symbol">chsh</span> -s /<span class="keyword">bin/zsh</span></div></pre></td></tr></table></figure>
+<p>在源码根目录下生成android.ipr和android.iml。</p>
+<h2 id="导入源码"><a href="#导入源码" class="headerlink" title="导入源码"></a>导入源码</h2><p>启动Android Studio，然后选择打开一个已存在的Android Studio工程，选择源码根目录的android.ipr，经过漫长(我首次导入用了20分钟)的加载过程以后，Android 源码就已经成功的加载到了Android Studio中。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p><a href="http://blog.bihe0832.com/macOS-AOSP.html" target="_blank" rel="external">macOS（Sierra 10.12）上Android源码（AOSP）的下载、编译与导入到Android Studio</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/6af0bb7c1e70" target="_blank" rel="external">Android FrameWork学习（一）Android 7.0系统源码下载\编译</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/4ab864caefb2" target="_blank" rel="external">Android FrameWork学习（二）Android系统源码调试</a></p>
+</li>
+<li><p><a href="http://www.jianshu.com/p/1513fc9e1a74" target="_blank" rel="external">Mac 10.12 编译 Android 源码</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2017/08/14/Mac编译Android源码/" data-id="cj6f2gfo6008s4h19l4f3xar3" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2017/08/14/Mac编译Android源码/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android系统/">Android系统</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
+    </div>
+  </div>
+
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/15/Android系统架构与源码目录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Android系统架构与源码目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/21/JavaScript⑦对象/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">JavaScript⑦对象</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+ 
+     
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/14/Mac编译Android源码/"
+           data-title="Mac编译Android源码" data-url="http://liuguoquan727.github.io/2017/08/14/Mac编译Android源码/">
+      </div>
+      
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
+  </div>
+ 
+  
+
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+    <div class="widget-wrap">
+    
+      <div class="widget" id="toc-widget-fixed">
+      
+        <strong class="toc-title">文章目录</strong>
+        <div class="toc-widget-list">
+              <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#编译Android源码"><span class="toc-number">1.</span> <span class="toc-text">编译Android源码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置系统环境"><span class="toc-number">1.1.</span> <span class="toc-text">配置系统环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载源码"><span class="toc-number">1.2.</span> <span class="toc-text">下载源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#编译源码"><span class="toc-number">1.3.</span> <span class="toc-text">编译源码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#花费时间"><span class="toc-number">1.4.</span> <span class="toc-text">花费时间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#could-not-find-jdk-tools-jar"><span class="toc-number">1.5.</span> <span class="toc-text">could not find jdk tools.jar</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#‘syscall’-is-deprecated"><span class="toc-number">1.6.</span> <span class="toc-text">‘syscall’ is deprecated</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#导入源码到Android-Studio"><span class="toc-number">2.</span> <span class="toc-text">导入源码到Android Studio</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#生成-IDE-相关的项目文件"><span class="toc-number">2.1.</span> <span class="toc-text">生成 IDE 相关的项目文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#导入源码"><span class="toc-number">2.2.</span> <span class="toc-text">导入源码</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考资料"><span class="toc-number">3.</span> <span class="toc-text">参考资料</span></a></li></ol>
+          </div>
+      </div>
+    </div>
+
+  
+    
+
+  
+    
+  
+    
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 刘涤生&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;michaelliu0727@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

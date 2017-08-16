@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>再读斋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="像外行一样思考,像专家一样实践。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="再读斋">
+<meta property="og:url" content="http://liuguoquan727.github.io/page/26/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="像外行一样思考,像专家一样实践。">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="再读斋">
+<meta name="twitter:description" content="像外行一样思考,像专家一样实践。">
+  
+    <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://liuguoquan727.github.io"></form>
+      </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/categories">分类</a>
+        
+          <a class="main-nav-link" href="/tags">标签</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      
+    </div>
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">再读斋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">MICHAEL</a>
+        </h2>
+      
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-搭建和配置Hexo-Github-pages个人博客" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/" class="article-date">
+  <time datetime="2015-12-15T13:46:03.000Z" itemprop="datePublished">2015-12-15 21:46:03</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/记录/">记录</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/15/搭建和配置Hexo-Github-pages个人博客/">搭建和配置Hexo+Github pages个人博客</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h2 id="Window下安装GitHub-Pages-Hexo"><a href="#Window下安装GitHub-Pages-Hexo" class="headerlink" title="Window下安装GitHub Pages + Hexo"></a>Window下安装GitHub Pages + Hexo</h2><p>本着不重复造轮子的精神，下面提供两篇博文来记录安装过程，因为这两篇文章详细记录了GitHub Pages + Hexo 的安装过程，跟着流程能够成功搭建出基本的个人博客。</p>
+<p><a href="http://www.jianshu.com/p/985d07d88ef4" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（一）</a><br><a href="http://www.jianshu.com/p/1973930813f9" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（三）</a></p>
+<p>如有自己有申请独立的域名，可参看下面这篇博文<br><a href="http://www.jianshu.com/p/098d99de63fd" target="_blank" rel="external">Windows下一步步搭建自己的独立博客——使用 GitHub Pages + Hexo 基础教程（二）</a></p>
+<h2 id="Hexo常用命令"><a href="#Hexo常用命令" class="headerlink" title="Hexo常用命令"></a>Hexo常用命令</h2><ul>
+<li>安装</li>
+</ul>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install</span> hexo</div></pre></td></tr></table></figure>
+<ul>
+<li>升级</li>
+</ul>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> update hexo</div></pre></td></tr></table></figure>
+<ul>
+<li>初始化</li>
+</ul>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">hexo init</span></div></pre></td></tr></table></figure>
+<ul>
+<li>创建</li>
+</ul>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"新的文件"</span> <span class="meta">#新建文章</span></div><div class="line">hexo <span class="keyword">new</span> page <span class="string">"新的页面"</span> <span class="meta">#新的页面</span></div></pre></td></tr></table></figure>
+<ul>
+<li>操作</li>
+</ul>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">hexo clean #清除缓存 网页正常情况下可以忽略此条命令</div><div class="line">hexo g == hexo <span class="keyword">generate</span>#生成</div><div class="line">hexo s == hexo server #启动服务预览</div><div class="line">hexo d == hexo deploy#部署</div><div class="line"></div><div class="line">hexo server -s #静态模式</div><div class="line">hexo server -p <span class="number">5000</span> #更改端口</div><div class="line">hexo server -i <span class="number">192</span><span class="variable">.168</span><span class="variable">.1</span><span class="variable">.1</span> #自定义 IP</div><div class="line"></div><div class="line">hexo <span class="keyword">generate</span> #使用 Hexo 生成静态文件快速而且简单</div><div class="line">hexo <span class="keyword">generate</span> --watch #监视文件变动</div><div class="line"></div><div class="line"><span class="comment">//完成后部署</span></div><div class="line">hexo <span class="keyword">generate</span> --deploy</div><div class="line">hexo deploy --<span class="keyword">generate</span></div></pre></td></tr></table></figure>
+<h2 id="文章头配置"><a href="#文章头配置" class="headerlink" title="文章头配置"></a>文章头配置</h2><figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">title: 使用Hexo搭建个人博客</div><div class="line">layout: post</div><div class="line">date: 2014<span class="string">-03</span><span class="string">-03</span> 19:07:43</div><div class="line">comments: true</div><div class="line">categories: Blog</div><div class="line"><span class="keyword">tags:</span> Hexo</div><div class="line">keywords: Hexo, Blog</div><div class="line">description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。</div></pre></td></tr></table></figure>
+<h2 id="创建”关于我”页面"><a href="#创建”关于我”页面" class="headerlink" title="创建”关于我”页面"></a>创建”关于我”页面</h2><p>新建一个about页面：</p>
+<figure class="highlight cos"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">$hexo</span> <span class="keyword">new</span> page <span class="string">"about"</span></div></pre></td></tr></table></figure>
+<p>菜单显示about链接，在主题theme的_config.yml设置中将menu、中about前面的注释去掉即可。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div><div class="line">  abou<span class="variable">t:</span> /about</div></pre></td></tr></table></figure>
+<h2 id="创建”分类”页面"><a href="#创建”分类”页面" class="headerlink" title="创建”分类”页面"></a>创建”分类”页面</h2><ul>
+<li>1.新建一个页面，命名为categories。终端命令如下：</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">"categories"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>2.编辑刚刚新建的页面，将页面的类型设置为categories，主题自动为这个页面显示所有分类。</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> 分类</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果有启用多说或者Dis去上、评论，默认页面也会带有评论。需要关闭的话，请添加字段comments并将值设置为false，如下所示：</p>
+</blockquote>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> 分类</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"categories"</span></div><div class="line"><span class="attr">comments:</span> <span class="literal">false</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<ul>
+<li>3.在菜单中添加链接。编辑主题的 _config.yml ，将 menu 中的 categories: /categories 注释去掉，如下:</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  categorie<span class="variable">s:</span> /categories</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div></pre></td></tr></table></figure>
+<h2 id="创建”标签云”页面"><a href="#创建”标签云”页面" class="headerlink" title="创建”标签云”页面"></a>创建”标签云”页面</h2><p>添加一个标签云页面，并在菜单中显示页面链接。</p>
+<ul>
+<li>1.新建一个页面，命名为 tags 。命令如下：</li>
+</ul>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="type">page</span> <span class="string">"tags"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>2.编辑刚新建的页面，将页面的类型设置为 tags ，主题将自动为这个页面显示标签云。</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="attr">title:</span> All tags</div><div class="line"><span class="attr">date:</span> <span class="number">2014</span><span class="bullet">-12</span><span class="bullet">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="attr">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="meta">---</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果有启用多说 或者 Disqus 评论，默认页面也会带有评论。需要关闭的话，请添加字段 comments 并将值设置为 false，如：</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">title:</span> All tags</div><div class="line"><span class="string">date:</span> <span class="number">2014</span><span class="number">-12</span><span class="number">-22</span> <span class="number">12</span>:<span class="number">39</span>:<span class="number">04</span></div><div class="line"><span class="string">type:</span> <span class="string">"tags"</span></div><div class="line"><span class="string">comments:</span> <span class="literal">false</span></div></pre></td></tr></table></figure>
+<hr>
+<ul>
+<li>3.在菜单中添加链接。编辑主题的 _config.yml ，添加 tags 到 menu 中，如下:</li>
+</ul>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">menu</span>:</div><div class="line">  home: /</div><div class="line">  archive<span class="variable">s:</span> /archives</div><div class="line">  <span class="keyword">tag</span><span class="variable">s:</span> /<span class="keyword">tags</span></div></pre></td></tr></table></figure>
+<h2 id="设置侧边栏头像"><a href="#设置侧边栏头像" class="headerlink" title="设置侧边栏头像"></a>设置侧边栏头像</h2><p>编辑站点的 _config.yml，新增字段 avatar， 值设置成头像的链接地址。</p>
+<p>其中，头像的链接地址可以是：</p>
+<ol>
+<li>完整的互联网 URL，例如：<a href="https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460" target="_blank" rel="external">https://avatars1.githubusercontent.com/u/32269?v=3&amp;s=460</a></li>
+<li><p>站点内的地址，例如：</p>
+<ul>
+<li>/uploads/avatar.jpg 需要将你的头像图片放置在 站点的 source/uploads/（可能需要新建uploads目录）</li>
+<li>/images/avatar.jpg 需要将你的头像图片放置在 主题的 source/images/ 目录下。</li>
+</ul>
+</li>
+</ol>
+<h2 id="设置侧边栏社交链接"><a href="#设置侧边栏社交链接" class="headerlink" title="设置侧边栏社交链接"></a>设置侧边栏社交链接</h2><p>编辑站点的 _config.yml，新增字段 social，然后添加社交站点名称与地址即可。例如：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">social</span>:</div><div class="line">  <span class="attribute">github</span>: <span class="attribute">https</span>:<span class="comment">//github.com/your-user-name</span></div><div class="line">  <span class="attribute">twitter</span>: <span class="attribute">https</span>:<span class="comment">//twitter.com/your-user-name</span></div><div class="line">  <span class="attribute">weibo</span>: <span class="attribute">http</span>:<span class="comment">//weibo.com/your-user-name</span></div><div class="line">  <span class="attribute">douban</span>: <span class="attribute">http</span>:<span class="comment">//douban.com/people/your-user-name</span></div><div class="line">  <span class="attribute">zhihu</span>: <span class="attribute">http</span>:<span class="comment">//www.zhihu.com/people/your-user-name</span></div></pre></td></tr></table></figure>
+<h2 id="设置网页标签LOGO"><a href="#设置网页标签LOGO" class="headerlink" title="设置网页标签LOGO"></a>设置网页标签LOGO</h2><p>编辑主题的 _config.yml,在favicon: /icon.jpg字段设置LOGO标志，图片防止在Hexo/source/目录下</p>
+<h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>NexT 目前支持六种语言版本：</p>
+<p>English<br>中文简体 (zh-Hans)<br>French (fr-FR)<br>正体中文 (zh-hk/zh-tw)<br>Russian (ru)<br>German (de)</p>
+<p>默认语言是英文。编辑站点的 _config.yml ，将 language 字段更改为你所需要的语言版本代号：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">language: <span class="keyword">default</span></div><div class="line"><span class="meta"># language: zh-Hans</span></div><div class="line"><span class="meta"># language: fr-FR</span></div><div class="line"><span class="meta"># language: zh-hk</span></div><div class="line"><span class="meta"># language: zh-tw</span></div><div class="line"><span class="meta"># language: ru</span></div><div class="line"><span class="meta"># language: de</span></div></pre></td></tr></table></figure>
+<h2 id="设置代码高亮主题"><a href="#设置代码高亮主题" class="headerlink" title="设置代码高亮主题"></a>设置代码高亮主题</h2><p>NexT 使用 <a href="https://github.com/chriskempson/tomorrow-theme" target="_blank" rel="external">Tomorrow Theme</a> 作为代码高亮，共有5款主题供你选择.</p>
+<p>编辑主题的 _config.yml,找到highlight_theme字段，设置目标主题</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">highlight_theme:</span> night</div></pre></td></tr></table></figure>
+<h2 id="设置站点建立时间"><a href="#设置站点建立时间" class="headerlink" title="设置站点建立时间"></a>设置站点建立时间</h2><p>这个时间将在站点的底部显示，例如 © 2013 - 2015</p>
+<p>编辑站点的 _config.yml，新增字段 since。</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">since</span>: <span class="number">2013</span></div></pre></td></tr></table></figure>
+<h2 id="添加站点访问统计与访客数量统计功能"><a href="#添加站点访问统计与访客数量统计功能" class="headerlink" title="添加站点访问统计与访客数量统计功能"></a>添加站点访问统计与访客数量统计功能</h2><p>网站的浏览次数，即pv；网站的访客数为uv。pv的计算方式是，单个用户连续点击n篇文章，记录n次访问量；uv的计算方式是，单个用户连续点击n篇文章，只记录1次访客数。你可以根据需要添加相应的统计功能。</p>
+<ul>
+<li><strong>安装busuanzi.js脚本</strong></li>
+</ul>
+<p>如果你使用的是NexT主题（其他主题类似），打开/theme/next/layout/_partial/footer.swig文件，拷贝下面的代码至文件的开头。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">async</span> <span class="attr">src</span>=<span class="string">"https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li><strong>显示统计标签</strong></li>
+</ul>
+<p>同样编辑/theme/next/layout/_partial/footer.swig文件。</p>
+<p>如果你想要显示pv统计量，复制以下代码至你想要放置的位置，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_pv"</span>&gt;</span></div><div class="line">    本站总访问量<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次</div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>如果你想要显示uv统计量，复制以下代码至你想要放置的位置，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_container_site_uv"</span>&gt;</span></div><div class="line">  本站访客数<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_site_uv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>人次</div><div class="line"><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2015/12/15/搭建和配置Hexo-Github-pages个人博客/" data-id="cj6f2gfp900b84h19jak9g3gs" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2015/12/15/搭建和配置Hexo-Github-pages个人博客/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/记录/">记录</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/25/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span>
+  </nav>
+</section>
+           
+    <aside id="sidebar">
+  
+    
+
+  
+    
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title recent-posts">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/16/Android启动流程①init进程分析/">Android启动流程①init进程分析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/Android系统架构与源码目录/">Android系统架构与源码目录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/14/Mac编译Android源码/">Mac编译Android源码</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/21/JavaScript⑦对象/">JavaScript⑦对象</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/19/JavaScript⑥引用类型RegExp/">JavaScript⑥引用类型RegExp</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+    <!--微信公众号二维码-->
+
+
+  
+</aside>
+
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-left">
+      &copy; 2014 - 2017 刘涤生&nbsp;|&nbsp;
+      主题 <a href="https://github.com/giscafer/hexo-theme-cafe/" target="_blank">Cafe</a>
+    </div>
+     <div id="footer-right">
+      联系方式&nbsp;|&nbsp;michaelliu0727@gmail.com
+    </div>
+  </div>
+</footer>
+ <script src="/jquery/jquery.min.js"></script>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/categories" class="mobile-nav-link">分类</a>
+  
+    <a href="/tags" class="mobile-nav-link">标签</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+    <img class="back-to-top-btn" src="/images/fly-to-top.png"/>
+<script>
+// Elevator script included on the page, already.
+window.onload = function() {
+  var elevator = new Elevator({
+    selector:'.back-to-top-btn',
+    element: document.querySelector('.back-to-top-btn'),
+    duration: 1000 // milliseconds
+  });
+}
+</script>
+      
+
+
+
+
+
+
+
+<!-- author:forvoid begin -->
+<!-- author:forvoid begin -->
+
+<!-- author:forvoid end -->
+
+<!-- author:forvoid end -->
+
+
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      })
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      })
+    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/mathjax/MathJax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+ <script src="/js/is.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+<script src="/js/elevator.js"></script>
+  </div>
+</body>
+</html>

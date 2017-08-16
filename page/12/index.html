@@ -76,6 +76,407 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-iOS开发之06StackView" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/iOS开发之06StackView/" class="article-date">
+  <time datetime="2016-11-25T10:45:56.000Z" itemprop="datePublished">2016-11-25 18:45:56</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/iOS开发之06StackView/">iOS开发之06StackView</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <p>在iOS开发中可以利用StackView嵌套实现比较复杂的界面，比如我们实现三个按钮呈现三角形摆放，可以这样实现，整个界面是一个垂直StackView，它的子视图是Button1和水平StackView，水平StackView的子 视图是Button2和Button3。</p>
+<h1 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h1><ol>
+<li>创建一个iOS工程，从对象库中拖入一个Vertical Stack View到设计界面中，然后再从对象库中拖入一个Horizontal Stack View到前一个垂直StackView中。</li>
+<li>属性检查器：<ul>
+<li>Axis：设置StackView是垂直还是水平的</li>
+<li>Spacing：设置子视图之间的距离</li>
+<li>Alignment：设置子视图之间的对齐方式</li>
+<li>Distribution：设置子视图的尺寸与位置</li>
+</ul>
+</li>
+<li>拖入Button1到Vertical Stack View中，注意要放在Horizontal Stack View的上方，当出现一条横线时松开鼠标；类似的方法拖入Button2和Button3到Horizontal Stack View中</li>
+</ol>
+<h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/ios-stackview.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之06StackView/" data-id="cj6f2gfp400ay4h19sjrpd1om" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之06StackView/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-iOS开发之05常见表视图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/iOS开发之05常见表视图/" class="article-date">
+  <time datetime="2016-11-25T10:45:39.000Z" itemprop="datePublished">2016-11-25 18:45:39</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/iOS开发之05常见表视图/">iOS开发之05常见表视图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="分节表视图"><a href="#分节表视图" class="headerlink" title="分节表视图"></a>分节表视图</h1><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程</li>
+<li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Table View Controller到设计界面</li>
+<li>打开Table View Controller属性检查器，勾选Is Initial View Controller选项，否则应用启动后是黑屏</li>
+<li>将ViewController类的父类由UIViewController改为UITableViewController</li>
+<li>打开View Controller的属性选择器在Class列表中选择ViewController</li>
+<li>UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</li>
+</ol>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  IndexTable</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/31.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> datas: <span class="type">NSDictionary</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> groupNames:<span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">        <span class="keyword">let</span> path = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team_dictionary"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.datas = <span class="type">NSDictionary</span>(contentsOfFile: path!)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> tempList = <span class="keyword">self</span>.datas.allKeys <span class="keyword">as</span> <span class="type">NSArray</span></div><div class="line">        </div><div class="line">        <span class="comment">//排序</span></div><div class="line">        <span class="keyword">let</span> sortedArray = tempList.sortedArray(comparator: &#123; (obj1, obj2) -&gt; <span class="type">ComparisonResult</span> <span class="keyword">in</span></div><div class="line">            <span class="keyword">let</span> str1 = obj1 <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">            <span class="keyword">let</span> str2 = obj2 <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">            <span class="keyword">let</span> ret = str1.compare(str2)</div><div class="line">            <span class="keyword">return</span> ret</div><div class="line">        &#125;)</div><div class="line">        <span class="keyword">self</span>.groupNames = sortedArray <span class="keyword">as</span> <span class="type">NSArray</span>!</div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//组中条目的数量</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">let</span> groupName = <span class="keyword">self</span>.groupNames[section] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        <span class="keyword">let</span> teams = <span class="keyword">self</span>.datas[groupName] <span class="keyword">as</span>! <span class="type">NSArray</span></div><div class="line">        <span class="keyword">return</span> teams.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"liu"</span>,<span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> section = indexPath.section</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> groupName = <span class="keyword">self</span>.groupNames[section] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        <span class="keyword">let</span> teams = <span class="keyword">self</span>.datas[groupName] <span class="keyword">as</span>! <span class="type">NSArray</span></div><div class="line">        cell.textLabel?.text = teams[row] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//组的数量</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">numberOfSections</span><span class="params">(<span class="keyword">in</span> tableView: UITableView)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.groupNames.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//组的标题</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, titleForHeaderInSection section: Int)</span></span> -&gt; <span class="type">String</span>? &#123;</div><div class="line">        <span class="keyword">let</span> name = <span class="keyword">self</span>.groupNames[section] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        <span class="keyword">return</span> name</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//索引的标题</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">sectionIndexTitles</span><span class="params">(<span class="keyword">for</span> tableView: UITableView)</span></span> -&gt; [<span class="type">String</span>]? &#123;</div><div class="line">        <span class="keyword">var</span> titles = [<span class="type">String</span>]()</div><div class="line">        <span class="keyword">for</span> item <span class="keyword">in</span> <span class="keyword">self</span>.groupNames &#123;</div><div class="line">            <span class="keyword">let</span> title = item <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">            titles.append(title.substring(to: title.index(title.startIndex, offsetBy: <span class="number">1</span>)))</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> titles</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//点击事件</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> section = indexPath.section</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> groupName = <span class="keyword">self</span>.groupNames[section] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        <span class="keyword">let</span> teams = <span class="keyword">self</span>.datas[groupName] <span class="keyword">as</span>! <span class="type">NSArray</span></div><div class="line">        <span class="built_in">print</span>(groupName)</div><div class="line">        <span class="built_in">print</span>(teams[row])</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-group.jpg" alt=""></p>
+<h1 id="静态表视图"><a href="#静态表视图" class="headerlink" title="静态表视图"></a>静态表视图</h1><h2 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程，使用Table View Controller作为表视图控制器</li>
+<li>选择Table View，打开属性检查器，从Content下拉列表中选择Static Cells，将Section的值为设为3.，从Style下拉列表中选择Grouped</li>
+<li>选择第一个Table View Section，将Rows值设为2，即该节中包含两个单元格，分别拖入一个TextField到两个单元格中</li>
+<li>选择第二个Table View Section，将Rows值设为1，拖入一个Button到单元格中</li>
+<li>选择第二个Table View Section，将Rows值设为1，拖入一个Lable到单元格中</li>
+</ol>
+<h2 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  StaticTable</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/2.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mUserName: <span class="type">UITextField</span>!</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mPwd: <span class="type">UITextField</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@IBAction</span> <span class="function"><span class="keyword">func</span> <span class="title">login</span><span class="params">(<span class="number">_</span> sender: UIButton)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">self</span>.mUserName.text == <span class="string">"liu"</span> &amp;&amp; <span class="keyword">self</span>.mPwd.text == <span class="string">"123"</span> &#123;</div><div class="line">            <span class="type">NSLog</span>(<span class="string">"login sucess"</span>);</div><div class="line">            mUserName.resignFirstResponder();</div><div class="line">            mPwd.resignFirstResponder();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"Section: %d,Row: %d"</span>,indexPath.section,indexPath.row);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-static.jpg" alt=""></p>
+<h1 id="插入和删除单元格"><a href="#插入和删除单元格" class="headerlink" title="插入和删除单元格"></a>插入和删除单元格</h1><h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程</li>
+<li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Navigation Controller到设计界面，同时也会添加一个Table View Controller到设计界面</li>
+<li>打开Table View Controller属性检查器，勾选Is Initial View Controller选项，否则应用启动后是黑屏</li>
+<li>将ViewController类的父类由UIViewController改为UITableViewController</li>
+<li>打开View Controller的属性选择器在Class列表中选择ViewController</li>
+<li>UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</li>
+</ol>
+<h2 id="代码实现-2"><a href="#代码实现-2" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  DeleteAddCell</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/2.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> txtField:<span class="type">UITextField</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listTeams: <span class="type">NSMutableArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">//设置导航栏</span></div><div class="line">        <span class="keyword">self</span>.navigationItem.rightBarButtonItem = <span class="keyword">self</span>.editButtonItem</div><div class="line">        <span class="keyword">self</span>.navigationItem.title = <span class="string">"单元格插入和删除"</span></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.txtField = <span class="type">UITextField</span>()</div><div class="line"></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.listTeams = <span class="type">NSMutableArray</span>(array: [<span class="string">"黑龙江"</span>,<span class="string">"吉林"</span>,<span class="string">"辽宁"</span>,<span class="string">"北京"</span>])</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//响应视图编辑状态</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setEditing</span><span class="params">(<span class="number">_</span> editing: Bool, animated: Bool)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.setEditing(editing, animated: animated)</div><div class="line">        <span class="keyword">self</span>.tableView.setEditing(editing, animated: <span class="literal">true</span>)</div><div class="line">        <span class="keyword">if</span> editing &#123;</div><div class="line">            <span class="keyword">self</span>.txtField.isHidden = <span class="literal">false</span></div><div class="line">        &#125; <span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">self</span>.txtField.isHidden = <span class="literal">true</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listTeams.<span class="built_in">count</span> + <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> isAddCell = (indexPath.row == <span class="keyword">self</span>.listTeams.<span class="built_in">count</span>)</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomCell"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> !isAddCell &#123;</div><div class="line">            cell.accessoryType = .disclosureIndicator</div><div class="line">            cell.textLabel?.text = <span class="keyword">self</span>.listTeams[indexPath.row] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">            </div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">self</span>.txtField.frame = <span class="type">CGRect</span>(x: <span class="number">40</span>, y: <span class="number">0</span>, width: <span class="number">300</span>, height: cell.frame.size.height)</div><div class="line">            <span class="keyword">self</span>.txtField.borderStyle = .<span class="keyword">none</span></div><div class="line">            <span class="keyword">self</span>.txtField.placeholder = <span class="string">"Add..."</span></div><div class="line">            <span class="keyword">self</span>.txtField.text = <span class="string">""</span></div><div class="line">            cell.addSubview(<span class="keyword">self</span>.txtField)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//返回编辑样式</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCellEditingStyle</span> &#123;</div><div class="line">        <span class="keyword">if</span> indexPath.row == <span class="keyword">self</span>.listTeams.<span class="built_in">count</span> &#123;</div><div class="line">            <span class="keyword">return</span> .insert</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> .delete</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//添加删除时调用</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> editingStyle == .delete &#123;</div><div class="line">            <span class="keyword">self</span>.listTeams.removeObject(at: indexPath.row)</div><div class="line">            <span class="keyword">self</span>.tableView.deleteRows(at: [indexPath], with: .fade)</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> editingStyle == .insert &#123;</div><div class="line">            <span class="keyword">self</span>.listTeams.insert(<span class="keyword">self</span>.txtField.text!, at: <span class="keyword">self</span>.listTeams.<span class="built_in">count</span>)</div><div class="line">            <span class="keyword">self</span>.tableView.insertRows(at: [indexPath], with: .fade)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.tableView.reloadData();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-add-delete.gif" alt=""></p>
+<h1 id="移动单元格"><a href="#移动单元格" class="headerlink" title="移动单元格"></a>移动单元格</h1><h2 id="步骤-3"><a href="#步骤-3" class="headerlink" title="步骤"></a>步骤</h2><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1. 创建一个iOS工程</div><div class="line">2. 删除storyboard中<span class="keyword">View</span> Controller Scene 中的<span class="keyword">View</span> Controller，再从对象库拖入一个Navigation Controller到设计界面，同时也会添加一个<span class="keyword">Table</span> <span class="keyword">View</span> Controller到设计界面</div><div class="line">3. 打开<span class="keyword">Table</span> <span class="keyword">View</span> Controller属性检查器，勾选Is Initial <span class="keyword">View</span> Controller选项，否则应用启动后是黑屏</div><div class="line">4. 将ViewController类的父类由UIViewController改为UITableViewController</div><div class="line">5. 打开<span class="keyword">View</span> Controller的属性选择器在<span class="keyword">Class</span>列表中选择ViewController</div><div class="line">6. UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</div></pre></td></tr></table></figure>
+<h2 id="代码实现-3"><a href="#代码实现-3" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  MoveCell</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/2.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listTeams: <span class="type">NSMutableArray</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">//设置导航栏</span></div><div class="line">        <span class="keyword">self</span>.navigationItem.rightBarButtonItem = <span class="keyword">self</span>.editButtonItem</div><div class="line">        <span class="keyword">self</span>.navigationItem.title = <span class="string">"单元格移动"</span></div><div class="line">        </div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.listTeams = <span class="type">NSMutableArray</span>(array: [<span class="string">"黑龙江"</span>,<span class="string">"吉林"</span>,<span class="string">"辽宁"</span>,<span class="string">"北京"</span>])</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应视图编辑状态</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setEditing</span><span class="params">(<span class="number">_</span> editing: Bool, animated: Bool)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.setEditing(editing, animated: animated)</div><div class="line">        <span class="keyword">self</span>.tableView.setEditing(editing, animated: <span class="literal">true</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listTeams.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"MoveCell"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">            cell.accessoryType = .disclosureIndicator</div><div class="line">            cell.textLabel?.text = <span class="keyword">self</span>.listTeams[indexPath.row] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line"></div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//返回true表示可以移动</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, canMoveRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//移动单元格时触发此方法</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> mode = <span class="keyword">self</span>.listTeams[sourceIndexPath.row] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.listTeams.removeObject(at: sourceIndexPath.row)</div><div class="line">        <span class="keyword">self</span>.listTeams.insert(mode, at: destinationIndexPath.row)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//编辑的样式</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCellEditingStyle</span> &#123;</div><div class="line">            <span class="keyword">return</span> .delete</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> editingStyle == .delete &#123;</div><div class="line">            <span class="keyword">self</span>.listTeams.removeObject(at: indexPath.row)</div><div class="line">            <span class="keyword">self</span>.tableView.deleteRows(at: [indexPath], with: .fade)</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> editingStyle == .insert &#123;</div><div class="line">            <span class="keyword">self</span>.tableView.insertRows(at: [indexPath], with: .fade)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.tableView.reloadData();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-move.gif" alt=""></p>
+<h1 id="下拉刷新"><a href="#下拉刷新" class="headerlink" title="下拉刷新"></a>下拉刷新</h1><h2 id="步骤-4"><a href="#步骤-4" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个iOS工程</li>
+<li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Table View Controller到设计界面</li>
+<li>打开Table View Controller属性检查器，勾选Is Initial View Controller选项，否则应用启动后是黑屏</li>
+<li>将ViewController类的父类由UIViewController改为UITableViewController</li>
+<li>打开View Controller的属性选择器在Class列表中选择ViewController</li>
+<li>UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</li>
+</ol>
+<h2 id="代码实现-4"><a href="#代码实现-4" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  RefreshCell</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/11/7.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listTeams: <span class="type">NSMutableArray</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">//设置导航栏</span></div><div class="line">        <span class="keyword">self</span>.navigationItem.rightBarButtonItem = <span class="keyword">self</span>.editButtonItem</div><div class="line">        <span class="keyword">self</span>.navigationItem.title = <span class="string">"单元格移动"</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rc = <span class="type">UIRefreshControl</span>()</div><div class="line">        rc.attributedTitle = <span class="type">NSAttributedString</span>(string: <span class="string">"下拉刷新"</span>)</div><div class="line">        rc.addTarget(<span class="keyword">self</span>, action: #selector(<span class="type">ViewController</span>.refresh), <span class="keyword">for</span>: .valueChanged)</div><div class="line">        <span class="keyword">self</span>.refreshControl = rc</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.listTeams = <span class="type">NSMutableArray</span>(array: [<span class="string">"黑龙江"</span>,<span class="string">"吉林"</span>,<span class="string">"辽宁"</span>,<span class="string">"北京"</span>])</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">refresh</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="type">NSLog</span>(<span class="string">"refresh"</span>)</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>.refreshControl?.isRefreshing)! &#123;</div><div class="line">            <span class="keyword">self</span>.refreshControl?.attributedTitle = <span class="type">NSAttributedString</span>(string: <span class="string">"加载中"</span>)</div><div class="line">            listTeams.add(<span class="string">"上海"</span>)</div><div class="line">            listTeams.add(<span class="string">"天津"</span>)</div><div class="line">            </div><div class="line">            <span class="keyword">self</span>.refreshControl?.endRefreshing()</div><div class="line">            <span class="keyword">self</span>.refreshControl?.attributedTitle = <span class="type">NSAttributedString</span>(string: <span class="string">"下拉刷新"</span>)</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">self</span>.tableView.reloadData()</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应视图编辑状态</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setEditing</span><span class="params">(<span class="number">_</span> editing: Bool, animated: Bool)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.setEditing(editing, animated: animated)</div><div class="line">        <span class="keyword">self</span>.tableView.setEditing(editing, animated: <span class="literal">true</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listTeams.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> cell:<span class="type">UITableViewCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"RefreshCell"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        </div><div class="line">        cell.accessoryType = .disclosureIndicator</div><div class="line">        cell.textLabel?.text = <span class="keyword">self</span>.listTeams[indexPath.row] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//返回true表示可以移动</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, canMoveRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">Bool</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//移动单元格时触发此方法</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> mode = <span class="keyword">self</span>.listTeams[sourceIndexPath.row] <span class="keyword">as</span>! <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.listTeams.removeObject(at: sourceIndexPath.row)</div><div class="line">        <span class="keyword">self</span>.listTeams.insert(mode, at: destinationIndexPath.row)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//编辑的样式</span></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, editingStyleForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCellEditingStyle</span> &#123;</div><div class="line">        <span class="keyword">return</span> .delete</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        </div><div class="line">        <span class="keyword">if</span> editingStyle == .delete &#123;</div><div class="line">            <span class="keyword">self</span>.listTeams.removeObject(at: indexPath.row)</div><div class="line">            <span class="keyword">self</span>.tableView.deleteRows(at: [indexPath], with: .fade)</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> editingStyle == .insert &#123;</div><div class="line">            <span class="keyword">self</span>.tableView.insertRows(at: [indexPath], with: .fade)</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        <span class="keyword">self</span>.tableView.reloadData();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-pullrefresh.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之05常见表视图/" data-id="cj6f2gfow00au4h19v123xqwi" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之05常见表视图/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
+    <article id="post-iOS开发之04表视图" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/11/25/iOS开发之04表视图/" class="article-date">
+  <time datetime="2016-11-25T10:45:30.000Z" itemprop="datePublished">2016-11-25 18:45:30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/11/25/iOS开发之04表视图/">iOS开发之04表视图</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <!-- Table of Contents -->
+        
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="表视图组成"><a href="#表视图组成" class="headerlink" title="表视图组成"></a>表视图组成</h2><p>表视图是iOS开发中最重要的视图，它以列表的形式展示数据。表视图又一下部分组成：</p>
+<ul>
+<li>表头视图：表视图最上边的视图</li>
+<li>表脚视图：表视图最下边的视图</li>
+<li>单元格（cell）：表视图中每一行的视图</li>
+<li>节(section)：由多个单元格组成，应用于分组列表<ul>
+<li>节头</li>
+<li>节脚</li>
+</ul>
+</li>
+</ul>
+<h2 id="表视图的相关类"><a href="#表视图的相关类" class="headerlink" title="表视图的相关类"></a>表视图的相关类</h2><p>UITableView继承自UIScrollView，且有两个协议：UITableViewDelegate和UITableViewDataSource。此外UITableViewCell类时单元格类，UITableViewController类时UITableView的控制器，UITableViewHeaderFooterView用于为节头和节脚提供视图。</p>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/%E8%A1%A8%E8%A7%86%E5%9B%BE%E7%9B%B8%E5%85%B3%E7%B1%BB.jpg" alt=""></p>
+<h2 id="表视图分类"><a href="#表视图分类" class="headerlink" title="表视图分类"></a>表视图分类</h2><ul>
+<li>普通表视图：主要用于动态表，而动态表一般在单元格数目未知的情况下使用</li>
+<li>分组表视图：一般用于静态表，用来进行界面布局</li>
+</ul>
+<h2 id="单元格的组成和样式"><a href="#单元格的组成和样式" class="headerlink" title="单元格的组成和样式"></a>单元格的组成和样式</h2><p>单元格由图标、主标题、副标题、扩展视图组成，可以根据需要进行选择，其中内置的扩展视图在枚举类型UITableViewCellAccessoryType中定义：</p>
+<table>
+<thead>
+<tr>
+<th>Swift枚举成员</th>
+<th>Objective-C枚举成员</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>none</td>
+<td>ITableViewCellAccessoryNone</td>
+<td>没有扩展图标</td>
+</tr>
+<tr>
+<td>disclosureIndicator</td>
+<td>UITableViewCellAccessoryDisclosureIndicator</td>
+<td>扩展指示器，为箭头+问号</td>
+</tr>
+<tr>
+<td>detailDisclosureButton</td>
+<td>UITableViewCellAccessoryDetailDisclosureButton</td>
+<td>细节展示图，为问号</td>
+</tr>
+<tr>
+<td>checkmark</td>
+<td>UITableViewCellAccessoryCheckmark</td>
+<td>选中标志，图标为勾</td>
+</tr>
+<tr>
+<td>detailButton</td>
+<td>UITableViewCellAccessoryDetailButton</td>
+<td>细节详情展示，图标为问号</td>
+</tr>
+</tbody>
+</table>
+<p>内置的单元格样式在枚举类型UITableViewCellStyle中定义：</p>
+<table>
+<thead>
+<tr>
+<th>Swift枚举成员</th>
+<th>Objective-C枚举成员</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>default</td>
+<td>UITableViewCellStyleDefault</td>
+<td>默认样式</td>
+</tr>
+<tr>
+<td>subtitle</td>
+<td>UITableViewCellStyleSubtitle</td>
+<td>有图标、主标题、副标题、副标题在主标题的下面</td>
+</tr>
+<tr>
+<td>value1</td>
+<td>UITableViewCellStyleValue1</td>
+<td>有主标题、副标题，主标题左对齐、副标题右对齐，可以有图标</td>
+</tr>
+<tr>
+<td>2alue3</td>
+<td>UITableViewCellStyleValue2</td>
+<td>有主标题、副标题，主标题和副标题居中对齐，无图标</td>
+</tr>
+</tbody>
+</table>
+<h2 id="数据源协议与委托协议"><a href="#数据源协议与委托协议" class="headerlink" title="数据源协议与委托协议"></a>数据源协议与委托协议</h2><h3 id="UITableViewDataSource"><a href="#UITableViewDataSource" class="headerlink" title="UITableViewDataSource"></a>UITableViewDataSource</h3><p>数据源协议主要为表视图提供数据，主要方法如下</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>func tableView(UITableView, cellForRowAt: IndexPath)</td>
+<td>UITableViewCell</td>
+<td>为表视图单元格提供数据，必须实现</td>
+</tr>
+<tr>
+<td>tableView(UITableView, numberOfRowsInSection: Int)</td>
+<td>Int</td>
+<td>返回某个节中的行数，必须实现</td>
+</tr>
+<tr>
+<td>tableView(UITableView, titleForHeaderInSection: Int)</td>
+<td>String</td>
+<td>返回节头的标题</td>
+</tr>
+<tr>
+<td>tableView(UITableView, titleForFooterInSection: Int)</td>
+<td>String</td>
+<td>返回节脚的标题</td>
+</tr>
+<tr>
+<td>numberOfSections(in: UITableView)</td>
+<td>Int</td>
+<td>返回节的个数</td>
+</tr>
+<tr>
+<td>sectionIndexTitles(for: UITableView)</td>
+<td>[String]?</td>
+<td>返回表示图节索引标题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="UITableViewDelegate"><a href="#UITableViewDelegate" class="headerlink" title="UITableViewDelegate"></a>UITableViewDelegate</h3><p>委托协议主要主要用来设定表视图中节头和节脚的标题，以及一些动作事件，主要方法如下</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>返回类型</th>
+<th>说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tableView(UITableView, didSelectRowAt: IndexPath)</td>
+<td></td>
+<td>单元格响应事件</td>
+</tr>
+<tr>
+<td>tableView(UITableView, accessoryButtonTappedForRowWith: IndexPath)</td>
+<td></td>
+<td>扩展视图响应事件</td>
+</tr>
+</tbody>
+</table>
+<h1 id="简单表视图"><a href="#简单表视图" class="headerlink" title="简单表视图"></a>简单表视图</h1><h2 id="UIViewController根视图控制器实现表视图"><a href="#UIViewController根视图控制器实现表视图" class="headerlink" title="UIViewController根视图控制器实现表视图"></a>UIViewController根视图控制器实现表视图</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个iOS工程</li>
+<li>从对象库中拖入一个TableView到storyboard文件中，并将TableView覆盖整个View</li>
+<li>打开Table View的属性检查器，将PrototypeCells的值设为1，注意不要添加多个，否则会发生错误；此时Table View会添加一个Table View Cell。</li>
+<li>打开Table View Cell的属性检查器，设置Identifier属性。</li>
+<li>注册UITableViewDataSource和UITableViewDelegate协议</li>
+<li>编写代码实现功能</li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  TableViewDemo</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/26.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span>,<span class="title">UITableViewDataSource</span>,<span class="title">UITableViewDelegate</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//全部数据</span></div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">//读取资源文件数据</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回列表每行的视图</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="comment">//根据Identifier找到Cell</span></div><div class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomId"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        cell.textLabel?.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        cell.detailTextLabel?.text = <span class="string">"123"</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.imageView?.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = <span class="type">UITableViewCellAccessoryType</span>.disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回条目数目</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应条目点击事件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"点击事件"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="示例图"><a href="#示例图" class="headerlink" title="示例图"></a>示例图</h3><ul>
+<li>none模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-none.jpg" alt=""></p>
+<ul>
+<li>disclosureIndicator</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-disclosureIndicator.jpg" alt=""></p>
+<h2 id="UITableViewController根视图控制器实现表视图"><a href="#UITableViewController根视图控制器实现表视图" class="headerlink" title="UITableViewController根视图控制器实现表视图"></a>UITableViewController根视图控制器实现表视图</h2><h3 id="步骤-1"><a href="#步骤-1" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个iOS工程</li>
+<li>删除storyboard中View Controller Scene 中的View Controller，再从对象库拖入一个Table View Controller到设计界面</li>
+<li>打开Table View Controller属性检查器，勾选Is Initial View Controller选项，否则应用启动后是黑屏</li>
+<li>将ViewController类的父类由UIViewController改为UITableViewController</li>
+<li>打开View Controller的属性选择器在Class列表中选择ViewController</li>
+<li>UITableViewController默认以注册UITableViewDataSource和UITableViewDelegate协议，不需要再注册</li>
+</ol>
+<h3 id="实现-1"><a href="#实现-1" class="headerlink" title="实现"></a>实现</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="comment">//全部数据</span></div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        </div><div class="line">        <span class="comment">//读取资源文件数据</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回列表每行的视图</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">        <span class="keyword">let</span> cell = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomId"</span>, <span class="keyword">for</span>: indexPath)</div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        cell.textLabel?.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        cell.detailTextLabel?.text = <span class="string">"123"</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.imageView?.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = <span class="type">UITableViewCellAccessoryType</span>.disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//返回条目数目</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">//响应条目点击事件</span></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, didSelectRowAt indexPath: IndexPath)</span></span> &#123;</div><div class="line">        <span class="built_in">print</span>(<span class="string">"点击事件"</span>)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="示例图-1"><a href="#示例图-1" class="headerlink" title="示例图"></a>示例图</h3><ul>
+<li>detailButton模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-detail-button.jpg" alt=""></p>
+<ul>
+<li>checkmark模式</li>
+</ul>
+<p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-checkmark.jpg" alt=""></p>
+<h1 id="自定义单元格"><a href="#自定义单元格" class="headerlink" title="自定义单元格"></a>自定义单元格</h1><h2 id="步骤-2"><a href="#步骤-2" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>创建一个表视图工程</li>
+<li>修改根视图控制器为表视图控制器UITableViewController，参照上节的步骤</li>
+<li>从对象库中拖入控件到单元格内部，比如Lable和ImageView</li>
+<li>创建自定义单元格类CustomCell文件，并继承UITableViewCell类</li>
+<li>在设计界面中选择View Controller Scene中的Table View Cell，并打开属性检查器，将Class设为CustomCell类，并设置单元格的Identifier</li>
+<li>为单元格中的控件Label和ImageView控件连接输出接口，将控件绑定到CustomCell类中</li>
+<li>打开ViewController类，编写代码实现</li>
+</ol>
+<h2 id="实现-2"><a href="#实现-2" class="headerlink" title="实现"></a>实现</h2><ul>
+<li>CustomCell类</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  CustomCell.swift</span></div><div class="line"><span class="comment">//  CustomCell</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/25.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">CustomCell</span>: <span class="title">UITableViewCell</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mImage: <span class="type">UIImageView</span>!</div><div class="line">    <span class="meta">@IBOutlet</span> <span class="keyword">weak</span> <span class="keyword">var</span> mLabel: <span class="type">UILabel</span>!</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">awakeFromNib</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.awakeFromNib()</div><div class="line">        <span class="comment">// Initialization code</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">setSelected</span><span class="params">(<span class="number">_</span> selected: Bool, animated: Bool)</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.setSelected(selected, animated: animated)</div><div class="line"></div><div class="line">        <span class="comment">// Configure the view for the selected state</span></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>ViewController类</li>
+</ul>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  ViewController.swift</span></div><div class="line"><span class="comment">//  SimpleTableView</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//  Created by Michael on 2016/10/24.</span></div><div class="line"><span class="comment">//  Copyright © 2016年 Michael. All rights reserved.</span></div><div class="line"><span class="comment">//</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UITableViewController</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">var</span> listItems: <span class="type">NSArray</span>!</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// Do any additional setup after loading the view, typically from a nib.</span></div><div class="line">        <span class="keyword">let</span> listPath = <span class="type">Bundle</span>.main.path(forResource: <span class="string">"team"</span>, ofType: <span class="string">"plist"</span>)</div><div class="line">        <span class="keyword">self</span>.listItems = <span class="type">NSArray</span>(contentsOfFile: listPath!)</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">didReceiveMemoryWarning</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.didReceiveMemoryWarning()</div><div class="line">        <span class="comment">// Dispose of any resources that can be recreated.</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, numberOfRowsInSection section: Int)</span></span> -&gt; <span class="type">Int</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.listItems.<span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    </div><div class="line">    </div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">tableView</span><span class="params">(<span class="number">_</span> tableView: UITableView, cellForRowAt indexPath: IndexPath)</span></span> -&gt; <span class="type">UITableViewCell</span> &#123;</div><div class="line">    <span class="comment">//找到自定义单元格</span></div><div class="line">        <span class="keyword">let</span> cell:<span class="type">CustomCell</span>! = tableView.dequeueReusableCell(withIdentifier: <span class="string">"CustomCellId"</span>, <span class="keyword">for</span>: indexPath) <span class="keyword">as</span>? <span class="type">CustomCell</span></div><div class="line">        <span class="comment">//let cell = UITableViewCell(style: .value1, reuseIdentifier: "CellIdentifier")</span></div><div class="line">        <span class="keyword">let</span> row = indexPath.row</div><div class="line">        </div><div class="line">        <span class="keyword">let</span> rowDict = <span class="keyword">self</span>.listItems[row] <span class="keyword">as</span>! <span class="type">NSDictionary</span></div><div class="line">        <span class="comment">//设置控件属性</span></div><div class="line">        cell.mLabel.text = rowDict[<span class="string">"name"</span>] <span class="keyword">as</span>? <span class="type">String</span></div><div class="line">        </div><div class="line">        <span class="keyword">let</span> imagePath = <span class="type">String</span>(format: <span class="string">"%@.png"</span>, rowDict[<span class="string">"image"</span>] <span class="keyword">as</span>! <span class="type">String</span>)</div><div class="line">        cell.mImage.image = <span class="type">UIImage</span>(named: imagePath)</div><div class="line">        cell.accessoryType = .disclosureIndicator</div><div class="line">        <span class="keyword">return</span> cell</div><div class="line">        </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="示例图-2"><a href="#示例图-2" class="headerlink" title="示例图"></a>示例图</h2><p><img src="http://oeqfywnzb.bkt.clouddn.com/tableview-%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%95%E5%85%83%E6%A0%BC.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之04表视图/" data-id="cj6f2gfov00aq4h19sb0sh74n" class="article-share-link">分享</a>
+      
+        <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之04表视图/#ds-thread" class="article-comment-link">留言</a>
+      
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+ 
+
+
+  
     <article id="post-iOS开发之03UIView" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/11/25/iOS开发之03UIView/" class="article-date">
@@ -307,7 +708,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之03UIView/" data-id="cj6f0sod8009zf519n8uy8ygn" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之03UIView/" data-id="cj6f2gfou00an4h19r01ede00" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之03UIView/#ds-thread" class="article-comment-link">留言</a>
       
@@ -430,7 +831,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之02应用界面/" data-id="cj6f0sod900a3f519qlwbsui9" class="article-share-link">分享</a>
+      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之02应用界面/" data-id="cj6f2gfos00ai4h19tn63ttci" class="article-share-link">分享</a>
       
         <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之02应用界面/#ds-thread" class="article-comment-link">留言</a>
       
@@ -446,661 +847,10 @@
 
 
   
-    <article id="post-iOS开发之01基础" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/25/iOS开发之01基础/" class="article-date">
-  <time datetime="2016-11-25T10:44:53.000Z" itemprop="datePublished">2016-11-25 18:44:53</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/25/iOS开发之01基础/">iOS开发之01基础</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="Xcode中的iOS工程模板"><a href="#Xcode中的iOS工程模板" class="headerlink" title="Xcode中的iOS工程模板"></a>Xcode中的iOS工程模板</h1><p>iOS工程模板分为两类-Application和Framework &amp; Library。</p>
-<h2 id="Application类型"><a href="#Application类型" class="headerlink" title="Application类型"></a>Application类型</h2><p>Application包含5个模板，具体如下所示：</p>
-<ul>
-<li>Master-Detail Application：可以构建树形结构导航模式应用，生成的代码中包含了导航控制器和表视图控制器等。</li>
-<li>Page-Based Application：可以构建类似电子书效果的应用</li>
-<li>Single View Application：可以构建简单的单个视图应用</li>
-<li>Tabbed Application：可以构建标签导航模式的应用，生成的代码中包含了标签控制器和标签栏等。</li>
-<li>Game： 可以构建基于iOS的游戏应用</li>
-</ul>
-<h2 id="Framework-amp-Library"><a href="#Framework-amp-Library" class="headerlink" title="Framework &amp; Library"></a>Framework &amp; Library</h2><ul>
-<li>Cocoa Touch Framework 可以让开发者自定义应用于UIKit的框架</li>
-<li>Cocoa Touch Static Library 可以让开发者创建基于Foundation框架的静态库。</li>
-</ul>
-<h1 id="Xcode中的iOS工程目录"><a href="#Xcode中的iOS工程目录" class="headerlink" title="Xcode中的iOS工程目录"></a>Xcode中的iOS工程目录</h1><p><img src="http://oeqfywnzb.bkt.clouddn.com/iOS%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84.png" alt="code中的iOS工程目录"></p>
-<ul>
-<li>AppDelegate.swift类文件:应用程序委托对象</li>
-<li>ViewController.swift类文件：是视图控制器类，在工程中扮演着根视图和用户事件控制类的角色</li>
-<li>Main.storyboard文件:故事板文件</li>
-<li>LaunchScreen.storyboard：应用启动界面故事板文件</li>
-<li>Assets.xcassets文件夹: 资源目录,可以用来管理图片</li>
-<li>Info.plist:工程属性文件</li>
-<li>Products组:工程将要生成的产品包</li>
-</ul>
-<blockquote>
-<p>在访问资源文件时，文件夹和组是有区别的。访问文件夹中的资源时需要将文件夹作为路径。如果icon.png文件放在images文件夹下，则访问它的路径时images/icon.png，如果images是组，则访问它的路径是icon.png.</p>
-</blockquote>
-<h1 id="iOS应用生命周期"><a href="#iOS应用生命周期" class="headerlink" title="iOS应用生命周期"></a>iOS应用生命周期</h1><p>AppDelegate类在应用生命周期的不同阶段会回调不同的方法。首先介绍iOS应用的5中状态。</p>
-<ul>
-<li>Not Running（非运行状态）：应用没有运行或被系统终止</li>
-<li>Inactive（前台非活动状态）：应用正在进入前台状态，但是还不能接受事件处理</li>
-<li>Active（前台活动状态）：应用进入前台状态，能接受事件处理</li>
-<li>Backgroud（后台状态）：应用进入后台状态，依然能够执行代码。如果有可执行的代码，就会执行代码；如果没有可执行的代码或者将可执行的代码执行完毕，应用会马上进入挂起状态</li>
-<li>Suspend（挂起状态）：被挂起的应用不能执行代码。如果系统内存不够，应用会被终止。</li>
-</ul>
-<p>在应用状态切换的过程中，iOS系统会回调AppDelegate中的一些方法，并且发送一些通知。下面介绍几个主要的方法和通知。</p>
-<table>
-<thead>
-<tr>
-<th>方法</th>
-<th>本地通知</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>application:didFinishLaunchingWithOptions</td>
-<td>UIApllicationDidFinishedLaunchingNotification</td>
-<td>应用启动并进行初始化时会调用该方法并发出通知。这个阶段会实例化根视图控制器</td>
-</tr>
-<tr>
-<td>applicationDidBecomeActive</td>
-<td>UIApplicationDidBecomeActiveNotification</td>
-<td>应用进入前台并处于活动状态时调用该方法并发出通知。这个阶段可以恢复UI的状态</td>
-</tr>
-<tr>
-<td>applicationWillResignActive</td>
-<td>UIApplicationWillResignActiveNotification</td>
-<td>应用从活动状态进入到非活动状态时调用该方法并发出通知。这个阶段可以保存UI状态</td>
-</tr>
-<tr>
-<td>applicationDidEnterBackgroud</td>
-<td>UIApplicationDidEnterBackgroudNotification</td>
-<td>应用进入后台时调用该方法并发出通知。这个阶段可以保存用户数据，释放一些资源</td>
-</tr>
-<tr>
-<td>applicationWillEnterForegroud</td>
-<td>UIApplicationWillEnterForegroudNotification</td>
-<td>应用进入到前台，但是还没有处于活动状态时调用该方法并发出通知。这个阶段可以恢复用户数据</td>
-</tr>
-<tr>
-<td>applicationWillTerminate</td>
-<td>UIApplicationWillTerminateNotification</td>
-<td>应用被终止时调用该方法并发出通知，但内存清除时除外，这个阶段释放一些资源，也可以保存用户数据</td>
-</tr>
-</tbody>
-</table>
-<h2 id="非运行状态-应用启动场景"><a href="#非运行状态-应用启动场景" class="headerlink" title="非运行状态-应用启动场景"></a>非运行状态-应用启动场景</h2><p><strong>场景描述：</strong>用户点击应用图标时，可能是第一次启动这个应用，也可能是应用终止后再次启动。该场景的状态跃迁过程共经历两个阶段单个状态：Not running -&gt; Inactive -&gt; Active。</p>
-<ul>
-<li>Not running -&gt; Inactive阶段：调用application:didFinishLaunchingWithOptions方法，发出UIApllicationDidFinishedLaunchingNotification通知。</li>
-<li>Inactive -&gt; Active阶段：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
-</ul>
-<h2 id="点击Home键-应用退出场景"><a href="#点击Home键-应用退出场景" class="headerlink" title="点击Home键-应用退出场景"></a>点击Home键-应用退出场景</h2><p><strong>场景描述：</strong>应用出于运行状态（即Active状态）时点击Home键应用会退出。该场景的状态变迁过程分为两种情况：可以在后台运行或者挂起和不可以在后台运行或挂起，可以根据工程属性文件Info.plist中的属性Application does not run in background来控制这两种状态。</p>
-<h3 id="应用可以在后台运行或者挂起"><a href="#应用可以在后台运行或者挂起" class="headerlink" title="应用可以在后台运行或者挂起"></a>应用可以在后台运行或者挂起</h3><p>该场景的状态变迁共经历3个阶段4个状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend。</p>
-<ul>
-<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
-<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）。</li>
-<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知。</li>
-</ul>
-<h3 id="应用不可以在后台运行或挂起"><a href="#应用不可以在后台运行或挂起" class="headerlink" title="应用不可以在后台运行或挂起"></a>应用不可以在后台运行或挂起</h3><p>该场景下的状态变迁共经历4个阶段5种状态：Activie -&gt; Inactive -&gt; Backgroud -&gt; Suspend -&gt; Not Running。</p>
-<ul>
-<li>Activie -&gt; Inactive阶段：调用applicationWillResignActive方法，发出UIApplicationWillResignActiveNotification通知。</li>
-<li>Inactive -&gt; Backgroud阶段：应用从非活动状态进入到后台（不涉及重点的方法和通知）</li>
-<li>Backgroud -&gt; Suspend阶段：调用applicationDidEnterBackground方法，发出UIApplicationDidEnterBackgroudNotification通知</li>
-<li>Suspend -&gt; Not Running阶段：调用applicationWillTerminate方法，发出UIApplicationWillTerminateNotification通知。</li>
-</ul>
-<h2 id="挂起重新运行场景"><a href="#挂起重新运行场景" class="headerlink" title="挂起重新运行场景"></a>挂起重新运行场景</h2><p><strong>场景描述：</strong>挂起状态的应用重新运行。该场景的状态变迁过程共经历三个阶段4种状态：Suspend -&gt; Backgroud -&gt; Inactive -&gt; Active。</p>
-<ul>
-<li>Suspend -&gt; Backgroud阶段：应用从挂起状态进入到后台（不涉及重点的方法和通知）</li>
-<li>Backgroud -&gt; Inactive：调用applicationWillEnterForeground方法，发出UIApplicationWillEnterForegroudNotification通知。</li>
-<li>Inactive -&gt; Active：调用applicationDidBecomeActive方法，发出UIApplicationDidBecomeActiveNotification通知。</li>
-</ul>
-<h2 id="内存清楚-应用终止场景"><a href="#内存清楚-应用终止场景" class="headerlink" title="内存清楚-应用终止场景"></a>内存清楚-应用终止场景</h2><p><strong>场景描述：</strong>应用在后台处理完成时进入挂起状态（这是一种休眠状态），如果这时发出低内存警告，为了满足其他应用对内存的需要，该应用就会被清除内存从而终止运行。该场景的变迁过程为：Backgroud -&gt; Suspend -&gt; Not running。</p>
-<p>内存清除的时候应用终止运行。内存清除有两种情况，可能是系统强制清楚内存，也可能是由使用者从任务栏中手动清除。内存清除后如果应用再次运行，上一次的运行状态不会被保存，相对于应用第一次运行。</p>
-<blockquote>
-<p>在内存清除的场景下，应用不会调用任何方法，也不会发出任何通知。</p>
-</blockquote>
-<h1 id="iOS-API-简介"><a href="#iOS-API-简介" class="headerlink" title="iOS API 简介"></a>iOS API 简介</h1><p>iOS的整体架构图参见图2-28，分为4层-Cocoa Touch层，Media层，Core Service层和Core OS层。</p>
-<h2 id="Cocoa-Touch层"><a href="#Cocoa-Touch层" class="headerlink" title="Cocoa Touch层"></a>Cocoa Touch层</h2><p>Cocoa Touch层提供了构建iOS应用的一些基本系统服务（如多任务、触摸输入和推送通知等）和关键框架。</p>
-<table>
-<thead>
-<tr>
-<th>框架</th>
-<th>前缀</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>ConatactsUI</td>
-<td>CN</td>
-<td>访问通讯录相关UI类</td>
-</tr>
-<tr>
-<td>EventKitUI</td>
-<td>EK</td>
-<td>访问日历事件数据</td>
-</tr>
-<tr>
-<td>GameKit</td>
-<td>GK</td>
-<td>提供能够进行点对点通信的网络通信API</td>
-</tr>
-<tr>
-<td>iAd</td>
-<td>AD</td>
-<td>广告API</td>
-</tr>
-<tr>
-<td>MapKit</td>
-<td>MK</td>
-<td>地图API</td>
-</tr>
-<tr>
-<td>MessageUI</td>
-<td>MF</td>
-<td>电子邮件消息相关API</td>
-</tr>
-<tr>
-<td>PhotosUi</td>
-<td>PF</td>
-<td>照片API</td>
-</tr>
-<tr>
-<td>Twitter</td>
-<td>TW</td>
-<td>提供发送Twitter API</td>
-</tr>
-<tr>
-<td>UIKit</td>
-<td>UK</td>
-<td>提供UI类</td>
-</tr>
-<tr>
-<td>WatchKit</td>
-<td>Wk</td>
-<td>Apple Watch相关类</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Media层"><a href="#Media层" class="headerlink" title="Media层"></a>Media层</h2><p>Media层提供了图形、音频、视频和AirPlay技术等。</p>
-<table>
-<thead>
-<tr>
-<th>框架</th>
-<th>前缀</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Assets Library</td>
-<td>Al</td>
-<td>访问图片和视频的API</td>
-</tr>
-<tr>
-<td>AudioToolBox</td>
-<td>Audio</td>
-<td>录制或播放视频、音频流以及格式转换</td>
-</tr>
-<tr>
-<td>AudioUnit</td>
-<td>Audio、AU</td>
-<td>使用内置音频单元服务以及音频处理模块</td>
-</tr>
-<tr>
-<td>AV Foundation</td>
-<td>AV</td>
-<td>播放与录制音频和视频的OC API</td>
-</tr>
-<tr>
-<td>Core Audio</td>
-<td>Audio</td>
-<td>录制、制作、播放音频的C语言接口</td>
-</tr>
-<tr>
-<td>Core Graphics</td>
-<td>CG</td>
-<td>提供Quartz 2D接口</td>
-</tr>
-<tr>
-<td>Core Image</td>
-<td>CI</td>
-<td>操作视频和静态图像的接口</td>
-</tr>
-<tr>
-<td>Core MIDI</td>
-<td>MIDI</td>
-<td>处理MIDI数据的底层API</td>
-</tr>
-<tr>
-<td>Core Text</td>
-<td>CT</td>
-<td>渲染文本和处理字体的简单、高效的C语言接口</td>
-</tr>
-<tr>
-<td>Core Video</td>
-<td>CV</td>
-<td>处理音频和视频的API</td>
-</tr>
-<tr>
-<td>Image I/O</td>
-<td>CG</td>
-<td>读写图像数据类</td>
-</tr>
-<tr>
-<td>GLKit</td>
-<td>GLK</td>
-<td>构建复杂OpenGL ES应用的OC应用类</td>
-</tr>
-<tr>
-<td>Media Player</td>
-<td>MP</td>
-<td>播放接口</td>
-</tr>
-<tr>
-<td>OpenAl</td>
-<td>AL</td>
-<td>包含了OpenAL（跨平台）的C接口</td>
-</tr>
-<tr>
-<td>OpenGL ES</td>
-<td>GL</td>
-<td>包含OpenGL ES（跨平台的2D/3D图形库）的C语言接口</td>
-</tr>
-<tr>
-<td>Quartz Core</td>
-<td>CA</td>
-<td>提供动画接口类</td>
-</tr>
-<tr>
-<td>Sprite Kit</td>
-<td>SK</td>
-<td>苹果提供的基于2D游戏的开发引擎</td>
-</tr>
-<tr>
-<td>Scene Kit</td>
-<td>SCK</td>
-<td>一种高级别的3D图像框架，能创建3D动画场景和特效</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Core-Services层"><a href="#Core-Services层" class="headerlink" title="Core Services层"></a>Core Services层</h2><p>Core Services层提供了CloudKit、HealthKit、HomeKit、SQLite和XML支持等技术</p>
-<table>
-<thead>
-<tr>
-<th>框架</th>
-<th>前缀</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accounts</td>
-<td>AC</td>
-<td>用于访问用户的Twitter账户</td>
-</tr>
-<tr>
-<td>Contacts</td>
-<td>CN</td>
-<td>访问通讯录信息</td>
-</tr>
-<tr>
-<td>AdSupport</td>
-<td>AS</td>
-<td>获得iAd广告标识</td>
-</tr>
-<tr>
-<td>CFNetwork</td>
-<td>CF</td>
-<td>提供了访问Wi-Fi网络和蜂窝移动网络的API</td>
-</tr>
-<tr>
-<td>Core Data</td>
-<td>NS</td>
-<td>提供管理应用数据的ORM接口</td>
-</tr>
-<tr>
-<td>CoreFoundation</td>
-<td>CF</td>
-<td>最基本的框架包括数据集</td>
-</tr>
-<tr>
-<td>Core Location</td>
-<td>CL</td>
-<td>定位服务的API</td>
-</tr>
-<tr>
-<td>CoreMedia</td>
-<td>CM</td>
-<td>提供AV Foundation框架使用的底层媒体类型，可以精确控制音频或视频的创建及展示</td>
-</tr>
-<tr>
-<td>CoreMotion</td>
-<td>CM</td>
-<td>接收和处理重力加速度以及其他的运动操作</td>
-</tr>
-<tr>
-<td>CoreTelephony</td>
-<td>CT</td>
-<td>提供访问电话基本信息的API</td>
-</tr>
-<tr>
-<td>Event Kit</td>
-<td>EK</td>
-<td>访问日历事件数据</td>
-</tr>
-<tr>
-<td>Foundation</td>
-<td>NS</td>
-<td>是OC最基本的框架</td>
-</tr>
-<tr>
-<td>JavaScriptCore.framework</td>
-<td>JS</td>
-<td>实现OC与JS的相互调用</td>
-</tr>
-<tr>
-<td>MobileCoreServices</td>
-<td>UT</td>
-<td>定义统一标识符类型（UIT）使用的底层类型</td>
-</tr>
-<tr>
-<td>Newsstand Kit</td>
-<td>NK</td>
-<td>提供在后台下载杂志和新闻的API接口</td>
-</tr>
-<tr>
-<td>Pass Kit</td>
-<td>PK</td>
-<td>提供访问优惠券的API</td>
-</tr>
-<tr>
-<td>QuickLock</td>
-<td>QL</td>
-<td>提供预览无法直接查看的文件内容</td>
-</tr>
-<tr>
-<td>Social</td>
-<td>SL</td>
-<td>提供社交网络访问API，中国区提供新浪微博的API</td>
-</tr>
-<tr>
-<td>Store Kit</td>
-<td>SK</td>
-<td>提供处理应用内置收费的资金交易</td>
-</tr>
-<tr>
-<td>SystemConfiguration</td>
-<td>SC</td>
-<td>用于确定设备的网络配置，也可以用于判断某个主机服务是否可以使用</td>
-</tr>
-<tr>
-<td>Cloud Kit</td>
-<td>CK</td>
-<td>开发iCloud应用的API</td>
-</tr>
-<tr>
-<td>Health Kit</td>
-<td>HK</td>
-<td>开发健康和健身等服务的API</td>
-</tr>
-<tr>
-<td>Home Kit</td>
-<td>HM</td>
-<td>能够与用户家中连接的设备通信并进行控制</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Core-OS层"><a href="#Core-OS层" class="headerlink" title="Core OS层"></a>Core OS层</h2><p>Core OS层提供了一些低级功能，一般不直接使用它。</p>
-<table>
-<thead>
-<tr>
-<th>框架</th>
-<th>前缀</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Accelerate</td>
-<td>AC</td>
-<td>访问重力加速计API</td>
-</tr>
-<tr>
-<td>Core Bluetooth</td>
-<td>CB</td>
-<td>访问低功耗蓝牙设备API</td>
-</tr>
-<tr>
-<td>External Accessory</td>
-<td>EA</td>
-<td>访问外围配件API接口</td>
-</tr>
-<tr>
-<td>Generic Security Services</td>
-<td>GSS</td>
-<td>提供一组安全相关的服务</td>
-</tr>
-<tr>
-<td>Security</td>
-<td>CSSM</td>
-<td>管理证书、公钥、私钥和安全信任策略的API</td>
-</tr>
-<tr>
-<td>LocalAuthentication</td>
-<td>LA</td>
-<td>提供用户指定的安全策略进行安全认证</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/11/25/iOS开发之01基础/" data-id="cj6f0sod6009vf519zng22wgf" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/11/25/iOS开发之01基础/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swift/">swift</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xcode/">xcode</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Android DiffUtil在RecyclerView中的使用" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/" class="article-date">
-  <time datetime="2016-11-25T10:31:12.000Z" itemprop="datePublished">2016-11-25 18:31:12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/25/Android DiffUtil在RecyclerView中的使用/">DiffUtil在RecyclerView中的使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>DiffUtil是recyclerview support library v7 24.2.0版本中新增的类，根据Google官方文档的介绍，DiffUtil的作用是比较两个数据列表并能计算出一系列将旧数据表转换成新数据表的操作。这个概念比较抽象，换一种方式理解，DiffUtil是一个工具类，当你的RecyclerView需要更新数据时，将新旧数据集传给它，它就能快速告知adapter有哪些数据需要更新。</p>
-<p>那么相比直接调用adapter.notifyDataSetChange()方法，使用DiffUtil有什么优势呢？它能在收到数据集后，提高UI更新的效率，而且你也不需要自己对新老数据集进行比较了。</p>
-<p>顾名思义，凡是数据集的比较DiffUtil都能做，所以用处并不止于更新RecyclerView。DiffUtil也提供了回调让你可以进行其他操作。本文只介绍使用DiffUtil更新RecyclerView。</p>
-<h1 id="DiffUtil简介"><a href="#DiffUtil简介" class="headerlink" title="DiffUtil简介"></a>DiffUtil简介</h1><p>在使用DiffUtil前我们先简单看看DiffUtil的特性。DiffUtil使用Eugene W. Myers的Difference算法来计算出将一个数据集转换为另一个的最小更新量，也就是用最简单的方式将一个数据集转换为另一个。除此之外，DiffUtil还可以识别一项数据在数据集中的移动。Eugene的算法对控件进行了优化，在查找两个数据集间最少加减操作时的空间复杂度为O(N)，时间复杂度为<code>O(N+D^2)</code>。而如果添加了对数据条目移动的识别，复杂度就会提高到<code>O(N^2)</code>。<strong>所以如果数据集中数据不存在移位情况，你可以关闭移动识别功能来提高性能。当数据集较大时，你应该在后台线程计算数据集的更新。</strong></p>
-<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><h2 id="DiffUtil类"><a href="#DiffUtil类" class="headerlink" title="DiffUtil类"></a>DiffUtil类</h2><ul>
-<li>DiffUtil.Callback：这是最核心的类,你可以将它理解成比较新老数据集时的规则。</li>
-<li>DiffUtil：通过静态方法<code>DiffUtil.calculateDiff(DiffUtil.Callback)</code>来计算数据集的更新。</li>
-<li>DiffResult：是DiffUtil的计算结果对象，通过<code>DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)</code>来进行更新。</li>
-</ul>
-<p>代码模式为</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallBack(mDatas, newDatas), <span class="keyword">true</span>);</div><div class="line">mAdapter.setDatas(newDatas);</div><div class="line">diffResult.dispatchUpdatesTo(mAdapter);</div></pre></td></tr></table></figure>
-<p><code>dispatchUpdatesTo()</code>方法它会自动计算新老数据集的差异，并根据差异情况，自动调用以下四个方法</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">adapter.notifyItemRangeInserted(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeRemoved(position, <span class="built_in">count</span>)<span class="comment">;</span></div><div class="line">adapter.notifyItemMoved(fromPosition, toPosition)<span class="comment">;</span></div><div class="line">adapter.notifyItemRangeChanged(position, <span class="built_in">count</span>, payload)<span class="comment">;</span></div></pre></td></tr></table></figure>
-<h2 id="DiffUtil-Callback抽象类"><a href="#DiffUtil-Callback抽象类" class="headerlink" title="DiffUtil.Callback抽象类"></a>DiffUtil.Callback抽象类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Callback</span> </span>&#123;</div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回旧数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the old list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 返回新数据集的大小</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> The size of the new list.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象是否是同一个对象</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     * <span class="doctag">@return</span> True if the two items represent the same object or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 比较两个Item对象的内容是否相同</div><div class="line">     * Called by the DiffUtil when it wants to check whether two items have the same data.</div><div class="line">     * DiffUtil uses this information to detect if the contents of an item has changed.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * DiffUtil uses this method to check equality instead of &#123;<span class="doctag">@link</span> Object#equals(Object)&#125;</div><div class="line">     * so that you can change its behavior depending on your UI.</div><div class="line">     * For example, if you are using DiffUtil with a</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.Adapter RecyclerView.Adapter&#125;, you should</div><div class="line">     * return whether the items' visual representations are the same.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * This method is called only if &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns</div><div class="line">     * &#123;<span class="doctag">@code</span> true&#125; for these items.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list which replaces the</div><div class="line">     *                        oldItem</div><div class="line">     * <span class="doctag">@return</span> True if the contents of the items are the same or false if they are different.</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span></span>;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line">     * areItemsTheSame()返回true而areContentsTheSame()返回false时调用，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">     * When &#123;<span class="doctag">@link</span> #areItemsTheSame(int, int)&#125; returns &#123;<span class="doctag">@code</span> true&#125; for two items and</div><div class="line">     * &#123;<span class="doctag">@link</span> #areContentsTheSame(int, int)&#125; returns false for them, DiffUtil</div><div class="line">     * calls this method to get a payload about the change.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * For example, if you are using DiffUtil with &#123;<span class="doctag">@link</span> RecyclerView&#125;, you can return the</div><div class="line">     * particular field that changed in the item and your</div><div class="line">     * &#123;<span class="doctag">@link</span> android.support.v7.widget.RecyclerView.ItemAnimator ItemAnimator&#125; can use that</div><div class="line">     * information to run the correct animation.</div><div class="line">     * &lt;p&gt;</div><div class="line">     * Default implementation returns &#123;<span class="doctag">@code</span> null&#125;.</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> oldItemPosition The position of the item in the old list</div><div class="line">     * <span class="doctag">@param</span> newItemPosition The position of the item in the new list</div><div class="line">     *</div><div class="line">     * <span class="doctag">@return</span> A payload object that represents the change between the two items.</div><div class="line">     */</div><div class="line">    <span class="meta">@Nullable</span></div><div class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="DiffUtil步骤"><a href="#DiffUtil步骤" class="headerlink" title="DiffUtil步骤"></a>DiffUtil步骤</h2><ol>
-<li>自定义类继承DiffUtil.Callback，通过重写特定方法给出数据比较逻辑。</li>
-<li>调用<code>DiffUtil.calculateDiff(DiffUtil.Callback callback,boolean detectMove)</code>来计算更新，得到DiffResult对象。第二个参数可省，意为是否探测数据的移动，是否关闭需要根据数据集情况来权衡。当数据集很大时，此操作可能耗时较长，需要异步计算。</li>
-<li>在UI线程中调用DiffResult.dispatchUpdatesTo(RecyclerView.Adapter)，而后Adapter的onBindViewHolder(RecyclerView.ViewHolder holder, int position, Listpayloads)。注意这个方法比必须覆盖的onBindViewHolder(RecyclerView.ViewHolder holder, int position)方法多一个参数payloads，而里面存储了数据的更新。</li>
-</ol>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><h2 id="初始化RecyclerView"><a href="#初始化RecyclerView" class="headerlink" title="初始化RecyclerView"></a>初始化RecyclerView</h2><ul>
-<li>新建一个Bean为Item：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.materialdesign.bean;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by liuguoquan on 2016/10/18.</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Item</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="keyword">int</span> id = <span class="number">0</span>;</div><div class="line">  <span class="keyword">public</span> String name;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Item</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.id = id;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> name;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>新建Adapter</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffUtilAdapter</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">Adapter</span>&lt;<span class="title">DiffUtilAdapter</span>.<span class="title">DiffItemHolder</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> Context mContext;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mDatas;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffUtilAdapter</span><span class="params">(Context context, List&lt;Item&gt; datas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mContext = context;</div><div class="line">    <span class="keyword">this</span>.mDatas = datas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDatas</span><span class="params">(List&lt;Item&gt; mDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mDatas = mDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> DiffItemHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">    View view = LayoutInflater.from(mContext).inflate(R.layout.item_diff_util, parent, <span class="keyword">false</span>);</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DiffItemHolder(view);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">    Item info = mDatas.get(position);</div><div class="line">    holder.mInfo.setText(info.getName());</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"onBindViewHolder"</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    <span class="comment">//payloads就是DiffUtil.Callback中的getChangePayload方法返回的数据集</span></div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(DiffItemHolder holder, <span class="keyword">int</span> position, List&lt;Object&gt; payloads)</span> </span>&#123;</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> (payloads.isEmpty()) &#123;</div><div class="line">      onBindViewHolder(holder,position);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">//更新item</span></div><div class="line">      Bundle bundle = (Bundle) payloads.get(<span class="number">0</span>);</div><div class="line">      <span class="keyword">for</span>(String key : bundle.keySet()) &#123;</div><div class="line">        <span class="keyword">switch</span> (key) &#123;</div><div class="line">          <span class="keyword">case</span> <span class="string">"name"</span>:</div><div class="line">            holder.mInfo.setText((CharSequence) bundle.get(key));</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getItemCount</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mDatas != <span class="keyword">null</span> ? mDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffItemHolder</span> <span class="keyword">extends</span> <span class="title">RecyclerView</span>.<span class="title">ViewHolder</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@BindView</span>(R.id.info) TextView mInfo;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DiffItemHolder</span><span class="params">(View itemView)</span> </span>&#123;</div><div class="line">      <span class="keyword">super</span>(itemView);</div><div class="line">      ButterKnife.bind(<span class="keyword">this</span>, itemView);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>初始化ReyclerView</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">initView</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>;i++) &#123;</div><div class="line">    Item item = <span class="keyword">new</span> Item(i,<span class="string">"liu"</span>+i);</div><div class="line">    mDatas.add(item);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  mAdapter = <span class="keyword">new</span> DiffUtilAdapter(<span class="keyword">this</span>,mDatas);</div><div class="line">  mList.setLayoutManager(<span class="keyword">new</span> LinearLayoutManager(<span class="keyword">this</span>,LinearLayoutManager.VERTICAL,<span class="keyword">false</span>));</div><div class="line">  mList.setItemAnimator(<span class="keyword">new</span> DefaultItemAnimator());</div><div class="line">  mList.setAdapter(mAdapter);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>初始化RecyclerView后效果为：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-normal.png" alt=""></p>
-<h2 id="实现DiffUtil-Callback"><a href="#实现DiffUtil-Callback" class="headerlink" title="实现DiffUtil.Callback"></a>实现DiffUtil.Callback</h2><p>新建类继承DiffUtil.Callback</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">DiffCallback</span> <span class="keyword">extends</span> <span class="title">DiffUtil</span>.<span class="title">Callback</span> </span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mOldDatas;</div><div class="line">  <span class="keyword">private</span> List&lt;Item&gt; mNewDatas;</div><div class="line"></div><div class="line">  <span class="comment">//传入旧数据和新数据的集合</span></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DiffCallback</span><span class="params">(List&lt;Item&gt; oldDatas,List&lt;Item&gt; newDatas)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.mOldDatas = oldDatas;</div><div class="line">    <span class="keyword">this</span>.mNewDatas = newDatas;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getOldListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mOldDatas != <span class="keyword">null</span> ? mOldDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNewListSize</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> mNewDatas != <span class="keyword">null</span> ? mNewDatas.size() : <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * 被DiffUtil调用，用来判断 两个对象是否是相同的Item。</div><div class="line">   * 例如，如果你的Item有唯一的id字段，这个方法就 判断id是否相等。</div><div class="line">   * 本例判断id字段是否一致</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areItemsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    <span class="keyword">boolean</span> is = mOldDatas.get(oldItemPosition).id == mNewDatas.get(newItemPosition).id;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areItemsTheSame "</span> +oldItemPosition + <span class="string">" "</span> + newItemPosition + <span class="string">" "</span> + is);</div><div class="line">    <span class="keyword">return</span> is;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/*</span></div><div class="line">   * 被DiffUtil调用，用来检查 两个item是否含有相同的数据</div><div class="line">   * 这个方法仅仅在areItemsTheSame()返回true时，才调用。</div><div class="line">   * @param oldItemPosition The position of the item in the old list</div><div class="line">   * @param newItemPosition The position of the item in the new list which replaces the</div><div class="line">   *                        oldItem</div><div class="line">   * @return True if the contents of the items are the same or false if they are different.</div><div class="line">   */</div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">areContentsTheSame</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldName = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newName = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"areContentsTheSame"</span></div><div class="line">        + <span class="string">" "</span> +oldName + <span class="string">" "</span> + newName);</div><div class="line">    <span class="keyword">if</span> (!oldName.equals(newName)) &#123;</div><div class="line">      Log.d(<span class="string">"lgq"</span>,<span class="string">"false"</span>);</div><div class="line">      <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">/**</span></div><div class="line">   * areItemsTheSame()返回true而areContentsTheSame()返回false，也就是说两个对象代表的数据是一条，但是内容更新了。</div><div class="line">   * <span class="doctag">@param</span> oldItemPosition</div><div class="line">   * <span class="doctag">@param</span> newItemPosition</div><div class="line">   * <span class="doctag">@return</span></div><div class="line">   */</div><div class="line">  <span class="meta">@Nullable</span> <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Object <span class="title">getChangePayload</span><span class="params">(<span class="keyword">int</span> oldItemPosition, <span class="keyword">int</span> newItemPosition)</span> </span>&#123;</div><div class="line">    String oldItem = mOldDatas.get(oldItemPosition).getName();</div><div class="line">    String newItem = mNewDatas.get(newItemPosition).getName();</div><div class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">    <span class="keyword">if</span> (!oldItem.equals(newItem)) &#123;</div><div class="line">        bundle.putString(<span class="string">"name"</span>,newItem);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (bundle.size() == <span class="number">0</span>) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">    &#125;</div><div class="line">    Log.d(<span class="string">"lgq"</span>,<span class="string">"getChangePayload"</span>);</div><div class="line">    <span class="keyword">return</span> bundle;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="使用DiffUtil"><a href="#使用DiffUtil" class="headerlink" title="使用DiffUtil"></a>使用DiffUtil</h2><p>下面通过两种不同的改变RecyclerView条目来介绍DiffUtil的使用。</p>
-<ul>
-<li>增加或删除条目</li>
-</ul>
-<p>这种情况下，数据集的大小改变，反映在RecyclerView的效果就是增加或者删除条目</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">89</span>,<span class="string">"xiao"</span>));</div><div class="line">  mNewDatas.add(<span class="keyword">new</span> Item(<span class="number">90</span>,<span class="string">"xia"</span>));</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>增加条目后的RecyclerView的效果为：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-add.png" alt=""></p>
-<ul>
-<li>更新具体的条目</li>
-</ul>
-<p>这种情况下数据集大小不改变，改变数据集中条目的内容，反映在RecyclerView的效果就是更新具体的条目，这回调用Callback中的getChangePayload方法，而Adapter必须要实现<code>public void onBindViewHolder(DiffItemHolder holder, int position, List&lt;Object&gt; payloads)</code>方法。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">refresh</span><span class="params">()</span> </span>&#123;</div><div class="line">  mNewDatas.clear();</div><div class="line">  mNewDatas.addAll(mDatas);</div><div class="line">  <span class="comment">//改变第三个位置的对象</span></div><div class="line">  Item item = <span class="keyword">new</span> Item(<span class="number">3</span>,<span class="string">"zhang"</span>);</div><div class="line">  mNewDatas.remove(<span class="number">3</span>);</div><div class="line">  mNewDatas.add(<span class="number">3</span>,item);</div><div class="line">  DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(<span class="keyword">new</span> DiffCallback(mDatas,mNewDatas),<span class="keyword">true</span>);</div><div class="line">  <span class="comment">//将新数据给Adapter</span></div><div class="line">  mAdapter.setDatas(mNewDatas);</div><div class="line">  diffResult.dispatchUpdatesTo(mAdapter);</div><div class="line">  mDatas.clear();</div><div class="line">  mDatas.addAll(mNewDatas);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>更新条目后的RecyclerView效果为：</p>
-<p><img src="http://7xs7a3.com1.z0.glb.clouddn.com/diff-after-refresh.png" alt=""></p>
-<p>由图可知，第四个位置的条目显示变为zhang。</p>
-<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>DiffUtil可用于高效进行RecyclerView的数据更新，但DiffUtil本身的作用是计算数据集的最小更新。DiffUtil有强大的算法支撑，可以利用DiffUtil完成许多其他功能。</p>
-<h1 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h1><p><a href="https://github.com/liuguoquan727/MaterialDesignDemo/blob/master/app/src/main/java/com/michael/materialdesign/recyclerview/DiffUtilActivity.java" target="_blank" rel="external">在RecyclerView目录下</a></p>
-<p>参考文章:</p>
-<p><a href="http://blog.chengdazhi.com/index.php/231?sukey=3997c0719f151520abc3703315e3fef6e18ec9dce4f81882490fce74f3aae8be1eb373fcd36a9b3faaddddcea988dbfa" target="_blank" rel="external">使用DiffUtil高效更新RecyclerView</a><br><a href="http://blog.csdn.net/zxt0601/article/details/52562770" target="_blank" rel="external">详解7.0带来的新工具类：DiffUtil</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/11/25/Android DiffUtil在RecyclerView中的使用/" data-id="cj6f0so97000nf5191wr8cdx0" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/11/25/Android DiffUtil在RecyclerView中的使用/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
-    <article id="post-Android_LoaderManager使用详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/09/12/Android_LoaderManager使用详解/" class="article-date">
-  <time datetime="2016-09-12T12:23:25.000Z" itemprop="datePublished">2016-09-12 20:23:25</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Android/">Android</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/09/12/Android_LoaderManager使用详解/">Android LoaderManager使用详解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <h1 id="LoaderManager是什么？"><a href="#LoaderManager是什么？" class="headerlink" title="LoaderManager是什么？"></a>LoaderManager是什么？</h1><p>LoaderManager用来负责管理与Activity或者Fragment联系起来的一个或多个Loaders对象。每个Activity或者Fragment都有唯一的一个LoaderManager实例，用来启动、停止、保持、重启、关闭它的Loaders。这些事件有时直接在客户端通过调用initLoader()/restartLoader()/destroyLoader()函数来实现。通常这些事件通过主要的Activity/Fragment声明周期事件来触发，而不是手动（当然也可以手动调用）。比如，当一个Activity关闭时（destroyed），改活动将指示它的LoaderManager来销毁并且关闭它的Loaders（当然也会销毁并关闭与这些Loaders关联的资源，比如Cursor）。  </p>
-<p>LoaderManager并不知道数据如何装载以及何时需要装载。相反地，LoaderManager只需要控制它的Loaders们开始、停止、重置他们的Load行为，在配置变换（比如横竖屏切换）时保持loaders们的状态，并提供一个简单的接口来获取load结果到客户端中。</p>
-<h1 id="实现LoaderManager-LoaderCallbacks接口"><a href="#实现LoaderManager-LoaderCallbacks接口" class="headerlink" title="实现LoaderManager.LoaderCallbacks接口"></a>实现LoaderManager.LoaderCallbacks<d>接口</d></h1><p>LoaderManager.LoaderCallbacks<d>接口LoaderManager用来向客户返回数据的方式。每个Loader都有自己的回调对象供与LoaderManager进行交互。该回调对象在实现LoaderManager中地位很高，告诉LoaderManager如何实例化Loader(onCreateLoader)，以及当载入行为结束或者重启（onLoadFinished或者onLoadReset）之后执行什么操作。大多数情况，你需要把该接口实现为组件的一部分，比如说让你的Activity或者Fragment实现LoadManager.LoaderCallbacks<d>接口。</d></d></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SampleActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">D</span>&gt; </span>&#123;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> Loader&lt;D&gt; <span class="title">onCreateLoader</span><span class="params">(<span class="keyword">int</span> id, Bundle args)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;D&gt; loader, D data)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span><span class="params">(Loader&lt;D&gt; loader)</span> </span>&#123; ... &#125;  </div><div class="line"></div><div class="line">  <span class="comment">/* ... */</span>  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>一旦实现该接口，客户端将回调对象（本例中为“this”）作为LoaderManager的initLoader函数的第三个参数传输。<br>总的来说，实现回调接口非常直接明了。每个回调方法都有各自明确的与LoaderManager进行交互的目的：</p>
-<ul>
-<li>onCreateLoader是一个工厂方法，用来返回一个新的Loader。LoaderManager将会在它第一次创建Loader的时候调用该方法。</li>
-<li>onLoadFinished方法将在Loader创建完毕的时候自动调用。典型用法是，当载入数据完毕，客户端（译者注：调用它的Activity之类的）需要更新应用UI。客户端假设每次有新数据的时候，新数据都会返回到这个方法中。记住，检测数据源是Loader的工作，Loader也会执行实际的同步载入操作。一旦Loader载入数据完成，LoaderManager将会接受到这些载入数据，并且将将结果传给回调对象的onLoadFinished方法，这样客户端（比如Activity或者Fragment）就能使用该数据了。</li>
-<li>最后，当Loader们的数据被重置的时候将会调用onLoadReset。该方法让你可以从就的数据中移除不再有用的数据。</li>
-</ul>
-<h1 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.michael.loadermanagerdemo;</div><div class="line"></div><div class="line"><span class="keyword">import</span> android.database.Cursor;</div><div class="line"><span class="keyword">import</span> android.os.Looper;</div><div class="line"><span class="keyword">import</span> android.provider.MediaStore;</div><div class="line"><span class="keyword">import</span> android.support.v4.app.LoaderManager;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.CursorLoader;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.FileProvider;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.Loader;</div><div class="line"><span class="keyword">import</span> android.support.v4.content.PermissionChecker;</div><div class="line"><span class="keyword">import</span> android.support.v7.app.AppCompatActivity;</div><div class="line"><span class="keyword">import</span> android.os.Bundle;</div><div class="line"><span class="keyword">import</span> android.util.Log;</div><div class="line"><span class="keyword">import</span> com.orhanobut.logger.Logger;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">AppCompatActivity</span> <span class="keyword">implements</span> <span class="title">LoaderManager</span>.<span class="title">LoaderCallbacks</span>&lt;<span class="title">Cursor</span>&gt;</span>&#123;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] PROJECTION = <span class="keyword">new</span> String[] &#123; MediaStore.Images.Media._ID, MediaStore.Images.Media.DATA &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">final</span> String[] DOC_PROJECTION = &#123;</div><div class="line">      MediaStore.Files.FileColumns.DATA,</div><div class="line">      MediaStore.Files.FileColumns.MIME_TYPE,</div><div class="line">      MediaStore.Files.FileColumns.TITLE</div><div class="line"></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADER_ID = <span class="number">1</span>;</div><div class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> LOADER_FILE_ID = <span class="number">2</span>;</div><div class="line"></div><div class="line">  LoaderManager mLoaderManager;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">    Logger.init(<span class="string">"loader"</span>);</div><div class="line"></div><div class="line">    <span class="comment">//1.获取LoadManager实例</span></div><div class="line">    mLoaderManager = getSupportLoaderManager();</div><div class="line">    <span class="comment">//2.设置LoadManager传输的参数</span></div><div class="line">    Bundle bundle = <span class="keyword">new</span> Bundle();</div><div class="line">    bundle.putString(<span class="string">"liu"</span>,<span class="string">"liuguoquan"</span>);</div><div class="line">    <span class="comment">//3.初始化LoadManager</span></div><div class="line">    mLoaderManager.initLoader(LOADER_FILE_ID,bundle,<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> Loader&lt;Cursor&gt; <span class="title">onCreateLoader</span><span class="params">(<span class="keyword">int</span> id, Bundle bundle)</span> </span>&#123;</div><div class="line">    Logger.d(<span class="string">"bundle: "</span> + bundle.getString(<span class="string">"liu"</span>));</div><div class="line">    <span class="keyword">if</span> (id == LOADER_ID) &#123;</div><div class="line">      <span class="comment">//获取图片信息</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(MainActivity.<span class="keyword">this</span>, MediaStore.Images.Media.EXTERNAL_CONTENT_URI,</div><div class="line">          PROJECTION, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (id == LOADER_FILE_ID) &#123;</div><div class="line">      <span class="comment">//获取文件名</span></div><div class="line">      <span class="keyword">return</span> <span class="keyword">new</span> CursorLoader(MainActivity.<span class="keyword">this</span>,MediaStore.Files.getContentUri(<span class="string">"external"</span>),DOC_PROJECTION,<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">null</span>;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoadFinished</span><span class="params">(Loader&lt;Cursor&gt; loader, Cursor cursor)</span> </span>&#123;</div><div class="line">    <span class="comment">//创建完毕后调用</span></div><div class="line">    <span class="keyword">switch</span> (loader.getId()) &#123;</div><div class="line">      <span class="keyword">case</span> LOADER_ID:</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (cursor.moveToNext()) &#123;</div><div class="line">          Long id = cursor.getLong(<span class="number">0</span>);</div><div class="line">          String data = cursor.getString(<span class="number">1</span>);</div><div class="line">          Log.d(<span class="string">"loader"</span>,<span class="string">"id:"</span> + id + <span class="string">"; data: "</span> + data);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">break</span>;</div><div class="line"></div><div class="line">      <span class="keyword">case</span> LOADER_FILE_ID:</div><div class="line"></div><div class="line">        <span class="keyword">while</span> (cursor.moveToNext()) &#123;</div><div class="line">          String title =  cursor.getString(<span class="number">2</span>);</div><div class="line">          Log.d(<span class="string">"loader"</span>,<span class="string">"title: "</span> + title);</div><div class="line">        &#125;</div><div class="line">        cursor.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="meta">@Override</span> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onLoaderReset</span><span class="params">(Loader&lt;Cursor&gt; loader)</span> </span>&#123;</div><div class="line">    <span class="comment">//数据重置时调用</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><a href="http://blog.csdn.net/murphykwu/article/details/35288477" target="_blank" rel="external">LoaderManager使用详解（三）—实现Loaders</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://liuguoquan727.github.io/2016/09/12/Android_LoaderManager使用详解/" data-id="cj6f0so9j001ef51991xttkex" class="article-share-link">分享</a>
-      
-        <a href="http://liuguoquan727.github.io/2016/09/12/Android_LoaderManager使用详解/#ds-thread" class="article-comment-link">留言</a>
-      
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实战/">实战</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
- 
-
-
-  
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/page/11/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/13/">下一页&raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/11/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/13/">下一页&raquo;</a>
   </nav>
 </section>
            
@@ -1123,23 +873,23 @@
       <ul>
         
           <li>
+            <a href="/2017/08/16/Android启动流程①init进程分析/">Android启动流程①init进程分析</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/15/Android系统架构与源码目录/">Android系统架构与源码目录</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/14/Mac编译Android源码/">Mac编译Android源码</a>
+          </li>
+        
+          <li>
             <a href="/2017/06/21/JavaScript⑦对象/">JavaScript⑦对象</a>
           </li>
         
           <li>
             <a href="/2017/06/19/JavaScript⑥引用类型RegExp/">JavaScript⑥引用类型RegExp</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Global/">JavaScript⑥引用类型Global</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Date/">JavaScript⑥引用类型Date</a>
-          </li>
-        
-          <li>
-            <a href="/2017/06/19/JavaScript⑥引用类型Array/">JavaScript⑥引用类型Array</a>
           </li>
         
       </ul>
