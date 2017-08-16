@@ -6,7 +6,8 @@
     <entry>
       <title><![CDATA[JavaScript⑦对象]]></title>
       <url>http://liuguoquan727.github.io/2017/06/21/JavaScript%E2%91%A6%E5%AF%B9%E8%B1%A1/</url>
-      <content type="html"><![CDATA[<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><ul>
+      <content type="html"><![CDATA[<p>[TOC]</p>
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><h2 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h2><ul>
 <li>创建一个函数需要用到关键字function，后面是一个函数名</li>
 <li>为函数提供0或多个参数，使用参数向函数传值</li>
 <li>可以返回一个值作为调用这个函数的结果，这是可选的</li>
@@ -22,6 +23,7 @@
 <blockquote>
 <p>函数声明可以出现在脚本中的任何位置。使用多个外部JavaScript文件时有一点要记住，如果不同文件中有两个同名的函数，将使用浏览器最后看到的那个函数。</p>
 </blockquote>
+<a id="more"></a>
 <h2 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h2><p>调用函数时，按顺序传入参数即可：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> sum = add(<span class="number">1</span>,<span class="number">2</span>); <span class="comment">//返回3</span></div></pre></td></tr></table></figure>
 <p>由于JavaScript允许任意参数而不影响调用，因此传入的参数比定义的参数多也没有问题，虽然函数内部并不需要这些参数：</p>
