@@ -579,7 +579,7 @@
     <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A4%E5%87%BD%E6%95%B0/"/>
     <id>http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/</id>
     <published>2017-06-18T13:14:06.000Z</published>
-    <updated>2017-06-19T13:47:48.000Z</updated>
+    <updated>2017-08-16T09:05:22.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
@@ -593,6 +593,7 @@
 <li>构造函数的定义方法</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//function语句的定义方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//函数直接量的定义方法</span></div><div class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"函数直接量的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//构造函数的定义方法</span></div><div class="line"><span class="keyword">var</span> test3 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>,<span class="string">"arg2"</span>,<span class="string">"console.log('构造函数的定义方法:',arg1+arg2)"</span>);</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h1 id="函数的重载"><a href="#函数的重载" class="headerlink" title="函数的重载"></a>函数的重载</h1><p>ECMAScript 函数不能实现重载，ECMAScript 没有函数签名，因为其参数是由包含0 或者多个值的数组来表示的。如果在 ECMAScript 中定义了两个名字相同的参数，则该名字只属于后定义的函数。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num + <span class="number">100</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">num</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> num + <span class="number">200</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> ret = add(<span class="number">100</span>);</div><div class="line"><span class="built_in">console</span>.log(ret);</div><div class="line"><span class="comment">//300</span></div></pre></td></tr></table></figure>
 <h1 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h1><h2 id="直接调用-函数名-实参列表"><a href="#直接调用-函数名-实参列表" class="headerlink" title="直接调用:函数名(实参列表)"></a>直接调用:函数名(实参列表)</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//直接调用</span></div><div class="line">test1(<span class="number">1</span>,<span class="number">2</span>);<span class="comment">//function语句的定义方法: 3</span></div></pre></td></tr></table></figure>
@@ -646,7 +647,17 @@
     <summary type="html">
     
       &lt;h1 id=&quot;初识函数&quot;&gt;&lt;a href=&quot;#初识函数&quot; class=&quot;headerlink&quot; title=&quot;初识函数&quot;&gt;&lt;/a&gt;初识函数&lt;/h1&gt;&lt;p&gt;ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。&lt;/p&gt;
-&lt;figure clas
+&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 基本的语法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;functionName&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;argument1,argument2&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;comment&quot;&gt;/*一堆的代码*/&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//下面是函数的一个实例，&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;diff&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;a,b&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a-b);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;diff(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//输出5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;diff(&lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;);&lt;span class=&quot;comment&quot;&gt;//输出18&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;diff&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;a,b&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; a-b;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; diffNumber=diff(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(diffNumber);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； &lt;/p&gt;
+&lt;p&gt;return语句可以不带任何返回值，这种情况下，函数返回值是undefined；这种写法，一般用在需要提前停止函数又不需要返回值的情况下。&lt;/p&gt;
+&lt;h1 id=&quot;函数的定义&quot;&gt;&lt;a href=&quot;#函数的定义&quot; class=&quot;headerlink&quot; title=&quot;函数的定义&quot;&gt;&lt;/a&gt;函数的定义&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;function语句的定义方法&lt;/li&gt;
+&lt;li&gt;函数直接量的定义方法&lt;/li&gt;
+&lt;li&gt;构造函数的定义方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//function语句的定义方法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;test1&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arg1,arg2&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&quot;function语句的定义方法:&quot;&lt;/span&gt;,arg1+arg2);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//函数直接量的定义方法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; test2 = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;arg1,arg2&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;&quot;函数直接量的定义方法:&quot;&lt;/span&gt;,arg1+arg2);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;	&lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//构造函数的定义方法&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; test3 = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Function&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&quot;arg1&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;arg2&quot;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&quot;console.log(&#39;构造函数的定义方法:&#39;,arg1+arg2)&quot;&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -662,7 +673,7 @@
     <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A3%E6%B5%81%E7%A8%8B%E8%AF%AD%E5%8F%A5/"/>
     <id>http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/</id>
     <published>2017-06-18T13:13:06.000Z</published>
-    <updated>2017-06-18T13:13:50.000Z</updated>
+    <updated>2017-08-16T09:07:21.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(条件表达式)</span> &#123;</div><div class="line">  <span class="comment">//循环执行代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><p>do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。</p>
@@ -675,6 +686,7 @@
 <li>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。</li>
 <li>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。</li>
 </ul>
+<a id="more"></a>
 <h1 id="跳转语句"><a href="#跳转语句" class="headerlink" title="跳转语句"></a>跳转语句</h1><ul>
 <li>return：终止函数体的运行，并返回一个值</li>
 <li>break：终止整个循环，不再进行判断</li>
@@ -704,7 +716,17 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;循环语句&quot;&gt;&lt;a href=&quot;#循环语句&quot; class=&quot;headerlink&quot; title=&quot;循环语句&quot;&gt;&lt;/a&gt;循环语句&lt;/h1&gt;&lt;h2 id=&quot;while&quot;&gt;&lt;a href=&quot;#while&quot; class=&quot;headerlink&quot; title=&quot;while&quot;&gt;
+      &lt;h1 id=&quot;循环语句&quot;&gt;&lt;a href=&quot;#循环语句&quot; class=&quot;headerlink&quot; title=&quot;循环语句&quot;&gt;&lt;/a&gt;循环语句&lt;/h1&gt;&lt;h2 id=&quot;while&quot;&gt;&lt;a href=&quot;#while&quot; class=&quot;headerlink&quot; title=&quot;while&quot;&gt;&lt;/a&gt;while&lt;/h2&gt;&lt;figure class=&quot;highlight gcode&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;(条件表达式)&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;comment&quot;&gt;//循环执行代码段&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;do-while&quot;&gt;&lt;a href=&quot;#do-while&quot; class=&quot;headerlink&quot; title=&quot;do-while&quot;&gt;&lt;/a&gt;do-while&lt;/h2&gt;&lt;p&gt;do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。&lt;/p&gt;
+&lt;figure class=&quot;highlight gcode&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;do&lt;/span&gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;   &lt;span class=&quot;comment&quot;&gt;//代码执行主体&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt; &amp;#125; &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;comment&quot;&gt;(条件表达式)&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;for&quot;&gt;&lt;a href=&quot;#for&quot; class=&quot;headerlink&quot; title=&quot;for&quot;&gt;&lt;/a&gt;for&lt;/h2&gt;&lt;figure class=&quot;highlight matlab&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (var &lt;span class=&quot;built_in&quot;&gt;i&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;; &lt;span class=&quot;built_in&quot;&gt;i&lt;/span&gt; &amp;lt; array.&lt;span class=&quot;built_in&quot;&gt;length&lt;/span&gt;; &lt;span class=&quot;built_in&quot;&gt;i&lt;/span&gt;++) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       array[i]&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;       //代码执行的主体&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;     &amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;for-in&quot;&gt;&lt;a href=&quot;#for-in&quot; class=&quot;headerlink&quot; title=&quot;for-in&quot;&gt;&lt;/a&gt;for-in&lt;/h2&gt;&lt;p&gt;for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。&lt;/p&gt;
+&lt;figure class=&quot;highlight ceylon&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (var &lt;span class=&quot;keyword&quot;&gt;variable&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;object&lt;/span&gt;.hasOwnProperty(&lt;span class=&quot;keyword&quot;&gt;variable&lt;/span&gt;)) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//代码执行主体&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;注意事项&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。&lt;/li&gt;
+&lt;li&gt;如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -720,7 +742,7 @@
     <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A2%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
     <id>http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/</id>
     <published>2017-06-18T13:12:06.000Z</published>
-    <updated>2017-06-18T13:13:23.000Z</updated>
+    <updated>2017-08-16T09:07:30.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="自增与自减"><a href="#自增与自减" class="headerlink" title="自增与自减"></a>自增与自减</h1><ul>
 <li>++ 对唯一的运算数进行递增操作(每次加1)</li>
@@ -752,6 +774,7 @@
 </ul>
 </li>
 </ul>
+<a id="more"></a>
 <h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h1><h2 id="逻辑非"><a href="#逻辑非" class="headerlink" title="逻辑非!"></a>逻辑非!</h2><p>逻辑非操作符首先会将它的操作数转换为一个布尔值，然后再 对其求反。也就是说，逻辑非操作符遵循下列规则：</p>
 <ul>
 <li>操作数是对象，返回false</li>
@@ -868,7 +891,34 @@
     
       &lt;h1 id=&quot;自增与自减&quot;&gt;&lt;a href=&quot;#自增与自减&quot; class=&quot;headerlink&quot; title=&quot;自增与自减&quot;&gt;&lt;/a&gt;自增与自减&lt;/h1&gt;&lt;ul&gt;
 &lt;li&gt;++ 对唯一的运算数进行递增操作(每次加1)&lt;/li&gt;
-&lt;li&gt;– 对唯一的运算数进行递减操作(每次减1
+&lt;li&gt;– 对唯一的运算数进行递减操作(每次减1)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;位运算符&quot;&gt;&lt;a href=&quot;#位运算符&quot; class=&quot;headerlink&quot; title=&quot;位运算符&quot;&gt;&lt;/a&gt;位运算符&lt;/h1&gt;&lt;h2 id=&quot;逻辑位运算&quot;&gt;&lt;a href=&quot;#逻辑位运算&quot; class=&quot;headerlink&quot; title=&quot;逻辑位运算&quot;&gt;&lt;/a&gt;逻辑位运算&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;按位非~ 结果就是返回数值的反码&lt;/li&gt;
+&lt;li&gt;按位与&amp;amp;  同时为1&lt;/li&gt;
+&lt;li&gt;按位或|  有一个为1&lt;/li&gt;
+&lt;li&gt;按位异或^ 既不同时为0，也不同时为1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;位移操作&quot;&gt;&lt;a href=&quot;#位移操作&quot; class=&quot;headerlink&quot; title=&quot;位移操作&quot;&gt;&lt;/a&gt;位移操作&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;左移&amp;lt;&amp;lt;&lt;ul&gt;
+&lt;li&gt;将数值的所有位左移指定的位数&lt;/li&gt;
+&lt;li&gt;所有空位用0补充&lt;/li&gt;
+&lt;li&gt;左移1位对其X2，左移2位对其X4；依次类推&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;有符号右移&amp;gt;&amp;gt;&lt;ul&gt;
+&lt;li&gt;将数值的所有位右移指定的位数&lt;/li&gt;
+&lt;li&gt;一处的位被舍弃&lt;/li&gt;
+&lt;li&gt;保留符号位&lt;/li&gt;
+&lt;li&gt;右移一位对齐除2，右移两位对齐除4，依次类推&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;无符号右移&amp;gt;&amp;gt;&amp;gt;&lt;ul&gt;
+&lt;li&gt;正数，与有符号右移结果相同&lt;/li&gt;
+&lt;li&gt;负数，会出现无限大的数值；&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
     
     </summary>
     
@@ -884,7 +934,7 @@
     <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A1%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"/>
     <id>http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/</id>
     <published>2017-06-18T13:11:06.000Z</published>
-    <updated>2017-06-18T13:13:03.000Z</updated>
+    <updated>2017-08-16T09:07:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；</p>
 <h1 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h1><ul>
@@ -897,6 +947,7 @@
 <li>console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象</li>
 </ul>
 <p>从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；<br>typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；</p>
+<a id="more"></a>
 <h1 id="null和undefined"><a href="#null和undefined" class="headerlink" title="null和undefined"></a>null和undefined</h1><ul>
 <li>null<ul>
 <li>逻辑上null表示一个空对象的指针</li>
@@ -1091,7 +1142,16 @@
     <summary type="html">
     
       &lt;p&gt;ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；&lt;/p&gt;
-&lt;h1 id
+&lt;h1 id=&quot;typeof操作符&quot;&gt;&lt;a href=&quot;#typeof操作符&quot; class=&quot;headerlink&quot; title=&quot;typeof操作符&quot;&gt;&lt;/a&gt;typeof操作符&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;console.log(typeof qqqq);//undefined，这个变量没有定义；&lt;/li&gt;
+&lt;li&gt;console.log(typeof (222));//number，是一个数字； typeof是操作符而不是方法，所以后面可以加()也可以不加；&lt;/li&gt;
+&lt;li&gt;console.log(typeof “222”);//string，是一个字符串&lt;/li&gt;
+&lt;li&gt;console.log(typeof false);//boolean，是一个布尔值&lt;/li&gt;
+&lt;li&gt;console.log(typeof {});//object 是一个对象&lt;/li&gt;
+&lt;li&gt;console.log(typeof null);//objecy 是一个对象，在javascript里，null是一个空指针；&lt;/li&gt;
+&lt;li&gt;console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；&lt;br&gt;typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；&lt;/p&gt;
     
     </summary>
     
@@ -1107,11 +1167,12 @@
     <link href="http://liuguoquan727.github.io/2017/06/18/JavaScript%E2%91%A0%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
     <id>http://liuguoquan727.github.io/2017/06/18/JavaScript①基础知识/</id>
     <published>2017-06-18T13:10:06.000Z</published>
-    <updated>2017-06-18T13:12:24.000Z</updated>
+    <updated>2017-08-16T09:07:54.000Z</updated>
     
     <content type="html"><![CDATA[<p>JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。</p>
 <h2 id="JavaScript能做什么"><a href="#JavaScript能做什么" class="headerlink" title="JavaScript能做什么"></a>JavaScript能做什么</h2><p>一旦有一个包含<code>&lt; script &gt;</code>元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。</p>
 <p>你可以要求JavaScript：</p>
+<a id="more"></a>
 <h3 id="1-建立一个语句"><a href="#1-建立一个语句" class="headerlink" title="1.建立一个语句"></a>1.建立一个语句</h3><p>创建一个变量并赋值、让变量相加、完成计算，还可以使用一个JavaScript库的内置功能。</p>
 <figure class="highlight ebnf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">var temp</span>  = 98.6;</div><div class="line"><span class="attribute">var beanCounter</span> = 4;</div><div class="line"><span class="attribute">var reallyCool</span> = true;</div><div class="line"><span class="attribute">var motto</span> = <span class="string">"I rule"</span>;</div><div class="line"></div><div class="line"><span class="attribute">temp</span> = (temp - 32) * 5 / 9;</div><div class="line"><span class="attribute">motto</span> = motto + <span class="string">" and so do you!"</span>;</div><div class="line"><span class="attribute">var pos</span> = Math.random();</div></pre></td></tr></table></figure>
 <h3 id="2-重复做事情"><a href="#2-重复做事情" class="headerlink" title="2.重复做事情"></a>2.重复做事情</h3><p>循环完成语句，次数可以根据你的需要来定</p>
@@ -1209,7 +1270,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交
+      &lt;p&gt;JavaScript会带你进入新境界。你已经了解了HTML标记（结构），而且知道了CSS样式（表示），剩下的就是JavaScript（行为）。如果你只知道结构和表示，当然创建一个漂亮的页面时没有问题的，不过它们只是页面而已。用JavaScript增加行为时，你就能创建一种交互式体验。&lt;/p&gt;
+&lt;h2 id=&quot;JavaScript能做什么&quot;&gt;&lt;a href=&quot;#JavaScript能做什么&quot; class=&quot;headerlink&quot; title=&quot;JavaScript能做什么&quot;&gt;&lt;/a&gt;JavaScript能做什么&lt;/h2&gt;&lt;p&gt;一旦有一个包含&lt;code&gt;&amp;lt; script &amp;gt;&lt;/code&gt;元素的页面（或者包含引用，指向一个单独的JavaScript文件），你就已经开始编写代码了。JavaScript是一种完备的编程语言，用其他语言能做的事情用JavaScript同样能够做到，甚至还能做得更多，因为我们就在Web页面内部编程。&lt;/p&gt;
+&lt;p&gt;你可以要求JavaScript：&lt;/p&gt;
     
     </summary>
     
