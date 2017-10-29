@@ -296,7 +296,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Global/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/04/27/Java8特性②Stream简介/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -321,8 +321,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/19/JavaScript⑥引用类型Global/" itemprop="url">
-                  JavaScript⑥引用类型Global
+                <a class="post-title-link" href="/2017/04/27/Java8特性②Stream简介/" itemprop="url">
+                  Java8特性②Stream简介
                 </a>
               
             
@@ -338,8 +338,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T21:20:06+08:00">
-                2017-06-19 21:20:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-27T15:52:53+08:00">
+                2017-04-27 15:52:53
               </time>
             
 
@@ -361,8 +361,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -379,8 +379,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/19/JavaScript⑥引用类型Global/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/19/JavaScript⑥引用类型Global/" itemprop="commentCount"></span>
+                <a href="/2017/04/27/Java8特性②Stream简介/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/27/Java8特性②Stream简介/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -407,27 +407,13 @@
 
       
         
-          <p>所有在全局作用域中定义的属性和函数，都是 Global 对象的属性。</p>
-<ul>
-<li>isNaN() </li>
-<li>isFinite() </li>
-<li>parseInt() 与 parseFloat()</li>
-<li>encodeURI() 和 encodeURIComponent()</li>
-<li>decodeURI() 和 decodeURIComponent()</li>
-<li>eval()</li>
-</ul>
-<h1 id="URI编码"><a href="#URI编码" class="headerlink" title="URI编码"></a>URI编码</h1><h2 id="encodeURI-和-encodeURIComponent"><a href="#encodeURI-和-encodeURIComponent" class="headerlink" title="encodeURI() 和 encodeURIComponent()"></a>encodeURI() 和 encodeURIComponent()</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri1 = <span class="string">"http://www.wrox.com/illegal value.htm#start"</span>;</div><div class="line"><span class="keyword">var</span> uri2 = <span class="string">"https://www.google.com.hk/webhp?tab=Tw"</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURI</span>(uri1));<span class="comment">//http://www.wrox.com/illegal%20value.htm#start</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURI</span>(uri2));<span class="comment">//https://www.google.com.hk/webhp?tab=Tw</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURIComponent</span>(uri1));<span class="comment">//http%3A%2F%2Fwww.wrox.com%2Fillegal%20value.htm%23start</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">encodeURIComponent</span>(uri2));<span class="comment">//https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw</span></div></pre></td></tr></table></figure>
-<p><strong>encodeURI() 不会对本身属于 URI 的特殊字符进行编码，例如冒号、正斜杠、问号和井字号；而 encodeURIComponent() 则会对它发现的任何非标准字符进行编码。</strong></p>
-<p>使用 encodeURI() 编码后的结果是除了空格之外的其他字符都原封不动，只有空格被替换成了%20 。而 encodeURIComponent() 方法则会使用对应的编码替换所有非字母数字字符。这也正是可以对整个 URI使用 encodeURI() ，而只能对附加在现有 URI后面的字符串使用 encodeURIComponent()的原因所在。</p>
-<p>Global 对象的 encodeURI() 和 encodeURIComponent() 方法可以对 URI（Uniform ResourceIdentifiers，通用资源标识符）进行编码，以便发送给浏览器。有效的 URI 中不能包含某些字符，例如空格。而这两个 URI 编码方法就可以对 URI 进行编码，它们用特殊的 UTF-8 编码替换所有无效的字符，从而让浏览器能够接受和理解。</p>
-<blockquote>
-<p>使用 encodeURIComponent() 方法的时候要比使用encodeURI()更多，因为在实践中更常见的是对查询字符串参数而不是对基础URI进行编码。</p>
-</blockquote>
-<h2 id="decodeURI-和-decodeURIComponent"><a href="#decodeURI-和-decodeURIComponent" class="headerlink" title="decodeURI() 和 decodeURIComponent()"></a>decodeURI() 和 decodeURIComponent()</h2><p>其中， decodeURI() 只能对使用 encodeURI() 替换的字符进行解码,decodeURIComponent可以解析encodeURI的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> uri1 = <span class="string">"https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw"</span>;</div><div class="line"><span class="keyword">var</span> uri2 = <span class="string">"http://www.wrox.com/illegal%20value.htm#start"</span>;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri1));<span class="comment">//https%3A%2F%2Fwww.google.com.hk%2Fwebhp%3Ftab%3DTw</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri1));<span class="comment">//https://www.google.com.hk/webhp?tab=Tw</span></div><div class="line">    </div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURI</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">decodeURIComponent</span>(uri2));<span class="comment">//http://www.wrox.com/illegal value.htm#start</span></div></pre></td></tr></table></figure>
+          
+          流是什么流是Java API的新成员，它允许你以声明性方式处理数据集合（通过查询语句来表达，而不是临时编写一个实现）。可以把它们看成遍历数据集的高级迭代器。此外流还可以透明地并行处理，无需写任何多线程代码了。如下面代码所示：
+12345678910public static List&lt;Stri
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/19/JavaScript⑥引用类型Global/#more" rel="contents">
+            <a class="btn" href="/2017/04/27/Java8特性②Stream简介/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -468,7 +454,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Date/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/04/24/Java8特性①Lambda表达式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -493,8 +479,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/19/JavaScript⑥引用类型Date/" itemprop="url">
-                  JavaScript⑥引用类型Date
+                <a class="post-title-link" href="/2017/04/24/Java8特性①Lambda表达式/" itemprop="url">
+                  Java8特性①Lambda表达式
                 </a>
               
             
@@ -510,8 +496,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T21:18:06+08:00">
-                2017-06-19 21:18:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-24T16:15:16+08:00">
+                2017-04-24 16:15:16
               </time>
             
 
@@ -533,8 +519,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -551,8 +537,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/19/JavaScript⑥引用类型Date/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/19/JavaScript⑥引用类型Date/" itemprop="commentCount"></span>
+                <a href="/2017/04/24/Java8特性①Lambda表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/04/24/Java8特性①Lambda表达式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -579,20 +565,15 @@
 
       
         
-          <h1 id="创建Date对象"><a href="#创建Date对象" class="headerlink" title="创建Date对象"></a>创建Date对象</h1><ul>
-<li>“月/日/年”，如 6/13/2004；</li>
-<li>“英文月名 日,年”，如 January 12,2016；</li>
-<li>“英文星期几 英文月名 日 年 时:分:秒 时区”，如 Tue May 25 2004 00:00:00 GMT-0700。</li>
-<li>YYYY-MM-DD HH:mm:ss.sss</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> testDate1 = <span class="keyword">new</span>  <span class="built_in">Date</span>();</div><div class="line"><span class="keyword">var</span> testDate2 = <span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"9/13/2016"</span>);</div><div class="line"><span class="keyword">var</span> testDate3 = <span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"09/13/2016"</span>);</div><div class="line"><span class="keyword">var</span> testDate4 = <span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"January 12,2016"</span>);</div><div class="line"><span class="keyword">var</span> testDate5 = <span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"Tue May 25 2016 00:00:00 GMT-0700"</span>);</div><div class="line"><span class="keyword">var</span> testDate6=<span class="keyword">new</span>  <span class="built_in">Date</span>(<span class="string">"2004-05-25 00:01:02"</span>);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate1"</span>,testDate1);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate2"</span>,testDate2);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate3"</span>,testDate3);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate4"</span>,testDate4);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate5"</span>,testDate5);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"testDate6"</span>,testDate6);</div></pre></td></tr></table></figure>
-<h1 id="计算程序的耗时"><a href="#计算程序的耗时" class="headerlink" title="计算程序的耗时"></a>计算程序的耗时</h1><p>Data.now() 方法，返回表示调用这个方法时的日期和时间的毫秒数。这个方法简化了使用 Data 对象分析代码的工作;</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//取得开始时间</div><div class="line">var start = Date.now();</div><div class="line">//调用函数</div><div class="line">for(var i=0;i&lt;10000000;i++)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//取得停止时间</div><div class="line">var end = Date.now();</div><div class="line">console.log(end-start);</div></pre></td></tr></table></figure>
-<p>支持 Data.now() 方法的浏览器包括 IE9+、Firefox 3+、Safari 3+、Opera 10.5 和 Chrome。在不支持它的浏览器中，使用+操作符把 Data 对象转换成字符串，也可以达到同样的目的。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//取得开始时间</div><div class="line">var start = +Date.now();</div><div class="line">//调用函数</div><div class="line">for(var i=0;i&lt;10000000;i++)&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line">//取得停止时间</div><div class="line">var end = +Date.now();</div><div class="line">console.log(end-start);</div></pre></td></tr></table></figure>
+          
+          简介概念Lambda 表达式可以理解为简洁地表示可传递的匿名函数的一种方式：它没有名称，但它有参数列表、函数主体、返回类型，可能还有一个可以抛出的异常列表。
+
+匿名：它不像普通方法那样有一个明确的名称；
+函数：Lambda 表达式是函数是因为它不像方法那样属于某个特定的类，但和方法一样，Lambda
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/19/JavaScript⑥引用类型Date/#more" rel="contents">
+            <a class="btn" href="/2017/04/24/Java8特性①Lambda表达式/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -633,7 +614,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥引用类型Array/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/03/29/数据结构与算法学习合集/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -658,8 +639,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/19/JavaScript⑥引用类型Array/" itemprop="url">
-                  JavaScript⑥引用类型Array
+                <a class="post-title-link" href="/2017/03/29/数据结构与算法学习合集/" itemprop="url">
+                  数据结构与算法学习合集
                 </a>
               
             
@@ -675,8 +656,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T21:16:06+08:00">
-                2017-06-19 21:16:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T15:06:16+08:00">
+                2017-03-29 15:06:16
               </time>
             
 
@@ -698,8 +679,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/数据结构/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
                   </a>
                 </span>
 
@@ -716,8 +697,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/19/JavaScript⑥引用类型Array/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/19/JavaScript⑥引用类型Array/" itemprop="commentCount"></span>
+                <a href="/2017/03/29/数据结构与算法学习合集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/数据结构与算法学习合集/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -744,14 +725,24 @@
 
       
         
-          <p>JavaScript的Array可以包含任意数据类型，并通过索引来访问每个元素。</p>
-<h1 id="创建数组"><a href="#创建数组" class="headerlink" title="创建数组"></a>创建数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建空数组</span></div><div class="line"><span class="keyword">var</span> arr1 = <span class="keyword">new</span> <span class="built_in">Array</span>();</div><div class="line"></div><div class="line"><span class="comment">//创建长度为10的数组</span></div><div class="line"><span class="keyword">var</span> arr2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">10</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> arr3 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> colors = [<span class="string">"red"</span>,<span class="string">"blue"</span>,<span class="string">"green"</span>];</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colors.length);</div><div class="line"></div><div class="line"><span class="comment">//改变数组长度，用undefined元素补全</span></div><div class="line">colors.length = <span class="number">4</span>;</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"></div><div class="line"><span class="comment">//索引超出范围同样会改变数组长度，未复制的元素用undefined补全</span></div><div class="line">colors[<span class="number">5</span>] = <span class="number">45</span>;</div><div class="line"><span class="built_in">console</span>.log(colors);</div><div class="line"><span class="comment">//[ 'red', 'blue', 'green', , , 45 ]</span></div></pre></td></tr></table></figure>
-<h1 id="检测数组"><a href="#检测数组" class="headerlink" title="检测数组"></a>检测数组</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//判断是否是数组</span></div><div class="line"><span class="keyword">if</span> (colors <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//ECMAScript5新增方法</span></div><div class="line"><span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(colors)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"是数组"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>instanceof 操作符的问题在于，它假定只有一个全局执行环境。如果网页中包含多个框架，那实 际上就存在两个以上不同的全局执行环境，从而存在两个以上不同版本的 Array 构造函数。</p>
-<p>ECMAScript 5 新增了 <code>Array.isArray()</code>方法。这个方法的目的是最终确定某 个值到底是不是数组，而不管它是在哪个全局执行环境中创建的。</p>
+          
+          数据结构数据结构之①算法
+数据结构之②顺序线性表
+数据结构之③单链表
+数据结构之④静态链表
+数据结构之⑤循环链表
+数据结构之⑥双向链表
+数据结构之⑦栈的顺序存储
+数据结构之⑧栈的链式存储
+数据结构之⑨栈与递归
+数据结构之⑩顺序队列
+数据结构之⑪循环顺序队列
+数据结构之⑫链式队列
+数据结构之⑬链式队列
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/19/JavaScript⑥引用类型Array/#more" rel="contents">
+            <a class="btn" href="/2017/03/29/数据结构与算法学习合集/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -792,7 +783,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/19/JavaScript⑥基本包装类型/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/04/JNI之⑤C:C++处理Java对象引用/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -817,8 +808,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/19/JavaScript⑥基本包装类型/" itemprop="url">
-                  JavaScript⑥基本包装类型
+                <a class="post-title-link" href="/2017/01/04/JNI之⑤C:C++处理Java对象引用/" itemprop="url">
+                  JNI之⑤C/C++处理Java对象引用
                 </a>
               
             
@@ -834,8 +825,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T21:14:06+08:00">
-                2017-06-19 21:14:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T15:42:25+08:00">
+                2017-01-04 15:42:25
               </time>
             
 
@@ -857,8 +848,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -875,8 +877,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/19/JavaScript⑥基本包装类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/19/JavaScript⑥基本包装类型/" itemprop="commentCount"></span>
+                <a href="/2017/01/04/JNI之⑤C:C++处理Java对象引用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/JNI之⑤C:C++处理Java对象引用/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -903,22 +905,12 @@
 
       
         
-          <h1 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h1><p>Boolean类型是与布尔值对应的引用类型。要创建 Boolean 对象，可以像下面这样调用 Boolean 构造函数并传入 true 或 false 值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">true</span>);</div><div class="line"><span class="built_in">console</span>.log(obj.valueOf());</div><div class="line"><span class="built_in">console</span>.log(obj.toString());</div></pre></td></tr></table></figure>
-<p>Boolean 对象在 ECMAScript 中的用处不大，因为它经 常会造成人们的误解。其中最常见的问题就是在布尔表达式中使用 Boolean 对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> falseObj = <span class="keyword">new</span> <span class="built_in">Boolean</span>(<span class="literal">false</span>);</div><div class="line"><span class="comment">//对象在布尔表达式中表示true</span></div><div class="line"><span class="keyword">var</span> ret = falseObj &amp;&amp; <span class="literal">true</span>;</div><div class="line"><span class="built_in">console</span>.log(ret); <span class="comment">//true</span></div></pre></td></tr></table></figure>
-<p>检测Boolean对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> falseObj);</div><div class="line"><span class="built_in">console</span>.log(falseObj <span class="keyword">instanceof</span> <span class="built_in">Boolean</span>);</div></pre></td></tr></table></figure>
-<h1 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h1><p>Number 是与数字值对应的引用类型。要创建 Number 对象，可以在调用 Number 构造函数时向其中传递相应的数值。</p>
-<ul>
-<li>toFixed()方法会按照指定的小数位返回数值的字符串表示</li>
-<li>toExponential()，该方法返回以指数表示法（也称 e 表示法） 表示的数值的字符串形式。</li>
-<li>toPrecision()会根据要处理的数值决定到底是调用 toFixed()还是调用 toExponential()。</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(num.toString());</div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">2</span>)); <span class="comment">//二进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">8</span>)); <span class="comment">//八进制</span></div><div class="line"><span class="built_in">console</span>.log(num.toString(<span class="number">16</span>)); <span class="comment">//16进制</span></div><div class="line"></div><div class="line"><span class="comment">//指定小数位数</span></div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line"></div><div class="line"><span class="comment">//自动四舍五入</span></div><div class="line">num = <span class="number">10.004</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.00</span></div><div class="line">num = <span class="number">10.005</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>)); <span class="comment">//10.01</span></div><div class="line"></div><div class="line">num = <span class="number">10</span>;</div><div class="line"><span class="comment">//指数表示法表示的数值的字符串形式</span></div><div class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">2</span>)); <span class="comment">//1.00e+1</span></div><div class="line"></div><div class="line"></div><div class="line">num = <span class="number">99</span>;</div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">1</span>)); <span class="comment">//1e+2</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">2</span>)); <span class="comment">//99</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">3</span>)); <span class="comment">//99.0</span></div><div class="line"><span class="built_in">console</span>.log(num.toPrecision(<span class="number">4</span>)); <span class="comment">//99.00</span></div></pre></td></tr></table></figure>
+          
+          数组引用的处理在Java中,使用new关键字创建对象,创建之后我们就可以随意使用这个对象,我们无需关心这个对象是什么时候被回收的 ,对象的回收已经托管到了JVM的GC,由GC来帮我们回收无引用的对象。将对象引用传递给C/C++时，C/C++层就会持有Java对象，如果不进行妥善处理，对象多了就会出现
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/19/JavaScript⑥基本包装类型/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/JNI之⑤C:C++处理Java对象引用/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -959,7 +951,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/18/JavaScript⑤函数/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/04/JNI之④C:C++创建Java对象/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -984,8 +976,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/18/JavaScript⑤函数/" itemprop="url">
-                  JavaScript⑤函数
+                <a class="post-title-link" href="/2017/01/04/JNI之④C:C++创建Java对象/" itemprop="url">
+                  JNI之④C/C++创建Java对象
                 </a>
               
             
@@ -1001,8 +993,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T21:14:06+08:00">
-                2017-06-18 21:14:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T15:41:57+08:00">
+                2017-01-04 15:41:57
               </time>
             
 
@@ -1024,8 +1016,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -1042,8 +1045,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/18/JavaScript⑤函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/JavaScript⑤函数/" itemprop="commentCount"></span>
+                <a href="/2017/01/04/JNI之④C:C++创建Java对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/JNI之④C:C++创建Java对象/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1070,21 +1073,18 @@
 
       
         
-          <h1 id="初识函数"><a href="#初识函数" class="headerlink" title="初识函数"></a>初识函数</h1><p>ECMAScript中的函数使用 function 关键字来声明，后跟一组参数以及函数体。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 基本的语法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">functionName</span>(<span class="params">argument1,argument2</span>)</span>&#123;</div><div class="line"> <span class="comment">/*一堆的代码*/</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//下面是函数的一个实例，</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="built_in">console</span>.log(a-b);</div><div class="line">&#125;</div><div class="line"></div><div class="line">diff(<span class="number">10</span>,<span class="number">5</span>);<span class="comment">//输出5</span></div><div class="line">diff(<span class="number">20</span>,<span class="number">2</span>);<span class="comment">//输出18</span></div></pre></td></tr></table></figure>
-<p>函数还有一个属性，就是可以return；ECMAScript中函数在定义的时候，不要求函数是否返回一个值，但是每个函数都有return的权利；任何函数在任何时候都可以通过return语句返回的值来实现把值返回给外部变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">diff</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line"> <span class="keyword">return</span> a-b;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> diffNumber=diff(<span class="number">10</span>,<span class="number">5</span>);</div><div class="line"><span class="built_in">console</span>.log(diffNumber);</div></pre></td></tr></table></figure>
-<p>函数的返回值只能通过return来返回,除了return以外，没有任何声明可以表示返回值，无论return在哪里，只要有执行了return同一条的代码后，函数立即停止，并且立即退出，因此位于return语句之后的人和代码都永远不会执行； </p>
-<p>return语句可以不带任何返回值，这种情况下，函数返回值是undefined；这种写法，一般用在需要提前停止函数又不需要返回值的情况下。</p>
-<h1 id="函数的定义"><a href="#函数的定义" class="headerlink" title="函数的定义"></a>函数的定义</h1><ul>
-<li>function语句的定义方法</li>
-<li>函数直接量的定义方法</li>
-<li>构造函数的定义方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//function语句的定义方法</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">test1</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"function语句的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//函数直接量的定义方法</span></div><div class="line"><span class="keyword">var</span> test2 = <span class="function"><span class="keyword">function</span>(<span class="params">arg1,arg2</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"函数直接量的定义方法:"</span>,arg1+arg2);</div><div class="line">	<span class="keyword">return</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//构造函数的定义方法</span></div><div class="line"><span class="keyword">var</span> test3 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"arg1"</span>,<span class="string">"arg2"</span>,<span class="string">"console.log('构造函数的定义方法:',arg1+arg2)"</span>);</div></pre></td></tr></table></figure>
+          
+          步骤
+获取Java对象的jclass
+获取构造函数的id，方法名使用
+NewObject创建Java对象jobject
+获取并调用jobject中的方法
+
+示例1234567891011121314151617package com.michael.ndk.write;/** * C访问Java字段
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/18/JavaScript⑤函数/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/JNI之④C:C++创建Java对象/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1125,7 +1125,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/18/JavaScript④流程语句/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/04/JNI之③C:C++调用Java字段与方法/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -1150,8 +1150,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/18/JavaScript④流程语句/" itemprop="url">
-                  JavaScript④流程语句
+                <a class="post-title-link" href="/2017/01/04/JNI之③C:C++调用Java字段与方法/" itemprop="url">
+                  JNI之③C/C++调用Java字段与方法
                 </a>
               
             
@@ -1167,8 +1167,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T21:13:06+08:00">
-                2017-06-18 21:13:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-04T15:41:41+08:00">
+                2017-01-04 15:41:41
               </time>
             
 
@@ -1190,8 +1190,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -1208,8 +1219,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/18/JavaScript④流程语句/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/JavaScript④流程语句/" itemprop="commentCount"></span>
+                <a href="/2017/01/04/JNI之③C:C++调用Java字段与方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/04/JNI之③C:C++调用Java字段与方法/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1236,20 +1247,12 @@
 
       
         
-          <h1 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h1><h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="comment">(条件表达式)</span> &#123;</div><div class="line">  <span class="comment">//循环执行代码段</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h2><p>do-while 语句是一种后测试循环语句，即只有在循环体中的代码执行之后，才会测试出口条件。 换句话说，在对条件表达式求值之前，循环体内的代码至少会被执行一次。</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">do</span> &#123;</div><div class="line">   <span class="comment">//代码执行主体</span></div><div class="line"> &#125; <span class="keyword">while</span> <span class="comment">(条件表达式)</span>;</div></pre></td></tr></table></figure>
-<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="built_in">i</span> = <span class="number">0</span>; <span class="built_in">i</span> &lt; array.<span class="built_in">length</span>; <span class="built_in">i</span>++) &#123;</div><div class="line">       array[i]</div><div class="line">       //代码执行的主体</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
-<h2 id="for-in"><a href="#for-in" class="headerlink" title="for-in"></a>for-in</h2><p>for-in 语句是一种精准的迭代语句，可以用来枚举对象的属性。</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (var <span class="keyword">variable</span> <span class="keyword">in</span> <span class="keyword">object</span>) &#123;</div><div class="line">  <span class="keyword">if</span> (<span class="keyword">object</span>.hasOwnProperty(<span class="keyword">variable</span>)) &#123;</div><div class="line">    <span class="comment">//代码执行主体</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><strong>注意事项</strong></p>
-<ul>
-<li>ECMAScript 对象的属性没有顺序。因此，通过 for-in 循环输出的属性名的顺序是不可预测的。</li>
-<li>如果表示要迭代的对象的变量值为 null 或 undefined ， for-in 语句会抛出错误。 ECMAScript 5 更正了这一行为；对这种情况不再抛出错误，而只是不执行循环体。</li>
-</ul>
+          
+          native函数定义1234567891011121314151617181920212223242526272829303132333435363738394041package com.michael.ndk.write;/** * C访问Java字段和方法 * Created by liugu
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/18/JavaScript④流程语句/#more" rel="contents">
+            <a class="btn" href="/2017/01/04/JNI之③C:C++调用Java字段与方法/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1290,7 +1293,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/18/JavaScript③运算符/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/02/JNI之②头文件分析/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -1315,8 +1318,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/18/JavaScript③运算符/" itemprop="url">
-                  JavaScript③运算符
+                <a class="post-title-link" href="/2017/01/02/JNI之②头文件分析/" itemprop="url">
+                  JNI之②头文件分析
                 </a>
               
             
@@ -1332,8 +1335,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T21:12:06+08:00">
-                2017-06-18 21:12:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T15:34:23+08:00">
+                2017-01-02 15:34:23
               </time>
             
 
@@ -1355,8 +1358,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -1373,8 +1387,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/18/JavaScript③运算符/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/JavaScript③运算符/" itemprop="commentCount"></span>
+                <a href="/2017/01/02/JNI之②头文件分析/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/02/JNI之②头文件分析/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1401,39 +1415,12 @@
 
       
         
-          <h1 id="自增与自减"><a href="#自增与自减" class="headerlink" title="自增与自减"></a>自增与自减</h1><ul>
-<li>++ 对唯一的运算数进行递增操作(每次加1)</li>
-<li>– 对唯一的运算数进行递减操作(每次减1)</li>
-</ul>
-<h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="逻辑位运算"><a href="#逻辑位运算" class="headerlink" title="逻辑位运算"></a>逻辑位运算</h2><ul>
-<li>按位非~ 结果就是返回数值的反码</li>
-<li>按位与&amp;  同时为1</li>
-<li>按位或|  有一个为1</li>
-<li>按位异或^ 既不同时为0，也不同时为1</li>
-</ul>
-<h2 id="位移操作"><a href="#位移操作" class="headerlink" title="位移操作"></a>位移操作</h2><ul>
-<li>左移&lt;&lt;<ul>
-<li>将数值的所有位左移指定的位数</li>
-<li>所有空位用0补充</li>
-<li>左移1位对其X2，左移2位对其X4；依次类推</li>
-</ul>
-</li>
-<li>有符号右移&gt;&gt;<ul>
-<li>将数值的所有位右移指定的位数</li>
-<li>一处的位被舍弃</li>
-<li>保留符号位</li>
-<li>右移一位对齐除2，右移两位对齐除4，依次类推</li>
-</ul>
-</li>
-<li>无符号右移&gt;&gt;&gt;<ul>
-<li>正数，与有符号右移结果相同</li>
-<li>负数，会出现无限大的数值；</li>
-</ul>
-</li>
-</ul>
+          
+          编写Java文件12345678910111213141516171819202122232425262728public class HeaderFile &#123;      private native void  doVoid();      native int doShort();  
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/18/JavaScript③运算符/#more" rel="contents">
+            <a class="btn" href="/2017/01/02/JNI之②头文件分析/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1474,7 +1461,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/06/18/JavaScript②数据类型/">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/01/02/JNI之①参数类型与Java参数类型对比/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="刘涤生">
@@ -1499,8 +1486,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/18/JavaScript②数据类型/" itemprop="url">
-                  JavaScript②数据类型
+                <a class="post-title-link" href="/2017/01/02/JNI之①参数类型与Java参数类型对比/" itemprop="url">
+                  JNI之①参数类型与Java参数类型对比
                 </a>
               
             
@@ -1516,8 +1503,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T21:11:06+08:00">
-                2017-06-18 21:11:06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-01-02T15:32:11+08:00">
+                2017-01-02 15:32:11
               </time>
             
 
@@ -1539,8 +1526,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/JavaScript/" itemprop="url" rel="index">
-                    <span itemprop="name">JavaScript</span>
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/NDK/" itemprop="url" rel="index">
+                    <span itemprop="name">NDK</span>
                   </a>
                 </span>
 
@@ -1557,8 +1555,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2017/06/18/JavaScript②数据类型/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/06/18/JavaScript②数据类型/" itemprop="commentCount"></span>
+                <a href="/2017/01/02/JNI之①参数类型与Java参数类型对比/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/02/JNI之①参数类型与Java参数类型对比/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1585,20 +1583,15 @@
 
       
         
-          <p>ECMAScript中有5种简单的数据类型，也成为基本数据类型；Undefined、Null/Boolean/Number/String。还有一种复杂的数据类型，Object(还有一种特殊的Function)object本质是由一组无序的键值对组成的；</p>
-<h1 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h1><ul>
-<li>console.log(typeof qqqq);//undefined，这个变量没有定义；</li>
-<li>console.log(typeof (222));//number，是一个数字； typeof是操作符而不是方法，所以后面可以加()也可以不加；</li>
-<li>console.log(typeof “222”);//string，是一个字符串</li>
-<li>console.log(typeof false);//boolean，是一个布尔值</li>
-<li>console.log(typeof {});//object 是一个对象</li>
-<li>console.log(typeof null);//objecy 是一个对象，在javascript里，null是一个空指针；</li>
-<li>console.log(typeof function(){});//function，是一个方法，也是属于object类型的；js里万物皆对象</li>
-</ul>
-<p>从技术的角度上将，函数在ECMAScript中是对象，不是一种数据类型，属于对象，在就是里万物皆对象的，但是，函数也确实有一些特殊的属性，因此通过typeof操作符来区分也是有必要的；<br>typeof检测任何数据，返回的都是一个字符串，两次和两次以上的连续typeof结果肯定都是string；</p>
+          
+          区别
+Java中的返回值void和JNI中的void完全对应（仅仅一个）
+
+Java中的基本数据类型（byte ,short ,int,long,float,double ,boolean,char－8种）在JNI中对应的数据类型只要在前面加上j就可以了（jbyte ,jshort ,jint,jl
+          ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2017/06/18/JavaScript②数据类型/#more" rel="contents">
+            <a class="btn" href="/2017/01/02/JNI之①参数类型与Java参数类型对比/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1634,7 +1627,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1677,7 +1670,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-count">77</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1686,7 +1679,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1695,7 +1688,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
