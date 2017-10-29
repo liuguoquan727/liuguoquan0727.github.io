@@ -1,0 +1,1047 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android系统," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="再读斋" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/logo.jpeg?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="[TOC]
+Android系统的Home应用程序Launcher是由ActivityManagerService启动的，而ActivityManagerService和PackageManagerService一样，都是在开机时由SystemServer组件启动的，SystemServer组件首先是启动PackageManagerServic，由它来负责安装系统的应用程序，系统中的应用程序安装好了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android启动流程④Launcher启动过程">
+<meta property="og:url" content="http://liuguoquan727.github.io/2017/08/16/Android启动流程④Launcher启动过程/index.html">
+<meta property="og:site_name" content="再读斋">
+<meta property="og:description" content="[TOC]
+Android系统的Home应用程序Launcher是由ActivityManagerService启动的，而ActivityManagerService和PackageManagerService一样，都是在开机时由SystemServer组件启动的，SystemServer组件首先是启动PackageManagerServic，由它来负责安装系统的应用程序，系统中的应用程序安装好了">
+<meta property="og:updated_time" content="2017-10-29T12:05:30.512Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android启动流程④Launcher启动过程">
+<meta name="twitter:description" content="[TOC]
+Android系统的Home应用程序Launcher是由ActivityManagerService启动的，而ActivityManagerService和PackageManagerService一样，都是在开机时由SystemServer组件启动的，SystemServer组件首先是启动PackageManagerServic，由它来负责安装系统的应用程序，系统中的应用程序安装好了">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://liuguoquan727.github.io/2017/08/16/Android启动流程④Launcher启动过程/"/>
+
+
+
+
+
+  <title> Android启动流程④Launcher启动过程 | 再读斋 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?c7d039b406beca565425001aa9fe5496";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">再读斋</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">MICHAEL</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://liuguoquan727.github.io/2017/08/16/Android启动流程④Launcher启动过程/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="刘涤生">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://tp1.sinaimg.cn/2383527444/180/5730725910/1">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="再读斋">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="再读斋" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android启动流程④Launcher启动过程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-16T21:01:06+08:00">
+                2017-08-16 21:01:06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Android/Framework/" itemprop="url" rel="index">
+                    <span itemprop="name">Framework</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/16/Android启动流程④Launcher启动过程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/16/Android启动流程④Launcher启动过程/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[TOC]</p>
+<p>Android系统的Home应用程序Launcher是由ActivityManagerService启动的，而ActivityManagerService和PackageManagerService一样，都是在开机时由SystemServer组件启动的，SystemServer组件首先是启动PackageManagerServic，由它来负责安装系统的应用程序，系统中的应用程序安装好了以后，SystemServer组件接下来就要通过ActivityManagerService来启动Home应用程序Launcher了，Launcher在启动的时候便会通过PackageManagerServic把系统中已经安装好的应用程序以快捷图标的形式展示在桌面上，这样用户就启动这些应用程序。</p>
+<h1 id="Launcher启动流程"><a href="#Launcher启动流程" class="headerlink" title="Launcher启动流程"></a>Launcher启动流程</h1><p>启动Launcher时通过调用ActivityManagerService的systemReady函数实现的</p>
+<p>frameworks/base/services/java/com/android/server/SystemServer.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line"> <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startOtherServices</span><span class="params">()</span> </span>&#123;</div><div class="line"> ...</div><div class="line">  mActivityManagerService.systemReady(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">            <span class="meta">@Override</span></div><div class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                Slog.i(TAG, <span class="string">"Making services ready"</span>);</div><div class="line">                mSystemServiceManager.startBootPhase(</div><div class="line">                        SystemService.PHASE_ACTIVITY_MANAGER_READY);</div><div class="line">    ...</div><div class="line">    &#125;</div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>SystemServer.java中的startOtherServices方法中调用ActivityManagerService的systemReady函数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">systemReady</span><span class="params">(<span class="keyword">final</span> Runnable goingCallback)</span> </span>&#123;</div><div class="line"></div><div class="line">    ···</div><div class="line">    ···</div><div class="line">    mStackSupervisor.resumeFocusedStackTopActivityLocked();</div><div class="line">    mUserController.sendUserSwitchBroadcastsLocked(-<span class="number">1</span>, currentUserId);</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>systemReady方法会调用ActivityStackSupervisor.java的resumeFocusedStackTopActivityLocked方法</p>
+<p>frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">resumeFocusedStackTopActivityLocked</span><span class="params">(</span></span></div><div class="line">        ActivityStack targetStack, ActivityRecord target, ActivityOptions targetOptions) &#123;</div><div class="line">    <span class="keyword">if</span> (targetStack != <span class="keyword">null</span> &amp;&amp; isFocusedStack(targetStack)) &#123;</div><div class="line">        <span class="keyword">return</span> targetStack.resumeTopActivityUncheckedLocked(target, targetOptions);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">final</span> ActivityRecord r = mFocusedStack.topRunningActivityLocked();</div><div class="line">    <span class="keyword">if</span> (r == <span class="keyword">null</span> || r.state != RESUMED) &#123;</div><div class="line">        mFocusedStack.resumeTopActivityUncheckedLocked(<span class="keyword">null</span>, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>resumeFocusedStackTopActivityLocked会调用ActivityStack.java的resumeTopActivityUncheckedLocked方法，ActivityStack对象用于描述Activity堆栈。</p>
+<p>frameworks/base/services/core/java/com/android/server/am/ActivityStack.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//* Ensure that the top activity in the stack is resumed.</span></div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">resumeTopActivityUncheckedLocked</span><span class="params">(ActivityRecord prev, ActivityOptions options)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (mStackSupervisor.inResumeTopActivity) &#123;</div><div class="line">        <span class="comment">// Don't even start recursing.</span></div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">boolean</span> result = <span class="keyword">false</span>;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="comment">// Protect against recursion.</span></div><div class="line">        mStackSupervisor.inResumeTopActivity = <span class="keyword">true</span>;</div><div class="line">        <span class="keyword">if</span> (mService.mLockScreenShown == ActivityManagerService.LOCK_SCREEN_LEAVING) &#123;</div><div class="line">            mService.mLockScreenShown = ActivityManagerService.LOCK_SCREEN_HIDDEN;</div><div class="line">            mService.updateSleepIfNeededLocked();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//</span></div><div class="line">        result = resumeTopActivityInnerLocked(prev, options);</div><div class="line">    &#125; <span class="keyword">finally</span> &#123;</div><div class="line">        mStackSupervisor.inResumeTopActivity = <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> result;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>resumeTopActivityUncheckedLocked会调用resumeTopActivityInnerLocked方法</p>
+<p>frameworks/base/services/core/java/com/android/server/am/ActivityStack.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">resumeTopActivityInnerLocked</span><span class="params">(ActivityRecord prev, ActivityOptions options)</span> </span>&#123;</div><div class="line"></div><div class="line">···</div><div class="line">   </div><div class="line">   <span class="keyword">if</span> (next == <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="comment">// There are no more activities!</span></div><div class="line">       ···</div><div class="line">       <span class="comment">// Only resume home if on home display</span></div><div class="line">       <span class="keyword">return</span> isOnHomeDisplay() &amp;&amp;</div><div class="line">               mStackSupervisor.resumeHomeStackTask(returnTaskType, prev, reason);</div><div class="line">   &#125;</div><div class="line">···</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>resumeTopActivityInnerLocked方法调用ActivityStackSupervisor.java的resumeHomeStackTask方法</p>
+<p>frameworks/base/services/core/java/com/android/server/am/ActivityStackSupervisor.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">resumeHomeStackTask</span><span class="params">(<span class="keyword">int</span> homeStackTaskType, ActivityRecord prev, String reason)</span> </span>&#123;</div><div class="line">    </div><div class="line">    ···</div><div class="line">    <span class="comment">// Only resume home activity if isn't finishing.</span></div><div class="line">    <span class="keyword">if</span> (r != <span class="keyword">null</span> &amp;&amp; !r.finishing) &#123;</div><div class="line">        mService.setFocusedActivityLocked(r, myReason);</div><div class="line">        <span class="keyword">return</span> resumeFocusedStackTopActivityLocked(mHomeStack, prev, <span class="keyword">null</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> mService.startHomeActivityLocked(mCurrentUser, myReason);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>resumeHomeStackTask最后调用ActivityManagerService.java的startHomeActivityLocked函数</p>
+<p>frameworks/base/services/core/java/com/android/server/am/ActivityManagerService.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">String mTopAction = Intent.ACTION_MAIN;</div><div class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">startHomeActivityLocked</span><span class="params">(<span class="keyword">int</span> userId, String reason)</span> </span>&#123;</div><div class="line">        <span class="comment">//</span></div><div class="line">        <span class="keyword">if</span> (mFactoryTest == FactoryTest.FACTORY_TEST_LOW_LEVEL</div><div class="line">                &amp;&amp; mTopAction == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="comment">// We are running in factory test mode, but unable to find</span></div><div class="line">            <span class="comment">// the factory test app, so just sit around displaying the</span></div><div class="line">            <span class="comment">// error message and don't try to start anything.</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//创建要启动的Intent</span></div><div class="line">        Intent intent = getHomeIntent();</div><div class="line">        ActivityInfo aInfo = resolveActivityInfo(intent, STOCK_PM_FLAGS, userId);</div><div class="line">        <span class="keyword">if</span> (aInfo != <span class="keyword">null</span>) &#123;</div><div class="line">            intent.setComponent(<span class="keyword">new</span> ComponentName(aInfo.applicationInfo.packageName, aInfo.name));</div><div class="line">            <span class="comment">// Don't do this if the home app is currently being</span></div><div class="line">            <span class="comment">// instrumented.</span></div><div class="line">            aInfo = <span class="keyword">new</span> ActivityInfo(aInfo);</div><div class="line">            aInfo.applicationInfo = getAppInfoForUser(aInfo.applicationInfo, userId);</div><div class="line">            ProcessRecord app = getProcessRecordLocked(aInfo.processName,</div><div class="line">                    aInfo.applicationInfo.uid, <span class="keyword">true</span>);</div><div class="line">            <span class="comment">//判断符合Action为Intent.ACTION_MAIN，Category为Intent.CATEGORY_HOME的应用程序是否已经启动</span></div><div class="line">            <span class="keyword">if</span> (app == <span class="keyword">null</span> || app.instrumentationClass == <span class="keyword">null</span>) &#123;</div><div class="line">                intent.setFlags(intent.getFlags() | Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">                <span class="comment">//启动Intent</span></div><div class="line">                mActivityStarter.startHomeActivityLocked(intent, aInfo, reason);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            Slog.wtf(TAG, <span class="string">"No home screen found for "</span> + intent, <span class="keyword">new</span> Throwable());</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建Intent</span></div><div class="line"><span class="function">Intent <span class="title">getHomeIntent</span><span class="params">()</span> </span>&#123;</div><div class="line">   Intent intent = <span class="keyword">new</span> Intent(mTopAction, mTopData != <span class="keyword">null</span> ? Uri.parse(mTopData) : <span class="keyword">null</span>);</div><div class="line">   intent.setComponent(mTopComponent);</div><div class="line">   intent.addFlags(Intent.FLAG_DEBUG_TRIAGED_MISSING);</div><div class="line">   <span class="keyword">if</span> (mFactoryTest != FactoryTest.FACTORY_TEST_LOW_LEVEL) &#123;</div><div class="line">        <span class="comment">//表示Lanucher</span></div><div class="line">       intent.addCategory(Intent.CATEGORY_HOME);</div><div class="line">   &#125;</div><div class="line">   <span class="keyword">return</span> intent;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>ActivityManagerService.java的startHomeActivityLocked方法最终完成Lanucher的启动</p>
+<ol>
+<li>如何系统运行模式是低级工厂模式并且mTpoicAction为null，则退出方法，否则进行下面的处理</li>
+<li>创建Intent，如果系统模式不是低级工厂模式，则将intent的Category设置为Intent.CATEGORY_HOME</li>
+<li>判断符合Action为Intent.ACTION_MAIN，Category为Intent.CATEGORY_HOME的应用程序是否已经启动</li>
+<li>如果没有启动则启动该应用程序，就是Launcher程序。</li>
+</ol>
+<p>Launcher3的AndroidManifest.xml配置文件中的intent-filter匹配Action为android.intent.action.MAIN，Category为android.intent.category.HOME。如下所示</p>
+<p>packages/apps/Launcher3/AndroidManifest.xml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">&lt;manifest</div><div class="line">    xmlns:android="http://schemas.android.com/apk/res/android"</div><div class="line">    package="com.android.launcher3"&gt;</div><div class="line">    &lt;uses-sdk android:targetSdkVersion="23" android:minSdkVersion="16"/&gt;</div><div class="line"> ...</div><div class="line"> &lt;application</div><div class="line">        ...</div><div class="line">        &lt;activity</div><div class="line">            android:name="com.android.launcher3.Launcher"</div><div class="line">            android:launchMode="singleTask"</div><div class="line">            android:clearTaskOnLaunch="true"</div><div class="line">            android:stateNotNeeded="true"</div><div class="line">            android:theme="@style/Theme"</div><div class="line">            android:windowSoftInputMode="adjustPan"</div><div class="line">            android:screenOrientation="nosensor"</div><div class="line">            android:configChanges="keyboard|keyboardHidden|navigation"</div><div class="line">            android:resumeWhilePausing="true"</div><div class="line">            android:taskAffinity=""</div><div class="line">            android:enabled="true"&gt;</div><div class="line">            &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name="android.intent.action.MAIN" /&gt;</div><div class="line">                &lt;category android:name="android.intent.category.HOME" /&gt;</div><div class="line">                &lt;category android:name="android.intent.category.DEFAULT" /&gt;</div><div class="line">                &lt;category android:name="android.intent.category.MONKEY"/&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">        &lt;/activity&gt;</div><div class="line">...</div><div class="line">  &lt;/application&gt; </div><div class="line">&lt;/manifest&gt;</div></pre></td></tr></table></figure>
+<h1 id="Lanucher应用图标显示过程"><a href="#Lanucher应用图标显示过程" class="headerlink" title="Lanucher应用图标显示过程"></a>Lanucher应用图标显示过程</h1><p>Lanucher3继承Activity，所以它的运行从onCreate方法开始</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/Launcher.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">(Bundle savedInstanceState)</span> </span>&#123;</div><div class="line"></div><div class="line">···</div><div class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState);</div><div class="line">        <span class="comment">//1</span></div><div class="line">        LauncherAppState app = LauncherAppState.getInstance();</div><div class="line">···     <span class="comment">//2</span></div><div class="line">        mModel = app.setLauncher(<span class="keyword">this</span>);</div><div class="line">        </div><div class="line">        <span class="comment">//3</span></div><div class="line">        <span class="keyword">if</span> (!mModel.startLoader(mWorkspace.getRestorePage())) &#123;</div><div class="line">            mDragLayer.setAlpha(<span class="number">0</span>);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            setWorkspaceLoading(<span class="keyword">true</span>);</div><div class="line">        &#125;</div><div class="line">        </div><div class="line">        ···</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>获取LauncherAppState的实例app</li>
+<li>调用app的setLauncher函数并将Lanucher对象传入</li>
+<li>LanucherModel调用startLoader开始加载数据</li>
+</ol>
+<p>LauncherAppState的setLauncher函数如下</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/LauncherAppState.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function">LauncherModel <span class="title">setLauncher</span><span class="params">(Launcher launcher)</span> </span>&#123;</div><div class="line">     getLauncherProvider().setLauncherProviderChangeListener(launcher);</div><div class="line">     mModel.initialize(launcher);<span class="comment">//1</span></div><div class="line">     mAccessibilityDelegate = ((launcher != <span class="keyword">null</span>) &amp;&amp; Utilities.ATLEAST_LOLLIPOP) ?</div><div class="line">         <span class="keyword">new</span> LauncherAccessibilityDelegate(launcher) : <span class="keyword">null</span>;</div><div class="line">     <span class="keyword">return</span> mModel;</div><div class="line"> &#125;</div><div class="line"> </div><div class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initialize</span><span class="params">(Callbacks callbacks)</span> </span>&#123;</div><div class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">        unbindItemInfosAndClearQueuedBindRunnables();</div><div class="line">        mCallbacks = <span class="keyword">new</span> WeakReference&lt;Callbacks&gt;(callbacks);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>initialize函数中将callbacks封装成一个弱引用对象，这个mCallbacks对象就是传入的launcher对象，下面将会用到它。</p>
+<p>接下来回到LauncherModel的startLoader函数</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/LauncherModel.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建了具有消息循环的线程HandlerThread对象</span></div><div class="line"><span class="meta">@Thunk</span> <span class="keyword">static</span> <span class="keyword">final</span> HandlerThread sWorkerThread = <span class="keyword">new</span> HandlerThread(<span class="string">"launcher-loader"</span>);</div><div class="line"><span class="keyword">static</span> &#123;</div><div class="line">    sWorkerThread.start();</div><div class="line">&#125;</div><div class="line"><span class="comment">// 创建了Handler，并且传入HandlerThread的Looper。Hander的作用就是向HandlerThread发送消息</span></div><div class="line"><span class="meta">@Thunk</span> <span class="keyword">static</span> <span class="keyword">final</span> Handler sWorker = <span class="keyword">new</span> Handler(sWorkerThread.getLooper());</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startLoader</span><span class="params">(<span class="keyword">int</span> synchronousBindPage)</span> </span>&#123;</div><div class="line">    <span class="comment">// Enable queue before starting loader. It will get disabled in Launcher#finishBindingItems</span></div><div class="line">    InstallShortcutReceiver.enableInstallQueue();</div><div class="line">    <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">        <span class="comment">// Don't bother to start the thread if we know it's not going to do anything</span></div><div class="line">        <span class="keyword">if</span> (mCallbacks != <span class="keyword">null</span> &amp;&amp; mCallbacks.get() != <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">final</span> Callbacks oldCallbacks = mCallbacks.get();</div><div class="line">            <span class="comment">// Clear any pending bind-runnables from the synchronized load process.</span></div><div class="line">            runOnMainThread(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">                    oldCallbacks.clearPendingBinds();</div><div class="line">                &#125;</div><div class="line">            &#125;);</div><div class="line"></div><div class="line">            <span class="comment">// If there is already one running, tell it to stop.</span></div><div class="line">            stopLoaderLocked();</div><div class="line">            <span class="comment">// 创建LoaderTask</span></div><div class="line">            mLoaderTask = <span class="keyword">new</span> LoaderTask(mApp.getContext(), synchronousBindPage);</div><div class="line">            <span class="comment">// <span class="doctag">TODO:</span> mDeepShortcutsLoaded does not need to be true for synchronous bind.</span></div><div class="line">            <span class="keyword">if</span> (synchronousBindPage != PagedView.INVALID_RESTORE_PAGE &amp;&amp; mAllAppsLoaded</div><div class="line">                    &amp;&amp; mWorkspaceLoaded &amp;&amp; mDeepShortcutsLoaded &amp;&amp; !mIsLoaderTaskRunning) &#123;</div><div class="line">                mLoaderTask.runBindSynchronousPage(synchronousBindPage);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                sWorkerThread.setPriority(Thread.NORM_PRIORITY);</div><div class="line">                <span class="comment">// 将LoaderTask作为消息发送给HandlerThread </span></div><div class="line">                sWorker.post(mLoaderTask);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>创建LoadTask对象</li>
+<li>将LoadTask对象作为消息发送到HandlerThread处理，sWorkerThread是具有消息循环的线程HandlerThread对象，sWorker是一个Handler对象，并且传入了sWorkerThread的Looper，所以sWorker发送的消息将由sWorkerThread处理。</li>
+</ul>
+<p>LoaderTask实现了Runnable接口，当它被处理时会调用run方法。</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/LauncherModel.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">LoaderTask</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">···</div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">            <span class="keyword">synchronized</span> (mLock) &#123;</div><div class="line">                <span class="keyword">if</span> (mStopped) &#123;</div><div class="line">                    <span class="keyword">return</span>;</div><div class="line">                &#125;</div><div class="line">                mIsLoaderTaskRunning = <span class="keyword">true</span>;</div><div class="line">            &#125;</div><div class="line">            </div><div class="line">            keep_running: &#123;</div><div class="line">                <span class="comment">//step 1: 加载工作区信息</span></div><div class="line">                loadAndBindWorkspace();</div><div class="line"></div><div class="line">                <span class="keyword">if</span> (mStopped) &#123;</div><div class="line">                    <span class="keyword">break</span> keep_running;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                waitForIdle();</div><div class="line">                </div><div class="line">                <span class="comment">//step 2: 加载系统已经安装的应用程序信息</span></div><div class="line">                loadAndBindAllApps();</div><div class="line"></div><div class="line">                waitForIdle();</div><div class="line"></div><div class="line">                <span class="comment">//step 3: loading deep shortcuts</span></div><div class="line">                loadAndBindDeepShortcuts();</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            ···</div><div class="line">        &#125;</div><div class="line">    ···</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>loadAndBindWorkspace方法加载工作区信息</li>
+<li>loadAndBindAllApps方法加载系统以及安装的应用程序</li>
+</ul>
+<p>loadAndBindAllApps方法的实现如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadAndBindAllApps</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">if</span> (DEBUG_LOADERS) &#123;</div><div class="line">      Log.d(TAG, <span class="string">"loadAndBindAllApps mAllAppsLoaded="</span> + mAllAppsLoaded);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="keyword">if</span> (!mAllAppsLoaded) &#123;</div><div class="line">    <span class="comment">//如果系统没有加载已经安装的应用程序信息，则加载所有应用</span></div><div class="line">      loadAllApps();</div><div class="line">      <span class="keyword">synchronized</span> (LoaderTask.<span class="keyword">this</span>) &#123;</div><div class="line">          <span class="keyword">if</span> (mStopped) &#123;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">      updateIconCache();</div><div class="line">      <span class="keyword">synchronized</span> (LoaderTask.<span class="keyword">this</span>) &#123;</div><div class="line">          <span class="keyword">if</span> (mStopped) &#123;</div><div class="line">              <span class="keyword">return</span>;</div><div class="line">          &#125;</div><div class="line">          mAllAppsLoaded = <span class="keyword">true</span>;</div><div class="line">      &#125;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">      onlyBindAllApps();</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>loadAllApps方法如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">loadAllApps</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">···</div><div class="line"><span class="comment">//就是获取Launcher对象</span></div><div class="line">  <span class="keyword">final</span> Callbacks oldCallbacks = mCallbacks.get();</div><div class="line">     </div><div class="line">  <span class="keyword">final</span> ArrayList&lt;AppInfo&gt; added = mBgAllAppsList.added;</div><div class="line">  mBgAllAppsList.added = <span class="keyword">new</span> ArrayList&lt;AppInfo&gt;();</div><div class="line"></div><div class="line">  <span class="comment">// Post callback on main thread</span></div><div class="line">  mHandler.post(<span class="keyword">new</span> Runnable() &#123;</div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">          <span class="keyword">final</span> <span class="keyword">long</span> bindTime = SystemClock.uptimeMillis();</div><div class="line">          <span class="keyword">final</span> Callbacks callbacks = tryGetCallbacks(oldCallbacks);</div><div class="line">          <span class="keyword">if</span> (callbacks != <span class="keyword">null</span>) &#123;</div><div class="line">                <span class="comment">//</span></div><div class="line">              callbacks.bindAllApplications(added);</div><div class="line">              <span class="keyword">if</span> (DEBUG_LOADERS) &#123;</div><div class="line">                  Log.d(TAG, <span class="string">"bound "</span> + added.size() + <span class="string">" apps in "</span></div><div class="line">                          + (SystemClock.uptimeMillis() - bindTime) + <span class="string">"ms"</span>);</div><div class="line">              &#125;</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">              Log.i(TAG, <span class="string">"not binding apps: no Launcher activity"</span>);</div><div class="line">          &#125;</div><div class="line">      &#125;</div><div class="line">  &#125;);</div><div class="line">  ···</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>callbacks对象事件上就是Launcher对象，callbacks.bindAllApplications就是调用Launcher的bindAllApplications方法。</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/Launcher.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Add the icons for all apps.</div><div class="line"> *</div><div class="line"> * Implementation of the method from LauncherModel.Callbacks.</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bindAllApplications</span><span class="params">(<span class="keyword">final</span> ArrayList&lt;AppInfo&gt; apps)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (waitUntilResume(mBindAllApplicationsRunnable, <span class="keyword">true</span>)) &#123;</div><div class="line">        mTmpAppsList = apps;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (mAppsView != <span class="keyword">null</span>) &#123;</div><div class="line">        <span class="comment">//传入App列表数据</span></div><div class="line">        mAppsView.setApps(apps);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (mLauncherCallbacks != <span class="keyword">null</span>) &#123;</div><div class="line">        mLauncherCallbacks.bindAllApplications(apps);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsContainerView.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setApps</span><span class="params">(List&lt;AppInfo&gt; apps)</span> </span>&#123;</div><div class="line">    mApps.setApps(apps);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Override</span></div><div class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onFinishInflate</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>.onFinishInflate();</div><div class="line"></div><div class="line">    <span class="comment">// Load the all apps recycler view</span></div><div class="line">    mAppsRecyclerView = (AllAppsRecyclerView) findViewById(R.id.apps_list_view);</div><div class="line">    mAppsRecyclerView.setApps(mApps);</div><div class="line">    <span class="comment">//GridLayoutManager</span></div><div class="line">    mAppsRecyclerView.setLayoutManager(mLayoutManager);</div><div class="line">    <span class="comment">//AllAppsGridAdapter</span></div><div class="line">    mAppsRecyclerView.setAdapter(mAdapter);</div><div class="line">    mAppsRecyclerView.setHasFixedSize(<span class="keyword">true</span>);</div><div class="line">    mAppsRecyclerView.addOnScrollListener(mElevationController);</div><div class="line">    mAppsRecyclerView.setElevationController(mElevationController);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (mItemDecoration != <span class="keyword">null</span>) &#123;</div><div class="line">        mAppsRecyclerView.addItemDecoration(mItemDecoration);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    FocusedItemDecorator focusedItemDecorator = <span class="keyword">new</span> FocusedItemDecorator(mAppsRecyclerView);</div><div class="line">    mAppsRecyclerView.addItemDecoration(focusedItemDecorator);</div><div class="line">    mAppsRecyclerView.preMeasureViews(mAdapter);</div><div class="line">    mAdapter.setIconFocusListener(focusedItemDecorator.getFocusListener());</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>onFinishInflate函数在加载完xml文件时就会调用，AllAppsRecyclerView将显示App列表,这样应用程序的图标就会显示在屏幕上。</p>
+<h1 id="Launcher应用图标点击过程"><a href="#Launcher应用图标点击过程" class="headerlink" title="Launcher应用图标点击过程"></a>Launcher应用图标点击过程</h1><p>下面开始了解在Launcher上点击一个应用图标的过程。</p>
+<p>Lanucher的xml布局文件会加载AllAppsContainerView这个控件如下：</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsContainerView.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">AllAppsContainerView</span><span class="params">(Context context, AttributeSet attrs, <span class="keyword">int</span> defStyleAttr)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(context, attrs, defStyleAttr);</div><div class="line">    Resources res = context.getResources();</div><div class="line">    <span class="comment">//1</span></div><div class="line">    mLauncher = Launcher.getLauncher(context);</div><div class="line">    mSectionNamesMargin = res.getDimensionPixelSize(R.dimen.all_apps_grid_view_start_margin);</div><div class="line">    mApps = <span class="keyword">new</span> AlphabeticalAppsList(context);</div><div class="line">    <span class="comment">//2</span></div><div class="line">    mAdapter = <span class="keyword">new</span> AllAppsGridAdapter(mLauncher, mApps, mLauncher, <span class="keyword">this</span>);</div><div class="line">    mApps.setAdapter(mAdapter);</div><div class="line">    mLayoutManager = mAdapter.getLayoutManager();</div><div class="line">    mItemDecoration = mAdapter.getItemDecoration();</div><div class="line">    DeviceProfile grid = mLauncher.getDeviceProfile();</div><div class="line">    <span class="keyword">if</span> (FeatureFlags.LAUNCHER3_ALL_APPS_PULL_UP &amp;&amp; !grid.isVerticalBarLayout()) &#123;</div><div class="line">        mRecyclerViewBottomPadding = <span class="number">0</span>;</div><div class="line">        setPadding(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        mRecyclerViewBottomPadding =</div><div class="line">                res.getDimensionPixelSize(R.dimen.all_apps_list_bottom_padding);</div><div class="line">    &#125;</div><div class="line">    mSearchQueryBuilder = <span class="keyword">new</span> SpannableStringBuilder();</div><div class="line">    Selection.setSelection(mSearchQueryBuilder, <span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>获取Launcher的实例</li>
+<li>创建AllAppsGridAdapter的实例，并传入Launcher对象</li>
+</ol>
+<p>接下来看AllAppsGridAdapter，它是RecyclerView的Adapter，直接看它的onCreateViewHolder方法。</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/allapps/AllAppsGridAdapter.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">        <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> ViewHolder <span class="title">onCreateViewHolder</span><span class="params">(ViewGroup parent, <span class="keyword">int</span> viewType)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (viewType) &#123;</div><div class="line">            <span class="keyword">case</span> VIEW_TYPE_SECTION_BREAK:</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> ViewHolder(<span class="keyword">new</span> View(parent.getContext()));</div><div class="line">            <span class="keyword">case</span> VIEW_TYPE_ICON:</div><div class="line">                <span class="comment">/* falls through */</span></div><div class="line">            <span class="keyword">case</span> VIEW_TYPE_PREDICTION_ICON: &#123;</div><div class="line">                <span class="comment">//1</span></div><div class="line">                BubbleTextView icon = (BubbleTextView) mLayoutInflater.inflate(</div><div class="line">                        R.layout.all_apps_icon, parent, <span class="keyword">false</span>);</div><div class="line">                <span class="comment">//2</span></div><div class="line">                icon.setOnClickListener(mIconClickListener);</div><div class="line">                icon.setOnLongClickListener(mIconLongClickListener);</div><div class="line">                icon.setLongPressTimeout(ViewConfiguration.get(parent.getContext())</div><div class="line">                        .getLongPressTimeout());</div><div class="line">                icon.setOnFocusChangeListener(mIconFocusListener);</div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onBindViewHolder</span><span class="params">(ViewHolder holder, <span class="keyword">int</span> position)</span> </span>&#123;</div><div class="line">        <span class="keyword">switch</span> (holder.getItemViewType()) &#123;</div><div class="line">            <span class="keyword">case</span> VIEW_TYPE_ICON: &#123;</div><div class="line">                AppInfo info = mApps.getAdapterItems().get(position).appInfo;</div><div class="line">                BubbleTextView icon = (BubbleTextView) holder.mContent;</div><div class="line">                <span class="comment">//3</span></div><div class="line">                icon.applyFromApplicationInfo(info);</div><div class="line">                icon.setAccessibilityDelegate(mLauncher.getAccessibilityDelegate());</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ol>
+<li>实例化BubbleTextView就是Launcher上的应用程序图标控件</li>
+<li>BubbleTextView设置点击事件，mIconClickListener就是传入的Launcher对象，所有点击应用图标就会回调Launcher的onClick方法</li>
+<li>给BubbleTextView设置tag为AppInfo</li>
+</ol>
+<p>下面看Launcher.java的onClick方法：</p>
+<p>packages/apps/Launcher3/src/com/android/launcher3/Launcher.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">    </div><div class="line">    ···</div><div class="line"></div><div class="line">    Object tag = v.getTag();</div><div class="line">    <span class="comment">//ShortcutInfo</span></div><div class="line">    <span class="keyword">if</span> (tag <span class="keyword">instanceof</span> ShortcutInfo) &#123;</div><div class="line">        onClickAppShortcut(v);</div><div class="line">    <span class="comment">//AppInfo</span></div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (tag <span class="keyword">instanceof</span> AppInfo) &#123;</div><div class="line">        startAppShortcutOrInfoActivity(v);</div><div class="line">    &#125;</div><div class="line">    ···</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>当tag是AppInfo时调用startAppShortcutOrInfoActivity方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">startAppShortcutOrInfoActivity</span><span class="params">(View v)</span> </span>&#123;</div><div class="line">   ItemInfo item = (ItemInfo) v.getTag();</div><div class="line">   Intent intent = item.getIntent();</div><div class="line">   <span class="keyword">if</span> (intent == <span class="keyword">null</span>) &#123;</div><div class="line">       <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Input must have a valid intent"</span>);</div><div class="line">   &#125;</div><div class="line">   <span class="comment">//</span></div><div class="line">   <span class="keyword">boolean</span> success = startActivitySafely(v, intent, item);</div><div class="line">   getUserEventDispatcher().logAppLaunch(v, intent);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>startAppShortcutOrInfoActivity调用startActivitySafely来启动应用程序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">startActivitySafely</span><span class="params">(View v, Intent intent, ItemInfo item)</span> </span>&#123;</div><div class="line">    </div><div class="line">    ···</div><div class="line"></div><div class="line">    <span class="comment">// Prepare intent</span></div><div class="line">    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);</div><div class="line">    <span class="keyword">if</span> (v != <span class="keyword">null</span>) &#123;</div><div class="line">        intent.setSourceBounds(getViewBounds(v));</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">        <span class="keyword">if</span> (Utilities.ATLEAST_MARSHMALLOW &amp;&amp; item != <span class="keyword">null</span></div><div class="line">                &amp;&amp; (item.itemType == Favorites.ITEM_TYPE_SHORTCUT</div><div class="line">                || item.itemType == Favorites.ITEM_TYPE_DEEP_SHORTCUT)</div><div class="line">                &amp;&amp; ((ShortcutInfo) item).promisedIntent == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="comment">// Shortcuts need some special checks due to legacy reasons.</span></div><div class="line">            startShortcutIntentSafely(intent, optsBundle, item);</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (user == <span class="keyword">null</span> || user.equals(UserHandleCompat.myUserHandle())) &#123;</div><div class="line">            <span class="comment">// Could be launching some bookkeeping activity</span></div><div class="line">            startActivity(intent, optsBundle);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            LauncherAppsCompat.getInstance(<span class="keyword">this</span>).startActivityForProfile(</div><div class="line">                    intent.getComponent(), user, intent.getSourceBounds(), optsBundle);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">    &#125; <span class="keyword">catch</span> (ActivityNotFoundException|SecurityException e) &#123;</div><div class="line">        Toast.makeText(<span class="keyword">this</span>, R.string.activity_not_found, Toast.LENGTH_SHORT).show();</div><div class="line">        Log.e(TAG, <span class="string">"Unable to launch. tag="</span> + item + <span class="string">" intent="</span> + intent, e);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><a href="http://blog.csdn.net/luoshengyang/article/details/6767736" target="_blank" rel="external"> Android系统默认Home应用程序（Launcher）的启动过程源代码分析</a></li>
+<li><a href="http://liuwangshu.cn/framework/booting/4-launcher.html" target="_blank" rel="external">Android系统启动流程（四）Launcher启动过程与系统启动流程</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/ic_wechat_pay.jpeg" alt="刘涤生 wechat" style="width: 200px; max-width: 100%;"/>
+    <div></div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android系统/" rel="tag"># Android系统</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/15/Android系统架构与源码目录/" rel="next" title="Android系统架构与源码目录">
+                <i class="fa fa-chevron-left"></i> Android系统架构与源码目录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/16/Android启动流程①init进程分析/" rel="prev" title="Android启动流程①init进程分析">
+                Android启动流程①init进程分析 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2017/08/16/Android启动流程④Launcher启动过程/"
+     data-title="Android启动流程④Launcher启动过程"
+     data-content=""
+     data-url="http://liuguoquan727.github.io/2017/08/16/Android启动流程④Launcher启动过程/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/16/Android启动流程④Launcher启动过程/"
+           data-title="Android启动流程④Launcher启动过程" data-url="http://liuguoquan727.github.io/2017/08/16/Android启动流程④Launcher启动过程/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://tp1.sinaimg.cn/2383527444/180/5730725910/1"
+               alt="刘涤生" />
+          <p class="site-author-name" itemprop="name">刘涤生</p>
+          <p class="site-description motion-element" itemprop="description">像外行一样思考,像专家一样实践。</p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">129</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/liuguoquan727" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/liuguoquan0727" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/b8aaf20b36fd/latest_articles" target="_blank" title="简书">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  简书
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/lgq2436363" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Launcher启动流程"><span class="nav-number">1.</span> <span class="nav-text">Launcher启动流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Lanucher应用图标显示过程"><span class="nav-number">2.</span> <span class="nav-text">Lanucher应用图标显示过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Launcher应用图标点击过程"><span class="nav-number">3.</span> <span class="nav-text">Launcher应用图标点击过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘涤生</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuguoquan"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
